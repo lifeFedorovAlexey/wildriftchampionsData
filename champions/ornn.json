@@ -1,0 +1,71 @@
+{
+  "slug": "ornn",
+  "name": {
+    "ru_ru": "ОРН",
+    "pt_br": "ORNN",
+    "en_us": "ORNN",
+    "it_it": "ORNN",
+    "tr_tr": "ORNN",
+    "de_de": "ORNN",
+    "ms_my": "ORNN",
+    "vi_vn": "ORNN",
+    "ko_kr": "오른",
+    "ja_jp": "オーン",
+    "es_es": "ORNN",
+    "fr_fr": "ORNN",
+    "th_th": "ORNN",
+    "zh_tw": "鄂爾",
+    "en_gb": "ORNN",
+    "pl_pl": "ORNN",
+    "es_mx": "ORNN",
+    "en_sg": "ORNN",
+    "ar_ae": "أورن"
+  },
+  "roles": [
+    {
+      "key": "tank",
+      "name": {
+        "ru_ru": "Танк",
+        "en_us": "TANK",
+        "en_gb": "TANK",
+        "fr_fr": "TANK",
+        "de_de": "TANK",
+        "es_es": "TANQUE",
+        "it_it": "TANK",
+        "pl_pl": "OBROŃCA",
+        "tr_tr": "TANK",
+        "ms_my": "TANK",
+        "pt_br": "TANQUE",
+        "ja_jp": "タンク",
+        "ko_kr": "탱커",
+        "zh_tw": "坦克",
+        "th_th": "แทงค์",
+        "vi_vn": "ĐỠ ĐÒN",
+        "es_mx": "TANQUE",
+        "en_sg": "TANK",
+        "ar_ae": "بطل ثقيل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Высокая",
+    "en_us": "High",
+    "en_gb": "High",
+    "fr_fr": "Élevée",
+    "de_de": "Hoch",
+    "es_es": "Alta",
+    "it_it": "Alta",
+    "pl_pl": "Wysoki",
+    "tr_tr": "Yüksek",
+    "ms_my": "Tinggi",
+    "pt_br": "Alta",
+    "ja_jp": "高",
+    "ko_kr": "높음",
+    "zh_tw": "高",
+    "th_th": "สูง",
+    "vi_vn": "Khó",
+    "es_mx": "Alta",
+    "en_sg": "High",
+    "ar_ae": "مرتفعة"
+  }
+}

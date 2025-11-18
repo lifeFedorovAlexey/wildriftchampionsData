@@ -1,0 +1,71 @@
+{
+  "slug": "renekton",
+  "name": {
+    "ru_ru": "РЕНЕКТОН",
+    "pt_br": "Renekton",
+    "en_us": "RENEKTON",
+    "it_it": "RENEKTON",
+    "tr_tr": "RENEKTON",
+    "de_de": "RENEKTON",
+    "ms_my": "Renekton",
+    "vi_vn": "Renekton",
+    "ko_kr": "레넥톤",
+    "ja_jp": "レネクトン",
+    "es_es": "RENEKTON",
+    "fr_fr": "RENEKTON",
+    "th_th": "RENEKTON",
+    "zh_tw": "雷尼克頓",
+    "en_gb": "Renekton",
+    "pl_pl": "RENEKTON",
+    "es_mx": "RENEKTON",
+    "en_sg": "Renekton",
+    "ar_ae": "رينيكتون"
+  },
+  "roles": [
+    {
+      "key": "fighter",
+      "name": {
+        "ru_ru": "Боец",
+        "en_us": "FIGHTER",
+        "en_gb": "FIGHTER",
+        "fr_fr": "COMBATTANT",
+        "de_de": "KÄMPFER",
+        "es_es": "LUCHADOR",
+        "it_it": "COMBATTENTE",
+        "pl_pl": "WOJOWNIK",
+        "tr_tr": "DÖVÜŞÇÜ",
+        "ms_my": "FIGHTER",
+        "pt_br": "LUTADOR",
+        "ja_jp": "ファイター",
+        "ko_kr": "전사",
+        "zh_tw": "鬥士",
+        "th_th": "ไฟท์เตอร์",
+        "vi_vn": "ĐẤU SĨ",
+        "es_mx": "PELEADOR",
+        "en_sg": "FIGHTER",
+        "ar_ae": "مقاتل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Высокая",
+    "en_us": "High",
+    "en_gb": "High",
+    "fr_fr": "Élevée",
+    "de_de": "Hoch",
+    "es_es": "Alta",
+    "it_it": "Alta",
+    "pl_pl": "Wysoki",
+    "tr_tr": "Yüksek",
+    "ms_my": "Tinggi",
+    "pt_br": "Alta",
+    "ja_jp": "高",
+    "ko_kr": "높음",
+    "zh_tw": "高",
+    "th_th": "สูง",
+    "vi_vn": "Khó",
+    "es_mx": "Alta",
+    "en_sg": "High",
+    "ar_ae": "مرتفعة"
+  }
+}

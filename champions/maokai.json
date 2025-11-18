@@ -1,0 +1,71 @@
+{
+  "slug": "maokai",
+  "name": {
+    "ru_ru": "МАОКАЙ",
+    "pt_br": "MAOKAI",
+    "en_us": "MAOKAI",
+    "it_it": "MAOKAI",
+    "tr_tr": "MAOKAI",
+    "de_de": "MAOKAI",
+    "ms_my": "MAOKAI",
+    "vi_vn": "MAOKAI",
+    "ko_kr": "마오카이",
+    "ja_jp": "マオカイ",
+    "es_es": "MAOKAI",
+    "fr_fr": "MAOKAI",
+    "th_th": "MAOKAI",
+    "zh_tw": "茂凱",
+    "en_gb": "MAOKAI",
+    "pl_pl": "MAOKAI",
+    "es_mx": "MAOKAI",
+    "en_sg": "MAOKAI",
+    "ar_ae": "ماوكاي"
+  },
+  "roles": [
+    {
+      "key": "tank",
+      "name": {
+        "ru_ru": "ТАНК",
+        "en_us": "TANK",
+        "en_gb": "TANK",
+        "fr_fr": "TANK",
+        "de_de": "TANK",
+        "es_es": "TANQUE",
+        "it_it": "TANK",
+        "pl_pl": "OBROŃCA",
+        "tr_tr": "TANK",
+        "ms_my": "TANK",
+        "pt_br": "TANQUE",
+        "ja_jp": "タンク",
+        "ko_kr": "탱커",
+        "zh_tw": "坦克",
+        "th_th": "แทงค์",
+        "vi_vn": "ĐỠ ĐÒN",
+        "es_mx": "TANQUE",
+        "en_sg": "TANK",
+        "ar_ae": "بطل ثقيل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Низкая",
+    "en_us": "Low",
+    "en_gb": "Low",
+    "fr_fr": "Faible",
+    "de_de": "Niedrig",
+    "es_es": "Baja",
+    "it_it": "Bassa",
+    "pl_pl": "Niski",
+    "tr_tr": "Düşük",
+    "ms_my": "Rendah",
+    "pt_br": "Baixa",
+    "ja_jp": "低",
+    "ko_kr": "낮음",
+    "zh_tw": "低",
+    "th_th": "ต่ำ",
+    "vi_vn": "Dễ",
+    "es_mx": "Baja",
+    "en_sg": "Low",
+    "ar_ae": "منخفضة"
+  }
+}

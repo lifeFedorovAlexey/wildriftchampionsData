@@ -1,0 +1,71 @@
+{
+  "slug": "warwick",
+  "name": {
+    "ru_ru": "ВАРВИК",
+    "pt_br": "WARWICK",
+    "en_us": "WARWICK",
+    "it_it": "WARWICK",
+    "tr_tr": "WARWICK",
+    "de_de": "WARWICK",
+    "ms_my": "WARWICK",
+    "vi_vn": "WARWICK",
+    "ko_kr": "워윅",
+    "ja_jp": "ワーウィック",
+    "es_es": "WARWICK",
+    "fr_fr": "WARWICK",
+    "th_th": "WARWICK",
+    "zh_tw": "沃維克",
+    "en_gb": "WARWICK",
+    "pl_pl": "WARWICK",
+    "es_mx": "WARWICK",
+    "en_sg": "WARWICK",
+    "ar_ae": "وارويك"
+  },
+  "roles": [
+    {
+      "key": "fighter",
+      "name": {
+        "ru_ru": "Боец",
+        "en_us": "FIGHTER",
+        "en_gb": "FIGHTER",
+        "fr_fr": "COMBATTANT",
+        "de_de": "KÄMPFER",
+        "es_es": "LUCHADOR",
+        "it_it": "COMBATTENTE",
+        "pl_pl": "WOJOWNIK",
+        "tr_tr": "DÖVÜŞÇÜ",
+        "ms_my": "FIGHTER",
+        "pt_br": "LUTADOR",
+        "ja_jp": "ファイター",
+        "ko_kr": "전사",
+        "zh_tw": "鬥士",
+        "th_th": "ไฟท์เตอร์",
+        "vi_vn": "ĐẤU SĨ",
+        "es_mx": "PELEADOR",
+        "en_sg": "FIGHTER",
+        "ar_ae": "مقاتل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Низкая",
+    "en_us": "Low",
+    "en_gb": "Low",
+    "fr_fr": "Faible",
+    "de_de": "Niedrig",
+    "es_es": "Baja",
+    "it_it": "Bassa",
+    "pl_pl": "Niski",
+    "tr_tr": "Düşük",
+    "ms_my": "Rendah",
+    "pt_br": "Baixa",
+    "ja_jp": "低",
+    "ko_kr": "낮음",
+    "zh_tw": "低",
+    "th_th": "ต่ำ",
+    "vi_vn": "Dễ",
+    "es_mx": "Baja",
+    "en_sg": "Low",
+    "ar_ae": "منخفضة"
+  }
+}

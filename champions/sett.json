@@ -1,0 +1,71 @@
+{
+  "slug": "sett",
+  "name": {
+    "ru_ru": "СЕТТ",
+    "pt_br": "SETT",
+    "en_us": "SETT",
+    "it_it": "SETT",
+    "tr_tr": "SETT",
+    "de_de": "SETT",
+    "ms_my": "SETT",
+    "vi_vn": "SETT",
+    "ko_kr": "세트",
+    "ja_jp": "セト",
+    "es_es": "SETT",
+    "fr_fr": "SETT",
+    "th_th": "SETT",
+    "zh_tw": "賽特",
+    "en_gb": "SETT",
+    "pl_pl": "SETT",
+    "es_mx": "SETT",
+    "en_sg": "SETT",
+    "ar_ae": "سيت"
+  },
+  "roles": [
+    {
+      "key": "fighter",
+      "name": {
+        "ru_ru": "Боец",
+        "en_us": "FIGHTER",
+        "en_gb": "FIGHTER",
+        "fr_fr": "COMBATTANT",
+        "de_de": "KÄMPFER",
+        "es_es": "LUCHADOR",
+        "it_it": "COMBATTENTE",
+        "pl_pl": "WOJOWNIK",
+        "tr_tr": "DÖVÜŞÇÜ",
+        "ms_my": "FIGHTER",
+        "pt_br": "LUTADOR",
+        "ja_jp": "ファイター",
+        "ko_kr": "전사",
+        "zh_tw": "鬥士",
+        "th_th": "ไฟท์เตอร์",
+        "vi_vn": "ĐẤU SĨ",
+        "es_mx": "PELEADOR",
+        "en_sg": "FIGHTER",
+        "ar_ae": "مقاتل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Низкая",
+    "en_us": "Low",
+    "en_gb": "Low",
+    "fr_fr": "Faible",
+    "de_de": "Niedrig",
+    "es_es": "Baja",
+    "it_it": "Bassa",
+    "pl_pl": "Niski",
+    "tr_tr": "Düşük",
+    "ms_my": "Rendah",
+    "pt_br": "Baixa",
+    "ja_jp": "低",
+    "ko_kr": "낮음",
+    "zh_tw": "低",
+    "th_th": "ต่ำ",
+    "vi_vn": "Dễ",
+    "es_mx": "Baja",
+    "en_sg": "Low",
+    "ar_ae": "منخفضة"
+  }
+}

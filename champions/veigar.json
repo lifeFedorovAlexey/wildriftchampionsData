@@ -1,0 +1,71 @@
+{
+  "slug": "veigar",
+  "name": {
+    "ru_ru": "ВЕЙГАР",
+    "pt_br": "VEIGAR",
+    "en_us": "VEIGAR",
+    "it_it": "VEIGAR",
+    "tr_tr": "VEIGAR",
+    "de_de": "VEIGAR",
+    "ms_my": "VEIGAR",
+    "vi_vn": "VEIGAR",
+    "ko_kr": "베이가",
+    "ja_jp": "ベイガー",
+    "es_es": "VEIGAR",
+    "fr_fr": "VEIGAR",
+    "th_th": "VEIGAR",
+    "zh_tw": "維迦",
+    "en_gb": "VEIGAR",
+    "pl_pl": "VEIGAR",
+    "es_mx": "VEIGAR",
+    "en_sg": "VEIGAR",
+    "ar_ae": "فيغار"
+  },
+  "roles": [
+    {
+      "key": "mage",
+      "name": {
+        "ru_ru": "Маг",
+        "en_us": "MAGE",
+        "en_gb": "MAGE",
+        "fr_fr": "MAGE",
+        "de_de": "MAGIER",
+        "es_es": "MAGO",
+        "it_it": "MAGO",
+        "pl_pl": "MAG",
+        "tr_tr": "BÜYÜCÜ",
+        "ms_my": "MAGE",
+        "pt_br": "MAGO",
+        "ja_jp": "メイジ",
+        "ko_kr": "마법사",
+        "zh_tw": "法師",
+        "th_th": "เมจ",
+        "vi_vn": "PHÁP SƯ",
+        "es_mx": "MAGO",
+        "en_sg": "MAGE",
+        "ar_ae": "ساحر"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Низкая",
+    "en_us": "Low",
+    "en_gb": "Low",
+    "fr_fr": "Faible",
+    "de_de": "Niedrig",
+    "es_es": "Baja",
+    "it_it": "Bassa",
+    "pl_pl": "Niski",
+    "tr_tr": "Düşük",
+    "ms_my": "Rendah",
+    "pt_br": "Baixa",
+    "ja_jp": "低",
+    "ko_kr": "낮음",
+    "zh_tw": "低",
+    "th_th": "ต่ำ",
+    "vi_vn": "Dễ",
+    "es_mx": "Baja",
+    "en_sg": "Low",
+    "ar_ae": "منخفضة"
+  }
+}

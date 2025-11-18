@@ -1,0 +1,71 @@
+{
+  "slug": "nilah",
+  "name": {
+    "ru_ru": "НИЛА",
+    "pt_br": "NILAH",
+    "en_us": "NILAH",
+    "it_it": "NILAH",
+    "tr_tr": "NILAH",
+    "de_de": "NILAH",
+    "ms_my": "NILAH",
+    "vi_vn": "NILAH",
+    "ko_kr": "닐라",
+    "ja_jp": "ニーラ",
+    "es_es": "NILAH",
+    "fr_fr": "NILAH",
+    "th_th": "NILAH",
+    "zh_tw": "淣菈",
+    "en_gb": "NILAH",
+    "pl_pl": "NILAH",
+    "es_mx": "NILAH",
+    "en_sg": "NILAH",
+    "ar_ae": "نيلا"
+  },
+  "roles": [
+    {
+      "key": "fighter",
+      "name": {
+        "ru_ru": "Боец",
+        "en_us": "FIGHTER",
+        "en_gb": "FIGHTER",
+        "fr_fr": "COMBATTANT",
+        "de_de": "KÄMPFER",
+        "es_es": "LUCHADOR",
+        "it_it": "COMBATTENTE",
+        "pl_pl": "WOJOWNIK",
+        "tr_tr": "DÖVÜŞÇÜ",
+        "ms_my": "FIGHTER",
+        "pt_br": "LUTADOR",
+        "ja_jp": "ファイター",
+        "ko_kr": "전사",
+        "zh_tw": "鬥士",
+        "th_th": "ไฟท์เตอร์",
+        "vi_vn": "ĐẤU SĨ",
+        "es_mx": "PELEADOR",
+        "en_sg": "FIGHTER",
+        "ar_ae": "مقاتل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Высокая",
+    "en_us": "High",
+    "en_gb": "High",
+    "fr_fr": "Élevée",
+    "de_de": "Hoch",
+    "es_es": "Alta",
+    "it_it": "Alta",
+    "pl_pl": "Wysoki",
+    "tr_tr": "Yüksek",
+    "ms_my": "Tinggi",
+    "pt_br": "Alta",
+    "ja_jp": "高",
+    "ko_kr": "높음",
+    "zh_tw": "高",
+    "th_th": "สูง",
+    "vi_vn": "Khó",
+    "es_mx": "Alta",
+    "en_sg": "High",
+    "ar_ae": "مرتفعة"
+  }
+}

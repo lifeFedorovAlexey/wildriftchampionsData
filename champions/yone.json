@@ -1,0 +1,71 @@
+{
+  "slug": "yone",
+  "name": {
+    "ru_ru": "ЁНЭ",
+    "pt_br": "YONE",
+    "en_us": "YONE",
+    "it_it": "YONE",
+    "tr_tr": "YONE",
+    "de_de": "YONE",
+    "ms_my": "YONE",
+    "vi_vn": "Yone",
+    "ko_kr": "요네",
+    "ja_jp": "ヨネ",
+    "es_es": "YONE",
+    "fr_fr": "YONE",
+    "th_th": "YONE",
+    "zh_tw": "犽凝",
+    "en_gb": "YONE",
+    "pl_pl": "YONE",
+    "es_mx": "YONE",
+    "en_sg": "YONE",
+    "ar_ae": "يوناي"
+  },
+  "roles": [
+    {
+      "key": "assassin",
+      "name": {
+        "ru_ru": "Убийца",
+        "en_us": "ASSASSIN",
+        "en_gb": "ASSASSIN",
+        "fr_fr": "ASSASSIN",
+        "de_de": "ASSASSINE",
+        "es_es": "ASESINO",
+        "it_it": "ASSASSINO",
+        "pl_pl": "ZABÓJCA",
+        "tr_tr": "SUİKASTÇI",
+        "ms_my": "ASSASSIN",
+        "pt_br": "ASSASSINO",
+        "ja_jp": "アサシン",
+        "ko_kr": "암살자",
+        "zh_tw": "刺客",
+        "th_th": "แอสแซสซิน",
+        "vi_vn": "SÁT THỦ",
+        "es_mx": "ASESINO",
+        "en_sg": "ASSASSIN",
+        "ar_ae": "قاتل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Высокая",
+    "en_us": "High",
+    "en_gb": "High",
+    "fr_fr": "Élevée",
+    "de_de": "Hoch",
+    "es_es": "Alta",
+    "it_it": "Alta",
+    "pl_pl": "Wysoki",
+    "tr_tr": "Yüksek",
+    "ms_my": "Tinggi",
+    "pt_br": "Alta",
+    "ja_jp": "高",
+    "ko_kr": "높음",
+    "zh_tw": "高",
+    "th_th": "สูง",
+    "vi_vn": "Khó",
+    "es_mx": "Alta",
+    "en_sg": "High",
+    "ar_ae": "مرتفعة"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "slug": "corki",
+  "name": {
+    "ru_ru": "КОРКИ",
+    "pt_br": "CORKI",
+    "en_us": "CORKI",
+    "it_it": "CORKI",
+    "tr_tr": "CORKI",
+    "de_de": "CORKI",
+    "ms_my": "CORKI",
+    "vi_vn": "CORKI",
+    "ko_kr": "코르키",
+    "ja_jp": "コーキ",
+    "es_es": "CORKI",
+    "fr_fr": "CORKI",
+    "th_th": "CORKI",
+    "zh_tw": "庫奇",
+    "en_gb": "CORKI",
+    "pl_pl": "CORKI",
+    "es_mx": "CORKI",
+    "en_sg": "CORKI",
+    "ar_ae": "كوركي"
+  },
+  "roles": [
+    {
+      "key": "marksman",
+      "name": {
+        "ru_ru": "Стрелок",
+        "en_us": "MARKSMAN",
+        "en_gb": "MARKSMAN",
+        "fr_fr": "TIREUR",
+        "de_de": "SCHÜTZE",
+        "es_es": "TIRADOR",
+        "it_it": "TIRATORE",
+        "pl_pl": "STRZELEC",
+        "tr_tr": "NİŞANCI",
+        "ms_my": "MARKSMAN",
+        "pt_br": "ATIRADOR",
+        "ja_jp": "マークスマン",
+        "ko_kr": "원거리 딜러",
+        "zh_tw": "射手",
+        "th_th": "มาคส์แมน",
+        "vi_vn": "XẠ THỦ",
+        "es_mx": "TIRADOR",
+        "en_sg": "MARKSMAN",
+        "ar_ae": "قناص"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Средняя",
+    "en_us": "Medium",
+    "en_gb": "Medium",
+    "fr_fr": "Modérée",
+    "de_de": "Mittel",
+    "es_es": "Media",
+    "it_it": "Media",
+    "pl_pl": "Średni",
+    "tr_tr": "Orta",
+    "ms_my": "Sederhana",
+    "pt_br": "Média",
+    "ja_jp": "中",
+    "ko_kr": "보통",
+    "zh_tw": "中",
+    "th_th": "ปานกลาง",
+    "vi_vn": "Trung bình",
+    "es_mx": "Media",
+    "en_sg": "Medium",
+    "ar_ae": "متوسطة"
+  }
+}

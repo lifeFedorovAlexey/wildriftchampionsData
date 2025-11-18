@@ -1,0 +1,71 @@
+{
+  "slug": "evelynn",
+  "name": {
+    "ru_ru": "ЭВЕЛИНН",
+    "pt_br": "EVELYNN",
+    "en_us": "EVELYNN",
+    "it_it": "EVELYNN",
+    "tr_tr": "EVELYNN",
+    "de_de": "EVELYNN",
+    "ms_my": "EVELYNN",
+    "vi_vn": "EVELYNN",
+    "ko_kr": "이블린",
+    "ja_jp": "イブリン",
+    "es_es": "EVELYNN",
+    "fr_fr": "EVELYNN",
+    "th_th": "EVELYNN",
+    "zh_tw": "伊芙琳",
+    "en_gb": "EVELYNN",
+    "pl_pl": "EVELYNN",
+    "es_mx": "EVELYNN",
+    "en_sg": "EVELYNN",
+    "ar_ae": "إيفلين"
+  },
+  "roles": [
+    {
+      "key": "assassin",
+      "name": {
+        "ru_ru": "Убийца",
+        "en_us": "ASSASSIN",
+        "en_gb": "ASSASSIN",
+        "fr_fr": "ASSASSIN",
+        "de_de": "ASSASSINE",
+        "es_es": "ASESINO",
+        "it_it": "ASSASSINO",
+        "pl_pl": "ZABÓJCA",
+        "tr_tr": "SUİKASTÇI",
+        "ms_my": "ASSASSIN",
+        "pt_br": "ASSASSINO",
+        "ja_jp": "アサシン",
+        "ko_kr": "암살자",
+        "zh_tw": "刺客",
+        "th_th": "แอสแซสซิน",
+        "vi_vn": "SÁT THỦ",
+        "es_mx": "ASESINO",
+        "en_sg": "ASSASSIN",
+        "ar_ae": "قاتل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Средняя",
+    "en_us": "Medium",
+    "en_gb": "Medium",
+    "fr_fr": "Modérée",
+    "de_de": "Mittel",
+    "es_es": "Media",
+    "it_it": "Media",
+    "pl_pl": "Średni",
+    "tr_tr": "Orta",
+    "ms_my": "Sederhana",
+    "pt_br": "Média",
+    "ja_jp": "中",
+    "ko_kr": "보통",
+    "zh_tw": "中",
+    "th_th": "ปานกลาง",
+    "vi_vn": "Trung bình",
+    "es_mx": "Media",
+    "en_sg": "Medium",
+    "ar_ae": "متوسطة"
+  }
+}

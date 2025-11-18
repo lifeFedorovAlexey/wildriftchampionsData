@@ -1,0 +1,71 @@
+{
+  "slug": "vi",
+  "name": {
+    "ru_ru": "ВАЙ",
+    "pt_br": "VI",
+    "en_us": "VI",
+    "it_it": "VI",
+    "tr_tr": "VI",
+    "de_de": "VI",
+    "ms_my": "VI",
+    "vi_vn": "VI",
+    "ko_kr": "바이",
+    "ja_jp": "ヴァイ",
+    "es_es": "VI",
+    "fr_fr": "VI",
+    "th_th": "VI",
+    "zh_tw": "菲艾",
+    "en_gb": "VI",
+    "pl_pl": "VI",
+    "es_mx": "VI",
+    "en_sg": "VI",
+    "ar_ae": "فاي"
+  },
+  "roles": [
+    {
+      "key": "fighter",
+      "name": {
+        "ru_ru": "Боец",
+        "en_us": "FIGHTER",
+        "en_gb": "FIGHTER",
+        "fr_fr": "COMBATTANT",
+        "de_de": "KÄMPFER",
+        "es_es": "LUCHADOR",
+        "it_it": "COMBATTENTE",
+        "pl_pl": "WOJOWNIK",
+        "tr_tr": "DÖVÜŞÇÜ",
+        "ms_my": "FIGHTER",
+        "pt_br": "LUTADOR",
+        "ja_jp": "ファイター",
+        "ko_kr": "전사",
+        "zh_tw": "鬥士",
+        "th_th": "ไฟท์เตอร์",
+        "vi_vn": "ĐẤU SĨ",
+        "es_mx": "PELEADOR",
+        "en_sg": "FIGHTER",
+        "ar_ae": "مقاتل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Низкая",
+    "en_us": "Low",
+    "en_gb": "Low",
+    "fr_fr": "Faible",
+    "de_de": "Niedrig",
+    "es_es": "Baja",
+    "it_it": "Bassa",
+    "pl_pl": "Niski",
+    "tr_tr": "Düşük",
+    "ms_my": "Rendah",
+    "pt_br": "Baixa",
+    "ja_jp": "低",
+    "ko_kr": "낮음",
+    "zh_tw": "低",
+    "th_th": "ต่ำ",
+    "vi_vn": "Dễ",
+    "es_mx": "Baja",
+    "en_sg": "Low",
+    "ar_ae": "منخفضة"
+  }
+}

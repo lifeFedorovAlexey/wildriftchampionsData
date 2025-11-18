@@ -1,0 +1,71 @@
+{
+  "slug": "twitch",
+  "name": {
+    "ru_ru": "ТВИЧ",
+    "pt_br": "TWITCH",
+    "en_us": "TWITCH",
+    "it_it": "TWITCH",
+    "tr_tr": "TWITCH",
+    "de_de": "TWITCH",
+    "ms_my": "TWITCH",
+    "vi_vn": "TWITCH",
+    "ko_kr": "트위치",
+    "ja_jp": "トゥイッチ",
+    "es_es": "TWITCH",
+    "fr_fr": "TWITCH",
+    "th_th": "TWITCH",
+    "zh_tw": "圖奇",
+    "en_gb": "TWITCH",
+    "pl_pl": "TWITCH",
+    "es_mx": "TWITCH",
+    "en_sg": "TWITCH",
+    "ar_ae": "تويتش"
+  },
+  "roles": [
+    {
+      "key": "marksman",
+      "name": {
+        "ru_ru": "Стрелок",
+        "en_us": "MARKSMAN",
+        "en_gb": "MARKSMAN",
+        "fr_fr": "TIREUR",
+        "de_de": "SCHÜTZE",
+        "es_es": "TIRADOR",
+        "it_it": "TIRATORE",
+        "pl_pl": "STRZELEC",
+        "tr_tr": "NİŞANCI",
+        "ms_my": "MARKSMAN",
+        "pt_br": "ATIRADOR",
+        "ja_jp": "マークスマン",
+        "ko_kr": "원거리 딜러",
+        "zh_tw": "射手",
+        "th_th": "มาคส์แมน",
+        "vi_vn": "XẠ THỦ",
+        "es_mx": "TIRADOR",
+        "en_sg": "MARKSMAN",
+        "ar_ae": "قناص"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Средняя",
+    "en_us": "Medium",
+    "en_gb": "Medium",
+    "fr_fr": "Modérée",
+    "de_de": "Mittel",
+    "es_es": "Media",
+    "it_it": "Media",
+    "pl_pl": "Średni",
+    "tr_tr": "Orta",
+    "ms_my": "Sederhana",
+    "pt_br": "Média",
+    "ja_jp": "中",
+    "ko_kr": "보통",
+    "zh_tw": "中",
+    "th_th": "ปานกลาง",
+    "vi_vn": "Trung bình",
+    "es_mx": "Media",
+    "en_sg": "Medium",
+    "ar_ae": "متوسطة"
+  }
+}

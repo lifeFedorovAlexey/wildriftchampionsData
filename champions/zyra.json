@@ -1,0 +1,71 @@
+{
+  "slug": "zyra",
+  "name": {
+    "ru_ru": "ЗАЙРА",
+    "pt_br": "ZYRA",
+    "en_us": "ZYRA",
+    "it_it": "ZYRA",
+    "tr_tr": "ZYRA",
+    "de_de": "ZYRA",
+    "ms_my": "ZYRA",
+    "vi_vn": "ZYRA",
+    "ko_kr": "자이라",
+    "ja_jp": "ザイラ",
+    "es_es": "ZYRA",
+    "fr_fr": "ZYRA",
+    "th_th": "ZYRA",
+    "zh_tw": "枷蘿",
+    "en_gb": "ZYRA",
+    "pl_pl": "ZYRA",
+    "es_mx": "ZYRA",
+    "en_sg": "ZYRA",
+    "ar_ae": "زيرا"
+  },
+  "roles": [
+    {
+      "key": "mage",
+      "name": {
+        "ru_ru": "Маг",
+        "en_us": "MAGE",
+        "en_gb": "MAGE",
+        "fr_fr": "MAGE",
+        "de_de": "MAGIER",
+        "es_es": "MAGO",
+        "it_it": "MAGO",
+        "pl_pl": "MAG",
+        "tr_tr": "BÜYÜCÜ",
+        "ms_my": "MAGE",
+        "pt_br": "MAGO",
+        "ja_jp": "メイジ",
+        "ko_kr": "마법사",
+        "zh_tw": "法師",
+        "th_th": "เมจ",
+        "vi_vn": "PHÁP SƯ",
+        "es_mx": "MAGO",
+        "en_sg": "MAGE",
+        "ar_ae": "ساحر"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Средняя",
+    "en_us": "Medium",
+    "en_gb": "Medium",
+    "fr_fr": "Modérée",
+    "de_de": "Mittel",
+    "es_es": "Media",
+    "it_it": "Media",
+    "pl_pl": "Średni",
+    "tr_tr": "Orta",
+    "ms_my": "Sederhana",
+    "pt_br": "Média",
+    "ja_jp": "中",
+    "ko_kr": "보통",
+    "zh_tw": "中",
+    "th_th": "ปานกลาง",
+    "vi_vn": "Trung bình",
+    "es_mx": "Media",
+    "en_sg": "Medium",
+    "ar_ae": "متوسطة"
+  }
+}

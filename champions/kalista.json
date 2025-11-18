@@ -1,0 +1,71 @@
+{
+  "slug": "kalista",
+  "name": {
+    "ru_ru": "КАЛИСТА",
+    "pt_br": "KALISTA",
+    "en_us": "KALISTA",
+    "it_it": "KALISTA",
+    "tr_tr": "KALISTA",
+    "de_de": "KALISTA",
+    "ms_my": "KALISTA",
+    "vi_vn": "KALISTA",
+    "ko_kr": "칼리스타",
+    "ja_jp": "カリスタ",
+    "es_es": "KALISTA",
+    "fr_fr": "KALISTA",
+    "th_th": "KALISTA",
+    "zh_tw": "克黎思妲",
+    "en_gb": "KALISTA",
+    "pl_pl": "KALISTA",
+    "es_mx": "KALISTA",
+    "en_sg": "KALISTA",
+    "ar_ae": "كاليستا"
+  },
+  "roles": [
+    {
+      "key": "marksman",
+      "name": {
+        "ru_ru": "Стрелок",
+        "en_us": "MARKSMAN",
+        "en_gb": "MARKSMAN",
+        "fr_fr": "TIREUR",
+        "de_de": "SCHÜTZE",
+        "es_es": "TIRADOR",
+        "it_it": "TIRATORE",
+        "pl_pl": "STRZELEC",
+        "tr_tr": "NİŞANCI",
+        "ms_my": "MARKSMAN",
+        "pt_br": "ATIRADOR",
+        "ja_jp": "マークスマン",
+        "ko_kr": "원거리 딜러",
+        "zh_tw": "射手",
+        "th_th": "มาคส์แมน",
+        "vi_vn": "XẠ THỦ",
+        "es_mx": "TIRADOR",
+        "en_sg": "MARKSMAN",
+        "ar_ae": "قناص"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Средняя",
+    "en_us": "Medium",
+    "en_gb": "Medium",
+    "fr_fr": "Modérée",
+    "de_de": "Mittel",
+    "es_es": "Media",
+    "it_it": "Media",
+    "pl_pl": "Średni",
+    "tr_tr": "Orta",
+    "ms_my": "Sederhana",
+    "pt_br": "Média",
+    "ja_jp": "中",
+    "ko_kr": "보통",
+    "zh_tw": "中",
+    "th_th": "ปานกลาง",
+    "vi_vn": "Trung bình",
+    "es_mx": "Media",
+    "en_sg": "Medium",
+    "ar_ae": "متوسطة"
+  }
+}

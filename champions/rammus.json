@@ -1,0 +1,71 @@
+{
+  "slug": "rammus",
+  "name": {
+    "ru_ru": "РАММУС",
+    "pt_br": "RAMMUS",
+    "en_us": "RAMMUS",
+    "it_it": "RAMMUS",
+    "tr_tr": "RAMMUS",
+    "de_de": "RAMMUS",
+    "ms_my": "RAMMUS",
+    "vi_vn": "RAMMUS",
+    "ko_kr": "람머스",
+    "ja_jp": "ラムス",
+    "es_es": "RAMMUS",
+    "fr_fr": "RAMMUS",
+    "th_th": "RAMMUS",
+    "zh_tw": "拉姆斯",
+    "en_gb": "RAMMUS",
+    "pl_pl": "RAMMUS",
+    "es_mx": "RAMMUS",
+    "en_sg": "RAMMUS",
+    "ar_ae": "راموس"
+  },
+  "roles": [
+    {
+      "key": "tank",
+      "name": {
+        "ru_ru": "Танк",
+        "en_us": "TANK",
+        "en_gb": "TANK",
+        "fr_fr": "TANK",
+        "de_de": "TANK",
+        "es_es": "TANQUE",
+        "it_it": "TANK",
+        "pl_pl": "OBROŃCA",
+        "tr_tr": "TANK",
+        "ms_my": "TANK",
+        "pt_br": "TANQUE",
+        "ja_jp": "タンク",
+        "ko_kr": "탱커",
+        "zh_tw": "坦克",
+        "th_th": "แทงค์",
+        "vi_vn": "ĐỠ ĐÒN",
+        "es_mx": "TANQUE",
+        "en_sg": "TANK",
+        "ar_ae": "بطل ثقيل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Низкая",
+    "en_us": "Low",
+    "en_gb": "Low",
+    "fr_fr": "Faible",
+    "de_de": "Niedrig",
+    "es_es": "Baja",
+    "it_it": "Bassa",
+    "pl_pl": "Niski",
+    "tr_tr": "Düşük",
+    "ms_my": "Rendah",
+    "pt_br": "Baixa",
+    "ja_jp": "低",
+    "ko_kr": "낮음",
+    "zh_tw": "低",
+    "th_th": "ต่ำ",
+    "vi_vn": "Dễ",
+    "es_mx": "Baja",
+    "en_sg": "Low",
+    "ar_ae": "منخفضة"
+  }
+}

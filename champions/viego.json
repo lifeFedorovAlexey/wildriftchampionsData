@@ -1,0 +1,71 @@
+{
+  "slug": "viego",
+  "name": {
+    "ru_ru": "ВИЕГО",
+    "pt_br": "VIEGO",
+    "en_us": "VIEGO",
+    "it_it": "VIEGO",
+    "tr_tr": "VIEGO",
+    "de_de": "VIEGO",
+    "ms_my": "VIEGO",
+    "vi_vn": "VIEGO",
+    "ko_kr": "비에고",
+    "ja_jp": "ヴィエゴ",
+    "es_es": "VIEGO",
+    "fr_fr": "VIEGO",
+    "th_th": "VIEGO",
+    "zh_tw": "維爾戈",
+    "en_gb": "VIEGO",
+    "pl_pl": "VIEGO",
+    "es_mx": "VIEGO",
+    "en_sg": "VIEGO",
+    "ar_ae": "فيغو"
+  },
+  "roles": [
+    {
+      "key": "assassin",
+      "name": {
+        "ru_ru": "Убийца",
+        "en_us": "ASSASSIN",
+        "en_gb": "ASSASSIN",
+        "fr_fr": "ASSASSIN",
+        "de_de": "ASSASSINE",
+        "es_es": "ASESINO",
+        "it_it": "ASSASSINO",
+        "pl_pl": "ZABÓJCA",
+        "tr_tr": "SUİKASTÇI",
+        "ms_my": "ASSASSIN",
+        "pt_br": "ASSASSINO",
+        "ja_jp": "アサシン",
+        "ko_kr": "암살자",
+        "zh_tw": "刺客",
+        "th_th": "แอสแซสซิน",
+        "vi_vn": "SÁT THỦ",
+        "es_mx": "ASESINO",
+        "en_sg": "ASSASSIN",
+        "ar_ae": "قاتل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Средняя",
+    "en_us": "Medium",
+    "en_gb": "Medium",
+    "fr_fr": "Modérée",
+    "de_de": "Mittel",
+    "es_es": "Media",
+    "it_it": "Media",
+    "pl_pl": "Średni",
+    "tr_tr": "Orta",
+    "ms_my": "Sederhana",
+    "pt_br": "Média",
+    "ja_jp": "中",
+    "ko_kr": "보통",
+    "zh_tw": "中",
+    "th_th": "ปานกลาง",
+    "vi_vn": "Trung bình",
+    "es_mx": "Media",
+    "en_sg": "Medium",
+    "ar_ae": "متوسطة"
+  }
+}

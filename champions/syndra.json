@@ -1,0 +1,71 @@
+{
+  "slug": "syndra",
+  "name": {
+    "ru_ru": "СИНДРА",
+    "pt_br": "SYNDRA",
+    "en_us": "SYNDRA",
+    "it_it": "SYNDRA",
+    "tr_tr": "SYNDRA",
+    "de_de": "SYNDRA",
+    "ms_my": "SYNDRA",
+    "vi_vn": "SYNDRA",
+    "ko_kr": "신드라",
+    "ja_jp": "シンドラ",
+    "es_es": "SYNDRA",
+    "fr_fr": "SYNDRA",
+    "th_th": "SYNDRA",
+    "zh_tw": "星朵拉",
+    "en_gb": "SYNDRA",
+    "pl_pl": "SYNDRA",
+    "es_mx": "SYNDRA",
+    "en_sg": "SYNDRA",
+    "ar_ae": "سيندرا"
+  },
+  "roles": [
+    {
+      "key": "mage",
+      "name": {
+        "ru_ru": "Маг",
+        "en_us": "MAGE",
+        "en_gb": "MAGE",
+        "fr_fr": "MAGE",
+        "de_de": "MAGIER",
+        "es_es": "MAGO",
+        "it_it": "MAGO",
+        "pl_pl": "MAG",
+        "tr_tr": "BÜYÜCÜ",
+        "ms_my": "MAGE",
+        "pt_br": "MAGO",
+        "ja_jp": "メイジ",
+        "ko_kr": "마법사",
+        "zh_tw": "法師",
+        "th_th": "เมจ",
+        "vi_vn": "PHÁP SƯ",
+        "es_mx": "MAGO",
+        "en_sg": "MAGE",
+        "ar_ae": "ساحر"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Высокая",
+    "en_us": "High",
+    "en_gb": "High",
+    "fr_fr": "Élevée",
+    "de_de": "Hoch",
+    "es_es": "Alta",
+    "it_it": "Alta",
+    "pl_pl": "Wysoki",
+    "tr_tr": "Yüksek",
+    "ms_my": "Tinggi",
+    "pt_br": "Alta",
+    "ja_jp": "高",
+    "ko_kr": "높음",
+    "zh_tw": "高",
+    "th_th": "สูง",
+    "vi_vn": "Khó",
+    "es_mx": "Alta",
+    "en_sg": "High",
+    "ar_ae": "مرتفعة"
+  }
+}

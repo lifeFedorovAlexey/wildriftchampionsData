@@ -1,0 +1,71 @@
+{
+  "slug": "zeri",
+  "name": {
+    "ru_ru": "ЗЕРИ",
+    "pt_br": "ZERI",
+    "en_us": "ZERI",
+    "it_it": "ZERI",
+    "tr_tr": "ZERI",
+    "de_de": "ZERI",
+    "ms_my": "ZERI",
+    "vi_vn": "ZERI",
+    "ko_kr": "제리",
+    "ja_jp": "ゼリ",
+    "es_es": "ZERI",
+    "fr_fr": "ZERI",
+    "th_th": "ZERI",
+    "zh_tw": "婕莉",
+    "en_gb": "ZERI",
+    "pl_pl": "ZERI",
+    "es_mx": "ZERI",
+    "en_sg": "ZERI",
+    "ar_ae": "زيري"
+  },
+  "roles": [
+    {
+      "key": "marksman",
+      "name": {
+        "ru_ru": "Стрелок",
+        "en_us": "MARKSMAN",
+        "en_gb": "MARKSMAN",
+        "fr_fr": "TIREUR",
+        "de_de": "SCHÜTZE",
+        "es_es": "TIRADOR",
+        "it_it": "TIRATORE",
+        "pl_pl": "STRZELEC",
+        "tr_tr": "NİŞANCI",
+        "ms_my": "MARKSMAN",
+        "pt_br": "ATIRADOR",
+        "ja_jp": "マークスマン",
+        "ko_kr": "원거리 딜러",
+        "zh_tw": "射手",
+        "th_th": "มาคส์แมน",
+        "vi_vn": "XẠ THỦ",
+        "es_mx": "TIRADOR",
+        "en_sg": "MARKSMAN",
+        "ar_ae": "قناص"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Средняя",
+    "en_us": "Medium",
+    "en_gb": "Medium",
+    "fr_fr": "Modérée",
+    "de_de": "Mittel",
+    "es_es": "Media",
+    "it_it": "Media",
+    "pl_pl": "Średni",
+    "tr_tr": "Orta",
+    "ms_my": "Sederhana",
+    "pt_br": "Média",
+    "ja_jp": "中",
+    "ko_kr": "보통",
+    "zh_tw": "中",
+    "th_th": "ปานกลาง",
+    "vi_vn": "Trung bình",
+    "es_mx": "Media",
+    "en_sg": "Medium",
+    "ar_ae": "متوسطة"
+  }
+}

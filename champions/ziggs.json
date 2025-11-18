@@ -1,0 +1,71 @@
+{
+  "slug": "ziggs",
+  "name": {
+    "ru_ru": "ЗИГГС",
+    "pt_br": "ZIGGS",
+    "en_us": "ZIGGS",
+    "it_it": "ZIGGS",
+    "tr_tr": "ZIGGS",
+    "de_de": "ZIGGS",
+    "ms_my": "ZIGGS",
+    "vi_vn": "ZIGGS",
+    "ko_kr": "직스",
+    "ja_jp": "ジグス",
+    "es_es": "ZIGGS",
+    "fr_fr": "ZIGGS",
+    "th_th": "ZIGGS",
+    "zh_tw": "希格斯",
+    "en_gb": "ZIGGS",
+    "pl_pl": "ZIGGS",
+    "es_mx": "ZIGGS",
+    "en_sg": "ZIGGS",
+    "ar_ae": "زيغس"
+  },
+  "roles": [
+    {
+      "key": "mage",
+      "name": {
+        "ru_ru": "Маг",
+        "en_us": "MAGE",
+        "en_gb": "MAGE",
+        "fr_fr": "MAGE",
+        "de_de": "MAGIER",
+        "es_es": "MAGO",
+        "it_it": "MAGO",
+        "pl_pl": "MAG",
+        "tr_tr": "BÜYÜCÜ",
+        "ms_my": "MAGE",
+        "pt_br": "MAGO",
+        "ja_jp": "メイジ",
+        "ko_kr": "마법사",
+        "zh_tw": "法師",
+        "th_th": "เมจ",
+        "vi_vn": "PHÁP SƯ",
+        "es_mx": "MAGO",
+        "en_sg": "MAGE",
+        "ar_ae": "ساحر"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Средняя",
+    "en_us": "Medium",
+    "en_gb": "Medium",
+    "fr_fr": "Modérée",
+    "de_de": "Mittel",
+    "es_es": "Media",
+    "it_it": "Media",
+    "pl_pl": "Średni",
+    "tr_tr": "Orta",
+    "ms_my": "Sederhana",
+    "pt_br": "Média",
+    "ja_jp": "中",
+    "ko_kr": "보통",
+    "zh_tw": "中",
+    "th_th": "ปานกลาง",
+    "vi_vn": "Trung bình",
+    "es_mx": "Media",
+    "en_sg": "Medium",
+    "ar_ae": "متوسطة"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "slug": "tristana",
+  "name": {
+    "ru_ru": "ТРИСТАНА",
+    "pt_br": "TRISTANA",
+    "en_us": "TRISTANA",
+    "it_it": "TRISTANA",
+    "tr_tr": "TRISTANA",
+    "de_de": "TRISTANA",
+    "ms_my": "TRISTANA",
+    "vi_vn": "TRISTANA",
+    "ko_kr": "트리스타나",
+    "ja_jp": "トリスターナ",
+    "es_es": "TRISTANA",
+    "fr_fr": "TRISTANA",
+    "th_th": "TRISTANA",
+    "zh_tw": "崔絲塔娜",
+    "en_gb": "TRISTANA",
+    "pl_pl": "TRISTANA",
+    "es_mx": "TRISTANA",
+    "en_sg": "TRISTANA",
+    "ar_ae": "تريستانا"
+  },
+  "roles": [
+    {
+      "key": "marksman",
+      "name": {
+        "ru_ru": "Стрелок",
+        "en_us": "MARKSMAN",
+        "en_gb": "MARKSMAN",
+        "fr_fr": "TIREUR",
+        "de_de": "SCHÜTZE",
+        "es_es": "TIRADOR",
+        "it_it": "TIRATORE",
+        "pl_pl": "STRZELEC",
+        "tr_tr": "NİŞANCI",
+        "ms_my": "MARKSMAN",
+        "pt_br": "ATIRADOR",
+        "ja_jp": "マークスマン",
+        "ko_kr": "원거리 딜러",
+        "zh_tw": "射手",
+        "th_th": "มาคส์แมน",
+        "vi_vn": "XẠ THỦ",
+        "es_mx": "TIRADOR",
+        "en_sg": "MARKSMAN",
+        "ar_ae": "قناص"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Низкая",
+    "en_us": "Low",
+    "en_gb": "Low",
+    "fr_fr": "Faible",
+    "de_de": "Niedrig",
+    "es_es": "Baja",
+    "it_it": "Bassa",
+    "pl_pl": "Niski",
+    "tr_tr": "Düşük",
+    "ms_my": "Rendah",
+    "pt_br": "Baixa",
+    "ja_jp": "低",
+    "ko_kr": "낮음",
+    "zh_tw": "低",
+    "th_th": "ต่ำ",
+    "vi_vn": "Dễ",
+    "es_mx": "Baja",
+    "en_sg": "Low",
+    "ar_ae": "منخفضة"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "slug": "thresh",
+  "name": {
+    "ru_ru": "ТРЕШ",
+    "pt_br": "THRESH",
+    "en_us": "THRESH",
+    "it_it": "THRESH",
+    "tr_tr": "THRESH",
+    "de_de": "THRESH",
+    "ms_my": "THRESH",
+    "vi_vn": "THRESH",
+    "ko_kr": "쓰레쉬",
+    "ja_jp": "スレッシュ",
+    "es_es": "THRESH",
+    "fr_fr": "THRESH",
+    "th_th": "THRESH",
+    "zh_tw": "瑟雷西",
+    "en_gb": "THRESH",
+    "pl_pl": "THRESH",
+    "es_mx": "THRESH",
+    "en_sg": "THRESH",
+    "ar_ae": "ثريش"
+  },
+  "roles": [
+    {
+      "key": "tank",
+      "name": {
+        "ru_ru": "Танк",
+        "en_us": "TANK",
+        "en_gb": "TANK",
+        "fr_fr": "TANK",
+        "de_de": "TANK",
+        "es_es": "TANQUE",
+        "it_it": "TANK",
+        "pl_pl": "OBROŃCA",
+        "tr_tr": "TANK",
+        "ms_my": "TANK",
+        "pt_br": "TANQUE",
+        "ja_jp": "タンク",
+        "ko_kr": "탱커",
+        "zh_tw": "坦克",
+        "th_th": "แทงค์",
+        "vi_vn": "ĐỠ ĐÒN",
+        "es_mx": "TANQUE",
+        "en_sg": "TANK",
+        "ar_ae": "بطل ثقيل"
+      }
+    }
+  ],
+  "difficulty": {
+    "ru_ru": "Высокая",
+    "en_us": "High",
+    "en_gb": "High",
+    "fr_fr": "Élevée",
+    "de_de": "Hoch",
+    "es_es": "Alta",
+    "it_it": "Alta",
+    "pl_pl": "Wysoki",
+    "tr_tr": "Yüksek",
+    "ms_my": "Tinggi",
+    "pt_br": "Alta",
+    "ja_jp": "高",
+    "ko_kr": "높음",
+    "zh_tw": "高",
+    "th_th": "สูง",
+    "vi_vn": "Khó",
+    "es_mx": "Alta",
+    "en_sg": "High",
+    "ar_ae": "مرتفعة"
+  }
+}
