@@ -6,10 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lifeFedorovAlexey/wildRiftChampions.git"
-  },
   "dependencies": {
     "cheerio": "^1.1.2",
     "dotenv": "^17.2.3",
