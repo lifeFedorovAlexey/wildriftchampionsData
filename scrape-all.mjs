@@ -29,11 +29,19 @@ async function main() {
       { stdio: "inherit" }
     );
 
-    console.log("\n▶️ STEP 3: обновление baseImgUrl");
+    console.log("\n▶️ STEP 3: обновление картинок (baseImgUrl)");
     execSync(
       onlySlug
         ? `node scrape-champions-images.mjs ${onlySlug}`
         : "node scrape-champions-images.mjs",
+      { stdio: "inherit" }
+    );
+
+    console.log("\n▶️ STEP 4: обновление умений (abilities)");
+    execSync(
+      onlySlug
+        ? `node scrape-champions-abilities.mjs ${onlySlug}`
+        : "node scrape-champions-abilities.mjs",
       { stdio: "inherit" }
     );
 
