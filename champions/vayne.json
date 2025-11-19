@@ -25,5 +25,6 @@
     "marksman",
     "assassin"
   ],
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/9353f647f42e40569934d15dc5b8d3fe77faaa48-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

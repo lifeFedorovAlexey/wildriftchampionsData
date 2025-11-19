@@ -25,5 +25,6 @@
     "fighter",
     "tank"
   ],
-  "difficulty": "low"
+  "difficulty": "low",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/5335eb9ededf36af430339ae00d178508f163e3c-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

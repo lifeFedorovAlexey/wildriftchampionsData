@@ -25,5 +25,6 @@
     "marksman",
     "support"
   ],
-  "difficulty": "low"
+  "difficulty": "low",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/418813f2226d924771dd24aadaebe0624f39e5fb-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

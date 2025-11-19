@@ -25,5 +25,6 @@
     "mage",
     "support"
   ],
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/1f897c1d72ffd15041c1a014bf4ed244bede5dbe-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

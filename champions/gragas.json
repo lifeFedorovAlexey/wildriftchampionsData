@@ -25,5 +25,6 @@
     "tank",
     "mage"
   ],
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/91eb41547dbcb8e4765559984b8765d8b93cf9c5-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

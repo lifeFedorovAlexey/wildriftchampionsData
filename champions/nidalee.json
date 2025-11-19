@@ -25,5 +25,6 @@
     "assassin",
     "mage"
   ],
-  "difficulty": "high"
+  "difficulty": "high",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55aff8863fe623be889c1754518fa21bf5a2ec33-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

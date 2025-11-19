@@ -25,5 +25,6 @@
     "fighter",
     "tank"
   ],
-  "difficulty": "high"
+  "difficulty": "high",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/2b74cce5203bed8c192ff5c017b01a5231497430-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

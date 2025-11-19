@@ -24,5 +24,6 @@
   "roles": [
     "mage"
   ],
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/345aaf7c4860326ca2df1d76e1d66337cb4de472-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

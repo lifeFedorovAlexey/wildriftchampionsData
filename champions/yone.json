@@ -24,5 +24,6 @@
   "roles": [
     "assassin"
   ],
-  "difficulty": "high"
+  "difficulty": "high",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/2acc4e225bed2896719dc80233f9dec80b490748-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

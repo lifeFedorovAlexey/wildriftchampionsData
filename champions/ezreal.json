@@ -25,5 +25,6 @@
     "marksman",
     "mage"
   ],
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/d5193795e3f4c81acb122de52c25243e2ab2f76e-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

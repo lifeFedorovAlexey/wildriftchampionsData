@@ -25,5 +25,6 @@
     "assassin",
     "fighter"
   ],
-  "difficulty": "low"
+  "difficulty": "low",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/8e0e462641e47b86e9e10e8f27f08dbb87dffaf8-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

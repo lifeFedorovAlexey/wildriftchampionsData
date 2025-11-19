@@ -25,5 +25,6 @@
     "tank",
     "support"
   ],
-  "difficulty": "low"
+  "difficulty": "low",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/c886fb547e17fef8514bd27c97411d382fa02655-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

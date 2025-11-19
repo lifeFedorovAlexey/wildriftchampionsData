@@ -25,5 +25,6 @@
     "support",
     "mage"
   ],
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/49db0ecb0ee7c82470b4c468062b056632c548bd-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

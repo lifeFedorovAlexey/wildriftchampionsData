@@ -25,5 +25,6 @@
     "fighter",
     "mage"
   ],
-  "difficulty": "low"
+  "difficulty": "low",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/925b9cb2ee9c84e26cc4aa55287ca03cb3175c28-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

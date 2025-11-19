@@ -24,5 +24,6 @@
   "roles": [
     "fighter"
   ],
-  "difficulty": "high"
+  "difficulty": "high",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/18946b90e4865c3581fa2f0fd54c8d664828f875-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

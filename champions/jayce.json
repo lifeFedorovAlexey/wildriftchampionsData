@@ -25,5 +25,6 @@
     "fighter",
     "marksman"
   ],
-  "difficulty": "high"
+  "difficulty": "high",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/12b847ec19834e8653a7e297618b2ed41047708c-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

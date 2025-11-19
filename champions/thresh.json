@@ -24,5 +24,6 @@
   "roles": [
     "tank"
   ],
-  "difficulty": "high"
+  "difficulty": "high",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/6d56721ba65a6740d8696205c2b0d4b60181330e-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

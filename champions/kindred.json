@@ -24,5 +24,6 @@
   "roles": [
     "marksman"
   ],
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/61da72c43e45e119868f3616293c0ea4c950e44d-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

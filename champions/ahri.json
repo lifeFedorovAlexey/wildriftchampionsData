@@ -25,5 +25,6 @@
     "mage",
     "assassin"
   ],
-  "difficulty": "medium"
+  "difficulty": "medium",
+  "baseImgUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/3a7ecf6f50c441a1bfe93f2a835b070c6c0ac639-285x323.jpg?auto=format&fit=fill&q=80&w=285"
 }

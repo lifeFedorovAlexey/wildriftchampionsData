@@ -29,6 +29,14 @@ async function main() {
       { stdio: "inherit" }
     );
 
+    console.log("\n▶️ STEP 3: обновление baseImgUrl");
+    execSync(
+      onlySlug
+        ? `node scrape-champions-images.mjs ${onlySlug}`
+        : "node scrape-champions-images.mjs",
+      { stdio: "inherit" }
+    );
+
     console.log("\n✅ Все зарегистрированные шаги выполнены.");
   } catch (e) {
     console.error("💥 Фатальная ошибка в scrape-all.mjs:", e);
