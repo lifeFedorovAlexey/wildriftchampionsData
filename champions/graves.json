@@ -22,74 +22,8 @@
     "ar_ae": "غريفز"
   },
   "roles": [
-    {
-      "key": "marksman",
-      "name": {
-        "ru_ru": "Стрелок",
-        "en_us": "MARKSMAN",
-        "en_gb": "MARKSMAN",
-        "fr_fr": "TIREUR",
-        "de_de": "SCHÜTZE",
-        "es_es": "TIRADOR",
-        "it_it": "TIRATORE",
-        "pl_pl": "STRZELEC",
-        "tr_tr": "NİŞANCI",
-        "ms_my": "MARKSMAN",
-        "pt_br": "ATIRADOR",
-        "ja_jp": "マークスマン",
-        "ko_kr": "원거리 딜러",
-        "zh_tw": "射手",
-        "th_th": "มาคส์แมน",
-        "vi_vn": "XẠ THỦ",
-        "es_mx": "TIRADOR",
-        "en_sg": "MARKSMAN",
-        "ar_ae": "قناص"
-      }
-    },
-    {
-      "key": "fighter",
-      "name": {
-        "ru_ru": "Боец",
-        "en_us": "FIGHTER",
-        "en_gb": "FIGHTER",
-        "fr_fr": "COMBATTANT",
-        "de_de": "KÄMPFER",
-        "es_es": "LUCHADOR",
-        "it_it": "COMBATTENTE",
-        "pl_pl": "WOJOWNIK",
-        "tr_tr": "DÖVÜŞÇÜ",
-        "ms_my": "FIGHTER",
-        "pt_br": "LUTADOR",
-        "ja_jp": "ファイター",
-        "ko_kr": "전사",
-        "zh_tw": "鬥士",
-        "th_th": "ไฟท์เตอร์",
-        "vi_vn": "ĐẤU SĨ",
-        "es_mx": "PELEADOR",
-        "en_sg": "FIGHTER",
-        "ar_ae": "مقاتل"
-      }
-    }
+    "marksman",
+    "fighter"
   ],
-  "difficulty": {
-    "ru_ru": "Средняя",
-    "en_us": "Medium",
-    "en_gb": "Medium",
-    "fr_fr": "Modérée",
-    "de_de": "Mittel",
-    "es_es": "Media",
-    "it_it": "Media",
-    "pl_pl": "Średni",
-    "tr_tr": "Orta",
-    "ms_my": "Sederhana",
-    "pt_br": "Média",
-    "ja_jp": "中",
-    "ko_kr": "보통",
-    "zh_tw": "中",
-    "th_th": "ปานกลาง",
-    "vi_vn": "Trung bình",
-    "es_mx": "Media",
-    "en_sg": "Medium",
-    "ar_ae": "متوسطة"
-  }
+  "difficulty": "medium"
 }

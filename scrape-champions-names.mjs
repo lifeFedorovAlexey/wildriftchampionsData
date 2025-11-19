@@ -2,7 +2,7 @@
 // Самодостаточный скрипт:
 //  - по всем локалям Riot скрапит список чемпионов
 //  - обновляет ТОЛЬКО поле name в per-champion JSON-файлах
-//  - собирает агрегат champions.json для удобства
+//  - собирает агрегат champions.json (у тебя он сейчас облегчённый) для удобства
 
 import "dotenv/config";
 import puppeteer from "puppeteer";
@@ -77,12 +77,15 @@ async function scrapeChampionListForLocale(page, locale) {
   return champs;
 }
 
+// ===== Обработка одной локали: обновление name для всех или одного чемпиона =====
+
 async function processLocale(
   browser,
   locale,
   bySlug,
   primarySlugs,
-  primaryLocaleKey
+  primaryLocaleKey,
+  onlySlug
 ) {
   const page = await browser.newPage();
   try {
@@ -93,13 +96,27 @@ async function processLocale(
 
     const scraped = await scrapeChampionListForLocale(page, locale);
 
+    const champsToApply = onlySlug
+      ? scraped.filter((c) => c.slug === onlySlug)
+      : scraped;
+
+    if (onlySlug && champsToApply.length === 0) {
+      console.warn(
+        `⚠️ [names] В локали ${locale.key} чемпион со slug="${onlySlug}" не найден на гриде`
+      );
+    }
+
+    console.log(
+      `📊 [names] Локаль ${locale.key}: всего на странице: ${scraped.length}, в обработку пойдёт: ${champsToApply.length}`
+    );
+
     if (locale.key === primaryLocaleKey) {
-      scraped.forEach(({ slug }) => primarySlugs.add(slug));
+      champsToApply.forEach(({ slug }) => primarySlugs.add(slug));
     }
 
     console.log(`🛠 [names] Обновляю name.${locale.key}...`);
 
-    for (const { slug, name } of scraped) {
+    for (const { slug, name } of champsToApply) {
       const champ = bySlug.get(slug) || { slug };
 
       if (!champ.name || typeof champ.name !== "object") {
@@ -119,11 +136,20 @@ async function processLocale(
   }
 }
 
+// ===== main =====
+
 async function main() {
   console.log("🚀 Старт scrape-champions-names.mjs");
   console.log(
     `🎯 Цель: обновить ТОЛЬКО name (мультиязычное) в per-champion JSON (локали батчами по ${LOCALE_CONCURRENCY})`
   );
+
+  const onlySlug = process.argv[2] || null;
+  if (onlySlug) {
+    console.log(
+      `🎯 [names] Обновляю имена ТОЛЬКО для чемпиона со slug="${onlySlug}" (по всем локалям).`
+    );
+  }
 
   const bySlug = loadChampionsFromDir();
 
@@ -143,7 +169,14 @@ async function main() {
 
       await Promise.all(
         batch.map((locale) =>
-          processLocale(browser, locale, bySlug, primarySlugs, primaryLocaleKey)
+          processLocale(
+            browser,
+            locale,
+            bySlug,
+            primarySlugs,
+            primaryLocaleKey,
+            onlySlug
+          )
         )
       );
 

@@ -6,6 +6,9 @@
 //  - cleanupLocalesOnChamp()
 //  - writeChampionsToDir()
 
+import fs from "fs";
+import path from "path";
+
 import {
   readFileSync,
   writeFileSync,
@@ -91,24 +94,28 @@ export function cleanupLocalesOnChamp(champ) {
  *
  * bySlug: Map<slug, champObject>
  */
-export function writeChampionsToDir(bySlug) {
-  ensureChampionsDir();
+export function writeChampionsToDir(map) {
+  const outDir = path.join(process.cwd(), "champions");
+  fs.mkdirSync(outDir, { recursive: true });
 
-  const list = [];
+  const index = [];
 
-  for (const [slug, champ] of bySlug.entries()) {
-    champ.slug = slug;
+  for (const [slug, champ] of map.entries()) {
+    const filePath = path.join(outDir, `${slug}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(champ, null, 2), "utf8");
 
-    // перед записью чистим лишние локали
-    cleanupLocalesOnChamp(champ);
-
-    const path = `${CHAMPIONS_DIR}/${slug}.json`;
-    writeFileSync(path, JSON.stringify(champ, null, 2), "utf-8");
-    list.push(champ);
+    // лёгкий индекс
+    index.push({
+      slug,
+      name: champ?.name?.ru_ru || champ?.name?.en_us || slug,
+    });
   }
 
-  writeFileSync(AGGREGATE_JSON, JSON.stringify(list, null, 2), "utf-8");
+  // пишем облегчённый champions.json
+  const aggregatePath = path.join(process.cwd(), "champions.json");
+  fs.writeFileSync(aggregatePath, JSON.stringify(index, null, 2), "utf8");
+
   console.log(
-    `💾 [fs] champions.json агрегирован из папки champions (объектов: ${list.length})`
+    `💾 champions/*.json обновлены, агрегат (облегчённый) записан: ${aggregatePath}`
   );
 }

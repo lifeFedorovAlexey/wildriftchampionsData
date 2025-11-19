@@ -22,50 +22,7 @@
     "ar_ae": "لوشيان"
   },
   "roles": [
-    {
-      "key": "marksman",
-      "name": {
-        "ru_ru": "Стрелок",
-        "en_us": "MARKSMAN",
-        "en_gb": "MARKSMAN",
-        "fr_fr": "TIREUR",
-        "de_de": "SCHÜTZE",
-        "es_es": "TIRADOR",
-        "it_it": "TIRATORE",
-        "pl_pl": "STRZELEC",
-        "tr_tr": "NİŞANCI",
-        "ms_my": "MARKSMAN",
-        "pt_br": "ATIRADOR",
-        "ja_jp": "マークスマン",
-        "ko_kr": "원거리 딜러",
-        "zh_tw": "射手",
-        "th_th": "มาคส์แมน",
-        "vi_vn": "XẠ THỦ",
-        "es_mx": "TIRADOR",
-        "en_sg": "MARKSMAN",
-        "ar_ae": "قناص"
-      }
-    }
+    "marksman"
   ],
-  "difficulty": {
-    "ru_ru": "Высокая",
-    "en_us": "High",
-    "en_gb": "High",
-    "fr_fr": "Élevée",
-    "de_de": "Hoch",
-    "es_es": "Alta",
-    "it_it": "Alta",
-    "pl_pl": "Wysoki",
-    "tr_tr": "Yüksek",
-    "ms_my": "Tinggi",
-    "pt_br": "Alta",
-    "ja_jp": "高",
-    "ko_kr": "높음",
-    "zh_tw": "高",
-    "th_th": "สูง",
-    "vi_vn": "Khó",
-    "es_mx": "Alta",
-    "en_sg": "High",
-    "ar_ae": "مرتفعة"
-  }
+  "difficulty": "high"
 }

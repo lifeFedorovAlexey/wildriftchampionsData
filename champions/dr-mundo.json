@@ -22,74 +22,8 @@
     "ar_ae": "د. موندو"
   },
   "roles": [
-    {
-      "key": "fighter",
-      "name": {
-        "ru_ru": "Боец",
-        "en_us": "FIGHTER",
-        "en_gb": "FIGHTER",
-        "fr_fr": "COMBATTANT",
-        "de_de": "KÄMPFER",
-        "es_es": "LUCHADOR",
-        "it_it": "COMBATTENTE",
-        "pl_pl": "WOJOWNIK",
-        "tr_tr": "DÖVÜŞÇÜ",
-        "ms_my": "FIGHTER",
-        "pt_br": "LUTADOR",
-        "ja_jp": "ファイター",
-        "ko_kr": "전사",
-        "zh_tw": "鬥士",
-        "th_th": "ไฟท์เตอร์",
-        "vi_vn": "ĐẤU SĨ",
-        "es_mx": "PELEADOR",
-        "en_sg": "FIGHTER",
-        "ar_ae": "مقاتل"
-      }
-    },
-    {
-      "key": "tank",
-      "name": {
-        "ru_ru": "Танк",
-        "en_us": "TANK",
-        "en_gb": "TANK",
-        "fr_fr": "TANK",
-        "de_de": "TANK",
-        "es_es": "TANQUE",
-        "it_it": "TANK",
-        "pl_pl": "OBROŃCA",
-        "tr_tr": "TANK",
-        "ms_my": "TANK",
-        "pt_br": "TANQUE",
-        "ja_jp": "タンク",
-        "ko_kr": "탱커",
-        "zh_tw": "坦克",
-        "th_th": "แทงค์",
-        "vi_vn": "ĐỠ ĐÒN",
-        "es_mx": "TANQUE",
-        "en_sg": "TANK",
-        "ar_ae": "بطل ثقيل"
-      }
-    }
+    "fighter",
+    "tank"
   ],
-  "difficulty": {
-    "ru_ru": "Низкая",
-    "en_us": "Low",
-    "en_gb": "Low",
-    "fr_fr": "Faible",
-    "de_de": "Niedrig",
-    "es_es": "Baja",
-    "it_it": "Bassa",
-    "pl_pl": "Niski",
-    "tr_tr": "Düşük",
-    "ms_my": "Rendah",
-    "pt_br": "Baixa",
-    "ja_jp": "低",
-    "ko_kr": "낮음",
-    "zh_tw": "低",
-    "th_th": "ต่ำ",
-    "vi_vn": "Dễ",
-    "es_mx": "Baja",
-    "en_sg": "Low",
-    "ar_ae": "منخفضة"
-  }
+  "difficulty": "low"
 }

@@ -22,74 +22,8 @@
     "ar_ae": "لي سين"
   },
   "roles": [
-    {
-      "key": "fighter",
-      "name": {
-        "ru_ru": "ВОИН",
-        "en_us": "FIGHTER",
-        "en_gb": "FIGHTER",
-        "fr_fr": "COMBATTANT",
-        "de_de": "KÄMPFER",
-        "es_es": "LUCHADOR",
-        "it_it": "COMBATTENTE",
-        "pl_pl": "WOJOWNIK",
-        "tr_tr": "DÖVÜŞÇÜ",
-        "ms_my": "FIGHTER",
-        "pt_br": "LUTADOR",
-        "ja_jp": "ファイター",
-        "ko_kr": "전사",
-        "zh_tw": "鬥士",
-        "th_th": "ไฟท์เตอร์",
-        "vi_vn": "ĐẤU SĨ",
-        "es_mx": "PELEADOR",
-        "en_sg": "FIGHTER",
-        "ar_ae": "مقاتل"
-      }
-    },
-    {
-      "key": "assassin",
-      "name": {
-        "ru_ru": "УБИЙЦА",
-        "en_us": "ASSASSIN",
-        "en_gb": "ASSASSIN",
-        "fr_fr": "ASSASSIN",
-        "de_de": "ASSASSINE",
-        "es_es": "ASESINO",
-        "it_it": "ASSASSINO",
-        "pl_pl": "ZABÓJCA",
-        "tr_tr": "SUİKASTÇI",
-        "ms_my": "ASSASSIN",
-        "pt_br": "ASSASSINO",
-        "ja_jp": "アサシン",
-        "ko_kr": "암살자",
-        "zh_tw": "刺客",
-        "th_th": "แอสแซสซิน",
-        "vi_vn": "SÁT THỦ",
-        "es_mx": "ASESINO",
-        "en_sg": "ASSASSIN",
-        "ar_ae": "قاتل"
-      }
-    }
+    "fighter",
+    "assassin"
   ],
-  "difficulty": {
-    "ru_ru": "Средняя",
-    "en_us": "Medium",
-    "en_gb": "Medium",
-    "fr_fr": "Modérée",
-    "de_de": "Mittel",
-    "es_es": "Media",
-    "it_it": "Media",
-    "pl_pl": "Średni",
-    "tr_tr": "Orta",
-    "ms_my": "Sederhana",
-    "pt_br": "Média",
-    "ja_jp": "中",
-    "ko_kr": "보통",
-    "zh_tw": "中",
-    "th_th": "ปานกลาง",
-    "vi_vn": "Trung bình",
-    "es_mx": "Media",
-    "en_sg": "Medium",
-    "ar_ae": "متوسطة"
-  }
+  "difficulty": "medium"
 }

@@ -22,74 +22,8 @@
     "ar_ae": "لكس"
   },
   "roles": [
-    {
-      "key": "mage",
-      "name": {
-        "ru_ru": "МАГ",
-        "en_us": "MAGE",
-        "en_gb": "MAGE",
-        "fr_fr": "MAGE",
-        "de_de": "MAGIER",
-        "es_es": "MAGO",
-        "it_it": "MAGO",
-        "pl_pl": "MAG",
-        "tr_tr": "BÜYÜCÜ",
-        "ms_my": "MAGE",
-        "pt_br": "MAGO",
-        "ja_jp": "メイジ",
-        "ko_kr": "마법사",
-        "zh_tw": "法師",
-        "th_th": "เมจ",
-        "vi_vn": "PHÁP SƯ",
-        "es_mx": "MAGO",
-        "en_sg": "MAGE",
-        "ar_ae": "ساحر"
-      }
-    },
-    {
-      "key": "support",
-      "name": {
-        "ru_ru": "ПОДДЕРЖКА",
-        "en_us": "SUPPORT",
-        "en_gb": "SUPPORT",
-        "fr_fr": "SUPPORT",
-        "de_de": "SUPPORTER",
-        "es_es": "APOYO",
-        "it_it": "SUPPORTO",
-        "pl_pl": "WSPARCIE",
-        "tr_tr": "DESTEK",
-        "ms_my": "SUPPORT",
-        "pt_br": "SUPORTE",
-        "ja_jp": "サポート",
-        "ko_kr": "서포터",
-        "zh_tw": "輔助",
-        "th_th": "ซัพพอร์ต",
-        "vi_vn": "HỖ TRỢ",
-        "es_mx": "SOPORTE",
-        "en_sg": "SUPPORT",
-        "ar_ae": "الدعم"
-      }
-    }
+    "mage",
+    "support"
   ],
-  "difficulty": {
-    "ru_ru": "Низкая",
-    "en_us": "Low",
-    "en_gb": "Low",
-    "fr_fr": "Faible",
-    "de_de": "Niedrig",
-    "es_es": "Baja",
-    "it_it": "Bassa",
-    "pl_pl": "Niski",
-    "tr_tr": "Düşük",
-    "ms_my": "Rendah",
-    "pt_br": "Baixa",
-    "ja_jp": "低",
-    "ko_kr": "낮음",
-    "zh_tw": "低",
-    "th_th": "ต่ำ",
-    "vi_vn": "Dễ",
-    "es_mx": "Baja",
-    "en_sg": "Low",
-    "ar_ae": "منخفضة"
-  }
+  "difficulty": "low"
 }
