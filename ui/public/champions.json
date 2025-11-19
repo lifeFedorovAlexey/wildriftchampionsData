@@ -1,0 +1,530 @@
+[
+  {
+    "slug": "aatrox",
+    "name": "АТРОКС"
+  },
+  {
+    "slug": "ahri",
+    "name": "АРИ"
+  },
+  {
+    "slug": "akali",
+    "name": "АКАЛИ"
+  },
+  {
+    "slug": "akshan",
+    "name": "АКШАН"
+  },
+  {
+    "slug": "alistar",
+    "name": "АЛИСТАР"
+  },
+  {
+    "slug": "ambessa",
+    "name": "АМБЕССА"
+  },
+  {
+    "slug": "amumu",
+    "name": "АМУМУ"
+  },
+  {
+    "slug": "annie",
+    "name": "ЭННИ"
+  },
+  {
+    "slug": "ashe",
+    "name": "ЭШ"
+  },
+  {
+    "slug": "aurelion-sol",
+    "name": "АУРЕЛИОН СОЛ"
+  },
+  {
+    "slug": "aurora",
+    "name": "АВРОРА"
+  },
+  {
+    "slug": "bard",
+    "name": "БАРД"
+  },
+  {
+    "slug": "blitzcrank",
+    "name": "БЛИЦКРАНК"
+  },
+  {
+    "slug": "brand",
+    "name": "БРЭНД"
+  },
+  {
+    "slug": "braum",
+    "name": "БРАУМ"
+  },
+  {
+    "slug": "caitlyn",
+    "name": "КЕЙТЛИН"
+  },
+  {
+    "slug": "camille",
+    "name": "КАМИЛЛА"
+  },
+  {
+    "slug": "corki",
+    "name": "КОРКИ"
+  },
+  {
+    "slug": "darius",
+    "name": "ДАРИУС"
+  },
+  {
+    "slug": "diana",
+    "name": "ДИАНА"
+  },
+  {
+    "slug": "dr-mundo",
+    "name": "ДОКТОР МУНДО"
+  },
+  {
+    "slug": "draven",
+    "name": "ДРЕЙВЕН"
+  },
+  {
+    "slug": "ekko",
+    "name": "ЭККО"
+  },
+  {
+    "slug": "evelynn",
+    "name": "ЭВЕЛИНН"
+  },
+  {
+    "slug": "ezreal",
+    "name": "ЭЗРЕАЛЬ"
+  },
+  {
+    "slug": "fiddlesticks",
+    "name": "ФИДДЛСТИКС"
+  },
+  {
+    "slug": "fiora",
+    "name": "ФИОРА"
+  },
+  {
+    "slug": "fizz",
+    "name": "ФИЗЗ"
+  },
+  {
+    "slug": "galio",
+    "name": "ГАЛИО"
+  },
+  {
+    "slug": "garen",
+    "name": "ГАРЕН"
+  },
+  {
+    "slug": "gnar",
+    "name": "ГНАР"
+  },
+  {
+    "slug": "gragas",
+    "name": "ГРАГАС"
+  },
+  {
+    "slug": "graves",
+    "name": "ГРЕЙВЗ"
+  },
+  {
+    "slug": "gwen",
+    "name": "ГВЕН"
+  },
+  {
+    "slug": "hecarim",
+    "name": "ГЕКАРИМ"
+  },
+  {
+    "slug": "heimerdinger",
+    "name": "ХЕЙМЕРДИНГЕР"
+  },
+  {
+    "slug": "irelia",
+    "name": "ИРЕЛИЯ"
+  },
+  {
+    "slug": "janna",
+    "name": "ЖАННА"
+  },
+  {
+    "slug": "jarvan-iv",
+    "name": "ДЖАРВАН IV"
+  },
+  {
+    "slug": "jax",
+    "name": "ДЖАКС"
+  },
+  {
+    "slug": "jayce",
+    "name": "ДЖЕЙС"
+  },
+  {
+    "slug": "jhin",
+    "name": "ДЖИН"
+  },
+  {
+    "slug": "jinx",
+    "name": "ДЖИНКС"
+  },
+  {
+    "slug": "kaisa",
+    "name": "КАЙ'СА"
+  },
+  {
+    "slug": "kalista",
+    "name": "КАЛИСТА"
+  },
+  {
+    "slug": "karma",
+    "name": "КАРМА"
+  },
+  {
+    "slug": "kassadin",
+    "name": "КАССАДИН"
+  },
+  {
+    "slug": "katarina",
+    "name": "КАТАРИНА"
+  },
+  {
+    "slug": "kayle",
+    "name": "КЕЙЛ"
+  },
+  {
+    "slug": "kayn",
+    "name": "КАИН"
+  },
+  {
+    "slug": "kennen",
+    "name": "КЕННЕН"
+  },
+  {
+    "slug": "khazix",
+    "name": "КА'ЗИКС"
+  },
+  {
+    "slug": "kindred",
+    "name": "КИНДРЕД"
+  },
+  {
+    "slug": "lee-sin",
+    "name": "ЛИ СИН"
+  },
+  {
+    "slug": "leona",
+    "name": "ЛЕОНА"
+  },
+  {
+    "slug": "lillia",
+    "name": "ЛИЛЛИЯ"
+  },
+  {
+    "slug": "lissandra",
+    "name": "ЛИССАНДРА"
+  },
+  {
+    "slug": "lucian",
+    "name": "ЛЮЦИАН"
+  },
+  {
+    "slug": "lulu",
+    "name": "ЛУЛУ"
+  },
+  {
+    "slug": "lux",
+    "name": "ЛЮКС"
+  },
+  {
+    "slug": "malphite",
+    "name": "МАЛЬФИТ"
+  },
+  {
+    "slug": "maokai",
+    "name": "МАОКАЙ"
+  },
+  {
+    "slug": "master-yi",
+    "name": "МАСТЕР ЙИ"
+  },
+  {
+    "slug": "milio",
+    "name": "МИЛИО"
+  },
+  {
+    "slug": "miss-fortune",
+    "name": "МИСС ФОРТУНА"
+  },
+  {
+    "slug": "mordekaiser",
+    "name": "МОРДЕКАЙЗЕР"
+  },
+  {
+    "slug": "morgana",
+    "name": "МОРГАНА"
+  },
+  {
+    "slug": "nami",
+    "name": "НАМИ"
+  },
+  {
+    "slug": "nasus",
+    "name": "НАСУС"
+  },
+  {
+    "slug": "nautilus",
+    "name": "НАУТИЛУС"
+  },
+  {
+    "slug": "nidalee",
+    "name": "НИДАЛИ"
+  },
+  {
+    "slug": "nilah",
+    "name": "НИЛА"
+  },
+  {
+    "slug": "nocturne",
+    "name": "НОКТЮРН"
+  },
+  {
+    "slug": "nunu-and-willump",
+    "name": "НУНУ и ВИЛЛУМП"
+  },
+  {
+    "slug": "olaf",
+    "name": "ОЛАФ"
+  },
+  {
+    "slug": "orianna",
+    "name": "ОРИАННА"
+  },
+  {
+    "slug": "ornn",
+    "name": "ОРН"
+  },
+  {
+    "slug": "pantheon",
+    "name": "ПАНТЕОН"
+  },
+  {
+    "slug": "poppy",
+    "name": "ПОППИ"
+  },
+  {
+    "slug": "pyke",
+    "name": "ПАЙК"
+  },
+  {
+    "slug": "rakan",
+    "name": "РЭЙКАН"
+  },
+  {
+    "slug": "rammus",
+    "name": "РАММУС"
+  },
+  {
+    "slug": "rell",
+    "name": "РЕЛЛ"
+  },
+  {
+    "slug": "renekton",
+    "name": "РЕНЕКТОН"
+  },
+  {
+    "slug": "rengar",
+    "name": "РЕНГАР"
+  },
+  {
+    "slug": "riven",
+    "name": "РИВЕН"
+  },
+  {
+    "slug": "rumble",
+    "name": "РАМБЛ"
+  },
+  {
+    "slug": "ryze",
+    "name": "РАЙЗ"
+  },
+  {
+    "slug": "samira",
+    "name": "САМИРА"
+  },
+  {
+    "slug": "senna",
+    "name": "СЕННА"
+  },
+  {
+    "slug": "seraphine",
+    "name": "СЕРАФИНА"
+  },
+  {
+    "slug": "sett",
+    "name": "СЕТТ"
+  },
+  {
+    "slug": "shen",
+    "name": "ШЕН"
+  },
+  {
+    "slug": "shyvana",
+    "name": "ШИВАНА"
+  },
+  {
+    "slug": "singed",
+    "name": "СИНДЖЕД"
+  },
+  {
+    "slug": "sion",
+    "name": "СИОН"
+  },
+  {
+    "slug": "sivir",
+    "name": "СИВИР"
+  },
+  {
+    "slug": "sona",
+    "name": "СОНА"
+  },
+  {
+    "slug": "soraka",
+    "name": "СОРАКА"
+  },
+  {
+    "slug": "swain",
+    "name": "СВЕЙН"
+  },
+  {
+    "slug": "syndra",
+    "name": "СИНДРА"
+  },
+  {
+    "slug": "talon",
+    "name": "ТАЛОН"
+  },
+  {
+    "slug": "teemo",
+    "name": "ТИМО"
+  },
+  {
+    "slug": "thresh",
+    "name": "ТРЕШ"
+  },
+  {
+    "slug": "tristana",
+    "name": "ТРИСТАНА"
+  },
+  {
+    "slug": "tryndamere",
+    "name": "ТРИНДАМИР"
+  },
+  {
+    "slug": "twisted-fate",
+    "name": "ТВИСТЕД ФЭЙТ"
+  },
+  {
+    "slug": "twitch",
+    "name": "ТВИЧ"
+  },
+  {
+    "slug": "urgot",
+    "name": "УРГОТ"
+  },
+  {
+    "slug": "varus",
+    "name": "ВАРУС"
+  },
+  {
+    "slug": "vayne",
+    "name": "ВЕЙН"
+  },
+  {
+    "slug": "veigar",
+    "name": "ВЕЙГАР"
+  },
+  {
+    "slug": "velkoz",
+    "name": "ВЕЛ'КОЗ"
+  },
+  {
+    "slug": "vex",
+    "name": "ВЕКС"
+  },
+  {
+    "slug": "vi",
+    "name": "ВАЙ"
+  },
+  {
+    "slug": "viego",
+    "name": "ВИЕГО"
+  },
+  {
+    "slug": "viktor",
+    "name": "ВИКТОР"
+  },
+  {
+    "slug": "vladimir",
+    "name": "ВЛАДИМИР"
+  },
+  {
+    "slug": "volibear",
+    "name": "ВОЛИБИР"
+  },
+  {
+    "slug": "warwick",
+    "name": "ВАРВИК"
+  },
+  {
+    "slug": "wukong",
+    "name": "ВУКОНГ"
+  },
+  {
+    "slug": "xayah",
+    "name": "ШАЯ"
+  },
+  {
+    "slug": "xin-zhao",
+    "name": "КСИН ЖАО"
+  },
+  {
+    "slug": "yasuo",
+    "name": "ЯСУО"
+  },
+  {
+    "slug": "yone",
+    "name": "ЁНЭ"
+  },
+  {
+    "slug": "yuumi",
+    "name": "ЮМИ"
+  },
+  {
+    "slug": "zed",
+    "name": "ЗЕД"
+  },
+  {
+    "slug": "zeri",
+    "name": "ЗЕРИ"
+  },
+  {
+    "slug": "ziggs",
+    "name": "ЗИГГС"
+  },
+  {
+    "slug": "zilean",
+    "name": "ЗИЛЕАН"
+  },
+  {
+    "slug": "zoe",
+    "name": "ЗОИ"
+  },
+  {
+    "slug": "zyra",
+    "name": "ЗАЙРА"
+  }
+]

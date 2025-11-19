@@ -1,0 +1,71 @@
+// ui/src/components/Header.jsx
+import React from "react";
+import { LanguageSelector } from "./LanguageSelector";
+
+export function Header({ search, onSearchChange, language, onLanguageChange }) {
+  return (
+    <header
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        padding: "10px 16px 0 6px",
+      }}
+    >
+      {/* ЛОГОТИП */}
+      <a
+        href="/"
+        aria-label="Wild Rift"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: 40,
+          height: 40,
+          borderRadius: 12,
+          background: "#020617",
+          flexShrink: 0,
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 40 40"
+          width="28"
+          height="28"
+        >
+          <g fill="#4AC5F2">
+            <polygon points="23.4,28.9 25.9,35.2 30,35.2 31.8,28.9"></polygon>
+            <path
+              d="M19.2,23.1c-1.5-3.7-3.3-8.6-2.8-9c0.2-0.2,1.2,0.7,2.7,3.3c0.2,0.3,0.1-0.1,0.1-0.3c0-2,0-14.1,0-14.1
+            s-5.4,0-5.9,0c-0.3,0-0.4,0-0.4,0.1c-0.1,0.1,0,0.2,0,0.4c1.9,5.7,2.7,8.9,2.3,9.2C15,12.9,14,11.4,12.4,8C10,2.8,8.5-0.1,8.3,0.1
+            C8,0.3,9.7,5.6,14,17.5c1.4,3.9,1.9,5.9,1.6,6.1c-0.3,0.2-1.1-1.1-2.3-3.5c-1.4-2.8-2-3.9-2.2-3.9c-0.2,0.1,0.3,1.9,1.2,4.5
+            c1.3,4.1,3.5,11.2,3.1,11.5c-0.2,0.1-0.9-1-2.3-4.1c-0.3-0.7-0.5-1-0.5-1c0,0-0.1,0.1-0.1,0.3c0,0.4,0,4.6,0,4.6l-1.6,3.3h7.4
+            c-1.9-5.5-2.5-8-2.2-8.1c0.4-0.2,2,3,4,8.1c1.9,0.9,4.3,3.2,5.7,4.5c0.3,0.3,0.4,0.3,0.3,0C24.4,35.8,22.2,30.5,19.2,23.1z"
+            ></path>
+          </g>
+        </svg>
+      </a>
+
+      {/* ПОИСК */}
+      <input
+        type="text"
+        placeholder="Поиск..."
+        value={search}
+        onChange={(e) => onSearchChange(e.target.value)}
+        style={{
+          flex: 1,
+          padding: "8px 10px",
+          borderRadius: 999,
+          border: "none",
+          outline: "none",
+          fontSize: 14,
+          background: "#141824",
+          color: "inherit",
+        }}
+      />
+
+      {/* ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА */}
+      <LanguageSelector value={language} onChange={onLanguageChange} />
+    </header>
+  );
+}

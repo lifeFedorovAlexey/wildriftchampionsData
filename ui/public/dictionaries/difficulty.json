@@ -1,0 +1,71 @@
+{
+  "high": {
+    "name": {
+      "ru_ru": "Высокая",
+      "en_us": "High",
+      "en_gb": "High",
+      "fr_fr": "Élevée",
+      "de_de": "Hoch",
+      "es_es": "Alta",
+      "it_it": "Alta",
+      "pl_pl": "Wysoki",
+      "tr_tr": "Yüksek",
+      "ms_my": "Tinggi",
+      "pt_br": "Alta",
+      "ja_jp": "高",
+      "ko_kr": "높음",
+      "zh_tw": "高",
+      "th_th": "สูง",
+      "vi_vn": "Khó",
+      "es_mx": "Alta",
+      "en_sg": "High",
+      "ar_ae": "مرتفعة"
+    }
+  },
+  "medium": {
+    "name": {
+      "ru_ru": "Средняя",
+      "en_us": "Medium",
+      "en_gb": "Medium",
+      "fr_fr": "Modérée",
+      "de_de": "Mittel",
+      "es_es": "Media",
+      "it_it": "Media",
+      "pl_pl": "Średni",
+      "tr_tr": "Orta",
+      "ms_my": "Sederhana",
+      "pt_br": "Média",
+      "ja_jp": "中",
+      "ko_kr": "보통",
+      "zh_tw": "中",
+      "th_th": "ปานกลาง",
+      "vi_vn": "Trung bình",
+      "es_mx": "Media",
+      "en_sg": "Medium",
+      "ar_ae": "متوسطة"
+    }
+  },
+  "low": {
+    "name": {
+      "ru_ru": "Низкая",
+      "en_us": "Low",
+      "en_gb": "Low",
+      "fr_fr": "Faible",
+      "de_de": "Niedrig",
+      "es_es": "Baja",
+      "it_it": "Bassa",
+      "pl_pl": "Niski",
+      "tr_tr": "Düşük",
+      "ms_my": "Rendah",
+      "pt_br": "Baixa",
+      "ja_jp": "低",
+      "ko_kr": "낮음",
+      "zh_tw": "低",
+      "th_th": "ต่ำ",
+      "vi_vn": "Dễ",
+      "es_mx": "Baja",
+      "en_sg": "Low",
+      "ar_ae": "منخفضة"
+    }
+  }
+}
