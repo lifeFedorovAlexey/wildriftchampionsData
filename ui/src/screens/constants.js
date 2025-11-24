@@ -3,7 +3,7 @@ export const RANK_OPTIONS = [
   { key: "masterPlus", label: "Мастер" },
   { key: "king", label: "ГМ" },
   { key: "peak", label: "Чалик" },
-  //   { key: "overall", label: "Все" },
+  { key: "overall", label: "Не CN" },
 ];
 
 // спрайт ролей с сайта CN
