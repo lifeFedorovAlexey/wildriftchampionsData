@@ -1,530 +1,662 @@
 [
   {
     "slug": "aatrox",
-    "name": "АТРОКС"
+    "name": "АТРОКС",
+    "cnHeroId": "10002"
   },
   {
     "slug": "ahri",
-    "name": "АРИ"
+    "name": "АРИ",
+    "cnHeroId": "10038"
   },
   {
     "slug": "akali",
-    "name": "АКАЛИ"
+    "name": "АКАЛИ",
+    "cnHeroId": "10031"
   },
   {
     "slug": "akshan",
-    "name": "АКШАН"
+    "name": "АКШАН",
+    "cnHeroId": "10100"
   },
   {
     "slug": "alistar",
-    "name": "АЛИСТАР"
+    "name": "АЛИСТАР",
+    "cnHeroId": "10081"
   },
   {
     "slug": "ambessa",
-    "name": "АМБЕССА"
+    "name": "АМБЕССА",
+    "cnHeroId": "10082"
   },
   {
     "slug": "amumu",
-    "name": "АМУМУ"
+    "name": "АМУМУ",
+    "cnHeroId": "10004"
   },
   {
     "slug": "annie",
-    "name": "ЭННИ"
+    "name": "ЭННИ",
+    "cnHeroId": "10036"
   },
   {
     "slug": "ashe",
-    "name": "ЭШ"
+    "name": "ЭШ",
+    "cnHeroId": "10079"
   },
   {
     "slug": "aurelion-sol",
-    "name": "АУРЕЛИОН СОЛ"
+    "name": "АУРЕЛИОН СОЛ",
+    "cnHeroId": "10023"
   },
   {
     "slug": "aurora",
-    "name": "АВРОРА"
+    "name": "АВРОРА",
+    "cnHeroId": "10085"
   },
   {
     "slug": "bard",
-    "name": "БАРД"
+    "name": "БАРД",
+    "cnHeroId": "10105"
   },
   {
     "slug": "blitzcrank",
-    "name": "БЛИЦКРАНК"
+    "name": "БЛИЦКРАНК",
+    "cnHeroId": "10033"
   },
   {
     "slug": "brand",
-    "name": "БРЭНД"
+    "name": "БРЭНД",
+    "cnHeroId": "10119"
   },
   {
     "slug": "braum",
-    "name": "БРАУМ"
+    "name": "БРАУМ",
+    "cnHeroId": "10021"
   },
   {
     "slug": "caitlyn",
-    "name": "КЕЙТЛИН"
+    "name": "КЕЙТЛИН",
+    "cnHeroId": "10112"
   },
   {
     "slug": "camille",
-    "name": "КАМИЛЛА"
+    "name": "КАМИЛЛА",
+    "cnHeroId": "10055"
   },
   {
     "slug": "corki",
-    "name": "КОРКИ"
+    "name": "КОРКИ",
+    "cnHeroId": "10060"
   },
   {
     "slug": "darius",
-    "name": "ДАРИУС"
+    "name": "ДАРИУС",
+    "cnHeroId": "10071"
   },
   {
     "slug": "diana",
-    "name": "ДИАНА"
+    "name": "ДИАНА",
+    "cnHeroId": "10013"
   },
   {
     "slug": "dr-mundo",
-    "name": "ДОКТОР МУНДО"
+    "name": "ДОКТОР МУНДО",
+    "cnHeroId": "10062"
   },
   {
     "slug": "draven",
-    "name": "ДРЕЙВЕН"
+    "name": "ДРЕЙВЕН",
+    "cnHeroId": "10077"
   },
   {
     "slug": "ekko",
-    "name": "ЭККО"
+    "name": "ЭККО",
+    "cnHeroId": "10011"
   },
   {
     "slug": "evelynn",
-    "name": "ЭВЕЛИНН"
+    "name": "ЭВЕЛИНН",
+    "cnHeroId": "10029"
   },
   {
     "slug": "ezreal",
-    "name": "ЭЗРЕАЛЬ"
+    "name": "ЭЗРЕАЛЬ",
+    "cnHeroId": "10098"
   },
   {
     "slug": "fiddlesticks",
-    "name": "ФИДДЛСТИКС"
+    "name": "ФИДДЛСТИКС",
+    "cnHeroId": "10133"
   },
   {
     "slug": "fiora",
-    "name": "ФИОРА"
+    "name": "ФИОРА",
+    "cnHeroId": "10032"
   },
   {
     "slug": "fizz",
-    "name": "ФИЗЗ"
+    "name": "ФИЗЗ",
+    "cnHeroId": "10086"
   },
   {
     "slug": "galio",
-    "name": "ГАЛИО"
+    "name": "ГАЛИО",
+    "cnHeroId": "10099"
   },
   {
     "slug": "garen",
-    "name": "ГАРЕН"
+    "name": "ГАРЕН",
+    "cnHeroId": "10001"
   },
   {
     "slug": "gnar",
-    "name": "ГНАР"
+    "name": "ГНАР",
+    "cnHeroId": "10078"
   },
   {
     "slug": "gragas",
-    "name": "ГРАГАС"
+    "name": "ГРАГАС",
+    "cnHeroId": "10089"
   },
   {
     "slug": "graves",
-    "name": "ГРЕЙВЗ"
+    "name": "ГРЕЙВЗ",
+    "cnHeroId": "10072"
   },
   {
     "slug": "gwen",
-    "name": "ГВЕН"
+    "name": "ГВЕН",
+    "cnHeroId": "10054"
   },
   {
     "slug": "hecarim",
-    "name": "ГЕКАРИМ"
+    "name": "ГЕКАРИМ",
+    "cnHeroId": "10019"
   },
   {
     "slug": "heimerdinger",
-    "name": "ХЕЙМЕРДИНГЕР"
+    "name": "ХЕЙМЕРДИНГЕР",
+    "cnHeroId": "10127"
   },
   {
     "slug": "irelia",
-    "name": "ИРЕЛИЯ"
+    "name": "ИРЕЛИЯ",
+    "cnHeroId": "10094"
   },
   {
     "slug": "janna",
-    "name": "ЖАННА"
+    "name": "ЖАННА",
+    "cnHeroId": "10075"
   },
   {
     "slug": "jarvan-iv",
-    "name": "ДЖАРВАН IV"
+    "name": "ДЖАРВАН IV",
+    "cnHeroId": "10056"
   },
   {
     "slug": "jax",
-    "name": "ДЖАКС"
+    "name": "ДЖАКС",
+    "cnHeroId": "10040"
   },
   {
     "slug": "jayce",
-    "name": "ДЖЕЙС"
+    "name": "ДЖЕЙС",
+    "cnHeroId": "10101"
   },
   {
     "slug": "jhin",
-    "name": "ДЖИН"
+    "name": "ДЖИН",
+    "cnHeroId": "10022"
   },
   {
     "slug": "jinx",
-    "name": "ДЖИНКС"
+    "name": "ДЖИНКС",
+    "cnHeroId": "10018"
   },
   {
     "slug": "kaisa",
-    "name": "КАЙ'СА"
+    "name": "КАЙ'СА",
+    "cnHeroId": "10026"
   },
   {
     "slug": "kalista",
-    "name": "КАЛИСТА"
+    "name": "КАЛИСТА",
+    "cnHeroId": "10134"
   },
   {
     "slug": "karma",
-    "name": "КАРМА"
+    "name": "КАРМА",
+    "cnHeroId": "10007"
   },
   {
     "slug": "kassadin",
-    "name": "КАССАДИН"
+    "name": "КАССАДИН",
+    "cnHeroId": "10103"
   },
   {
     "slug": "katarina",
-    "name": "КАТАРИНА"
+    "name": "КАТАРИНА",
+    "cnHeroId": "10095"
   },
   {
     "slug": "kayle",
-    "name": "КЕЙЛ"
+    "name": "КЕЙЛ",
+    "cnHeroId": "10041"
   },
   {
     "slug": "kayn",
-    "name": "КАИН"
+    "name": "КАИН",
+    "cnHeroId": "10005"
   },
   {
     "slug": "kennen",
-    "name": "КЕННЕН"
+    "name": "КЕННЕН",
+    "cnHeroId": "10061"
   },
   {
     "slug": "khazix",
-    "name": "КА'ЗИКС"
+    "name": "КА'ЗИКС",
+    "cnHeroId": "10017"
   },
   {
     "slug": "kindred",
-    "name": "КИНДРЕД"
+    "name": "КИНДРЕД",
+    "cnHeroId": "10073"
   },
   {
     "slug": "lee-sin",
-    "name": "ЛИ СИН"
+    "name": "ЛИ СИН",
+    "cnHeroId": "10059"
   },
   {
     "slug": "leona",
-    "name": "ЛЕОНА"
+    "name": "ЛЕОНА",
+    "cnHeroId": "10044"
   },
   {
     "slug": "lillia",
-    "name": "ЛИЛЛИЯ"
+    "name": "ЛИЛЛИЯ",
+    "cnHeroId": "10135"
   },
   {
     "slug": "lissandra",
-    "name": "ЛИССАНДРА"
+    "name": "ЛИССАНДРА",
+    "cnHeroId": "10109"
   },
   {
     "slug": "lucian",
-    "name": "ЛЮЦИАН"
+    "name": "ЛЮЦИАН",
+    "cnHeroId": "10042"
   },
   {
     "slug": "lulu",
-    "name": "ЛУЛУ"
+    "name": "ЛУЛУ",
+    "cnHeroId": "10048"
   },
   {
     "slug": "lux",
-    "name": "ЛЮКС"
+    "name": "ЛЮКС",
+    "cnHeroId": "10003"
   },
   {
     "slug": "malphite",
-    "name": "МАЛЬФИТ"
+    "name": "МАЛЬФИТ",
+    "cnHeroId": "10083"
   },
   {
     "slug": "maokai",
-    "name": "МАОКАЙ"
+    "name": "МАОКАЙ",
+    "cnHeroId": "10074"
   },
   {
     "slug": "master-yi",
-    "name": "МАСТЕР ЙИ"
+    "name": "МАСТЕР ЙИ",
+    "cnHeroId": "10070"
   },
   {
     "slug": "milio",
-    "name": "МИЛИО"
+    "name": "МИЛИО",
+    "cnHeroId": "10108"
   },
   {
     "slug": "miss-fortune",
-    "name": "МИСС ФОРТУНА"
+    "name": "МИСС ФОРТУНА",
+    "cnHeroId": "10066"
   },
   {
     "slug": "mordekaiser",
-    "name": "МОРДЕКАЙЗЕР"
+    "name": "МОРДЕКАЙЗЕР",
+    "cnHeroId": "10035"
   },
   {
     "slug": "morgana",
-    "name": "МОРГАНА"
+    "name": "МОРГАНА",
+    "cnHeroId": "10028"
   },
   {
     "slug": "nami",
-    "name": "НАМИ"
+    "name": "НАМИ",
+    "cnHeroId": "10091"
   },
   {
     "slug": "nasus",
-    "name": "НАСУС"
+    "name": "НАСУС",
+    "cnHeroId": "10065"
   },
   {
     "slug": "nautilus",
-    "name": "НАУТИЛУС"
+    "name": "НАУТИЛУС",
+    "cnHeroId": "10132"
   },
   {
     "slug": "nidalee",
-    "name": "НИДАЛИ"
+    "name": "НИДАЛИ",
+    "cnHeroId": "10084"
   },
   {
     "slug": "nilah",
-    "name": "НИЛА"
+    "name": "НИЛА",
+    "cnHeroId": "10027"
   },
   {
     "slug": "nocturne",
-    "name": "НОКТЮРН"
+    "name": "НОКТЮРН",
+    "cnHeroId": "10151"
   },
   {
     "slug": "nunu-and-willump",
-    "name": "НУНУ и ВИЛЛУМП"
+    "name": "НУНУ и ВИЛЛУМП",
+    "cnHeroId": "10008"
   },
   {
     "slug": "olaf",
-    "name": "ОЛАФ"
+    "name": "ОЛАФ",
+    "cnHeroId": "10106"
   },
   {
     "slug": "orianna",
-    "name": "ОРИАННА"
+    "name": "ОРИАННА",
+    "cnHeroId": "10012"
   },
   {
     "slug": "ornn",
-    "name": "ОРН"
+    "name": "ОРН",
+    "cnHeroId": "10136"
   },
   {
     "slug": "pantheon",
-    "name": "ПАНТЕОН"
+    "name": "ПАНТЕОН",
+    "cnHeroId": "10030"
   },
   {
     "slug": "poppy",
-    "name": "ПОППИ"
+    "name": "ПОППИ",
+    "cnHeroId": "10076"
   },
   {
     "slug": "pyke",
-    "name": "ПАЙК"
+    "name": "ПАЙК",
+    "cnHeroId": "10124"
   },
   {
     "slug": "rakan",
-    "name": "РЭЙКАН"
+    "name": "РЭЙКАН",
+    "cnHeroId": "10052"
   },
   {
     "slug": "rammus",
-    "name": "РАММУС"
+    "name": "РАММУС",
+    "cnHeroId": "10064"
   },
   {
     "slug": "rell",
-    "name": "РЕЛЛ"
+    "name": "РЕЛЛ",
+    "cnHeroId": "10116"
   },
   {
     "slug": "renekton",
-    "name": "РЕНЕКТОН"
+    "name": "РЕНЕКТОН",
+    "cnHeroId": "10121"
   },
   {
     "slug": "rengar",
-    "name": "РЕНГАР"
+    "name": "РЕНГАР",
+    "cnHeroId": "10006"
   },
   {
     "slug": "riven",
-    "name": "РИВЕН"
+    "name": "РИВЕН",
+    "cnHeroId": "10092"
   },
   {
     "slug": "rumble",
-    "name": "РАМБЛ"
+    "name": "РАМБЛ",
+    "cnHeroId": "10140"
   },
   {
     "slug": "ryze",
-    "name": "РАЙЗ"
+    "name": "РАЙЗ",
+    "cnHeroId": "10137"
   },
   {
     "slug": "samira",
-    "name": "САМИРА"
+    "name": "САМИРА",
+    "cnHeroId": "10104"
   },
   {
     "slug": "senna",
-    "name": "СЕННА"
+    "name": "СЕННА",
+    "cnHeroId": "10123"
   },
   {
     "slug": "seraphine",
-    "name": "СЕРАФИНА"
+    "name": "СЕРАФИНА",
+    "cnHeroId": "10034"
   },
   {
     "slug": "sett",
-    "name": "СЕТТ"
+    "name": "СЕТТ",
+    "cnHeroId": "10068"
   },
   {
     "slug": "shen",
-    "name": "ШЕН"
+    "name": "ШЕН",
+    "cnHeroId": "10118"
   },
   {
     "slug": "shyvana",
-    "name": "ШИВАНА"
+    "name": "ШИВАНА",
+    "cnHeroId": "10049"
   },
   {
     "slug": "singed",
-    "name": "СИНДЖЕД"
+    "name": "СИНДЖЕД",
+    "cnHeroId": "10096"
   },
   {
     "slug": "sion",
-    "name": "СИОН"
+    "name": "СИОН",
+    "cnHeroId": "10125"
   },
   {
     "slug": "sivir",
-    "name": "СИВИР"
+    "name": "СИВИР",
+    "cnHeroId": "10107"
   },
   {
     "slug": "sona",
-    "name": "СОНА"
+    "name": "СОНА",
+    "cnHeroId": "10047"
   },
   {
     "slug": "soraka",
-    "name": "СОРАКА"
+    "name": "СОРАКА",
+    "cnHeroId": "10097"
   },
   {
     "slug": "swain",
-    "name": "СВЕЙН"
+    "name": "СВЕЙН",
+    "cnHeroId": "10126"
   },
   {
     "slug": "syndra",
-    "name": "СИНДРА"
+    "name": "СИНДРА",
+    "cnHeroId": "10024"
   },
   {
     "slug": "talon",
-    "name": "ТАЛОН"
+    "name": "ТАЛОН",
+    "cnHeroId": "10128"
   },
   {
     "slug": "teemo",
-    "name": "ТИМО"
+    "name": "ТИМО",
+    "cnHeroId": "10046"
   },
   {
     "slug": "thresh",
-    "name": "ТРЕШ"
+    "name": "ТРЕШ",
+    "cnHeroId": "10130"
   },
   {
     "slug": "tristana",
-    "name": "ТРИСТАНА"
+    "name": "ТРИСТАНА",
+    "cnHeroId": "10045"
   },
   {
     "slug": "tryndamere",
-    "name": "ТРИНДАМИР"
+    "name": "ТРИНДАМИР",
+    "cnHeroId": "10015"
   },
   {
     "slug": "twisted-fate",
-    "name": "ТВИСТЕД ФЭЙТ"
+    "name": "ТВИСТЕД ФЭЙТ",
+    "cnHeroId": "10025"
   },
   {
     "slug": "twitch",
-    "name": "ТВИЧ"
+    "name": "ТВИЧ",
+    "cnHeroId": "10053"
   },
   {
     "slug": "urgot",
-    "name": "УРГОТ"
+    "name": "УРГОТ",
+    "cnHeroId": "10102"
   },
   {
     "slug": "varus",
-    "name": "ВАРУС"
+    "name": "ВАРУС",
+    "cnHeroId": "10093"
   },
   {
     "slug": "vayne",
-    "name": "ВЕЙН"
+    "name": "ВЕЙН",
+    "cnHeroId": "10010"
   },
   {
     "slug": "veigar",
-    "name": "ВЕЙГАР"
+    "name": "ВЕЙГАР",
+    "cnHeroId": "10122"
   },
   {
     "slug": "velkoz",
-    "name": "ВЕЛ'КОЗ"
+    "name": "ВЕЛ'КОЗ",
+    "cnHeroId": "10129"
   },
   {
     "slug": "vex",
-    "name": "ВЕКС"
+    "name": "ВЕКС",
+    "cnHeroId": "10141"
   },
   {
     "slug": "vi",
-    "name": "ВАЙ"
+    "name": "ВАЙ",
+    "cnHeroId": "10050"
   },
   {
     "slug": "viego",
-    "name": "ВИЕГО"
+    "name": "ВИЕГО",
+    "cnHeroId": "10057"
   },
   {
     "slug": "viktor",
-    "name": "ВИКТОР"
+    "name": "ВИКТОР",
+    "cnHeroId": "10144"
   },
   {
     "slug": "vladimir",
-    "name": "ВЛАДИМИР"
+    "name": "ВЛАДИМИР",
+    "cnHeroId": "10090"
   },
   {
     "slug": "volibear",
-    "name": "ВОЛИБИР"
+    "name": "ВОЛИБИР",
+    "cnHeroId": "10058"
   },
   {
     "slug": "warwick",
-    "name": "ВАРВИК"
+    "name": "ВАРВИК",
+    "cnHeroId": "10131"
   },
   {
     "slug": "wukong",
-    "name": "ВУКОНГ"
+    "name": "ВУКОНГ",
+    "cnHeroId": "10009"
   },
   {
     "slug": "xayah",
-    "name": "ШАЯ"
+    "name": "ШАЯ",
+    "cnHeroId": "10051"
   },
   {
     "slug": "xin-zhao",
-    "name": "КСИН ЖАО"
+    "name": "КСИН ЖАО",
+    "cnHeroId": "10016"
   },
   {
     "slug": "yasuo",
-    "name": "ЯСУО"
+    "name": "ЯСУО",
+    "cnHeroId": "10037"
   },
   {
     "slug": "yone",
-    "name": "ЁНЭ"
+    "name": "ЁНЭ",
+    "cnHeroId": "10069"
   },
   {
     "slug": "yuumi",
-    "name": "ЮМИ"
+    "name": "ЮМИ",
+    "cnHeroId": "10020"
   },
   {
     "slug": "zed",
-    "name": "ЗЕД"
+    "name": "ЗЕД",
+    "cnHeroId": "10039"
   },
   {
     "slug": "zeri",
-    "name": "ЗЕРИ"
+    "name": "ЗЕРИ",
+    "cnHeroId": "10067"
   },
   {
     "slug": "ziggs",
-    "name": "ЗИГГС"
+    "name": "ЗИГГС",
+    "cnHeroId": "10087"
   },
   {
     "slug": "zilean",
-    "name": "ЗИЛЕАН"
+    "name": "ЗИЛЕАН",
+    "cnHeroId": "10080"
   },
   {
     "slug": "zoe",
-    "name": "ЗОИ"
+    "name": "ЗОИ",
+    "cnHeroId": "10014"
   },
   {
     "slug": "zyra",
-    "name": "ЗАЙРА"
+    "name": "ЗАЙРА",
+    "cnHeroId": "10063"
   }
 ]
