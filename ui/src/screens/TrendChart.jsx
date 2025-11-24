@@ -262,14 +262,18 @@ function TrendTable({ days }) {
     if (prev == null) return null;
     const diff = Number((current - prev).toFixed(2));
 
-    if (Math.abs(diff) < 0.01)
+    if (Math.abs(diff) < 0.01) {
       return { sign: "→", text: "0.00", color: "#9ca3af" };
+    }
 
-    if (diff > 0)
+    if (diff > 0) {
       return { sign: "↑", text: `+${diff.toFixed(2)}`, color: "#4ade80" };
+    }
 
     return { sign: "↓", text: diff.toFixed(2), color: "#f97373" };
   };
+
+  const viewDays = [...days].reverse();
 
   return (
     <div
@@ -298,8 +302,8 @@ function TrendTable({ days }) {
         <div style={{ textAlign: "right" }}>Баны</div>
       </div>
 
-      {days.map((day, index) => {
-        const prev = days[index + 1];
+      {viewDays.map((day, index) => {
+        const prev = index === viewDays.length - 1 ? null : viewDays[index + 1];
 
         const winDelta = prev ? getDelta(day.winRate, prev.winRate) : null;
         const pickDelta = prev ? getDelta(day.pickRate, prev.pickRate) : null;
@@ -314,7 +318,7 @@ function TrendTable({ days }) {
               padding: "6px 6px",
               fontSize: 12,
               borderBottom:
-                index === days.length - 1
+                index === viewDays.length - 1
                   ? "none"
                   : "1px solid rgba(15,23,42,1)",
             }}
