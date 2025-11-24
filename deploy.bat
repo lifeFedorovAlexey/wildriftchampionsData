@@ -15,17 +15,17 @@ REM ==== ПОДГОТОВКА ====
 cd /d %PROJECT_DIR%
 
 echo [START] %date% %time% >> "%LOG_FILE%"
-echo === Запуск merge-cn-full.mjs === >> "%LOG_FILE%"
+echo === Запуск merge-full-with-historu.mjs === >> "%LOG_FILE%"
 
-REM ==== ЗАПУСК NODE-СКРИПТА ====
-%NODE_EXE% "%PROJECT_DIR%\merge-cn-full.mjs" >> "%LOG_FILE%" 2>&1
+REM ==== ЗАПУСК NODE-СКРИПТА С ИСТОРИЕЙ ====
+%NODE_EXE% "%PROJECT_DIR%\merge-full-with-historu.mjs" >> "%LOG_FILE%" 2>&1
 
 IF %ERRORLEVEL% NEQ 0 (
-    echo [ERROR] merge-cn-full.mjs завершился с ошибкой %ERRORLEVEL% >> "%LOG_FILE%"
-    echo Ошибка при запуске merge-cn-full.mjs
+    echo [ERROR] merge-full-with-historu.mjs завершился с ошибкой %ERRORLEVEL% >> "%LOG_FILE%"
+    echo Ошибка при запуске merge-full-with-historu.mjs
     goto AFTER_GIT
 ) ELSE (
-    echo [OK] merge-cn-full.mjs успешно выполнен >> "%LOG_FILE%"
+    echo [OK] merge-full-with-historu.mjs успешно выполнен >> "%LOG_FILE%"
 )
 
 REM ==== GIT ====
