@@ -3,3 +3,18 @@
 ���⥬� �� 㤠���� ���� 㪠����� ����.
 [ERROR] merge-cn-full.mjs завершился с ошибкой 3 
 === Добавляю изменения === 
+=== Коммит === 
+[main 1790f68] Auto update CN stats
+ 2 files changed, 42 insertions(+), 11 deletions(-)
+ create mode 100644 deploy.log
+=== Пуш в GitHub === 
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/lifeFedorovAlexey/wildriftchampionsData.git
+   9fd3f72..1790f68  main -> main
+[END] 24.11.2025 23:43:20,37 EXIT=0 
+ 
+[START] 24.11.2025 23:43:53,96 
+=== Запуск merge-cn-full.mjs === 
+���⥬� �� 㤠���� ���� 㪠����� ����.
+[ERROR] merge-cn-full.mjs завершился с ошибкой 3 
+=== Добавляю изменения === 
