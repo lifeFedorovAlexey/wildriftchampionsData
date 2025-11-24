@@ -1,7 +1,7 @@
 // ui/src/App.jsx
 import { useEffect, useState } from "react";
 import { WinrateScreen } from "./screens/WinrateScreen";
-
+import KayleTrendChart from "./components/KayleTrendChart.jsx";
 const VIEWS = {
   MENU: "menu",
   WINRATES: "winrates",
@@ -140,6 +140,8 @@ function App() {
           >
             Будущие разделы (чемпионы, билды, гайды)
           </div>
+
+          {/* <KayleTrendChart /> */}
         </div>
       )}
 
