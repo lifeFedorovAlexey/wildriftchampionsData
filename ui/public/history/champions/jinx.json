@@ -1,0 +1,57 @@
+{
+  "slug": "jinx",
+  "name": "ДЖИНКС",
+  "cnHeroId": "10018",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.12,
+            "pickRate": 10.11,
+            "banRate": 0.76,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50,
+            "pickRate": 10.75,
+            "banRate": 0.31,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.03,
+            "pickRate": 10.91,
+            "banRate": 0.3,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.44,
+            "pickRate": 10.5,
+            "banRate": 0.16,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.24,
+            "pickRate": 10.22,
+            "banRate": 0.15,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "slug": "ashe",
+  "name": "ЭШ",
+  "cnHeroId": "10079",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.58,
+            "pickRate": 6.75,
+            "banRate": 0.29,
+            "strengthLevel": 3
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 44.95,
+            "pickRate": 1.38,
+            "banRate": 0.29,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.22,
+            "pickRate": 5.88,
+            "banRate": 0.12,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.13,
+            "pickRate": 5.75,
+            "banRate": 0.11,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.33,
+            "pickRate": 5.64,
+            "banRate": 0.06,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.97,
+            "pickRate": 5.73,
+            "banRate": 0.05,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

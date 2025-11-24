@@ -1,0 +1,57 @@
+{
+  "slug": "katarina",
+  "name": "КАТАРИНА",
+  "cnHeroId": "10095",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.88,
+            "pickRate": 1.68,
+            "banRate": 0.71,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.89,
+            "pickRate": 1.72,
+            "banRate": 0.59,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.07,
+            "pickRate": 1.82,
+            "banRate": 0.66,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.32,
+            "pickRate": 3,
+            "banRate": 0.81,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.86,
+            "pickRate": 3.04,
+            "banRate": 0.79,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

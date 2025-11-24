@@ -1,0 +1,92 @@
+{
+  "slug": "yasuo",
+  "name": "ЯСУО",
+  "cnHeroId": "10037",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.52,
+            "pickRate": 17.28,
+            "banRate": 11.52,
+            "strengthLevel": 0
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 47.54,
+            "pickRate": 4.08,
+            "banRate": 11.52,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.65,
+            "pickRate": 12.39,
+            "banRate": 15.91,
+            "strengthLevel": 0
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 47.43,
+            "pickRate": 3.68,
+            "banRate": 15.91,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.74,
+            "pickRate": 11.73,
+            "banRate": 17.8,
+            "strengthLevel": 0
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 47.74,
+            "pickRate": 3.6,
+            "banRate": 17.8,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.11,
+            "pickRate": 9.43,
+            "banRate": 18.2,
+            "strengthLevel": 0
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 51.1,
+            "pickRate": 2.81,
+            "banRate": 18.2,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.15,
+            "pickRate": 10.45,
+            "banRate": 22.39,
+            "strengthLevel": 0
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 48.35,
+            "pickRate": 3.71,
+            "banRate": 22.39,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

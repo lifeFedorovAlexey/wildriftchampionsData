@@ -1,0 +1,57 @@
+{
+  "slug": "kaisa",
+  "name": "КАЙ'СА",
+  "cnHeroId": "10026",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.61,
+            "pickRate": 13.1,
+            "banRate": 0.35,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.29,
+            "pickRate": 14.57,
+            "banRate": 0.25,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.28,
+            "pickRate": 15.39,
+            "banRate": 0.28,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.27,
+            "pickRate": 20.76,
+            "banRate": 0.53,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.42,
+            "pickRate": 20.22,
+            "banRate": 0.56,
+            "strengthLevel": 0
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "kennen",
+  "name": "КЕННЕН",
+  "cnHeroId": "10061",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.73,
+            "pickRate": 1.04,
+            "banRate": 0.59,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 51.33,
+            "pickRate": 1.54,
+            "banRate": 0.59,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 52.73,
+            "pickRate": 1.46,
+            "banRate": 0.39,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 50.59,
+            "pickRate": 1.38,
+            "banRate": 0.39,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 52.81,
+            "pickRate": 1.64,
+            "banRate": 0.4,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 50.73,
+            "pickRate": 1.33,
+            "banRate": 0.4,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.3,
+            "pickRate": 3.18,
+            "banRate": 0.34,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.92,
+            "pickRate": 2.72,
+            "banRate": 0.15,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

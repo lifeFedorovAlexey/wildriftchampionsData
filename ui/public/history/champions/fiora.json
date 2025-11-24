@@ -1,0 +1,57 @@
+{
+  "slug": "fiora",
+  "name": "ФИОРА",
+  "cnHeroId": "10032",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.27,
+            "pickRate": 3.62,
+            "banRate": 0.47,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.01,
+            "pickRate": 4.37,
+            "banRate": 1.6,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.49,
+            "pickRate": 4.63,
+            "banRate": 2.07,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.68,
+            "pickRate": 6.46,
+            "banRate": 8.79,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.78,
+            "pickRate": 6.89,
+            "banRate": 8.56,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

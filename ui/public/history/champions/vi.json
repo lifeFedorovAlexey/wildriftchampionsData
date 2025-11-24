@@ -1,0 +1,57 @@
+{
+  "slug": "vi",
+  "name": "ВАЙ",
+  "cnHeroId": "10050",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.14,
+            "pickRate": 5.54,
+            "banRate": 0.38,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.58,
+            "pickRate": 6.98,
+            "banRate": 0.46,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.43,
+            "pickRate": 7.31,
+            "banRate": 0.53,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.63,
+            "pickRate": 8.01,
+            "banRate": 0.67,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.63,
+            "pickRate": 6.75,
+            "banRate": 0.57,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

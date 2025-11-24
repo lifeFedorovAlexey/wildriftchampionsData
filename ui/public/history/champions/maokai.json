@@ -1,0 +1,57 @@
+{
+  "slug": "maokai",
+  "name": "МАОКАЙ",
+  "cnHeroId": "10074",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 52.12,
+            "pickRate": 2.81,
+            "banRate": 0.57,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.47,
+            "pickRate": 4.19,
+            "banRate": 0.52,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.58,
+            "pickRate": 4.51,
+            "banRate": 0.56,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.87,
+            "pickRate": 4.44,
+            "banRate": 0.29,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 52.5,
+            "pickRate": 4.61,
+            "banRate": 0.18,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

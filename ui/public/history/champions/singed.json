@@ -1,0 +1,64 @@
+{
+  "slug": "singed",
+  "name": "СИНДЖЕД",
+  "cnHeroId": "10096",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.38,
+            "pickRate": 1.05,
+            "banRate": 0.29,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.93,
+            "pickRate": 1.14,
+            "banRate": 0.23,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.83,
+            "pickRate": 1.21,
+            "banRate": 0.26,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 59.29,
+            "pickRate": 1.65,
+            "banRate": 1.05,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 51.93,
+            "pickRate": 2.42,
+            "banRate": 1.05,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 55.21,
+            "pickRate": 2.12,
+            "banRate": 0.65,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "thresh",
+  "name": "ТРЕШ",
+  "cnHeroId": "10130",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 48.3,
+            "pickRate": 11.28,
+            "banRate": 5.87,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 47.56,
+            "pickRate": 10.47,
+            "banRate": 4.49,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 47.65,
+            "pickRate": 10.4,
+            "banRate": 4.58,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 48.42,
+            "pickRate": 9.08,
+            "banRate": 1.58,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 48.21,
+            "pickRate": 9.86,
+            "banRate": 1.91,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

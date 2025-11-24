@@ -1,0 +1,48 @@
+{
+  "slug": "milio",
+  "name": "МИЛИО",
+  "cnHeroId": "10108",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.13,
+            "pickRate": 3.38,
+            "banRate": 5.43,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.32,
+            "pickRate": 4.42,
+            "banRate": 7.54,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.55,
+            "pickRate": 13.18,
+            "banRate": 27.72,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 48.91,
+            "pickRate": 6.91,
+            "banRate": 13.97,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

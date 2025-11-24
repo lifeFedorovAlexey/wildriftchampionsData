@@ -1,0 +1,57 @@
+{
+  "slug": "xin-zhao",
+  "name": "КСИН ЖАО",
+  "cnHeroId": "10016",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.47,
+            "pickRate": 12.35,
+            "banRate": 2.08,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.66,
+            "pickRate": 12.9,
+            "banRate": 3.01,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.65,
+            "pickRate": 12.76,
+            "banRate": 3.5,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.04,
+            "pickRate": 11.07,
+            "banRate": 3.58,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.15,
+            "pickRate": 11.48,
+            "banRate": 3.28,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

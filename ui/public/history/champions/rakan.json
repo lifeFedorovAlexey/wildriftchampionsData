@@ -1,0 +1,57 @@
+{
+  "slug": "rakan",
+  "name": "РЭЙКАН",
+  "cnHeroId": "10052",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 47.14,
+            "pickRate": 3.42,
+            "banRate": 0.47,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 48.87,
+            "pickRate": 4.24,
+            "banRate": 0.74,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 49.02,
+            "pickRate": 4.56,
+            "banRate": 0.89,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.74,
+            "pickRate": 5.85,
+            "banRate": 1.18,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.31,
+            "pickRate": 7.12,
+            "banRate": 1.16,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "viktor",
+  "name": "ВИКТОР",
+  "cnHeroId": "10144",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.9,
+            "pickRate": 5,
+            "banRate": 2.12,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.29,
+            "pickRate": 4.73,
+            "banRate": 1.46,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.03,
+            "pickRate": 4.53,
+            "banRate": 1.44,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 45.39,
+            "pickRate": 3.15,
+            "banRate": 0.37,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.71,
+            "pickRate": 3.59,
+            "banRate": 0.39,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

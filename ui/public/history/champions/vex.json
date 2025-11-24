@@ -1,0 +1,57 @@
+{
+  "slug": "vex",
+  "name": "ВЕКС",
+  "cnHeroId": "10141",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.63,
+            "pickRate": 2.92,
+            "banRate": 0.6,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.99,
+            "pickRate": 3.56,
+            "banRate": 0.84,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.98,
+            "pickRate": 3.63,
+            "banRate": 0.96,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.63,
+            "pickRate": 3.53,
+            "banRate": 0.49,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.1,
+            "pickRate": 3.61,
+            "banRate": 0.49,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "annie",
+  "name": "ЭННИ",
+  "cnHeroId": "10036",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 46.08,
+            "pickRate": 1.89,
+            "banRate": 0.16,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.75,
+            "pickRate": 2.15,
+            "banRate": 0.13,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.3,
+            "pickRate": 2.34,
+            "banRate": 0.16,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 55.5,
+            "pickRate": 4.17,
+            "banRate": 0.15,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 52.37,
+            "pickRate": 3.02,
+            "banRate": 0.16,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

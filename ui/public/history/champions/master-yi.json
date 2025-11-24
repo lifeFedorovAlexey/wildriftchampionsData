@@ -1,0 +1,57 @@
+{
+  "slug": "master-yi",
+  "name": "МАСТЕР ЙИ",
+  "cnHeroId": "10070",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.51,
+            "pickRate": 19.47,
+            "banRate": 36.13,
+            "strengthLevel": 0
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.24,
+            "pickRate": 11.96,
+            "banRate": 47.74,
+            "strengthLevel": 0
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.65,
+            "pickRate": 10.58,
+            "banRate": 47.96,
+            "strengthLevel": 0
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.56,
+            "pickRate": 7.58,
+            "banRate": 20.63,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.31,
+            "pickRate": 9.28,
+            "banRate": 28.27,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

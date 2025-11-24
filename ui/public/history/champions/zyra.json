@@ -1,0 +1,92 @@
+{
+  "slug": "zyra",
+  "name": "ЗАЙРА",
+  "cnHeroId": "10063",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 54.94,
+            "pickRate": 2.38,
+            "banRate": 12.84,
+            "strengthLevel": 2
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 53.41,
+            "pickRate": 5.6,
+            "banRate": 12.84,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.74,
+            "pickRate": 3.15,
+            "banRate": 35.16,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 51.58,
+            "pickRate": 6.78,
+            "banRate": 35.16,
+            "strengthLevel": 0
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.4,
+            "pickRate": 3.07,
+            "banRate": 39.07,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 51.01,
+            "pickRate": 6.37,
+            "banRate": 39.07,
+            "strengthLevel": 0
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.56,
+            "pickRate": 2.54,
+            "banRate": 13.8,
+            "strengthLevel": 3
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 49.75,
+            "pickRate": 4.1,
+            "banRate": 13.8,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.92,
+            "pickRate": 2.91,
+            "banRate": 16.13,
+            "strengthLevel": 3
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 48.85,
+            "pickRate": 5.04,
+            "banRate": 16.13,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

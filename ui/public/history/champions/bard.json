@@ -1,0 +1,57 @@
+{
+  "slug": "bard",
+  "name": "БАРД",
+  "cnHeroId": "10105",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 48.9,
+            "pickRate": 1.46,
+            "banRate": 1.09,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.66,
+            "pickRate": 1.77,
+            "banRate": 4.32,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.16,
+            "pickRate": 1.88,
+            "banRate": 5.48,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 53.4,
+            "pickRate": 3.5,
+            "banRate": 22.1,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 53.96,
+            "pickRate": 3.39,
+            "banRate": 19.82,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

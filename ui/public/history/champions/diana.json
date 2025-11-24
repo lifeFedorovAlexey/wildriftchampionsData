@@ -1,0 +1,92 @@
+{
+  "slug": "diana",
+  "name": "ДИАНА",
+  "cnHeroId": "10013",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.79,
+            "pickRate": 1.48,
+            "banRate": 0.32,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.17,
+            "pickRate": 1.2,
+            "banRate": 0.32,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.97,
+            "pickRate": 1.49,
+            "banRate": 0.18,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.65,
+            "pickRate": 1.43,
+            "banRate": 0.18,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.94,
+            "pickRate": 1.49,
+            "banRate": 0.18,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.68,
+            "pickRate": 1.49,
+            "banRate": 0.18,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.96,
+            "pickRate": 1.49,
+            "banRate": 0.05,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.56,
+            "pickRate": 1.56,
+            "banRate": 0.05,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.17,
+            "pickRate": 1.88,
+            "banRate": 0.12,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.71,
+            "pickRate": 2.13,
+            "banRate": 0.12,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

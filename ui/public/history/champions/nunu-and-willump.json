@@ -1,0 +1,57 @@
+{
+  "slug": "nunu-and-willump",
+  "name": "НУНУ и ВИЛЛУМП",
+  "cnHeroId": "10008",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.31,
+            "pickRate": 1.28,
+            "banRate": 0.02,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.17,
+            "pickRate": 1.47,
+            "banRate": 0.11,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.71,
+            "pickRate": 1.54,
+            "banRate": 0.14,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.67,
+            "pickRate": 2.88,
+            "banRate": 1.02,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.96,
+            "pickRate": 1.69,
+            "banRate": 0.28,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

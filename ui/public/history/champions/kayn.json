@@ -1,0 +1,57 @@
+{
+  "slug": "kayn",
+  "name": "КАИН",
+  "cnHeroId": "10005",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.41,
+            "pickRate": 4.68,
+            "banRate": 0.33,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.26,
+            "pickRate": 3.56,
+            "banRate": 0.24,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.97,
+            "pickRate": 3.49,
+            "banRate": 0.25,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 45.04,
+            "pickRate": 3.02,
+            "banRate": 0.2,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.95,
+            "pickRate": 3.36,
+            "banRate": 0.15,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

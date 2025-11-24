@@ -1,0 +1,71 @@
+{
+  "slug": "twitch",
+  "name": "ТВИЧ",
+  "cnHeroId": "10053",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.28,
+            "pickRate": 3.23,
+            "banRate": 0.35,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 43.71,
+            "pickRate": 1.25,
+            "banRate": 0.35,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.01,
+            "pickRate": 3.61,
+            "banRate": 0.24,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 41.24,
+            "pickRate": 1.08,
+            "banRate": 0.24,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.09,
+            "pickRate": 3.81,
+            "banRate": 0.24,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.22,
+            "pickRate": 5.32,
+            "banRate": 0.1,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.12,
+            "pickRate": 4.36,
+            "banRate": 0.09,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

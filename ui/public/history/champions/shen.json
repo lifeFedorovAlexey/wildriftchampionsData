@@ -1,0 +1,57 @@
+{
+  "slug": "shen",
+  "name": "ШЕН",
+  "cnHeroId": "10118",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.57,
+            "pickRate": 1.09,
+            "banRate": 0.09,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.39,
+            "pickRate": 1.54,
+            "banRate": 0.1,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.09,
+            "pickRate": 1.64,
+            "banRate": 0.1,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 47.19,
+            "pickRate": 2.02,
+            "banRate": 0.1,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.85,
+            "pickRate": 1.73,
+            "banRate": 0.07,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

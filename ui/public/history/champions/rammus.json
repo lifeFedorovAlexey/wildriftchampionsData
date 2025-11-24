@@ -1,0 +1,57 @@
+{
+  "slug": "rammus",
+  "name": "РАММУС",
+  "cnHeroId": "10064",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.85,
+            "pickRate": 2.82,
+            "banRate": 1.09,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.46,
+            "pickRate": 4.52,
+            "banRate": 4.12,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.32,
+            "pickRate": 4.84,
+            "banRate": 4.98,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.7,
+            "pickRate": 6.46,
+            "banRate": 5.02,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 54.32,
+            "pickRate": 4.18,
+            "banRate": 4.13,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

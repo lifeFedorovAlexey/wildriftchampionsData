@@ -1,0 +1,78 @@
+{
+  "slug": "brand",
+  "name": "БРЭНД",
+  "cnHeroId": "10119",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.35,
+            "pickRate": 9.34,
+            "banRate": 6.53,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 52.35,
+            "pickRate": 3.21,
+            "banRate": 6.53,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.3,
+            "pickRate": 10.72,
+            "banRate": 6.16,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.63,
+            "pickRate": 2.27,
+            "banRate": 6.16,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.34,
+            "pickRate": 10.72,
+            "banRate": 6.26,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.22,
+            "pickRate": 2.09,
+            "banRate": 6.26,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.99,
+            "pickRate": 6.94,
+            "banRate": 0.94,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.97,
+            "pickRate": 6.83,
+            "banRate": 1.23,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

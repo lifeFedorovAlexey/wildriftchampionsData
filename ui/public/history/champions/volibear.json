@@ -1,0 +1,85 @@
+{
+  "slug": "volibear",
+  "name": "ВОЛИБИР",
+  "cnHeroId": "10058",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.7,
+            "pickRate": 4.84,
+            "banRate": 5.27,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.88,
+            "pickRate": 2.63,
+            "banRate": 5.27,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.19,
+            "pickRate": 5.57,
+            "banRate": 5.24,
+            "strengthLevel": 2
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.65,
+            "pickRate": 2.35,
+            "banRate": 5.24,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.05,
+            "pickRate": 5.71,
+            "banRate": 5.49,
+            "strengthLevel": 2
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.2,
+            "pickRate": 2.2,
+            "banRate": 5.49,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.7,
+            "pickRate": 4.93,
+            "banRate": 1.68,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.58,
+            "pickRate": 5.75,
+            "banRate": 2.33,
+            "strengthLevel": 2
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 43.31,
+            "pickRate": 1.47,
+            "banRate": 2.33,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

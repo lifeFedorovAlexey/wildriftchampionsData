@@ -1,0 +1,57 @@
+{
+  "slug": "lissandra",
+  "name": "ЛИССАНДРА",
+  "cnHeroId": "10109",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.94,
+            "pickRate": 3.37,
+            "banRate": 1.97,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.09,
+            "pickRate": 4.96,
+            "banRate": 7.43,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.01,
+            "pickRate": 5.31,
+            "banRate": 9.53,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.36,
+            "pickRate": 6.76,
+            "banRate": 13.38,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.15,
+            "pickRate": 6.23,
+            "banRate": 12.35,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

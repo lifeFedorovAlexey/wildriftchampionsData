@@ -1,0 +1,57 @@
+{
+  "slug": "samira",
+  "name": "САМИРА",
+  "cnHeroId": "10104",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.24,
+            "pickRate": 10.37,
+            "banRate": 7.16,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.74,
+            "pickRate": 10.87,
+            "banRate": 13.04,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.75,
+            "pickRate": 10.86,
+            "banRate": 14.53,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.98,
+            "pickRate": 9.85,
+            "banRate": 7.71,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.23,
+            "pickRate": 10.9,
+            "banRate": 9.03,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

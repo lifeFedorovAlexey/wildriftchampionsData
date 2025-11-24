@@ -1,0 +1,57 @@
+{
+  "slug": "akali",
+  "name": "АКАЛИ",
+  "cnHeroId": "10031",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.52,
+            "pickRate": 5.29,
+            "banRate": 0.66,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.93,
+            "pickRate": 4.25,
+            "banRate": 0.63,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.22,
+            "pickRate": 4.13,
+            "banRate": 0.7,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.92,
+            "pickRate": 4.9,
+            "banRate": 1.18,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.92,
+            "pickRate": 4.58,
+            "banRate": 1.02,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

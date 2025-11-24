@@ -1,0 +1,57 @@
+{
+  "slug": "lillia",
+  "name": "ЛИЛЛИЯ",
+  "cnHeroId": "10135",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 54.65,
+            "pickRate": 2.65,
+            "banRate": 0.65,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.89,
+            "pickRate": 3.61,
+            "banRate": 1.14,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.86,
+            "pickRate": 3.89,
+            "banRate": 1.37,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.43,
+            "pickRate": 4.94,
+            "banRate": 1.91,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.02,
+            "pickRate": 4.84,
+            "banRate": 1.3,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

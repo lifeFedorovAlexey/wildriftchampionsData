@@ -1,0 +1,57 @@
+{
+  "slug": "viego",
+  "name": "ВИЕГО",
+  "cnHeroId": "10057",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.62,
+            "pickRate": 6.63,
+            "banRate": 6.49,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.45,
+            "pickRate": 5.19,
+            "banRate": 16.13,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.64,
+            "pickRate": 5.3,
+            "banRate": 19.64,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.82,
+            "pickRate": 6.78,
+            "banRate": 29.95,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.88,
+            "pickRate": 7.85,
+            "banRate": 33.98,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

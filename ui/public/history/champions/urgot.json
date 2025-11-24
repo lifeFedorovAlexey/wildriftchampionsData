@@ -1,0 +1,57 @@
+{
+  "slug": "urgot",
+  "name": "УРГОТ",
+  "cnHeroId": "10102",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.2,
+            "pickRate": 8.38,
+            "banRate": 2.69,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.8,
+            "pickRate": 8.53,
+            "banRate": 3.62,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.5,
+            "pickRate": 8.04,
+            "banRate": 3.74,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 47.78,
+            "pickRate": 4.28,
+            "banRate": 0.42,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 47.18,
+            "pickRate": 4.41,
+            "banRate": 0.91,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

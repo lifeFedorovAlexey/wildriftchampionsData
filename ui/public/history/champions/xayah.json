@@ -1,0 +1,57 @@
+{
+  "slug": "xayah",
+  "name": "ШАЯ",
+  "cnHeroId": "10051",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.42,
+            "pickRate": 7.1,
+            "banRate": 0.41,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.3,
+            "pickRate": 7.49,
+            "banRate": 0.37,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.17,
+            "pickRate": 7.8,
+            "banRate": 0.43,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.06,
+            "pickRate": 11.32,
+            "banRate": 0.86,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.17,
+            "pickRate": 11.41,
+            "banRate": 0.58,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "khazix",
+  "name": "КА'ЗИКС",
+  "cnHeroId": "10017",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.47,
+            "pickRate": 4.82,
+            "banRate": 0.62,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.63,
+            "pickRate": 4.28,
+            "banRate": 1.21,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.79,
+            "pickRate": 4.42,
+            "banRate": 1.38,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.62,
+            "pickRate": 5.04,
+            "banRate": 1.14,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.53,
+            "pickRate": 6.7,
+            "banRate": 1.85,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

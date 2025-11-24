@@ -1,0 +1,39 @@
+{
+  "slug": "akshan",
+  "name": "АКШАН",
+  "cnHeroId": "10100",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.55,
+            "pickRate": 1.02,
+            "banRate": 0.06,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.11,
+            "pickRate": 1.13,
+            "banRate": 0.02,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 45.7,
+            "pickRate": 1.06,
+            "banRate": 0.06,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

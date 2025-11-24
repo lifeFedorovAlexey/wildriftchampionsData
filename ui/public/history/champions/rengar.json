@@ -1,0 +1,57 @@
+{
+  "slug": "rengar",
+  "name": "РЕНГАР",
+  "cnHeroId": "10006",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 44.62,
+            "pickRate": 1.61,
+            "banRate": 1.19,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.77,
+            "pickRate": 1.53,
+            "banRate": 1.14,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.1,
+            "pickRate": 1.57,
+            "banRate": 1.29,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.43,
+            "pickRate": 2.31,
+            "banRate": 2.34,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.43,
+            "pickRate": 2.14,
+            "banRate": 2.45,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "talon",
+  "name": "ТАЛОН",
+  "cnHeroId": "10128",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 45.9,
+            "pickRate": 3.78,
+            "banRate": 0.83,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 45.89,
+            "pickRate": 3.35,
+            "banRate": 0.97,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.51,
+            "pickRate": 3.4,
+            "banRate": 1.21,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.73,
+            "pickRate": 7.56,
+            "banRate": 7.05,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.92,
+            "pickRate": 6.72,
+            "banRate": 5.75,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

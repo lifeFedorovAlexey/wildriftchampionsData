@@ -1,0 +1,57 @@
+{
+  "slug": "gnar",
+  "name": "ГНАР",
+  "cnHeroId": "10078",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.39,
+            "pickRate": 2.87,
+            "banRate": 0.42,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.98,
+            "pickRate": 3.06,
+            "banRate": 0.44,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.79,
+            "pickRate": 3.04,
+            "banRate": 0.47,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 52.64,
+            "pickRate": 3,
+            "banRate": 0.24,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.16,
+            "pickRate": 2.57,
+            "banRate": 0.22,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

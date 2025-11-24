@@ -1,0 +1,57 @@
+{
+  "slug": "kassadin",
+  "name": "КАССАДИН",
+  "cnHeroId": "10103",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.02,
+            "pickRate": 1.49,
+            "banRate": 0.09,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.76,
+            "pickRate": 2.03,
+            "banRate": 0.33,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.62,
+            "pickRate": 2.19,
+            "banRate": 0.43,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.13,
+            "pickRate": 4.12,
+            "banRate": 1.2,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.01,
+            "pickRate": 3.6,
+            "banRate": 1.11,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

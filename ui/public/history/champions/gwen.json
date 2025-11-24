@@ -1,0 +1,71 @@
+{
+  "slug": "gwen",
+  "name": "ГВЕН",
+  "cnHeroId": "10054",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 46.19,
+            "pickRate": 3.06,
+            "banRate": 0.61,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.15,
+            "pickRate": 1.51,
+            "banRate": 0.61,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.2,
+            "pickRate": 2.74,
+            "banRate": 0.97,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 47.97,
+            "pickRate": 2.76,
+            "banRate": 1.12,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.57,
+            "pickRate": 3.75,
+            "banRate": 1.69,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.31,
+            "pickRate": 3.77,
+            "banRate": 1.35,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 44.36,
+            "pickRate": 1.04,
+            "banRate": 1.35,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

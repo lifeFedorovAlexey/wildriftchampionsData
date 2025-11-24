@@ -1,0 +1,92 @@
+{
+  "slug": "zed",
+  "name": "ЗЕД",
+  "cnHeroId": "10039",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 46.67,
+            "pickRate": 4.88,
+            "banRate": 1.88,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.19,
+            "pickRate": 2.55,
+            "banRate": 1.88,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 46.9,
+            "pickRate": 3.82,
+            "banRate": 1.93,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.31,
+            "pickRate": 3.27,
+            "banRate": 1.93,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47,
+            "pickRate": 3.73,
+            "banRate": 2.22,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.62,
+            "pickRate": 3.52,
+            "banRate": 2.22,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.15,
+            "pickRate": 3.65,
+            "banRate": 4.61,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.67,
+            "pickRate": 4.96,
+            "banRate": 4.61,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.52,
+            "pickRate": 3.47,
+            "banRate": 4.43,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.95,
+            "pickRate": 5.19,
+            "banRate": 4.43,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

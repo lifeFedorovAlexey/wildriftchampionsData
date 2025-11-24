@@ -1,0 +1,57 @@
+{
+  "slug": "miss-fortune",
+  "name": "МИСС ФОРТУНА",
+  "cnHeroId": "10066",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.14,
+            "pickRate": 25.73,
+            "banRate": 2.41,
+            "strengthLevel": 0
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.13,
+            "pickRate": 28.48,
+            "banRate": 5.73,
+            "strengthLevel": 0
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.96,
+            "pickRate": 27.27,
+            "banRate": 6.49,
+            "strengthLevel": 0
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.08,
+            "pickRate": 17.35,
+            "banRate": 2.09,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.59,
+            "pickRate": 19.13,
+            "banRate": 3.03,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

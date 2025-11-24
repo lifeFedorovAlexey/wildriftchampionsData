@@ -1,0 +1,57 @@
+{
+  "slug": "aurora",
+  "name": "АВРОРА",
+  "cnHeroId": "10085",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.38,
+            "pickRate": 2.81,
+            "banRate": 2.48,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.71,
+            "pickRate": 2.83,
+            "banRate": 7.06,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.83,
+            "pickRate": 3.13,
+            "banRate": 8.77,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 52.34,
+            "pickRate": 6.92,
+            "banRate": 19.65,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.99,
+            "pickRate": 5.66,
+            "banRate": 17.77,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

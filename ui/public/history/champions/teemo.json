@@ -1,0 +1,92 @@
+{
+  "slug": "teemo",
+  "name": "ТИМО",
+  "cnHeroId": "10046",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 54.11,
+            "pickRate": 2.37,
+            "banRate": 17.36,
+            "strengthLevel": 2
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 53.88,
+            "pickRate": 6.28,
+            "banRate": 17.36,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.83,
+            "pickRate": 2.34,
+            "banRate": 22.42,
+            "strengthLevel": 2
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 53.03,
+            "pickRate": 5.02,
+            "banRate": 22.42,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.56,
+            "pickRate": 2.37,
+            "banRate": 22.17,
+            "strengthLevel": 2
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 52.82,
+            "pickRate": 4.55,
+            "banRate": 22.17,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.53,
+            "pickRate": 2.58,
+            "banRate": 5.47,
+            "strengthLevel": 4
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 52.53,
+            "pickRate": 2.8,
+            "banRate": 5.47,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.77,
+            "pickRate": 2.54,
+            "banRate": 6.71,
+            "strengthLevel": 4
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 48.46,
+            "pickRate": 2.67,
+            "banRate": 6.71,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

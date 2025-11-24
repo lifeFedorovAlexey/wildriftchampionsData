@@ -1,0 +1,78 @@
+{
+  "slug": "camille",
+  "name": "КАМИЛЛА",
+  "cnHeroId": "10055",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.56,
+            "pickRate": 1.86,
+            "banRate": 0.09,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.48,
+            "pickRate": 2.82,
+            "banRate": 0.2,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.8,
+            "pickRate": 3.11,
+            "banRate": 0.26,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.44,
+            "pickRate": 1.01,
+            "banRate": 0.26,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 53.98,
+            "pickRate": 6.03,
+            "banRate": 1.19,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.42,
+            "pickRate": 2.18,
+            "banRate": 1.19,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.43,
+            "pickRate": 6.4,
+            "banRate": 1.28,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.73,
+            "pickRate": 1.75,
+            "banRate": 1.28,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

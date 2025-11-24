@@ -1,0 +1,71 @@
+{
+  "slug": "poppy",
+  "name": "ПОППИ",
+  "cnHeroId": "10076",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.44,
+            "pickRate": 1.82,
+            "banRate": 0.32,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.74,
+            "pickRate": 3.66,
+            "banRate": 0.86,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.08,
+            "pickRate": 1.27,
+            "banRate": 0.86,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.81,
+            "pickRate": 4.05,
+            "banRate": 1.08,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.17,
+            "pickRate": 1.27,
+            "banRate": 1.08,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.92,
+            "pickRate": 6.03,
+            "banRate": 2.05,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.24,
+            "pickRate": 4.37,
+            "banRate": 1.53,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

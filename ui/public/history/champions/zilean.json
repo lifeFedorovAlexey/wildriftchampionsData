@@ -1,0 +1,57 @@
+{
+  "slug": "zilean",
+  "name": "ЗИЛЕАН",
+  "cnHeroId": "10080",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 49.94,
+            "pickRate": 1.46,
+            "banRate": 2.78,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.96,
+            "pickRate": 1.58,
+            "banRate": 6.14,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 52.43,
+            "pickRate": 1.65,
+            "banRate": 7.18,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 52.48,
+            "pickRate": 2.64,
+            "banRate": 12.31,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.72,
+            "pickRate": 2.98,
+            "banRate": 11.65,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

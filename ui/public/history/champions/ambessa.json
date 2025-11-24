@@ -1,0 +1,92 @@
+{
+  "slug": "ambessa",
+  "name": "АМБЕССА",
+  "cnHeroId": "10082",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.92,
+            "pickRate": 4.36,
+            "banRate": 2.02,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.75,
+            "pickRate": 2.14,
+            "banRate": 2.02,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 52.65,
+            "pickRate": 4.25,
+            "banRate": 1.57,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.44,
+            "pickRate": 1.8,
+            "banRate": 1.57,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 52.88,
+            "pickRate": 4.19,
+            "banRate": 1.61,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.16,
+            "pickRate": 1.74,
+            "banRate": 1.61,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 52.72,
+            "pickRate": 5.51,
+            "banRate": 2.22,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.02,
+            "pickRate": 1.7,
+            "banRate": 2.22,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 52.9,
+            "pickRate": 5.68,
+            "banRate": 2.21,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.64,
+            "pickRate": 1.73,
+            "banRate": 2.21,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

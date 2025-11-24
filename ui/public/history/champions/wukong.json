@@ -1,0 +1,92 @@
+{
+  "slug": "wukong",
+  "name": "ВУКОНГ",
+  "cnHeroId": "10009",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 53.57,
+            "pickRate": 1.45,
+            "banRate": 0.39,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.18,
+            "pickRate": 3.46,
+            "banRate": 0.39,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.8,
+            "pickRate": 3.43,
+            "banRate": 0.87,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.6,
+            "pickRate": 4.44,
+            "banRate": 0.87,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.98,
+            "pickRate": 3.97,
+            "banRate": 1.07,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.62,
+            "pickRate": 4.65,
+            "banRate": 1.07,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 53.33,
+            "pickRate": 5.95,
+            "banRate": 0.99,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.42,
+            "pickRate": 4.81,
+            "banRate": 0.99,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.87,
+            "pickRate": 6.34,
+            "banRate": 1.23,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.64,
+            "pickRate": 4.14,
+            "banRate": 1.23,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "lee-sin",
+  "name": "ЛИ СИН",
+  "cnHeroId": "10059",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.17,
+            "pickRate": 10.13,
+            "banRate": 7.25,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.21,
+            "pickRate": 10.88,
+            "banRate": 11.51,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.3,
+            "pickRate": 11.3,
+            "banRate": 13.53,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.69,
+            "pickRate": 13.33,
+            "banRate": 24.58,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.19,
+            "pickRate": 12.17,
+            "banRate": 27.01,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

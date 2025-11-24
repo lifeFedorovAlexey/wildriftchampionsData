@@ -1,0 +1,64 @@
+{
+  "slug": "corki",
+  "name": "КОРКИ",
+  "cnHeroId": "10060",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.2,
+            "pickRate": 1.28,
+            "banRate": 0.05,
+            "strengthLevel": 5
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 49.57,
+            "pickRate": 1.28,
+            "banRate": 0.05,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.33,
+            "pickRate": 1.66,
+            "banRate": 0.03,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.44,
+            "pickRate": 1.76,
+            "banRate": 0.02,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.6,
+            "pickRate": 2.86,
+            "banRate": 0.01,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.71,
+            "pickRate": 3.2,
+            "banRate": 0.01,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

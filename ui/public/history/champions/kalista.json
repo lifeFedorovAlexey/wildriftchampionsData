@@ -1,0 +1,64 @@
+{
+  "slug": "kalista",
+  "name": "КАЛИСТА",
+  "cnHeroId": "10134",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.3,
+            "pickRate": 1.95,
+            "banRate": 3.74,
+            "strengthLevel": 4
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 47.51,
+            "pickRate": 7.56,
+            "banRate": 3.74,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.71,
+            "pickRate": 4.08,
+            "banRate": 1.38,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.97,
+            "pickRate": 3.67,
+            "banRate": 1.11,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.5,
+            "pickRate": 2.41,
+            "banRate": 0.17,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.21,
+            "pickRate": 2.31,
+            "banRate": 0.19,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

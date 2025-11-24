@@ -1,0 +1,85 @@
+{
+  "slug": "veigar",
+  "name": "ВЕЙГАР",
+  "cnHeroId": "10122",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 52.96,
+            "pickRate": 11.12,
+            "banRate": 9.94,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 51.22,
+            "pickRate": 4.28,
+            "banRate": 9.94,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.46,
+            "pickRate": 11.07,
+            "banRate": 12.66,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.67,
+            "pickRate": 3.16,
+            "banRate": 12.66,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.99,
+            "pickRate": 10.83,
+            "banRate": 13.1,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.04,
+            "pickRate": 2.78,
+            "banRate": 13.1,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.87,
+            "pickRate": 6.74,
+            "banRate": 3.41,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.79,
+            "pickRate": 6.82,
+            "banRate": 4.22,
+            "strengthLevel": 3
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 48.99,
+            "pickRate": 1.16,
+            "banRate": 4.22,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

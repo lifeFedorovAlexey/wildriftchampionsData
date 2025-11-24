@@ -1,0 +1,57 @@
+{
+  "slug": "aurelion-sol",
+  "name": "АУРЕЛИОН СОЛ",
+  "cnHeroId": "10023",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.41,
+            "pickRate": 8.41,
+            "banRate": 1.86,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.11,
+            "pickRate": 10.11,
+            "banRate": 6.62,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.17,
+            "pickRate": 10.55,
+            "banRate": 8.43,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.29,
+            "pickRate": 11.17,
+            "banRate": 9.9,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.26,
+            "pickRate": 11.24,
+            "banRate": 7.48,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

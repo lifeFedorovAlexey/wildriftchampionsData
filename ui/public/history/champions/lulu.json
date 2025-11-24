@@ -1,0 +1,57 @@
+{
+  "slug": "lulu",
+  "name": "ЛУЛУ",
+  "cnHeroId": "10048",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 49.66,
+            "pickRate": 4.08,
+            "banRate": 1.65,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 49.17,
+            "pickRate": 8.62,
+            "banRate": 9.16,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 49.28,
+            "pickRate": 10.35,
+            "banRate": 12,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 48.83,
+            "pickRate": 19.02,
+            "banRate": 25.1,
+            "strengthLevel": 0
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 48.77,
+            "pickRate": 12.47,
+            "banRate": 16.65,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

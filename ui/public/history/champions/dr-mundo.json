@@ -1,0 +1,78 @@
+{
+  "slug": "dr-mundo",
+  "name": "ДОКТОР МУНДО",
+  "cnHeroId": "10062",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.59,
+            "pickRate": 6.65,
+            "banRate": 2.09,
+            "strengthLevel": 2
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.75,
+            "pickRate": 2.71,
+            "banRate": 2.09,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.25,
+            "pickRate": 6.61,
+            "banRate": 1.75,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.65,
+            "pickRate": 2.21,
+            "banRate": 1.75,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.83,
+            "pickRate": 6.28,
+            "banRate": 1.66,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.04,
+            "pickRate": 1.87,
+            "banRate": 1.66,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 45.62,
+            "pickRate": 3.82,
+            "banRate": 0.26,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 47.78,
+            "pickRate": 4.33,
+            "banRate": 0.41,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

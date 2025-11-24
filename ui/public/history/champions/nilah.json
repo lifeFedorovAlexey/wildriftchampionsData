@@ -1,0 +1,39 @@
+{
+  "slug": "nilah",
+  "name": "НИЛА",
+  "cnHeroId": "10027",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 43.41,
+            "pickRate": 1.12,
+            "banRate": 0.68,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 55.43,
+            "pickRate": 1.27,
+            "banRate": 1.01,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.03,
+            "pickRate": 1.05,
+            "banRate": 0.82,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

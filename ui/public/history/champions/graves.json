@@ -1,0 +1,64 @@
+{
+  "slug": "graves",
+  "name": "ГРЕЙВЗ",
+  "cnHeroId": "10072",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.28,
+            "pickRate": 1.02,
+            "banRate": 1.09,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 54.01,
+            "pickRate": 9.15,
+            "banRate": 1.09,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.48,
+            "pickRate": 8.88,
+            "banRate": 0.69,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.99,
+            "pickRate": 8.81,
+            "banRate": 0.69,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 45.89,
+            "pickRate": 4.16,
+            "banRate": 0.25,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 45.9,
+            "pickRate": 5.73,
+            "banRate": 0.31,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

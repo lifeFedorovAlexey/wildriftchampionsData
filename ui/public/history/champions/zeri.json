@@ -1,0 +1,57 @@
+{
+  "slug": "zeri",
+  "name": "ЗЕРИ",
+  "cnHeroId": "10067",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.9,
+            "pickRate": 4.61,
+            "banRate": 0.12,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.34,
+            "pickRate": 4.61,
+            "banRate": 0.11,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.99,
+            "pickRate": 4.73,
+            "banRate": 0.12,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.57,
+            "pickRate": 7.11,
+            "banRate": 0.13,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.21,
+            "pickRate": 6.26,
+            "banRate": 0.15,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

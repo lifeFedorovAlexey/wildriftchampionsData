@@ -1,0 +1,92 @@
+{
+  "slug": "tryndamere",
+  "name": "ТРИНДАМИР",
+  "cnHeroId": "10015",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.51,
+            "pickRate": 5.05,
+            "banRate": 22.41,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.28,
+            "pickRate": 10.63,
+            "banRate": 22.41,
+            "strengthLevel": 0
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.66,
+            "pickRate": 3.72,
+            "banRate": 35.92,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.72,
+            "pickRate": 9.05,
+            "banRate": 35.92,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.09,
+            "pickRate": 3.5,
+            "banRate": 37.28,
+            "strengthLevel": 2
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.09,
+            "pickRate": 7.99,
+            "banRate": 37.28,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.75,
+            "pickRate": 3.73,
+            "banRate": 13.7,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.22,
+            "pickRate": 5.24,
+            "banRate": 13.7,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.49,
+            "pickRate": 3.23,
+            "banRate": 18.66,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.74,
+            "pickRate": 5.3,
+            "banRate": 18.66,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "slug": "malphite",
+  "name": "МАЛЬФИТ",
+  "cnHeroId": "10083",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 46.87,
+            "pickRate": 2.54,
+            "banRate": 22.17,
+            "strengthLevel": 2
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 48.89,
+            "pickRate": 4.35,
+            "banRate": 22.17,
+            "strengthLevel": 2
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.38,
+            "pickRate": 14.32,
+            "banRate": 22.17,
+            "strengthLevel": 0
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 46.11,
+            "pickRate": 2.29,
+            "banRate": 20.12,
+            "strengthLevel": 4
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 48.14,
+            "pickRate": 4.61,
+            "banRate": 20.12,
+            "strengthLevel": 3
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.37,
+            "pickRate": 12.05,
+            "banRate": 20.12,
+            "strengthLevel": 0
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 45.87,
+            "pickRate": 2.19,
+            "banRate": 20.07,
+            "strengthLevel": 4
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 48.17,
+            "pickRate": 4.63,
+            "banRate": 20.07,
+            "strengthLevel": 3
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.2,
+            "pickRate": 11.02,
+            "banRate": 20.07,
+            "strengthLevel": 0
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 44.2,
+            "pickRate": 1.28,
+            "banRate": 4.54,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 47.53,
+            "pickRate": 4.33,
+            "banRate": 4.54,
+            "strengthLevel": 4
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 48.41,
+            "pickRate": 5.43,
+            "banRate": 4.54,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 43.13,
+            "pickRate": 1.56,
+            "banRate": 6.39,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 47.33,
+            "pickRate": 5.22,
+            "banRate": 6.39,
+            "strengthLevel": 4
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.38,
+            "pickRate": 6.24,
+            "banRate": 6.39,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "rumble",
+  "name": "РАМБЛ",
+  "cnHeroId": "10140",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 52.78,
+            "pickRate": 3.96,
+            "banRate": 1.63,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 52.09,
+            "pickRate": 7.57,
+            "banRate": 7.01,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.97,
+            "pickRate": 8.34,
+            "banRate": 9.14,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 50,
+            "pickRate": 9.42,
+            "banRate": 14.68,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.97,
+            "pickRate": 8.49,
+            "banRate": 16.14,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

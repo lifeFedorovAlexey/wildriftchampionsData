@@ -1,0 +1,57 @@
+{
+  "slug": "kindred",
+  "name": "КИНДРЕД",
+  "cnHeroId": "10073",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.93,
+            "pickRate": 3.63,
+            "banRate": 0.3,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.22,
+            "pickRate": 3.28,
+            "banRate": 0.35,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.24,
+            "pickRate": 3.23,
+            "banRate": 0.41,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.43,
+            "pickRate": 3.49,
+            "banRate": 0.81,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.51,
+            "pickRate": 3.79,
+            "banRate": 0.96,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

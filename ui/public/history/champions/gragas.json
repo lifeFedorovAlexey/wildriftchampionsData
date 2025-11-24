@@ -1,0 +1,85 @@
+{
+  "slug": "gragas",
+  "name": "ГРАГАС",
+  "cnHeroId": "10089",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.66,
+            "pickRate": 2.27,
+            "banRate": 0.14,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 46.8,
+            "pickRate": 1.2,
+            "banRate": 0.33,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.25,
+            "pickRate": 3.18,
+            "banRate": 0.33,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 46.78,
+            "pickRate": 1.23,
+            "banRate": 0.43,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.34,
+            "pickRate": 3.29,
+            "banRate": 0.43,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.87,
+            "pickRate": 1.36,
+            "banRate": 1.04,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.06,
+            "pickRate": 3.26,
+            "banRate": 1.04,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 45.99,
+            "pickRate": 1.2,
+            "banRate": 1,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.06,
+            "pickRate": 2.69,
+            "banRate": 1,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

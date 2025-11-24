@@ -1,0 +1,57 @@
+{
+  "slug": "shyvana",
+  "name": "ШИВАНА",
+  "cnHeroId": "10049",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.53,
+            "pickRate": 7.41,
+            "banRate": 7.94,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.54,
+            "pickRate": 8.69,
+            "banRate": 38.38,
+            "strengthLevel": 0
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.13,
+            "pickRate": 8.49,
+            "banRate": 48.75,
+            "strengthLevel": 0
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.04,
+            "pickRate": 5.95,
+            "banRate": 56.55,
+            "strengthLevel": 0
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.56,
+            "pickRate": 6.49,
+            "banRate": 60.4,
+            "strengthLevel": 0
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "sett",
+  "name": "СЕТТ",
+  "cnHeroId": "10068",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.64,
+            "pickRate": 8.11,
+            "banRate": 0.91,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.3,
+            "pickRate": 7.46,
+            "banRate": 0.54,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.03,
+            "pickRate": 7.65,
+            "banRate": 0.54,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.8,
+            "pickRate": 8.53,
+            "banRate": 0.2,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.34,
+            "pickRate": 9.1,
+            "banRate": 0.27,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

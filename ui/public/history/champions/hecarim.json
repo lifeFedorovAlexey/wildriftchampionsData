@@ -1,0 +1,57 @@
+{
+  "slug": "hecarim",
+  "name": "ГЕКАРИМ",
+  "cnHeroId": "10019",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.43,
+            "pickRate": 3.03,
+            "banRate": 0.38,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.5,
+            "pickRate": 3.95,
+            "banRate": 1.44,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.79,
+            "pickRate": 4.26,
+            "banRate": 1.89,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.4,
+            "pickRate": 7.55,
+            "banRate": 5.49,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.34,
+            "pickRate": 6.51,
+            "banRate": 4.12,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "galio",
+  "name": "ГАЛИО",
+  "cnHeroId": "10099",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.17,
+            "pickRate": 11.14,
+            "banRate": 3.33,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 48.44,
+            "pickRate": 2.99,
+            "banRate": 3.33,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.02,
+            "pickRate": 12.18,
+            "banRate": 3.04,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 49.69,
+            "pickRate": 2.21,
+            "banRate": 3.04,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.71,
+            "pickRate": 12.04,
+            "banRate": 3.18,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.01,
+            "pickRate": 2.07,
+            "banRate": 3.18,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.5,
+            "pickRate": 9.86,
+            "banRate": 1.08,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 53.2,
+            "pickRate": 1.24,
+            "banRate": 1.08,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.49,
+            "pickRate": 9.87,
+            "banRate": 1.52,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.08,
+            "pickRate": 2.32,
+            "banRate": 1.52,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "syndra",
+  "name": "СИНДРА",
+  "cnHeroId": "10024",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.33,
+            "pickRate": 4.45,
+            "banRate": 2.6,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.08,
+            "pickRate": 5.96,
+            "banRate": 5.69,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.96,
+            "pickRate": 6.24,
+            "banRate": 6.92,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.17,
+            "pickRate": 8.23,
+            "banRate": 9.74,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.81,
+            "pickRate": 8.76,
+            "banRate": 10.54,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

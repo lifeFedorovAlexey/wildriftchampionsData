@@ -1,0 +1,57 @@
+{
+  "slug": "warwick",
+  "name": "ВАРВИК",
+  "cnHeroId": "10131",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.84,
+            "pickRate": 1.67,
+            "banRate": 0.39,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.8,
+            "pickRate": 2.31,
+            "banRate": 0.82,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.94,
+            "pickRate": 2.5,
+            "banRate": 1.01,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 54.24,
+            "pickRate": 4.23,
+            "banRate": 2.47,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.32,
+            "pickRate": 4.15,
+            "banRate": 1.83,
+            "strengthLevel": 4
+          }
+        }
+      }
+    }
+  ]
+}

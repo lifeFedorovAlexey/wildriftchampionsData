@@ -1,0 +1,71 @@
+{
+  "slug": "pantheon",
+  "name": "ПАНТЕОН",
+  "cnHeroId": "10030",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 44.55,
+            "pickRate": 1.04,
+            "banRate": 2.83,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 42.95,
+            "pickRate": 1.12,
+            "banRate": 2.83,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.73,
+            "pickRate": 5.63,
+            "banRate": 2.83,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.82,
+            "pickRate": 6.92,
+            "banRate": 4.12,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.67,
+            "pickRate": 7,
+            "banRate": 4.6,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.49,
+            "pickRate": 6.3,
+            "banRate": 2.48,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.25,
+            "pickRate": 6.8,
+            "banRate": 2.56,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

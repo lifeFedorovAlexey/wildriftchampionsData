@@ -1,0 +1,57 @@
+{
+  "slug": "amumu",
+  "name": "АМУМУ",
+  "cnHeroId": "10004",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.86,
+            "pickRate": 2.6,
+            "banRate": 0.22,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.99,
+            "pickRate": 3.93,
+            "banRate": 0.22,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 54.13,
+            "pickRate": 4.17,
+            "banRate": 0.24,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.43,
+            "pickRate": 3.61,
+            "banRate": 0.25,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.31,
+            "pickRate": 3.35,
+            "banRate": 0.15,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

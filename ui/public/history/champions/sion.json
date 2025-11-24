@@ -1,0 +1,57 @@
+{
+  "slug": "sion",
+  "name": "СИОН",
+  "cnHeroId": "10125",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.96,
+            "pickRate": 2.53,
+            "banRate": 0.45,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.73,
+            "pickRate": 3.77,
+            "banRate": 0.57,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.72,
+            "pickRate": 3.97,
+            "banRate": 0.61,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 47.81,
+            "pickRate": 4.97,
+            "banRate": 0.23,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.71,
+            "pickRate": 4.04,
+            "banRate": 0.22,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "sivir",
+  "name": "СИВИР",
+  "cnHeroId": "10107",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.4,
+            "pickRate": 6.55,
+            "banRate": 0.13,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.2,
+            "pickRate": 6.58,
+            "banRate": 0.17,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.09,
+            "pickRate": 6.69,
+            "banRate": 0.18,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50,
+            "pickRate": 6.4,
+            "banRate": 0.11,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.64,
+            "pickRate": 6.51,
+            "banRate": 0.1,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

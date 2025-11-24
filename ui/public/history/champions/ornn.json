@@ -1,0 +1,71 @@
+{
+  "slug": "ornn",
+  "name": "ОРН",
+  "cnHeroId": "10136",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.72,
+            "pickRate": 2.51,
+            "banRate": 0.28,
+            "strengthLevel": 4
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.35,
+            "pickRate": 3.5,
+            "banRate": 0.25,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.55,
+            "pickRate": 3.71,
+            "banRate": 0.25,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.51,
+            "pickRate": 4.74,
+            "banRate": 0.12,
+            "strengthLevel": 4
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 54.04,
+            "pickRate": 1.11,
+            "banRate": 0.12,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.83,
+            "pickRate": 4.22,
+            "banRate": 0.2,
+            "strengthLevel": 4
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 52.41,
+            "pickRate": 1.27,
+            "banRate": 0.2,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

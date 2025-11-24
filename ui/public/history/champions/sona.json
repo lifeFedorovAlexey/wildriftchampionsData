@@ -1,0 +1,57 @@
+{
+  "slug": "sona",
+  "name": "СОНА",
+  "cnHeroId": "10047",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 47.95,
+            "pickRate": 2.23,
+            "banRate": 0.11,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.71,
+            "pickRate": 2.22,
+            "banRate": 0.05,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.11,
+            "pickRate": 2.46,
+            "banRate": 0.06,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 54.07,
+            "pickRate": 4.83,
+            "banRate": 0.03,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 51.03,
+            "pickRate": 5.37,
+            "banRate": 0.04,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

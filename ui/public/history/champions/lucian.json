@@ -1,0 +1,64 @@
+{
+  "slug": "lucian",
+  "name": "ЛЮЦИАН",
+  "cnHeroId": "10042",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.05,
+            "pickRate": 1.28,
+            "banRate": 0.6,
+            "strengthLevel": 5
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 50.16,
+            "pickRate": 5.26,
+            "banRate": 0.6,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.95,
+            "pickRate": 7.56,
+            "banRate": 1.62,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.32,
+            "pickRate": 8.62,
+            "banRate": 2.18,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.81,
+            "pickRate": 18.09,
+            "banRate": 13.55,
+            "strengthLevel": 0
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.91,
+            "pickRate": 16.46,
+            "banRate": 11.99,
+            "strengthLevel": 0
+          }
+        }
+      }
+    }
+  ]
+}

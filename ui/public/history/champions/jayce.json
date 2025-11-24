@@ -1,0 +1,92 @@
+{
+  "slug": "jayce",
+  "name": "ДЖЕЙС",
+  "cnHeroId": "10101",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 46.42,
+            "pickRate": 2.26,
+            "banRate": 0.29,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 45.21,
+            "pickRate": 3.9,
+            "banRate": 0.29,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 46.52,
+            "pickRate": 2.3,
+            "banRate": 0.52,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 46.28,
+            "pickRate": 3.88,
+            "banRate": 0.52,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 46.7,
+            "pickRate": 2.37,
+            "banRate": 0.62,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 46.88,
+            "pickRate": 3.86,
+            "banRate": 0.62,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.78,
+            "pickRate": 3.53,
+            "banRate": 0.97,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 49.44,
+            "pickRate": 4.64,
+            "banRate": 0.97,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.54,
+            "pickRate": 3.13,
+            "banRate": 1.3,
+            "strengthLevel": 5
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 50.04,
+            "pickRate": 4.45,
+            "banRate": 1.3,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

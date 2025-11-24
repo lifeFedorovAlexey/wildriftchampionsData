@@ -1,0 +1,57 @@
+{
+  "slug": "rell",
+  "name": "РЕЛЛ",
+  "cnHeroId": "10116",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 52.17,
+            "pickRate": 11.4,
+            "banRate": 12.65,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.6,
+            "pickRate": 9.57,
+            "banRate": 37.33,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.4,
+            "pickRate": 8.22,
+            "banRate": 43.34,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.45,
+            "pickRate": 7.99,
+            "banRate": 45.02,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 49.12,
+            "pickRate": 5.86,
+            "banRate": 43.83,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

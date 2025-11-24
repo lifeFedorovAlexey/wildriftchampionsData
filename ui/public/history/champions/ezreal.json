@@ -1,0 +1,57 @@
+{
+  "slug": "ezreal",
+  "name": "ЭЗРЕАЛЬ",
+  "cnHeroId": "10098",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.77,
+            "pickRate": 10.23,
+            "banRate": 0.44,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.95,
+            "pickRate": 9.94,
+            "banRate": 0.28,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.26,
+            "pickRate": 9.86,
+            "banRate": 0.27,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.79,
+            "pickRate": 10.99,
+            "banRate": 0.12,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 48.33,
+            "pickRate": 11.67,
+            "banRate": 0.23,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

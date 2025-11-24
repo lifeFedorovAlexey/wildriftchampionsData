@@ -1,0 +1,30 @@
+{
+  "slug": "zoe",
+  "name": "ЗОИ",
+  "cnHeroId": "10014",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 54.02,
+            "pickRate": 1.97,
+            "banRate": 5.29,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 54.3,
+            "pickRate": 2.27,
+            "banRate": 4.52,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

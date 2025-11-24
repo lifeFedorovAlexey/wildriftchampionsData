@@ -1,0 +1,78 @@
+{
+  "slug": "tristana",
+  "name": "ТРИСТАНА",
+  "cnHeroId": "10045",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.73,
+            "pickRate": 1.12,
+            "banRate": 0.35,
+            "strengthLevel": 5
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 49.76,
+            "pickRate": 10.66,
+            "banRate": 0.35,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.28,
+            "pickRate": 1.16,
+            "banRate": 0.32,
+            "strengthLevel": 5
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 49.82,
+            "pickRate": 10.92,
+            "banRate": 0.32,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.44,
+            "pickRate": 1.06,
+            "banRate": 0.33,
+            "strengthLevel": 5
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 49.65,
+            "pickRate": 10.54,
+            "banRate": 0.33,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 46.59,
+            "pickRate": 6.26,
+            "banRate": 0.07,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.27,
+            "pickRate": 6.68,
+            "banRate": 0.11,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

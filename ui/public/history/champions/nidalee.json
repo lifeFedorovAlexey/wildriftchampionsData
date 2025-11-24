@@ -1,0 +1,64 @@
+{
+  "slug": "nidalee",
+  "name": "НИДАЛИ",
+  "cnHeroId": "10084",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 42.62,
+            "pickRate": 1.51,
+            "banRate": 11.54,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.01,
+            "pickRate": 8.96,
+            "banRate": 11.54,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.49,
+            "pickRate": 7.14,
+            "banRate": 28.6,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.71,
+            "pickRate": 6.75,
+            "banRate": 33.55,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 54.31,
+            "pickRate": 6.64,
+            "banRate": 56.49,
+            "strengthLevel": 0
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 55.82,
+            "pickRate": 5.9,
+            "banRate": 53.8,
+            "strengthLevel": 0
+          }
+        }
+      }
+    }
+  ]
+}

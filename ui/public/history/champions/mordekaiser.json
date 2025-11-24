@@ -1,0 +1,78 @@
+{
+  "slug": "mordekaiser",
+  "name": "МОРДЕКАЙЗЕР",
+  "cnHeroId": "10035",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.73,
+            "pickRate": 14.93,
+            "banRate": 14.19,
+            "strengthLevel": 0
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 49.32,
+            "pickRate": 1.88,
+            "banRate": 14.19,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.61,
+            "pickRate": 13.37,
+            "banRate": 30.48,
+            "strengthLevel": 0
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.95,
+            "pickRate": 1.19,
+            "banRate": 30.48,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.55,
+            "pickRate": 12.65,
+            "banRate": 35.81,
+            "strengthLevel": 0
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.76,
+            "pickRate": 1,
+            "banRate": 35.81,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.31,
+            "pickRate": 11.28,
+            "banRate": 34.81,
+            "strengthLevel": 0
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.75,
+            "pickRate": 11.8,
+            "banRate": 32.84,
+            "strengthLevel": 0
+          }
+        }
+      }
+    }
+  ]
+}

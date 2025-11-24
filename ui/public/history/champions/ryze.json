@@ -1,0 +1,57 @@
+{
+  "slug": "ryze",
+  "name": "РАЙЗ",
+  "cnHeroId": "10137",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.76,
+            "pickRate": 6.32,
+            "banRate": 3.42,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.02,
+            "pickRate": 5.73,
+            "banRate": 2.82,
+            "strengthLevel": 3
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 49.04,
+            "pickRate": 5.54,
+            "banRate": 2.87,
+            "strengthLevel": 3
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.9,
+            "pickRate": 6.25,
+            "banRate": 1.61,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.01,
+            "pickRate": 5.74,
+            "banRate": 1.89,
+            "strengthLevel": 3
+          }
+        }
+      }
+    }
+  ]
+}

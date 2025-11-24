@@ -1,0 +1,57 @@
+{
+  "slug": "nocturne",
+  "name": "НОКТЮРН",
+  "cnHeroId": "10151",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.16,
+            "pickRate": 3.01,
+            "banRate": 4.75,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.55,
+            "pickRate": 3.52,
+            "banRate": 25.25,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.94,
+            "pickRate": 3.7,
+            "banRate": 32.8,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.39,
+            "pickRate": 3.55,
+            "banRate": 61.12,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 50.86,
+            "pickRate": 3.87,
+            "banRate": 56.86,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

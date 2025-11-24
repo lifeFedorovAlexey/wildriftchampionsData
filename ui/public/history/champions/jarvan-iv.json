@@ -1,0 +1,85 @@
+{
+  "slug": "jarvan-iv",
+  "name": "ДЖАРВАН IV",
+  "cnHeroId": "10056",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.82,
+            "pickRate": 8.34,
+            "banRate": 1.03,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.92,
+            "pickRate": 1.09,
+            "banRate": 1.26,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.55,
+            "pickRate": 10.23,
+            "banRate": 1.26,
+            "strengthLevel": 2
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.96,
+            "pickRate": 1.26,
+            "banRate": 1.53,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.61,
+            "pickRate": 10.63,
+            "banRate": 1.53,
+            "strengthLevel": 2
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.64,
+            "pickRate": 2.39,
+            "banRate": 1.67,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.64,
+            "pickRate": 9.59,
+            "banRate": 1.67,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.47,
+            "pickRate": 1.96,
+            "banRate": 1.7,
+            "strengthLevel": 4
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 51.68,
+            "pickRate": 9.29,
+            "banRate": 1.7,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}

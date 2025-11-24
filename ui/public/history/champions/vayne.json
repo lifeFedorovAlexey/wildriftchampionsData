@@ -1,0 +1,78 @@
+{
+  "slug": "vayne",
+  "name": "ВЕЙН",
+  "cnHeroId": "10010",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.86,
+            "pickRate": 1.7,
+            "banRate": 5.95,
+            "strengthLevel": 4
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 49.58,
+            "pickRate": 9.08,
+            "banRate": 5.95,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.41,
+            "pickRate": 1.66,
+            "banRate": 6.98,
+            "strengthLevel": 5
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 50.61,
+            "pickRate": 11.29,
+            "banRate": 6.98,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.33,
+            "pickRate": 1.59,
+            "banRate": 8.08,
+            "strengthLevel": 5
+          },
+          "adc": {
+            "rank": 3,
+            "winRate": 50.92,
+            "pickRate": 11.94,
+            "banRate": 8.08,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.96,
+            "pickRate": 16.44,
+            "banRate": 13.32,
+            "strengthLevel": 0
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 52.92,
+            "pickRate": 15.22,
+            "banRate": 11.72,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

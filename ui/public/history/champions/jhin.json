@@ -1,0 +1,57 @@
+{
+  "slug": "jhin",
+  "name": "ДЖИН",
+  "cnHeroId": "10022",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 51.87,
+            "pickRate": 13.41,
+            "banRate": 0.88,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.87,
+            "pickRate": 17,
+            "banRate": 0.9,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.74,
+            "pickRate": 17.7,
+            "banRate": 0.99,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.02,
+            "pickRate": 18.32,
+            "banRate": 0.86,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.88,
+            "pickRate": 17.22,
+            "banRate": 0.87,
+            "strengthLevel": 1
+          }
+        }
+      }
+    }
+  ]
+}

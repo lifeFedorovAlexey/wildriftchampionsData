@@ -1,0 +1,57 @@
+{
+  "slug": "soraka",
+  "name": "СОРАКА",
+  "cnHeroId": "10097",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.7,
+            "pickRate": 3.8,
+            "banRate": 1.39,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.9,
+            "pickRate": 4.56,
+            "banRate": 1.9,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "support": {
+            "rank": 4,
+            "winRate": 50.74,
+            "pickRate": 4.71,
+            "banRate": 2.05,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "support": {
+            "rank": 4,
+            "winRate": 46.97,
+            "pickRate": 3.41,
+            "banRate": 0.59,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "support": {
+            "rank": 4,
+            "winRate": 49.44,
+            "pickRate": 3.93,
+            "banRate": 0.5,
+            "strengthLevel": 5
+          }
+        }
+      }
+    }
+  ]
+}

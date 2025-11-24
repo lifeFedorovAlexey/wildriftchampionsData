@@ -1,0 +1,57 @@
+{
+  "slug": "garen",
+  "name": "ГАРЕН",
+  "cnHeroId": "10001",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 52.26,
+            "pickRate": 13.53,
+            "banRate": 2.24,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.31,
+            "pickRate": 19.17,
+            "banRate": 5,
+            "strengthLevel": 0
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.24,
+            "pickRate": 20.3,
+            "banRate": 6.1,
+            "strengthLevel": 0
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.37,
+            "pickRate": 21.36,
+            "banRate": 5.15,
+            "strengthLevel": 0
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.25,
+            "pickRate": 18.76,
+            "banRate": 4.18,
+            "strengthLevel": 0
+          }
+        }
+      }
+    }
+  ]
+}

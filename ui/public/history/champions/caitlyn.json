@@ -1,0 +1,57 @@
+{
+  "slug": "caitlyn",
+  "name": "КЕЙТЛИН",
+  "cnHeroId": "10112",
+  "history": [
+    {
+      "date": "2025-11-24",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 50.43,
+            "pickRate": 26.93,
+            "banRate": 3.3,
+            "strengthLevel": 0
+          }
+        },
+        "diamondPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.41,
+            "pickRate": 24.44,
+            "banRate": 3,
+            "strengthLevel": 0
+          }
+        },
+        "masterPlus": {
+          "adc": {
+            "rank": 3,
+            "winRate": 49.25,
+            "pickRate": 23.07,
+            "banRate": 2.89,
+            "strengthLevel": 0
+          }
+        },
+        "king": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.56,
+            "pickRate": 13.5,
+            "banRate": 0.84,
+            "strengthLevel": 2
+          }
+        },
+        "peak": {
+          "adc": {
+            "rank": 3,
+            "winRate": 47.88,
+            "pickRate": 15,
+            "banRate": 1.08,
+            "strengthLevel": 2
+          }
+        }
+      }
+    }
+  ]
+}
