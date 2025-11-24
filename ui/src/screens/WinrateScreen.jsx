@@ -1,4 +1,3 @@
-// ui/src/screens/WinrateScreen.jsx
 import { useEffect, useMemo, useState } from "react";
 import {
   RANK_OPTIONS,
@@ -27,24 +26,53 @@ function RoleIcon({ laneKey, size = 24 }) {
   );
 }
 
+// аватарка чемпиона с синей заглушкой
+function ChampAvatar({ name, src }) {
+  return (
+    <div
+      style={{
+        width: 28,
+        height: 32,
+        borderRadius: 4,
+        overflow: "hidden",
+        background: "rgba(15, 23, 42, 0.85)", // фон-заглушка
+        flexShrink: 0,
+      }}
+    >
+      {src && (
+        <img
+          src={src}
+          alt={name}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
 // helpers для цветов
 function winRateColor(v) {
   if (v == null) return "inherit";
-  if (v > 50) return "#4ade80"; // зелёный
-  if (v < 50) return "#f97373"; // красный
+  if (v > 50) return "#4ade80";
+  if (v < 50) return "#f97373";
   return "inherit";
 }
 
 function pickRateColor(v) {
   if (v == null) return "inherit";
-  if (v < 3) return "#f97373"; // мало пикают
-  return "#4ade80"; // норм/часто
+  if (v < 3) return "#f97373";
+  return "#4ade80";
 }
 
 function banRateColor(v) {
   if (v == null) return "inherit";
-  if (v > 10) return "#f97373"; // много банят
-  return "#4ade80"; // почти не банят
+  if (v > 10) return "#f97373";
+  return "#4ade80";
 }
 
 export function WinrateScreen({ language = "ru_ru", onBack }) {
@@ -55,10 +83,8 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
   const [rankKey, setRankKey] = useState("diamondPlus");
   const [laneKey, setLaneKey] = useState("top");
 
-  // сортировка
   const [sort, setSort] = useState({ column: "winRate", dir: "desc" });
 
-  // карта slug -> baseImgUrl из /champions/{slug}.json
   const [champImages, setChampImages] = useState({});
 
   // загрузка cn-combined.json
@@ -88,7 +114,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
     };
   }, []);
 
-  // после загрузки cn-combined подтягиваем картинки чемпионов
+  // загрузка картинок чемпионов
   useEffect(() => {
     if (!data || !Array.isArray(data.combined)) return;
 
@@ -137,19 +163,19 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
     };
   }, [data]);
 
-  // клик по заголовку таблицы для сортировки
+  // сортировка
   function onSort(column) {
     setSort((prev) => {
       if (prev.column !== column) {
         return { column, dir: "desc" };
       }
       if (prev.dir === "desc") return { column, dir: "asc" };
-      if (prev.dir === "asc") return { column: null, dir: null }; // сброс
+      if (prev.dir === "asc") return { column: null, dir: null };
       return { column, dir: "desc" };
     });
   }
 
-  // подготовка строк таблицы
+  // подготовка строк
   const rows = useMemo(() => {
     if (!data || !Array.isArray(data.combined)) return [];
 
@@ -181,7 +207,6 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       .filter(Boolean)
       .sort((a, b) => {
         if (!sort.column || !sort.dir) {
-          // дефолт: по винрейту убывание
           return (b.winRate || 0) - (a.winRate || 0);
         }
 
@@ -204,7 +229,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
         paddingBottom: 12,
       }}
     >
-      {/* верхняя панель: назад + заголовок */}
+      {/* верхняя панель */}
       <div
         style={{
           display: "flex",
@@ -226,16 +251,8 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
             color: "inherit",
           }}
         >
-          ← Меню
+          Меню
         </button>
-        <div
-          style={{
-            fontSize: 16,
-            fontWeight: 600,
-          }}
-        >
-          Статистика винрейтов (CN)
-        </div>
       </div>
 
       {/* фильтры */}
@@ -248,7 +265,6 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
           alignItems: "center",
         }}
       >
-        {/* ранги */}
         <div
           style={{
             display: "flex",
@@ -282,7 +298,6 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
           })}
         </div>
 
-        {/* линии — иконки ролей вместо текстовых кнопок */}
         <div
           style={{
             display: "flex",
@@ -407,7 +422,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
           </div>
 
           {rows.map((row, idx) => {
-            const imgUrl = champImages[row.slug] || "/fallback.png";
+            const imgUrl = champImages[row.slug];
 
             return (
               <div
@@ -432,17 +447,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
                     minWidth: 0,
                   }}
                 >
-                  <img
-                    src={imgUrl}
-                    alt={row.name}
-                    style={{
-                      width: 28,
-                      height: 32,
-                      objectFit: "cover",
-                      borderRadius: 4,
-                      flexShrink: 0,
-                    }}
-                  />
+                  <ChampAvatar name={row.name} src={imgUrl} />
 
                   <span
                     style={{

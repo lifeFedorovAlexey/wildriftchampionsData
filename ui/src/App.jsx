@@ -11,6 +11,7 @@ function App() {
   const [tg, setTg] = useState(null);
   const [language, setLanguage] = useState("ru_ru");
   const [view, setView] = useState(VIEWS.MENU);
+  const [updatedAt, setUpdatedAt] = useState(null);
 
   // Telegram WebApp init
   useEffect(() => {
@@ -20,6 +21,18 @@ function App() {
       webApp.ready();
       webApp.expand();
     }
+  }, []);
+
+  // ⬇️ Загружаем дату из public/cn-combined.json
+  useEffect(() => {
+    fetch("/cn-combined.json")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.updatedAt) {
+          setUpdatedAt(data.updatedAt.split("T")[0]); // "2025-11-24"
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const bg = tg?.themeParams?.bg_color || "#050816";
@@ -101,7 +114,7 @@ function App() {
                   opacity: 0.85,
                 }}
               >
-                Таблица героев по рангу и линии (CN).
+                Обновлено {updatedAt || "..."} : lolm.qq.com
               </div>
             </div>
             <span
@@ -114,7 +127,7 @@ function App() {
             </span>
           </button>
 
-          {/* заглушка для будущих разделов */}
+          {/* заглушка */}
           <div
             style={{
               marginTop: 12,
