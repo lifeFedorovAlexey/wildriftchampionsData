@@ -7,8 +7,7 @@ export const RANK_OPTIONS = [
 ];
 
 // спрайт ролей с сайта CN
-export const ROLE_SPRITE_URL =
-  "https://game.gtimg.cn/images/lgamem/act/a20220818raider/place-icons.png";
+export const ROLE_SPRITE_URL = "/icons/place-icons.webp";
 
 export const ROLE_ICON_SPRITE = {
   top: { x: 3, y: 2 },

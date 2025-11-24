@@ -5,6 +5,7 @@ import {
   ROLE_SPRITE_URL,
   ROLE_ICON_SPRITE,
 } from "./constants";
+import PageWrapper from "../components/PageWrapper.jsx";
 
 // маленький компонент иконки роли
 function RoleIcon({ laneKey, size = 24 }) {
@@ -220,121 +221,82 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       });
   }, [data, rankKey, laneKey, language, sort]);
 
+  const filters = (
+    <>
+      {/* фильтры рангов */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 6,
+          justifyContent: "center",
+        }}
+      >
+        {RANK_OPTIONS.map((opt) => {
+          const active = opt.key === rankKey;
+          return (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => setRankKey(opt.key)}
+              style={{
+                borderRadius: 999,
+                border: active
+                  ? "1px solid rgba(96,165,250,1)"
+                  : "1px solid rgba(31,41,55,1)",
+                background: active ? "rgba(37,99,235,0.3)" : "transparent",
+                padding: "4px 8px",
+                fontSize: 11,
+                cursor: "pointer",
+                color: "inherit",
+              }}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* фильтры линий */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 6,
+          justifyContent: "center",
+        }}
+      >
+        {LANE_OPTIONS.map((opt) => {
+          const active = opt.key === laneKey;
+          return (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => setLaneKey(opt.key)}
+              title={opt.label}
+              style={{
+                borderRadius: 999,
+                border: active
+                  ? "1px solid rgba(52,211,153,1)"
+                  : "1px solid rgba(31,41,55,1)",
+                background: active ? "rgba(16,185,129,0.25)" : "transparent",
+                padding: "4px 8px",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <RoleIcon laneKey={opt.key} size={30} />
+            </button>
+          );
+        })}
+      </div>
+    </>
+  );
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        paddingBottom: 12,
-      }}
-    >
-      {/* верхняя панель */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          marginBottom: 10,
-        }}
-      >
-        <button
-          type="button"
-          onClick={onBack}
-          style={{
-            border: "none",
-            borderRadius: 999,
-            padding: "4px 10px",
-            fontSize: 13,
-            cursor: "pointer",
-            background: "rgba(15,23,42,0.9)",
-            color: "inherit",
-          }}
-        >
-          Меню
-        </button>
-      </div>
-
-      {/* фильтры */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 8,
-          marginBottom: 10,
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 6,
-            justifyContent: "center",
-          }}
-        >
-          {RANK_OPTIONS.map((opt) => {
-            const active = opt.key === rankKey;
-            return (
-              <button
-                key={opt.key}
-                type="button"
-                onClick={() => setRankKey(opt.key)}
-                style={{
-                  borderRadius: 999,
-                  border: active
-                    ? "1px solid rgba(96,165,250,1)"
-                    : "1px solid rgba(31,41,55,1)",
-                  background: active ? "rgba(37,99,235,0.3)" : "transparent",
-                  padding: "4px 8px",
-                  fontSize: 11,
-                  cursor: "pointer",
-                  color: "inherit",
-                }}
-              >
-                {opt.label}
-              </button>
-            );
-          })}
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 6,
-            justifyContent: "center",
-          }}
-        >
-          {LANE_OPTIONS.map((opt) => {
-            const active = opt.key === laneKey;
-            return (
-              <button
-                key={opt.key}
-                type="button"
-                onClick={() => setLaneKey(opt.key)}
-                title={opt.label}
-                style={{
-                  borderRadius: 999,
-                  border: active
-                    ? "1px solid rgba(52,211,153,1)"
-                    : "1px solid rgba(31,41,55,1)",
-                  background: active ? "rgba(16,185,129,0.25)" : "transparent",
-                  padding: "4px 8px",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <RoleIcon laneKey={opt.key} size={30} />
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* контент */}
+    <PageWrapper onBack={onBack} filters={filters}>
       {loading && (
         <div
           style={{
@@ -501,6 +463,6 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
           )}
         </div>
       )}
-    </div>
+    </PageWrapper>
   );
 }
