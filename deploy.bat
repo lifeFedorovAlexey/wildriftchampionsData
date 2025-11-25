@@ -1,45 +1,36 @@
 @echo off
 setlocal
 
-REM ==== НАСТРОЙКИ ====
-REM Путь к проекту
-set PROJECT_DIR=D:\wildRiftChampions
+REM ==== NASTROYKI ====
+set "PROJECT_DIR=D:\wildRiftChampions"
 
-REM Путь к node.exe (проверь, что он верный)
-set NODE_EXE="C:\Program Files\nodejs\node.exe"
+REM ==== PEREKHOD V PAPKU PROEKTA ====
+cd /d "%PROJECT_DIR%"
 
-REM Лог-файл
-set LOG_FILE=%PROJECT_DIR%\deploy.log
+echo [START] %date% %time%
+echo === Zapusk merge-full-with-historu.mjs ===
 
-REM ==== ПОДГОТОВКА ====
-cd /d %PROJECT_DIR%
+REM ==== ZAPUSK NODE-SKRIPTA ====
+node merge-full-with-historu.mjs
+set "NODE_EXIT=%ERRORLEVEL%"
 
-echo [START] %date% %time% >> "%LOG_FILE%"
-echo === Запуск merge-full-with-historu.mjs === >> "%LOG_FILE%"
-
-REM ==== ЗАПУСК NODE-СКРИПТА С ИСТОРИЕЙ ====
-%NODE_EXE% "%PROJECT_DIR%\merge-full-with-historu.mjs" >> "%LOG_FILE%" 2>&1
-
-IF %ERRORLEVEL% NEQ 0 (
-    echo [ERROR] merge-full-with-historu.mjs завершился с ошибкой %ERRORLEVEL% >> "%LOG_FILE%"
-    echo Ошибка при запуске merge-full-with-historu.mjs
-    goto AFTER_GIT
-) ELSE (
-    echo [OK] merge-full-with-historu.mjs успешно выполнен >> "%LOG_FILE%"
+if not "%NODE_EXIT%"=="0" (
+    echo [ERROR] merge-full-with-historu.mjs exit code %NODE_EXIT%
+) else (
+    echo [OK] merge-full-with-historu.mjs done
 )
 
-REM ==== GIT ====
-:AFTER_GIT
-echo === Добавляю изменения === >> "%LOG_FILE%"
-git add -A >> "%LOG_FILE%" 2>&1
+REM ==== GIT OPERATSII ====
+echo === Git add ===
+git add -A
 
-echo === Коммит === >> "%LOG_FILE%"
-git commit -m "Auto update CN stats" >> "%LOG_FILE%" 2>&1
+echo === Git commit ===
+git commit -m "Auto update CN stats"
 
-echo === Пуш в GitHub === >> "%LOG_FILE%"
-git push >> "%LOG_FILE%" 2>&1
+echo === Git push ===
+git push
 
-echo [END] %date% %time% EXIT=%ERRORLEVEL% >> "%LOG_FILE%"
-echo. >> "%LOG_FILE%"
+echo [END] %date% %time% EXIT=%ERRORLEVEL%
+echo.
 
 endlocal

@@ -503,3 +503,13 @@ To https://github.com/lifeFedorovAlexey/wildriftchampionsData.git
 ���⥬� �� 㤠���� ���� 㪠����� ����.
 [ERROR] merge-full-with-historu.mjs завершился с ошибкой 3 
 === Добавляю изменения === 
+warning: in the working copy of 'deploy.log', LF will be replaced by CRLF the next time Git touches it
+=== Коммит === 
+[main 2a597a5] Auto update CN stats
+ 1 file changed, 15 insertions(+)
+=== Пуш в GitHub === 
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/lifeFedorovAlexey/wildriftchampionsData.git
+   5542df0..2a597a5  main -> main
+[END] 25.11.2025 15:22:58,84 EXIT=0 
+ 
