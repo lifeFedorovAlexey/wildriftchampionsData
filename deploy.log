@@ -488,3 +488,18 @@ To add an exception for this directory, call:
 ���⥬� �� 㤠���� ���� 㪠����� ����.
 [ERROR] merge-full-with-historu.mjs завершился с ошибкой 3 
 === Добавляю изменения === 
+warning: in the working copy of 'deploy.log', LF will be replaced by CRLF the next time Git touches it
+=== Коммит === 
+[main 5542df0] Auto update CN stats
+ 1 file changed, 447 insertions(+)
+=== Пуш в GitHub === 
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/lifeFedorovAlexey/wildriftchampionsData.git
+   a1c4207..5542df0  main -> main
+[END] 25.11.2025 15:19:48,58 EXIT=0 
+ 
+[START] 25.11.2025 15:22:57,22 
+=== Запуск merge-full-with-historu.mjs === 
+���⥬� �� 㤠���� ���� 㪠����� ����.
+[ERROR] merge-full-with-historu.mjs завершился с ошибкой 3 
+=== Добавляю изменения === 
