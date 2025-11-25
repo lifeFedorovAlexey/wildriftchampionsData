@@ -1,0 +1,138 @@
+{
+  "slug": "malphite",
+  "cnHeroId": "10083",
+  "heroId": "10083",
+  "name": {
+    "cn": "墨菲特",
+    "titleCn": "熔岩巨兽"
+  },
+  "roles": [
+    "坦克"
+  ],
+  "lane": "辅助;单人路;中路",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10083.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10083.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1008301.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Malphite_0.jpg"
+  },
+  "stats": {
+    "attack": 520000,
+    "attackPerLevel": 36000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6900000,
+    "hpPerLevel": 1200000,
+    "mp": 3450000,
+    "mpPerLevel": 410000,
+    "movespeed": 34000,
+    "armor": 490000,
+    "armorPerLevel": 43000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 90000,
+    "hpregenPerLevel": 8100,
+    "mpregen": 150000,
+    "mpregenPerLevel": 7000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 1,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 3,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "mofeite",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:38"
+  },
+  "spells": [
+    {
+      "spellId": "10830001",
+      "spellKey": "passive",
+      "name": "花岗岩护盾",
+      "description": "若在8秒（随等级成长）内未承受任何伤害，可获得一道能够吸收76伤害的护盾。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10830001_malphite_passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "若在8秒（随等级成长）内未承受任何伤害，可获得一道能够吸收76伤害的护盾（11%最大）。"
+      ]
+    },
+    {
+      "spellId": "10830201",
+      "spellKey": "active",
+      "name": "地震碎片",
+      "description": "将一块岩石碎片从地下射向目标，对其造成70魔法伤害，并降低目标移速15%，同时提升自身移速15%，持续3秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10830201_malphite_q.png",
+      "video": "",
+      "cd": "8",
+      "costType": "MP",
+      "costValue": "75",
+      "detail": [
+        "将一块岩石碎片射向目标，对其造成70魔法伤害 (70+45%法术强度)，并降低目标移速15%，同时提升自身移速15%，持续3秒。",
+        "将一块岩石碎片射向目标，对其造成130魔法伤害 (130+45%法术强度)，并降低目标移速20%，同时提升自身移速20%，持续3秒。",
+        "将一块岩石碎片射向目标，对其造成190魔法伤害 (190+45%法术强度)，并降低目标移速25%，同时提升自身移速25%，持续3秒。",
+        "将一块岩石碎片射向目标，对其造成250魔法伤害 (250+45%法术强度)，并降低目标移速30%，同时提升自身移速30%，持续3秒。"
+      ]
+    },
+    {
+      "spellId": "10830301",
+      "spellKey": "active",
+      "name": "雷霆拍击",
+      "description": "被动：护甲提升10。  主动：接下来6秒内，普攻会对前方锥形区域内的敌人造成20物理伤害。着重强化第一次普攻，使其对敌人造成60额外物理伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10830301_malphite_w.png",
+      "video": "",
+      "cd": "10",
+      "costType": "MP",
+      "costValue": "25",
+      "detail": [
+        "被动：护甲提升10(25% 护甲)。  主动：接下来6秒内，普攻会对前方锥形区域内的敌人造成20物理伤害（10+20%法术强度+20%armour_ratio），并强化第一次普攻，使其对敌人造成60额外物理伤害（40+40%法术强度+40%armour_ratio）。",
+        "被动：护甲提升12(30% 护甲)。  主动：接下来6秒内，普攻会对前方锥形区域内的敌人造成30物理伤害（20+20%法术强度+20%armour_ratio），并强化第一次普攻，使其对敌人造成80额外物理伤害（60+40%法术强度+40%armour_ratio）。",
+        "被动：护甲提升13(35% 护甲)。  主动：接下来6秒内，普攻会对前方锥形区域内的敌人造成40物理伤害（30+20%法术强度+20%armour_ratio），并强化第一次普攻，使其对敌人造成100额外物理伤害（80+40%法术强度+40%armour_ratio）。",
+        "被动：护甲提升14(40% 护甲)。  主动：接下来6秒内，普攻会对前方锥形区域内的敌人造成50物理伤害（40+20%法术强度+20%armour_ratio），并强化第一次普攻，使其对敌人造成120额外物理伤害（100+40%法术强度+40%armour_ratio）。"
+      ]
+    },
+    {
+      "spellId": "10830401",
+      "spellKey": "active",
+      "name": "大地震颤",
+      "description": "锤击地面，对周围敌人造成73魔法伤害，并使其攻击速度降低30%，持续3秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10830401_malphite_e.png",
+      "video": "",
+      "cd": "7",
+      "costType": "MP",
+      "costValue": "55",
+      "detail": [
+        "锤击地面，对周围敌人造成73魔法伤害（50+45%法术强度+45%armour_ratio），并使其攻击速度降低30%，持续3秒。",
+        "锤击地面，对周围敌人造成123魔法伤害（100+45%法术强度+45%armour_ratio），并使其攻击速度降低35%，持续3秒。",
+        "锤击地面，对周围敌人造成173魔法伤害（150+45%法术强度+45%armour_ratio），并使其攻击速度降低40%，持续3秒。",
+        "锤击地面，对周围敌人造成223魔法伤害（200+45%法术强度+45%armour_ratio），并使其攻击速度降低45%，持续3秒。"
+      ]
+    },
+    {
+      "spellId": "10830501",
+      "spellKey": "active",
+      "name": "势不可挡",
+      "description": "冲击目标区域，对区域内的敌人造成200魔法伤害，并将他们击飞1.5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10830501_malphite_r.png",
+      "video": "",
+      "cd": "75",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "冲击目标区域，对区域内的敌人造成200魔法伤害（200+90%法术强度），并将他们击飞1.5秒。",
+        "冲击目标区域，对区域内的敌人造成300魔法伤害（300+90%法术强度），并将他们击飞1.5秒。",
+        "冲击目标区域，对区域内的敌人造成400魔法伤害（400+90%法术强度），并将他们击飞1.5秒。"
+      ]
+    }
+  ]
+}

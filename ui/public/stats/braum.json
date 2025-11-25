@@ -1,0 +1,138 @@
+{
+  "slug": "braum",
+  "cnHeroId": "10021",
+  "heroId": "10021",
+  "name": {
+    "cn": "布隆",
+    "titleCn": "弗雷尔卓德之心"
+  },
+  "roles": [
+    "坦克"
+  ],
+  "lane": "辅助",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10021.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10021.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1002101.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Braum_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 36000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6900000,
+    "hpPerLevel": 1200000,
+    "mp": 3800000,
+    "mpPerLevel": 490000,
+    "movespeed": 34500,
+    "armor": 520000,
+    "armorPerLevel": 51000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 90000,
+    "hpregenPerLevel": 10700,
+    "mpregen": 120000,
+    "mpregenPerLevel": 11000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 2,
+    "damage": 1,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 2,
+    "assistL": 2
+  },
+  "meta": {
+    "alias": "bulong",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:35"
+  },
+  "spells": [
+    {
+      "spellId": "10210001",
+      "spellKey": "passive",
+      "name": "震荡猛击",
+      "description": "通过普通攻击和寒冬之咬来对目标施加标记。在施加第一层标记后，我方英雄的普攻也会叠加此标记。  当目标身上的此标记达到4层，就会陷入晕眩1.25秒并承受45魔法伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10210001_Braum_beidong.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "通过普通攻击和寒冬之咬来对目标施加标记，持续4秒。在施加第一层标记后，我方英雄的普攻命中也会对目标叠加此标记。  当目标身上的此标记达到4层，就会陷入晕眩1.25秒并承受45魔法伤害（随等级成长）。  敌人在晕眩后的8秒内不再获得标记层数，但被布隆的普攻命中时会受到额外9魔法伤害（随等级成长）。"
+      ]
+    },
+    {
+      "spellId": "10210301",
+      "spellKey": "active",
+      "name": "寒冬之咬",
+      "description": "发射冰块，对命中的目标造成81魔法伤害并使其移速降低70%，持续2秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10210301_Braum_1.png",
+      "video": "",
+      "cd": "9",
+      "costType": "MP",
+      "costValue": "40",
+      "detail": [
+        "发射冰块，对命中的目标造成81魔法伤害（60+3%）并使其移速降低70%，持续2秒。  此外，还会对目标添加一层震荡猛击标记。",
+        "发射冰块，对命中的目标造成141魔法伤害（120+3%）并使其移速降低70%，持续2秒。  此外，还会对目标添加一层震荡猛击标记。",
+        "发射冰块，对命中的目标造成201魔法伤害（180+3%）并使其移速降低70%，持续2秒。  此外，还会对目标添加一层震荡猛击标记。",
+        "发射冰块，对命中的目标造成261魔法伤害（240+3%）并使其移速降低70%，持续2秒。  此外，还会对目标添加一层震荡猛击标记。"
+      ]
+    },
+    {
+      "spellId": "10210401",
+      "spellKey": "active",
+      "name": "挺身而出",
+      "description": "跃向一名我方英雄或小兵。抵达时，布隆和队友都会获得10护甲和10魔法抗性加成。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10210401_Braum_2.png",
+      "video": "",
+      "cd": "11",
+      "costType": "MP",
+      "costValue": "55",
+      "detail": [
+        "跃向一名我方英雄或小兵。抵达时，自己和队友都会获得10护甲（10+10%额外armour_ratio）和10魔法抗性（10+10%额外魔法抗性加成）加成，持续3秒。",
+        "跃向一名我方英雄或小兵。抵达时，自己和队友都会获得15护甲（15+12%额外armour_ratio）和15魔法抗性（15+12%额外魔法抗性加成）加成，持续3秒。",
+        "跃向一名我方英雄或小兵。抵达时，自己和队友都会获得20护甲（20+14%额外armour_ratio）和20魔法抗性（20+14%额外魔法抗性加成）加成，持续3秒。",
+        "跃向一名我方英雄或小兵。抵达时，自己和队友都会获得25护甲（25+16%额外armour_ratio）和25魔法抗性（25+16%额外魔法抗性加成）加成，持续3秒。"
+      ]
+    },
+    {
+      "spellId": "10210501",
+      "spellKey": "active",
+      "name": "坚不可摧",
+      "description": "举起盾牌并拦截飞行道具，抵挡来自正前方的首次伤害，且此后所承受的伤害将减免35%。  举起盾牌时，获得移动速度加成。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10210501_Braum_3.png",
+      "video": "",
+      "cd": "16",
+      "costType": "MP",
+      "costValue": "35",
+      "detail": [
+        "举起盾牌并拦截飞行道具，持续4秒。抵挡来自正前方的首次伤害，且此后所承受的伤害将减免35%。  举起盾牌时，提高15%移动速度。",
+        "举起盾牌并拦截飞行道具，持续4秒。抵挡来自正前方的首次伤害，且此后所承受的伤害将减免40%。  举起盾牌时，提高15%移动速度。",
+        "举起盾牌并拦截飞行道具，持续4秒。抵挡来自正前方的首次伤害，且此后所承受的伤害将减免45%。  举起盾牌时，提高15%移动速度。",
+        "举起盾牌并拦截飞行道具，持续4秒。抵挡来自正前方的首次伤害，且此后所承受的伤害将减免50%。  举起盾牌时，提高15%移动速度。"
+      ]
+    },
+    {
+      "spellId": "10210601",
+      "spellKey": "active",
+      "name": "冰川裂隙",
+      "description": "猛击地面并砸开一道冰川裂隙，造成150魔法伤害并击飞敌人1秒。裂隙使敌人移速降低40%",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10210601_Braum_4.png",
+      "video": "",
+      "cd": "75",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "猛击地面并砸开一道冰川裂隙，造成150魔法伤害（150+60%法术强度）并击飞敌人1秒。裂隙在地面持续4秒，并使其作用范围内的敌人移速降低40%。  在命中首名敌方英雄后，击飞后续敌人0.25秒。",
+        "猛击地面并砸开一道冰川裂隙，造成250魔法伤害（250+60%法术强度）并击飞敌人1.25秒。裂隙在地面持续4秒，并使其作用范围内的敌人移速降低50%。  在命中首名敌方英雄后，击飞后续敌人0.25秒。",
+        "猛击地面并砸开一道冰川裂隙，造成350魔法伤害（350+60%法术强度）并击飞敌人1.5秒。裂隙在地面持续4秒，并使其作用范围内的敌人移速降低60%。  在命中首名敌方英雄后，击飞后续敌人0.25秒。"
+      ]
+    }
+  ]
+}

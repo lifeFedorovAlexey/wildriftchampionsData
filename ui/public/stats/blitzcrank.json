@@ -1,0 +1,138 @@
+{
+  "slug": "blitzcrank",
+  "cnHeroId": "10033",
+  "heroId": "10033",
+  "name": {
+    "cn": "布里茨",
+    "titleCn": "蒸汽机器人"
+  },
+  "roles": [
+    "坦克"
+  ],
+  "lane": "辅助",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10033.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10033.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1003301.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Blitzcrank_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 20000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6600000,
+    "hpPerLevel": 1200000,
+    "mp": 3000000,
+    "mpPerLevel": 410000,
+    "movespeed": 33500,
+    "armor": 490000,
+    "armorPerLevel": 51000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 90000,
+    "hpregenPerLevel": 8100,
+    "mpregen": 120000,
+    "mpregenPerLevel": 11000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 1,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 2,
+    "assistL": 2
+  },
+  "meta": {
+    "alias": "bulici",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:36"
+  },
+  "spells": [
+    {
+      "spellId": "10330001",
+      "spellKey": "passive",
+      "name": "法力屏障",
+      "description": "当生命值低于35%时，获得可吸收90伤害（30%法力加成）的护盾，持续10秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10330001_Blitzcrank_beidong.png",
+      "video": "",
+      "cd": "50",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "当生命值低于35%时，获得可吸收90伤害（30%法力加成）的护盾，持续10秒。"
+      ]
+    },
+    {
+      "spellId": "10330201",
+      "spellKey": "active",
+      "name": "机械飞爪",
+      "description": "将右手发射出去，对命中目标造成110魔法伤害并将其拉向自身。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10330201_Blitzcrank_q.png",
+      "video": "",
+      "cd": "18",
+      "costType": "MP",
+      "costValue": "80",
+      "detail": [
+        "将右手发射出去，对命中目标造成110魔法伤害（110+100%法术强度）并将其拉向自身。",
+        "将右手发射出去，对命中目标造成175魔法伤害（175+100%法术强度）并将其拉向自身。",
+        "将右手发射出去，对命中目标造成240魔法伤害（240+100%法术强度）并将其拉向自身。",
+        "将右手发射出去，对命中目标造成305魔法伤害（305+100%法术强度）并将其拉向自身。"
+      ]
+    },
+    {
+      "spellId": "10330301",
+      "spellKey": "active",
+      "name": "过载运转",
+      "description": "移动速度提升35%，2.5秒内不断衰减。   可以再次施放该技能，获得140%的移动速度，1.5秒内不断衰减。   当加成结束时，若没有再次释放该技能，则移动速度降低33%，持续1秒。若再次施放过该技能，则会在加成结束时，降低99%移动速度，持续1秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10330301_Blitzcrank_w.png",
+      "video": "",
+      "cd": "10",
+      "costType": "MP",
+      "costValue": "75",
+      "detail": [
+        "移动速度提升35%，2.5秒内不断衰减。   可以再次施放该技能，获得140%的移动速度，1.5秒内不断衰减。   当加成结束时，若没有再次释放该技能，则移动速度降低33%，持续1秒。若再次施放过该技能，则会在加成结束时，降低99%移动速度，持续1秒。",
+        "移动速度提升40%，2.5秒内不断衰减。   可以再次施放该技能，获得150%的移动速度，1.5秒内不断衰减。   当加成结束时，若没有再次释放该技能，则移动速度降低33%，持续1秒。若再次施放过该技能，则会在加成结束时，降低99%移动速度，持续1秒。",
+        "移动速度提升45%，2.5秒内不断衰减。   可以再次施放该技能，获得160%的移动速度，1.5秒内不断衰减。   当加成结束时，若没有再次释放该技能，则移动速度降低33%，持续1秒。若再次施放过该技能，则会在加成结束时，降低99%移动速度，持续1秒。",
+        "移动速度提升50%，2.5秒内不断衰减。   可以再次施放该技能，获得170%的移动速度，1.5秒内不断衰减。   当加成结束时，若没有再次释放该技能，则移动速度降低33%，持续1秒。若再次施放过该技能，则会在加成结束时，降低99%移动速度，持续1秒。"
+      ]
+    },
+    {
+      "spellId": "10330401",
+      "spellKey": "active",
+      "name": "能量铁拳",
+      "description": "为机械手臂充能，将其下一次普通攻击强化为暴击，造成105物理伤害并击飞目标。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10330401_Blitzcrank_e.png",
+      "video": "",
+      "cd": "8",
+      "costType": "MP",
+      "costValue": "25",
+      "detail": [
+        "为机械手臂充能，将其下一次普通攻击强化为暴击，造成105物理伤害（180%攻击力）并击飞目标。",
+        "为机械手臂充能，将其下一次普通攻击强化为暴击，造成116物理伤害（200%攻击力）并击飞目标。",
+        "为机械手臂充能，将其下一次普通攻击强化为暴击，造成128物理伤害（220%攻击力）并击飞目标。",
+        "为机械手臂充能，将其下一次普通攻击强化为暴击，造成140物理伤害（240%攻击力）并击飞目标。"
+      ]
+    },
+    {
+      "spellId": "10330601",
+      "spellKey": "active",
+      "name": "静电力场",
+      "description": "被动：当该技能不在冷却中时，可以通过普通攻击标记敌人。在1秒后，被标记的敌人会被电击，受到40魔法伤害。  主动：对附近敌人造成275魔法伤害并使其沉默0.5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10330601_Blitzcrank_r.png",
+      "video": "",
+      "cd": "55",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "被动：当该技能不在冷却中时，可以通过普通攻击标记敌人。在1秒后，被标记的敌人会被电击，受到40魔法伤害（40+15%法术强度）。  主动：对附近敌人造成275魔法伤害（275+80%法术强度）并使其沉默0.5秒。",
+        "被动：当该技能不在冷却中时，可以通过普通攻击标记敌人。在1秒后，被标记的敌人会被电击，受到80魔法伤害（80+15%法术强度）。  主动：对附近敌人造成400魔法伤害（400+80%法术强度）并使其沉默0.5秒。",
+        "被动：当该技能不在冷却中时，可以通过普通攻击标记敌人。在1秒后，被标记的敌人会被电击，受到120魔法伤害（120+15%法术强度）。  主动：对附近敌人造成525魔法伤害（525+80%法术强度）并使其沉默0.5秒。"
+      ]
+    }
+  ]
+}

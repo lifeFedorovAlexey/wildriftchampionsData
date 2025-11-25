@@ -1,0 +1,138 @@
+{
+  "slug": "vayne",
+  "cnHeroId": "10010",
+  "heroId": "10010",
+  "name": {
+    "cn": "薇恩",
+    "titleCn": "暗夜猎手"
+  },
+  "roles": [
+    "射手"
+  ],
+  "lane": "射手",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10010.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10010.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1001001.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Vayne_0.jpg"
+  },
+  "stats": {
+    "attack": 540000,
+    "attackPerLevel": 30000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 5700000,
+    "hpPerLevel": 1200000,
+    "mp": 3000000,
+    "mpPerLevel": 410000,
+    "movespeed": 33500,
+    "armor": 310000,
+    "armorPerLevel": 45000,
+    "spellblock": 300000,
+    "spellblockPerLevel": 14000,
+    "hpregen": 75000,
+    "hpregenPerLevel": 5500,
+    "mpregen": 90000,
+    "mpregenPerLevel": 5000,
+    "crit": 17500,
+    "attackspeed": 3000,
+    "attackspeedPerLevel": 270
+  },
+  "difficulty": {
+    "difficultyL": 2,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 1,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "weien",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:34"
+  },
+  "spells": [
+    {
+      "spellId": "10100501",
+      "spellKey": "passive",
+      "name": "暗夜猎手",
+      "description": "向敌方英雄移动时，获得10移动速度加成。 终极时刻：提升加成效果，获得70移动速度加成。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10100501_vn_Passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "向敌方英雄移动时，获得10移动速度（随等级成长）加成。 终极时刻：转为获得70移动速度加成。"
+      ]
+    },
+    {
+      "spellId": "10100201",
+      "spellKey": "active",
+      "name": "闪避突袭",
+      "description": "向前翻滚并强化下一次普攻以造成额外22物理伤害。  终极时刻：施放时获得1秒隐形效果。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10100201_vn_Q.png",
+      "video": "",
+      "cd": "4",
+      "costType": "MP",
+      "costValue": "30",
+      "detail": [
+        "向前翻滚并强化下一次普攻以造成额外22物理伤害（40%攻击力）。  终极时刻：施放时获得1秒隐形效果。  闪避突袭无法穿越墙体。",
+        "向前翻滚并强化下一次普攻以造成额外27物理伤害（50%攻击力）。  终极时刻：施放时获得1秒隐形效果。  闪避突袭无法穿越墙体。",
+        "向前翻滚并强化下一次普攻以造成额外33物理伤害（60%攻击力）。  终极时刻：施放时获得1秒隐形效果。  闪避突袭无法穿越墙体。",
+        "向前翻滚并强化下一次普攻以造成额外38物理伤害（70%攻击力）。  终极时刻：施放时获得1秒隐形效果。  闪避突袭无法穿越墙体。"
+      ]
+    },
+    {
+      "spellId": "10100801",
+      "spellKey": "active",
+      "name": "圣银弩箭",
+      "description": "被动：对同一目标进行连续三次的普通攻击或技能施放，额外造成相当于其3%最大生命值的真实伤害。  主动：获得15%攻击速度和10%全能吸血，持续3秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10100801_vn_W.png",
+      "video": "",
+      "cd": "18",
+      "costType": "MP",
+      "costValue": "45",
+      "detail": [
+        "被动：对同一目标进行连续三次的普通攻击或技能施放，额外造成相当于其3%最大生命值的真实伤害。  主动：获得15%攻击速度和10%全能吸血，持续3秒。  此技能的被动伤害下限为50真实伤害； 对野怪造成的被动伤害上限为200。",
+        "被动：对同一目标进行连续三次的普通攻击或技能施放，额外造成相当于其6%最大生命值的真实伤害。  主动：获得20%攻击速度和10%全能吸血，持续3秒。  此技能的被动伤害下限为65真实伤害； 对野怪造成的被动伤害上限为200。",
+        "被动：对同一目标进行连续三次的普通攻击或技能施放，额外造成相当于其9%最大生命值的真实伤害。  主动：获得25%攻击速度和10%全能吸血，持续3秒。  此技能的被动伤害下限为80真实伤害； 对野怪造成的被动伤害上限为200。",
+        "被动：对同一目标进行连续三次的普通攻击或技能施放，额外造成相当于其12%最大生命值的真实伤害。  主动：获得30%攻击速度和10%全能吸血，持续3秒。  此技能的被动伤害下限为95真实伤害； 对野怪造成的被动伤害上限为200。"
+      ]
+    },
+    {
+      "spellId": "10100301",
+      "spellKey": "active",
+      "name": "恶魔审判",
+      "description": "向敌人发射巨型弩箭，造成50物理伤害并击退目标。若敌人撞击到墙体上，则会受到额外105物理伤害，并晕眩1.5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10100301_vn_E.png",
+      "video": "",
+      "cd": "21",
+      "costType": "MP",
+      "costValue": "90",
+      "detail": [
+        "向敌人发射巨型弩箭，造成50物理伤害（50+55%额外攻击力）并击退目标。若目标被击退至墙体或者地形边缘，则会受到额外105物理伤害（105+75%额外攻击力），并被晕眩1.5秒。",
+        "向敌人发射巨型弩箭，造成80物理伤害（80+55%额外攻击力）并击退目标。若目标被击退至墙体或者地形边缘，则会受到额外145物理伤害（145+75%额外攻击力），并被晕眩1.5秒。",
+        "向敌人发射巨型弩箭，造成110物理伤害（110+55%额外攻击力）并击退目标。若目标被击退至墙体或者地形边缘，则会受到额外185物理伤害（185+75%额外攻击力），并被晕眩1.5秒。",
+        "向敌人发射巨型弩箭，造成140物理伤害（140+55%额外攻击力）并击退目标。若目标被击退至墙体或者地形边缘，则会受到额外225物理伤害（225+75%额外攻击力），并被晕眩1.5秒。"
+      ]
+    },
+    {
+      "spellId": "10100401",
+      "spellKey": "active",
+      "name": "终极时刻",
+      "description": "增加20攻击力并强化暗夜猎手和闪避突袭，持续8秒。  当被薇恩所伤害的敌方英雄在3秒内阵亡，该技能的持续时间将延长4秒，最多延长至8秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10100401_vn_R.png",
+      "video": "",
+      "cd": "65",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "增加20攻击力并强化暗夜猎手和闪避突袭，持续8秒。  当被薇恩所伤害的敌方英雄在3秒内阵亡，该技能的持续时间将延长4秒，最多延长至8秒。",
+        "增加30攻击力并强化暗夜猎手和闪避突袭，持续10秒。  当被薇恩所伤害的敌方英雄在3秒内阵亡，该技能的持续时间将延长4秒，最多延长至10秒。",
+        "增加40攻击力并强化暗夜猎手和闪避突袭，持续12秒。  当被薇恩所伤害的敌方英雄在3秒内阵亡，该技能的持续时间将延长4秒，最多延长至12秒。"
+      ]
+    }
+  ]
+}

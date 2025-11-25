@@ -1,0 +1,138 @@
+{
+  "slug": "rakan",
+  "cnHeroId": "10052",
+  "heroId": "10052",
+  "name": {
+    "cn": "洛",
+    "titleCn": "幻翎"
+  },
+  "roles": [
+    "辅助"
+  ],
+  "lane": "辅助",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10052.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10052.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1005201.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Rakan_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 36000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6600000,
+    "hpPerLevel": 1120000,
+    "mp": 4350000,
+    "mpPerLevel": 570000,
+    "movespeed": 34500,
+    "armor": 490000,
+    "armorPerLevel": 43000,
+    "spellblock": 340000,
+    "spellblockPerLevel": 16000,
+    "hpregen": 60000,
+    "hpregenPerLevel": 5500,
+    "mpregen": 150000,
+    "mpregenPerLevel": 7000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 2,
+    "damage": 1,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 2,
+    "assistL": 3
+  },
+  "meta": {
+    "alias": "luo",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:37"
+  },
+  "spells": [
+    {
+      "spellId": "10520001",
+      "spellKey": "passive",
+      "name": "异色羽裳",
+      "description": "周期性地获得31生命护盾。每当普通攻击和技能命中敌方英雄时，会减少该技能1秒冷却时间。  情人跃：霞与洛可相依回城。双方会在发起者的回城结束时同时抵达出生点。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10520001_Rakan_Passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "每35秒（随等级成长）获得31生命护盾（31+80%法术强度）。每当普通攻击和技能命中敌方英雄时，会减少该技能1秒冷却时间。  情人跃：霞与洛可相依回城。双方会在发起者的回城结束时同时抵达出生点。"
+      ]
+    },
+    {
+      "spellId": "10520201",
+      "spellKey": "active",
+      "name": "微光飞翎",
+      "description": "掷出一片神奇羽毛以造成90魔法伤害。若羽毛命中了一名敌方英雄或史诗级野怪，将在3秒后或碰触到一名队友时，获得56生命值的治疗。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10520201_Rakan_Q.png",
+      "video": "",
+      "cd": "10",
+      "costType": "MP",
+      "costValue": "60",
+      "detail": [
+        "掷出一根神奇羽毛，对命中的第一名敌人造成90魔法伤害（90+60%法术强度）。  若羽毛命中一名敌方英雄或史诗级野怪，将在3秒后或碰触到一名队友时，为自己和附近的队友回复56生命值（50+6+70%法术强度）。",
+        "掷出一根神奇羽毛，对命中的第一名敌人造成150魔法伤害（150+60%法术强度）。  若羽毛命中一名敌方英雄或史诗级野怪，将在3秒后或碰触到一名队友时，为自己和附近的队友回复56生命值（50+6+70%法术强度）。",
+        "掷出一根神奇羽毛，对命中的第一名敌人造成210魔法伤害（210+60%法术强度）。  若羽毛命中一名敌方英雄或史诗级野怪，将在3秒后或碰触到一名队友时，为自己和附近的队友回复56生命值（50+6+70%法术强度）。",
+        "掷出一根神奇羽毛，对命中的第一名敌人造成270魔法伤害（270+60%法术强度）。  若羽毛命中一名敌方英雄或史诗级野怪，将在3秒后或碰触到一名队友时，为自己和附近的队友回复56生命值（50+6+70%法术强度）。"
+      ]
+    },
+    {
+      "spellId": "10520301",
+      "spellKey": "active",
+      "name": "盛大登场",
+      "description": "冲向一个位置，在到达时击飞附近的敌人1秒，并对其造成80魔法伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10520301_Rakan_W.png",
+      "video": "",
+      "cd": "16",
+      "costType": "MP",
+      "costValue": "50",
+      "detail": [
+        "冲向一个位置，在到达时击飞附近的敌人1秒，并对其造成80魔法伤害（80+55%法术强度）。",
+        "冲向一个位置，在到达时击飞附近的敌人1秒，并对其造成145魔法伤害（145+55%法术强度）。",
+        "冲向一个位置，在到达时击飞附近的敌人1秒，并对其造成210魔法伤害（210+55%法术强度）。",
+        "冲向一个位置，在到达时击飞附近的敌人1秒，并对其造成275魔法伤害（275+55%法术强度）。"
+      ]
+    },
+    {
+      "spellId": "10520401",
+      "spellKey": "active",
+      "name": "轻舞成双",
+      "description": "飞向一名我方英雄，为其提供一层可吸收50伤害的护盾，持续3秒。5秒内可再次施放。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10520401_Rakan_E.png",
+      "video": "",
+      "cd": "18",
+      "costType": "MP",
+      "costValue": "60",
+      "detail": [
+        "飞向一名我方英雄，为其提供一层可吸收50伤害（50+65%法术强度）的护盾，持续3秒。5秒内可再次施放。  若对霞施放，护盾值提升25%，技能冷却时间减少。",
+        "飞向一名我方英雄，为其提供一层可吸收80伤害（80+65%法术强度）的护盾，持续3秒。5秒内可再次施放。  若对霞施放，护盾值提升25%，技能冷却时间减少。",
+        "飞向一名我方英雄，为其提供一层可吸收110伤害（110+65%法术强度）的护盾，持续3秒。5秒内可再次施放。  若对霞施放，护盾值提升25%，技能冷却时间减少。",
+        "飞向一名我方英雄，为其提供一层可吸收140伤害（140+65%法术强度）的护盾，持续3秒。5秒内可再次施放。  若对霞施放，护盾值提升25%，技能冷却时间减少。"
+      ]
+    },
+    {
+      "spellId": "10520501",
+      "spellKey": "active",
+      "name": "惊鸿过隙",
+      "description": "获得60%移动速度加成，对沿途触碰到的敌人造成100魔法伤害，并魅惑他们1秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10520501_Rakan_R.png",
+      "video": "",
+      "cd": "80",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "获得60%移动速度加成，持续4秒。对沿途触碰到的敌人造成100魔法伤害（100+50%法术强度），并魅惑他们1秒。魅惑效果仅在第一次触碰时生效，且第一个被命中的敌方英雄还将为洛提供75%可持续衰减的移速加成。",
+        "获得60%移动速度加成，持续4秒。对沿途触碰到的敌人造成200魔法伤害（200+50%法术强度），并魅惑他们1.25秒。魅惑效果仅在第一次触碰时生效，且第一个被命中的敌方英雄还将为洛提供75%可持续衰减的移速加成。",
+        "获得60%移动速度加成，持续4秒。对沿途触碰到的敌人造成300魔法伤害（300+50%法术强度），并魅惑他们1.5秒。魅惑效果仅在第一次触碰时生效，且第一个被命中的敌方英雄还将为洛提供75%可持续衰减的移速加成。"
+      ]
+    }
+  ]
+}

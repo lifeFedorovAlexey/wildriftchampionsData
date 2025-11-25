@@ -1,0 +1,138 @@
+{
+  "slug": "miss-fortune",
+  "cnHeroId": "10066",
+  "heroId": "10066",
+  "name": {
+    "cn": "厄运小姐",
+    "titleCn": "赏金猎人"
+  },
+  "roles": [
+    "射手"
+  ],
+  "lane": "射手",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10066.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10066.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1006601.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/MissFortune_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 40000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6000000,
+    "hpPerLevel": 1280000,
+    "mp": 4200000,
+    "mpPerLevel": 500000,
+    "movespeed": 33500,
+    "armor": 340000,
+    "armorPerLevel": 45000,
+    "spellblock": 300000,
+    "spellblockPerLevel": 14000,
+    "hpregen": 60000,
+    "hpregenPerLevel": 5500,
+    "mpregen": 120000,
+    "mpregenPerLevel": 9000,
+    "crit": 17500,
+    "attackspeed": 3000,
+    "attackspeedPerLevel": 320
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 1,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "eyunxiaojie",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:38"
+  },
+  "spells": [
+    {
+      "spellId": "10660001",
+      "spellKey": "passive",
+      "name": "厄运的眷顾",
+      "description": "对敌方英雄或史诗野怪进行攻击时施加厄运的眷顾： · 叠满3层时，对其造成15物理伤害； · 自身对目标的伤害提升6%（随等级成长）。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10660001_MissFortune_passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "对敌方英雄或史诗野怪进行攻击时施加厄运的眷顾： · 叠满3层时，对其造成15物理伤害（15+40%额外攻击力）* （1+0%当前暴击率）； · 自身对目标的伤害提升6%（随等级成长）。"
+      ]
+    },
+    {
+      "spellId": "10660201",
+      "spellKey": "active",
+      "name": "一箭双雕",
+      "description": "向前方发射弹跳子弹，子弹会攻击目标，并弹射目标后面的敌人，被命中的敌人都会受到130物理伤害。弹跳后第二次命中的子弹，必将产生暴击造成120%伤害，并对目标施加3层厄运的眷顾。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10660201_MissFortune_Q.png",
+      "video": "",
+      "cd": "6",
+      "costType": "MP",
+      "costValue": "35",
+      "detail": [
+        "向前方发射弹跳子弹，子弹会攻击目标，并弹射目标后面的敌人，被命中的敌人都会受到130物理伤害（60+120%攻击力+35%法术强度）。弹跳后第二次命中的子弹，必将产生暴击造成120%伤害，并对目标施加3层厄运的眷顾。  攻击特效对两名目标皆有效。",
+        "向前方发射弹跳子弹，子弹会攻击目标，并弹射目标后面的敌人，被命中的敌人都会受到168物理伤害（95+125%攻击力+35%法术强度）。弹跳后第二次命中的子弹，必将产生暴击造成120%伤害，并对目标施加3层厄运的眷顾。  攻击特效对两名目标皆有效。",
+        "向前方发射弹跳子弹，子弹会攻击目标，并弹射目标后面的敌人，被命中的敌人都会受到206物理伤害（130+130%攻击力+35%法术强度）。弹跳后第二次命中的子弹，必将产生暴击造成120%伤害，并对目标施加3层厄运的眷顾。  攻击特效对两名目标皆有效。",
+        "向前方发射弹跳子弹，子弹会攻击目标，并弹射目标后面的敌人，被命中的敌人都会受到244物理伤害（165+135%攻击力+35%法术强度）。弹跳后第二次命中的子弹，必将产生暴击造成120%伤害，并对目标施加3层厄运的眷顾。  攻击特效对两名目标皆有效。"
+      ]
+    },
+    {
+      "spellId": "10660301",
+      "spellKey": "active",
+      "name": "大步流星",
+      "description": "被动：若在4秒内未承受伤害，则会为自身提供30移动速度加成。再过3秒，移速加成提升至80。  主动：全额提升移动速度加成，并提供45%攻击速度加成，持续4秒。每攻击一次带有满层厄运的眷顾的目标，都将缩短该技能冷却时间2秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10660301_MissFortune_W.png",
+      "video": "",
+      "cd": "12",
+      "costType": "MP",
+      "costValue": "30",
+      "detail": [
+        "被动：若在4秒内未承受伤害，则会为自身提供30移动速度加成。再过3秒，移速加成提升至80。  主动：全额提升移动速度加成，并提供45%攻击速度加成，持续4秒。每攻击一次带有满层厄运的眷顾的目标，都将缩短该技能冷却时间2秒。",
+        "被动：若在4秒内未承受伤害，则会为自身提供35移动速度加成。再过3秒，移速加成提升至90。  主动：全额提升移动速度加成，并提供60%攻击速度加成，持续4秒。每攻击一次带有满层厄运的眷顾的目标，都将缩短该技能冷却时间2秒。",
+        "被动：若在4秒内未承受伤害，则会为自身提供40移动速度加成。再过3秒，移速加成提升至100。  主动：全额提升移动速度加成，并提供75%攻击速度加成，持续4秒。每攻击一次带有满层厄运的眷顾的目标，都将缩短该技能冷却时间2秒。",
+        "被动：若在4秒内未承受伤害，则会为自身提供45移动速度加成。再过3秒，移速加成提升至110。  主动：全额提升移动速度加成，并提供90%攻击速度加成，持续4秒。每攻击一次带有满层厄运的眷顾的目标，都将缩短该技能冷却时间2秒。"
+      ]
+    },
+    {
+      "spellId": "10660401",
+      "spellKey": "active",
+      "name": "枪林弹雨",
+      "description": "朝目标区域发射持续2秒的弹雨，每0.25秒造成15魔法伤害，并使被命中的敌人降低30%移动速度。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10660401_MissFortune_E.png",
+      "video": "",
+      "cd": "14",
+      "costType": "MP",
+      "costValue": "65",
+      "detail": [
+        "朝目标区域发射持续2秒的弹雨，每0.25秒造成15魔法伤害（15+10%法术强度），并使被命中的敌人降低30%移动速度。",
+        "朝目标区域发射持续2秒的弹雨，每0.25秒造成20魔法伤害（20+11%法术强度），并使被命中的敌人降低40%移动速度。",
+        "朝目标区域发射持续2秒的弹雨，每0.25秒造成25魔法伤害（25+12%法术强度），并使被命中的敌人降低50%移动速度。",
+        "朝目标区域发射持续2秒的弹雨，每0.25秒造成30魔法伤害（30+13%法术强度），并使被命中的敌人降低60%移动速度。"
+      ]
+    },
+    {
+      "spellId": "10660501",
+      "spellKey": "active",
+      "name": "弹幕时间",
+      "description": "3秒内持续扫射出12波强力弹幕，每波弹幕造成50物理伤害。可产生暴击并造成130%伤害。  再次点击技能：提前取消弹幕扫射。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10660501_MissFortune_R.png",
+      "video": "",
+      "cd": "70",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "3秒内持续扫射出12波强力弹幕，每波弹幕造成50物理伤害（85%攻击力+20%法术强度）。可产生暴击并造成130%伤害。  再次点击技能：提前取消弹幕扫射。",
+        "3秒内持续扫射出14波强力弹幕，每波弹幕造成50物理伤害（85%攻击力+20%法术强度）。可产生暴击并造成130%伤害。  再次点击技能：提前取消弹幕扫射。",
+        "3秒内持续扫射出16波强力弹幕，每波弹幕造成50物理伤害（85%攻击力+20%法术强度）。可产生暴击并造成130%伤害。  再次点击技能：提前取消弹幕扫射。"
+      ]
+    }
+  ]
+}

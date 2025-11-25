@@ -1,0 +1,138 @@
+{
+  "slug": "kassadin",
+  "cnHeroId": "10103",
+  "heroId": "10103",
+  "name": {
+    "cn": "卡萨丁",
+    "titleCn": "虚空行者"
+  },
+  "roles": [
+    "刺客"
+  ],
+  "lane": "中路;单人路",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10103.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10103.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1010301.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Kassadin_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 45500,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6300000,
+    "hpPerLevel": 1200000,
+    "mp": 4800000,
+    "mpPerLevel": 650000,
+    "movespeed": 35000,
+    "armor": 300000,
+    "armorPerLevel": 45000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 90000,
+    "hpregenPerLevel": 8100,
+    "mpregen": 150000,
+    "mpregenPerLevel": 13000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 2,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 1,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "kasading",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:39"
+  },
+  "spells": [
+    {
+      "spellId": "11030001",
+      "spellKey": "passive",
+      "name": "虚空之石",
+      "description": "在可见的敌人附近施放技能时，可获得一道吸收50魔法伤害的护盾，持续1.5秒。（冷却时间9秒。）",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11030001_Kassadin_Passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "在可见的敌人附近施放技能时，可获得一道吸收50魔法伤害（50+30%法术强度）的护盾，持续1.5秒。（冷却时间9秒。）"
+      ]
+    },
+    {
+      "spellId": "11030201",
+      "spellKey": "active",
+      "name": "虚无法球",
+      "description": "发射虚无法球，对首名命中的目标造成80魔法伤害，并使其沉默，持续1秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11030201_Kassadin_Q.png",
+      "video": "",
+      "cd": "10",
+      "costType": "MP",
+      "costValue": "70",
+      "detail": [
+        "发射虚无法球，对首名命中的目标造成80魔法伤害（80+80%法术强度），并使其沉默，持续1秒。",
+        "发射虚无法球，对首名命中的目标造成145魔法伤害（145+80%法术强度），并使其沉默，持续1秒。",
+        "发射虚无法球，对首名命中的目标造成210魔法伤害（210+80%法术强度），并使其沉默，持续1秒。",
+        "发射虚无法球，对首名命中的目标造成275魔法伤害（275+80%法术强度），并使其沉默，持续1秒。"
+      ]
+    },
+    {
+      "spellId": "11030301",
+      "spellKey": "active",
+      "name": "虚空之刃",
+      "description": "强化自己的下一次普攻，获得250攻击范围，造成额外50魔法伤害，并回复已损失法力值的5%（攻击英雄时变为15%）。  如果攻击击败目标，则该技能的剩余冷却时间降低50%。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11030301_Kassadin_ForcePulse.png",
+      "video": "",
+      "cd": "10",
+      "costType": "MP",
+      "costValue": "20",
+      "detail": [
+        "强化自己的下一次普攻，获得250攻击范围，造成额外50魔法伤害（50+50%法术强度），并回复已损失法力值的5%（攻击英雄时变为15%）。  如果攻击击败目标，则该技能的剩余冷却时间降低50%。",
+        "强化自己的下一次普攻，获得250攻击范围，造成额外80魔法伤害（80+50%法术强度），并回复已损失法力值的5%（攻击英雄时变为15%）。  如果攻击击败目标，则该技能的剩余冷却时间降低50%。",
+        "强化自己的下一次普攻，获得250攻击范围，造成额外110魔法伤害（110+50%法术强度），并回复已损失法力值的5%（攻击英雄时变为15%）。  如果攻击击败目标，则该技能的剩余冷却时间降低50%。",
+        "强化自己的下一次普攻，获得250攻击范围，造成额外140魔法伤害（140+50%法术强度），并回复已损失法力值的5%（攻击英雄时变为15%）。  如果攻击击败目标，则该技能的剩余冷却时间降低50%。"
+      ]
+    },
+    {
+      "spellId": "11030401",
+      "spellKey": "active",
+      "name": "能量脉冲",
+      "description": "对敌人造成60魔法伤害并令其减速30%，持续1秒。  附近区域内施放6次其它技能后，能量脉冲会得到增强，造成魔法伤害提升40%，且减速效果提升至90%。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11030401_Kassadin_E.png",
+      "video": "",
+      "cd": "12",
+      "costType": "MP",
+      "costValue": "70",
+      "detail": [
+        "对敌人造成60魔法伤害（60 + 60%法术强度）并令其减速30%，持续1秒。  附近区域内施放6次其它技能后，能量脉冲会得到增强，魔法伤害提升40%，且减速效果提升至90%。",
+        "对敌人造成100魔法伤害（100 + 60%法术强度）并令其减速30%，持续1秒。  附近区域内施放6次其它技能后，能量脉冲会得到增强，魔法伤害提升40%，且减速效果提升至90%。",
+        "对敌人造成140魔法伤害（140 + 60%法术强度）并令其减速30%，持续1秒。  附近区域内施放6次其它技能后，能量脉冲会得到增强，魔法伤害提升40%，且减速效果提升至90%。",
+        "对敌人造成180魔法伤害（180 + 60%法术强度）并令其减速30%，持续1秒。  附近区域内施放6次其它技能后，能量脉冲会得到增强，魔法伤害提升40%，且减速效果提升至90%。"
+      ]
+    },
+    {
+      "spellId": "11030501",
+      "spellKey": "active",
+      "name": "虚空行走",
+      "description": "瞬移至目标区域，对附近所有敌人造成88魔法伤害。 接下来在12秒内施放的虚空行走造成的伤害提升50%，消耗200%法力值（可叠加3次）。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11030501_Kassadin_R.png",
+      "video": "",
+      "cd": "5",
+      "costType": "MP",
+      "costValue": "0",
+      "detail": [
+        "瞬移至目标区域，对附近所有敌人造成88魔法伤害（80+30%法术强度+1.5%法力值）。 接下来在12秒内施放的虚空行走造成的伤害提升50%，消耗200%法力值（可叠加3次）。",
+        "瞬移至目标区域，对附近所有敌人造成108魔法伤害（100+30%法术强度+1.5%法力值）。 接下来在12秒内施放的虚空行走造成的伤害提升50%，消耗200%法力值（可叠加3次）。",
+        "瞬移至目标区域，对附近所有敌人造成128魔法伤害（120+30%法术强度+1.5%法力值）。 接下来在12秒内施放的虚空行走造成的伤害提升50%，消耗200%法力值（可叠加3次）。"
+      ]
+    }
+  ]
+}

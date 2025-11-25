@@ -1,0 +1,138 @@
+{
+  "slug": "ezreal",
+  "cnHeroId": "10098",
+  "heroId": "10098",
+  "name": {
+    "cn": "伊泽瑞尔",
+    "titleCn": "探险家"
+  },
+  "roles": [
+    "射手"
+  ],
+  "lane": "射手",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10098.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10098.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1009801.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Ezreal_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 45000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6000000,
+    "hpPerLevel": 1200000,
+    "mp": 3900000,
+    "mpPerLevel": 490000,
+    "movespeed": 34000,
+    "armor": 340000,
+    "armorPerLevel": 50000,
+    "spellblock": 300000,
+    "spellblockPerLevel": 14000,
+    "hpregen": 60000,
+    "hpregenPerLevel": 6800,
+    "mpregen": 90000,
+    "mpregenPerLevel": 9000,
+    "crit": 17500,
+    "attackspeed": 3000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 2,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 1,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "yizeruier",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:39"
+  },
+  "spells": [
+    {
+      "spellId": "10980001",
+      "spellKey": "passive",
+      "name": "咒能高涨",
+      "description": "技能命中目标后，会提升自身13%攻击速度，持续8秒。攻速加成最多可叠加4次。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10980001_Ezreal_Passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "技能命中目标后，会提升自身13%攻击速度，持续8秒。攻速加成最多可叠加4次。"
+      ]
+    },
+    {
+      "spellId": "10980201",
+      "spellKey": "active",
+      "name": "秘术射击",
+      "description": "发射一枚能量弹，对命中目标造成129物理伤害。  若成功命中目标，可减少其他技能1.5秒的冷却时间。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10980201_Ezreal_Q.png",
+      "video": "",
+      "cd": "4",
+      "costType": "MP",
+      "costValue": "30",
+      "detail": [
+        "发射一枚能量弹，对命中目标造成129物理伤害（50+135%攻击力+30%法术强度）。  若成功命中目标，可减少其他技能1.5秒的冷却时间。  施加攻击特效。",
+        "发射一枚能量弹，对命中目标造成164物理伤害（85+135%攻击力+30%法术强度）。  若成功命中目标，可减少其他技能1.5秒的冷却时间。  施加攻击特效。",
+        "发射一枚能量弹，对命中目标造成199物理伤害（120+135%攻击力+30%法术强度）。  若成功命中目标，可减少其他技能1.5秒的冷却时间。  施加攻击特效。",
+        "发射一枚能量弹，对命中目标造成234物理伤害（155+135%攻击力+30%法术强度）。  若成功命中目标，可减少其他技能1.5秒的冷却时间。  施加攻击特效。"
+      ]
+    },
+    {
+      "spellId": "10980301",
+      "spellKey": "active",
+      "name": "精华跃动",
+      "description": "发射一颗会附着在英雄、史诗野怪或建筑上4秒的法球。  使用普攻或技能命中目标，即可引爆法球，对目标造成80魔法伤害，并返还自身60法力值。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10980301_Ezreal_W.png",
+      "video": "",
+      "cd": "10",
+      "costType": "MP",
+      "costValue": "50",
+      "detail": [
+        "发射一颗会附着在英雄、史诗野怪或建筑上4秒的法球。  使用普攻或技能命中目标，即可引爆法球，对目标造成80魔法伤害（80+60%额外攻击力+75%法术强度），并返还自身60法力值。",
+        "发射一颗会附着在英雄、史诗野怪或建筑上4秒的法球。  使用普攻或技能命中目标，即可引爆法球，对目标造成155魔法伤害（155+60%额外攻击力+80%法术强度），并返还自身70法力值。",
+        "发射一颗会附着在英雄、史诗野怪或建筑上4秒的法球。  使用普攻或技能命中目标，即可引爆法球，对目标造成230魔法伤害（230+60%额外攻击力+85%法术强度），并返还自身80法力值。",
+        "发射一颗会附着在英雄、史诗野怪或建筑上4秒的法球。  使用普攻或技能命中目标，即可引爆法球，对目标造成305魔法伤害（305+60%额外攻击力+90%法术强度），并返还自身90法力值。"
+      ]
+    },
+    {
+      "spellId": "10980401",
+      "spellKey": "active",
+      "name": "奥术跃迁",
+      "description": "闪现至目标位置并发射一支魔法箭，对目标造成80魔法伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10980401_Ezreal_E.png",
+      "video": "",
+      "cd": "24",
+      "costType": "MP",
+      "costValue": "90",
+      "detail": [
+        "闪现至目标位置并发射一支魔法箭，对目标造成80魔法伤害（80+50%额外攻击力+75%法术强度）。  魔法箭会优先攻击带有精华跃动效果的敌人，其次是最近的敌人。",
+        "闪现至目标位置并发射一支魔法箭，对目标造成145魔法伤害（145+50%额外攻击力+75%法术强度）。  魔法箭会优先攻击带有精华跃动效果的敌人，其次是最近的敌人。",
+        "闪现至目标位置并发射一支魔法箭，对目标造成210魔法伤害（210+50%额外攻击力+75%法术强度）。  魔法箭会优先攻击带有精华跃动效果的敌人，其次是最近的敌人。",
+        "闪现至目标位置并发射一支魔法箭，对目标造成275魔法伤害（275+50%额外攻击力+75%法术强度）。  魔法箭会优先攻击带有精华跃动效果的敌人，其次是最近的敌人。"
+      ]
+    },
+    {
+      "spellId": "10980501",
+      "spellKey": "active",
+      "name": "精准弹幕",
+      "description": "蓄力后朝指定区域发射长程能量波，对穿过的敌人造成350魔法伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10980501_Ezreal_R.png",
+      "video": "",
+      "cd": "70",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "蓄力后朝指定区域发射长程能量波，对穿过的敌人造成350魔法伤害（350+100%额外攻击力+90%法术强度）。  对小兵与非史诗级野怪所造成的伤害减少50%。",
+        "蓄力后朝指定区域发射长程能量波，对穿过的敌人造成500魔法伤害（500+100%额外攻击力+90%法术强度）。  对小兵与非史诗级野怪所造成的伤害减少50%。",
+        "蓄力后朝指定区域发射长程能量波，对穿过的敌人造成650魔法伤害（650+100%额外攻击力+90%法术强度）。  对小兵与非史诗级野怪所造成的伤害减少50%。"
+      ]
+    }
+  ]
+}

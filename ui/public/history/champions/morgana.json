@@ -115,6 +115,119 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-11-25",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 55.21,
+            "pickRate": 4.6,
+            "banRate": 19.77,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.68,
+            "pickRate": 6.69,
+            "banRate": 19.77,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 55.12,
+            "pickRate": 1.07,
+            "banRate": 19.77,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 54.37,
+            "pickRate": 7.73,
+            "banRate": 38.13,
+            "strengthLevel": 0
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.84,
+            "pickRate": 7.34,
+            "banRate": 38.13,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.58,
+            "pickRate": 1.57,
+            "banRate": 38.13,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 54.03,
+            "pickRate": 7.81,
+            "banRate": 43.15,
+            "strengthLevel": 0
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.88,
+            "pickRate": 7.03,
+            "banRate": 43.15,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 52.23,
+            "pickRate": 1.53,
+            "banRate": 43.15,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 52.49,
+            "pickRate": 5.66,
+            "banRate": 39.03,
+            "strengthLevel": 0
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.43,
+            "pickRate": 6.8,
+            "banRate": 39.03,
+            "strengthLevel": 1
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 51.62,
+            "pickRate": 7.1,
+            "banRate": 37.36,
+            "strengthLevel": 0
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 51.36,
+            "pickRate": 9.46,
+            "banRate": 37.36,
+            "strengthLevel": 0
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.37,
+            "pickRate": 1.16,
+            "banRate": 37.36,
+            "strengthLevel": 2
+          }
+        }
+      }
     }
   ]
 }

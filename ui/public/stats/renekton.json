@@ -1,0 +1,138 @@
+{
+  "slug": "renekton",
+  "cnHeroId": "10121",
+  "heroId": "10121",
+  "name": {
+    "cn": "雷克顿",
+    "titleCn": "荒漠屠夫"
+  },
+  "roles": [
+    "战士"
+  ],
+  "lane": "单人路",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10121.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10121.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1012101.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Renekton_0.jpg"
+  },
+  "stats": {
+    "attack": 700000,
+    "attackPerLevel": 45500,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6900000,
+    "hpPerLevel": 1280000,
+    "mp": 0,
+    "mpPerLevel": 0,
+    "movespeed": 35500,
+    "armor": 460000,
+    "armorPerLevel": 47000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 90000,
+    "hpregenPerLevel": 8100,
+    "mpregen": 0,
+    "mpregenPerLevel": 0,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 2,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 2,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "leikedun",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:40"
+  },
+  "spells": [
+    {
+      "spellId": "11210001",
+      "spellKey": "passive",
+      "name": "怒之领域",
+      "description": "每次普攻都能产生怒气，若怒气值超过50，将会消耗怒气以强化技能效果。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11210001_Renekton_Passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "若怒气值超过50，将会消耗怒气以强化技能效果。  每次普攻都能产生5怒气，当生命值低于50%时，可额外产生50%怒气。脱战后，每秒损失4怒气。"
+      ]
+    },
+    {
+      "spellId": "11210201",
+      "spellKey": "active",
+      "name": "霸主狂击",
+      "description": "对附近敌人造成80物理伤害，且每命中一名敌人就会回复10生命值，并产生5怒气。  怒之领域：伤害提升至120物理伤害，回复效果提升200％。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11210201_Renekton_Q.png",
+      "video": "",
+      "cd": "7",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "对附近敌人造成80物理伤害（80+90%额外攻击力），每命中一名敌人获得5怒气，并回复10生命值（10+ 10%额外攻击力）。  怒之领域：伤害提升至120物理伤害（120+135%额外攻击力），回复效果提升200％。",
+        "对附近敌人造成130物理伤害（130+90%额外攻击力），每命中一名敌人获得5怒气，并回复14生命值（14+ 10%额外攻击力）。  怒之领域：伤害提升至195物理伤害（195+135%额外攻击力），回复效果提升200％。",
+        "对附近敌人造成180物理伤害（180+90%额外攻击力），每命中一名敌人获得5怒气，并回复18生命值（18+ 10%额外攻击力）。  怒之领域：伤害提升至270物理伤害（270+135%额外攻击力），回复效果提升200％。",
+        "对附近敌人造成230物理伤害（230+90%额外攻击力），每命中一名敌人获得5怒气，并回复22生命值（22+ 10%额外攻击力）。  怒之领域：伤害提升至345物理伤害（345+135%额外攻击力），回复效果提升200％。"
+      ]
+    },
+    {
+      "spellId": "11210301",
+      "spellKey": "active",
+      "name": "冷酷捕猎",
+      "description": "强化下次普攻以造成2次连击，击晕目标0.75秒并造成135物理伤害。  怒之领域：连击3次，摧毁护盾，同时击晕目标1.5秒并造成203物理伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11210301_Renekton_W.png",
+      "video": "",
+      "cd": "13",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "强化下次普攻以造成2次连击，击晕目标0.75秒并造成135物理伤害（30+150%攻击力）。  怒之领域：连击3次，摧毁护盾，同时击晕目标1.5秒并造成203物理伤害（45+225%攻击力）。",
+        "强化下次普攻以造成2次连击，击晕目标0.75秒并造成165物理伤害（60+150%攻击力）。  怒之领域：连击3次，摧毁护盾，同时击晕目标1.5秒并造成248物理伤害（90+225%攻击力）。",
+        "强化下次普攻以造成2次连击，击晕目标0.75秒并造成195物理伤害（90+150%攻击力）。  怒之领域：连击3次，摧毁护盾，同时击晕目标1.5秒并造成293物理伤害（135+225%攻击力）。",
+        "强化下次普攻以造成2次连击，击晕目标0.75秒并造成225物理伤害（120+150%攻击力）。  怒之领域：连击3次，摧毁护盾，同时击晕目标1.5秒并造成338物理伤害（180+225%攻击力）。"
+      ]
+    },
+    {
+      "spellId": "11210401",
+      "spellKey": "active",
+      "name": "横冲直撞",
+      "description": "向前冲刺，对穿过的敌人造成40物理伤害。每穿过一名敌人会产生5怒气，且可在4秒内施放第二段冲刺。   怒之领域：第二段冲刺可造成70物理伤害，并减少目标25%护甲值，持续4秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11210401_Renekton_E.png",
+      "video": "",
+      "cd": "15",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "向前冲刺，对穿过的敌人造成40物理伤害（40+90%额外攻击力）。每穿过一名敌人会产生5怒气，且可在4秒内施放第二段冲刺。   怒之领域：第二段冲刺可造成70物理伤害（70+135%额外攻击力），并减少目标25%护甲值，持续4秒。",
+        "向前冲刺，对穿过的敌人造成80物理伤害（80+90%额外攻击力）。每穿过一名敌人会产生5怒气，且可在4秒内施放第二段冲刺。   怒之领域：第二段冲刺可造成130物理伤害（130+135%额外攻击力），并减少目标30%护甲值，持续4秒。",
+        "向前冲刺，对穿过的敌人造成120物理伤害（120+90%额外攻击力）。每穿过一名敌人会产生5怒气，且可在4秒内施放第二段冲刺。   怒之领域：第二段冲刺可造成190物理伤害（190+135%额外攻击力），并减少目标35%护甲值，持续4秒。",
+        "向前冲刺，对穿过的敌人造成160物理伤害（160+90%额外攻击力）。每穿过一名敌人会产生5怒气，且可在4秒内施放第二段冲刺。   怒之领域：第二段冲刺可造成250物理伤害（250+135%额外攻击力），并减少目标40%护甲值，持续4秒。"
+      ]
+    },
+    {
+      "spellId": "11210501",
+      "spellKey": "active",
+      "name": "终极统治",
+      "description": "黑暗能量环绕自身，获得20怒气和300生命值。且每秒获得5怒气，并对附近敌人造成70魔法伤害，持续12秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11210501_Renekton_R.png",
+      "video": "",
+      "cd": "75",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "黑暗能量环绕自身，获得20怒气和300生命值。且每秒获得5怒气，并对附近敌人造成70魔法伤害（70+20%法术强度），持续12秒。",
+        "黑暗能量环绕自身，获得20怒气和575生命值。且每秒获得5怒气，并对附近敌人造成120魔法伤害（120+20%法术强度），持续12秒。",
+        "黑暗能量环绕自身，获得20怒气和850生命值。且每秒获得5怒气，并对附近敌人造成170魔法伤害（170+20%法术强度），持续12秒。"
+      ]
+    }
+  ]
+}

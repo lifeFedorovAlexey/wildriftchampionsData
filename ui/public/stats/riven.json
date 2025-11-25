@@ -1,0 +1,138 @@
+{
+  "slug": "riven",
+  "cnHeroId": "10092",
+  "heroId": "10092",
+  "name": {
+    "cn": "锐雯",
+    "titleCn": "放逐之刃"
+  },
+  "roles": [
+    "战士"
+  ],
+  "lane": "单人路;打野",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10092.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10092.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1009201.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Riven_0.jpg"
+  },
+  "stats": {
+    "attack": 640000,
+    "attackPerLevel": 36000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6900000,
+    "hpPerLevel": 1200000,
+    "mp": 0,
+    "mpPerLevel": 0,
+    "movespeed": 34500,
+    "armor": 460000,
+    "armorPerLevel": 45000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 120000,
+    "hpregenPerLevel": 6800,
+    "mpregen": 0,
+    "mpregenPerLevel": 0,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 2,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 2,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "ruiwen",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:39"
+  },
+  "spells": [
+    {
+      "spellId": "10920001",
+      "spellKey": "passive",
+      "name": "符文之刃",
+      "description": "技能可为剑刃充能最多3次。  普攻会消耗充能，造成21物理伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10920001_Riven_Passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "技能可为剑刃充能最多3次。  普攻会消耗充能，造成21额外物理伤害（32%攻击力）。  对建筑造成的额外伤害为原值的50%。 对野怪造成的额外伤害为原值的50%。"
+      ]
+    },
+    {
+      "spellId": "10920201",
+      "spellKey": "active",
+      "name": "折翼之舞",
+      "description": "朝一个方向施放最多3段剑式。每段剑式可对附近敌人造成66物理伤害。  第三段剑式可以跨越地形，并将附近敌人击飞0.5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10920201_Riven_Q.png",
+      "video": "",
+      "cd": "12",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "朝一个方向施放最多3段剑式。每段剑式可对附近敌人造成66物理伤害（30 +55%攻击力）。  第三段剑式可以跨越地形，并将附近敌人击飞0.5秒。  点击施放将优先攻击剑式范围内的英雄与大型野怪。",
+        "朝一个方向施放最多3段剑式。每段剑式可对附近敌人造成94物理伤害（55 +60%攻击力）。  第三段剑式可以跨越地形，并将附近敌人击飞0.5秒。  点击施放将优先攻击剑式范围内的英雄与大型野怪。",
+        "朝一个方向施放最多3段剑式。每段剑式可对附近敌人造成122物理伤害（80 +65%攻击力）。  第三段剑式可以跨越地形，并将附近敌人击飞0.5秒。  点击施放将优先攻击剑式范围内的英雄与大型野怪。",
+        "朝一个方向施放最多3段剑式。每段剑式可对附近敌人造成150物理伤害（105 +70%攻击力）。  第三段剑式可以跨越地形，并将附近敌人击飞0.5秒。  点击施放将优先攻击剑式范围内的英雄与大型野怪。"
+      ]
+    },
+    {
+      "spellId": "10920501",
+      "spellKey": "active",
+      "name": "震魂怒吼",
+      "description": "剑刃爆发符文能量，击晕附近敌人0.75秒，造成55物理伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10920501_Riven_W.png",
+      "video": "",
+      "cd": "8",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "剑刃爆发符文能量，击晕附近敌人0.75秒，造成55物理伤害（55+100%额外攻击力）。",
+        "剑刃爆发符文能量，击晕附近敌人0.75秒，造成95物理伤害（95+100%额外攻击力）。",
+        "剑刃爆发符文能量，击晕附近敌人0.75秒，造成135物理伤害（135+100%额外攻击力）。",
+        "剑刃爆发符文能量，击晕附近敌人0.75秒，造成175物理伤害（175+100%额外攻击力）。"
+      ]
+    },
+    {
+      "spellId": "10920601",
+      "spellKey": "active",
+      "name": "勇往直前",
+      "description": "朝一个方向冲刺并获得吸收85伤害的护盾，持续2秒。  勇往直前不能跨越地形。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10920601_Riven_E.png",
+      "video": "",
+      "cd": "9",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "朝一个方向冲刺并获得吸收85伤害（85+90%额外攻击力）的护盾，持续2秒。  勇往直前不能跨越地形。",
+        "朝一个方向冲刺并获得吸收120伤害（120+90%额外攻击力）的护盾，持续2秒。  勇往直前不能跨越地形。",
+        "朝一个方向冲刺并获得吸收155伤害（155+90%额外攻击力）的护盾，持续2秒。  勇往直前不能跨越地形。",
+        "朝一个方向冲刺并获得吸收190伤害（190+90%额外攻击力）的护盾，持续2秒。  勇往直前不能跨越地形。"
+      ]
+    },
+    {
+      "spellId": "10920701",
+      "spellKey": "active",
+      "name": "放逐之锋",
+      "description": "圣灵之力激荡剑刃12秒，以提升25%攻击力，扩大普通攻击与伤害性技能的攻击范围，并可施放一次疾风斩。每击败一次目标即可重置一次疾风斩的施放次数，并延长该技能持续时间。  疾风斩：挥出一道冲击波，基于敌人已损失的生命值对其造成100至300物理伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10920701_Riven_R.png",
+      "video": "",
+      "cd": "75",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "圣灵之力激荡剑刃12秒，以提升25%攻击力，扩大普通攻击与伤害性技能的攻击范围，并可施放一次疾风斩。每击败一次目标即可重置一次疾风斩的施放次数，并使该技能持续时间延长3秒，最多延长12秒。  疾风斩：挥出一道冲击波，基于敌人已损失的生命值对其造成100（100+60%额外攻击力）至300物理伤害（300+180%额外攻击力）。",
+        "圣灵之力激荡剑刃12秒，以提升25%攻击力，扩大普通攻击与伤害性技能的攻击范围，并可施放一次疾风斩。每击败一次目标即可重置一次疾风斩的施放次数，并使该技能持续时间延长3秒，最多延长12秒。  疾风斩：挥出一道冲击波，基于敌人已损失的生命值对其造成150（150+60%额外攻击力）至450物理伤害（450+180%额外攻击力）。",
+        "圣灵之力激荡剑刃12秒，以提升25%攻击力，扩大普通攻击与伤害性技能的攻击范围，并可施放一次疾风斩。每击败一次目标即可重置一次疾风斩的施放次数，并使该技能持续时间延长3秒，最多延长12秒。  疾风斩：挥出一道冲击波，基于敌人已损失的生命值对其造成200（200+60%额外攻击力）至600物理伤害（600+180%额外攻击力）。"
+      ]
+    }
+  ]
+}

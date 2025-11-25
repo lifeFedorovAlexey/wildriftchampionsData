@@ -1,0 +1,138 @@
+{
+  "slug": "amumu",
+  "cnHeroId": "10004",
+  "heroId": "10004",
+  "name": {
+    "cn": "阿木木",
+    "titleCn": "殇之木乃伊"
+  },
+  "roles": [
+    "坦克"
+  ],
+  "lane": "打野;辅助;单人路",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10004.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10004.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1000401.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Amumu_0.jpg"
+  },
+  "stats": {
+    "attack": 520000,
+    "attackPerLevel": 36000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6900000,
+    "hpPerLevel": 1040000,
+    "mp": 3900000,
+    "mpPerLevel": 650000,
+    "movespeed": 34500,
+    "armor": 400000,
+    "armorPerLevel": 47000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 90000,
+    "hpregenPerLevel": 8100,
+    "mpregen": 150000,
+    "mpregenPerLevel": 7000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 2,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 3,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "emumu",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:34"
+  },
+  "spells": [
+    {
+      "spellId": "10040601",
+      "spellKey": "passive",
+      "name": "诅咒之触",
+      "description": "普通攻击会诅咒被命中的敌人，短时间内，其后续承受魔法伤害时将额外承受10%的真实伤害，持续3秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10040601_amumu_beidong.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "普通攻击会诅咒被命中的敌人，短时间内，其后续承受魔法伤害时将额外承受10%的真实伤害，持续3秒。在持续期间，若再次对目标施加诅咒，会重置此技能效果的持续时间。"
+      ]
+    },
+    {
+      "spellId": "10040201",
+      "spellKey": "active",
+      "name": "绷带牵引",
+      "description": "被动：每13秒可积累一次该技能使用次数，最多可积累2次。  主动：向目标区域投掷粘稠的绷带，将自己拉向被命中的目标，对其造成60魔法伤害并击晕目标1秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10040201_amumu_1.png",
+      "video": "",
+      "cd": "3",
+      "costType": "MP",
+      "costValue": "35",
+      "detail": [
+        "被动：每13秒可积累一次该技能使用次数，最多可积累2次。  主动：射出一条绷带，造成60魔法伤害（60+70%法术强度）并击晕目标1秒，同时将自己拽向目标。",
+        "被动：每12.5秒可积累一次该技能使用次数，最多可积累2次。  主动：射出一条绷带，造成95魔法伤害（95+70%法术强度）并击晕目标1秒，同时将自己拽向目标。",
+        "被动：每12秒可积累一次该技能使用次数，最多可积累2次。  主动：射出一条绷带，造成130魔法伤害（130+70%法术强度）并击晕目标1秒，同时将自己拽向目标。",
+        "被动：每11.5秒可积累一次该技能使用次数，最多可积累2次。  主动：射出一条绷带，造成165魔法伤害（165+70%法术强度）并击晕目标1秒，同时将自己拽向目标。"
+      ]
+    },
+    {
+      "spellId": "10040301",
+      "spellKey": "active",
+      "name": "绝望光环",
+      "description": "激活：滴泪形成泪泉，对进入泪泉范围内的敌人每秒造成25加上其1.4%最大生命值的魔法伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10040301_amumu_2.png",
+      "video": "",
+      "cd": "1",
+      "costType": "MP",
+      "costValue": "10",
+      "detail": [
+        "激活：滴泪形成泪泉，对进入泪泉范围内的敌人每秒造成25加上其1.4%（1.4+0.4%法术强度）最大生命值的魔法伤害。",
+        "激活：滴泪形成泪泉，对进入泪泉范围内的敌人每秒造成30加上其1.8%（1.8+0.4%法术强度）最大生命值的魔法伤害。",
+        "激活：滴泪形成泪泉，对进入泪泉范围内的敌人每秒造成35加上其2.2%（2.2+0.4%法术强度）最大生命值的魔法伤害。",
+        "激活：滴泪形成泪泉，对进入泪泉范围内的敌人每秒造成40加上其2.6%（2.6+0.4%法术强度）最大生命值的魔法伤害。"
+      ]
+    },
+    {
+      "spellId": "10040501",
+      "spellKey": "active",
+      "name": "阿木木的愤怒",
+      "description": "被动：所受物理伤害减少1。  主动：对附近敌人造成90魔法伤害并使其移速降低20%，持续0.5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10040501_amumu_E.png",
+      "video": "",
+      "cd": "9",
+      "costType": "MP",
+      "costValue": "35",
+      "detail": [
+        "被动：所受物理伤害减少1（1+4%额外armour_ratio+4%额外魔法抗性加成）。  主动：对附近敌人造成90魔法伤害（90+50%法术强度）并使其移速降低20%，持续0.5秒。  当被防御塔或敌人普攻命中时，该技能冷却时间减少0.5秒。",
+        "被动：所受物理伤害减少3（3+4%额外armour_ratio+4%额外魔法抗性加成）。  主动：对附近敌人造成120魔法伤害（120+50%法术强度）并使其移速降低20%，持续0.5秒。  当被防御塔或敌人普攻命中时，该技能冷却时间减少0.5秒。",
+        "被动：所受物理伤害减少5（5+4%额外armour_ratio+4%额外魔法抗性加成）。  主动：对附近敌人造成150魔法伤害（150+50%法术强度）并使其移速降低20%，持续0.5秒。  当被防御塔或敌人普攻命中时，该技能冷却时间减少0.5秒。",
+        "被动：所受物理伤害减少7（7+4%额外armour_ratio+4%额外魔法抗性加成）。  主动：对附近敌人造成180魔法伤害（180+50%法术强度）并使其移速降低20%，持续0.5秒。  当被防御塔或敌人普攻命中时，该技能冷却时间减少0.5秒。"
+      ]
+    },
+    {
+      "spellId": "10040401",
+      "spellKey": "active",
+      "name": "木乃伊之咒",
+      "description": "对附近敌人造成150魔法伤害并击晕他们1.5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10040401_amumu_3.png",
+      "video": "",
+      "cd": "105",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "对附近敌人造成150魔法伤害（150+70%法术强度）并击晕他们1.5秒。  同时会对目标施加诅咒之触。",
+        "对附近敌人造成250魔法伤害（250+70%法术强度）并击晕他们1.5秒。  同时会对目标施加诅咒之触。",
+        "对附近敌人造成350魔法伤害（350+70%法术强度）并击晕他们1.5秒。  同时会对目标施加诅咒之触。"
+      ]
+    }
+  ]
+}

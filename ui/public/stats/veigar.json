@@ -1,0 +1,138 @@
+{
+  "slug": "veigar",
+  "cnHeroId": "10122",
+  "heroId": "10122",
+  "name": {
+    "cn": "维迦",
+    "titleCn": "邪恶小法师"
+  },
+  "roles": [
+    "法师"
+  ],
+  "lane": "中路;辅助",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10122.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10122.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1012201.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Veigar_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 36000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6300000,
+    "hpPerLevel": 1200000,
+    "mp": 4800000,
+    "mpPerLevel": 490000,
+    "movespeed": 36000,
+    "armor": 370000,
+    "armorPerLevel": 40000,
+    "spellblock": 360000,
+    "spellblockPerLevel": 12000,
+    "hpregen": 90000,
+    "hpregenPerLevel": 5500,
+    "mpregen": 160000,
+    "mpregenPerLevel": 11000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 0
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 1,
+    "assistL": 2
+  },
+  "meta": {
+    "alias": "weijia",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:40"
+  },
+  "spells": [
+    {
+      "spellId": "11220001",
+      "spellKey": "passive",
+      "name": "超凡邪力",
+      "description": "每使用技能命中一名敌方英雄，可获得1层超凡邪力。  每使用技能消灭小兵或野怪，可获得1层超凡邪力。  参与击败敌方英雄，可获得7层超凡邪力。  超凡邪力已累计提供0法术强度。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11220001_Veigar_P.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "每使用技能命中一名敌方英雄，可获得1层超凡邪力。  每使用技能消灭小兵或野怪，可获得1层超凡邪力。  参与击败敌方英雄，可获得7层超凡邪力。  每一层超凡邪力可提供1法术强度。  超凡邪力已累计提供0法术强度。"
+      ]
+    },
+    {
+      "spellId": "11220201",
+      "spellKey": "active",
+      "name": "黑暗祭祀",
+      "description": "释放一束黑暗能量，对最先被命中的两个敌人造成65魔法伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11220201_Veigar_Q.png",
+      "video": "",
+      "cd": "5",
+      "costType": "MP",
+      "costValue": "35",
+      "detail": [
+        "释放一束黑暗能量，对命中的前2个敌人造成65魔法伤害（65+55%法术强度）。",
+        "释放一束黑暗能量，对命中的前2个敌人造成125魔法伤害（125+60%法术强度）。",
+        "释放一束黑暗能量，对命中的前2个敌人造成185魔法伤害（185+65%法术强度）。",
+        "释放一束黑暗能量，对命中的前2个敌人造成245魔法伤害（245+70%法术强度）。"
+      ]
+    },
+    {
+      "spellId": "11220301",
+      "spellKey": "active",
+      "name": "黑暗物质",
+      "description": "从空中召唤黑暗物质，对目标造成100魔法伤害。  每50层超凡邪力可令此技能的冷却时间缩短10%。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11220301_Veigar_W.png",
+      "video": "",
+      "cd": "8",
+      "costType": "MP",
+      "costValue": "65",
+      "detail": [
+        "从空中召唤黑暗物质，对目标造成100魔法伤害（100+95%法术强度）。  每50层超凡邪力可令此技能的冷却时间缩短10%。  冷却时间当前已缩短0%。",
+        "从空中召唤黑暗物质，对目标造成160魔法伤害（160+95%法术强度）。  每50层超凡邪力可令此技能的冷却时间缩短10%。  冷却时间当前已缩短0%。",
+        "从空中召唤黑暗物质，对目标造成220魔法伤害（220+95%法术强度）。  每50层超凡邪力可令此技能的冷却时间缩短10%。  冷却时间当前已缩短0%。",
+        "从空中召唤黑暗物质，对目标造成280魔法伤害（280+95%法术强度）。  每50层超凡邪力可令此技能的冷却时间缩短10%。  冷却时间当前已缩短0%。"
+      ]
+    },
+    {
+      "spellId": "11220401",
+      "spellKey": "active",
+      "name": "扭曲空间",
+      "description": "召唤出一座牢笼，对经过它的敌人造成1.75秒的晕眩效果。牢笼将持续存在3秒。  黑暗物质快速施法时，会优先针对受扭曲空间击晕的敌人。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11220401_Veigar_E.png",
+      "video": "",
+      "cd": "18",
+      "costType": "MP",
+      "costValue": "75",
+      "detail": [
+        "召唤出一座牢笼，对经过它的敌人造成1.75秒的晕眩效果。牢笼将持续存在3秒。  黑暗物质快速施法时，会优先针对受扭曲空间击晕的敌人。",
+        "召唤出一座牢笼，对经过它的敌人造成2秒的晕眩效果。牢笼将持续存在3秒。  黑暗物质快速施法时，会优先针对受扭曲空间击晕的敌人。",
+        "召唤出一座牢笼，对经过它的敌人造成2.25秒的晕眩效果。牢笼将持续存在3秒。  黑暗物质快速施法时，会优先针对受扭曲空间击晕的敌人。",
+        "召唤出一座牢笼，对经过它的敌人造成2.5秒的晕眩效果。牢笼将持续存在3秒。  黑暗物质快速施法时，会优先针对受扭曲空间击晕的敌人。"
+      ]
+    },
+    {
+      "spellId": "11220501",
+      "spellKey": "active",
+      "name": "能量爆裂",
+      "description": "用源力魔法引爆目标，对其造成185魔法伤害，并基于目标的已损失生命值提升0%-100%伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11220501_Veigar_R.png",
+      "video": "",
+      "cd": "60",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "用源力魔法引爆一名敌方英雄，对其造成185魔法伤害（185+75%法术强度），并基于目标的已损失生命值提升0%-100%伤害。  对生命值低于35%的敌人造成最高伤害。",
+        "用源力魔法引爆一名敌方英雄，对其造成250魔法伤害（250+75%法术强度），并基于目标的已损失生命值提升0%-100%伤害。  对生命值低于35%的敌人造成最高伤害。",
+        "用源力魔法引爆一名敌方英雄，对其造成315魔法伤害（315+75%法术强度），并基于目标的已损失生命值提升0%-100%伤害。  对生命值低于35%的敌人造成最高伤害。"
+      ]
+    }
+  ]
+}

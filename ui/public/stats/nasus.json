@@ -1,0 +1,138 @@
+{
+  "slug": "nasus",
+  "cnHeroId": "10065",
+  "heroId": "10065",
+  "name": {
+    "cn": "内瑟斯",
+    "titleCn": "沙漠死神"
+  },
+  "roles": [
+    "战士"
+  ],
+  "lane": "单人路",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10065.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10065.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1006501.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Nasus_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 50000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6500000,
+    "hpPerLevel": 1200000,
+    "mp": 3900000,
+    "mpPerLevel": 490000,
+    "movespeed": 35500,
+    "armor": 460000,
+    "armorPerLevel": 43000,
+    "spellblock": 320000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 90000,
+    "hpregenPerLevel": 8100,
+    "mpregen": 140000,
+    "mpregenPerLevel": 7000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 2,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 3,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "neisesi",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:37"
+  },
+  "spells": [
+    {
+      "spellId": "10650001",
+      "spellKey": "passive",
+      "name": "吞噬灵魂",
+      "description": "获得8%物理吸血加成。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10650001_Nasus_Passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "获得8%物理吸血 (随等级成长) 加成。"
+      ]
+    },
+    {
+      "spellId": "10650201",
+      "spellKey": "active",
+      "name": "汲魂痛击",
+      "description": "赋予武器能量，强化下一次普攻，造成额外20物理伤害。  若该技能击败目标，该技能所造成的伤害将增加5点（本局内有效）。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10650201_Nasus_Q.png",
+      "video": "",
+      "cd": "7",
+      "costType": "MP",
+      "costValue": "15",
+      "detail": [
+        "强化10秒内的下一次普攻，造成额外20物理伤害（20+0）。  若该技能击败目标，该技能所造成的伤害将增加5点（本局内有效）。  若使用该技能击败英雄、大型小兵、大型野怪，技能伤害转为提升14点。",
+        "强化10秒内的下一次普攻，造成额外50物理伤害（50+0）。  若该技能击败目标，该技能所造成的伤害将增加5点（本局内有效）。  若使用该技能击败英雄、大型小兵、大型野怪，技能伤害转为提升14点。",
+        "强化10秒内的下一次普攻，造成额外80物理伤害（80+0）。  若该技能击败目标，该技能所造成的伤害将增加5点（本局内有效）。  若使用该技能击败英雄、大型小兵、大型野怪，技能伤害转为提升14点。",
+        "强化10秒内的下一次普攻，造成额外110物理伤害（110+0）。  若该技能击败目标，该技能所造成的伤害将增加5点（本局内有效）。  若使用该技能击败英雄、大型小兵、大型野怪，技能伤害转为提升14点。"
+      ]
+    },
+    {
+      "spellId": "10650301",
+      "spellKey": "active",
+      "name": "枯萎",
+      "description": "降低敌人35%移动速度，并使其攻击速度降低22.5%，持续5秒。在此期间，移速最低可降至45%。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10650301_Nasus_W.png",
+      "video": "",
+      "cd": "14",
+      "costType": "MP",
+      "costValue": "80",
+      "detail": [
+        "降低敌人35%移动速度，并使其攻击速度降低22.5%，持续5秒。在此期间，移速最低可降至45%。",
+        "降低敌人35%移动速度，并使其攻击速度降低30%，持续5秒。在此期间，移速最低可降至60%。",
+        "降低敌人35%移动速度，并使其攻击速度降低37.5%，持续5秒。在此期间，移速最低可降至75%。",
+        "降低敌人35%移动速度，并使其攻击速度降低45%，持续5秒。在此期间，移速最低可降至90%。"
+      ]
+    },
+    {
+      "spellId": "10650401",
+      "spellKey": "active",
+      "name": "灵魂烈焰",
+      "description": "向目标区域释放灵魂烈焰，以造成55魔法伤害。接下来5秒，还将对区域内的敌人每秒造成11魔法伤害，并削弱其20%护甲。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10650401_Nasus_E.png",
+      "video": "",
+      "cd": "12",
+      "costType": "MP",
+      "costValue": "110",
+      "detail": [
+        "向目标区域释放灵魂烈焰，以造成55魔法伤害（55+40%法术强度）。接下来5秒，还将对区域内的敌人每秒造成11魔法伤害（11+12%法术强度），并削弱其20%护甲。",
+        "向目标区域释放灵魂烈焰，以造成110魔法伤害（110+40%法术强度）。接下来5秒，还将对区域内的敌人每秒造成22魔法伤害（22+12%法术强度），并削弱其25%护甲。",
+        "向目标区域释放灵魂烈焰，以造成165魔法伤害（165+40%法术强度）。接下来5秒，还将对区域内的敌人每秒造成33魔法伤害（33+12%法术强度），并削弱其30%护甲。",
+        "向目标区域释放灵魂烈焰，以造成220魔法伤害（220+40%法术强度）。接下来5秒，还将对区域内的敌人每秒造成44魔法伤害（44+12%法术强度），并削弱其35%护甲。"
+      ]
+    },
+    {
+      "spellId": "10650501",
+      "spellKey": "active",
+      "name": "死神降临",
+      "description": "释放一个具有强大魔力的沙漠风暴，为自身增加300生命值、40护甲和魔法抗性，持续12秒。与此同时，对附近敌人造成相当于其3%生命值的魔法伤害。风暴每秒伤害的最大值为240。  在此期间，汲魂痛击的冷却时间减少50%。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10650501_Nasus_R.png",
+      "video": "",
+      "cd": "75",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "释放一道具有强大魔力的沙漠风暴，为自身增加300生命值、40护甲和魔法抗性，持续12秒。与此同时，对附近敌人造成相当于其生命值3%（3%+0.01%法术强度）的魔法伤害。  在此期间，汲魂痛击的冷却时间减少50%。  风暴每秒最多造成240伤害。",
+        "释放一道具有强大魔力的沙漠风暴，为自身增加450生命值、50护甲和魔法抗性，持续12秒。与此同时，对附近敌人造成相当于其生命值4%（4%+0.01%法术强度）的魔法伤害。  在此期间，汲魂痛击的冷却时间减少50%。  风暴每秒最多造成240伤害。",
+        "释放一道具有强大魔力的沙漠风暴，为自身增加600生命值、60护甲和魔法抗性，持续12秒。与此同时，对附近敌人造成相当于其生命值5%（5%+0.01%法术强度）的魔法伤害。  在此期间，汲魂痛击的冷却时间减少50%。  风暴每秒最多造成240伤害。"
+      ]
+    }
+  ]
+}

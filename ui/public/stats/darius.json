@@ -1,0 +1,138 @@
+{
+  "slug": "darius",
+  "cnHeroId": "10071",
+  "heroId": "10071",
+  "name": {
+    "cn": "德莱厄斯",
+    "titleCn": "诺克萨斯之手"
+  },
+  "roles": [
+    "战士"
+  ],
+  "lane": "单人路;打野",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10071.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10071.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1007101.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Darius_0.jpg"
+  },
+  "stats": {
+    "attack": 700000,
+    "attackPerLevel": 55000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6500000,
+    "hpPerLevel": 1440000,
+    "mp": 3450000,
+    "mpPerLevel": 410000,
+    "movespeed": 35000,
+    "armor": 520000,
+    "armorPerLevel": 51000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 75000,
+    "hpregenPerLevel": 8100,
+    "mpregen": 90000,
+    "mpregenPerLevel": 5000,
+    "crit": 17500,
+    "attackspeed": 1000,
+    "attackspeedPerLevel": 120
+  },
+  "difficulty": {
+    "difficultyL": 2,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 2,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "delaiesi",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:38"
+  },
+  "spells": [
+    {
+      "spellId": "10710001",
+      "spellKey": "passive",
+      "name": "外伤",
+      "description": "普攻会对敌人造成外伤效果，5秒间造成18物理伤害。外伤最多叠加5层。  令一名敌人身上的外伤效果叠至满层，可获得持续5秒的诺克萨斯之力，提升32攻击力，并可对目标直接施加满层外伤效果。  对野怪造成180%伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10710001_darius_passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "普攻会对敌人造成外伤效果，5秒间造成18物理伤害（18 + 40%额外 攻击力）。外伤最多叠加5层。  令一名敌人身上的外伤效果叠至满层，可获得持续5秒的诺克萨斯之力，提升32攻击力（随等级成长），并可对目标直接施加满层外伤效果。  对野怪造成180%伤害。"
+      ]
+    },
+    {
+      "spellId": "10710201",
+      "spellKey": "active",
+      "name": "轮转飞斧",
+      "description": "蓄力后将斧头挥舞成一个大圈，对周围敌人造成43物理伤害。  被斧刃击中的敌人，会受到120物理伤害。每用斧刃命中一位敌方英雄或大型野怪时，将回复自身15%已损失生命值（上限为45%），并对目标施加外伤效果。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10710201_darius_q.png",
+      "video": "",
+      "cd": "9",
+      "costType": "MP",
+      "costValue": "35",
+      "detail": [
+        "蓄力后将斧头挥舞成一个大圈，对周围敌人造成43物理伤害（18+35%攻击力）。  被斧刃击中的敌人，会受到120物理伤害（50+100%攻击力）。每用斧刃命中一位敌方英雄或大型野怪时，将回复15%已损失生命值（上限为45%），并对目标施加外伤效果。",
+        "蓄力后将斧头挥舞成一个大圈，对周围敌人造成60物理伤害（32+40%攻击力）。  被斧刃击中的敌人，会受到171物理伤害（90+115%攻击力）。每用斧刃命中一位敌方英雄或大型野怪时，将回复15%已损失生命值（上限为45%），并对目标施加外伤效果。",
+        "蓄力后将斧头挥舞成一个大圈，对周围敌人造成78物理伤害（46+45%攻击力）。  被斧刃击中的敌人，会受到221物理伤害（130+130%攻击力）。每用斧刃命中一位敌方英雄或大型野怪时，将回复15%已损失生命值（上限为45%），并对目标施加外伤效果。",
+        "蓄力后将斧头挥舞成一个大圈，对周围敌人造成95物理伤害（60+50%攻击力）。  被斧刃击中的敌人，会受到272物理伤害（170+145%攻击力）。每用斧刃命中一位敌方英雄或大型野怪时，将回复15%已损失生命值（上限为45%），并对目标施加外伤效果。"
+      ]
+    },
+    {
+      "spellId": "10710301",
+      "spellKey": "active",
+      "name": "致残打击",
+      "description": "强化其下一次普通攻击，对命中目标造成额外21物理伤害并使其移速降低90%，持续1秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10710301_darius_w.png",
+      "video": "",
+      "cd": "5",
+      "costType": "MP",
+      "costValue": "30",
+      "detail": [
+        "强化其8秒内的下一次普通攻击，对命中目标造成额外21物理伤害 (30%攻击力) 并使其移速降低90%，持续1秒。",
+        "强化其8秒内的下一次普通攻击，对命中目标造成额外28物理伤害 (40%攻击力) 并使其移速降低90%，持续1秒。",
+        "强化其8秒内的下一次普通攻击，对命中目标造成额外35物理伤害 (50%攻击力) 并使其移速降低90%，持续1秒。",
+        "强化其8秒内的下一次普通攻击，对命中目标造成额外42物理伤害 (60%攻击力) 并使其移速降低90%，持续1秒。"
+      ]
+    },
+    {
+      "spellId": "10710401",
+      "spellKey": "active",
+      "name": "无情铁手",
+      "description": "被动：获得15%护甲穿透。  主动：将敌人拉至身前，使其移速降低40%，持续1.5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10710401_darius_e.png",
+      "video": "",
+      "cd": "18",
+      "costType": "MP",
+      "costValue": "45",
+      "detail": [
+        "被动：获得15%护甲穿透。  主动：将敌人拉至身前，使其移速降低40%，持续1.5秒。",
+        "被动：获得22%护甲穿透。  主动：将敌人拉至身前，使其移速降低40%，持续1.5秒。",
+        "被动：获得29%护甲穿透。  主动：将敌人拉至身前，使其移速降低40%，持续1.5秒。",
+        "被动：获得36%护甲穿透。  主动：将敌人拉至身前，使其移速降低40%，持续1.5秒。"
+      ]
+    },
+    {
+      "spellId": "10710501",
+      "spellKey": "active",
+      "name": "诺克萨斯断头台",
+      "description": "跳向目标英雄，对其进行雷霆一击以造成125真实伤害。目标身上的每层外伤效果都会使该伤害增加20%。  若使用该技能击败目标，会重置技能冷却时间和法力消耗，并获得诺克萨斯之力，持续5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10710501_darius_r.png",
+      "video": "",
+      "cd": "70",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "跳向目标英雄进行雷霆一击，对其造成125真实伤害（125+75%额外攻击力）。对目标施加的每层外伤效果都会使该伤害增加20%。  若使用该技能击败目标，会重置技能冷却时间和法力消耗，且获得诺克萨斯之力，持续5秒，并吓退小兵和野怪1.5秒。",
+        "跳向目标英雄进行雷霆一击，对其造成250真实伤害（250+75%额外攻击力）。对目标施加的每层外伤效果都会使该伤害增加20%。  若使用该技能击败目标，会重置技能冷却时间和法力消耗，且获得诺克萨斯之力，持续5秒，并吓退小兵和野怪1.5秒。",
+        "跳向目标英雄进行雷霆一击，对其造成375真实伤害（375+75%额外攻击力）。对目标施加的每层外伤效果都会使该伤害增加20%。  若使用该技能击败目标，会重置技能冷却时间和法力消耗，且获得诺克萨斯之力，持续5秒，并吓退小兵和野怪1.5秒。"
+      ]
+    }
+  ]
+}

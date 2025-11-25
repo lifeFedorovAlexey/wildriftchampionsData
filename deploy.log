@@ -3,3 +3,41 @@
 ë®·‚•¨• ≠• „§†•‚·Ô ≠†©‚® „™†ß†≠≠Î© Ø„‚Ï.
 [ERROR] merge-full-with-historu.mjs –∑–∞–≤–µ—Ä—à–∏–ª—Å—è —Å –æ—à–∏–±–∫–æ–π 3 
 === –î–æ–±–∞–≤–ª—è—é –∏–∑–º–µ–Ω–µ–Ω–∏—è === 
+[START] 25.11.2025  9:00:01,09 
+=== –ó–∞–ø—É—Å–∫ merge-full-with-historu.mjs === 
+ë®·‚•¨• ≠• „§†•‚·Ô ≠†©‚® „™†ß†≠≠Î© Ø„‚Ï.
+[ERROR] merge-full-with-historu.mjs –∑–∞–≤–µ—Ä—à–∏–ª—Å—è —Å –æ—à–∏–±–∫–æ–π 3 
+=== –î–æ–±–∞–≤–ª—è—é –∏–∑–º–µ–Ω–µ–Ω–∏—è === 
+fatal: detected dubious ownership in repository at 'D:/wildRiftChampions'
+'D:/wildRiftChampions' is owned by:
+	DESKTOP-QJJ5N6H/life (S-1-5-21-3174873524-3566360817-3547512567-1000)
+but the current user is:
+	NT AUTHORITY/—»—“≈Ã¿ (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/wildRiftChampions
+=== –ö–æ–º–º–∏—Ç === 
+fatal: detected dubious ownership in repository at 'D:/wildRiftChampions'
+'D:/wildRiftChampions' is owned by:
+	DESKTOP-QJJ5N6H/life (S-1-5-21-3174873524-3566360817-3547512567-1000)
+but the current user is:
+	NT AUTHORITY/—»—“≈Ã¿ (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/wildRiftChampions
+=== –ü—É—à –≤ GitHub === 
+fatal: detected dubious ownership in repository at 'D:/wildRiftChampions'
+'D:/wildRiftChampions' is owned by:
+	DESKTOP-QJJ5N6H/life (S-1-5-21-3174873524-3566360817-3547512567-1000)
+but the current user is:
+	NT AUTHORITY/—»—“≈Ã¿ (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/wildRiftChampions
+[END] 25.11.2025  9:00:01,20 EXIT=128 
+ 
+[START] 25.11.2025 10:17:00,91 
+=== –ó–∞–ø—É—Å–∫ merge-full-with-historu.mjs === 
+ë®·‚•¨• ≠• „§†•‚·Ô ≠†©‚® „™†ß†≠≠Î© Ø„‚Ï.
+[ERROR] merge-full-with-historu.mjs –∑–∞–≤–µ—Ä—à–∏–ª—Å—è —Å –æ—à–∏–±–∫–æ–π 3 
+=== –î–æ–±–∞–≤–ª—è—é –∏–∑–º–µ–Ω–µ–Ω–∏—è === 

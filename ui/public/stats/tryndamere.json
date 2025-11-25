@@ -1,0 +1,138 @@
+{
+  "slug": "tryndamere",
+  "cnHeroId": "10015",
+  "heroId": "10015",
+  "name": {
+    "cn": "泰达米尔",
+    "titleCn": "蛮族之王"
+  },
+  "roles": [
+    "战士"
+  ],
+  "lane": "打野;单人路",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10015.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10015.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1001501.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Tryndamere_0.jpg"
+  },
+  "stats": {
+    "attack": 540000,
+    "attackPerLevel": 55000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6900000,
+    "hpPerLevel": 1280000,
+    "mp": 0,
+    "mpPerLevel": 0,
+    "movespeed": 35500,
+    "armor": 460000,
+    "armorPerLevel": 39000,
+    "spellblock": 380000,
+    "spellblockPerLevel": 20000,
+    "hpregen": 75000,
+    "hpregenPerLevel": 8100,
+    "mpregen": 0,
+    "mpregenPerLevel": 0,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 220
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 2,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "taidamier",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:35"
+  },
+  "spells": [
+    {
+      "spellId": "10150501",
+      "spellKey": "passive",
+      "name": "战斗狂怒",
+      "description": "每点怒气可增加0.32%暴击率。  对英雄发起攻击即可获得30%攻击速度，持续5秒。（6秒冷却时间）  超过100%的暴击率转化为攻击力，每1%暴击率转化为1攻击力。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10150501_Tryndamere_beidong.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "每点怒气可增加0.32%暴击率（随等级成长）。  对英雄发起攻击即可获得30%攻击速度，持续5秒。（6秒冷却时间）  每次攻击可获得5怒气，每次暴击可获得10怒气，每次击败可获得15怒气。 脱战8秒后，每秒损失5怒气。 攻击速度加成会随着无尽怒火的技能等级提升。  超过100%的暴击率转化为攻击力，每1%暴击率转化为1攻击力。"
+      ]
+    },
+    {
+      "spellId": "10150301",
+      "spellKey": "active",
+      "name": "嗜血杀戮",
+      "description": "被动：增加7攻击力，每损失1%生命值可获得额外0.35攻击力。  主动：消耗所有怒气以回复55生命值，每消耗1点怒气可额外回复1.5生命值。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10150301_Tryndamere_4.png",
+      "video": "",
+      "cd": "12",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "被动：增加7攻击力，每损失1%生命值可获得额外0.35攻击力。  主动：消耗所有怒气以回复55生命值（55+30%法术强度），每消耗1点怒气可额外回复1.5生命值（1.5+1.2%法术强度）。",
+        "被动：增加12攻击力，每损失1%生命值可获得额外0.4攻击力。  主动：消耗所有怒气以回复65生命值（65+30%法术强度），每消耗1点怒气可额外回复2.1生命值（2.1+1.2%法术强度）。",
+        "被动：增加17攻击力，每损失1%生命值可获得额外0.45攻击力。  主动：消耗所有怒气以回复75生命值（75+30%法术强度），每消耗1点怒气可额外回复2.7生命值（2.7+1.2%法术强度）。",
+        "被动：增加22攻击力，每损失1%生命值可获得额外0.5攻击力。  主动：消耗所有怒气以回复85生命值（85+30%法术强度），每消耗1点怒气可额外回复3.3生命值（3.3+1.2%法术强度）。"
+      ]
+    },
+    {
+      "spellId": "10150601",
+      "spellKey": "active",
+      "name": "蔑视",
+      "description": "嘲笑敌人，以减少附近敌方英雄的40%攻击力，持续3秒。当目标正在远离泰达米尔时，使其移速降低25%。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10150601_Tryndamere_2.png",
+      "video": "",
+      "cd": "12",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "嘲笑敌人，以减少附近敌方英雄的40%攻击力，持续3秒。当目标正在远离泰达米尔时，使其移速降低25%。",
+        "嘲笑敌人，以减少附近敌方英雄的40%攻击力，持续3秒。当目标正在远离泰达米尔时，使其移速降低30%。",
+        "嘲笑敌人，以减少附近敌方英雄的40%攻击力，持续3秒。当目标正在远离泰达米尔时，使其移速降低35%。",
+        "嘲笑敌人，以减少附近敌方英雄的40%攻击力，持续3秒。当目标正在远离泰达米尔时，使其移速降低40%。"
+      ]
+    },
+    {
+      "spellId": "10150201",
+      "spellKey": "active",
+      "name": "旋风斩",
+      "description": "挥舞大剑冲向目标，对沿路的敌人造成80物理伤害。  对敌方小兵触发暴击会使该技能减少1秒冷却时间，若对敌方英雄触发暴击，会减少双倍冷却时间。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10150201_Tryndamere_1.png",
+      "video": "",
+      "cd": "11",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "挥舞大剑冲向目标，对沿路的敌人造成80物理伤害（80+135%额外攻击力+100%法术强度）。  对敌方小兵触发暴击会使该技能减少1秒冷却时间，若对敌方英雄触发暴击，会减少双倍冷却时间。  每命中一名敌人增加2怒气。",
+        "挥舞大剑冲向目标，对沿路的敌人造成120物理伤害（120+135%额外攻击力+100%法术强度）。  对敌方小兵触发暴击会使该技能减少1秒冷却时间，若对敌方英雄触发暴击，会减少双倍冷却时间。  每命中一名敌人增加2怒气。",
+        "挥舞大剑冲向目标，对沿路的敌人造成160物理伤害（160+135%额外攻击力+100%法术强度）。  对敌方小兵触发暴击会使该技能减少1秒冷却时间，若对敌方英雄触发暴击，会减少双倍冷却时间。  每命中一名敌人增加2怒气。",
+        "挥舞大剑冲向目标，对沿路的敌人造成200物理伤害（200+135%额外攻击力+100%法术强度）。  对敌方小兵触发暴击会使该技能减少1秒冷却时间，若对敌方英雄触发暴击，会减少双倍冷却时间。  每命中一名敌人增加2怒气。"
+      ]
+    },
+    {
+      "spellId": "10150401",
+      "spellKey": "active",
+      "name": "无尽怒火",
+      "description": "被动：将战斗狂怒的额外攻击速度提升至45%。  主动：在5秒内免疫死亡，并获得50点怒气。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/10150401_Tryndamere_3.png",
+      "video": "",
+      "cd": "90",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "被动：将战斗狂怒的额外攻击速度提升至45%。  主动：在5秒内免疫死亡，并获得50点怒气。  受控制效果影响时也可施放。",
+        "被动：将战斗狂怒的额外攻击速度提升至60%。  主动：在5秒内免疫死亡，并获得75点怒气。  受控制效果影响时也可施放。",
+        "被动：将战斗狂怒的额外攻击速度提升至75%。  主动：在5秒内免疫死亡，并获得100点怒气。  受控制效果影响时也可施放。"
+      ]
+    }
+  ]
+}

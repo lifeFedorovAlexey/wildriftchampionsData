@@ -1,0 +1,138 @@
+{
+  "slug": "brand",
+  "cnHeroId": "10119",
+  "heroId": "10119",
+  "name": {
+    "cn": "布兰德",
+    "titleCn": "复仇焰魂"
+  },
+  "roles": [
+    "法师"
+  ],
+  "lane": "中路;辅助",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10119.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10119.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1011901.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Brand_0.jpg"
+  },
+  "stats": {
+    "attack": 580000,
+    "attackPerLevel": 36000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6300000,
+    "hpPerLevel": 1200000,
+    "mp": 4350000,
+    "mpPerLevel": 490000,
+    "movespeed": 36000,
+    "armor": 340000,
+    "armorPerLevel": 45000,
+    "spellblock": 360000,
+    "spellblockPerLevel": 12000,
+    "hpregen": 75000,
+    "hpregenPerLevel": 5500,
+    "mpregen": 120000,
+    "mpregenPerLevel": 9000,
+    "crit": 17500,
+    "attackspeed": 2000,
+    "attackspeedPerLevel": 0
+  },
+  "difficulty": {
+    "difficultyL": 2,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 1,
+    "assistL": 2
+  },
+  "meta": {
+    "alias": "bulande",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:40"
+  },
+  "spells": [
+    {
+      "spellId": "11190001",
+      "spellKey": "passive",
+      "name": "炽热之焰",
+      "description": "使用技能时，会对目标施加一层炽热之焰，并在4秒内，对目标造成相当于其3%最大生命值的魔法伤害。  当炽热之焰在一名英雄或大型野怪身上叠至3层时，它会在2秒后引爆，对附近的所有敌人造成相当于其10％最大生命值的魔法伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11190001_BrandP.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "使用技能时，会对目标施加一层炽热之焰，并在4秒内，对目标造成相当于其3%最大生命值的魔法伤害。  当炽热之焰在一名英雄或大型野怪身上叠至3层时，它会在2秒后引爆，对附近的所有敌人造成相当于其10％最大生命值的魔法伤害 (10%+0.02%法术强度) 。  此后4秒内，被引爆的敌人身上将不能再堆叠炽热之焰。 "
+      ]
+    },
+    {
+      "spellId": "11190201",
+      "spellKey": "active",
+      "name": "火焰烙印",
+      "description": "向前放出一团火球，对命中目标造成80魔法伤害。  炽热之焰：若目标身上带有炽热之焰效果，该技能会使其晕眩1.75秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11190201_BrandQ.png",
+      "video": "",
+      "cd": "7",
+      "costType": "MP",
+      "costValue": "50",
+      "detail": [
+        "向前放出一团火球，对命中目标造成80魔法伤害(80+55%法术强度) 。  炽热之焰：若目标身上带有炽热之焰效果，该技能会使其晕眩1.75秒。",
+        "向前放出一团火球，对命中目标造成120魔法伤害(120+55%法术强度) 。  炽热之焰：若目标身上带有炽热之焰效果，该技能会使其晕眩1.75秒。",
+        "向前放出一团火球，对命中目标造成160魔法伤害(160+55%法术强度) 。  炽热之焰：若目标身上带有炽热之焰效果，该技能会使其晕眩1.75秒。",
+        "向前放出一团火球，对命中目标造成200魔法伤害(200+55%法术强度) 。  炽热之焰：若目标身上带有炽热之焰效果，该技能会使其晕眩1.75秒。"
+      ]
+    },
+    {
+      "spellId": "11190301",
+      "spellKey": "active",
+      "name": "烈焰之柱",
+      "description": "短暂延迟之后，在目标区域创造一根烈焰之柱，对范围内的敌人造成70魔法伤害。  炽热之焰：若目标身上带有炽热之焰效果，该技能会对其造成额外30%伤害。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11190301_BrandW.png",
+      "video": "",
+      "cd": "9",
+      "costType": "MP",
+      "costValue": "65",
+      "detail": [
+        "短暂延迟之后，在目标区域创造一根烈焰之柱，对范围内的敌人造成70魔法伤害 (70+55%法术强度) 。  炽热之焰：若目标身上带有炽热之焰效果，该技能会对其造成额外30%伤害。",
+        "短暂延迟之后，在目标区域创造一根烈焰之柱，对范围内的敌人造成120魔法伤害 (120+55%法术强度) 。  炽热之焰：若目标身上带有炽热之焰效果，该技能会对其造成额外30%伤害。",
+        "短暂延迟之后，在目标区域创造一根烈焰之柱，对范围内的敌人造成170魔法伤害 (170+55%法术强度) 。  炽热之焰：若目标身上带有炽热之焰效果，该技能会对其造成额外30%伤害。",
+        "短暂延迟之后，在目标区域创造一根烈焰之柱，对范围内的敌人造成220魔法伤害 (220+55%法术强度) 。  炽热之焰：若目标身上带有炽热之焰效果，该技能会对其造成额外30%伤害。"
+      ]
+    },
+    {
+      "spellId": "11190401",
+      "spellKey": "active",
+      "name": "烈火燃烧",
+      "description": "引燃目标以及附近的敌人，造成60魔法伤害。  炽热之焰：若目标身上带有炽热之焰效果，该技能引燃扩散的范围将会扩大。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11190401_BrandE.png",
+      "video": "",
+      "cd": "11",
+      "costType": "MP",
+      "costValue": "65",
+      "detail": [
+        "引燃目标以及附近的敌人，造成60魔法伤害(60+45%法术强度)。  炽热之焰：若目标身上带有炽热之焰效果，该技能引燃扩散的范围将会扩大。",
+        "引燃目标以及附近的敌人，造成90魔法伤害(90+45%法术强度)。  炽热之焰：若目标身上带有炽热之焰效果，该技能引燃扩散的范围将会扩大。",
+        "引燃目标以及附近的敌人，造成120魔法伤害(120+45%法术强度)。  炽热之焰：若目标身上带有炽热之焰效果，该技能引燃扩散的范围将会扩大。",
+        "引燃目标以及附近的敌人，造成150魔法伤害(150+45%法术强度)。  炽热之焰：若目标身上带有炽热之焰效果，该技能引燃扩散的范围将会扩大。"
+      ]
+    },
+    {
+      "spellId": "11190501",
+      "spellKey": "active",
+      "name": "烈焰风暴",
+      "description": "释放一团在敌人或自己之间弹跳最多5次的火焰之种，每次弹跳造成100魔法伤害。  炽热之焰：若目标身上带有炽热之焰效果，此技能将短暂地使目标移速降低30%。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11190501_BrandR.png",
+      "video": "",
+      "cd": "70",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "释放一团在敌人或自己之间弹跳最多5次的火焰之种，每次弹跳造成100魔法伤害 (100+30%法术强度)。  炽热之焰：若目标身上带有炽热之焰效果，此技能将短暂地使目标移速降低30%。  火焰之种会优先弹跳至炽热之焰层数高但是未满层的目标。",
+        "释放一团在敌人或自己之间弹跳最多5次的火焰之种，每次弹跳造成200魔法伤害 (200+30%法术强度)。  炽热之焰：若目标身上带有炽热之焰效果，此技能将短暂地使目标移速降低40%。  火焰之种会优先弹跳至炽热之焰层数高但是未满层的目标。",
+        "释放一团在敌人或自己之间弹跳最多5次的火焰之种，每次弹跳造成300魔法伤害 (300+30%法术强度)。  炽热之焰：若目标身上带有炽热之焰效果，此技能将短暂地使目标移速降低50%。  火焰之种会优先弹跳至炽热之焰层数高但是未满层的目标。"
+      ]
+    }
+  ]
+}

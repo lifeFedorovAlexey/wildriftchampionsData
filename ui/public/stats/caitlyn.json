@@ -1,0 +1,138 @@
+{
+  "slug": "caitlyn",
+  "cnHeroId": "10112",
+  "heroId": "10112",
+  "name": {
+    "cn": "凯特琳",
+    "titleCn": "皮城女警"
+  },
+  "roles": [
+    "射手"
+  ],
+  "lane": "射手",
+  "baseImgUrl": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10112.png",
+  "images": {
+    "avatar": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/HeadIcon/H_S_10112.png",
+    "card": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/CardPictures/S_R_1011201.png",
+    "poster": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/Posters/Caitlyn_0.jpg"
+  },
+  "stats": {
+    "attack": 540000,
+    "attackPerLevel": 40000,
+    "magic": 0,
+    "magicPerLevel": 0,
+    "hp": 6000000,
+    "hpPerLevel": 1280000,
+    "mp": 3450000,
+    "mpPerLevel": 410000,
+    "movespeed": 33500,
+    "armor": 350000,
+    "armorPerLevel": 45000,
+    "spellblock": 300000,
+    "spellblockPerLevel": 14000,
+    "hpregen": 60000,
+    "hpregenPerLevel": 5500,
+    "mpregen": 120000,
+    "mpregenPerLevel": 7000,
+    "crit": 17500,
+    "attackspeed": 3000,
+    "attackspeedPerLevel": 320
+  },
+  "difficulty": {
+    "difficultyL": 1,
+    "damage": 3,
+    "durability": 0,
+    "mobility": 0,
+    "surviveL": 1,
+    "assistL": 1
+  },
+  "meta": {
+    "alias": "kaitelin",
+    "isWeekFree": "0",
+    "version": "6.3",
+    "fileTime": "2025-11-24 09:59:40"
+  },
+  "spells": [
+    {
+      "spellId": "11120001",
+      "spellKey": "passive",
+      "name": "精准狙击",
+      "description": "每6次普攻后，下一次普攻必定产生精准狙击，造成27额外物理伤害。对受到陷阱或绳网影响的敌人发起普攻时，会触发拥有双倍射程的精准狙击。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11120001_Caitlyn_passive.png",
+      "video": "",
+      "cd": "0",
+      "costType": "None",
+      "costValue": "0",
+      "detail": [
+        "每6次普攻后，下一次普攻必定产生精准狙击，造成27额外物理伤害（50%攻击力+125暴击率）。对受到陷阱或绳网影响的敌人发起普攻时，会触发拥有双倍射程的精准狙击。  在草丛中进行攻击时，精准狙击的积攒速度变为两倍。"
+      ]
+    },
+    {
+      "spellId": "11120201",
+      "spellKey": "active",
+      "name": "和平使者",
+      "description": "发射一枚颗窄小的穿刺弹，以造成128物理伤害。穿刺弹命中敌人后会绽开为一个更宽的弹体，但后续伤害将减少40%。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11120201_Caitlyn_Q.png",
+      "video": "",
+      "cd": "9",
+      "costType": "MP",
+      "costValue": "50",
+      "detail": [
+        "发射一颗窄小的穿刺弹，造成128物理伤害（60+125%攻击力）。穿刺弹命中敌人后会绽开为一个更宽的弹体，后续伤害将减少40%。  中了陷阱或绳网的敌人，始终受到全额伤害。",
+        "发射一颗窄小的穿刺弹，造成186物理伤害（110+140%攻击力）。穿刺弹命中敌人后会绽开为一个更宽的弹体，后续伤害将减少40%。  中了陷阱或绳网的敌人，始终受到全额伤害。",
+        "发射一颗窄小的穿刺弹，造成244物理伤害（160+155%攻击力）。穿刺弹命中敌人后会绽开为一个更宽的弹体，后续伤害将减少40%。  中了陷阱或绳网的敌人，始终受到全额伤害。",
+        "发射一颗窄小的穿刺弹，造成302物理伤害（210+170%攻击力）。穿刺弹命中敌人后会绽开为一个更宽的弹体，后续伤害将减少40%。  中了陷阱或绳网的敌人，始终受到全额伤害。"
+      ]
+    },
+    {
+      "spellId": "11120301",
+      "spellKey": "active",
+      "name": "约德尔诱捕器",
+      "description": "布置可以束缚敌方英雄的陷阱，禁锢目标1.5秒并短暂显露他们。  陷阱可以持续30秒，最多可同时存在2个陷阱。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11120301_Caitlyn_W.png",
+      "video": "",
+      "cd": "0",
+      "costType": "MP",
+      "costValue": "20",
+      "detail": [
+        "布置可以束缚敌方英雄的陷阱，禁锢目标1.5秒并短暂显露他们。  陷阱可以持续30秒，最多可同时存在2个陷阱。",
+        "布置可以束缚敌方英雄的陷阱，禁锢目标1.5秒并短暂显露他们。  陷阱可以持续30秒，最多可同时存在3个陷阱。",
+        "布置可以束缚敌方英雄的陷阱，禁锢目标1.5秒并短暂显露他们。  陷阱可以持续30秒，最多可同时存在4个陷阱。",
+        "布置可以束缚敌方英雄的陷阱，禁锢目标1.5秒并短暂显露他们。  陷阱可以持续30秒，最多可同时存在5个陷阱。"
+      ]
+    },
+    {
+      "spellId": "11120401",
+      "spellKey": "active",
+      "name": "90口径绳网",
+      "description": "发射一张绳网，同时自身因后坐力而被击退。绳网会对第一个命中的敌人造成70魔法伤害并使其移速降低50%，持续1.5秒。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11120401_Caitlyn_E.png",
+      "video": "",
+      "cd": "16",
+      "costType": "MP",
+      "costValue": "75",
+      "detail": [
+        "发射一张绳网，同时自身因后坐力而被击退。绳网会对第一个命中的敌人造成70魔法伤害（70+80%法术强度）并使其移速降低50%，持续1.5秒。",
+        "发射一张绳网，同时自身因后坐力而被击退。绳网会对第一个命中的敌人造成120魔法伤害（120+80%法术强度）并使其移速降低50%，持续1.5秒。",
+        "发射一张绳网，同时自身因后坐力而被击退。绳网会对第一个命中的敌人造成170魔法伤害（170+80%法术强度）并使其移速降低50%，持续1.5秒。",
+        "发射一张绳网，同时自身因后坐力而被击退。绳网会对第一个命中的敌人造成220魔法伤害（220+80%法术强度）并使其移速降低50%，持续1.5秒。"
+      ]
+    },
+    {
+      "spellId": "11120501",
+      "spellKey": "active",
+      "name": "让子弹飞",
+      "description": "准备射出完美一击，显露一名敌方英雄，持续1.5秒，然后对其造成相当于200加上目标20%已损失生命值的物理伤害。其他敌方英雄可以为目标英雄拦截子弹。",
+      "icon": "https://game.gtimg.cn/images/lgamem/act/lrlib/img/SkillIcons/11120501_Caitlyn_R.png",
+      "video": "",
+      "cd": "65",
+      "costType": "MP",
+      "costValue": "100",
+      "detail": [
+        "准备射出完美一击，显露一名敌方英雄，持续1.5秒，然后对其造成相当于200（200+200%额外攻击力）加上目标20%已损失生命值的物理伤害。其他敌方英雄可以为目标英雄拦截子弹。",
+        "准备射出完美一击，显露一名敌方英雄，持续1.5秒，然后对其造成相当于375（375+200%额外攻击力）加上目标20%已损失生命值的物理伤害。其他敌方英雄可以为目标英雄拦截子弹。",
+        "准备射出完美一击，显露一名敌方英雄，持续1.5秒，然后对其造成相当于550（550+200%额外攻击力）加上目标20%已损失生命值的物理伤害。其他敌方英雄可以为目标英雄拦截子弹。"
+      ]
+    }
+  ]
+}
