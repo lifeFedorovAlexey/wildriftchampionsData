@@ -41,3 +41,450 @@ To add an exception for this directory, call:
 ë®·‚•¨• ≠• „§†•‚·Ô ≠†©‚® „™†ß†≠≠Î© Ø„‚Ï.
 [ERROR] merge-full-with-historu.mjs –∑–∞–≤–µ—Ä—à–∏–ª—Å—è —Å –æ—à–∏–±–∫–æ–π 3 
 === –î–æ–±–∞–≤–ª—è—é –∏–∑–º–µ–Ω–µ–Ω–∏—è === 
+warning: in the working copy of 'deploy.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/champions.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/cn-combined.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/aatrox.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/ahri.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/akali.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/akshan.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/alistar.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/ambessa.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/amumu.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/annie.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/ashe.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/aurelion-sol.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/aurora.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/bard.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/blitzcrank.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/brand.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/braum.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/caitlyn.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/camille.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/corki.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/darius.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/diana.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/dr-mundo.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/draven.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/ekko.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/evelynn.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/ezreal.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/fiddlesticks.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/fiora.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/fizz.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/galio.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/garen.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/gnar.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/gragas.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/graves.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/gwen.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/hecarim.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/heimerdinger.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/irelia.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/janna.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/jarvan-iv.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/jax.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/jayce.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/jhin.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/jinx.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/kaisa.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/kalista.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/karma.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/kassadin.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/katarina.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/kayle.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/kayn.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/kennen.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/khazix.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/kindred.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/lee-sin.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/leona.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/lillia.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/lissandra.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/lucian.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/lulu.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/lux.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/malphite.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/maokai.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/master-yi.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/milio.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/miss-fortune.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/mordekaiser.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/morgana.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/nami.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/nasus.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/nautilus.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/nidalee.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/nilah.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/nocturne.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/nunu-and-willump.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/olaf.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/orianna.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/ornn.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/pantheon.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/poppy.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/pyke.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/rakan.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/rammus.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/rell.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/renekton.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/rengar.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/riven.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/rumble.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/ryze.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/samira.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/senna.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/seraphine.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/sett.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/shen.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/shyvana.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/singed.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/sion.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/sivir.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/sona.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/soraka.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/swain.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/syndra.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/talon.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/teemo.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/thresh.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/tristana.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/tryndamere.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/twisted-fate.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/twitch.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/urgot.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/varus.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/vayne.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/veigar.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/velkoz.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/vex.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/vi.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/viego.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/viktor.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/vladimir.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/volibear.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/warwick.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/wukong.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/xayah.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/xin-zhao.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/yasuo.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/yone.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/yuumi.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/zed.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/zeri.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/ziggs.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/zilean.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/zoe.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/history/champions/zyra.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/aatrox.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/ahri.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/akali.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/akshan.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/alistar.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/ambessa.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/amumu.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/annie.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/ashe.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/aurelion-sol.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/aurora.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/bard.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/blitzcrank.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/brand.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/braum.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/caitlyn.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/camille.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/corki.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/darius.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/diana.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/dr-mundo.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/draven.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/ekko.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/evelynn.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/ezreal.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/fiddlesticks.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/fiora.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/fizz.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/galio.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/garen.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/gnar.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/gragas.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/graves.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/gwen.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/hecarim.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/heimerdinger.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/irelia.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/janna.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/jarvan-iv.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/jax.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/jayce.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/jhin.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/jinx.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/kaisa.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/kalista.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/karma.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/kassadin.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/katarina.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/kayle.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/kayn.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/kennen.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/khazix.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/kindred.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/lee-sin.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/leona.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/lillia.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/lissandra.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/lucian.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/lulu.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/lux.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/malphite.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/maokai.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/master-yi.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/milio.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/miss-fortune.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/mordekaiser.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/morgana.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/nami.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/nasus.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/nautilus.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/nidalee.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/nilah.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/nocturne.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/nunu-and-willump.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/olaf.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/orianna.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/ornn.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/pantheon.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/poppy.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/pyke.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/rakan.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/rammus.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/rell.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/renekton.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/rengar.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/riven.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/rumble.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/ryze.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/samira.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/senna.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/seraphine.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/sett.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/shen.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/shyvana.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/singed.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/sion.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/sivir.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/sona.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/soraka.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/swain.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/syndra.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/talon.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/teemo.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/thresh.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/tristana.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/tryndamere.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/twisted-fate.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/twitch.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/urgot.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/varus.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/vayne.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/veigar.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/velkoz.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/vex.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/vi.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/viego.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/viktor.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/vladimir.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/volibear.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/warwick.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/wukong.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/xayah.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/xin-zhao.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/yasuo.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/yone.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/yuumi.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/zed.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/zeri.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/ziggs.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/zilean.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/zoe.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ui/public/stats/zyra.json', LF will be replaced by CRLF the next time Git touches it
+=== –ö–æ–º–º–∏—Ç === 
+[main a1c4207] Auto update CN stats
+ 267 files changed, 28956 insertions(+), 2553 deletions(-)
+ create mode 100644 download-cn-hero-details.mjs
+ create mode 100644 ui/public/stats/aatrox.json
+ create mode 100644 ui/public/stats/ahri.json
+ create mode 100644 ui/public/stats/akali.json
+ create mode 100644 ui/public/stats/akshan.json
+ create mode 100644 ui/public/stats/alistar.json
+ create mode 100644 ui/public/stats/ambessa.json
+ create mode 100644 ui/public/stats/amumu.json
+ create mode 100644 ui/public/stats/annie.json
+ create mode 100644 ui/public/stats/ashe.json
+ create mode 100644 ui/public/stats/aurelion-sol.json
+ create mode 100644 ui/public/stats/aurora.json
+ create mode 100644 ui/public/stats/bard.json
+ create mode 100644 ui/public/stats/blitzcrank.json
+ create mode 100644 ui/public/stats/brand.json
+ create mode 100644 ui/public/stats/braum.json
+ create mode 100644 ui/public/stats/caitlyn.json
+ create mode 100644 ui/public/stats/camille.json
+ create mode 100644 ui/public/stats/corki.json
+ create mode 100644 ui/public/stats/darius.json
+ create mode 100644 ui/public/stats/diana.json
+ create mode 100644 ui/public/stats/dr-mundo.json
+ create mode 100644 ui/public/stats/draven.json
+ create mode 100644 ui/public/stats/ekko.json
+ create mode 100644 ui/public/stats/evelynn.json
+ create mode 100644 ui/public/stats/ezreal.json
+ create mode 100644 ui/public/stats/fiddlesticks.json
+ create mode 100644 ui/public/stats/fiora.json
+ create mode 100644 ui/public/stats/fizz.json
+ create mode 100644 ui/public/stats/galio.json
+ create mode 100644 ui/public/stats/garen.json
+ create mode 100644 ui/public/stats/gnar.json
+ create mode 100644 ui/public/stats/gragas.json
+ create mode 100644 ui/public/stats/graves.json
+ create mode 100644 ui/public/stats/gwen.json
+ create mode 100644 ui/public/stats/hecarim.json
+ create mode 100644 ui/public/stats/heimerdinger.json
+ create mode 100644 ui/public/stats/irelia.json
+ create mode 100644 ui/public/stats/janna.json
+ create mode 100644 ui/public/stats/jarvan-iv.json
+ create mode 100644 ui/public/stats/jax.json
+ create mode 100644 ui/public/stats/jayce.json
+ create mode 100644 ui/public/stats/jhin.json
+ create mode 100644 ui/public/stats/jinx.json
+ create mode 100644 ui/public/stats/kaisa.json
+ create mode 100644 ui/public/stats/kalista.json
+ create mode 100644 ui/public/stats/karma.json
+ create mode 100644 ui/public/stats/kassadin.json
+ create mode 100644 ui/public/stats/katarina.json
+ create mode 100644 ui/public/stats/kayle.json
+ create mode 100644 ui/public/stats/kayn.json
+ create mode 100644 ui/public/stats/kennen.json
+ create mode 100644 ui/public/stats/khazix.json
+ create mode 100644 ui/public/stats/kindred.json
+ create mode 100644 ui/public/stats/lee-sin.json
+ create mode 100644 ui/public/stats/leona.json
+ create mode 100644 ui/public/stats/lillia.json
+ create mode 100644 ui/public/stats/lissandra.json
+ create mode 100644 ui/public/stats/lucian.json
+ create mode 100644 ui/public/stats/lulu.json
+ create mode 100644 ui/public/stats/lux.json
+ create mode 100644 ui/public/stats/malphite.json
+ create mode 100644 ui/public/stats/maokai.json
+ create mode 100644 ui/public/stats/master-yi.json
+ create mode 100644 ui/public/stats/milio.json
+ create mode 100644 ui/public/stats/miss-fortune.json
+ create mode 100644 ui/public/stats/mordekaiser.json
+ create mode 100644 ui/public/stats/morgana.json
+ create mode 100644 ui/public/stats/nami.json
+ create mode 100644 ui/public/stats/nasus.json
+ create mode 100644 ui/public/stats/nautilus.json
+ create mode 100644 ui/public/stats/nidalee.json
+ create mode 100644 ui/public/stats/nilah.json
+ create mode 100644 ui/public/stats/nocturne.json
+ create mode 100644 ui/public/stats/nunu-and-willump.json
+ create mode 100644 ui/public/stats/olaf.json
+ create mode 100644 ui/public/stats/orianna.json
+ create mode 100644 ui/public/stats/ornn.json
+ create mode 100644 ui/public/stats/pantheon.json
+ create mode 100644 ui/public/stats/poppy.json
+ create mode 100644 ui/public/stats/pyke.json
+ create mode 100644 ui/public/stats/rakan.json
+ create mode 100644 ui/public/stats/rammus.json
+ create mode 100644 ui/public/stats/rell.json
+ create mode 100644 ui/public/stats/renekton.json
+ create mode 100644 ui/public/stats/rengar.json
+ create mode 100644 ui/public/stats/riven.json
+ create mode 100644 ui/public/stats/rumble.json
+ create mode 100644 ui/public/stats/ryze.json
+ create mode 100644 ui/public/stats/samira.json
+ create mode 100644 ui/public/stats/senna.json
+ create mode 100644 ui/public/stats/seraphine.json
+ create mode 100644 ui/public/stats/sett.json
+ create mode 100644 ui/public/stats/shen.json
+ create mode 100644 ui/public/stats/shyvana.json
+ create mode 100644 ui/public/stats/singed.json
+ create mode 100644 ui/public/stats/sion.json
+ create mode 100644 ui/public/stats/sivir.json
+ create mode 100644 ui/public/stats/sona.json
+ create mode 100644 ui/public/stats/soraka.json
+ create mode 100644 ui/public/stats/swain.json
+ create mode 100644 ui/public/stats/syndra.json
+ create mode 100644 ui/public/stats/talon.json
+ create mode 100644 ui/public/stats/teemo.json
+ create mode 100644 ui/public/stats/thresh.json
+ create mode 100644 ui/public/stats/tristana.json
+ create mode 100644 ui/public/stats/tryndamere.json
+ create mode 100644 ui/public/stats/twisted-fate.json
+ create mode 100644 ui/public/stats/twitch.json
+ create mode 100644 ui/public/stats/urgot.json
+ create mode 100644 ui/public/stats/varus.json
+ create mode 100644 ui/public/stats/vayne.json
+ create mode 100644 ui/public/stats/veigar.json
+ create mode 100644 ui/public/stats/velkoz.json
+ create mode 100644 ui/public/stats/vex.json
+ create mode 100644 ui/public/stats/vi.json
+ create mode 100644 ui/public/stats/viego.json
+ create mode 100644 ui/public/stats/viktor.json
+ create mode 100644 ui/public/stats/vladimir.json
+ create mode 100644 ui/public/stats/volibear.json
+ create mode 100644 ui/public/stats/warwick.json
+ create mode 100644 ui/public/stats/wukong.json
+ create mode 100644 ui/public/stats/xayah.json
+ create mode 100644 ui/public/stats/xin-zhao.json
+ create mode 100644 ui/public/stats/yasuo.json
+ create mode 100644 ui/public/stats/yone.json
+ create mode 100644 ui/public/stats/yuumi.json
+ create mode 100644 ui/public/stats/zed.json
+ create mode 100644 ui/public/stats/zeri.json
+ create mode 100644 ui/public/stats/ziggs.json
+ create mode 100644 ui/public/stats/zilean.json
+ create mode 100644 ui/public/stats/zoe.json
+ create mode 100644 ui/public/stats/zyra.json
+=== –ü—É—à –≤ GitHub === 
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/lifeFedorovAlexey/wildriftchampionsData.git
+   0c7afd0..a1c4207  main -> main
+[END] 25.11.2025 10:17:03,62 EXIT=0 
+ 
+[START] 25.11.2025 12:00:01,17 
+=== –ó–∞–ø—É—Å–∫ merge-full-with-historu.mjs === 
+ë®·‚•¨• ≠• „§†•‚·Ô ≠†©‚® „™†ß†≠≠Î© Ø„‚Ï.
+[ERROR] merge-full-with-historu.mjs –∑–∞–≤–µ—Ä—à–∏–ª—Å—è —Å –æ—à–∏–±–∫–æ–π 3 
+=== –î–æ–±–∞–≤–ª—è—é –∏–∑–º–µ–Ω–µ–Ω–∏—è === 
+fatal: detected dubious ownership in repository at 'D:/wildRiftChampions'
+'D:/wildRiftChampions' is owned by:
+	DESKTOP-QJJ5N6H/life (S-1-5-21-3174873524-3566360817-3547512567-1000)
+but the current user is:
+	NT AUTHORITY/—»—“≈Ã¿ (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/wildRiftChampions
+=== –ö–æ–º–º–∏—Ç === 
+fatal: detected dubious ownership in repository at 'D:/wildRiftChampions'
+'D:/wildRiftChampions' is owned by:
+	DESKTOP-QJJ5N6H/life (S-1-5-21-3174873524-3566360817-3547512567-1000)
+but the current user is:
+	NT AUTHORITY/—»—“≈Ã¿ (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/wildRiftChampions
+=== –ü—É—à –≤ GitHub === 
+fatal: detected dubious ownership in repository at 'D:/wildRiftChampions'
+'D:/wildRiftChampions' is owned by:
+	DESKTOP-QJJ5N6H/life (S-1-5-21-3174873524-3566360817-3547512567-1000)
+but the current user is:
+	NT AUTHORITY/—»—“≈Ã¿ (S-1-5-18)
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory D:/wildRiftChampions
+[END] 25.11.2025 12:00:01,32 EXIT=128 
+ 
+[START] 25.11.2025 15:19:46,89 
+=== –ó–∞–ø—É—Å–∫ merge-full-with-historu.mjs === 
+ë®·‚•¨• ≠• „§†•‚·Ô ≠†©‚® „™†ß†≠≠Î© Ø„‚Ï.
+[ERROR] merge-full-with-historu.mjs –∑–∞–≤–µ—Ä—à–∏–ª—Å—è —Å –æ—à–∏–±–∫–æ–π 3 
+=== –î–æ–±–∞–≤–ª—è—é –∏–∑–º–µ–Ω–µ–Ω–∏—è === 
