@@ -1,0 +1,699 @@
+{
+  "yuumi": [
+    {
+      "id": "63d-yuumi-rework-кошачья-дружба",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "rework",
+      "title": "Описание обновления 6.3d для Wild Rift – Кошачья дружба – REWORK",
+      "abilityName": "Кошачья дружба",
+      "description": "[Удалено] Пассивное умение \"Защитный напрыг\"\n\n[Новое] Пассивное умение \"Кошачья дружба\"\n\n[Новое] Пока Юми привязана к союзнику, она и ее партнер получают очки дружбы за убийство вражеских чемпионов или миньонов. Союзник с наибольшим количеством очков дружбы становится ее лучшим другом. Когда Юми привязана к лучшему другу, ее умения усиливаются.\n\n[Изменено] Автоатаки Юми по вражеским чемпионам дают ей постоянный щит прочностью (35 + уровень чемпиона × 10 + 15% от силы умений) ед. Перезарядка – 18 сек. Если Юми привязана к союзнику, щит передается ему. → При попадании автоатаками и умениями по вражеским чемпионам Юми восстанавливает здоровье в размере (25 + уровень чемпиона × 7 + 25% от силы умений) ед. Если в течение 4 сек. Юми привязывается к союзнику, он также исцеляется.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-yuumi-buff-кошки-мышки",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "buff",
+      "title": "Описание обновления 6.3d для Wild Rift – Кошки-мышки – BUFF",
+      "abilityName": "Кошки-мышки",
+      "description": "[Новое] Бонус лучшего друга: Если Юми привязана к союзнику, \"Кошки-мышки\" всегда замедляют пораженных врагов, а при попадании по вражескому чемпиону партнер Юми наносит дополнительный урон в размере (10/12/14/16/18 + 5% от силы умений) ед.\n\n[Удалено] Снаряды наносят магический урон в размере 2/3/4/5/6% от текущего здоровья.\n\n[Изменено] Замедление: 20% → 25/30/35/40/45%\n\n[Изменено] Урон усиленного умения: 70/120/170/220/270 → 80/135/190/245/300",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-yuumi-rework-ты-и-я",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "rework",
+      "title": "Описание обновления 6.3d для Wild Rift – Ты и я! – REWORK",
+      "abilityName": "Ты и я!",
+      "description": "[Новое] Бонус лучшего друга: Пока Юми привязана к своему лучшему другу, ее эффективность лечения и щитов повышается на (4/5/6/7% + 0,02% от силы умений), а ее лучший друг получает дополнительное лечение в размере (3/6/9/12 + 4% от силы умений).\n\n[Удалено] Дает союзнику, к которому привязана, адаптивную силу.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-yuumi-change-догонялки",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "change",
+      "title": "Описание обновления 6.3d для Wild Rift – Догонялки – CHANGE",
+      "abilityName": "Догонялки",
+      "description": "[Изменено] Перезарядка: 12/11/10/9 сек. → 10 сек. на всех уровнях\n\n[Изменено] Юми восстанавливает себе (20/30/40/50 + 10% от силы умений) ед. здоровья и получает прибавку в (15 + 3% от силы умений) к скорости передвижения и в (20/25/30/35%) – к скорости атаки на 3 секунды.\n\n[Изменено] Следующие 3 автоатаки и умения, поразившие врага, восстанавливают (20/30/40/50 + 10% от силы умений) здоровья → Юми накладывает на себя щит прочностью (70/100/130/160 + 30% от силы умений) и получает прибавку в (20/25/30/35% + 0,08% от силы умений) к скорости атаки на 3 секунды. Пока щит действует, цель также получает прибавку в 20% к скорости передвижения.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-yuumi-buff-последняя-глава",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "buff",
+      "title": "Описание обновления 6.3d для Wild Rift – Последняя глава – BUFF",
+      "abilityName": "Последняя глава",
+      "description": "[Изменено] Волны наносят (80/100/120 + 15% от силы умений) ед. магического урона пораженным врагам → Волны наносят (80/100/120+15% от силы умений) ед. магического урона пораженным врагам и замедляют их на 10%. Каждое последующее попадание дополнительно замедляет врага на 10%.\n\n[Изменено] Последующие волны наносят 50% магического урона → Последующие волны наносят (20/30/40 + 5% от силы умений) магического урона.\n\n[Новое] Каждая волна восстанавливает задетым союзным чемпионам (20/30/40 + 5% от силы умений) здоровья. Избыточное лечение превращается в щит.\n\n[Новое] Бонус лучшего друга: Объем лечения для лучшего друга увеличен до (26/39/52 + 8% от силы умений).\n\n[Удалено] Вражеский чемпион, пораженный 3 волнами, обездвиживается на 1,5 сек.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "jayce": [
+    {
+      "id": "63d-jayce-other-основные-показатели",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Основные показатели – OTHER",
+      "abilityName": "Основные показатели",
+      "description": "Восстановление здоровья: 7,5 → 10",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-jayce-other-электрическое-поле",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Электрическое поле – OTHER",
+      "abilityName": "Электрическое поле",
+      "description": "Восстановление маны за атаку Ртутным молотом: 8/11/14/17/20 → 12/15/18/21/24\n\nОбщий урон от \"Электрического поля\": 120/200/280/360/440 → 160/230/300/370/440",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "gragas": [
+    {
+      "id": "63d-gragas-other-пойло-со-скидкой",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Пойло со скидкой – OTHER",
+      "abilityName": "Пойло со скидкой",
+      "description": "Перезарядка: 8 сек. → 8/7/6/5 сек.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-gragas-other-бочка",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Бочка – OTHER",
+      "abilityName": "Бочка",
+      "description": "Перезарядка: 9,5/8,5/7,5/6,5 сек. → 9/8/7/6 сек.\n\nУрон миньонам: 50% → 80%",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-gragas-other-пьяный-угар",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Пьяный угар – OTHER",
+      "abilityName": "Пьяный угар",
+      "description": "Базовый урон: 50/80/110/140 → 65/90/115/140",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "zeri": [
+    {
+      "id": "63d-zeri-other-основные-показатели",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Основные показатели – OTHER",
+      "abilityName": "Основные показатели",
+      "description": "Базовая сила атаки: 54 → 58",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-zeri-other-шальная-искра",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Шальная искра – OTHER",
+      "abilityName": "Шальная искра",
+      "description": "Перезарядка: 24/22/20/18 сек. → 24/21,5/19/16,5 сек.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "rumble": [
+    {
+      "id": "63d-rumble-other-огнемет",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Огнемет – OTHER",
+      "abilityName": "Огнемет",
+      "description": "Базовый урон: 140/180/220/260 → 120/160/200/240\n\nБазовый урон в Опасной зоне: 210/270/330/390 → 180/240/300/360",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "shyvana": [
+    {
+      "id": "63d-shyvana-other-выжигание",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Выжигание – OTHER",
+      "abilityName": "Выжигание",
+      "description": "Базовый урон в секунду: 40/55/70/85 → 35/50/65/80",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-shyvana-other-огненное-дыхание",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Огненное дыхание – OTHER",
+      "abilityName": "Огненное дыхание",
+      "description": "Периодический урон от пламени в форме дракона: 30 + уровень чемпиона × 4 → 25 + уровень чемпиона × 3",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "viego": [
+    {
+      "id": "63d-viego-other-клинок-падшего-короля",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Клинок Падшего короля – OTHER",
+      "abilityName": "Клинок Падшего короля",
+      "description": "Базовый урон от колющего удара: 25/45/65/85 → 20/40/60/80",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-viego-other-разбитое-сердце",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Разбитое сердце – OTHER",
+      "abilityName": "Разбитое сердце",
+      "description": "Урон по площади: (1 + 50% от шанса критического удара) × 120% от силы атаки → (1 + 50% от шанса критического удара) × 110% от силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "lee-sin": [
+    {
+      "id": "63d-lee-sin-other-звуковая-волна",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Звуковая волна – OTHER",
+      "abilityName": "Звуковая волна",
+      "description": "Коэффициент урона от \"Звуковой волны\": 105% от дополнительной силы атаки → 100% от дополнительной силы атаки\n\nКоэффициент урона от \"Резонирующего удара\": 105–210% от дополнительной силы атаки → 100–200% от дополнительной силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-lee-sin-other-ярость-дракона",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Ярость дракона – OTHER",
+      "abilityName": "Ярость дракона",
+      "description": "Коэффициент урона: 200% от дополнительной силы атаки → 180% от дополнительной силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "lucian": [
+    {
+      "id": "63d-lucian-other-стрелок-света",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Стрелок света – OTHER",
+      "abilityName": "Стрелок света",
+      "description": "Урон от второго выстрела: 40/52,5/65% от силы атаки → 35/50/65% от силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    },
+    {
+      "id": "63d-lucian-other-пронзающий-свет",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3d для Wild Rift – Пронзающий свет – OTHER",
+      "abilityName": "Пронзающий свет",
+      "description": "Базовый урон: 90/135/180/225 → 80/125/170/215",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "akali": [
+    {
+      "id": "63d-akali-skin-акали-из-true-damage",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "skin",
+      "title": "Акали из True Damage",
+      "description": "Акали из True Damage\nПоявится в игре 21 ноября в 03:01 МСК",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "yasuo": [
+    {
+      "id": "63d-yasuo-skin-ясуо-из-true-damage",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "skin",
+      "title": "Ясуо из True Damage",
+      "description": "Ясуо из True Damage\nПоявится в игре 21 ноября в 03:01 МСК",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "ekko": [
+    {
+      "id": "63d-ekko-skin-экко-из-true-damage",
+      "patch": "6.3d",
+      "patchTitle": "Описание обновления 6.3d для Wild Rift",
+      "date": "2025-11-19T10:00:00.000Z",
+      "type": "skin",
+      "title": "Экко из True Damage",
+      "description": "Экко из True Damage\nПоявится в игре 21 ноября в 03:01 МСК",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3d"
+    }
+  ],
+  "gwen": [
+    {
+      "id": "63c-gwen-buff-свободный-крой",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "buff",
+      "title": "Описание обновления 6.3c для Wild Rift – Свободный крой – BUFF",
+      "abilityName": "Свободный крой",
+      "description": "Урон усиленной атаки: 10 + 15% от силы умений → 10 + 18% от силы умений",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    }
+  ],
+  "urgot": [
+    {
+      "id": "63c-urgot-other-коррозийный-заряд",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Коррозийный заряд – OTHER",
+      "abilityName": "Коррозийный заряд",
+      "description": "Базовый урон: 25/85/145/205 → 40/95/150/205",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    },
+    {
+      "id": "63c-urgot-other-зачистка",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Зачистка – OTHER",
+      "abilityName": "Зачистка",
+      "description": "Урон: 6 + 20/27,5/35/42,5% от силы атаки → 10 + 20/27,5/35/42,5% от силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    }
+  ],
+  "malphite": [
+    {
+      "id": "63c-malphite-other-основные-показатели",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Основные показатели – OTHER",
+      "abilityName": "Основные показатели",
+      "description": "Базовая сила атаки: 52 → 58",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    },
+    {
+      "id": "63c-malphite-nerf-удар-по-земле",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "nerf",
+      "title": "Описание обновления 6.3c для Wild Rift – Удар по земле – NERF",
+      "abilityName": "Удар по земле",
+      "description": "Базовый урон: 50/100/150/200 → 60/110/160/210\n\nУменьшение скорости атаки: 30/35/40/45% → 35/40/45/50%",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    }
+  ],
+  "aurelion-sol": [
+    {
+      "id": "63c-aurelion-sol-other-космический-полет",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Космический полет – OTHER",
+      "abilityName": "Космический полет",
+      "description": "Затраты маны: 80/85/90/95 → 80/80/80/80\n\nУрон \"Дыхания солнца\" во время полета: 110%/115%/120%/125% → 115%/120%/125%/130%",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    },
+    {
+      "id": "63c-aurelion-sol-other-сингулярность",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Сингулярность – OTHER",
+      "abilityName": "Сингулярность",
+      "description": "Если в радиусе черной дыры оказывается вражеский чемпион: ты получаешь заряд звездной материи → ты получаешь 2 заряда звездной материи",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    }
+  ],
+  "zed": [
+    {
+      "id": "63c-zed-other-основные-показатели",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Основные показатели – OTHER",
+      "abilityName": "Основные показатели",
+      "description": "Базовая броня: 35 → 40\n\nБазовое сопротивление магии: 38 → 40",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    },
+    {
+      "id": "63c-zed-other-бросок-сюрикена",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Бросок сюрикена – OTHER",
+      "abilityName": "Бросок сюрикена",
+      "description": "Урон, наносимый врагам на пути: 42/72/102/132 + 66% от доп. силы атаки → 49/84/119/154 + 77% от доп. силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    }
+  ],
+  "warwick": [
+    {
+      "id": "63c-warwick-other-челюсти-зверя",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Челюсти зверя – OTHER",
+      "abilityName": "Челюсти зверя",
+      "description": "Дополнительный урон: 130% от силы атаки → 120% от силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    }
+  ],
+  "nocturne": [
+    {
+      "id": "63c-nocturne-other-основные-показатели",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Основные показатели – OTHER",
+      "abilityName": "Основные показатели",
+      "description": "Базовая сила атаки: 58 → 54",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    }
+  ],
+  "zoe": [
+    {
+      "id": "63c-zoe-other-основные-показатели",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Основные показатели – OTHER",
+      "abilityName": "Основные показатели",
+      "description": "Базовая сила атаки: 58 → 54",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    },
+    {
+      "id": "63c-zoe-other-искорки",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Искорки! – OTHER",
+      "abilityName": "Искорки!",
+      "description": "Базовый урон: 16–128 → 9–128",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    },
+    {
+      "id": "63c-zoe-other-маленькая-хитрюга",
+      "patch": "6.3c",
+      "patchTitle": "Описание обновления 6.3c для Wild Rift",
+      "date": "2025-11-05T10:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3c для Wild Rift – Маленькая хитрюга – OTHER",
+      "abilityName": "Маленькая хитрюга",
+      "description": "Базовый урон: 25/35/45/55 → 20/30/40/50",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3c"
+    }
+  ],
+  "senna": [
+    {
+      "id": "63-senna-new-освобождение",
+      "patch": "6.3",
+      "patchTitle": "Описание обновления 6.3 для Wild Rift",
+      "date": "2025-10-22T09:00:00.000Z",
+      "type": "new",
+      "title": "Описание обновления 6.3 для Wild Rift – Освобождение – NEW",
+      "abilityName": "Освобождение",
+      "description": "[Новое] Если не атаковать души, Сенна автоматически поглотит их при исчезновении.\n\nМы также улучшили управление Сенны. Теперь ее автоатаки не будут прерываться умениями. Умения будут применяться сразу после окончания автоатаки.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3"
+    },
+    {
+      "id": "63-senna-other-пронзающая-тьма",
+      "patch": "6.3",
+      "patchTitle": "Описание обновления 6.3 для Wild Rift",
+      "date": "2025-10-22T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3 для Wild Rift – Пронзающая тьма – OTHER",
+      "abilityName": "Пронзающая тьма",
+      "description": "Ширина области исцеления союзников: 2,3 → 2,8",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3"
+    }
+  ],
+  "nasus": [
+    {
+      "id": "63-nasus-other-основные-показатели",
+      "patch": "6.3",
+      "patchTitle": "Описание обновления 6.3 для Wild Rift",
+      "date": "2025-10-22T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3 для Wild Rift – Основные показатели – OTHER",
+      "abilityName": "Основные показатели",
+      "description": "Базовая сила атаки: 62 → 58",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3"
+    }
+  ],
+  "varus": [
+    {
+      "id": "63-varus-other-само-возмездие",
+      "patch": "6.3",
+      "patchTitle": "Описание обновления 6.3 для Wild Rift",
+      "date": "2025-10-22T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3 для Wild Rift – Само возмездие – OTHER",
+      "abilityName": "Само возмездие",
+      "description": "Показатели, получаемые за убийство или участие в убийстве чемпиона: 60% скорости атаки и сила атаки в размере 30% от доп. скорости атаки → сила атаки в размере 20% от доп. скорости атаки и сила умений в размере 30% от доп. скорости атаки → сила атаки в размере 20% от доп. скорости атаки\n\nПоказатели, получаемые за убийство не чемпиона: сила атаки в размере 15% от доп. скорости атаки → сила атаки в размере 10% от доп. скорости атаки и сила умений в размере 15% от доп. скорости атаки → сила атаки в размере 10% от доп. скорости атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3"
+    },
+    {
+      "id": "63-varus-other-оскверненный-колчан",
+      "patch": "6.3",
+      "patchTitle": "Описание обновления 6.3 для Wild Rift",
+      "date": "2025-10-22T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3 для Wild Rift – Оскверненный колчан – OTHER",
+      "abilityName": "Оскверненный колчан",
+      "description": "Дополнительный магический урон от атак: 20/30/40/50+35% от силы умений → 15/25/35/45+35% от силы умений",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3"
+    }
+  ],
+  "ashe": [
+    {
+      "id": "63-ashe-other-сосредоточенность-стрелка",
+      "patch": "6.3",
+      "patchTitle": "Описание обновления 6.3 для Wild Rift",
+      "date": "2025-10-22T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3 для Wild Rift – Сосредоточенность стрелка – OTHER",
+      "abilityName": "Сосредоточенность стрелка",
+      "description": "Прибавка к скорости атаки: 20/30/40/50% → 15/25/35/45%",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3"
+    },
+    {
+      "id": "63-ashe-other-залп",
+      "patch": "6.3",
+      "patchTitle": "Описание обновления 6.3 для Wild Rift",
+      "date": "2025-10-22T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3 для Wild Rift – Залп – OTHER",
+      "abilityName": "Залп",
+      "description": "Базовый урон: 20/40/60/80 → 20/35/50/65",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3"
+    }
+  ],
+  "bard": [
+    {
+      "id": "63-bard-other-оковы-вселенной",
+      "patch": "6.3",
+      "patchTitle": "Описание обновления 6.3 для Wild Rift",
+      "date": "2025-10-22T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.3 для Wild Rift – Оковы Вселенной – OTHER",
+      "abilityName": "Оковы Вселенной",
+      "description": "Базовый урон: 120/160/200/240 → 90/140/190/240",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-3"
+    }
+  ],
+  "swain": [
+    {
+      "id": "62k-swain-other-основные-показатели",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Основные показатели – OTHER",
+      "abilityName": "Основные показатели",
+      "description": "Базовый запас здоровья: 630 → 660\n\nБазовая броня: 37 → 40",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    },
+    {
+      "id": "62k-swain-other-ненасытная-стая",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Ненасытная стая – OTHER",
+      "abilityName": "Ненасытная стая",
+      "description": "Восстановление здоровья за фрагмент души: (2/2,5/3/3,5 (уровень 1/5/9/13) + 0,5% от силы умений)% от максимального здоровья → (3/3,5/4/4,5 (уровень 1/5/9/13) + 0,5% от силы умений)% от максимального здоровья",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    }
+  ],
+  "talon": [
+    {
+      "id": "62k-talon-other-атака-из-тени",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Атака из тени – OTHER",
+      "abilityName": "Атака из тени",
+      "description": "Перезарядка: 70/60/50 сек. → 65/55/45 сек.\n\nУрон: 90/130/170 + 100% от доп. силы атаки → 90/135/180 + 110% от доп. силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    }
+  ],
+  "olaf": [
+    {
+      "id": "62k-olaf-other-мощный-бросок",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Мощный бросок – OTHER",
+      "abilityName": "Мощный бросок",
+      "description": "Урон: 50/120/190/260 + 100% от доп. силы атаки → 50/115/180/245 + 120% от доп. силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    },
+    {
+      "id": "62k-olaf-other-безрассудный-замах",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Безрассудный замах – OTHER",
+      "abilityName": "Безрассудный замах",
+      "description": "Урон: 55/115/175/235 + 50% от силы атаки → 45/95/145/195 + 55% от силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    }
+  ],
+  "khazix": [
+    {
+      "id": "62k-khazix-other-вкус-страха",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Вкус страха – OTHER",
+      "abilityName": "Вкус страха",
+      "description": "Перезарядка: 4,5/4/3,5/3 сек. → 5/4,5/4/3,5 сек.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    },
+    {
+      "id": "62k-khazix-other-шипы-бездны",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Шипы Бездны – OTHER",
+      "abilityName": "Шипы Бездны",
+      "description": "Базовый урон: 80/120/160/200 → 70/110/150/190",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    },
+    {
+      "id": "62k-khazix-other-атака-из-бездны",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Атака из Бездны – OTHER",
+      "abilityName": "Атака из Бездны",
+      "description": "Перезарядка: 70/60/50 сек. → 75/65/55 сек.",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    }
+  ],
+  "aurora": [
+    {
+      "id": "62k-aurora-other-двойное-проклятие",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Двойное проклятие – OTHER",
+      "abilityName": "Двойное проклятие",
+      "description": "Базовый урон: 45/75/105/135 → 40/70/100/130",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    },
+    {
+      "id": "62k-aurora-other-чудовство",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Чудовство – OTHER",
+      "abilityName": "Чудовство",
+      "description": "Базовый урон: 80/130/180/230 → 75/125/175/225",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    }
+  ],
+  "yone": [
+    {
+      "id": "62k-yone-other-сталь-смертного",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Сталь смертного – OTHER",
+      "abilityName": "Сталь смертного",
+      "description": "Урон лесным монстрам: 70% → 65%",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    },
+    {
+      "id": "62k-yone-other-рассечение-духа",
+      "patch": "6.2k",
+      "patchTitle": "Описание обновления 6.2k для Wild Rift",
+      "date": "2025-10-09T09:00:00.000Z",
+      "type": "other",
+      "title": "Описание обновления 6.2k для Wild Rift – Рассечение духа – OTHER",
+      "abilityName": "Рассечение духа",
+      "description": "Прочность щита: 50 + 85% от доп. силы атаки → 30 + 70% от доп. силы атаки",
+      "sourceUrl": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-6-2k"
+    }
+  ]
+}
