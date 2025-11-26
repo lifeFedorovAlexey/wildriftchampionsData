@@ -1,7 +1,7 @@
 // ui/src/screens/TrendScreen.jsx
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
-import { TrendChartBlock } from "../components/TrendCharts.jsx";
+import TrendChartBlock from "../components/TrendCharts";
 import { ChampionSearch } from "../components/ChampionSearch.jsx";
 import { RankFilter } from "../components/RankFilter.jsx";
 import { LaneFilter } from "../components/LaneFilter.jsx";

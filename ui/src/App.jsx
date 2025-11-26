@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import { WinrateScreen } from "./screens/WinrateScreen";
 import TrendScreen from "./screens/TrendScreen.jsx";
 import MenuButton from "./components/MenuButton.jsx";
-
+import { formatDateTime } from "../src/utils/formatDate.js";
 import {
   BASE_COLORS,
   BUTTON_GRADIENTS,
   resolveTgColor,
   styles,
 } from "./theme.js";
+
+import Footer from "./components/Footer.jsx";
 
 const VIEWS = {
   MENU: "menu",
@@ -42,7 +44,6 @@ function App() {
       .catch(() => {});
   }, []);
 
-  // Все цвета теперь читаемые:
   const bg = resolveTgColor(tg, "bg_color", BASE_COLORS.background);
   const textColor = resolveTgColor(tg, "text_color", BASE_COLORS.text);
   const hintColor = resolveTgColor(tg, "hint_color", BASE_COLORS.hint);
@@ -55,7 +56,11 @@ function App() {
       </div>
       <MenuButton
         title="Статистика винрейтов"
-        subtitle={`Обновлено ${updatedAt || "..."} : lolm.qq.com`}
+        subtitle={
+          <>
+            Обновлено {formatDateTime(updatedAt)} — {"lolm.qq.com"}
+          </>
+        }
         onClick={() => setView(VIEWS.WINRATES)}
         gradient={BUTTON_GRADIENTS.blue}
       />
@@ -93,7 +98,24 @@ function App() {
     }
   };
 
-  return <div style={styles.app(bg, textColor)}>{renderContent()}</div>;
+  return (
+    <div style={styles.app(bg, textColor)}>
+      {/* основной контент растягиваем */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          minHeight: 0,
+        }}
+      >
+        {renderContent()}
+      </div>
+
+      {/* футер всегда внизу окна */}
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
