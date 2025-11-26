@@ -57,6 +57,29 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-11-26",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 46.67,
+            "pickRate": 1.21,
+            "banRate": 0.65,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 53.47,
+            "pickRate": 1.13,
+            "banRate": 0.86,
+            "strengthLevel": 5
+          }
+        }
+      }
     }
   ]
 }
