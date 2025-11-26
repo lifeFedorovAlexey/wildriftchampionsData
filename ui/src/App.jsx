@@ -1,7 +1,7 @@
 // ui/src/App.jsx
 import { useEffect, useState } from "react";
 import { WinrateScreen } from "./screens/WinrateScreen";
-import TrendChart from "./screens/TrendChart.jsx";
+import TrendScreen from "./screens/TrendScreen.jsx";
 import MenuButton from "./components/MenuButton.jsx";
 
 import {
@@ -86,7 +86,7 @@ function App() {
         );
 
       case VIEWS.GRAPH:
-        return <TrendChart onBack={() => setView(VIEWS.MENU)} />;
+        return <TrendScreen onBack={() => setView(VIEWS.MENU)} />;
 
       default:
         return null;

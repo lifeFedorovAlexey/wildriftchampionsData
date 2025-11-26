@@ -1,31 +1,9 @@
+// ui/src/screens/WinrateScreen.jsx
 import { useEffect, useMemo, useState } from "react";
-import {
-  RANK_OPTIONS,
-  LANE_OPTIONS,
-  ROLE_SPRITE_URL,
-  ROLE_ICON_SPRITE,
-} from "./constants";
 import PageWrapper from "../components/PageWrapper.jsx";
-
-// маленький компонент иконки роли
-function RoleIcon({ laneKey, size = 24 }) {
-  const cfg = ROLE_ICON_SPRITE[laneKey];
-  if (!cfg) return null;
-
-  return (
-    <div
-      style={{
-        width: size,
-        height: size,
-        backgroundImage: `url(${ROLE_SPRITE_URL})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: `${cfg.x}px ${cfg.y}px`,
-        backgroundSize: "205px 28px",
-        flexShrink: 0,
-      }}
-    />
-  );
-}
+import { RankFilter } from "../components/RankFilter.jsx";
+import { LaneFilter } from "../components/LaneFilter.jsx";
+import { RANK_OPTIONS, LANE_OPTIONS } from "./constants"; // пока оставляю, логика завязана на ключах
 
 // аватарка чемпиона с синей заглушкой
 function ChampAvatar({ name, src }) {
@@ -224,243 +202,140 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
   const filters = (
     <>
       {/* фильтры рангов */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 6,
-          justifyContent: "center",
-        }}
-      >
-        {RANK_OPTIONS.map((opt) => {
-          const active = opt.key === rankKey;
-          return (
-            <button
-              key={opt.key}
-              type="button"
-              onClick={() => setRankKey(opt.key)}
-              style={{
-                borderRadius: 999,
-                border: active
-                  ? "1px solid rgba(96,165,250,1)"
-                  : "1px solid rgba(31,41,55,1)",
-                background: active ? "rgba(37,99,235,0.3)" : "transparent",
-                padding: "4px 8px",
-                fontSize: 11,
-                cursor: "pointer",
-                color: "inherit",
-              }}
-            >
-              {opt.label}
-            </button>
-          );
-        })}
-      </div>
+      <RankFilter value={rankKey} onChange={setRankKey} />
 
       {/* фильтры линий */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 6,
-          justifyContent: "center",
-        }}
-      >
-        {LANE_OPTIONS.map((opt) => {
-          const active = opt.key === laneKey;
-          return (
-            <button
-              key={opt.key}
-              type="button"
-              onClick={() => setLaneKey(opt.key)}
-              title={opt.label}
-              style={{
-                borderRadius: 999,
-                border: active
-                  ? "1px solid rgba(52,211,153,1)"
-                  : "1px solid rgba(31,41,55,1)",
-                background: active ? "rgba(16,185,129,0.25)" : "transparent",
-                padding: "4px 8px",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <RoleIcon laneKey={opt.key} size={30} />
-            </button>
-          );
-        })}
-      </div>
+      <LaneFilter value={laneKey} onChange={setLaneKey} />
     </>
   );
 
   return (
-    <PageWrapper onBack={onBack} filters={filters}>
-      {loading && (
+    <PageWrapper
+      onBack={onBack}
+      filters={filters}
+      loading={loading}
+      error={!loading ? error : null}
+      loadingText="Загружаю статистику…"
+      wrapInCard
+    >
+      {/* заголовок таблицы */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "36px 2fr 0.9fr 0.9fr 0.9fr",
+          columnGap: 4,
+          padding: "6px 8px",
+          fontSize: 11,
+          opacity: 0.8,
+          borderBottom: "1px solid rgba(31,41,55,1)",
+          position: "sticky",
+          top: 0,
+          background: "rgba(15,23,42,0.96)",
+          backdropFilter: "blur(8px)",
+          zIndex: 1,
+        }}
+      >
+        <div>#</div>
+        <div>Герой</div>
         <div
-          style={{
-            fontSize: 13,
-            opacity: 0.85,
-          }}
+          style={{ textAlign: "right", cursor: "pointer" }}
+          onClick={() => onSort("winRate")}
         >
-          Загружаю статистику…
+          Победы{" "}
+          {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
         </div>
-      )}
-
-      {error && !loading && (
         <div
-          style={{
-            fontSize: 13,
-            padding: "6px 8px",
-            borderRadius: 8,
-            background: "#402020",
-            marginBottom: 8,
-          }}
+          style={{ textAlign: "right", cursor: "pointer" }}
+          onClick={() => onSort("pickRate")}
         >
-          {error}
+          Пики{" "}
+          {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
         </div>
-      )}
-
-      {!loading && !error && (
         <div
-          style={{
-            borderRadius: 10,
-            background: "rgba(15,23,42,0.85)",
-          }}
+          style={{ textAlign: "right", cursor: "pointer" }}
+          onClick={() => onSort("banRate")}
         >
-          {/* заголовок таблицы */}
+          Баны{" "}
+          {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
+        </div>
+      </div>
+
+      {rows.map((row, idx) => {
+        const imgUrl = champImages[row.slug];
+
+        return (
           <div
+            key={row.slug}
             style={{
               display: "grid",
               gridTemplateColumns: "36px 2fr 0.9fr 0.9fr 0.9fr",
               columnGap: 4,
               padding: "6px 8px",
-              fontSize: 11,
-              opacity: 0.8,
-              borderBottom: "1px solid rgba(31,41,55,1)",
-              position: "sticky",
-              top: 0,
-              background: "rgba(15,23,42,0.96)",
-              backdropFilter: "blur(8px)",
-              zIndex: 1,
+              fontSize: 12,
+              borderBottom: "1px solid rgba(15,23,42,1)",
+              alignItems: "center",
             }}
           >
-            <div>#</div>
-            <div>Герой</div>
-            <div
-              style={{ textAlign: "right", cursor: "pointer" }}
-              onClick={() => onSort("winRate")}
-            >
-              Победы{" "}
-              {sort.column === "winRate"
-                ? sort.dir === "asc"
-                  ? "▲"
-                  : "▼"
-                : ""}
-            </div>
-            <div
-              style={{ textAlign: "right", cursor: "pointer" }}
-              onClick={() => onSort("pickRate")}
-            >
-              Пики{" "}
-              {sort.column === "pickRate"
-                ? sort.dir === "asc"
-                  ? "▲"
-                  : "▼"
-                : ""}
-            </div>
-            <div
-              style={{ textAlign: "right", cursor: "pointer" }}
-              onClick={() => onSort("banRate")}
-            >
-              Баны{" "}
-              {sort.column === "banRate"
-                ? sort.dir === "asc"
-                  ? "▲"
-                  : "▼"
-                : ""}
-            </div>
-          </div>
+            <div style={{ opacity: 0.8 }}>{idx + 1}</div>
 
-          {rows.map((row, idx) => {
-            const imgUrl = champImages[row.slug];
-
-            return (
-              <div
-                key={row.slug}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "36px 2fr 0.9fr 0.9fr 0.9fr",
-                  columnGap: 4,
-                  padding: "6px 8px",
-                  fontSize: 12,
-                  borderBottom: "1px solid rgba(15,23,42,1)",
-                  alignItems: "center",
-                }}
-              >
-                <div style={{ opacity: 0.8 }}>{idx + 1}</div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    minWidth: 0,
-                  }}
-                >
-                  <ChampAvatar name={row.name} src={imgUrl} />
-
-                  <span
-                    style={{
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {row.name}
-                  </span>
-                </div>
-
-                <div
-                  style={{
-                    textAlign: "right",
-                    color: winRateColor(row.winRate),
-                  }}
-                >
-                  {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
-                </div>
-                <div
-                  style={{
-                    textAlign: "right",
-                    color: pickRateColor(row.pickRate),
-                  }}
-                >
-                  {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
-                </div>
-                <div
-                  style={{
-                    textAlign: "right",
-                    color: banRateColor(row.banRate),
-                  }}
-                >
-                  {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
-                </div>
-              </div>
-            );
-          })}
-
-          {!rows.length && (
             <div
               style={{
-                padding: "10px 8px",
-                fontSize: 13,
-                opacity: 0.7,
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                minWidth: 0,
               }}
             >
-              Для выбранных фильтров данных нет.
+              <ChampAvatar name={row.name} src={imgUrl} />
+
+              <span
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {row.name}
+              </span>
             </div>
-          )}
+
+            <div
+              style={{
+                textAlign: "right",
+                color: winRateColor(row.winRate),
+              }}
+            >
+              {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
+            </div>
+            <div
+              style={{
+                textAlign: "right",
+                color: pickRateColor(row.pickRate),
+              }}
+            >
+              {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
+            </div>
+            <div
+              style={{
+                textAlign: "right",
+                color: banRateColor(row.banRate),
+              }}
+            >
+              {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
+            </div>
+          </div>
+        );
+      })}
+
+      {!rows.length && (
+        <div
+          style={{
+            padding: "10px 8px",
+            fontSize: 13,
+            opacity: 0.7,
+          }}
+        >
+          Для выбранных фильтров данных нет.
         </div>
       )}
     </PageWrapper>
