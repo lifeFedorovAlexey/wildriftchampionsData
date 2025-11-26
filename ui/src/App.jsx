@@ -15,6 +15,7 @@ const VIEWS = {
   MENU: "menu",
   WINRATES: "winrates",
   GRAPH: "graph",
+  LANE_META: "lane_meta",
 };
 
 function App() {
@@ -49,18 +50,15 @@ function App() {
   const renderMenu = () => (
     <div style={styles.menuWrapper}>
       <h1 style={styles.title}>Wild Rift Stats</h1>
-
       <div style={styles.subtitle}>
         Выбери раздел. Пока живут только винрейты и тестовый график.
       </div>
-
       <MenuButton
         title="Статистика винрейтов"
         subtitle={`Обновлено ${updatedAt || "..."} : lolm.qq.com`}
         onClick={() => setView(VIEWS.WINRATES)}
         gradient={BUTTON_GRADIENTS.blue}
       />
-
       <MenuButton
         title="График трендов"
         subtitle="Тренды по времени"

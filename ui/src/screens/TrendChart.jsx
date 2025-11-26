@@ -148,24 +148,31 @@ function TrendChartBlock({ days }) {
   return (
     <div
       style={{
-        borderRadius: 12,
-        background: "rgba(15,23,42,0.95)",
-        padding: 8,
+        display: "flex",
+        flexDirection: "column",
+        gap: 8,
         marginBottom: 10,
       }}
     >
+      {/* Винрейт */}
       <div
         style={{
-          fontSize: 13,
-          opacity: 0.85,
-          padding: "4px 4px 8px",
+          borderRadius: 12,
+          background: "rgba(15,23,42,0.95)",
+          padding: 8,
         }}
       >
-        Динамика винрейта / пикрейта / банрейта за последние {days.length} дней
-      </div>
+        <div
+          style={{
+            fontSize: 13,
+            opacity: 0.85,
+            padding: "4px 4px 8px",
+          }}
+        >
+          Динамика винрейта за последние {days.length} дней
+        </div>
 
-      <div style={{ width: "100%", height: 260 }}>
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height={200} minWidth={0}>
           <AreaChart
             data={days}
             margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
@@ -174,14 +181,6 @@ function TrendChartBlock({ days }) {
               <linearGradient id="trendWin" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#4ade80" stopOpacity={0.6} />
                 <stop offset="100%" stopColor="#4ade80" stopOpacity={0.05} />
-              </linearGradient>
-              <linearGradient id="trendPick" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#60a5fa" stopOpacity={0.5} />
-                <stop offset="100%" stopColor="#60a5fa" stopOpacity={0.03} />
-              </linearGradient>
-              <linearGradient id="trendBan" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#f97316" stopOpacity={0.5} />
-                <stop offset="100%" stopColor="#f97316" stopOpacity={0.03} />
               </linearGradient>
             </defs>
 
@@ -201,6 +200,7 @@ function TrendChartBlock({ days }) {
               tick={{ fill: "#9ba3b4", fontSize: 10 }}
               axisLine={{ stroke: "#2a3240" }}
               width={56}
+              domain={["dataMin - 1", "dataMax + 1"]}
             />
 
             <Tooltip
@@ -226,15 +226,147 @@ function TrendChartBlock({ days }) {
               fill="url(#trendWin)"
               activeDot={{ r: 4 }}
             />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Пикрейт */}
+      <div
+        style={{
+          borderRadius: 12,
+          background: "rgba(15,23,42,0.95)",
+          padding: 8,
+        }}
+      >
+        <div
+          style={{
+            fontSize: 13,
+            opacity: 0.85,
+            padding: "4px 4px 8px",
+          }}
+        >
+          Динамика пикрейта за последние {days.length} дней
+        </div>
+
+        <ResponsiveContainer width="100%" height={200} minWidth={0}>
+          <AreaChart
+            data={days}
+            margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
+          >
+            <defs>
+              <linearGradient id="trendPick" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#60a5fa" stopOpacity={0.5} />
+                <stop offset="100%" stopColor="#60a5fa" stopOpacity={0.03} />
+              </linearGradient>
+            </defs>
+
+            <CartesianGrid stroke="#1f2933" strokeDasharray="3 3" />
+
+            <XAxis
+              dataKey="date"
+              tick={{ fill: "#9ba3b4", fontSize: 10 }}
+              tickMargin={6}
+              axisLine={{ stroke: "#2a3240" }}
+              height={26}
+              interval="preserveStartEnd"
+            />
+
+            <YAxis
+              tickFormatter={formatPercent}
+              tick={{ fill: "#9ba3b4", fontSize: 10 }}
+              axisLine={{ stroke: "#2a3240" }}
+              width={56}
+              domain={["dataMin - 0.5", "dataMax + 0.5"]}
+            />
+
+            <Tooltip
+              formatter={(value) => formatPercent(Number(value))}
+              labelFormatter={(_, payload) =>
+                payload?.[0]?.payload?.fullDate ?? ""
+              }
+              contentStyle={{
+                background: "#111623",
+                border: "1px solid #242b3a",
+                borderRadius: 8,
+                fontSize: 12,
+              }}
+              labelStyle={{ color: "#ffffff", marginBottom: 4 }}
+            />
 
             <Area
               type="monotone"
               dataKey="pickRate"
               name="Пики"
               stroke="#60a5fa"
-              strokeWidth={1.6}
+              strokeWidth={2}
               fill="url(#trendPick)"
               activeDot={{ r: 3 }}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Банрейт */}
+      <div
+        style={{
+          borderRadius: 12,
+          background: "rgba(15,23,42,0.95)",
+          padding: 8,
+        }}
+      >
+        <div
+          style={{
+            fontSize: 13,
+            opacity: 0.85,
+            padding: "4px 4px 8px",
+          }}
+        >
+          Динамика банрейта за последние {days.length} дней
+        </div>
+
+        <ResponsiveContainer width="100%" height={200} minWidth={0}>
+          <AreaChart
+            data={days}
+            margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
+          >
+            <defs>
+              <linearGradient id="trendBan" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#f97316" stopOpacity={0.5} />
+                <stop offset="100%" stopColor="#f97316" stopOpacity={0.03} />
+              </linearGradient>
+            </defs>
+
+            <CartesianGrid stroke="#1f2933" strokeDasharray="3 3" />
+
+            <XAxis
+              dataKey="date"
+              tick={{ fill: "#9ba3b4", fontSize: 10 }}
+              tickMargin={6}
+              axisLine={{ stroke: "#2a3240" }}
+              height={26}
+              interval="preserveStartEnd"
+            />
+
+            <YAxis
+              tickFormatter={formatPercent}
+              tick={{ fill: "#9ba3b4", fontSize: 10 }}
+              axisLine={{ stroke: "#2a3240" }}
+              width={56}
+              domain={["dataMin - 0.5", "dataMax + 0.5"]}
+            />
+
+            <Tooltip
+              formatter={(value) => formatPercent(Number(value))}
+              labelFormatter={(_, payload) =>
+                payload?.[0]?.payload?.fullDate ?? ""
+              }
+              contentStyle={{
+                background: "#111623",
+                border: "1px solid #242b3a",
+                borderRadius: 8,
+                fontSize: 12,
+              }}
+              labelStyle={{ color: "#ffffff", marginBottom: 4 }}
             />
 
             <Area
@@ -242,7 +374,7 @@ function TrendChartBlock({ days }) {
               dataKey="banRate"
               name="Баны"
               stroke="#f97316"
-              strokeWidth={1.6}
+              strokeWidth={2}
               fill="url(#trendBan)"
               activeDot={{ r: 3 }}
             />
