@@ -257,6 +257,91 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-11-27",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.66,
+            "pickRate": 7.9,
+            "banRate": 12.85,
+            "strengthLevel": 2
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48,
+            "pickRate": 2.13,
+            "banRate": 12.85,
+            "strengthLevel": 2
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.89,
+            "pickRate": 6.43,
+            "banRate": 10.16,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.7,
+            "pickRate": 1.82,
+            "banRate": 10.16,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.08,
+            "pickRate": 6.3,
+            "banRate": 10.54,
+            "strengthLevel": 3
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.72,
+            "pickRate": 1.89,
+            "banRate": 10.54,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.05,
+            "pickRate": 7.47,
+            "banRate": 10.89,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.96,
+            "pickRate": 3.73,
+            "banRate": 10.89,
+            "strengthLevel": 3
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 51.31,
+            "pickRate": 8.34,
+            "banRate": 12.04,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.96,
+            "pickRate": 4.11,
+            "banRate": 12.04,
+            "strengthLevel": 3
+          }
+        }
+      }
     }
   ]
 }
