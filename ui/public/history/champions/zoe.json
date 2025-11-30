@@ -140,6 +140,29 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-11-30",
+      "cnStats": {
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 55.44,
+            "pickRate": 1.72,
+            "banRate": 3.4,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 55.15,
+            "pickRate": 2.15,
+            "banRate": 4.69,
+            "strengthLevel": 5
+          }
+        }
+      }
     }
   ]
 }
