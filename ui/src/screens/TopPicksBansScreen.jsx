@@ -3,12 +3,12 @@ import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
 
 // порядок рангов и их русские названия
-const RANK_KEYS = ["diamondPlus", "masterPlus", "peak", "king"];
+const RANK_KEYS = ["diamondPlus", "masterPlus", "king", "peak"];
 const RANK_LABELS_RU = {
   diamondPlus: "алмаз",
   masterPlus: "мастер",
-  peak: "гм",
-  king: "чалик",
+  king: "гм",
+  peak: "чалик",
 };
 
 const EXCLUDED_RANK_KEYS = new Set(["overall"]);
@@ -23,7 +23,7 @@ function ChampAvatarCard({ name, src }) {
         borderRadius: 8,
         overflow: "hidden",
         background: "rgba(15, 23, 42, 0.9)",
-        border: "1px solid rgba(51,65,85,0.9)",
+        border: "1px solid rgba(51, 65, 85, 0.9)",
         flexShrink: 0,
         position: "relative",
       }}
@@ -44,7 +44,7 @@ function ChampAvatarCard({ name, src }) {
   );
 }
 
-// карточка топ-чемпиона (только краткая инфа + клик)
+// карточка топ-чемпиона (краткая инфа + клик)
 function TopChampCard({ index, champ, type, imgUrl, onClick }) {
   const totalValue =
     type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
@@ -137,11 +137,18 @@ function DetailsModal({ data, onClose }) {
   const totalLabel = type === "pick" ? "totalPickRate" : "totalBanRate";
 
   const lanes = champ.lanes || {};
-  const laneEntries = Object.entries(lanes).sort(([, a], [, b]) => {
-    const av = type === "pick" ? a.pick || 0 : a.ban || 0;
-    const bv = type === "pick" ? b.pick || 0 : b.ban || 0;
-    return bv - av;
-  });
+
+  // для пиков — детали по линиям, для банов — только элементы с ban > 0
+  const laneEntries = Object.entries(lanes)
+    .filter(([, laneData]) => {
+      const val = type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
+      return val > 0;
+    })
+    .sort(([, a], [, b]) => {
+      const av = type === "pick" ? a.pick || 0 : a.ban || 0;
+      const bv = type === "pick" ? b.pick || 0 : b.ban || 0;
+      return bv - av;
+    });
 
   return (
     <div
@@ -218,9 +225,12 @@ function DetailsModal({ data, onClose }) {
             parts.push(`${label}: ${ranksObj[rk].toFixed(2)}%`);
           }
 
+          const displayLaneName =
+            type === "ban" && laneKey === "all" ? "все линии" : laneKey;
+
           return (
             <div key={laneKey} style={{ marginBottom: 4 }}>
-              - {laneKey}: {laneTotal.toFixed(2)}%
+              - {displayLaneName}: {laneTotal.toFixed(2)}%
               {parts.length > 0 && <> (из них: {parts.join(", ")})</>}
             </div>
           );
@@ -239,9 +249,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
   const [champImages, setChampImages] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [details, setDetails] = useState(null); // что показываем в модалке
-
-  // новый стейт: сколько показывать
+  const [details, setDetails] = useState(null);
   const [limit, setLimit] = useState(5); // 5 | 10 | 20 | "all"
 
   // загрузка cn-combined.json
@@ -328,7 +336,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
 
     return data.combined
       .map((champ) => {
-        // берём cnStats из последнего элемента history, если он есть
+        // берем cnStats из последнего элемента history, если он есть
         let cnStats = champ.cnStats || {};
 
         if (Array.isArray(champ.history) && champ.history.length > 0) {
@@ -345,11 +353,21 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
 
         let totalPick = 0;
         let totalBan = 0;
+
         const lanes = {};
+        // отдельный агрегатор для банов: одна "линия" all
+        lanes["all"] = {
+          pick: 0,
+          ban: 0,
+          pickRanks: {},
+          banRanks: {},
+        };
 
         for (const [rankKey, lanesObj] of Object.entries(cnStats || {})) {
           if (!lanesObj) continue;
           if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
+
+          let rankBanAdded = false;
 
           for (const [laneKey, cell] of Object.entries(lanesObj)) {
             if (!cell) continue;
@@ -357,8 +375,8 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
             const pickRate = cell.pickRate ?? 0;
             const banRate = cell.banRate ?? 0;
 
+            // Пики считаем по линиям
             totalPick += pickRate;
-            totalBan += banRate;
 
             if (!lanes[laneKey]) {
               lanes[laneKey] = {
@@ -370,12 +388,17 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
             }
 
             lanes[laneKey].pick += pickRate;
-            lanes[laneKey].ban += banRate;
-
             lanes[laneKey].pickRanks[rankKey] =
               (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
-            lanes[laneKey].banRanks[rankKey] =
-              (lanes[laneKey].banRanks[rankKey] || 0) + banRate;
+
+            // Баны: один раз на ранг, без разбиения по линиям
+            if (!rankBanAdded) {
+              totalBan += banRate;
+              lanes["all"].ban += banRate;
+              lanes["all"].banRanks[rankKey] =
+                (lanes["all"].banRanks[rankKey] || 0) + banRate;
+              rankBanAdded = true;
+            }
           }
         }
 
@@ -403,7 +426,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       .filter(Boolean);
   }, [data, language]);
 
-  // вычисляем сортировки и учитываем выбранный лимит
+  // сортировки + лимит
   const topPicks = useMemo(() => {
     const sorted = [...aggregated].sort(
       (a, b) => (b.totalPickRate || 0) - (a.totalPickRate || 0)
