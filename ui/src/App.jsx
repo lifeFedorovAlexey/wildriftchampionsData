@@ -1,9 +1,10 @@
 // ui/src/App.jsx
 import { useEffect, useState } from "react";
-import { WinrateScreen } from "./screens/WinrateScreen";
+import { WinrateScreen } from "./screens/WinrateScreen.jsx";
 import TrendScreen from "./screens/TrendScreen.jsx";
 import MenuButton from "./components/MenuButton.jsx";
-import { formatDateTime } from "../src/utils/formatDate.js";
+import { formatDateTime } from "./utils/formatDate.js";
+
 import {
   BASE_COLORS,
   BUTTON_GRADIENTS,
@@ -18,7 +19,6 @@ const VIEWS = {
   MENU: "menu",
   WINRATES: "winrates",
   GRAPH: "graph",
-  LANE_META: "lane_meta",
   PICKS_BANS: "picks_bans",
 };
 
@@ -28,7 +28,7 @@ function App() {
   const [view, setView] = useState(VIEWS.MENU);
   const [updatedAt, setUpdatedAt] = useState(null);
 
-  // Telegram WebApp init
+  // INIT Telegram WebApp
   useEffect(() => {
     const webApp = window.Telegram?.WebApp;
     if (webApp) {
@@ -38,7 +38,7 @@ function App() {
     }
   }, []);
 
-  // Загружаем дату
+  // Загружаем дату обновления файла
   useEffect(() => {
     fetch("/cn-combined.json")
       .then((res) => res.json())
@@ -53,35 +53,34 @@ function App() {
   const renderMenu = () => (
     <div style={styles.menuWrapper}>
       <h1 style={styles.title}>Wild Rift Stats</h1>
+
       <div style={styles.subtitle}>
-        Выбери раздел. Пока живут только винрейты, топ пики/баны и тестовый
-        график.
+        Выбери раздел. Активны: винрейты, топ пики/баны, график трендов.
       </div>
+
       <MenuButton
         title="Статистика винрейтов"
-        subtitle={
-          <>
-            Обновлено {formatDateTime(updatedAt)} — {"lolm.qq.com"}
-          </>
-        }
+        subtitle={<>Обновлено {formatDateTime(updatedAt)}</>}
         onClick={() => setView(VIEWS.WINRATES)}
         gradient={BUTTON_GRADIENTS.blue}
       />
+
       <MenuButton
         title="Топ пики / баны"
-        subtitle="5 самых популярных и банимых героев"
+        subtitle="Самые популярные и банимые чемпионы"
         onClick={() => setView(VIEWS.PICKS_BANS)}
         gradient={BUTTON_GRADIENTS.green}
       />
+
       <MenuButton
         title="График трендов"
-        subtitle="Тренды по времени"
+        subtitle="Изменение винрейтов по времени"
         onClick={() => setView(VIEWS.GRAPH)}
-        gradient={BUTTON_GRADIENTS.green}
+        gradient={BUTTON_GRADIENTS.orange}
       />
 
       <div style={styles.futureBlock(hintColor)}>
-        Будущие разделы (чемпионы, билды, гайды)
+        Будущие разделы: чемпионы, билды, гайды
       </div>
     </div>
   );
@@ -117,7 +116,6 @@ function App() {
 
   return (
     <div style={styles.app(bg, textColor)}>
-      {/* основной контент растягиваем */}
       <div
         style={{
           flex: 1,
@@ -129,7 +127,6 @@ function App() {
         {renderContent()}
       </div>
 
-      {/* футер всегда внизу окна */}
       <Footer />
     </div>
   );

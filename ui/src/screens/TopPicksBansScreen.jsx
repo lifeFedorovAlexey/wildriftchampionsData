@@ -1,20 +1,19 @@
 // ui/src/screens/TopPicksBansScreen.jsx
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
-import { RANK_OPTIONS, LANE_OPTIONS } from "./constants";
 
-// мапы для читабельных названий
-const RANK_LABELS = Object.fromEntries(
-  (RANK_OPTIONS || []).map((opt) => [opt.value, opt.label])
-);
+// порядок рангов и их русские названия
+const RANK_KEYS = ["diamondPlus", "masterPlus", "peak", "king"];
+const RANK_LABELS_RU = {
+  diamondPlus: "алмаз",
+  masterPlus: "мастер",
+  peak: "гм",
+  king: "чалик",
+};
 
-const LANE_LABELS = Object.fromEntries(
-  (LANE_OPTIONS || []).map((opt) => [opt.value, opt.label])
-);
+const EXCLUDED_RANK_KEYS = new Set(["overall"]);
 
-const RANK_ORDER = (RANK_OPTIONS || []).map((opt) => opt.value);
-
-// аватарка чемпиона (чуть крупнее и в рамке)
+// аватарка чемпиона
 function ChampAvatarCard({ name, src }) {
   return (
     <div
@@ -45,32 +44,10 @@ function ChampAvatarCard({ name, src }) {
   );
 }
 
-// отдельная карточка топ-чемпиона
-function TopChampCard({ index, champ, type, imgUrl }) {
-  const [hover, setHover] = useState(false);
-
+// карточка топ-чемпиона (только краткая инфа + клик)
+function TopChampCard({ index, champ, type, imgUrl, onClick }) {
   const totalValue =
     type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
-
-  const titleMetric =
-    type === "pick" ? "Совокупный пикрейт" : "Совокупный банрейт";
-
-  const laneEntries = useMemo(() => {
-    const lanes = champ.lanes || {};
-    const arr = Object.entries(lanes).filter(([, laneData]) => {
-      if (!laneData) return false;
-      const val = type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
-      return val > 0;
-    });
-
-    return arr
-      .sort(([, a], [, b]) => {
-        const av = type === "pick" ? a.pick || 0 : a.ban || 0;
-        const bv = type === "pick" ? b.pick || 0 : b.ban || 0;
-        return bv - av;
-      })
-      .slice(0, 3);
-  }, [champ, type]);
 
   return (
     <div
@@ -91,7 +68,9 @@ function TopChampCard({ index, champ, type, imgUrl }) {
         gap: 10,
         boxShadow: "0 10px 25px rgba(15,23,42,0.9)",
         overflow: "hidden",
+        cursor: "pointer",
       }}
+      onClick={onClick}
     >
       <div
         style={{
@@ -105,13 +84,7 @@ function TopChampCard({ index, champ, type, imgUrl }) {
         #{index + 1}
       </div>
 
-      <div
-        style={{ position: "relative" }}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
-        <ChampAvatarCard name={champ.name} src={imgUrl} />
-      </div>
+      <ChampAvatarCard name={champ.name} src={imgUrl} />
 
       <div
         style={{
@@ -134,23 +107,9 @@ function TopChampCard({ index, champ, type, imgUrl }) {
           {champ.name}
         </div>
         <div style={{ fontSize: 11, opacity: 0.8 }}>
-          ({champ.slug}) — {titleMetric.toLowerCase()}:{" "}
+          ({champ.slug}) —{" "}
+          {type === "pick" ? "совокупный пикрейт" : "совокупный банрейт"}:{" "}
           <span style={{ fontWeight: 600 }}>{totalValue.toFixed(2)}%</span>
-        </div>
-        <div style={{ fontSize: 11, opacity: 0.85 }}>
-          Основные роли:&nbsp;
-          {laneEntries.length ? (
-            laneEntries
-              .map(([laneKey, laneData]) => {
-                const laneLabel = LANE_LABELS[laneKey] || laneKey || "роль";
-                const val =
-                  type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
-                return `${laneLabel}: ${val.toFixed(2)}%`;
-              })
-              .join(" · ")
-          ) : (
-            <>нет данных</>
-          )}
         </div>
       </div>
 
@@ -164,75 +123,113 @@ function TopChampCard({ index, champ, type, imgUrl }) {
       >
         {totalValue.toFixed(2)}%
       </div>
+    </div>
+  );
+}
 
-      {/* тултип по наведению на картинку */}
-      {hover && (
+// модальное окно с полной статистикой
+function DetailsModal({ data, onClose }) {
+  if (!data) return null;
+
+  const { index, champ, type } = data;
+  const totalValue =
+    type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
+  const totalLabel = type === "pick" ? "totalPickRate" : "totalBanRate";
+
+  const lanes = champ.lanes || {};
+  const laneEntries = Object.entries(lanes).sort(([, a], [, b]) => {
+    const av = type === "pick" ? a.pick || 0 : a.ban || 0;
+    const bv = type === "pick" ? b.pick || 0 : b.ban || 0;
+    return bv - av;
+  });
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(15,23,42,0.8)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 999,
+      }}
+      onClick={onClose}
+    >
+      <div
+        style={{
+          background: "rgba(15,23,42,0.98)",
+          borderRadius: 12,
+          border: "1px solid rgba(148,163,184,0.7)",
+          maxWidth: 520,
+          width: "90%",
+          maxHeight: "80vh",
+          padding: 14,
+          boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
+          fontSize: 12,
+          color: "#e5e7eb",
+          overflowY: "auto",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div
           style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(15,23,42,0.97)",
-            padding: 10,
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            fontSize: 11,
-            lineHeight: 1.4,
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            marginBottom: 8,
+            gap: 8,
           }}
         >
-          <div
+          <div>
+            <div style={{ marginBottom: 4 }}>
+              {index + 1}. {champ.name.toUpperCase()} ({champ.slug}) —{" "}
+              {totalLabel}: <b>{totalValue.toFixed(2)}%</b>
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
             style={{
-              fontWeight: 700,
-              marginBottom: 4,
-              fontSize: 12,
+              border: "none",
+              background: "transparent",
+              color: "#9ca3af",
+              fontSize: 16,
+              cursor: "pointer",
             }}
           >
-            {champ.name.toUpperCase()} ({champ.slug})
-          </div>
-          <div style={{ marginBottom: 6 }}>
-            {titleMetric}:{" "}
-            <span style={{ fontWeight: 700 }}>{totalValue.toFixed(2)}%</span>
-          </div>
-
-          {laneEntries.map(([laneKey, laneData]) => {
-            const laneLabel = LANE_LABELS[laneKey] || laneKey || "роль";
-            const laneTotal =
-              type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
-            const ranks =
-              type === "pick"
-                ? laneData.pickRanks || {}
-                : laneData.banRanks || {};
-
-            const rankEntries = Object.entries(ranks).sort(
-              ([rkA, aVal], [rkB, bVal]) => {
-                const orderA = RANK_ORDER.indexOf(rkA);
-                const orderB = RANK_ORDER.indexOf(rkB);
-                if (orderA !== -1 && orderB !== -1 && orderA !== orderB) {
-                  return orderA - orderB;
-                }
-                return (bVal || 0) - (aVal || 0);
-              }
-            );
-
-            const ranksStr = rankEntries
-              .map(([rk, v]) => {
-                const label = RANK_LABELS[rk] || rk;
-                return `${label}: ${v.toFixed(2)}%`;
-              })
-              .join(", ");
-
-            return (
-              <div key={laneKey} style={{ marginBottom: 4 }}>
-                {laneLabel}:{" "}
-                <span style={{ fontWeight: 600 }}>{laneTotal.toFixed(2)}%</span>
-                {ranksStr && <> (по рангам: {ranksStr})</>}
-              </div>
-            );
-          })}
-
-          {!laneEntries.length && <div>Подробной статистики по ролям нет.</div>}
+            ✕
+          </button>
         </div>
-      )}
+
+        {laneEntries.map(([laneKey, laneData]) => {
+          const laneTotal =
+            type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
+
+          const ranksObj =
+            type === "pick"
+              ? laneData.pickRanks || {}
+              : laneData.banRanks || {};
+
+          const parts = [];
+          for (const rk of RANK_KEYS) {
+            if (!ranksObj[rk] || EXCLUDED_RANK_KEYS.has(rk)) continue;
+            const label = RANK_LABELS_RU[rk] || rk;
+            parts.push(`${label}: ${ranksObj[rk].toFixed(2)}%`);
+          }
+
+          return (
+            <div key={laneKey} style={{ marginBottom: 4 }}>
+              - {laneKey}: {laneTotal.toFixed(2)}%
+              {parts.length > 0 && <> (из них: {parts.join(", ")})</>}
+            </div>
+          );
+        })}
+
+        {!laneEntries.length && (
+          <div>Для этого чемпиона нет детальной статистики.</div>
+        )}
+      </div>
     </div>
   );
 }
@@ -242,6 +239,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
   const [champImages, setChampImages] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [details, setDetails] = useState(null); // что показываем в модалке
 
   // загрузка cn-combined.json
   useEffect(() => {
@@ -321,19 +319,34 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
     };
   }, [data]);
 
-  // агрегируем статистику по всем рангам и линиям
+  // агрегируем статистику по всем линиям и рангам ЗА ПОСЛЕДНИЙ ДЕНЬ
   const aggregated = useMemo(() => {
     if (!data || !Array.isArray(data.combined)) return [];
 
     return data.combined
       .map((champ) => {
-        const cnStats = champ.cnStats || {};
+        // берём cnStats из последнего элемента history, если он есть
+        let cnStats = champ.cnStats || {};
+
+        if (Array.isArray(champ.history) && champ.history.length > 0) {
+          let latest = champ.history[0];
+          for (const item of champ.history) {
+            if (item.date && (!latest.date || item.date > latest.date)) {
+              latest = item;
+            }
+          }
+          if (latest && latest.cnStats) {
+            cnStats = latest.cnStats;
+          }
+        }
+
         let totalPick = 0;
         let totalBan = 0;
         const lanes = {};
 
-        for (const [rankKey, lanesObj] of Object.entries(cnStats)) {
+        for (const [rankKey, lanesObj] of Object.entries(cnStats || {})) {
           if (!lanesObj) continue;
+          if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
 
           for (const [laneKey, cell] of Object.entries(lanesObj)) {
             if (!cell) continue;
@@ -355,6 +368,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
 
             lanes[laneKey].pick += pickRate;
             lanes[laneKey].ban += banRate;
+
             lanes[laneKey].pickRanks[rankKey] =
               (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
             lanes[laneKey].banRanks[rankKey] =
@@ -386,17 +400,21 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       .filter(Boolean);
   }, [data, language]);
 
-  const topPicks = useMemo(() => {
-    return [...aggregated]
-      .sort((a, b) => (b.totalPickRate || 0) - (a.totalPickRate || 0))
-      .slice(0, 5);
-  }, [aggregated]);
+  const topPicks = useMemo(
+    () =>
+      [...aggregated]
+        .sort((a, b) => (b.totalPickRate || 0) - (a.totalPickRate || 0))
+        .slice(0, 5),
+    [aggregated]
+  );
 
-  const topBans = useMemo(() => {
-    return [...aggregated]
-      .sort((a, b) => (b.totalBanRate || 0) - (a.totalBanRate || 0))
-      .slice(0, 5);
-  }, [aggregated]);
+  const topBans = useMemo(
+    () =>
+      [...aggregated]
+        .sort((a, b) => (b.totalBanRate || 0) - (a.totalBanRate || 0))
+        .slice(0, 5),
+    [aggregated]
+  );
 
   return (
     <PageWrapper
@@ -414,9 +432,9 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           opacity: 0.85,
         }}
       >
-        Ниже — топ-5 чемпионов по суммарному пикрейту и банрейту во всех рангах
-        и на всех линиях. Наведи на картинку чемпиона, чтобы увидеть подробную
-        раскладку по ролям и рангам.
+        Ниже — топ-5 чемпионов по суммарному пикрейту и банрейтy за последний
+        день во всех рангах и на всех линиях. Нажми на карточку чемпиона, чтобы
+        увидеть подробную раскладку по ролям и рангам.
       </div>
 
       <div style={{ marginBottom: 12 }}>
@@ -438,6 +456,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
                 champ={champ}
                 type="pick"
                 imgUrl={imgUrl}
+                onClick={() => setDetails({ index: idx, champ, type: "pick" })}
               />
             </div>
           );
@@ -468,6 +487,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
                 champ={champ}
                 type="ban"
                 imgUrl={imgUrl}
+                onClick={() => setDetails({ index: idx, champ, type: "ban" })}
               />
             </div>
           );
@@ -478,6 +498,8 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           </div>
         )}
       </div>
+
+      <DetailsModal data={details} onClose={() => setDetails(null)} />
     </PageWrapper>
   );
 }
