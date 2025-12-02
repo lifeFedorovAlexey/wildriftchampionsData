@@ -467,6 +467,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           justifyContent: "space-between",
           gap: 8,
           flexWrap: "wrap",
+          padding: "5px",
         }}
       >
         <div style={{ fontSize: 13, opacity: 0.85 }}>
@@ -495,6 +496,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
             fontSize: 14,
             fontWeight: 700,
             marginBottom: 6,
+            padding: "5px",
           }}
         >
           {limitTitlePrefix} по пикам
