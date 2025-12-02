@@ -682,6 +682,91 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-12-02",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.01,
+            "pickRate": 2.71,
+            "banRate": 17.84,
+            "strengthLevel": 1
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 54.56,
+            "pickRate": 6.44,
+            "banRate": 17.84,
+            "strengthLevel": 1
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.69,
+            "pickRate": 2.54,
+            "banRate": 24.74,
+            "strengthLevel": 2
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 53.68,
+            "pickRate": 5.23,
+            "banRate": 24.74,
+            "strengthLevel": 1
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 53.45,
+            "pickRate": 2.5,
+            "banRate": 24.63,
+            "strengthLevel": 2
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 53.58,
+            "pickRate": 4.84,
+            "banRate": 24.63,
+            "strengthLevel": 1
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 54.09,
+            "pickRate": 2.63,
+            "banRate": 8.44,
+            "strengthLevel": 3
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 52.24,
+            "pickRate": 3.23,
+            "banRate": 8.44,
+            "strengthLevel": 4
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 52.72,
+            "pickRate": 2.63,
+            "banRate": 8.81,
+            "strengthLevel": 3
+          },
+          "top": {
+            "rank": 2,
+            "winRate": 50.34,
+            "pickRate": 2.92,
+            "banRate": 8.81,
+            "strengthLevel": 4
+          }
+        }
+      }
     }
   ]
 }

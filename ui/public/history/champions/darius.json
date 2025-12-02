@@ -682,6 +682,91 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-12-02",
+      "cnStats": {
+        "overall": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.55,
+            "pickRate": 17.92,
+            "banRate": 6.12,
+            "strengthLevel": 0
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.05,
+            "pickRate": 3.11,
+            "banRate": 6.12,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.66,
+            "pickRate": 14.01,
+            "banRate": 6.08,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.13,
+            "pickRate": 2.93,
+            "banRate": 6.08,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "top": {
+            "rank": 2,
+            "winRate": 48.7,
+            "pickRate": 13.51,
+            "banRate": 6.38,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48,
+            "pickRate": 2.84,
+            "banRate": 6.38,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 50.4,
+            "pickRate": 12.42,
+            "banRate": 3.68,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 48.31,
+            "pickRate": 1.81,
+            "banRate": 3.68,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.82,
+            "pickRate": 13.36,
+            "banRate": 4.25,
+            "strengthLevel": 1
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.24,
+            "pickRate": 2.09,
+            "banRate": 4.25,
+            "strengthLevel": 5
+          }
+        }
+      }
     }
   ]
 }
