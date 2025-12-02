@@ -12,12 +12,14 @@ import {
 } from "./theme.js";
 
 import Footer from "./components/Footer.jsx";
+import TopPicksBansScreen from "./screens/TopPicksBansScreen.jsx";
 
 const VIEWS = {
   MENU: "menu",
   WINRATES: "winrates",
   GRAPH: "graph",
   LANE_META: "lane_meta",
+  PICKS_BANS: "picks_bans",
 };
 
 function App() {
@@ -52,7 +54,8 @@ function App() {
     <div style={styles.menuWrapper}>
       <h1 style={styles.title}>Wild Rift Stats</h1>
       <div style={styles.subtitle}>
-        Выбери раздел. Пока живут только винрейты и тестовый график.
+        Выбери раздел. Пока живут только винрейты, топ пики/баны и тестовый
+        график.
       </div>
       <MenuButton
         title="Статистика винрейтов"
@@ -63,6 +66,12 @@ function App() {
         }
         onClick={() => setView(VIEWS.WINRATES)}
         gradient={BUTTON_GRADIENTS.blue}
+      />
+      <MenuButton
+        title="Топ пики / баны"
+        subtitle="5 самых популярных и банимых героев"
+        onClick={() => setView(VIEWS.PICKS_BANS)}
+        gradient={BUTTON_GRADIENTS.green}
       />
       <MenuButton
         title="График трендов"
@@ -85,6 +94,14 @@ function App() {
       case VIEWS.WINRATES:
         return (
           <WinrateScreen
+            language={language}
+            onBack={() => setView(VIEWS.MENU)}
+          />
+        );
+
+      case VIEWS.PICKS_BANS:
+        return (
+          <TopPicksBansScreen
             language={language}
             onBack={() => setView(VIEWS.MENU)}
           />
