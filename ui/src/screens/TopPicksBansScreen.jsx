@@ -241,6 +241,9 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
   const [error, setError] = useState(null);
   const [details, setDetails] = useState(null); // что показываем в модалке
 
+  // новый стейт: сколько показывать
+  const [limit, setLimit] = useState(5); // 5 | 10 | 20 | "all"
+
   // загрузка cn-combined.json
   useEffect(() => {
     let cancelled = false;
@@ -400,21 +403,51 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       .filter(Boolean);
   }, [data, language]);
 
-  const topPicks = useMemo(
-    () =>
-      [...aggregated]
-        .sort((a, b) => (b.totalPickRate || 0) - (a.totalPickRate || 0))
-        .slice(0, 5),
-    [aggregated]
-  );
+  // вычисляем сортировки и учитываем выбранный лимит
+  const topPicks = useMemo(() => {
+    const sorted = [...aggregated].sort(
+      (a, b) => (b.totalPickRate || 0) - (a.totalPickRate || 0)
+    );
+    if (limit === "all") return sorted;
+    return sorted.slice(0, limit);
+  }, [aggregated, limit]);
 
-  const topBans = useMemo(
-    () =>
-      [...aggregated]
-        .sort((a, b) => (b.totalBanRate || 0) - (a.totalBanRate || 0))
-        .slice(0, 5),
-    [aggregated]
-  );
+  const topBans = useMemo(() => {
+    const sorted = [...aggregated].sort(
+      (a, b) => (b.totalBanRate || 0) - (a.totalBanRate || 0)
+    );
+    if (limit === "all") return sorted;
+    return sorted.slice(0, limit);
+  }, [aggregated, limit]);
+
+  const limitLabel =
+    limit === "all" ? "все чемпионы" : `топ-${limit} чемпионов`;
+  const limitTitlePrefix = limit === "all" ? "Все чемпионы" : `Топ-${limit}`;
+
+  const renderLimitButton = (value, label) => {
+    const isActive = limit === value;
+    return (
+      <button
+        key={String(value)}
+        onClick={() => setLimit(value)}
+        style={{
+          padding: "4px 10px",
+          fontSize: 12,
+          borderRadius: 999,
+          border: isActive
+            ? "1px solid rgba(59,130,246,0.9)"
+            : "1px solid rgba(75,85,99,0.9)",
+          background: isActive ? "rgba(37,99,235,0.25)" : "rgba(15,23,42,0.95)",
+          color: isActive ? "#e5e7eb" : "#9ca3af",
+          cursor: "pointer",
+          transition: "all 0.12s ease-out",
+          minWidth: 44,
+        }}
+      >
+        {label}
+      </button>
+    );
+  };
 
   return (
     <PageWrapper
@@ -425,16 +458,35 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       loadingText="Считаю пики и баны…"
       wrapInCard
     >
+      {/* Переключатель количества записей */}
       <div
         style={{
           marginBottom: 10,
-          fontSize: 13,
-          opacity: 0.85,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 8,
+          flexWrap: "wrap",
         }}
       >
-        Ниже — топ-5 чемпионов по суммарному пикрейту и банрейтy за последний
-        день во всех рангах и на всех линиях. Нажми на карточку чемпиона, чтобы
-        увидеть подробную раскладку по ролям и рангам.
+        <div style={{ fontSize: 13, opacity: 0.85 }}>
+          Ниже — {limitLabel} по суммарному пикрейту и банрейту за последний
+          день во всех рангах и на всех линиях. Нажми на карточку чемпиона,
+          чтобы увидеть подробную раскладку по ролям и рангам.
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            gap: 6,
+            flexShrink: 0,
+          }}
+        >
+          {renderLimitButton(5, "Топ 5")}
+          {renderLimitButton(10, "Топ 10")}
+          {renderLimitButton(20, "Топ 20")}
+          {renderLimitButton("all", "Все")}
+        </div>
       </div>
 
       <div style={{ marginBottom: 12 }}>
@@ -445,7 +497,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
             marginBottom: 6,
           }}
         >
-          Топ-5 по пикам
+          {limitTitlePrefix} по пикам
         </div>
         {topPicks.map((champ, idx) => {
           const imgUrl = champImages[champ.slug];
@@ -476,7 +528,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
             marginBottom: 6,
           }}
         >
-          Топ-5 по банам
+          {limitTitlePrefix} по банам
         </div>
         {topBans.map((champ, idx) => {
           const imgUrl = champImages[champ.slug];
