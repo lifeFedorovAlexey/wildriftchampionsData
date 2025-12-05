@@ -43,11 +43,14 @@ function App() {
 
   // 🔹 Логируем открытие вебапа
   useEffect(() => {
-    const webApp = window.Telegram?.WebApp;
-    const user = webApp?.initDataUnsafe?.user;
-    if (!webApp || !user) return;
+    if (!tg) return; // ждем пока Telegram.WebApp инициализируется
 
-    // один простенький вызов — без стейта, без ретраев
+    const user = tg.initDataUnsafe?.user;
+    if (!user) {
+      console.log("[webapp-open] user is missing", tg.initDataUnsafe);
+      return;
+    }
+
     fetch(`${API_BASE}/api/webapp-open`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -57,10 +60,16 @@ function App() {
         firstName: user.first_name || null,
         lastName: user.last_name || null,
       }),
-    }).catch(() => {
-      // лог нам не критичен, молча игнорим
-    });
-  }, []);
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.log("[webapp-open] bad status", res.status);
+        }
+      })
+      .catch((err) => {
+        console.log("[webapp-open] fetch error", err);
+      });
+  }, [tg]);
 
   // Загружаем дату последнего обновления из API
   useEffect(() => {
