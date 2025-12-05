@@ -168,6 +168,20 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-12-05",
+      "cnStats": {
+        "overall": {
+          "adc": {
+            "rank": 3,
+            "winRate": 44.68,
+            "pickRate": 1.02,
+            "banRate": 0.65,
+            "strengthLevel": 4
+          }
+        }
+      }
     }
   ]
 }
