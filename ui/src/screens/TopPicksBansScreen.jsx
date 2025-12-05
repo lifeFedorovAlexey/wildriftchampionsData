@@ -536,7 +536,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           justifyContent: "space-between",
           gap: 8,
           flexWrap: "wrap",
-          padding: "5px",
+          padding: "10px 5px",
         }}
       >
         <div style={{ fontSize: 13, opacity: 0.85 }}>
@@ -544,19 +544,23 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           день {rankRangeLabel} и на всех линиях. Нажми на карточку чемпиона,
           чтобы увидеть подробную раскладку по ролям и рангам.
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            gap: 6,
-            flexShrink: 0,
-          }}
-        >
-          {renderLimitButton(5, "Топ 5")}
-          {renderLimitButton(10, "Топ 10")}
-          {renderLimitButton(20, "Топ 20")}
-          {renderLimitButton("all", "Все")}
-        </div>
+      </div>
+      {/* Фильтр по поличеству */}
+      <div
+        style={{
+          marginBottom: 10,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          gap: 6,
+          flexWrap: "wrap",
+          padding: "5px",
+        }}
+      >
+        {renderLimitButton(5, "Топ 5")}
+        {renderLimitButton(10, "Топ 10")}
+        {renderLimitButton(20, "Топ 20")}
+        {renderLimitButton("all", "Все")}
       </div>
 
       {/* Фильтр по эло */}
