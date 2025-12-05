@@ -56,24 +56,24 @@ function banRateColor(v) {
   return "#4ade80";
 }
 
-// маппинг strengthLevel -> тир + цвет
+// маппинг strengthLevel -> тир + цвет (НОВАЯ шкала: 0 = S+, 5 = D)
 function strengthToTier(level) {
   if (level == null) {
     return { label: "—", color: "#9ca3af" };
   }
 
   switch (level) {
-    case 5:
-      return { label: "S+", color: "#f97316" }; // имба
-    case 4:
-      return { label: "S", color: "#f97316" };
-    case 3:
-      return { label: "A", color: "#22c55e" };
-    case 2:
-      return { label: "B", color: "#eab308" };
-    case 1:
-      return { label: "C", color: "#9ca3af" };
     case 0:
+      return { label: "S+", color: "#f97316" }; // имба
+    case 1:
+      return { label: "S", color: "#f97316" };
+    case 2:
+      return { label: "A", color: "#22c55e" };
+    case 3:
+      return { label: "B", color: "#eab308" };
+    case 4:
+      return { label: "C", color: "#9ca3af" };
+    case 5:
     default:
       return { label: "D", color: "#6b7280" };
   }
@@ -233,12 +233,13 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
 
         const col = sort.column;
 
-        // для strengthLevel хотим сортировать по числу
+        // для strengthLevel теперь МЕНЬШЕ = лучше
         if (col === "strengthLevel") {
-          const av = a.strengthLevel ?? -1;
-          const bv = b.strengthLevel ?? -1;
-          if (sort.dir === "desc") return bv - av;
-          if (sort.dir === "asc") return av - bv;
+          const av = a.strengthLevel ?? 999;
+          const bv = b.strengthLevel ?? 999;
+
+          if (sort.dir === "desc") return av - bv; // S+ (0) наверху
+          if (sort.dir === "asc") return bv - av; // D (5) наверху
           return 0;
         }
 
