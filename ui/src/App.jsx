@@ -31,25 +31,27 @@ function App() {
   const [updatedAt, setUpdatedAt] = useState(null);
 
   // INIT Telegram WebApp
-
   useEffect(() => {
     const webApp = window.Telegram?.WebApp;
     if (webApp) {
+      console.log("[App] Telegram.WebApp найден");
       setTg(webApp);
       webApp.ready();
       webApp.expand();
+    } else {
+      console.log("[App] Telegram.WebApp НЕ найден");
     }
   }, []);
 
-  // 🔹 Логируем открытие вебапа
+  // 🔹 Логируем открытие вебапа, когда tg уже есть
   useEffect(() => {
-    if (!tg) return; // ждем пока Telegram.WebApp инициализируется
+    if (!tg) return;
 
     const user = tg.initDataUnsafe?.user;
-    if (!user) {
-      console.log("[webapp-open] user is missing", tg.initDataUnsafe);
-      return;
-    }
+    console.log("[App] initDataUnsafe.user =", user);
+
+    // если открыто не как Telegram WebApp — просто выходим
+    if (!user) return;
 
     fetch(`${API_BASE}/api/webapp-open`, {
       method: "POST",
@@ -64,6 +66,8 @@ function App() {
       .then((res) => {
         if (!res.ok) {
           console.log("[webapp-open] bad status", res.status);
+        } else {
+          console.log("[webapp-open] ok");
         }
       })
       .catch((err) => {
@@ -139,6 +143,20 @@ function App() {
       <div style={styles.futureBlock(hintColor)}>
         Будущие разделы: чемпионы, билды, гайды
       </div>
+
+      {/* Временный дебаг, можно потом удалить */}
+      {tg?.initDataUnsafe?.user && (
+        <div
+          style={{
+            fontSize: 10,
+            opacity: 0.5,
+            textAlign: "center",
+            marginTop: 8,
+          }}
+        >
+          tgId: {tg.initDataUnsafe.user.id}
+        </div>
+      )}
     </div>
   );
 
