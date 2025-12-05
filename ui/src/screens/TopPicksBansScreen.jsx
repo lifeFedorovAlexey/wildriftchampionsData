@@ -14,6 +14,10 @@ const RANK_LABELS_RU = {
 
 const EXCLUDED_RANK_KEYS = new Set(["overall"]);
 
+// группы эло
+const LOW_ELO_RANKS = new Set(["diamondPlus", "masterPlus"]);
+const HIGH_ELO_RANKS = new Set(["king", "peak"]);
+
 // аватарка чемпиона
 function ChampAvatarCard({ name, src }) {
   return (
@@ -254,6 +258,9 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
   const [details, setDetails] = useState(null);
   const [limit, setLimit] = useState(5); // 5 | 10 | 20 | "all"
 
+  // новый фильтр по эло: low | high | all
+  const [rankRange, setRankRange] = useState("low");
+
   // загружаем чемпионов и иконки
   useEffect(() => {
     let cancelled = false;
@@ -351,7 +358,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       champBySlug[ch.slug] = ch;
     }
 
-    // 4) считаем агрегаты
+    // 4) считаем агрегаты с учётом фильтра rankRange
     const aggBySlug = new Map();
 
     for (const item of latestItems) {
@@ -361,6 +368,11 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
 
       if (!slug || !rankKey || !laneKey) continue;
       if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
+
+      // фильтр по эло
+      if (rankRange === "low" && !LOW_ELO_RANKS.has(rankKey)) continue;
+      if (rankRange === "high" && !HIGH_ELO_RANKS.has(rankKey)) continue;
+      // rankRange === "all" — пропускаем всё кроме overall
 
       const pickRate = item.pickRate ?? 0;
       const banRate = item.banRate ?? 0;
@@ -407,7 +419,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       lanes[laneKey].pickRanks[rankKey] =
         (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
 
-      // БАНЫ: как раньше — один раз на ранг, без деления по линиям
+      // БАНЫ: один раз на ранг, без деления по линиям
       if (!agg._banRanksAdded.has(rankKey)) {
         agg.totalBanRate += banRate;
         lanes.all.ban += banRate;
@@ -426,7 +438,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
     }
 
     return result;
-  }, [historyItems, champions]);
+  }, [historyItems, champions, rankRange]);
 
   // сортировки + лимит
   const topPicks = useMemo(() => {
@@ -449,6 +461,13 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
     limit === "all" ? "все чемпионы" : `топ-${limit} чемпионов`;
   const limitTitlePrefix = limit === "all" ? "Все чемпионы" : `Топ-${limit}`;
 
+  const rankRangeLabel =
+    rankRange === "low"
+      ? "в алмазе+мастере"
+      : rankRange === "high"
+      ? "в гм+чалике"
+      : "во всех рангах";
+
   const renderLimitButton = (value, label) => {
     const isActive = limit === value;
     return (
@@ -467,6 +486,31 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           cursor: "pointer",
           transition: "all 0.12s ease-out",
           minWidth: 44,
+        }}
+      >
+        {label}
+      </button>
+    );
+  };
+
+  const renderRankRangeButton = (value, label) => {
+    const isActive = rankRange === value;
+    return (
+      <button
+        key={value}
+        onClick={() => setRankRange(value)}
+        style={{
+          padding: "4px 10px",
+          fontSize: 12,
+          borderRadius: 999,
+          border: isActive
+            ? "1px solid rgba(52,211,153,0.9)"
+            : "1px solid rgba(75,85,99,0.9)",
+          background: isActive ? "rgba(16,185,129,0.2)" : "rgba(15,23,42,0.95)",
+          color: isActive ? "#e5e7eb" : "#9ca3af",
+          cursor: "pointer",
+          transition: "all 0.12s ease-out",
+          minWidth: 70,
         }}
       >
         {label}
@@ -497,7 +541,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       >
         <div style={{ fontSize: 13, opacity: 0.85 }}>
           Ниже — {limitLabel} по суммарному пикрейту и банрейту за последний
-          день во всех рангах и на всех линиях. Нажми на карточку чемпиона,
+          день {rankRangeLabel} и на всех линиях. Нажми на карточку чемпиона,
           чтобы увидеть подробную раскладку по ролям и рангам.
         </div>
 
@@ -513,6 +557,23 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           {renderLimitButton(20, "Топ 20")}
           {renderLimitButton("all", "Все")}
         </div>
+      </div>
+
+      {/* Фильтр по эло */}
+      <div
+        style={{
+          marginBottom: 10,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          gap: 6,
+          flexWrap: "wrap",
+          padding: "5px",
+        }}
+      >
+        {renderRankRangeButton("low", "Лоу эло")}
+        {renderRankRangeButton("high", "Хай эло")}
+        {renderRankRangeButton("all", "Все ранги")}
       </div>
 
       <div style={{ marginBottom: 12 }}>
