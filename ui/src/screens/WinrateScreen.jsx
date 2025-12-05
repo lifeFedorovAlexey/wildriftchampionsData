@@ -56,6 +56,29 @@ function banRateColor(v) {
   return "#4ade80";
 }
 
+// маппинг strengthLevel -> тир + цвет
+function strengthToTier(level) {
+  if (level == null) {
+    return { label: "—", color: "#9ca3af" };
+  }
+
+  switch (level) {
+    case 5:
+      return { label: "S+", color: "#f97316" }; // имба
+    case 4:
+      return { label: "S", color: "#f97316" };
+    case 3:
+      return { label: "A", color: "#22c55e" };
+    case 2:
+      return { label: "B", color: "#eab308" };
+    case 1:
+      return { label: "C", color: "#9ca3af" };
+    case 0:
+    default:
+      return { label: "D", color: "#6b7280" };
+  }
+}
+
 export function WinrateScreen({ language = "ru_ru", onBack }) {
   // чемпионы с API /api/champions
   const [champions, setChampions] = useState([]);
@@ -183,6 +206,10 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
             ? champ.name
             : slug;
 
+        const strengthLevel =
+          stat.strengthLevel !== undefined ? stat.strengthLevel : null;
+        const tier = strengthToTier(strengthLevel);
+
         return {
           slug,
           name: displayName,
@@ -191,6 +218,10 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
           winRate: stat.winRate ?? null,
           pickRate: stat.pickRate ?? null,
           banRate: stat.banRate ?? null,
+
+          strengthLevel,
+          tierLabel: tier.label,
+          tierColor: tier.color,
         };
       })
       .filter(Boolean)
@@ -201,6 +232,16 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
         }
 
         const col = sort.column;
+
+        // для strengthLevel хотим сортировать по числу
+        if (col === "strengthLevel") {
+          const av = a.strengthLevel ?? -1;
+          const bv = b.strengthLevel ?? -1;
+          if (sort.dir === "desc") return bv - av;
+          if (sort.dir === "asc") return av - bv;
+          return 0;
+        }
+
         const av = a[col] ?? 0;
         const bv = b[col] ?? 0;
 
@@ -233,7 +274,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "36px 2fr 0.9fr 0.9fr 0.9fr",
+          gridTemplateColumns: "36px 2fr 0.7fr 0.9fr 0.9fr 0.9fr",
           columnGap: 4,
           padding: "6px 8px",
           fontSize: 11,
@@ -248,6 +289,19 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       >
         <div>#</div>
         <div>Герой</div>
+
+        <div
+          style={{ textAlign: "right", cursor: "pointer" }}
+          onClick={() => onSort("strengthLevel")}
+        >
+          Тир{" "}
+          {sort.column === "strengthLevel"
+            ? sort.dir === "asc"
+              ? "▲"
+              : "▼"
+            : ""}
+        </div>
+
         <div
           style={{ textAlign: "right", cursor: "pointer" }}
           onClick={() => onSort("winRate")}
@@ -279,7 +333,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
             key={row.slug}
             style={{
               display: "grid",
-              gridTemplateColumns: "36px 2fr 0.9fr 0.9fr 0.9fr",
+              gridTemplateColumns: "36px 2fr 0.7fr 0.9fr 0.9fr 0.9fr",
               columnGap: 4,
               padding: "6px 8px",
               fontSize: 12,
@@ -308,6 +362,16 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
               >
                 {row.name}
               </span>
+            </div>
+
+            <div
+              style={{
+                textAlign: "right",
+                fontWeight: 600,
+                color: row.tierColor,
+              }}
+            >
+              {row.tierLabel}
             </div>
 
             <div
