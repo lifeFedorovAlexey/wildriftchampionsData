@@ -31,6 +31,7 @@ function App() {
   const [updatedAt, setUpdatedAt] = useState(null);
 
   // INIT Telegram WebApp
+
   useEffect(() => {
     const webApp = window.Telegram?.WebApp;
     if (webApp) {
@@ -38,6 +39,27 @@ function App() {
       webApp.ready();
       webApp.expand();
     }
+  }, []);
+
+  // 🔹 Логируем открытие вебапа
+  useEffect(() => {
+    const webApp = window.Telegram?.WebApp;
+    const user = webApp?.initDataUnsafe?.user;
+    if (!webApp || !user) return;
+
+    // один простенький вызов — без стейта, без ретраев
+    fetch(`${API_BASE}/api/webapp-open`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        tgId: user.id,
+        username: user.username || null,
+        firstName: user.first_name || null,
+        lastName: user.last_name || null,
+      }),
+    }).catch(() => {
+      // лог нам не критичен, молча игнорим
+    });
   }, []);
 
   // Загружаем дату последнего обновления из API
