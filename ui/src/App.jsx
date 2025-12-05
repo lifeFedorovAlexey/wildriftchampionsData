@@ -13,10 +13,12 @@ import {
 
 import Footer from "./components/Footer.jsx";
 import TopPicksBansScreen from "./screens/TopPicksBansScreen.jsx";
+import TierlistScreen from "./screens/TierlistScreen.jsx";
 
 const VIEWS = {
   MENU: "menu",
   WINRATES: "winrates",
+  TIERLIST: "tierlist",
   GRAPH: "graph",
   PICKS_BANS: "picks_bans",
 };
@@ -50,7 +52,6 @@ function App() {
     const user = tg.initDataUnsafe?.user;
     console.log("[App] initDataUnsafe.user =", user);
 
-    // если открыто не как Telegram WebApp — просто выходим
     if (!user) return;
 
     fetch(`${API_BASE}/api/webapp-open`, {
@@ -109,7 +110,8 @@ function App() {
       <h1 style={styles.title}>Wild Rift Stats</h1>
 
       <div style={styles.subtitle}>
-        Выбери раздел. Активны: винрейты, топ пики/баны, график трендов.
+        Выбери раздел. Активны: винрейты, тир-лист, топ пики/баны, график
+        трендов.
       </div>
 
       <MenuButton
@@ -123,6 +125,19 @@ function App() {
         }
         onClick={() => setView(VIEWS.WINRATES)}
         gradient={BUTTON_GRADIENTS.blue}
+      />
+
+      <MenuButton
+        title="Тир-лист чемпионов"
+        subtitle={
+          updatedAt ? (
+            <>Тир по strength level, {formatDateTime(updatedAt)}</>
+          ) : (
+            "На основе актуальной статистики"
+          )
+        }
+        onClick={() => setView(VIEWS.TIERLIST)}
+        gradient={BUTTON_GRADIENTS.purple || BUTTON_GRADIENTS.orange}
       />
 
       <MenuButton
@@ -153,6 +168,14 @@ function App() {
       case VIEWS.WINRATES:
         return (
           <WinrateScreen
+            language={language}
+            onBack={() => setView(VIEWS.MENU)}
+          />
+        );
+
+      case VIEWS.TIERLIST:
+        return (
+          <TierlistScreen
             language={language}
             onBack={() => setView(VIEWS.MENU)}
           />
