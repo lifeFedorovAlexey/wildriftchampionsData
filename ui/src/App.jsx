@@ -86,7 +86,6 @@ function App() {
         const data = await res.json();
         if (cancelled) return;
 
-        // updatedAt уже "YYYY-MM-DD" из БД
         const dateStr = data.updatedAt || null;
         setUpdatedAt(dateStr);
       } catch {
@@ -108,6 +107,17 @@ function App() {
   const renderMenu = () => (
     <div style={styles.menuWrapper}>
       <h1 style={styles.title}>Wild Rift Stats</h1>
+
+      {/* временный дебаг — чтобы понимать, видит ли фронт Telegram WebApp */}
+      <div
+        style={{
+          fontSize: 11,
+          opacity: 0.7,
+          marginBottom: 6,
+        }}
+      >
+        tg: {String(!!tg)} | user: {tg?.initDataUnsafe?.user ? "YES" : "NO"}
+      </div>
 
       <div style={styles.subtitle}>
         Выбери раздел. Активны: винрейты, топ пики/баны, график трендов.
@@ -143,20 +153,6 @@ function App() {
       <div style={styles.futureBlock(hintColor)}>
         Будущие разделы: чемпионы, билды, гайды
       </div>
-
-      {/* Временный дебаг, можно потом удалить */}
-      {tg?.initDataUnsafe?.user && (
-        <div
-          style={{
-            fontSize: 10,
-            opacity: 0.5,
-            textAlign: "center",
-            marginTop: 8,
-          }}
-        >
-          tgId: {tg.initDataUnsafe.user.id}
-        </div>
-      )}
     </div>
   );
 
