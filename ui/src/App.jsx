@@ -108,17 +108,6 @@ function App() {
     <div style={styles.menuWrapper}>
       <h1 style={styles.title}>Wild Rift Stats</h1>
 
-      {/* временный дебаг — чтобы понимать, видит ли фронт Telegram WebApp */}
-      <div
-        style={{
-          fontSize: 11,
-          opacity: 0.7,
-          marginBottom: 6,
-        }}
-      >
-        tg: {String(!!tg)} | user: {tg?.initDataUnsafe?.user ? "YES" : "NO"}
-      </div>
-
       <div style={styles.subtitle}>
         Выбери раздел. Активны: винрейты, топ пики/баны, график трендов.
       </div>
