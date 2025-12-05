@@ -1,10 +1,11 @@
-// ui/src/screens/TrendScreen.jsx
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
 import TrendChartBlock from "../components/TrendCharts";
 import { ChampionSearch } from "../components/ChampionSearch.jsx";
 import { RankFilter } from "../components/RankFilter.jsx";
 import { LaneFilter } from "../components/LaneFilter.jsx";
+
+const API_BASE = "https://wr-api-pjtu.vercel.app";
 
 // ---------- таблица ----------
 
@@ -170,33 +171,37 @@ export default function TrendScreen({ onBack }) {
   const [loadingHistory, setLoadingHistory] = useState(false);
   const [historyError, setHistoryError] = useState(null);
 
-  // загружаем список чемпионов из cn-combined.json
+  // загружаем список чемпионов с API
   useEffect(() => {
-    fetch("/cn-combined.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const list = (data?.combined || []).map((champ) => {
-          let displayName = champ.slug;
-          if (typeof champ.name === "string") {
-            displayName = champ.name;
-          } else if (champ.name && typeof champ.name === "object") {
-            displayName =
-              champ.name.ru_ru ||
-              champ.name.en_us ||
-              Object.values(champ.name)[0] ||
-              champ.slug;
-          }
-          return {
-            slug: champ.slug,
-            displayName,
-          };
-        });
+    let cancelled = false;
+
+    async function loadChampions() {
+      try {
+        const res = await fetch(`${API_BASE}/api/champions?lang=ru_ru`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (cancelled) return;
+
+        const list = (data || []).map((ch) => ({
+          slug: ch.slug,
+          displayName:
+            typeof ch.name === "string" && ch.name.trim() ? ch.name : ch.slug,
+        }));
+
         setChampions(list);
-      })
-      .catch(() => {});
+      } catch (e) {
+        console.error("Ошибка загрузки champions", e);
+      }
+    }
+
+    loadChampions();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  // загружаем history для выбранного чемпиона
+  // загружаем history для выбранного чемпиона (через API)
   useEffect(() => {
     if (!selectedChampion) {
       setRawHistory(null);
@@ -209,22 +214,36 @@ export default function TrendScreen({ onBack }) {
     async function loadHistory() {
       setLoadingHistory(true);
       setHistoryError(null);
+
       try {
+        const params = new URLSearchParams();
+        params.set("slug", selectedChampion.slug);
+        params.set("rank", rankKey);
+        params.set("lane", laneKey);
+
         const res = await fetch(
-          `/history/champions/${selectedChampion.slug}.json`
+          `${API_BASE}/api/champion-history?` + params.toString()
         );
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}`);
         }
+
         const json = await res.json();
-        if (!cancelled) {
-          setRawHistory(Array.isArray(json.history) ? json.history : []);
+        if (cancelled) return;
+
+        const items = Array.isArray(json.items) ? json.items : [];
+        setRawHistory(items);
+
+        if (items.length === 0) {
+          setHistoryError("История для этого чемпиона пока не сохранена.");
+        } else {
+          setHistoryError(null);
         }
       } catch (e) {
         console.error("Ошибка загрузки history", e);
         if (!cancelled) {
           setRawHistory([]);
-          setHistoryError("История для этого чемпиона пока не сохранена.");
+          setHistoryError("Не удалось загрузить историю для этого чемпиона.");
         }
       } finally {
         if (!cancelled) {
@@ -238,21 +257,17 @@ export default function TrendScreen({ onBack }) {
     return () => {
       cancelled = true;
     };
-  }, [selectedChampion]);
+  }, [selectedChampion, rankKey, laneKey]);
 
-  // превращаем history -> days для графика/таблицы с учётом rank+lane
+  // превращаем history -> days для графика/таблицы
   const days = useMemo(() => {
     if (!rawHistory || !Array.isArray(rawHistory)) return [];
 
     return rawHistory
-      .map((entry) => {
-        const rankStats = entry.cnStats?.[rankKey];
-        if (!rankStats) return null;
-        const laneStats = rankStats?.[laneKey];
-        if (!laneStats) return null;
-
-        const fullDate = entry.date;
+      .map((item) => {
+        const fullDate = item.date;
         let dateLabel = fullDate;
+
         try {
           const d = new Date(fullDate);
           if (!Number.isNaN(d.getTime())) {
@@ -268,24 +283,22 @@ export default function TrendScreen({ onBack }) {
         return {
           fullDate,
           date: dateLabel,
-          winRate: laneStats.winRate ?? 0,
-          pickRate: laneStats.pickRate ?? 0,
-          banRate: laneStats.banRate ?? 0,
+          winRate: item.winRate ?? 0,
+          pickRate: item.pickRate ?? 0,
+          banRate: item.banRate ?? 0,
         };
       })
       .filter(Boolean);
-  }, [rawHistory, rankKey, laneKey]);
+  }, [rawHistory]);
 
   const hasSelection = !!selectedChampion && days.length > 0;
 
-  // состояния для PageWrapper
   const isHistoryLoading = !!selectedChampion && loadingHistory;
   const historyErrorToShow =
     selectedChampion && !loadingHistory && historyError && !hasSelection
       ? historyError
       : null;
 
-  // фильтры сверху (чемп + ранг + линия)
   const filters = (
     <>
       <div

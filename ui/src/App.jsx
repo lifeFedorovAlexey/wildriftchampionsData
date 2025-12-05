@@ -1,4 +1,3 @@
-// ui/src/App.jsx
 import { useEffect, useState } from "react";
 import { WinrateScreen } from "./screens/WinrateScreen.jsx";
 import TrendScreen from "./screens/TrendScreen.jsx";
@@ -22,6 +21,9 @@ const VIEWS = {
   PICKS_BANS: "picks_bans",
 };
 
+// базовый урл до твоего API
+const API_BASE = "https://wr-api-pjtu.vercel.app";
+
 function App() {
   const [tg, setTg] = useState(null);
   const [language] = useState("ru_ru");
@@ -38,12 +40,30 @@ function App() {
     }
   }, []);
 
-  // Загружаем дату обновления файла
+  // Загружаем дату последнего обновления из API
   useEffect(() => {
-    fetch("/cn-combined.json")
-      .then((res) => res.json())
-      .then((data) => setUpdatedAt(data.updatedAt?.split("T")[0] || null))
-      .catch(() => {});
+    let cancelled = false;
+
+    async function loadUpdatedAt() {
+      try {
+        const res = await fetch(`${API_BASE}/api/updated-at`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (cancelled) return;
+
+        // updatedAt уже "YYYY-MM-DD" из БД
+        const dateStr = data.updatedAt || null;
+        setUpdatedAt(dateStr);
+      } catch {
+        // тихо игнорим, просто не покажем дату
+      }
+    }
+
+    loadUpdatedAt();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const bg = resolveTgColor(tg, "bg_color", BASE_COLORS.background);
@@ -60,7 +80,13 @@ function App() {
 
       <MenuButton
         title="Статистика винрейтов"
-        subtitle={<>Обновлено {formatDateTime(updatedAt)}</>}
+        subtitle={
+          updatedAt ? (
+            <>Обновлено {formatDateTime(updatedAt)}</>
+          ) : (
+            "Дата обновления недоступна"
+          )
+        }
         onClick={() => setView(VIEWS.WINRATES)}
         gradient={BUTTON_GRADIENTS.blue}
       />

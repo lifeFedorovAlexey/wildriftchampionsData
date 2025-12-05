@@ -1,6 +1,7 @@
-// ui/src/screens/TopPicksBansScreen.jsx
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
+
+const API_BASE = "https://wr-api-pjtu.vercel.app";
 
 // порядок рангов и их русские названия
 const RANK_KEYS = ["diamondPlus", "masterPlus", "king", "peak"];
@@ -245,186 +246,187 @@ function DetailsModal({ data, onClose }) {
 }
 
 function TopPicksBansScreen({ language = "ru_ru", onBack }) {
-  const [data, setData] = useState(null);
+  const [champions, setChampions] = useState([]);
   const [champImages, setChampImages] = useState({});
+  const [historyItems, setHistoryItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [details, setDetails] = useState(null);
   const [limit, setLimit] = useState(5); // 5 | 10 | 20 | "all"
 
-  // загрузка cn-combined.json
+  // загружаем чемпионов и иконки
   useEffect(() => {
     let cancelled = false;
 
-    async function load() {
+    async function loadChampions() {
+      try {
+        const res = await fetch(
+          `${API_BASE}/api/champions?lang=${encodeURIComponent(language)}`
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        if (cancelled) return;
+
+        setChampions(json || []);
+
+        const imgMap = {};
+        (json || []).forEach((ch) => {
+          if (ch.slug) {
+            imgMap[ch.slug] = ch.icon || null;
+          }
+        });
+        setChampImages(imgMap);
+      } catch (e) {
+        console.error("Ошибка загрузки champions", e);
+      }
+    }
+
+    loadChampions();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [language]);
+
+  // загружаем всю историю из API
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadHistory() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("/cn-combined.json");
+        const res = await fetch(`${API_BASE}/api/champion-history`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
-        if (!cancelled) setData(json);
+        if (cancelled) return;
+
+        const items = Array.isArray(json.items) ? json.items : [];
+        setHistoryItems(items);
       } catch (e) {
-        console.error("Ошибка загрузки cn-combined.json", e);
+        console.error("Ошибка загрузки champion-history", e);
         if (!cancelled) {
           setError("Не удалось загрузить статистику пиков и банов.");
         }
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     }
 
-    load();
+    loadHistory();
 
     return () => {
       cancelled = true;
     };
   }, []);
 
-  // загрузка картинок чемпионов
-  useEffect(() => {
-    if (!data || !Array.isArray(data.combined)) return;
+  // агрегируем статистику ЗА ПОСЛЕДНИЙ ДЕНЬ для каждого чемпиона
+  const aggregated = useMemo(() => {
+    if (!Array.isArray(historyItems) || historyItems.length === 0) return [];
 
-    let cancelled = false;
-
-    async function loadImages() {
-      try {
-        const entries = await Promise.all(
-          data.combined.map(async (champ) => {
-            const slug = champ.slug;
-            if (!slug) return null;
-
-            try {
-              const res = await fetch(`/champions/${slug}.json`);
-              if (!res.ok) return null;
-              const json = await res.json();
-              const url = json.baseImgUrl || json.img || json.icon || null;
-              if (!url) return null;
-              return [slug, url];
-            } catch {
-              return null;
-            }
-          })
-        );
-
-        if (cancelled) return;
-
-        const map = {};
-        for (const pair of entries) {
-          if (!pair) continue;
-          const [slug, url] = pair;
-          map[slug] = url;
-        }
-        setChampImages(map);
-      } catch (e) {
-        if (!cancelled) {
-          console.error("Ошибка загрузки картинок чемпионов", e);
-        }
+    // 1) находим последнюю дату для каждого slug
+    const lastDateBySlug = {};
+    for (const item of historyItems) {
+      if (!item || !item.slug || !item.date) continue;
+      const slug = item.slug;
+      const dateStr = String(item.date);
+      if (!lastDateBySlug[slug] || dateStr > lastDateBySlug[slug]) {
+        lastDateBySlug[slug] = dateStr;
       }
     }
 
-    loadImages();
+    // 2) фильтруем только записи за последнюю дату для данного slug
+    const latestItems = historyItems.filter((item) => {
+      if (!item || !item.slug || !item.date) return false;
+      const dateStr = String(item.date);
+      return dateStr === lastDateBySlug[item.slug];
+    });
 
-    return () => {
-      cancelled = true;
-    };
-  }, [data]);
+    // 3) champions map для имён
+    const champBySlug = {};
+    for (const ch of champions) {
+      if (!ch || !ch.slug) continue;
+      champBySlug[ch.slug] = ch;
+    }
 
-  // агрегируем статистику по всем линиям и рангам ЗА ПОСЛЕДНИЙ ДЕНЬ
-  const aggregated = useMemo(() => {
-    if (!data || !Array.isArray(data.combined)) return [];
+    // 4) считаем агрегаты
+    const aggBySlug = new Map();
 
-    return data.combined
-      .map((champ) => {
-        // берем cnStats из последнего элемента history, если он есть
-        let cnStats = champ.cnStats || {};
+    for (const item of latestItems) {
+      const slug = item.slug;
+      const rankKey = item.rank;
+      const laneKey = item.lane;
 
-        if (Array.isArray(champ.history) && champ.history.length > 0) {
-          let latest = champ.history[0];
-          for (const item of champ.history) {
-            if (item.date && (!latest.date || item.date > latest.date)) {
-              latest = item;
-            }
-          }
-          if (latest && latest.cnStats) {
-            cnStats = latest.cnStats;
-          }
+      if (!slug || !rankKey || !laneKey) continue;
+      if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
+
+      const pickRate = item.pickRate ?? 0;
+      const banRate = item.banRate ?? 0;
+
+      if (!aggBySlug.has(slug)) {
+        const champion = champBySlug[slug];
+        let displayName = slug;
+        if (champion && typeof champion.name === "string" && champion.name) {
+          displayName = champion.name;
         }
 
-        let totalPick = 0;
-        let totalBan = 0;
+        aggBySlug.set(slug, {
+          slug,
+          name: displayName,
+          totalPickRate: 0,
+          totalBanRate: 0,
+          lanes: {
+            all: {
+              pick: 0,
+              ban: 0,
+              pickRanks: {},
+              banRanks: {},
+            },
+          },
+          _banRanksAdded: new Set(), // внутренняя служебная штука
+        });
+      }
 
-        const lanes = {};
-        // отдельный агрегатор для банов: одна "линия" all
-        lanes["all"] = {
+      const agg = aggBySlug.get(slug);
+      const lanes = agg.lanes;
+
+      if (!lanes[laneKey]) {
+        lanes[laneKey] = {
           pick: 0,
           ban: 0,
           pickRanks: {},
           banRanks: {},
         };
+      }
 
-        for (const [rankKey, lanesObj] of Object.entries(cnStats || {})) {
-          if (!lanesObj) continue;
-          if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
+      // ПИКИ: считаем по линиям + по рангам
+      agg.totalPickRate += pickRate;
+      lanes[laneKey].pick += pickRate;
+      lanes[laneKey].pickRanks[rankKey] =
+        (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
 
-          let rankBanAdded = false;
+      // БАНЫ: как раньше — один раз на ранг, без деления по линиям
+      if (!agg._banRanksAdded.has(rankKey)) {
+        agg.totalBanRate += banRate;
+        lanes.all.ban += banRate;
+        lanes.all.banRanks[rankKey] =
+          (lanes.all.banRanks[rankKey] || 0) + banRate;
+        agg._banRanksAdded.add(rankKey);
+      }
+    }
 
-          for (const [laneKey, cell] of Object.entries(lanesObj)) {
-            if (!cell) continue;
+    // 5) превращаем Map -> массив и выбрасываем _banRanksAdded
+    const result = [];
+    for (const value of aggBySlug.values()) {
+      const { _banRanksAdded, ...rest } = value;
+      if (rest.totalPickRate === 0 && rest.totalBanRate === 0) continue;
+      result.push(rest);
+    }
 
-            const pickRate = cell.pickRate ?? 0;
-            const banRate = cell.banRate ?? 0;
-
-            // Пики считаем по линиям
-            totalPick += pickRate;
-
-            if (!lanes[laneKey]) {
-              lanes[laneKey] = {
-                pick: 0,
-                ban: 0,
-                pickRanks: {},
-                banRanks: {},
-              };
-            }
-
-            lanes[laneKey].pick += pickRate;
-            lanes[laneKey].pickRanks[rankKey] =
-              (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
-
-            // Баны: один раз на ранг, без разбиения по линиям
-            if (!rankBanAdded) {
-              totalBan += banRate;
-              lanes["all"].ban += banRate;
-              lanes["all"].banRanks[rankKey] =
-                (lanes["all"].banRanks[rankKey] || 0) + banRate;
-              rankBanAdded = true;
-            }
-          }
-        }
-
-        if (totalPick === 0 && totalBan === 0) return null;
-
-        let displayName = champ.slug;
-        if (typeof champ.name === "string") {
-          displayName = champ.name;
-        } else if (champ.name && typeof champ.name === "object") {
-          displayName =
-            champ.name[language] ||
-            champ.name.ru_ru ||
-            champ.name.en_us ||
-            champ.slug;
-        }
-
-        return {
-          slug: champ.slug,
-          name: displayName,
-          totalPickRate: totalPick,
-          totalBanRate: totalBan,
-          lanes,
-        };
-      })
-      .filter(Boolean);
-  }, [data, language]);
+    return result;
+  }, [historyItems, champions]);
 
   // сортировки + лимит
   const topPicks = useMemo(() => {

@@ -1,9 +1,11 @@
-// ui/src/screens/WinrateScreen.jsx
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
 import { RankFilter } from "../components/RankFilter.jsx";
 import { LaneFilter } from "../components/LaneFilter.jsx";
-import { RANK_OPTIONS, LANE_OPTIONS } from "./constants"; // пока оставляю, логика завязана на ключах
+import { RANK_OPTIONS, LANE_OPTIONS } from "./constants";
+
+// базовый урл до твоего API
+const API_BASE = "https://wr-api-pjtu.vercel.app";
 
 // аватарка чемпиона с синей заглушкой
 function ChampAvatar({ name, src }) {
@@ -55,7 +57,11 @@ function banRateColor(v) {
 }
 
 export function WinrateScreen({ language = "ru_ru", onBack }) {
-  const [data, setData] = useState(null);
+  // чемпионы с API /api/champions
+  const [champions, setChampions] = useState([]);
+  // latest статы по (slug, rank, lane)
+  const [latestStats, setLatestStats] = useState(null);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -64,25 +70,78 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
 
   const [sort, setSort] = useState({ column: "winRate", dir: "desc" });
 
-  const [champImages, setChampImages] = useState({});
-
-  // загрузка cn-combined.json
+  // загрузка чемпионов + истории из API
   useEffect(() => {
     let cancelled = false;
 
     async function load() {
       setLoading(true);
       setError(null);
+
       try {
-        const res = await fetch("/cn-combined.json");
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = await res.json();
-        if (!cancelled) setData(json);
+        // чемпы + вся история (один раз)
+        const [champRes, histRes] = await Promise.all([
+          fetch(
+            `${API_BASE}/api/champions?lang=${encodeURIComponent(language)}`
+          ),
+          fetch(`${API_BASE}/api/champion-history`),
+        ]);
+
+        if (!champRes.ok) {
+          throw new Error(`Champions HTTP ${champRes.status}`);
+        }
+        if (!histRes.ok) {
+          throw new Error(`History HTTP ${histRes.status}`);
+        }
+
+        const champsJson = await champRes.json();
+        const histJson = await histRes.json();
+
+        if (cancelled) return;
+
+        // champions: просто сохраняем список как есть
+        setChampions(champsJson || []);
+
+        // histJson.items — массив:
+        // {
+        //   date, slug, cnHeroId, rank, lane,
+        //   position, winRate, pickRate, banRate, strengthLevel
+        // }
+        const items = Array.isArray(histJson.items) ? histJson.items : [];
+
+        // Собираем latest map:
+        // key = `${slug}|${rank}|${lane}`
+        // value = самая свежая запись по date
+        const latestMap = {};
+
+        for (const item of items) {
+          if (!item || !item.slug || !item.rank || !item.lane || !item.date) {
+            continue;
+          }
+          const key = `${item.slug}|${item.rank}|${item.lane}`;
+          const prev = latestMap[key];
+
+          if (!prev) {
+            latestMap[key] = item;
+          } else {
+            const prevDate = prev.date;
+            const currDate = item.date;
+            if (String(currDate) > String(prevDate)) {
+              latestMap[key] = item;
+            }
+          }
+        }
+
+        setLatestStats(latestMap);
       } catch (e) {
-        console.error("Ошибка загрузки cn-combined.json", e);
-        if (!cancelled) setError("Не удалось загрузить статистику винрейтов.");
+        console.error("Ошибка загрузки данных для WinrateScreen", e);
+        if (!cancelled) {
+          setError("Не удалось загрузить статистику винрейтов.");
+        }
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     }
 
@@ -91,56 +150,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
     return () => {
       cancelled = true;
     };
-  }, []);
-
-  // загрузка картинок чемпионов
-  useEffect(() => {
-    if (!data || !Array.isArray(data.combined)) return;
-
-    let cancelled = false;
-
-    async function loadImages() {
-      try {
-        const entries = await Promise.all(
-          data.combined.map(async (champ) => {
-            const slug = champ.slug;
-            if (!slug) return null;
-
-            try {
-              const res = await fetch(`/champions/${slug}.json`);
-              if (!res.ok) return null;
-              const json = await res.json();
-              const url = json.baseImgUrl || json.img || json.icon || null;
-              if (!url) return null;
-              return [slug, url];
-            } catch {
-              return null;
-            }
-          })
-        );
-
-        if (cancelled) return;
-
-        const map = {};
-        for (const pair of entries) {
-          if (!pair) continue;
-          const [slug, url] = pair;
-          map[slug] = url;
-        }
-        setChampImages(map);
-      } catch (e) {
-        if (!cancelled) {
-          console.error("Ошибка загрузки картинок чемпионов", e);
-        }
-      }
-    }
-
-    loadImages();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [data]);
+  }, [language]);
 
   // сортировка
   function onSort(column) {
@@ -154,38 +164,39 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
     });
   }
 
-  // подготовка строк
+  // подготовка строк для таблицы
   const rows = useMemo(() => {
-    if (!data || !Array.isArray(data.combined)) return [];
+    if (!champions.length || !latestStats) return [];
 
-    return data.combined
+    return champions
       .map((champ) => {
-        const statsForRank = champ.cnStats?.[rankKey];
-        const cell = statsForRank?.[laneKey];
-        if (!cell) return null;
+        const slug = champ.slug;
+        if (!slug) return null;
 
-        let displayName = champ.slug;
-        if (typeof champ.name === "string") {
-          displayName = champ.name;
-        } else if (champ.name && typeof champ.name === "object") {
-          displayName =
-            champ.name[language] ||
-            champ.name.ru_ru ||
-            champ.name.en_us ||
-            champ.slug;
-        }
+        const key = `${slug}|${rankKey}|${laneKey}`;
+        const stat = latestStats[key];
+        if (!stat) return null; // для этого чемпа нет данных по выбранным rank/lane
+
+        // имя уже локализовано бэком по ?lang=
+        const displayName =
+          typeof champ.name === "string" && champ.name.trim()
+            ? champ.name
+            : slug;
 
         return {
-          slug: champ.slug,
+          slug,
           name: displayName,
-          winRate: cell.winRate ?? null,
-          pickRate: cell.pickRate ?? null,
-          banRate: cell.banRate ?? null,
+          icon: champ.icon || null,
+
+          winRate: stat.winRate ?? null,
+          pickRate: stat.pickRate ?? null,
+          banRate: stat.banRate ?? null,
         };
       })
       .filter(Boolean)
       .sort((a, b) => {
         if (!sort.column || !sort.dir) {
+          // дефолт — по winRate desc
           return (b.winRate || 0) - (a.winRate || 0);
         }
 
@@ -197,7 +208,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
         if (sort.dir === "asc") return av - bv;
         return 0;
       });
-  }, [data, rankKey, laneKey, language, sort]);
+  }, [champions, latestStats, rankKey, laneKey, sort]);
 
   const filters = (
     <>
@@ -261,7 +272,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       </div>
 
       {rows.map((row, idx) => {
-        const imgUrl = champImages[row.slug];
+        const imgUrl = row.icon;
 
         return (
           <div
@@ -327,7 +338,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
         );
       })}
 
-      {!rows.length && (
+      {!rows.length && !loading && (
         <div
           style={{
             padding: "10px 8px",
