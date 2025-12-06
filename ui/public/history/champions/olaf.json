@@ -770,6 +770,70 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-12-06",
+      "cnStats": {
+        "overall": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.85,
+            "pickRate": 1.38,
+            "banRate": 0.87,
+            "strengthLevel": 5
+          }
+        },
+        "diamondPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.51,
+            "pickRate": 1.35,
+            "banRate": 1.26,
+            "strengthLevel": 5
+          }
+        },
+        "masterPlus": {
+          "jungle": {
+            "rank": 5,
+            "winRate": 47.68,
+            "pickRate": 1.32,
+            "banRate": 1.4,
+            "strengthLevel": 5
+          }
+        },
+        "king": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.9,
+            "pickRate": 1.26,
+            "banRate": 2.43,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.92,
+            "pickRate": 1.34,
+            "banRate": 2.43,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "top": {
+            "rank": 2,
+            "winRate": 49.94,
+            "pickRate": 1.39,
+            "banRate": 2.42,
+            "strengthLevel": 5
+          },
+          "jungle": {
+            "rank": 5,
+            "winRate": 46.34,
+            "pickRate": 1.24,
+            "banRate": 2.42,
+            "strengthLevel": 5
+          }
+        }
+      }
     }
   ]
 }

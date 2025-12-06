@@ -1022,6 +1022,91 @@
           }
         }
       }
+    },
+    {
+      "date": "2025-12-06",
+      "cnStats": {
+        "overall": {
+          "mid": {
+            "rank": 1,
+            "winRate": 50.06,
+            "pickRate": 8.81,
+            "banRate": 3.08,
+            "strengthLevel": 2
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 48.43,
+            "pickRate": 2.65,
+            "banRate": 3.08,
+            "strengthLevel": 3
+          }
+        },
+        "diamondPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.9,
+            "pickRate": 11.16,
+            "banRate": 3.43,
+            "strengthLevel": 2
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 48.81,
+            "pickRate": 2.17,
+            "banRate": 3.43,
+            "strengthLevel": 4
+          }
+        },
+        "masterPlus": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.84,
+            "pickRate": 11.21,
+            "banRate": 3.57,
+            "strengthLevel": 2
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 48.7,
+            "pickRate": 2.04,
+            "banRate": 3.57,
+            "strengthLevel": 4
+          }
+        },
+        "king": {
+          "mid": {
+            "rank": 1,
+            "winRate": 48.49,
+            "pickRate": 9.74,
+            "banRate": 1.84,
+            "strengthLevel": 1
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 47.9,
+            "pickRate": 1.29,
+            "banRate": 1.84,
+            "strengthLevel": 5
+          }
+        },
+        "peak": {
+          "mid": {
+            "rank": 1,
+            "winRate": 47.24,
+            "pickRate": 9.67,
+            "banRate": 1.7,
+            "strengthLevel": 2
+          },
+          "support": {
+            "rank": 4,
+            "winRate": 50.03,
+            "pickRate": 2.43,
+            "banRate": 1.7,
+            "strengthLevel": 5
+          }
+        }
+      }
     }
   ]
 }
