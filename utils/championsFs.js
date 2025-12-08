@@ -9,13 +9,7 @@
 import fs from "fs";
 import path from "path";
 
-import {
-  readFileSync,
-  writeFileSync,
-  existsSync,
-  mkdirSync,
-  readdirSync,
-} from "fs";
+import { readFileSync, existsSync, mkdirSync, readdirSync } from "fs";
 
 export const CHAMPIONS_DIR = "./champions";
 export const AGGREGATE_JSON = "./champions.json";
