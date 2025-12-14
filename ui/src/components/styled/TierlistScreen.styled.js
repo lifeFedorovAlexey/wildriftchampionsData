@@ -20,115 +20,135 @@ export function tierColor(tier) {
   }
 }
 
+export function tierBg(tier) {
+  switch (tier) {
+    case "S+":
+      return "#b78aff";
+    case "S":
+      return "#f19797";
+    case "A":
+      return "#f0c58b";
+    case "B":
+      return "#f3f59a";
+    case "C":
+      return "#b7ff90";
+    case "D":
+    default:
+      return "#a8c3ff";
+  }
+}
+
 export const TlWrap = styled.div`
   width: 100%;
 `;
 
 export const TlHeader = styled.div`
-  margin-bottom: 10px;
-  padding: 4px 6px 8px;
+  margin-bottom: 12px;
+  padding: 10px 10px 12px;
   border-bottom: 1px solid rgba(31, 41, 55, 1);
-  font-size: 12px;
-  opacity: 0.9;
-
-  ${mqMin(BREAKPOINTS.desktop)} {
-    font-size: 14px;
-  }
 `;
 
 export const TlTitle = styled.div`
-  margin-bottom: 2px;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
 
-  ${mqMin(BREAKPOINTS.desktop)} {
+  @media (min-width: 900px) {
     font-size: 18px;
   }
 `;
 
 export const TlSubtitle = styled.div`
+  font-size: 12px;
   opacity: 0.8;
-  padding: 10px;
 
-  ${mqMin(BREAKPOINTS.desktop)} {
+  @media (min-width: 900px) {
     font-size: 14px;
   }
 `;
 
+export const TlEmpty = styled.div`
+  padding: 10px 8px;
+  font-size: 13px;
+  opacity: 0.7;
+`;
+
 export const TlTierRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-  margin-bottom: 10px;
-  align-items: flex-start;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 8px;
+  align-items: stretch;
+  margin-bottom: 8px;
 
-  ${mqMin(BREAKPOINTS.desktop)} {
+  @media (min-width: 900px) {
+    grid-template-columns: 72px 1fr;
     gap: 10px;
-    padding: 14px 12px;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 `;
 
+/** Левая цветная “плашка” как в TierMaker */
 export const TlTierBadge = styled.div`
-  min-width: 52px;
-  padding: 6px 8px;
-  border-radius: 10px;
-  background: rgba(15, 23, 42, 0.96);
-  font-weight: 700;
-  font-size: 14px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  ${mqMin(BREAKPOINTS.desktop)} {
-    min-width: 76px;
-    font-size: 18px;
-    padding: 10px 10px;
-    border-radius: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+
+  border-radius: 10px;
+  background: ${(p) => p.$bg || "rgba(148,163,184,0.25)"};
+  color: rgba(15, 23, 42, 0.95);
+
+  /* чтобы выглядело как “лейбл” слева */
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  font-size: 14px;
+
+  @media (min-width: 900px) {
+    font-size: 16px;
   }
 `;
 
+/** Правая полоса */
 export const TlTierChamps = styled.div`
-  flex: 1;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(31, 41, 55, 0.9);
+  padding: 6px;
+
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 
-  ${mqMin(BREAKPOINTS.desktop)} {
-    gap: 12px;
-  }
-`;
-
-export const TlChampCard = styled.div`
-  width: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 10px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(30, 64, 175, 0.4);
-
-  ${mqMin(BREAKPOINTS.desktop)} {
-    width: 112px;
-    gap: 6px;
+  @media (min-width: 900px) {
     padding: 8px;
-    border-radius: 12px;
+    gap: 8px;
   }
 `;
 
-export const TlChampIconWrap = styled.div`
-  width: 56px;
-  height: 56px;
+/** Одна иконка чемпа (без текста) */
+export const TlChampCard = styled.div`
+  width: 44px;
+  height: 44px;
   border-radius: 8px;
   overflow: hidden;
-  background: rgba(15, 23, 42, 0.95);
+  flex: 0 0 auto;
+
+  background: rgba(2, 6, 23, 0.55);
   border: 1px solid rgba(51, 65, 85, 0.95);
 
-  ${mqMin(BREAKPOINTS.desktop)} {
-    width: 78px;
-    height: 78px;
+  transform: translateZ(0);
+  transition: transform 0.12s ease-out, border-color 0.12s ease-out;
+
+  &:hover {
+    transform: scale(1.06);
+    border-color: rgba(96, 165, 250, 0.9);
+  }
+
+  @media (min-width: 900px) {
+    width: 54px;
+    height: 54px;
     border-radius: 10px;
   }
 `;
@@ -140,25 +160,7 @@ export const TlChampIcon = styled.img`
   display: block;
 `;
 
-export const TlChampName = styled.div`
-  font-size: 10px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-
-  ${mqMin(BREAKPOINTS.desktop)} {
-    font-size: 13px;
-  }
-`;
-
-export const TlChampWr = styled.div`
-  font-size: 9px;
-  opacity: 0.75;
-  text-align: center;
-
-  ${mqMin(BREAKPOINTS.desktop)} {
-    font-size: 12px;
-  }
-`;
+/* заглушки оставляем, чтобы твои импорты не ломались */
+export const TlChampIconWrap = styled.div``;
+export const TlChampName = styled.div``;
+export const TlChampWr = styled.div``;

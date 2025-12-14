@@ -12,26 +12,19 @@ import {
   TlTierBadge,
   TlTierChamps,
   TlChampCard,
-  TlChampIconWrap,
   TlChampIcon,
-  TlChampName,
-  TlChampWr,
 } from "../components/styled";
-import { tierColor } from "../components/styled";
+import { tierColor, tierBg } from "../components/styled";
 const API_BASE = "https://wr-api-pjtu.vercel.app";
 
-function TierChampionCard({ champ }) {
+function TierChampionIcon({ champ }) {
   return (
-    <TlChampCard>
-      <TlChampIconWrap>
-        {champ.icon && <TlChampIcon src={champ.icon} alt={champ.name} />}
-      </TlChampIconWrap>
-
-      <TlChampName title={champ.name}>{champ.name}</TlChampName>
-
-      <TlChampWr>
-        {champ.winRate != null ? `${champ.winRate.toFixed(1)}% WR` : ""}
-      </TlChampWr>
+    <TlChampCard
+      title={`${champ.name}${
+        champ.winRate != null ? ` • ${champ.winRate.toFixed(1)}%` : ""
+      }`}
+    >
+      {champ.icon ? <TlChampIcon src={champ.icon} alt={champ.name} /> : null}
     </TlChampCard>
   );
 }
@@ -39,15 +32,17 @@ function TierChampionCard({ champ }) {
 function TierRow({ tier, champions }) {
   if (!champions || champions.length === 0) return null;
 
-  const color = tierColor(tier);
+  const borderColor = tierColor(tier);
 
   return (
     <TlTierRow>
-      <TlTierBadge $color={color}>{tier}</TlTierBadge>
+      <TlTierBadge $bg={tierBg(tier)} style={{ borderColor }}>
+        {tier}
+      </TlTierBadge>
 
       <TlTierChamps>
         {champions.map((c) => (
-          <TierChampionCard key={c.slug} champ={c} />
+          <TierChampionIcon key={c.slug} champ={c} />
         ))}
       </TlTierChamps>
     </TlTierRow>
