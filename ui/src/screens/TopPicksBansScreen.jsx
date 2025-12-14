@@ -113,7 +113,7 @@ function TopChampCard({ index, champ, type, imgUrl, onClick }) {
         </div>
         <div style={{ fontSize: 11, opacity: 0.8 }}>
           ({champ.slug}) —{" "}
-          {type === "pick" ? "совокупный пикрейт" : "совокупный банрейт"}:{" "}
+          {type === "pick" ? "средний пикрейт" : "средний банрейт"}:{" "}
           <span style={{ fontWeight: 600 }}>{totalValue.toFixed(2)}%</span>
         </div>
       </div>
@@ -139,7 +139,6 @@ function DetailsModal({ data, onClose }) {
   const { index, champ, type } = data;
   const totalValue =
     type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
-  const totalLabel = type === "pick" ? "totalPickRate" : "totalBanRate";
 
   const lanes = champ.lanes || {};
 
@@ -196,7 +195,8 @@ function DetailsModal({ data, onClose }) {
           <div>
             <div style={{ marginBottom: 4 }}>
               {index + 1}. {champ.name.toUpperCase()} ({champ.slug}) —{" "}
-              {totalLabel}: <b>{totalValue.toFixed(2)}%</b>
+              {type === "pick" ? "средний пикрейт" : "средний банрейт"}:{" "}
+              <b>{totalValue.toFixed(2)}%</b>
             </div>
           </div>
 
@@ -330,6 +330,8 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
   }, []);
 
   // агрегируем статистику ЗА ПОСЛЕДНИЙ ДЕНЬ для каждого чемпиона
+  // ВАЖНО: считаем СРЕДНИЕ проценты, а не сумму.
+  // Среднее = sum / count, где count — реальное число добавленных значений (динамика: хоть 1 линия, хоть 3).
   const aggregated = useMemo(() => {
     if (!Array.isArray(historyItems) || historyItems.length === 0) return [];
 
@@ -358,7 +360,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       champBySlug[ch.slug] = ch;
     }
 
-    // 4) считаем агрегаты с учётом фильтра rankRange
+    // 4) считаем агрегаты с учётом фильтра rankRange (СРЕДНИЕ, а не суммы)
     const aggBySlug = new Map();
 
     for (const item of latestItems) {
@@ -372,7 +374,6 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       // фильтр по эло
       if (rankRange === "low" && !LOW_ELO_RANKS.has(rankKey)) continue;
       if (rankRange === "high" && !HIGH_ELO_RANKS.has(rankKey)) continue;
-      // rankRange === "all" — пропускаем всё кроме overall
 
       const pickRate = item.pickRate ?? 0;
       const banRate = item.banRate ?? 0;
@@ -387,8 +388,11 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
         aggBySlug.set(slug, {
           slug,
           name: displayName,
+
+          // итоговые публичные поля
           totalPickRate: 0,
           totalBanRate: 0,
+
           lanes: {
             all: {
               pick: 0,
@@ -397,7 +401,16 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
               banRanks: {},
             },
           },
-          _banRanksAdded: new Set(), // внутренняя служебная штука
+
+          // служебные поля для среднего
+          _totalPickSum: 0,
+          _totalPickCount: 0,
+
+          _totalBanSum: 0,
+          _totalBanCount: 0,
+
+          // чтобы бан по рангу учитывать 1 раз
+          _banRanksAdded: new Set(),
         });
       }
 
@@ -410,31 +423,82 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           ban: 0,
           pickRanks: {},
           banRanks: {},
+          _pickSum: 0,
+          _pickCount: 0,
         };
+      } else {
+        lanes[laneKey]._pickSum = lanes[laneKey]._pickSum ?? 0;
+        lanes[laneKey]._pickCount = lanes[laneKey]._pickCount ?? 0;
       }
 
-      // ПИКИ: считаем по линиям + по рангам
-      agg.totalPickRate += pickRate;
-      lanes[laneKey].pick += pickRate;
+      // =========================
+      // ПИКИ: среднее по всем слагаемым (rank × lane), count — реальное число значений
+      // =========================
+      agg._totalPickSum += pickRate;
+      agg._totalPickCount += 1;
+
+      lanes[laneKey]._pickSum += pickRate;
+      lanes[laneKey]._pickCount += 1;
+
+      // детали по рангам (для подсказки "из них: ...")
       lanes[laneKey].pickRanks[rankKey] =
         (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
 
-      // БАНЫ: один раз на ранг, без деления по линиям
+      // =========================
+      // БАНЫ: 1 раз на ранг (как было), но итог — средний по числу реально учтённых рангов
+      // =========================
       if (!agg._banRanksAdded.has(rankKey)) {
-        agg.totalBanRate += banRate;
-        lanes.all.ban += banRate;
+        agg._totalBanSum += banRate;
+        agg._totalBanCount += 1;
+
         lanes.all.banRanks[rankKey] =
           (lanes.all.banRanks[rankKey] || 0) + banRate;
+
         agg._banRanksAdded.add(rankKey);
       }
     }
 
-    // 5) превращаем Map -> массив и выбрасываем _banRanksAdded
+    // 5) финализируем: sum/count -> средний %
     const result = [];
     for (const value of aggBySlug.values()) {
-      const { _banRanksAdded, ...rest } = value;
-      if (rest.totalPickRate === 0 && rest.totalBanRate === 0) continue;
-      result.push(rest);
+      // === ВОТ ТУТ СЧИТАЕТСЯ СРЕДНИЙ ПРОЦЕНТ ===
+      const totalPickAvg =
+        value._totalPickCount > 0
+          ? value._totalPickSum / value._totalPickCount
+          : 0;
+
+      const totalBanAvg =
+        value._totalBanCount > 0
+          ? value._totalBanSum / value._totalBanCount
+          : 0;
+
+      value.totalPickRate = totalPickAvg;
+      value.totalBanRate = totalBanAvg;
+
+      // линии: средний пикрейт по линии (делим на число реально сложенных значений по этой линии)
+      for (const [laneKey, laneData] of Object.entries(value.lanes)) {
+        if (laneKey === "all") continue;
+
+        const c = laneData._pickCount || 0;
+        const s = laneData._pickSum || 0;
+        laneData.pick = c > 0 ? s / c : 0;
+
+        delete laneData._pickSum;
+        delete laneData._pickCount;
+      }
+
+      // "all" для банов = средний банрейт по реально учтённым рангам
+      value.lanes.all.ban = totalBanAvg;
+
+      // чистим служебное
+      delete value._totalPickSum;
+      delete value._totalPickCount;
+      delete value._totalBanSum;
+      delete value._totalBanCount;
+      delete value._banRanksAdded;
+
+      if (value.totalPickRate === 0 && value.totalBanRate === 0) continue;
+      result.push(value);
     }
 
     return result;
@@ -540,12 +604,13 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
         }}
       >
         <div style={{ fontSize: 13, opacity: 0.85 }}>
-          Ниже — {limitLabel} по суммарному пикрейту и банрейту за последний
-          день {rankRangeLabel} и на всех линиях. Нажми на карточку чемпиона,
-          чтобы увидеть подробную раскладку по ролям и рангам.
+          Ниже — {limitLabel} по среднему пикрейту и среднему банрейту за
+          последний день {rankRangeLabel} и на всех линиях. Нажми на карточку
+          чемпиона, чтобы увидеть подробную раскладку по ролям и рангам.
         </div>
       </div>
-      {/* Фильтр по поличеству */}
+
+      {/* Фильтр по количеству */}
       <div
         style={{
           marginBottom: 10,

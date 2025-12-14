@@ -28,61 +28,18 @@ function tierColor(tier) {
 // карточка чемпиона в тир-листе
 function TierChampionCard({ champ }) {
   return (
-    <div
-      style={{
-        width: 80,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 4,
-        padding: 4,
-        borderRadius: 10,
-        background: "rgba(15,23,42,0.9)",
-        border: "1px solid rgba(30,64,175,0.4)",
-      }}
-    >
-      <div
-        style={{
-          width: 56,
-          height: 56,
-          borderRadius: 8,
-          overflow: "hidden",
-          background: "rgba(15,23,42,0.95)",
-          border: "1px solid rgba(51,65,85,0.95)",
-        }}
-      >
+    <div className="tl-champCard">
+      <div className="tl-champIconWrap">
         {champ.icon && (
-          <img
-            src={champ.icon}
-            alt={champ.name}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
+          <img src={champ.icon} alt={champ.name} className="tl-champIcon" />
         )}
       </div>
-      <div
-        style={{
-          fontSize: 10,
-          textAlign: "center",
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          width: "100%",
-        }}
-      >
+
+      <div className="tl-champName" title={champ.name}>
         {champ.name}
       </div>
-      <div
-        style={{
-          fontSize: 9,
-          opacity: 0.75,
-          textAlign: "center",
-        }}
-      >
+
+      <div className="tl-champWr">
         {champ.winRate != null ? `${champ.winRate.toFixed(1)}% WR` : ""}
       </div>
     </div>
@@ -96,42 +53,20 @@ function TierRow({ tier, champions }) {
   const color = tierColor(tier);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: 4,
-        marginBottom: 10,
-        alignItems: "flex-start",
-        padding: "10px",
-      }}
-    >
+    <div className="tl-tierRow">
       {/* колонка с обозначением тира */}
       <div
+        className="tl-tierBadge"
         style={{
-          minWidth: 52,
-          padding: "6px 8px",
-          borderRadius: 10,
-          background: "rgba(15,23,42,0.96)",
           border: `1px solid ${color}`,
           color,
-          fontWeight: 700,
-          fontSize: 14,
-          textAlign: "center",
         }}
       >
         {tier}
       </div>
 
       {/* чемпионы этого тира */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 8,
-        }}
-      >
+      <div className="tl-tierChamps">
         {champions.map((c) => (
           <TierChampionCard key={c.slug} champ={c} />
         ))}
@@ -225,53 +160,188 @@ export default function TierlistScreen({ language = "ru_ru", onBack }) {
       loadingText="Считаю тир-лист…"
       wrapInCard
     >
-      {/* заголовок / дата */}
-      <div
-        style={{
-          marginBottom: 10,
-          padding: "4px 6px 8px",
-          borderBottom: "1px solid rgba(31,41,55,1)",
-          fontSize: 12,
-          opacity: 0.9,
-        }}
-      >
-        <div
-          style={{
-            marginBottom: 2,
-            fontSize: 13,
-            fontWeight: 600,
-            padding: "10px",
-          }}
-        >
-          Тир-лист чемпионов
-        </div>
-        <div style={{ opacity: 0.8, padding: "10px" }}>
-          Основан на strength level за{" "}
-          {date ? date : "последний доступный день"} для выбранного ранга и
-          линии.
-        </div>
-      </div>
+      {/* CSS с media queries (мобилка ок, десктоп — крупнее и не растянуто) */}
+      <style>{`
+        .tl-wrap {
+          width: 100%;
+          margin: 0 auto;
+          max-width: 720px;   /* мобилка/планшет: компактно */
+        }
 
-      {/* сами тиры */}
-      {hasAny ? (
-        tiersOrder.map((tierKey) => (
-          <TierRow
-            key={tierKey}
-            tier={tierKey}
-            champions={tiers[tierKey] || []}
-          />
-        ))
-      ) : !loading ? (
-        <div
-          style={{
-            padding: "10px 8px",
-            fontSize: 13,
-            opacity: 0.7,
-          }}
-        >
-          Для выбранных фильтров тир-лист пуст.
+        /* заголовок/дата */
+        .tl-header {
+          margin-bottom: 10px;
+          padding: 4px 6px 8px;
+          border-bottom: 1px solid rgba(31,41,55,1);
+          font-size: 12px;
+          opacity: 0.9;
+        }
+        .tl-title {
+          margin-bottom: 2px;
+          font-size: 13px;
+          font-weight: 600;
+          padding: 10px;
+        }
+        .tl-subtitle {
+          opacity: 0.8;
+          padding: 10px;
+        }
+
+        /* ряд тира */
+        .tl-tierRow {
+          display: flex;
+          flex-direction: row;
+          gap: 4px;
+          margin-bottom: 10px;
+          align-items: flex-start;
+          padding: 10px;
+        }
+        .tl-tierBadge {
+          min-width: 52px;
+          padding: 6px 8px;
+          border-radius: 10px;
+          background: rgba(15,23,42,0.96);
+          font-weight: 700;
+          font-size: 14px;
+          text-align: center;
+        }
+        .tl-tierChamps {
+          flex: 1;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        /* карточка чемпиона */
+        .tl-champCard {
+          width: 80px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+          padding: 4px;
+          border-radius: 10px;
+          background: rgba(15,23,42,0.9);
+          border: 1px solid rgba(30,64,175,0.4);
+        }
+        .tl-champIconWrap {
+          width: 56px;
+          height: 56px;
+          border-radius: 8px;
+          overflow: hidden;
+          background: rgba(15,23,42,0.95);
+          border: 1px solid rgba(51,65,85,0.95);
+        }
+        .tl-champIcon {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .tl-champName {
+          font-size: 10px;
+          text-align: center;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+        }
+        .tl-champWr {
+          font-size: 9px;
+          opacity: 0.75;
+          text-align: center;
+        }
+
+        /* DESKTOP: не растягиваем на всю ширину и увеличиваем элементы */
+        @media (min-width: 900px) {
+          .tl-wrap {
+            max-width: 1040px;  /* центрируем контент, убираем “километровые” ряды */
+          }
+
+          .tl-header {
+            font-size: 14px;
+          }
+          .tl-title {
+            font-size: 18px;
+          }
+          .tl-subtitle {
+            font-size: 14px;
+          }
+
+          .tl-tierRow {
+            gap: 10px;
+            padding: 14px 12px;
+            margin-bottom: 14px;
+          }
+          .tl-tierBadge {
+            min-width: 76px;
+            font-size: 18px;
+            padding: 10px 10px;
+            border-radius: 12px;
+          }
+          .tl-tierChamps {
+            gap: 12px;
+          }
+
+          .tl-champCard {
+            width: 112px;
+            gap: 6px;
+            padding: 8px;
+            border-radius: 12px;
+          }
+          .tl-champIconWrap {
+            width: 78px;
+            height: 78px;
+            border-radius: 10px;
+          }
+          .tl-champName {
+            font-size: 13px;
+          }
+          .tl-champWr {
+            font-size: 12px;
+          }
+        }
+
+        /* WIDE DESKTOP: ещё чуть шире, но всё равно ограничено */
+        @media (min-width: 1280px) {
+          .tl-wrap {
+            max-width: 1180px;
+          }
+        }
+      `}</style>
+
+      <div className="tl-wrap">
+        {/* заголовок / дата */}
+        <div className="tl-header">
+          <div className="tl-title">Тир-лист чемпионов</div>
+          <div className="tl-subtitle">
+            Основан на strength level за{" "}
+            {date ? date : "последний доступный день"} для выбранного ранга и
+            линии.
+          </div>
         </div>
-      ) : null}
+
+        {/* сами тиры */}
+        {hasAny ? (
+          tiersOrder.map((tierKey) => (
+            <TierRow
+              key={tierKey}
+              tier={tierKey}
+              champions={tiers[tierKey] || []}
+            />
+          ))
+        ) : !loading ? (
+          <div
+            style={{
+              padding: "10px 8px",
+              fontSize: 13,
+              opacity: 0.7,
+            }}
+          >
+            Для выбранных фильтров тир-лист пуст.
+          </div>
+        ) : null}
+      </div>
     </PageWrapper>
   );
 }

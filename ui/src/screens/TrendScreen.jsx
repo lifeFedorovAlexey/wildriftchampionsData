@@ -30,30 +30,12 @@ function TrendTable({ days }) {
   const viewDays = [...days].reverse();
 
   return (
-    <div
-      style={{
-        borderRadius: 12,
-        background: "rgba(15,23,42,0.9)",
-        padding: 6,
-        display: "flex",
-        flexDirection: "column",
-        gap: 4,
-      }}
-    >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "70px repeat(3, 1fr)",
-          padding: "4px 6px 6px",
-          fontSize: 11,
-          opacity: 0.8,
-          borderBottom: "1px solid rgba(31,41,55,1)",
-        }}
-      >
+    <div className="tr-tableWrap">
+      <div className="tr-tableHead">
         <div>Дата</div>
-        <div style={{ textAlign: "right" }}>Победы</div>
-        <div style={{ textAlign: "right" }}>Пики</div>
-        <div style={{ textAlign: "right" }}>Баны</div>
+        <div className="tr-right">Победы</div>
+        <div className="tr-right">Пики</div>
+        <div className="tr-right">Баны</div>
       </div>
 
       {viewDays.map((day, index) => {
@@ -66,86 +48,48 @@ function TrendTable({ days }) {
         return (
           <div
             key={day.fullDate}
+            className="tr-tableRow"
             style={{
-              display: "grid",
-              gridTemplateColumns: "70px repeat(3, 1fr)",
-              padding: "6px 6px",
-              fontSize: 12,
               borderBottom:
                 index === viewDays.length - 1
                   ? "none"
                   : "1px solid rgba(15,23,42,1)",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-              }}
-            >
+            <div className="tr-dateCell">
               <span>{day.date}</span>
-              <span style={{ fontSize: 10, opacity: 0.6 }}>{day.fullDate}</span>
+              <span className="tr-dateSub">{day.fullDate}</span>
             </div>
 
-            <div
-              style={{
-                textAlign: "right",
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-              }}
-            >
-              <span style={{ fontSize: 13, color: "#e5e7eb" }}>
-                {day.winRate.toFixed(2)}%
-              </span>
+            <div className="tr-metricCell">
+              <span className="tr-metricMain">{day.winRate.toFixed(2)}%</span>
               <span
-                style={{
-                  fontSize: 10,
-                  color: winDelta?.color ?? "#9ca3af",
-                }}
+                className="tr-metricDelta"
+                style={{ color: winDelta?.color ?? "#9ca3af" }}
               >
                 {winDelta ? `${winDelta.sign} ${winDelta.text}` : "—"}
               </span>
             </div>
 
-            <div
-              style={{
-                textAlign: "right",
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-              }}
-            >
-              <span style={{ fontSize: 13, color: "#93c5fd" }}>
+            <div className="tr-metricCell">
+              <span className="tr-metricMain" style={{ color: "#93c5fd" }}>
                 {day.pickRate.toFixed(2)}%
               </span>
               <span
-                style={{
-                  fontSize: 10,
-                  color: pickDelta?.color ?? "#9ca3af",
-                }}
+                className="tr-metricDelta"
+                style={{ color: pickDelta?.color ?? "#9ca3af" }}
               >
                 {pickDelta ? `${pickDelta.sign} ${pickDelta.text}` : "—"}
               </span>
             </div>
 
-            <div
-              style={{
-                textAlign: "right",
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-              }}
-            >
-              <span style={{ fontSize: 13, color: "#fed7aa" }}>
+            <div className="tr-metricCell">
+              <span className="tr-metricMain" style={{ color: "#fed7aa" }}>
                 {day.banRate.toFixed(2)}%
               </span>
               <span
-                style={{
-                  fontSize: 10,
-                  color: banDelta?.color ?? "#9ca3af",
-                }}
+                className="tr-metricDelta"
+                style={{ color: banDelta?.color ?? "#9ca3af" }}
               >
                 {banDelta ? `${banDelta.sign} ${banDelta.text}` : "—"}
               </span>
@@ -166,6 +110,10 @@ export default function TrendScreen({ onBack }) {
 
   const [rankKey, setRankKey] = useState("diamondPlus");
   const [laneKey, setLaneKey] = useState("top");
+
+  // диапазон времени: week | month | all
+  // по умолчанию: неделя
+  const [range, setRange] = useState("week");
 
   const [rawHistory, setRawHistory] = useState(null);
   const [loadingHistory, setLoadingHistory] = useState(false);
@@ -259,37 +207,50 @@ export default function TrendScreen({ onBack }) {
     };
   }, [selectedChampion, rankKey, laneKey]);
 
-  // превращаем history -> days для графика/таблицы
+  // превращаем history -> days (с фильтром по range)
   const days = useMemo(() => {
     if (!rawHistory || !Array.isArray(rawHistory)) return [];
 
-    return rawHistory
+    const mapped = rawHistory
       .map((item) => {
         const fullDate = item.date;
         let dateLabel = fullDate;
 
+        let ts = null;
         try {
           const d = new Date(fullDate);
           if (!Number.isNaN(d.getTime())) {
+            ts = d.getTime();
             dateLabel = d.toLocaleDateString("ru-RU", {
               day: "2-digit",
               month: "2-digit",
             });
           }
         } catch {
-          // оставляем fullDate как есть
+          // оставляем как есть
         }
 
         return {
           fullDate,
           date: dateLabel,
+          ts,
           winRate: item.winRate ?? 0,
           pickRate: item.pickRate ?? 0,
           banRate: item.banRate ?? 0,
         };
       })
-      .filter(Boolean);
-  }, [rawHistory]);
+      .filter(Boolean)
+      .sort((a, b) => (a.ts ?? 0) - (b.ts ?? 0));
+
+    if (range === "all") return mapped;
+
+    const now = Date.now();
+    const daysBack = range === "month" ? 30 : 7;
+    const cutoff = now - daysBack * 24 * 60 * 60 * 1000;
+
+    // если дата не парсится — оставляем, чтобы не "пропадали" записи
+    return mapped.filter((d) => d.ts == null || d.ts >= cutoff);
+  }, [rawHistory, range]);
 
   const hasSelection = !!selectedChampion && days.length > 0;
 
@@ -299,27 +260,92 @@ export default function TrendScreen({ onBack }) {
       ? historyError
       : null;
 
+  const renderRangeButton = (value, label) => {
+    const isActive = range === value;
+    return (
+      <button
+        key={value}
+        type="button"
+        onClick={() => setRange(value)}
+        className="tr-rangeBtn"
+        data-active={isActive ? "1" : "0"}
+      >
+        {label}
+      </button>
+    );
+  };
+
   const filters = (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: 8,
-        }}
-      >
+      <style>{`
+      .tr-searchRow {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+
+      .tr-rangeRow {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+
+      /* КЛЮЧЕВОЕ: одинаковая ширина */
+      .tr-rangeBtn {
+        box-sizing: border-box;
+        width: 92px;          /* фикс ширина -> одинаковый размер */
+        height: 32px;
+        padding: 0;
+        font-size: 12px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.12s ease-out;
+        background: rgba(15,23,42,0.95);
+        color: #9ca3af;
+        border: 1px solid rgba(75,85,99,0.9);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        font-weight: 600;
+      }
+
+      .tr-rangeBtn[data-active="1"] {
+        border: 1px solid rgba(59,130,246,0.95);
+        background: rgba(37,99,235,0.25);
+        color: #e5e7eb;
+      }
+
+      @media (min-width: 900px) {
+        .tr-rangeBtn {
+          width: 120px;       /* на десктопе приятнее */
+          height: 36px;
+          font-size: 13px;
+        }
+      }
+    `}</style>
+
+      <div className="tr-searchRow">
         <ChampionSearch
           champions={champions}
           value={search}
           onChange={setSearch}
-          onSelect={(champ) => {
-            setSelectedChampion(champ);
-          }}
+          onSelect={(champ) => setSelectedChampion(champ)}
         />
       </div>
 
       <RankFilter value={rankKey} onChange={setRankKey} />
       <LaneFilter value={laneKey} onChange={setLaneKey} />
+
+      {/* ВОТ ТУТ — под основными фильтрами */}
+      <div className="tr-rangeRow">
+        {renderRangeButton("week", "Неделя")}
+        {renderRangeButton("month", "Месяц")}
+        {renderRangeButton("all", "Всё")}
+      </div>
     </>
   );
 
@@ -331,25 +357,27 @@ export default function TrendScreen({ onBack }) {
       error={historyErrorToShow}
       loadingText="Загружаю историю…"
     >
-      {!selectedChampion && !isHistoryLoading && !historyErrorToShow && (
-        <div
-          style={{
-            fontSize: 13,
-            opacity: 0.8,
-            textAlign: "center",
-            paddingTop: 40,
-          }}
-        >
-          Выбери чемпиона, чтобы посмотреть его динамику.
-        </div>
-      )}
+      <div className="tr-wrap">
+        {!selectedChampion && !isHistoryLoading && !historyErrorToShow && (
+          <div
+            style={{
+              fontSize: 13,
+              opacity: 0.8,
+              textAlign: "center",
+              paddingTop: 40,
+            }}
+          >
+            Выбери чемпиона, чтобы посмотреть его динамику.
+          </div>
+        )}
 
-      {hasSelection && (
-        <>
-          <TrendChartBlock days={days} />
-          <TrendTable days={days} />
-        </>
-      )}
+        {hasSelection && (
+          <>
+            <TrendChartBlock days={days} />
+            <TrendTable days={days} />
+          </>
+        )}
+      </div>
     </PageWrapper>
   );
 }

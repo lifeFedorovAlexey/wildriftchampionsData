@@ -10,28 +10,8 @@ const API_BASE = "https://wr-api-pjtu.vercel.app";
 // аватарка чемпиона с синей заглушкой
 function ChampAvatar({ name, src }) {
   return (
-    <div
-      style={{
-        width: 28,
-        height: 32,
-        borderRadius: 4,
-        overflow: "hidden",
-        background: "rgba(15, 23, 42, 0.85)", // фон-заглушка
-        flexShrink: 0,
-      }}
-    >
-      {src && (
-        <img
-          src={src}
-          alt={name}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
-      )}
+    <div className="wr-avatar">
+      {src && <img src={src} alt={name} className="wr-avatarImg" />}
     </div>
   );
 }
@@ -122,19 +102,9 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
 
         if (cancelled) return;
 
-        // champions: просто сохраняем список как есть
         setChampions(champsJson || []);
 
-        // histJson.items — массив:
-        // {
-        //   date, slug, cnHeroId, rank, lane,
-        //   position, winRate, pickRate, banRate, strengthLevel
-        // }
         const items = Array.isArray(histJson.items) ? histJson.items : [];
-
-        // Собираем latest map:
-        // key = `${slug}|${rank}|${lane}`
-        // value = самая свежая запись по date
         const latestMap = {};
 
         for (const item of items) {
@@ -198,9 +168,8 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
 
         const key = `${slug}|${rankKey}|${laneKey}`;
         const stat = latestStats[key];
-        if (!stat) return null; // для этого чемпа нет данных по выбранным rank/lane
+        if (!stat) return null;
 
-        // имя уже локализовано бэком по ?lang=
         const displayName =
           typeof champ.name === "string" && champ.name.trim()
             ? champ.name
@@ -227,19 +196,17 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       .filter(Boolean)
       .sort((a, b) => {
         if (!sort.column || !sort.dir) {
-          // дефолт — по winRate desc
           return (b.winRate || 0) - (a.winRate || 0);
         }
 
         const col = sort.column;
 
-        // для strengthLevel теперь МЕНЬШЕ = лучше
         if (col === "strengthLevel") {
           const av = a.strengthLevel ?? 999;
           const bv = b.strengthLevel ?? 999;
 
-          if (sort.dir === "desc") return av - bv; // S+ (0) наверху
-          if (sort.dir === "asc") return bv - av; // D (5) наверху
+          if (sort.dir === "desc") return av - bv;
+          if (sort.dir === "asc") return bv - av;
           return 0;
         }
 
@@ -254,10 +221,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
 
   const filters = (
     <>
-      {/* фильтры рангов */}
       <RankFilter value={rankKey} onChange={setRankKey} />
-
-      {/* фильтры линий */}
       <LaneFilter value={laneKey} onChange={setLaneKey} />
     </>
   );
@@ -271,149 +235,201 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       loadingText="Загружаю статистику…"
       wrapInCard
     >
-      {/* заголовок таблицы */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "36px 2fr 0.7fr 0.9fr 0.9fr 0.9fr",
-          columnGap: 4,
-          padding: "6px 8px",
-          fontSize: 11,
-          opacity: 0.8,
-          borderBottom: "1px solid rgba(31,41,55,1)",
-          position: "sticky",
-          top: 0,
-          background: "rgba(15,23,42,0.96)",
-          backdropFilter: "blur(8px)",
-          zIndex: 1,
-        }}
-      >
-        <div>#</div>
-        <div>Герой</div>
+      {/* media styles: мобилка ок, десктоп — ширина ограничена + крупнее */}
+      <style>{`
+        .wr-wrap {
+          width: 100%;
+          margin: 0 auto;
+          max-width: 760px; /* по умолчанию (моб/планшет) */
+        }
 
-        <div
-          style={{ textAlign: "right", cursor: "pointer" }}
-          onClick={() => onSort("strengthLevel")}
-        >
-          Тир{" "}
-          {sort.column === "strengthLevel"
-            ? sort.dir === "asc"
-              ? "▲"
-              : "▼"
-            : ""}
+        /* общая сетка */
+        .wr-grid {
+          display: grid;
+          grid-template-columns: 36px 2fr 0.7fr 0.9fr 0.9fr 0.9fr;
+          column-gap: 4px;
+          padding: 6px 8px;
+          align-items: center;
+        }
+
+        .wr-header {
+          font-size: 11px;
+          opacity: 0.8;
+          border-bottom: 1px solid rgba(31,41,55,1);
+          position: sticky;
+          top: 0;
+          background: rgba(15,23,42,0.96);
+          backdrop-filter: blur(8px);
+          z-index: 1;
+        }
+
+        .wr-row {
+          font-size: 12px;
+          border-bottom: 1px solid rgba(15,23,42,1);
+        }
+
+        .wr-heroCell {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          min-width: 0;
+        }
+        .wr-heroName {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        /* аватар */
+        .wr-avatar {
+          width: 28px;
+          height: 32px;
+          border-radius: 4px;
+          overflow: hidden;
+          background: rgba(15, 23, 42, 0.85);
+          flex-shrink: 0;
+        }
+        .wr-avatarImg {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .wr-right {
+          text-align: right;
+        }
+        .wr-sortable {
+          text-align: right;
+          cursor: pointer;
+        }
+
+        /* DESKTOP */
+        @media (min-width: 900px) {
+          .wr-wrap {
+            max-width: 1120px; /* перестаёт растягиваться на весь экран */
+          }
+
+          .wr-grid {
+            grid-template-columns: 54px 2.6fr 0.9fr 1fr 1fr 1fr; /* чуть просторнее */
+            column-gap: 10px;
+            padding: 10px 12px;
+          }
+
+          .wr-header {
+            font-size: 14px;
+          }
+
+          .wr-row {
+            font-size: 14px;
+          }
+
+          .wr-avatar {
+            width: 40px;
+            height: 46px;
+            border-radius: 8px;
+          }
+
+          .wr-heroCell {
+            gap: 10px;
+          }
+        }
+
+        /* WIDE DESKTOP */
+        @media (min-width: 1280px) {
+          .wr-wrap {
+            max-width: 1240px;
+          }
+        }
+      `}</style>
+
+      <div className="wr-wrap">
+        {/* заголовок таблицы */}
+        <div className="wr-grid wr-header">
+          <div>#</div>
+          <div>Герой</div>
+
+          <div className="wr-sortable" onClick={() => onSort("strengthLevel")}>
+            Тир{" "}
+            {sort.column === "strengthLevel"
+              ? sort.dir === "asc"
+                ? "▲"
+                : "▼"
+              : ""}
+          </div>
+
+          <div className="wr-sortable" onClick={() => onSort("winRate")}>
+            Победы{" "}
+            {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
+          </div>
+          <div className="wr-sortable" onClick={() => onSort("pickRate")}>
+            Пики{" "}
+            {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
+          </div>
+          <div className="wr-sortable" onClick={() => onSort("banRate")}>
+            Баны{" "}
+            {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
+          </div>
         </div>
 
-        <div
-          style={{ textAlign: "right", cursor: "pointer" }}
-          onClick={() => onSort("winRate")}
-        >
-          Победы{" "}
-          {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
-        </div>
-        <div
-          style={{ textAlign: "right", cursor: "pointer" }}
-          onClick={() => onSort("pickRate")}
-        >
-          Пики{" "}
-          {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
-        </div>
-        <div
-          style={{ textAlign: "right", cursor: "pointer" }}
-          onClick={() => onSort("banRate")}
-        >
-          Баны{" "}
-          {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
-        </div>
-      </div>
+        {rows.map((row, idx) => {
+          const imgUrl = row.icon;
 
-      {rows.map((row, idx) => {
-        const imgUrl = row.icon;
+          return (
+            <div key={row.slug} className="wr-grid wr-row">
+              <div style={{ opacity: 0.8 }}>{idx + 1}</div>
 
-        return (
-          <div
-            key={row.slug}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "36px 2fr 0.7fr 0.9fr 0.9fr 0.9fr",
-              columnGap: 4,
-              padding: "6px 8px",
-              fontSize: 12,
-              borderBottom: "1px solid rgba(15,23,42,1)",
-              alignItems: "center",
-            }}
-          >
-            <div style={{ opacity: 0.8 }}>{idx + 1}</div>
+              <div className="wr-heroCell">
+                <ChampAvatar name={row.name} src={imgUrl} />
+                <span className="wr-heroName">{row.name}</span>
+              </div>
 
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                minWidth: 0,
-              }}
-            >
-              <ChampAvatar name={row.name} src={imgUrl} />
-
-              <span
+              <div
+                className="wr-right"
                 style={{
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
+                  fontWeight: 700,
+                  color: row.tierColor,
                 }}
               >
-                {row.name}
-              </span>
-            </div>
+                {row.tierLabel}
+              </div>
 
-            <div
-              style={{
-                textAlign: "right",
-                fontWeight: 600,
-                color: row.tierColor,
-              }}
-            >
-              {row.tierLabel}
-            </div>
+              <div
+                className="wr-right"
+                style={{ color: winRateColor(row.winRate) }}
+              >
+                {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
+              </div>
 
-            <div
-              style={{
-                textAlign: "right",
-                color: winRateColor(row.winRate),
-              }}
-            >
-              {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
+              <div
+                className="wr-right"
+                style={{ color: pickRateColor(row.pickRate) }}
+              >
+                {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
+              </div>
+
+              <div
+                className="wr-right"
+                style={{ color: banRateColor(row.banRate) }}
+              >
+                {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
+              </div>
             </div>
-            <div
-              style={{
-                textAlign: "right",
-                color: pickRateColor(row.pickRate),
-              }}
-            >
-              {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
-            </div>
-            <div
-              style={{
-                textAlign: "right",
-                color: banRateColor(row.banRate),
-              }}
-            >
-              {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
-            </div>
+          );
+        })}
+
+        {!rows.length && !loading && (
+          <div
+            style={{
+              padding: "10px 8px",
+              fontSize: 13,
+              opacity: 0.7,
+            }}
+          >
+            Для выбранных фильтров данных нет.
           </div>
-        );
-      })}
-
-      {!rows.length && !loading && (
-        <div
-          style={{
-            padding: "10px 8px",
-            fontSize: 13,
-            opacity: 0.7,
-          }}
-        >
-          Для выбранных фильтров данных нет.
-        </div>
-      )}
+        )}
+      </div>
     </PageWrapper>
   );
 }
