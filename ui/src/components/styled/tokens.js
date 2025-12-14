@@ -8,7 +8,7 @@ export const BREAKPOINTS = {
 export const LAYOUT = {
   pageMax: 1180,
   pageMaxMobile: 980,
-  padMobile: 12,
+  padMobile: 0,
   padDesktop: 24,
 };
 
