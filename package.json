@@ -10,8 +10,7 @@
     "cheerio": "^1.1.2",
     "dotenv": "^17.2.3",
     "node-fetch": "^3.3.2",
-    "puppeteer": "^24.30.0",
-    "styled-components": "^6.1.19"
+    "puppeteer": "^24.30.0"
   },
   "keywords": [
     "WR",
@@ -22,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/lifeFedorovAlexey/wildRiftChampions/issues"
   },
-  "homepage": "https://github.com/lifeFedorovAlexey/wildRiftChampions#readme"
+  "homepage": "https://github.com/lifeFedorovAlexey/wildRiftChampions#readme",
+  "devDependencies": {
+    "styled-components": "^6.1.19"
+  }
 }
