@@ -69,7 +69,22 @@ export const WrRight = styled.div`
 export const WrSortable = styled.div`
   text-align: right;
   cursor: pointer;
-  user-select: none;
+
+  /* FIX: чтобы стрелка не съезжала вниз на мобилках */
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  white-space: nowrap;
+  line-height: 1;
+
+  .wr-sortArrow {
+    display: inline-block;
+    width: 14px;
+    text-align: center;
+    opacity: 0.9;
+    flex: 0 0 14px;
+  }
 `;
 
 export const WrIndex = styled.div`
