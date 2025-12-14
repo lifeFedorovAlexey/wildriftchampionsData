@@ -278,55 +278,157 @@ export default function TrendScreen({ onBack }) {
   const filters = (
     <>
       <style>{`
-      .tr-searchRow {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 8px;
-      }
-
-      .tr-rangeRow {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 8px;
-        margin-bottom: 8px;
-      }
-
-      /* КЛЮЧЕВОЕ: одинаковая ширина */
-      .tr-rangeBtn {
-        box-sizing: border-box;
-        width: 92px;          /* фикс ширина -> одинаковый размер */
-        height: 32px;
-        padding: 0;
-        font-size: 12px;
-        border-radius: 999px;
-        cursor: pointer;
-        transition: all 0.12s ease-out;
-        background: rgba(15,23,42,0.95);
-        color: #9ca3af;
-        border: 1px solid rgba(75,85,99,0.9);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        user-select: none;
-        font-weight: 600;
-      }
-
-      .tr-rangeBtn[data-active="1"] {
-        border: 1px solid rgba(59,130,246,0.95);
-        background: rgba(37,99,235,0.25);
-        color: #e5e7eb;
-      }
-
-      @media (min-width: 900px) {
-        .tr-rangeBtn {
-          width: 120px;       /* на десктопе приятнее */
-          height: 36px;
-          font-size: 13px;
+        /* контейнер экрана */
+        .tr-wrap {
+          width: 100%;
+          margin: 0 auto;
+          max-width: 760px;
         }
-      }
-    `}</style>
+
+        @media (min-width: 900px) {
+          .tr-wrap {
+            max-width: 1120px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .tr-wrap {
+            max-width: 1240px;
+          }
+        }
+
+        .tr-searchRow {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 8px;
+        }
+
+        .tr-rangeRow {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          flex-wrap: wrap;
+          margin-top: 8px;
+          margin-bottom: 8px;
+        }
+
+        /* одинаковые кнопки диапазона */
+        .tr-rangeBtn {
+          box-sizing: border-box;
+          width: 92px;
+          height: 32px;
+          padding: 0;
+          font-size: 12px;
+          border-radius: 999px;
+          cursor: pointer;
+          transition: all 0.12s ease-out;
+          background: rgba(15,23,42,0.95);
+          color: #9ca3af;
+          border: 1px solid rgba(75,85,99,0.9);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          user-select: none;
+          font-weight: 600;
+        }
+
+        .tr-rangeBtn[data-active="1"] {
+          border: 1px solid rgba(59,130,246,0.95);
+          background: rgba(37,99,235,0.25);
+          color: #e5e7eb;
+        }
+
+        @media (min-width: 900px) {
+          .tr-rangeBtn {
+            width: 120px;
+            height: 36px;
+            font-size: 13px;
+          }
+        }
+
+        /* ====== ТАБЛИЦА (ВОТ ЧЕГО НЕ ХВАТАЛО) ====== */
+        .tr-tableWrap {
+          border-radius: 12px;
+          background: rgba(15,23,42,0.9);
+          padding: 6px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .tr-tableHead {
+          display: grid;
+          grid-template-columns: 70px repeat(3, 1fr);
+          padding: 4px 6px 6px;
+          font-size: 11px;
+          opacity: 0.8;
+          border-bottom: 1px solid rgba(31,41,55,1);
+        }
+
+        .tr-tableRow {
+          display: grid;
+          grid-template-columns: 70px repeat(3, 1fr);
+          padding: 6px 6px;
+          font-size: 12px;
+        }
+
+        .tr-right {
+          text-align: right;
+        }
+
+        .tr-dateCell {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .tr-dateSub {
+          font-size: 10px;
+          opacity: 0.6;
+        }
+
+        .tr-metricCell {
+          text-align: right;
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
+        }
+
+        .tr-metricMain {
+          font-size: 13px;
+          color: #e5e7eb;
+        }
+
+        .tr-metricDelta {
+          font-size: 10px;
+        }
+
+        @media (min-width: 900px) {
+          .tr-tableHead {
+            grid-template-columns: 120px repeat(3, 1fr);
+            font-size: 14px;
+            padding: 10px 10px;
+          }
+
+          .tr-tableRow {
+            grid-template-columns: 120px repeat(3, 1fr);
+            font-size: 14px;
+            padding: 10px 10px;
+          }
+
+          .tr-dateSub {
+            font-size: 12px;
+          }
+
+          .tr-metricMain {
+            font-size: 16px;
+          }
+
+          .tr-metricDelta {
+            font-size: 12px;
+          }
+        }
+      `}</style>
 
       <div className="tr-searchRow">
         <ChampionSearch
@@ -340,7 +442,7 @@ export default function TrendScreen({ onBack }) {
       <RankFilter value={rankKey} onChange={setRankKey} />
       <LaneFilter value={laneKey} onChange={setLaneKey} />
 
-      {/* ВОТ ТУТ — под основными фильтрами */}
+      {/* под основными фильтрами */}
       <div className="tr-rangeRow">
         {renderRangeButton("week", "Неделя")}
         {renderRangeButton("month", "Месяц")}
