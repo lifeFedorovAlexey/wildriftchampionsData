@@ -2,21 +2,27 @@ import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
 import { RankFilter } from "../components/RankFilter.jsx";
 import { LaneFilter } from "../components/LaneFilter.jsx";
-import { RANK_OPTIONS, LANE_OPTIONS } from "./constants";
 
-// базовый урл до твоего API
+import {
+  WrWrap,
+  WrHeader,
+  WrRow,
+  WrHeroCell,
+  WrHeroName,
+  WrRight,
+  WrSortable,
+  WrIndex,
+  WrAvatar,
+  WrAvatarImg,
+  WrEmpty,
+} from "../components/styled/WinrateScreen.styled.js";
+
 const API_BASE = "https://wr-api-pjtu.vercel.app";
 
-// аватарка чемпиона с синей заглушкой
 function ChampAvatar({ name, src }) {
-  return (
-    <div className="wr-avatar">
-      {src && <img src={src} alt={name} className="wr-avatarImg" />}
-    </div>
-  );
+  return <WrAvatar>{src && <WrAvatarImg src={src} alt={name} />}</WrAvatar>;
 }
 
-// helpers для цветов
 function winRateColor(v) {
   if (v == null) return "inherit";
   if (v > 50) return "#4ade80";
@@ -36,15 +42,12 @@ function banRateColor(v) {
   return "#4ade80";
 }
 
-// маппинг strengthLevel -> тир + цвет (НОВАЯ шкала: 0 = S+, 5 = D)
 function strengthToTier(level) {
-  if (level == null) {
-    return { label: "—", color: "#9ca3af" };
-  }
+  if (level == null) return { label: "—", color: "#9ca3af" };
 
   switch (level) {
     case 0:
-      return { label: "S+", color: "#f97316" }; // имба
+      return { label: "S+", color: "#f97316" };
     case 1:
       return { label: "S", color: "#f97316" };
     case 2:
@@ -60,9 +63,7 @@ function strengthToTier(level) {
 }
 
 export function WinrateScreen({ language = "ru_ru", onBack }) {
-  // чемпионы с API /api/champions
   const [champions, setChampions] = useState([]);
-  // latest статы по (slug, rank, lane)
   const [latestStats, setLatestStats] = useState(null);
 
   const [loading, setLoading] = useState(true);
@@ -73,7 +74,6 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
 
   const [sort, setSort] = useState({ column: "winRate", dir: "desc" });
 
-  // загрузка чемпионов + истории из API
   useEffect(() => {
     let cancelled = false;
 
@@ -82,7 +82,6 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       setError(null);
 
       try {
-        // чемпы + вся история (один раз)
         const [champRes, histRes] = await Promise.all([
           fetch(
             `${API_BASE}/api/champions?lang=${encodeURIComponent(language)}`
@@ -90,16 +89,11 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
           fetch(`${API_BASE}/api/champion-history`),
         ]);
 
-        if (!champRes.ok) {
-          throw new Error(`Champions HTTP ${champRes.status}`);
-        }
-        if (!histRes.ok) {
-          throw new Error(`History HTTP ${histRes.status}`);
-        }
+        if (!champRes.ok) throw new Error(`Champions HTTP ${champRes.status}`);
+        if (!histRes.ok) throw new Error(`History HTTP ${histRes.status}`);
 
         const champsJson = await champRes.json();
         const histJson = await histRes.json();
-
         if (cancelled) return;
 
         setChampions(champsJson || []);
@@ -108,56 +102,40 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
         const latestMap = {};
 
         for (const item of items) {
-          if (!item || !item.slug || !item.rank || !item.lane || !item.date) {
+          if (!item || !item.slug || !item.rank || !item.lane || !item.date)
             continue;
-          }
+
           const key = `${item.slug}|${item.rank}|${item.lane}`;
           const prev = latestMap[key];
 
-          if (!prev) {
-            latestMap[key] = item;
-          } else {
-            const prevDate = prev.date;
-            const currDate = item.date;
-            if (String(currDate) > String(prevDate)) {
-              latestMap[key] = item;
-            }
-          }
+          if (!prev) latestMap[key] = item;
+          else if (String(item.date) > String(prev.date)) latestMap[key] = item;
         }
 
         setLatestStats(latestMap);
       } catch (e) {
         console.error("Ошибка загрузки данных для WinrateScreen", e);
-        if (!cancelled) {
-          setError("Не удалось загрузить статистику винрейтов.");
-        }
+        if (!cancelled) setError("Не удалось загрузить статистику винрейтов.");
       } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
+        if (!cancelled) setLoading(false);
       }
     }
 
     load();
-
     return () => {
       cancelled = true;
     };
   }, [language]);
 
-  // сортировка
   function onSort(column) {
     setSort((prev) => {
-      if (prev.column !== column) {
-        return { column, dir: "desc" };
-      }
+      if (prev.column !== column) return { column, dir: "desc" };
       if (prev.dir === "desc") return { column, dir: "asc" };
       if (prev.dir === "asc") return { column: null, dir: null };
       return { column, dir: "desc" };
     });
   }
 
-  // подготовка строк для таблицы
   const rows = useMemo(() => {
     if (!champions.length || !latestStats) return [];
 
@@ -177,6 +155,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
 
         const strengthLevel =
           stat.strengthLevel !== undefined ? stat.strengthLevel : null;
+
         const tier = strengthToTier(strengthLevel);
 
         return {
@@ -195,16 +174,14 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       })
       .filter(Boolean)
       .sort((a, b) => {
-        if (!sort.column || !sort.dir) {
+        if (!sort.column || !sort.dir)
           return (b.winRate || 0) - (a.winRate || 0);
-        }
 
         const col = sort.column;
 
         if (col === "strengthLevel") {
           const av = a.strengthLevel ?? 999;
           const bv = b.strengthLevel ?? 999;
-
           if (sort.dir === "desc") return av - bv;
           if (sort.dir === "asc") return bv - av;
           return 0;
@@ -235,201 +212,67 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
       loadingText="Загружаю статистику…"
       wrapInCard
     >
-      {/* media styles: мобилка ок, десктоп — ширина ограничена + крупнее */}
-      <style>{`
-        .wr-wrap {
-          width: 100%;
-          margin: 0 auto;
-          max-width: 760px; /* по умолчанию (моб/планшет) */
-        }
-
-        /* общая сетка */
-        .wr-grid {
-          display: grid;
-          grid-template-columns: 36px 2fr 0.7fr 0.9fr 0.9fr 0.9fr;
-          column-gap: 4px;
-          padding: 6px 8px;
-          align-items: center;
-        }
-
-        .wr-header {
-          font-size: 11px;
-          opacity: 0.8;
-          border-bottom: 1px solid rgba(31,41,55,1);
-          position: sticky;
-          top: 0;
-          background: rgba(15,23,42,0.96);
-          backdrop-filter: blur(8px);
-          z-index: 1;
-        }
-
-        .wr-row {
-          font-size: 12px;
-          border-bottom: 1px solid rgba(15,23,42,1);
-        }
-
-        .wr-heroCell {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          min-width: 0;
-        }
-        .wr-heroName {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        /* аватар */
-        .wr-avatar {
-          width: 28px;
-          height: 32px;
-          border-radius: 4px;
-          overflow: hidden;
-          background: rgba(15, 23, 42, 0.85);
-          flex-shrink: 0;
-        }
-        .wr-avatarImg {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .wr-right {
-          text-align: right;
-        }
-        .wr-sortable {
-          text-align: right;
-          cursor: pointer;
-        }
-
-        /* DESKTOP */
-        @media (min-width: 900px) {
-          .wr-wrap {
-            max-width: 1120px; /* перестаёт растягиваться на весь экран */
-          }
-
-          .wr-grid {
-            grid-template-columns: 54px 2.6fr 0.9fr 1fr 1fr 1fr; /* чуть просторнее */
-            column-gap: 10px;
-            padding: 10px 12px;
-          }
-
-          .wr-header {
-            font-size: 14px;
-          }
-
-          .wr-row {
-            font-size: 14px;
-          }
-
-          .wr-avatar {
-            width: 40px;
-            height: 46px;
-            border-radius: 8px;
-          }
-
-          .wr-heroCell {
-            gap: 10px;
-          }
-        }
-
-        /* WIDE DESKTOP */
-        @media (min-width: 1280px) {
-          .wr-wrap {
-            max-width: 1240px;
-          }
-        }
-      `}</style>
-
-      <div className="wr-wrap">
-        {/* заголовок таблицы */}
-        <div className="wr-grid wr-header">
+      <WrWrap>
+        <WrHeader>
           <div>#</div>
           <div>Герой</div>
 
-          <div className="wr-sortable" onClick={() => onSort("strengthLevel")}>
+          <WrSortable onClick={() => onSort("strengthLevel")}>
             Тир{" "}
             {sort.column === "strengthLevel"
               ? sort.dir === "asc"
                 ? "▲"
                 : "▼"
               : ""}
-          </div>
+          </WrSortable>
 
-          <div className="wr-sortable" onClick={() => onSort("winRate")}>
+          <WrSortable onClick={() => onSort("winRate")}>
             Победы{" "}
             {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
-          </div>
-          <div className="wr-sortable" onClick={() => onSort("pickRate")}>
+          </WrSortable>
+
+          <WrSortable onClick={() => onSort("pickRate")}>
             Пики{" "}
             {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
-          </div>
-          <div className="wr-sortable" onClick={() => onSort("banRate")}>
+          </WrSortable>
+
+          <WrSortable onClick={() => onSort("banRate")}>
             Баны{" "}
             {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
-          </div>
-        </div>
+          </WrSortable>
+        </WrHeader>
 
-        {rows.map((row, idx) => {
-          const imgUrl = row.icon;
+        {rows.map((row, idx) => (
+          <WrRow key={row.slug}>
+            <WrIndex>{idx + 1}</WrIndex>
 
-          return (
-            <div key={row.slug} className="wr-grid wr-row">
-              <div style={{ opacity: 0.8 }}>{idx + 1}</div>
+            <WrHeroCell>
+              <ChampAvatar name={row.name} src={row.icon} />
+              <WrHeroName>{row.name}</WrHeroName>
+            </WrHeroCell>
 
-              <div className="wr-heroCell">
-                <ChampAvatar name={row.name} src={imgUrl} />
-                <span className="wr-heroName">{row.name}</span>
-              </div>
+            <WrRight style={{ fontWeight: 700, color: row.tierColor }}>
+              {row.tierLabel}
+            </WrRight>
 
-              <div
-                className="wr-right"
-                style={{
-                  fontWeight: 700,
-                  color: row.tierColor,
-                }}
-              >
-                {row.tierLabel}
-              </div>
+            <WrRight style={{ color: winRateColor(row.winRate) }}>
+              {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
+            </WrRight>
 
-              <div
-                className="wr-right"
-                style={{ color: winRateColor(row.winRate) }}
-              >
-                {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
-              </div>
+            <WrRight style={{ color: pickRateColor(row.pickRate) }}>
+              {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
+            </WrRight>
 
-              <div
-                className="wr-right"
-                style={{ color: pickRateColor(row.pickRate) }}
-              >
-                {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
-              </div>
-
-              <div
-                className="wr-right"
-                style={{ color: banRateColor(row.banRate) }}
-              >
-                {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
-              </div>
-            </div>
-          );
-        })}
+            <WrRight style={{ color: banRateColor(row.banRate) }}>
+              {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
+            </WrRight>
+          </WrRow>
+        ))}
 
         {!rows.length && !loading && (
-          <div
-            style={{
-              padding: "10px 8px",
-              fontSize: 13,
-              opacity: 0.7,
-            }}
-          >
-            Для выбранных фильтров данных нет.
-          </div>
+          <WrEmpty>Для выбранных фильтров данных нет.</WrEmpty>
         )}
-      </div>
+      </WrWrap>
     </PageWrapper>
   );
 }

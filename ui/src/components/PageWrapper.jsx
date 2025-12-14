@@ -1,5 +1,15 @@
-// ui/src/components/PageWrapper.jsx
 import MenuReturn from "./MenuReturn.jsx";
+import {
+  PwShell,
+  PwContainer,
+  PwTop,
+  PwFilters,
+  PwContent,
+  PwState,
+  PwError,
+  PwCard,
+  PwCardInner,
+} from "./styled/PageWrapper.styled.js";
 
 export default function PageWrapper({
   onBack,
@@ -11,76 +21,37 @@ export default function PageWrapper({
   wrapInCard = false,
 }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        paddingBottom: 12,
-      }}
-    >
+    <PwShell>
       {/* верхняя панель */}
-      <MenuReturn onBack={onBack} />
+      <PwContainer as={PwTop}>
+        <MenuReturn onBack={onBack} />
+      </PwContainer>
 
-      {/* блок фильтров (если переданы) */}
+      {/* фильтры */}
       {filters && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 8,
-            marginBottom: 10,
-            alignItems: "center",
-          }}
-        >
-          {filters}
-        </div>
+        <PwContainer>
+          <PwFilters>{filters}</PwFilters>
+        </PwContainer>
       )}
 
-      {/* основной контент + универсальная обработка loading/error */}
-      <div style={{ flex: 1 }}>
-        {loading && (
-          <div
-            style={{
-              fontSize: 13,
-              opacity: 0.85,
-            }}
-          >
-            {loadingText}
-          </div>
-        )}
+      {/* контент + loading/error */}
+      <PwContainer as={PwContent}>
+        {loading && <PwState>{loadingText}</PwState>}
 
-        {error && !loading && (
-          <div
-            style={{
-              fontSize: 13,
-              padding: "6px 8px",
-              borderRadius: 8,
-              background: "#402020",
-              marginBottom: 8,
-            }}
-          >
-            {error}
-          </div>
-        )}
+        {!loading && error && <PwError>{error}</PwError>}
 
         {!loading && !error && (
           <>
             {wrapInCard ? (
-              <div
-                style={{
-                  borderRadius: 10,
-                  background: "rgba(15,23,42,0.85)",
-                }}
-              >
-                {children}
-              </div>
+              <PwCard>
+                <PwCardInner>{children}</PwCardInner>
+              </PwCard>
             ) : (
               children
             )}
           </>
         )}
-      </div>
-    </div>
+      </PwContainer>
+    </PwShell>
   );
 }

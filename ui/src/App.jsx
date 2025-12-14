@@ -15,6 +15,18 @@ import Footer from "./components/Footer.jsx";
 import TopPicksBansScreen from "./screens/TopPicksBansScreen.jsx";
 import TierlistScreen from "./screens/TierlistScreen.jsx";
 
+import {
+  AppRoot,
+  AppMain,
+  AppShell,
+} from "./components/styled/AppLayout.styled.js";
+import {
+  MenuWrapper,
+  MenuTitle,
+  MenuSubtitle,
+  FutureBlock,
+} from "./components/styled/Menu.styled.js";
+
 const VIEWS = {
   MENU: "menu",
   WINRATES: "winrates",
@@ -23,7 +35,6 @@ const VIEWS = {
   PICKS_BANS: "picks_bans",
 };
 
-// базовый урл до твоего API
 const API_BASE = "https://wr-api-pjtu.vercel.app";
 
 function App() {
@@ -32,7 +43,6 @@ function App() {
   const [view, setView] = useState(VIEWS.MENU);
   const [updatedAt, setUpdatedAt] = useState(null);
 
-  // INIT Telegram WebApp
   useEffect(() => {
     const webApp = window.Telegram?.WebApp;
     if (webApp) {
@@ -45,13 +55,11 @@ function App() {
     }
   }, []);
 
-  // 🔹 Логируем открытие вебапа, когда tg уже есть
   useEffect(() => {
     if (!tg) return;
 
     const user = tg.initDataUnsafe?.user;
     console.log("[App] initDataUnsafe.user =", user);
-
     if (!user) return;
 
     fetch(`${API_BASE}/api/webapp-open`, {
@@ -65,18 +73,12 @@ function App() {
       }),
     })
       .then((res) => {
-        if (!res.ok) {
-          console.log("[webapp-open] bad status", res.status);
-        } else {
-          console.log("[webapp-open] ok");
-        }
+        if (!res.ok) console.log("[webapp-open] bad status", res.status);
+        else console.log("[webapp-open] ok");
       })
-      .catch((err) => {
-        console.log("[webapp-open] fetch error", err);
-      });
+      .catch((err) => console.log("[webapp-open] fetch error", err));
   }, [tg]);
 
-  // Загружаем дату последнего обновления из API
   useEffect(() => {
     let cancelled = false;
 
@@ -87,15 +89,13 @@ function App() {
         const data = await res.json();
         if (cancelled) return;
 
-        const dateStr = data.updatedAt || null;
-        setUpdatedAt(dateStr);
+        setUpdatedAt(data.updatedAt || null);
       } catch {
-        // тихо игнорим, просто не покажем дату
+        // тихо игнорим
       }
     }
 
     loadUpdatedAt();
-
     return () => {
       cancelled = true;
     };
@@ -106,13 +106,13 @@ function App() {
   const hintColor = resolveTgColor(tg, "hint_color", BASE_COLORS.hint);
 
   const renderMenu = () => (
-    <div style={styles.menuWrapper}>
-      <h1 style={styles.title}>Wild Rift Stats</h1>
+    <MenuWrapper>
+      <MenuTitle>Wild Rift Stats</MenuTitle>
 
-      <div style={styles.subtitle}>
+      <MenuSubtitle>
         Выбери раздел. Активны: винрейты, тир-лист, топ пики/баны, график
         трендов.
-      </div>
+      </MenuSubtitle>
 
       <MenuButton
         title="Статистика винрейтов"
@@ -154,10 +154,10 @@ function App() {
         gradient={BUTTON_GRADIENTS.orange}
       />
 
-      <div style={styles.futureBlock(hintColor)}>
+      <FutureBlock $hintColor={hintColor}>
         Будущие разделы: чемпионы, билды, гайды
-      </div>
-    </div>
+      </FutureBlock>
+    </MenuWrapper>
   );
 
   const renderContent = () => {
@@ -198,20 +198,13 @@ function App() {
   };
 
   return (
-    <div style={styles.app(bg, textColor)}>
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          minHeight: 0,
-        }}
-      >
-        {renderContent()}
-      </div>
+    <AppRoot style={styles.app(bg, textColor)}>
+      <AppMain>
+        <AppShell>{renderContent()}</AppShell>
+      </AppMain>
 
       <Footer />
-    </div>
+    </AppRoot>
   );
 }
 

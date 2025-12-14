@@ -1,6 +1,30 @@
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
 
+import {
+  TpHeader,
+  TpHeaderText,
+  TpRow,
+  TpSection,
+  TpSectionTitle,
+  TpCardWrap,
+  TpEmpty,
+  TpCard,
+  TpCardIndex,
+  TpAvatar,
+  TpAvatarImg,
+  TpCardInfo,
+  TpCardName,
+  TpCardSub,
+  TpCardValue,
+  TpModalOverlay,
+  TpModal,
+  TpModalTop,
+  TpCloseBtn,
+  TpLaneRow,
+  TpPillButton,
+} from "../components/styled";
+
 const API_BASE = "https://wr-api-pjtu.vercel.app";
 
 // порядок рангов и их русские названия
@@ -20,33 +44,7 @@ const HIGH_ELO_RANKS = new Set(["king", "peak"]);
 
 // аватарка чемпиона
 function ChampAvatarCard({ name, src }) {
-  return (
-    <div
-      style={{
-        width: 40,
-        height: 44,
-        borderRadius: 8,
-        overflow: "hidden",
-        background: "rgba(15, 23, 42, 0.9)",
-        border: "1px solid rgba(51, 65, 85, 0.9)",
-        flexShrink: 0,
-        position: "relative",
-      }}
-    >
-      {src && (
-        <img
-          src={src}
-          alt={name}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
-      )}
-    </div>
-  );
+  return <TpAvatar>{src && <TpAvatarImg src={src} alt={name} />}</TpAvatar>;
 }
 
 // карточка топ-чемпиона (краткая инфа + клик)
@@ -55,80 +53,22 @@ function TopChampCard({ index, champ, type, imgUrl, onClick }) {
     type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
 
   return (
-    <div
-      style={{
-        position: "relative",
-        borderRadius: 12,
-        border:
-          type === "pick"
-            ? "1px solid rgba(96, 165, 250, 0.9)"
-            : "1px solid rgba(248, 113, 113, 0.9)",
-        background:
-          type === "pick"
-            ? "linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,64,175,0.85))"
-            : "linear-gradient(135deg, rgba(15,23,42,0.95), rgba(185,28,28,0.85))",
-        padding: 10,
-        display: "flex",
-        alignItems: "center",
-        gap: 10,
-        boxShadow: "0 10px 25px rgba(15,23,42,0.9)",
-        overflow: "hidden",
-        cursor: "pointer",
-      }}
-      onClick={onClick}
-    >
-      <div
-        style={{
-          fontSize: 18,
-          fontWeight: 700,
-          opacity: 0.9,
-          minWidth: 24,
-          textAlign: "center",
-        }}
-      >
-        #{index + 1}
-      </div>
+    <TpCard $type={type} onClick={onClick}>
+      <TpCardIndex>#{index + 1}</TpCardIndex>
 
       <ChampAvatarCard name={champ.name} src={imgUrl} />
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 3,
-          minWidth: 0,
-          flex: 1,
-        }}
-      >
-        <div
-          style={{
-            fontSize: 14,
-            fontWeight: 600,
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {champ.name}
-        </div>
-        <div style={{ fontSize: 11, opacity: 0.8 }}>
+      <TpCardInfo>
+        <TpCardName>{champ.name}</TpCardName>
+        <TpCardSub>
           ({champ.slug}) —{" "}
           {type === "pick" ? "средний пикрейт" : "средний банрейт"}:{" "}
           <span style={{ fontWeight: 600 }}>{totalValue.toFixed(2)}%</span>
-        </div>
-      </div>
+        </TpCardSub>
+      </TpCardInfo>
 
-      <div
-        style={{
-          fontSize: 18,
-          fontWeight: 700,
-          textAlign: "right",
-          minWidth: 70,
-        }}
-      >
-        {totalValue.toFixed(2)}%
-      </div>
-    </div>
+      <TpCardValue>{totalValue.toFixed(2)}%</TpCardValue>
+    </TpCard>
   );
 }
 
@@ -142,7 +82,6 @@ function DetailsModal({ data, onClose }) {
 
   const lanes = champ.lanes || {};
 
-  // для пиков — детали по линиям, для банов — только элементы с ban > 0
   const laneEntries = Object.entries(lanes)
     .filter(([, laneData]) => {
       const val = type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
@@ -155,43 +94,9 @@ function DetailsModal({ data, onClose }) {
     });
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(15,23,42,0.8)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 999,
-      }}
-      onClick={onClose}
-    >
-      <div
-        style={{
-          background: "rgba(15,23,42,0.98)",
-          borderRadius: 12,
-          border: "1px solid rgba(148,163,184,0.7)",
-          maxWidth: 520,
-          width: "90%",
-          maxHeight: "80vh",
-          padding: 14,
-          boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
-          fontSize: 12,
-          color: "#e5e7eb",
-          overflowY: "auto",
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            marginBottom: 8,
-            gap: 8,
-          }}
-        >
+    <TpModalOverlay onClick={onClose}>
+      <TpModal onClick={(e) => e.stopPropagation()}>
+        <TpModalTop>
           <div>
             <div style={{ marginBottom: 4 }}>
               {index + 1}. {champ.name.toUpperCase()} ({champ.slug}) —{" "}
@@ -200,19 +105,8 @@ function DetailsModal({ data, onClose }) {
             </div>
           </div>
 
-          <button
-            onClick={onClose}
-            style={{
-              border: "none",
-              background: "transparent",
-              color: "#9ca3af",
-              fontSize: 16,
-              cursor: "pointer",
-            }}
-          >
-            ✕
-          </button>
-        </div>
+          <TpCloseBtn onClick={onClose}>✕</TpCloseBtn>
+        </TpModalTop>
 
         {laneEntries.map(([laneKey, laneData]) => {
           const laneTotal =
@@ -234,18 +128,18 @@ function DetailsModal({ data, onClose }) {
             type === "ban" && laneKey === "all" ? "все линии" : laneKey;
 
           return (
-            <div key={laneKey} style={{ marginBottom: 4 }}>
+            <TpLaneRow key={laneKey}>
               - {displayLaneName}: {laneTotal.toFixed(2)}%
               {parts.length > 0 && <> (из них: {parts.join(", ")})</>}
-            </div>
+            </TpLaneRow>
           );
         })}
 
         {!laneEntries.length && (
           <div>Для этого чемпиона нет детальной статистики.</div>
         )}
-      </div>
-    </div>
+      </TpModal>
+    </TpModalOverlay>
   );
 }
 
@@ -261,7 +155,6 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
   // новый фильтр по эло: low | high | all
   const [rankRange, setRankRange] = useState("low");
 
-  // загружаем чемпионов и иконки
   useEffect(() => {
     let cancelled = false;
 
@@ -278,9 +171,7 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
 
         const imgMap = {};
         (json || []).forEach((ch) => {
-          if (ch.slug) {
-            imgMap[ch.slug] = ch.icon || null;
-          }
+          if (ch.slug) imgMap[ch.slug] = ch.icon || null;
         });
         setChampImages(imgMap);
       } catch (e) {
@@ -289,13 +180,11 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
     }
 
     loadChampions();
-
     return () => {
       cancelled = true;
     };
   }, [language]);
 
-  // загружаем всю историю из API
   useEffect(() => {
     let cancelled = false;
 
@@ -312,30 +201,22 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
         setHistoryItems(items);
       } catch (e) {
         console.error("Ошибка загрузки champion-history", e);
-        if (!cancelled) {
+        if (!cancelled)
           setError("Не удалось загрузить статистику пиков и банов.");
-        }
       } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
+        if (!cancelled) setLoading(false);
       }
     }
 
     loadHistory();
-
     return () => {
       cancelled = true;
     };
   }, []);
 
-  // агрегируем статистику ЗА ПОСЛЕДНИЙ ДЕНЬ для каждого чемпиона
-  // ВАЖНО: считаем СРЕДНИЕ проценты, а не сумму.
-  // Среднее = sum / count, где count — реальное число добавленных значений (динамика: хоть 1 линия, хоть 3).
   const aggregated = useMemo(() => {
     if (!Array.isArray(historyItems) || historyItems.length === 0) return [];
 
-    // 1) находим последнюю дату для каждого slug
     const lastDateBySlug = {};
     for (const item of historyItems) {
       if (!item || !item.slug || !item.date) continue;
@@ -346,21 +227,18 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       }
     }
 
-    // 2) фильтруем только записи за последнюю дату для данного slug
     const latestItems = historyItems.filter((item) => {
       if (!item || !item.slug || !item.date) return false;
       const dateStr = String(item.date);
       return dateStr === lastDateBySlug[item.slug];
     });
 
-    // 3) champions map для имён
     const champBySlug = {};
     for (const ch of champions) {
       if (!ch || !ch.slug) continue;
       champBySlug[ch.slug] = ch;
     }
 
-    // 4) считаем агрегаты с учётом фильтра rankRange (СРЕДНИЕ, а не суммы)
     const aggBySlug = new Map();
 
     for (const item of latestItems) {
@@ -371,7 +249,6 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       if (!slug || !rankKey || !laneKey) continue;
       if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
 
-      // фильтр по эло
       if (rankRange === "low" && !LOW_ELO_RANKS.has(rankKey)) continue;
       if (rankRange === "high" && !HIGH_ELO_RANKS.has(rankKey)) continue;
 
@@ -389,7 +266,6 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
           slug,
           name: displayName,
 
-          // итоговые публичные поля
           totalPickRate: 0,
           totalBanRate: 0,
 
@@ -402,14 +278,12 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
             },
           },
 
-          // служебные поля для среднего
           _totalPickSum: 0,
           _totalPickCount: 0,
 
           _totalBanSum: 0,
           _totalBanCount: 0,
 
-          // чтобы бан по рангу учитывать 1 раз
           _banRanksAdded: new Set(),
         });
       }
@@ -431,22 +305,15 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
         lanes[laneKey]._pickCount = lanes[laneKey]._pickCount ?? 0;
       }
 
-      // =========================
-      // ПИКИ: среднее по всем слагаемым (rank × lane), count — реальное число значений
-      // =========================
       agg._totalPickSum += pickRate;
       agg._totalPickCount += 1;
 
       lanes[laneKey]._pickSum += pickRate;
       lanes[laneKey]._pickCount += 1;
 
-      // детали по рангам (для подсказки "из них: ...")
       lanes[laneKey].pickRanks[rankKey] =
         (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
 
-      // =========================
-      // БАНЫ: 1 раз на ранг (как было), но итог — средний по числу реально учтённых рангов
-      // =========================
       if (!agg._banRanksAdded.has(rankKey)) {
         agg._totalBanSum += banRate;
         agg._totalBanCount += 1;
@@ -458,10 +325,8 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       }
     }
 
-    // 5) финализируем: sum/count -> средний %
     const result = [];
     for (const value of aggBySlug.values()) {
-      // === ВОТ ТУТ СЧИТАЕТСЯ СРЕДНИЙ ПРОЦЕНТ ===
       const totalPickAvg =
         value._totalPickCount > 0
           ? value._totalPickSum / value._totalPickCount
@@ -475,7 +340,6 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       value.totalPickRate = totalPickAvg;
       value.totalBanRate = totalBanAvg;
 
-      // линии: средний пикрейт по линии (делим на число реально сложенных значений по этой линии)
       for (const [laneKey, laneData] of Object.entries(value.lanes)) {
         if (laneKey === "all") continue;
 
@@ -487,10 +351,8 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
         delete laneData._pickCount;
       }
 
-      // "all" для банов = средний банрейт по реально учтённым рангам
       value.lanes.all.ban = totalBanAvg;
 
-      // чистим служебное
       delete value._totalPickSum;
       delete value._totalPickCount;
       delete value._totalBanSum;
@@ -504,7 +366,6 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
     return result;
   }, [historyItems, champions, rankRange]);
 
-  // сортировки + лимит
   const topPicks = useMemo(() => {
     const sorted = [...aggregated].sort(
       (a, b) => (b.totalPickRate || 0) - (a.totalPickRate || 0)
@@ -535,50 +396,32 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
   const renderLimitButton = (value, label) => {
     const isActive = limit === value;
     return (
-      <button
+      <TpPillButton
         key={String(value)}
         onClick={() => setLimit(value)}
-        style={{
-          padding: "4px 10px",
-          fontSize: 12,
-          borderRadius: 999,
-          border: isActive
-            ? "1px solid rgba(59,130,246,0.9)"
-            : "1px solid rgba(75,85,99,0.9)",
-          background: isActive ? "rgba(37,99,235,0.25)" : "rgba(15,23,42,0.95)",
-          color: isActive ? "#e5e7eb" : "#9ca3af",
-          cursor: "pointer",
-          transition: "all 0.12s ease-out",
-          minWidth: 44,
-        }}
+        $active={isActive}
+        $activeBorder="rgba(59,130,246,0.9)"
+        $activeBg="rgba(37,99,235,0.25)"
+        $minWidth={44}
       >
         {label}
-      </button>
+      </TpPillButton>
     );
   };
 
   const renderRankRangeButton = (value, label) => {
     const isActive = rankRange === value;
     return (
-      <button
+      <TpPillButton
         key={value}
         onClick={() => setRankRange(value)}
-        style={{
-          padding: "4px 10px",
-          fontSize: 12,
-          borderRadius: 999,
-          border: isActive
-            ? "1px solid rgba(52,211,153,0.9)"
-            : "1px solid rgba(75,85,99,0.9)",
-          background: isActive ? "rgba(16,185,129,0.2)" : "rgba(15,23,42,0.95)",
-          color: isActive ? "#e5e7eb" : "#9ca3af",
-          cursor: "pointer",
-          transition: "all 0.12s ease-out",
-          minWidth: 70,
-        }}
+        $active={isActive}
+        $activeBorder="rgba(52,211,153,0.9)"
+        $activeBg="rgba(16,185,129,0.2)"
+        $minWidth={70}
       >
         {label}
-      </button>
+      </TpPillButton>
     );
   };
 
@@ -591,75 +434,34 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
       loadingText="Считаю пики и баны…"
       wrapInCard
     >
-      {/* Переключатель количества записей */}
-      <div
-        style={{
-          marginBottom: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 8,
-          flexWrap: "wrap",
-          padding: "10px 5px",
-        }}
-      >
-        <div style={{ fontSize: 13, opacity: 0.85 }}>
+      <TpHeader>
+        <TpHeaderText>
           Ниже — {limitLabel} по среднему пикрейту и среднему банрейту за
           последний день {rankRangeLabel} и на всех линиях. Нажми на карточку
           чемпиона, чтобы увидеть подробную раскладку по ролям и рангам.
-        </div>
-      </div>
+        </TpHeaderText>
+      </TpHeader>
 
-      {/* Фильтр по количеству */}
-      <div
-        style={{
-          marginBottom: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          gap: 6,
-          flexWrap: "wrap",
-          padding: "5px",
-        }}
-      >
+      <TpRow>
         {renderLimitButton(5, "Топ 5")}
         {renderLimitButton(10, "Топ 10")}
         {renderLimitButton(20, "Топ 20")}
         {renderLimitButton("all", "Все")}
-      </div>
+      </TpRow>
 
-      {/* Фильтр по эло */}
-      <div
-        style={{
-          marginBottom: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          gap: 6,
-          flexWrap: "wrap",
-          padding: "5px",
-        }}
-      >
+      <TpRow>
         {renderRankRangeButton("low", "Лоу эло")}
         {renderRankRangeButton("high", "Хай эло")}
         {renderRankRangeButton("all", "Все ранги")}
-      </div>
+      </TpRow>
 
-      <div style={{ marginBottom: 12 }}>
-        <div
-          style={{
-            fontSize: 14,
-            fontWeight: 700,
-            marginBottom: 6,
-            padding: "5px",
-          }}
-        >
-          {limitTitlePrefix} по пикам
-        </div>
+      <TpSection $mb={12}>
+        <TpSectionTitle $pad>{limitTitlePrefix} по пикам</TpSectionTitle>
+
         {topPicks.map((champ, idx) => {
           const imgUrl = champImages[champ.slug];
           return (
-            <div key={`pick-${champ.slug}`} style={{ marginBottom: 8 }}>
+            <TpCardWrap key={`pick-${champ.slug}`}>
               <TopChampCard
                 index={idx}
                 champ={champ}
@@ -667,30 +469,20 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
                 imgUrl={imgUrl}
                 onClick={() => setDetails({ index: idx, champ, type: "pick" })}
               />
-            </div>
+            </TpCardWrap>
           );
         })}
-        {!topPicks.length && (
-          <div style={{ fontSize: 12, opacity: 0.8 }}>
-            Нет данных для расчёта пиков.
-          </div>
-        )}
-      </div>
 
-      <div>
-        <div
-          style={{
-            fontSize: 14,
-            fontWeight: 700,
-            marginBottom: 6,
-          }}
-        >
-          {limitTitlePrefix} по банам
-        </div>
+        {!topPicks.length && <TpEmpty>Нет данных для расчёта пиков.</TpEmpty>}
+      </TpSection>
+
+      <TpSection $mb={0}>
+        <TpSectionTitle>{limitTitlePrefix} по банам</TpSectionTitle>
+
         {topBans.map((champ, idx) => {
           const imgUrl = champImages[champ.slug];
           return (
-            <div key={`ban-${champ.slug}`} style={{ marginBottom: 8 }}>
+            <TpCardWrap key={`ban-${champ.slug}`}>
               <TopChampCard
                 index={idx}
                 champ={champ}
@@ -698,15 +490,12 @@ function TopPicksBansScreen({ language = "ru_ru", onBack }) {
                 imgUrl={imgUrl}
                 onClick={() => setDetails({ index: idx, champ, type: "ban" })}
               />
-            </div>
+            </TpCardWrap>
           );
         })}
-        {!topBans.length && (
-          <div style={{ fontSize: 12, opacity: 0.8 }}>
-            Нет данных для расчёта банов.
-          </div>
-        )}
-      </div>
+
+        {!topBans.length && <TpEmpty>Нет данных для расчёта банов.</TpEmpty>}
+      </TpSection>
 
       <DetailsModal data={details} onClose={() => setDetails(null)} />
     </PageWrapper>
