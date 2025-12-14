@@ -44,7 +44,7 @@ export const TlWrap = styled.div`
 
 export const TlHeader = styled.div`
   margin-bottom: 12px;
-  padding: 10px 10px 12px;
+  padding: 10px 0px 12px;
   border-bottom: 1px solid rgba(31, 41, 55, 1);
 `;
 
