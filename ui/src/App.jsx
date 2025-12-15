@@ -6,12 +6,7 @@ import TrendScreen from "./screens/TrendScreen.jsx";
 import MenuButton from "./components/MenuButton.jsx";
 import { formatDateTime } from "./utils/formatDate.js";
 
-import {
-  BASE_COLORS,
-  BUTTON_GRADIENTS,
-  resolveTgColor,
-  styles,
-} from "./theme.js";
+import { BASE_COLORS, BUTTON_GRADIENTS, styles } from "./theme.js";
 
 import Footer from "./components/Footer.jsx";
 import TopPicksBansScreen from "./screens/TopPicksBansScreen.jsx";
@@ -55,11 +50,25 @@ function App() {
 
   useEffect(() => {
     const webApp = window.Telegram?.WebApp;
-    if (webApp) {
-      setTg(webApp);
-      webApp.ready();
-      webApp.expand();
-    }
+    if (!webApp) return;
+
+    setTg(webApp);
+    webApp.ready();
+    webApp.expand();
+
+    // Принудительно тёмное оформление со стороны Telegram (чтоб светлая тема не “подсвечивала”)
+    try {
+      if (typeof webApp.setHeaderColor === "function") {
+        webApp.setHeaderColor("#0b1220");
+      }
+      if (typeof webApp.setBackgroundColor === "function") {
+        webApp.setBackgroundColor("#0b1220");
+      }
+      // Не везде есть, но если есть — отлично
+      if (typeof webApp.setColorScheme === "function") {
+        webApp.setColorScheme("dark");
+      }
+    } catch {}
   }, []);
 
   useEffect(() => {
@@ -99,9 +108,10 @@ function App() {
     };
   }, []);
 
-  const bg = resolveTgColor(tg, "bg_color", BASE_COLORS.background);
-  const textColor = resolveTgColor(tg, "text_color", BASE_COLORS.text);
-  const hintColor = resolveTgColor(tg, "hint_color", BASE_COLORS.hint);
+  // 🔒 Всегда тёмная тема — игнорируем Telegram themeParams
+  const bg = BASE_COLORS.background;
+  const textColor = BASE_COLORS.text;
+  const hintColor = BASE_COLORS.hint;
 
   function openLink(url) {
     if (!url) return;
