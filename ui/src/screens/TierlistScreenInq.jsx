@@ -56,15 +56,6 @@ function pointsPickrate(v) {
 }
 
 function scoreToTier(score) {
-  // S+ - 15+; S - 12-15; A - 10-12; B - 7-10; C - 3-7; D - 1-3.
-  // “стыкуем” без дыр:
-  // 15+ => S+
-  // 12..14 => S
-  // 10..11 => A
-  // 7..9 => B
-  // 3..6 => C
-  // 1..2 => D
-  // 0 => null (не показываем)
   if (score >= 15) return "S+";
   if (score >= 12) return "S";
   if (score >= 10) return "A";
@@ -74,7 +65,29 @@ function scoreToTier(score) {
   return null;
 }
 
-/* -------------------- UI -------------------- */
+/* -------------------- UI helpers -------------------- */
+
+function WeightSlider({ label, value, onChange }) {
+  return (
+    <div style={{ display: "grid", gap: 6 }}>
+      <div
+        style={{ display: "flex", justifyContent: "space-between", gap: 10 }}
+      >
+        <div style={{ opacity: 0.9 }}>{label}</div>
+        <div style={{ fontWeight: 800 }}>{Number(value).toFixed(1)}×</div>
+      </div>
+
+      <input
+        type="range"
+        min={0}
+        max={3}
+        step={0.1}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+      />
+    </div>
+  );
+}
 
 function TierChampionIcon({ champ, onClick }) {
   return (
@@ -113,7 +126,13 @@ function TierRow({ tier, champions, onChampionClick }) {
   );
 }
 
-function CalcRow({ label, value, pts }) {
+function CalcRowWeighted({ label, value, pts, weight }) {
+  const safePts = pts ?? 0;
+  const safeW = weight ?? 0;
+
+  const weighted = safePts * safeW;
+  const weightedRounded = Math.round(weighted * 10) / 10;
+
   return (
     <div
       style={{
@@ -127,11 +146,16 @@ function CalcRow({ label, value, pts }) {
       }}
     >
       <div style={{ opacity: 0.9 }}>{label}</div>
+
       <div style={{ display: "flex", gap: 10, alignItems: "baseline" }}>
         <div style={{ opacity: 0.85 }}>
           {value != null ? `${Number(value).toFixed(2)}%` : "—"}
         </div>
-        <div style={{ fontWeight: 800 }}>{pts} очк.</div>
+
+        <div style={{ opacity: 0.85 }}>
+          {safePts} очк. × {Number(safeW).toFixed(1)} ={" "}
+          <span style={{ fontWeight: 800 }}>{weightedRounded}</span>
+        </div>
       </div>
     </div>
   );
@@ -142,6 +166,11 @@ function CalcRow({ label, value, pts }) {
 export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
   const [rankKey, setRankKey] = useState("diamondPlus");
   const [laneKey, setLaneKey] = useState("top");
+
+  // веса (ползунки)
+  const [wWin, setWWin] = useState(1);
+  const [wPick, setWPick] = useState(1);
+  const [wBan, setWBan] = useState(1);
 
   const tiersOrder = useMemo(() => ["S+", "S", "A", "B", "C", "D"], []);
 
@@ -194,7 +223,7 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
 
         setLatestStats(latestMap);
       } catch (e) {
-        console.error("Ошибка загрузки данных для TierlistScreen", e);
+        console.error("Ошибка загрузки данных для TierlistScreenInq", e);
         if (!cancelled) setError("Не удалось загрузить тир-лист.");
       } finally {
         if (!cancelled) setLoading(false);
@@ -232,10 +261,11 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
       const pickPts = pointsPickrate(pickRate);
       const banPts = pointsBanrate(banRate);
 
-      const totalScore = winPts + pickPts + banPts;
+      const totalScoreRaw = winPts * wWin + pickPts * wPick + banPts * wBan;
+      const totalScore = Math.round(totalScoreRaw * 10) / 10;
 
       const tier = scoreToTier(totalScore);
-      if (!tier) continue; // 0 очков — не показываем
+      if (!tier) continue;
 
       if (stat.date != null) {
         const d = String(stat.date);
@@ -254,6 +284,12 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
         winPts,
         pickPts,
         banPts,
+
+        wWin,
+        wPick,
+        wBan,
+
+        totalScoreRaw,
         totalScore,
 
         computedTier: tier,
@@ -263,9 +299,11 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
     for (const t of Object.keys(out)) {
       out[t].sort((a, b) => {
         if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
+
         const bw = b.winRate ?? -999;
         const aw = a.winRate ?? -999;
         if (bw !== aw) return bw - aw;
+
         const bp = b.pickRate ?? -999;
         const ap = a.pickRate ?? -999;
         return bp - ap;
@@ -275,7 +313,7 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
     setDate(maxDate);
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [champions, latestStats, rankKey, laneKey]);
+  }, [champions, latestStats, rankKey, laneKey, wWin, wPick, wBan]);
 
   const hasAny =
     tiersOrder &&
@@ -306,6 +344,30 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
           </TlSubtitle>
         </TlHeader>
 
+        <div
+          style={{
+            marginTop: 12,
+            padding: 12,
+            borderRadius: 14,
+            border: "1px solid rgba(255,255,255,0.10)",
+            background: "rgba(255,255,255,0.03)",
+            display: "grid",
+            gap: 10,
+          }}
+        >
+          <div style={{ fontWeight: 800, opacity: 0.9 }}>
+            Настройки расчёта (веса)
+          </div>
+
+          <WeightSlider label="Вес винрейта" value={wWin} onChange={setWWin} />
+          <WeightSlider
+            label="Вес пикрейта"
+            value={wPick}
+            onChange={setWPick}
+          />
+          <WeightSlider label="Вес банрейта" value={wBan} onChange={setWBan} />
+        </div>
+
         {hasAny ? (
           tiersOrder.map((tierKey) => (
             <TierRow
@@ -319,7 +381,6 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
           <TlEmpty>Для выбранных фильтров тир-лист пуст.</TlEmpty>
         ) : null}
 
-        {/* модалка с расчётом */}
         {selected && (
           <div
             onClick={() => setSelected(null)}
@@ -337,7 +398,7 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
             <div
               onClick={(e) => e.stopPropagation()}
               style={{
-                width: "min(560px, 100%)",
+                width: "min(640px, 100%)",
                 background: "#0b1220",
                 border: "1px solid rgba(255,255,255,0.10)",
                 borderRadius: 16,
@@ -373,7 +434,7 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
                   </div>
                   <div style={{ opacity: 0.8, marginTop: 2 }}>
                     Итог: <b>{selected.computedTier}</b> •{" "}
-                    <b>{selected.totalScore}</b> очков
+                    <b>{Number(selected.totalScore).toFixed(1)}</b> очков
                   </div>
                 </div>
 
@@ -393,20 +454,23 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
               </div>
 
               <div style={{ marginTop: 14, display: "grid", gap: 10 }}>
-                <CalcRow
+                <CalcRowWeighted
                   label="Винрейт"
                   value={selected.winRate}
                   pts={selected.winPts}
+                  weight={selected.wWin}
                 />
-                <CalcRow
+                <CalcRowWeighted
                   label="Пикрейт"
                   value={selected.pickRate}
                   pts={selected.pickPts}
+                  weight={selected.wPick}
                 />
-                <CalcRow
+                <CalcRowWeighted
                   label="Банрейт"
                   value={selected.banRate}
                   pts={selected.banPts}
+                  weight={selected.wBan}
                 />
 
                 <div
@@ -420,7 +484,7 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
                   }}
                 >
                   <div>Сумма</div>
-                  <div>{selected.totalScore} очков</div>
+                  <div>{Number(selected.totalScore).toFixed(1)} очков</div>
                 </div>
               </div>
             </div>
