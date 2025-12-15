@@ -136,7 +136,7 @@ function App() {
 
       {/* старый экран */}
       <MenuButton
-        title="Винрейт стримера Инка"
+        title="Винрейт чемпионов CN"
         subtitle={
           updatedAt ? (
             <>Обновлено {formatDateTime(updatedAt)}</>
