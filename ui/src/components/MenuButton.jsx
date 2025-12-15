@@ -5,6 +5,7 @@ export default function MenuButton({
   onClick,
   gradient,
   rightIcon = "→",
+  leftIcon = null,
 }) {
   return (
     <button
@@ -27,36 +28,46 @@ export default function MenuButton({
         boxSizing: "border-box",
       }}
     >
-      <div>
-        <div
-          style={{
-            fontSize: 14,
-            fontWeight: 600,
-            marginBottom: 2,
-          }}
-        >
-          {title}
-        </div>
-        {subtitle && (
-          <div
+      <div
+        style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}
+      >
+        {leftIcon ? (
+          <span
             style={{
-              fontSize: 12,
-              opacity: 0.85,
+              width: 34,
+              height: 34,
+              borderRadius: 12,
+              display: "grid",
+              placeItems: "center",
+              background: "rgba(0,0,0,0.14)",
+              border: "1px solid rgba(255,255,255,0.14)",
+              flex: "0 0 auto",
             }}
           >
-            {subtitle}
+            {leftIcon}
+          </span>
+        ) : null}
+
+        <div style={{ minWidth: 0 }}>
+          <div
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              marginBottom: 2,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {title}
           </div>
-        )}
+          {subtitle ? (
+            <div style={{ fontSize: 12, opacity: 0.85 }}>{subtitle}</div>
+          ) : null}
+        </div>
       </div>
 
-      <span
-        style={{
-          fontSize: 18,
-          opacity: 0.8,
-        }}
-      >
-        {rightIcon}
-      </span>
+      <span style={{ fontSize: 18, opacity: 0.8 }}>{rightIcon}</span>
     </button>
   );
 }
