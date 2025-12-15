@@ -38,7 +38,7 @@ const VIEWS = {
   PICKS_BANS: "picks_bans",
 };
 
-const API_BASE = "https://wr-api-pjtu.vercel.app";
+const API_BASE = "https://wr-api.vercel.app";
 const INQ_TWITCH_URL = "https://www.twitch.tv/inq_wr";
 
 /* ---------- Menu icons (LoL/Wild Rift vibe, mono via currentColor) ---------- */

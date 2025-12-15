@@ -25,7 +25,7 @@ import {
   TpPillButton,
 } from "../components/styled";
 
-const API_BASE = "https://wr-api-pjtu.vercel.app";
+const API_BASE = "https://wr-api.vercel.app";
 
 // порядок рангов и их русские названия
 const RANK_KEYS = ["diamondPlus", "masterPlus", "king", "peak"];

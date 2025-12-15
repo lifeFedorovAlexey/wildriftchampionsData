@@ -17,7 +17,7 @@ import {
   WrEmpty,
 } from "../components/styled/WinrateScreen.styled.js";
 
-const API_BASE = "https://wr-api-pjtu.vercel.app";
+const API_BASE = "https://wr-api.vercel.app";
 
 function ChampAvatar({ name, src }) {
   return <WrAvatar>{src && <WrAvatarImg src={src} alt={name} />}</WrAvatar>;

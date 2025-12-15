@@ -19,7 +19,7 @@ import {
 
 import { tierColor, tierBg } from "../components/styled";
 
-const API_BASE = "https://wr-api-pjtu.vercel.app";
+const API_BASE = "https://wr-api.vercel.app";
 
 /* -------------------- RULES: points -------------------- */
 

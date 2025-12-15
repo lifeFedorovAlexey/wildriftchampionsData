@@ -22,7 +22,7 @@ import {
   TrMetricDelta,
 } from "../components/styled/TrendScreen.styled.js";
 
-const API_BASE = "https://wr-api-pjtu.vercel.app";
+const API_BASE = "https://wr-api.vercel.app";
 
 // ---------- таблица ----------
 function TrendTable({ days }) {
