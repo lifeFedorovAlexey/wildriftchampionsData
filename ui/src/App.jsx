@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { WinrateScreen } from "./screens/WinrateScreen.jsx";
+import TierlistScreenInq from "./screens/TierlistScreenInq.jsx";
 import TrendScreen from "./screens/TrendScreen.jsx";
 import MenuButton from "./components/MenuButton.jsx";
 import { formatDateTime } from "./utils/formatDate.js";
@@ -30,12 +31,16 @@ import {
 const VIEWS = {
   MENU: "menu",
   WINRATES: "winrates",
+  WINRATES_INQ: "winrates_inq",
   TIERLIST: "tierlist",
   GRAPH: "graph",
   PICKS_BANS: "picks_bans",
 };
 
 const API_BASE = "https://wr-api-pjtu.vercel.app";
+
+// inq — Twitch
+const INQ_TWITCH_URL = "https://www.twitch.tv/inq_wr";
 
 function App() {
   const [tg, setTg] = useState(null);
@@ -105,6 +110,21 @@ function App() {
   const textColor = resolveTgColor(tg, "text_color", BASE_COLORS.text);
   const hintColor = resolveTgColor(tg, "hint_color", BASE_COLORS.hint);
 
+  function openLink(url) {
+    if (!url) return;
+    try {
+      if (tg?.openLink) tg.openLink(url);
+      else window.open(url, "_blank", "noopener,noreferrer");
+    } catch (e) {
+      console.log("[openLink] error", e);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }
+
+  function openInqTwitch() {
+    openLink(INQ_TWITCH_URL);
+  }
+
   const renderMenu = () => (
     <MenuWrapper>
       <MenuTitle>Wild Rift Stats</MenuTitle>
@@ -114,8 +134,9 @@ function App() {
         трендов.
       </MenuSubtitle>
 
+      {/* старый экран */}
       <MenuButton
-        title="Статистика винрейтов"
+        title="Винрейт стримера Инка"
         subtitle={
           updatedAt ? (
             <>Обновлено {formatDateTime(updatedAt)}</>
@@ -125,6 +146,20 @@ function App() {
         }
         onClick={() => setView(VIEWS.WINRATES)}
         gradient={BUTTON_GRADIENTS.blue}
+      />
+
+      {/* новый экран */}
+      <MenuButton
+        title="Тир-лист чемпионов стримера inq"
+        subtitle={
+          updatedAt ? (
+            <>Обновлено {formatDateTime(updatedAt)}</>
+          ) : (
+            "Дата обновления недоступна"
+          )
+        }
+        onClick={() => setView(VIEWS.WINRATES_INQ)}
+        gradient={BUTTON_GRADIENTS.green}
       />
 
       <MenuButton
@@ -170,6 +205,15 @@ function App() {
           <WinrateScreen
             language={language}
             onBack={() => setView(VIEWS.MENU)}
+          />
+        );
+
+      case VIEWS.WINRATES_INQ:
+        return (
+          <TierlistScreenInq
+            language={language}
+            onBack={() => setView(VIEWS.MENU)}
+            onOpenInq={openInqTwitch}
           />
         );
 
