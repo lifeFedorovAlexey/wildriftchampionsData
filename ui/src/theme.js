@@ -50,6 +50,10 @@ export const BUTTON_GRADIENTS = {
     "linear-gradient(135deg, rgba(16,185,129,0.16), rgba(52,211,153,0.32))",
   purple:
     "linear-gradient(135deg, rgba(139,92,246,0.18), rgba(168,85,247,0.3))",
+
+  gold: "linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.34))",
+  crimson:
+    "linear-gradient(135deg, rgba(239,68,68,0.18), rgba(248,113,113,0.34))",
 };
 
 // Универсальная функция: берём цвет из Telegram или fallback

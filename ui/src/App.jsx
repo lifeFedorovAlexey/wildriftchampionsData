@@ -294,7 +294,7 @@ function App() {
           )
         }
         onClick={() => setView(VIEWS.WINRATES_INQ)}
-        gradient={BUTTON_GRADIENTS.green}
+        gradient={BUTTON_GRADIENTS.crimson}
         leftIcon={<IconTierInq />}
       />
 
@@ -308,7 +308,7 @@ function App() {
           )
         }
         onClick={() => setView(VIEWS.TIERLIST)}
-        gradient={BUTTON_GRADIENTS.purple || BUTTON_GRADIENTS.orange}
+        gradient={BUTTON_GRADIENTS.gold}
         leftIcon={<IconTierlist />}
       />
 
@@ -324,7 +324,7 @@ function App() {
         title="График трендов"
         subtitle="Изменение винрейтов по времени"
         onClick={() => setView(VIEWS.GRAPH)}
-        gradient={BUTTON_GRADIENTS.orange}
+        gradient={BUTTON_GRADIENTS.purple}
         leftIcon={<IconTrends />}
       />
 
