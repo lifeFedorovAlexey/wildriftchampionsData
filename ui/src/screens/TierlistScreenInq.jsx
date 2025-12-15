@@ -347,6 +347,7 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
         <div
           style={{
             marginTop: 12,
+            marginBottom: 12,
             padding: 12,
             borderRadius: 14,
             border: "1px solid rgba(255,255,255,0.10)",
