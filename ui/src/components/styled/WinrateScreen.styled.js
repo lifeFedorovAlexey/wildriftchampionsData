@@ -34,11 +34,28 @@ export const WrHeader = styled(WrGrid)`
   ${mqMin(BREAKPOINTS.desktop)} {
     font-size: 14px;
   }
+
+  &:nth-child(even) {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.04)
+    );
+  }
 `;
 
 export const WrRow = styled(WrGrid)`
   font-size: 12px;
   border-bottom: 1px solid rgba(15, 23, 42, 1);
+
+  /* зебра */
+  &:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
 
   ${mqMin(BREAKPOINTS.desktop)} {
     font-size: 14px;
