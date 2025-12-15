@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "../components/PageWrapper.jsx";
 import { RankFilter } from "../components/RankFilter.jsx";
 import { LaneFilter } from "../components/LaneFilter.jsx";
+import StreamerSocials from "../components/StreamerSocials.jsx";
 
 import {
   TlWrap,
@@ -167,7 +168,6 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
   const [rankKey, setRankKey] = useState("diamondPlus");
   const [laneKey, setLaneKey] = useState("top");
 
-  // веса (ползунки)
   const [wWin, setWWin] = useState(1);
   const [wPick, setWPick] = useState(1);
   const [wBan, setWBan] = useState(1);
@@ -491,6 +491,8 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
             </div>
           </div>
         )}
+
+        <StreamerSocials title="Соцсети стримера" name="INQ" />
       </TlWrap>
     </PageWrapper>
   );
