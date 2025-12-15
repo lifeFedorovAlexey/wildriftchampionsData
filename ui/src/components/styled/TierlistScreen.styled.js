@@ -1,6 +1,4 @@
-// ui/src/components/styled/TierlistScreen.styled.js
 import styled from "styled-components";
-import { BREAKPOINTS, mqMin } from "./tokens";
 
 export function tierColor(tier) {
   switch (tier) {
@@ -158,6 +156,158 @@ export const TlChampIcon = styled.img`
   height: 100%;
   object-fit: cover;
   display: block;
+`;
+
+/* ---------- NEW: веса ---------- */
+
+export const TlWeightsBox = styled.div`
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  gap: 10px;
+`;
+
+export const TlWeightsTitle = styled.div`
+  font-weight: 800;
+  opacity: 0.9;
+`;
+
+export const TlWeightSliderWrap = styled.div`
+  display: grid;
+  gap: 6px;
+`;
+
+export const TlWeightSliderTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+`;
+
+export const TlWeightSliderLabel = styled.div`
+  opacity: 0.9;
+`;
+
+export const TlWeightSliderValue = styled.div`
+  font-weight: 800;
+`;
+
+export const TlRange = styled.input`
+  width: 100%;
+`;
+
+/* ---------- NEW: модалка расчёта ---------- */
+
+export const TlModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+  z-index: 9999;
+`;
+
+export const TlModalCard = styled.div`
+  width: min(640px, 100%);
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+`;
+
+export const TlModalTop = styled.div`
+  display: flex;
+  gap: 12px;
+  align-items: center;
+`;
+
+export const TlModalIconWrap = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+`;
+
+export const TlModalIcon = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const TlModalMeta = styled.div`
+  flex: 1;
+`;
+
+export const TlModalName = styled.div`
+  font-weight: 800;
+  font-size: 18px;
+`;
+
+export const TlModalResult = styled.div`
+  opacity: 0.8;
+  margin-top: 2px;
+`;
+
+export const TlModalCloseBtn = styled.button`
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+`;
+
+/* ---------- NEW: строки расчёта ---------- */
+
+export const TlCalcList = styled.div`
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+`;
+
+export const TlCalcRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+`;
+
+export const TlCalcLabel = styled.div`
+  opacity: 0.9;
+`;
+
+export const TlCalcRight = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+`;
+
+export const TlCalcMuted = styled.div`
+  opacity: 0.85;
+`;
+
+export const TlCalcStrong = styled.span`
+  font-weight: 800;
+`;
+
+export const TlCalcSumRow = styled.div`
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
 `;
 
 /* заглушки оставляем, чтобы твои импорты не ломались */

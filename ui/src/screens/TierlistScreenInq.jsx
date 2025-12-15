@@ -15,11 +15,34 @@ import {
   TlChampCard,
   TlChampIcon,
   TlEmpty,
+  TlWeightsBox,
+  TlWeightsTitle,
+  TlWeightSliderWrap,
+  TlWeightSliderTop,
+  TlWeightSliderLabel,
+  TlWeightSliderValue,
+  TlRange,
+  TlModalOverlay,
+  TlModalCard,
+  TlModalTop,
+  TlModalIconWrap,
+  TlModalIcon,
+  TlModalMeta,
+  TlModalName,
+  TlModalResult,
+  TlModalCloseBtn,
+  TlCalcList,
+  TlCalcRow,
+  TlCalcLabel,
+  TlCalcRight,
+  TlCalcMuted,
+  TlCalcStrong,
+  TlCalcSumRow,
 } from "../components/styled";
 
 import { tierColor, tierBg } from "../components/styled";
 
-const API_BASE = "https://wr-api.vercel.app";
+import { API_BASE } from "../constants.js";
 
 /* -------------------- RULES: points -------------------- */
 
@@ -70,15 +93,13 @@ function scoreToTier(score) {
 
 function WeightSlider({ label, value, onChange }) {
   return (
-    <div style={{ display: "grid", gap: 6 }}>
-      <div
-        style={{ display: "flex", justifyContent: "space-between", gap: 10 }}
-      >
-        <div style={{ opacity: 0.9 }}>{label}</div>
-        <div style={{ fontWeight: 800 }}>{Number(value).toFixed(1)}×</div>
-      </div>
+    <TlWeightSliderWrap>
+      <TlWeightSliderTop>
+        <TlWeightSliderLabel>{label}</TlWeightSliderLabel>
+        <TlWeightSliderValue>{Number(value).toFixed(1)}×</TlWeightSliderValue>
+      </TlWeightSliderTop>
 
-      <input
+      <TlRange
         type="range"
         min={0}
         max={3}
@@ -86,7 +107,7 @@ function WeightSlider({ label, value, onChange }) {
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
       />
-    </div>
+    </TlWeightSliderWrap>
   );
 }
 
@@ -135,30 +156,20 @@ function CalcRowWeighted({ label, value, pts, weight }) {
   const weightedRounded = Math.round(weighted * 10) / 10;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        gap: 12,
-        padding: 10,
-        borderRadius: 12,
-        border: "1px solid rgba(255,255,255,0.10)",
-        background: "rgba(255,255,255,0.03)",
-      }}
-    >
-      <div style={{ opacity: 0.9 }}>{label}</div>
+    <TlCalcRow>
+      <TlCalcLabel>{label}</TlCalcLabel>
 
-      <div style={{ display: "flex", gap: 10, alignItems: "baseline" }}>
-        <div style={{ opacity: 0.85 }}>
+      <TlCalcRight>
+        <TlCalcMuted>
           {value != null ? `${Number(value).toFixed(2)}%` : "—"}
-        </div>
+        </TlCalcMuted>
 
-        <div style={{ opacity: 0.85 }}>
+        <TlCalcMuted>
           {safePts} очк. × {Number(safeW).toFixed(1)} ={" "}
-          <span style={{ fontWeight: 800 }}>{weightedRounded}</span>
-        </div>
-      </div>
-    </div>
+          <TlCalcStrong>{weightedRounded}</TlCalcStrong>
+        </TlCalcMuted>
+      </TlCalcRight>
+    </TlCalcRow>
   );
 }
 
@@ -312,7 +323,6 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
 
     setDate(maxDate);
     return out;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [champions, latestStats, rankKey, laneKey, wWin, wPick, wBan]);
 
   const hasAny =
@@ -344,21 +354,8 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
           </TlSubtitle>
         </TlHeader>
 
-        <div
-          style={{
-            marginTop: 12,
-            marginBottom: 12,
-            padding: 12,
-            borderRadius: 14,
-            border: "1px solid rgba(255,255,255,0.10)",
-            background: "rgba(255,255,255,0.03)",
-            display: "grid",
-            gap: 10,
-          }}
-        >
-          <div style={{ fontWeight: 800, opacity: 0.9 }}>
-            Настройки расчёта (веса)
-          </div>
+        <TlWeightsBox>
+          <TlWeightsTitle>Настройки расчёта (веса)</TlWeightsTitle>
 
           <WeightSlider label="Вес винрейта" value={wWin} onChange={setWWin} />
           <WeightSlider
@@ -367,7 +364,7 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
             onChange={setWPick}
           />
           <WeightSlider label="Вес банрейта" value={wBan} onChange={setWBan} />
-        </div>
+        </TlWeightsBox>
 
         {hasAny ? (
           tiersOrder.map((tierKey) => (
@@ -383,78 +380,29 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
         ) : null}
 
         {selected && (
-          <div
-            onClick={() => setSelected(null)}
-            style={{
-              position: "fixed",
-              inset: 0,
-              background: "rgba(0,0,0,0.55)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 16,
-              zIndex: 9999,
-            }}
-          >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                width: "min(640px, 100%)",
-                background: "#0b1220",
-                border: "1px solid rgba(255,255,255,0.10)",
-                borderRadius: 16,
-                padding: 16,
-                boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
-              }}
-            >
-              <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                <div
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 12,
-                    overflow: "hidden",
-                  }}
-                >
+          <TlModalOverlay onClick={() => setSelected(null)}>
+            <TlModalCard onClick={(e) => e.stopPropagation()}>
+              <TlModalTop>
+                <TlModalIconWrap>
                   {selected.icon ? (
-                    <img
-                      src={selected.icon}
-                      alt={selected.name}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
+                    <TlModalIcon src={selected.icon} alt={selected.name} />
                   ) : null}
-                </div>
+                </TlModalIconWrap>
 
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 800, fontSize: 18 }}>
-                    {selected.name}
-                  </div>
-                  <div style={{ opacity: 0.8, marginTop: 2 }}>
+                <TlModalMeta>
+                  <TlModalName>{selected.name}</TlModalName>
+                  <TlModalResult>
                     Итог: <b>{selected.computedTier}</b> •{" "}
                     <b>{Number(selected.totalScore).toFixed(1)}</b> очков
-                  </div>
-                </div>
+                  </TlModalResult>
+                </TlModalMeta>
 
-                <button
-                  onClick={() => setSelected(null)}
-                  style={{
-                    background: "transparent",
-                    border: "1px solid rgba(255,255,255,0.15)",
-                    color: "white",
-                    borderRadius: 10,
-                    padding: "8px 10px",
-                    cursor: "pointer",
-                  }}
-                >
+                <TlModalCloseBtn onClick={() => setSelected(null)}>
                   Закрыть
-                </button>
-              </div>
+                </TlModalCloseBtn>
+              </TlModalTop>
 
-              <div style={{ marginTop: 14, display: "grid", gap: 10 }}>
+              <TlCalcList>
                 <CalcRowWeighted
                   label="Винрейт"
                   value={selected.winRate}
@@ -474,22 +422,13 @@ export default function TierlistScreenInq({ language = "ru_ru", onBack }) {
                   weight={selected.wBan}
                 />
 
-                <div
-                  style={{
-                    marginTop: 6,
-                    paddingTop: 10,
-                    borderTop: "1px solid rgba(255,255,255,0.10)",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontWeight: 800,
-                  }}
-                >
+                <TlCalcSumRow>
                   <div>Сумма</div>
                   <div>{Number(selected.totalScore).toFixed(1)} очков</div>
-                </div>
-              </div>
-            </div>
-          </div>
+                </TlCalcSumRow>
+              </TlCalcList>
+            </TlModalCard>
+          </TlModalOverlay>
         )}
 
         <StreamerSocials title="Соцсети стримера" name="INQ" />

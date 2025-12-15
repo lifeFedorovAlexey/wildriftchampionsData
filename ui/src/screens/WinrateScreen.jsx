@@ -14,10 +14,11 @@ import {
   WrIndex,
   WrAvatar,
   WrAvatarImg,
-  WrEmpty,
 } from "../components/styled/WinrateScreen.styled.js";
 
-const API_BASE = "https://wr-api.vercel.app";
+import LoadingRing from "../components/LoadingRing.jsx";
+
+import { API_BASE } from "../constants.js";
 
 function ChampAvatar({ name, src }) {
   return <WrAvatar>{src && <WrAvatarImg src={src} alt={name} />}</WrAvatar>;
@@ -270,7 +271,7 @@ export function WinrateScreen({ language = "ru_ru", onBack }) {
         ))}
 
         {!rows.length && !loading && (
-          <WrEmpty>Для выбранных фильтров данных нет.</WrEmpty>
+          <LoadingRing label="ЗАГРУЗКА" logoText="L" />
         )}
       </WrWrap>
     </PageWrapper>

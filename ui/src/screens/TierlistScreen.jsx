@@ -15,7 +15,7 @@ import {
   TlChampIcon,
 } from "../components/styled";
 import { tierColor, tierBg } from "../components/styled";
-const API_BASE = "https://wr-api.vercel.app";
+import { API_BASE } from "../constants.js";
 
 function TierChampionIcon({ champ }) {
   return (

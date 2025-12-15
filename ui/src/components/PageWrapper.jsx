@@ -5,12 +5,11 @@ import {
   PwTop,
   PwFilters,
   PwContent,
-  PwState,
   PwError,
   PwCard,
   PwCardInner,
 } from "./styled/PageWrapper.styled.js";
-
+import LoadingRing from "./LoadingRing.jsx";
 export default function PageWrapper({
   onBack,
   filters,
@@ -36,7 +35,7 @@ export default function PageWrapper({
 
       {/* контент + loading/error */}
       <PwContainer as={PwContent}>
-        {loading && <PwState>{loadingText}</PwState>}
+        {loading && <LoadingRing label={loadingText} logoText="L" />}
 
         {!loading && error && <PwError>{error}</PwError>}
 

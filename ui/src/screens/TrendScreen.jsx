@@ -22,7 +22,7 @@ import {
   TrMetricDelta,
 } from "../components/styled/TrendScreen.styled.js";
 
-const API_BASE = "https://wr-api.vercel.app";
+import { API_BASE } from "../constants.js";
 
 // ---------- таблица ----------
 function TrendTable({ days }) {
@@ -218,9 +218,7 @@ export default function TrendScreen({ onBack }) {
               month: "2-digit",
             });
           }
-        } catch {
-          // ignore
-        }
+        } catch {}
 
         return {
           fullDate,
