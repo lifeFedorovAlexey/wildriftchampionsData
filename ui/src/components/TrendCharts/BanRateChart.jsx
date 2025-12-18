@@ -19,6 +19,9 @@ export const BanRateChart = React.memo(function BanRateChart({
   width,
   height,
 }) {
+  const hasTrend =
+    Array.isArray(days) && days.some((d) => Number.isFinite(d?.banTrend));
+
   return (
     <AreaChart
       width={width}
@@ -51,6 +54,7 @@ export const BanRateChart = React.memo(function BanRateChart({
         labelFormatter={(_, payload) => payload?.[0]?.payload?.fullDate ?? ""}
       />
 
+      {/* Факт */}
       <Area
         type="monotone"
         dataKey="banRate"
@@ -60,6 +64,21 @@ export const BanRateChart = React.memo(function BanRateChart({
         fill="url(#trendBan)"
         activeDot={{ r: 3 }}
       />
+
+      {/* Тренд (пунктир поверх, без заливки) */}
+      {hasTrend && (
+        <Area
+          type="linear"
+          dataKey="banTrend"
+          name="Тренд"
+          stroke="#f97316"
+          strokeWidth={2}
+          strokeDasharray="6 6"
+          fill="transparent"
+          activeDot={false}
+          dot={false}
+        />
+      )}
     </AreaChart>
   );
 });

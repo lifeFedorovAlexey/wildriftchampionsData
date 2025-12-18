@@ -19,6 +19,9 @@ export const PickRateChart = React.memo(function PickRateChart({
   width,
   height,
 }) {
+  const hasTrend =
+    Array.isArray(days) && days.some((d) => Number.isFinite(d?.pickTrend));
+
   return (
     <AreaChart
       width={width}
@@ -51,6 +54,7 @@ export const PickRateChart = React.memo(function PickRateChart({
         labelFormatter={(_, payload) => payload?.[0]?.payload?.fullDate ?? ""}
       />
 
+      {/* Факт */}
       <Area
         type="monotone"
         dataKey="pickRate"
@@ -60,6 +64,21 @@ export const PickRateChart = React.memo(function PickRateChart({
         fill="url(#trendPick)"
         activeDot={{ r: 3 }}
       />
+
+      {/* Тренд (пунктир поверх, без заливки) */}
+      {hasTrend && (
+        <Area
+          type="linear"
+          dataKey="pickTrend"
+          name="Тренд"
+          stroke="#60a5fa"
+          strokeWidth={2}
+          strokeDasharray="6 6"
+          fill="transparent"
+          activeDot={false}
+          dot={false}
+        />
+      )}
     </AreaChart>
   );
 });

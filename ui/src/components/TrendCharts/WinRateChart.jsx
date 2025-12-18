@@ -19,6 +19,9 @@ export const WinRateChart = React.memo(function WinRateChart({
   width,
   height,
 }) {
+  const hasTrend =
+    Array.isArray(days) && days.some((d) => Number.isFinite(d?.winTrend));
+
   return (
     <AreaChart
       width={width}
@@ -51,6 +54,7 @@ export const WinRateChart = React.memo(function WinRateChart({
         labelFormatter={(_, payload) => payload?.[0]?.payload?.fullDate ?? ""}
       />
 
+      {/* Факт */}
       <Area
         type="monotone"
         dataKey="winRate"
@@ -60,6 +64,21 @@ export const WinRateChart = React.memo(function WinRateChart({
         fill="url(#trendWin)"
         activeDot={{ r: 4 }}
       />
+
+      {/* Тренд (пунктир поверх, без заливки) */}
+      {hasTrend && (
+        <Area
+          type="linear"
+          dataKey="winTrend"
+          name="Тренд"
+          stroke="#4ade80"
+          strokeWidth={2}
+          strokeDasharray="6 6"
+          fill="transparent"
+          activeDot={false}
+          dot={false}
+        />
+      )}
     </AreaChart>
   );
 });

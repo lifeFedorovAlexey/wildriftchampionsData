@@ -24,6 +24,51 @@ import {
 
 import { API_BASE } from "../constants.js";
 
+// ---------- тренд (linear regression) ----------
+function toNum(v, fallback = 0) {
+  const n = typeof v === "number" ? v : Number(v);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+function buildLinearTrend(points, yKey, xKey = "ts") {
+  const n = points.length;
+  if (!n) return [];
+
+  // X = ts, если вдруг ts отсутствует — fallback на индекс
+  const xs = points.map((p, i) =>
+    typeof p?.[xKey] === "number" && Number.isFinite(p[xKey]) ? p[xKey] : i
+  );
+  const ys = points.map((p) => toNum(p?.[yKey], 0));
+
+  let sumX = 0;
+  let sumY = 0;
+  let sumXY = 0;
+  let sumXX = 0;
+
+  for (let i = 0; i < n; i++) {
+    const x = xs[i];
+    const y = ys[i];
+    sumX += x;
+    sumY += y;
+    sumXY += x * y;
+    sumXX += x * x;
+  }
+
+  const denom = n * sumXX - sumX * sumX;
+
+  // На случай вырожденности — плоский тренд по среднему
+  if (Math.abs(denom) < 1e-12) {
+    const avg = sumY / n;
+    return points.map(() => Number(avg.toFixed(4)));
+  }
+
+  // y = a*x + b
+  const a = (n * sumXY - sumX * sumY) / denom;
+  const b = (sumY - a * sumX) / n;
+
+  return points.map((_, i) => Number((a * xs[i] + b).toFixed(4)));
+}
+
 // ---------- таблица ----------
 function TrendTable({ days }) {
   if (!days || !days.length) return null;
@@ -224,21 +269,36 @@ export default function TrendScreen({ onBack }) {
           fullDate,
           date: dateLabel,
           ts,
-          winRate: item.winRate ?? 0,
-          pickRate: item.pickRate ?? 0,
-          banRate: item.banRate ?? 0,
+          winRate: toNum(item.winRate ?? 0, 0),
+          pickRate: toNum(item.pickRate ?? 0, 0),
+          banRate: toNum(item.banRate ?? 0, 0),
         };
       })
       .filter(Boolean)
       .sort((a, b) => (a.ts ?? 0) - (b.ts ?? 0));
 
-    if (range === "all") return mapped;
+    const inRange = (() => {
+      if (range === "all") return mapped;
 
-    const now = Date.now();
-    const daysBack = range === "month" ? 30 : 7;
-    const cutoff = now - daysBack * 24 * 60 * 60 * 1000;
+      const now = Date.now();
+      const daysBack = range === "month" ? 30 : 7;
+      const cutoff = now - daysBack * 24 * 60 * 60 * 1000;
 
-    return mapped.filter((d) => d.ts == null || d.ts >= cutoff);
+      return mapped.filter((d) => d.ts == null || d.ts >= cutoff);
+    })();
+
+    if (!inRange.length) return [];
+
+    const winTrend = buildLinearTrend(inRange, "winRate");
+    const pickTrend = buildLinearTrend(inRange, "pickRate");
+    const banTrend = buildLinearTrend(inRange, "banRate");
+
+    return inRange.map((d, i) => ({
+      ...d,
+      winTrend: winTrend[i],
+      pickTrend: pickTrend[i],
+      banTrend: banTrend[i],
+    }));
   }, [rawHistory, range]);
 
   const hasSelection = !!selectedChampion && days.length > 0;
