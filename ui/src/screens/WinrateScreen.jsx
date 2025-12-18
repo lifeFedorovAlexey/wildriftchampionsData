@@ -21,7 +21,19 @@ import LoadingRing from "../components/LoadingRing.jsx";
 import { API_BASE } from "../constants.js";
 
 function ChampAvatar({ name, src }) {
-  return <WrAvatar>{src && <WrAvatarImg src={src} alt={name} />}</WrAvatar>;
+  return (
+    <WrAvatar>
+      {src && (
+        <WrAvatarImg
+          src={src}
+          alt={name}
+          decoding="async"
+          width="64"
+          height="64"
+        />
+      )}
+    </WrAvatar>
+  );
 }
 
 function winRateColor(v) {

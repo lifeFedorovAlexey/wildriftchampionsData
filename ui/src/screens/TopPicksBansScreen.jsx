@@ -44,7 +44,19 @@ const HIGH_ELO_RANKS = new Set(["king", "peak"]);
 
 // аватарка чемпиона
 function ChampAvatarCard({ name, src }) {
-  return <TpAvatar>{src && <TpAvatarImg src={src} alt={name} />}</TpAvatar>;
+  return (
+    <TpAvatar>
+      {src && (
+        <TpAvatarImg
+          src={src}
+          alt={name}
+          decoding="async"
+          width="64"
+          height="64"
+        />
+      )}
+    </TpAvatar>
+  );
 }
 
 // карточка топ-чемпиона (краткая инфа + клик)
