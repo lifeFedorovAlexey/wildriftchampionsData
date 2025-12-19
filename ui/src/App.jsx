@@ -1,4 +1,3 @@
-// ui/src/App.jsx
 import { useEffect, useState } from "react";
 import { WinrateScreen } from "./screens/WinrateScreen.jsx";
 import TierlistScreenInq from "./screens/TierlistScreenInq.jsx";
@@ -129,15 +128,15 @@ function App() {
 
   const renderMenu = () => (
     <MenuWrapper>
-      <MenuTitle>Wild Rift Stats</MenuTitle>
+      <MenuTitle>Wild Rift All Stats</MenuTitle>
 
       <MenuSubtitle>
-        Выбери раздел. Активны: винрейты, тир-лист, топ пики/баны, график
-        трендов.
+        Актуальная статистика Wild Rift: винрейты, автоматические тир-листы и
+        игровые тренды.
       </MenuSubtitle>
 
       <MenuButton
-        title="Винрейт чемпионов CN"
+        title="Винрейт чемпионов"
         subtitle={
           updatedAt ? (
             <>Обновлено {formatDateTime(updatedAt)}</>
@@ -151,28 +150,16 @@ function App() {
       />
 
       <MenuButton
-        title="Тир-лист чемпионов стримера INQ"
-        subtitle={
-          updatedAt ? (
-            <>Обновлено {formatDateTime(updatedAt)}</>
-          ) : (
-            "Дата обновления недоступна"
-          )
-        }
+        title="Тир-лист (авторский)"
+        subtitle="Формулы составлены при поддержке INQ"
         onClick={() => setView(VIEWS.WINRATES_INQ)}
         gradient={BUTTON_GRADIENTS.crimson}
         leftIcon={<IconTierInq />}
       />
 
       <MenuButton
-        title="Тир-лист чемпионов"
-        subtitle={
-          updatedAt ? (
-            <>Тир по strength level, {formatDateTime(updatedAt)}</>
-          ) : (
-            "На основе актуальной статистики"
-          )
-        }
+        title="Тир-лист (по статистике)"
+        subtitle="Формируется из данных по strength leve"
         onClick={() => setView(VIEWS.TIERLIST)}
         gradient={BUTTON_GRADIENTS.gold}
         leftIcon={<IconTierlist />}
@@ -195,7 +182,20 @@ function App() {
       />
 
       <FutureBlock $hintColor={hintColor}>
-        Будущие разделы: чемпионы, билды, гайды
+        Будущие разделы: чемпионы, билды, гайды и многое другое. Есть идеи?
+        Пишите{" "}
+        <a
+          href="https://t.me/FEDOROV_ALEXEY_TG"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: "#a98aff",
+            textDecoration: "none",
+            fontWeight: 500,
+          }}
+        >
+          {"@FEDOROV_ALEXEY_TG".toLocaleLowerCase()}
+        </a>
       </FutureBlock>
     </MenuWrapper>
   );
