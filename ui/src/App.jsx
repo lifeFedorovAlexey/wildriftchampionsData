@@ -136,7 +136,7 @@ function App() {
       </MenuSubtitle>
 
       <MenuButton
-        title="Винрейт чемпионов"
+        title="Статистика Чемпионов"
         subtitle={
           updatedAt ? (
             <>Обновлено {formatDateTime(updatedAt)}</>
