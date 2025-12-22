@@ -43,17 +43,8 @@ export default function PageWrapper({
           </div>
 
           {/* центр */}
-          <div
-            style={{
-              flex: "1 1 auto",
-              display: "flex",
-              justifyContent: "center",
-              textAlign: "center",
-              flexDirection: "column",
-            }}
-          >
-            <MenuHeader />
-          </div>
+
+          <MenuHeader />
 
           {/* правая заглушка для баланса */}
           <div style={{ flex: "0 0 auto", width: 40 }} />
