@@ -16,12 +16,7 @@ import {
   AppMain,
   AppShell,
 } from "./components/styled/AppLayout.styled.js";
-import {
-  MenuWrapper,
-  MenuTitle,
-  MenuSubtitle,
-  FutureBlock,
-} from "./components/styled/Menu.styled.js";
+import { MenuWrapper, FutureBlock } from "./components/styled/Menu.styled.js";
 import {
   IconWinrate,
   IconTierInq,
@@ -29,6 +24,7 @@ import {
   IconPicksBans,
   IconTrends,
 } from "./components/icons/Menu/index.tsx";
+import { MenuHeader } from "./components/MenuHeader.jsx";
 
 import { API_BASE, INQ_TWITCH_URL } from "./constants.js";
 
@@ -128,12 +124,7 @@ function App() {
 
   const renderMenu = () => (
     <MenuWrapper>
-      <MenuTitle>Wild Rift All Stats</MenuTitle>
-
-      <MenuSubtitle>
-        Актуальная статистика Wild Rift: винрейты, автоматические тир-листы и
-        игровые тренды.
-      </MenuSubtitle>
+      <MenuHeader />
 
       <MenuButton
         title="Статистика Чемпионов"

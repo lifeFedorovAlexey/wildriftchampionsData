@@ -1,4 +1,5 @@
 import MenuReturn from "./MenuReturn.jsx";
+import { MenuHeader } from "./MenuHeader.jsx";
 import {
   PwShell,
   PwContainer,
@@ -10,6 +11,7 @@ import {
   PwCardInner,
 } from "./styled/PageWrapper.styled.js";
 import LoadingRing from "./LoadingRing.jsx";
+
 export default function PageWrapper({
   onBack,
   filters,
@@ -23,7 +25,39 @@ export default function PageWrapper({
     <PwShell>
       {/* верхняя панель */}
       <PwContainer as={PwTop}>
-        <MenuReturn onBack={onBack} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            paddingTop: "14px",
+            borderRadius: "14px",
+            background: "rgba(15, 23, 42, 0.85)",
+            border: "1px solid rgba(31, 41, 55, 0.9)",
+            marginBottom: "8px",
+          }}
+        >
+          {/* левая часть */}
+          <div style={{ flex: "0 0 auto" }}>
+            <MenuReturn onBack={onBack} />
+          </div>
+
+          {/* центр */}
+          <div
+            style={{
+              flex: "1 1 auto",
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+              flexDirection: "column",
+            }}
+          >
+            <MenuHeader />
+          </div>
+
+          {/* правая заглушка для баланса */}
+          <div style={{ flex: "0 0 auto", width: 40 }} />
+        </div>
       </PwContainer>
 
       {/* фильтры */}
@@ -33,23 +67,21 @@ export default function PageWrapper({
         </PwContainer>
       )}
 
-      {/* контент + loading/error */}
+      {/* контент */}
       <PwContainer as={PwContent}>
         {loading && <LoadingRing label={loadingText} logoText="L" />}
 
         {!loading && error && <PwError>{error}</PwError>}
 
-        {!loading && !error && (
-          <>
-            {wrapInCard ? (
-              <PwCard>
-                <PwCardInner>{children}</PwCardInner>
-              </PwCard>
-            ) : (
-              children
-            )}
-          </>
-        )}
+        {!loading &&
+          !error &&
+          (wrapInCard ? (
+            <PwCard>
+              <PwCardInner>{children}</PwCardInner>
+            </PwCard>
+          ) : (
+            children
+          ))}
       </PwContainer>
     </PwShell>
   );
