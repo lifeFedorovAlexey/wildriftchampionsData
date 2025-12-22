@@ -223,7 +223,14 @@ export default function Page() {
   }, [rawHistory, range]);
 
   return (
-    <PageWrapper showBack>
+    <PageWrapper
+      showBack
+      title="Тренды Wild Rift"
+      paragraphs={[
+        "Раздел трендов показывает изменения популярности и эффективности чемпионов со временем.",
+        "Он помогает отслеживать влияние патчей и изменения игровой меты.",
+      ]}
+    >
       <ChampionSearch
         champions={champions}
         value={search}
@@ -231,9 +238,13 @@ export default function Page() {
         onSelect={setSelectedChampion}
       />
 
-      <RankFilter value={rankKey} onChange={setRankKey} />
-      <LaneFilter value={laneKey} onChange={setLaneKey} />
-      <RangeFilter value={range} onChange={setRange} />
+      {!loading && (
+        <>
+          <RankFilter value={rankKey} onChange={setRankKey} />
+          <LaneFilter value={laneKey} onChange={setLaneKey} />
+          <RangeFilter value={range} onChange={setRange} />
+        </>
+      )}
 
       {!selectedChampion && <TextHint>Выбери чемпиона.</TextHint>}
 
@@ -245,6 +256,7 @@ export default function Page() {
           <TrendTable days={days} />
         </>
       ) : (
+        !loading &&
         selectedChampion && (
           <TextHint>Нет статистики в рамках линии/чемпиона/ранга</TextHint>
         )

@@ -7,33 +7,66 @@ import MenuHeader from "./MenuHeader";
 
 type Props = {
   showBack?: boolean;
+  title: string;
+  paragraphs?: string[];
   children: React.ReactNode;
 };
 
-export default function PageWrapper({ showBack = false, children }: Props) {
+export default function PageWrapper({
+  showBack = false,
+  title,
+  paragraphs = [],
+  children,
+}: Props) {
   const router = useRouter();
 
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: 12 }}>
-      {/* HEADER LINE */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          marginBottom: 16,
-        }}
-      >
-        {showBack ? <BackButton onClick={() => router.back()} /> : null}
+    <div className="wrap">
+      <header className="top">
+        {showBack ? (
+          <nav aria-label="Навигация назад" className="backTop">
+            <BackButton onClick={() => router.back()} />
+          </nav>
+        ) : null}
 
-        {/* MenuHeader занимает всю ширину */}
-        <div style={{ flex: 1 }}>
-          <MenuHeader />
-        </div>
-      </div>
+        <MenuHeader title={title} paragraphs={paragraphs} />
+      </header>
 
-      {/* PAGE CONTENT */}
-      {children}
+      <main>{children}</main>
+
+      <style jsx>{`
+        .wrap {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 12px;
+        }
+
+        .top {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 16px;
+        }
+
+        .backTop {
+          display: flex;
+          align-items: center;
+        }
+
+        /* Мобилка: кнопка слева над заголовком */
+        @media (max-width: 520px) {
+          .backTop {
+            margin-bottom: 4px;
+          }
+        }
+
+        /* Десктоп: можно слегка отодвинуть */
+        @media (min-width: 900px) {
+          .backTop {
+            margin-bottom: 8px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

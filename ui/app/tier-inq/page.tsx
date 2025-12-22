@@ -407,7 +407,14 @@ export default function TierlistInqPage() {
   if (loading) return <LoadingRing label="Считаю тир-лист…" />;
 
   return (
-    <PageWrapper showBack>
+    <PageWrapper
+      showBack
+      title="Тир-лист с настраеваемыми весами от INQ"
+      paragraphs={[
+        "Этот раздел позволяет получить тир-лист под конкретные условия: ранг, линия или фильтры.",
+        "В алгоритмах расчета используется формула от INQ с возможностью настройки весов параметров.",
+      ]}
+    >
       {error ? (
         <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
       ) : (
