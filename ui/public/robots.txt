@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /api/
+
+Host: wildriftallstats.ru
 Sitemap: https://wildriftallstats.ru/sitemap.xml
