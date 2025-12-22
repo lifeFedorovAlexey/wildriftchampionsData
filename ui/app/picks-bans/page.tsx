@@ -389,7 +389,13 @@ export default function PicksBansPage() {
   if (loading) return <LoadingRing label="Считаю пики и баны…" />;
 
   return (
-    <PageWrapper showBack>
+    <PageWrapper
+      showBack
+      title="Пики и баны в Wild Rift"
+      paragraphs={[
+        "Здесь показано, каких чемпионов чаще всего выбирают и запрещают в рейтинговых матчах.",
+      ]}
+    >
       {error ? (
         <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
       ) : (

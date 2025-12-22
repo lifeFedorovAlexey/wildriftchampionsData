@@ -223,7 +223,14 @@ export default function Page() {
   }, [rawHistory, range]);
 
   return (
-    <PageWrapper showBack>
+    <PageWrapper
+      showBack
+      title="Тренды Wild Rift"
+      paragraphs={[
+        "Раздел трендов показывает изменения популярности и эффективности чемпионов со временем.",
+        "Он помогает отслеживать влияние патчей и изменения игровой меты.",
+      ]}
+    >
       <ChampionSearch
         champions={champions}
         value={search}

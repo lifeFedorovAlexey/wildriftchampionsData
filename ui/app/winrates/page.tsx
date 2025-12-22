@@ -265,7 +265,13 @@ export default function Page() {
   if (loading) return <LoadingRing label="Загружаю статистику…" />;
 
   return (
-    <PageWrapper showBack>
+    <PageWrapper
+      showBack
+      title="Винрейты чемпионов Wild Rift"
+      paragraphs={[
+        "На этой странице собрана статистика винрейтов чемпионов Wild Rift по ролям и рангам.",
+      ]}
+    >
       {error ? <div style={{ padding: 12, opacity: 0.9 }}>{error}</div> : null}
 
       {!error ? (

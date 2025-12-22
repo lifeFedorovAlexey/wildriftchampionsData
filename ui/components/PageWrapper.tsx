@@ -7,10 +7,17 @@ import MenuHeader from "./MenuHeader";
 
 type Props = {
   showBack?: boolean;
+  title: string;
+  paragraphs?: string[];
   children: React.ReactNode;
 };
 
-export default function PageWrapper({ showBack = false, children }: Props) {
+export default function PageWrapper({
+  showBack = false,
+  title,
+  paragraphs = [],
+  children,
+}: Props) {
   const router = useRouter();
 
   return (
@@ -24,16 +31,20 @@ export default function PageWrapper({ showBack = false, children }: Props) {
           marginBottom: 16,
         }}
       >
-        {showBack ? <BackButton onClick={() => router.back()} /> : null}
+        {showBack ? (
+          <nav aria-label="Навигация назад">
+            <BackButton onClick={() => router.back()} />
+          </nav>
+        ) : null}
 
-        {/* MenuHeader занимает всю ширину */}
+        {/* Header занимает всю ширину */}
         <div style={{ flex: 1 }}>
-          <MenuHeader />
+          <MenuHeader title={title} paragraphs={paragraphs} />
         </div>
       </div>
 
       {/* PAGE CONTENT */}
-      {children}
+      <main>{children}</main>
     </div>
   );
 }

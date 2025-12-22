@@ -148,7 +148,13 @@ export default function TierlistPage() {
   if (loading) return <LoadingRing label="Считаю тир-лист…" />;
 
   return (
-    <PageWrapper showBack>
+    <PageWrapper
+      showBack
+      title="Автоматический тир-лист чемпионов Wild Rift"
+      paragraphs={[
+        "Тир-лист строится автоматически на основе статистических данных strength level.",
+      ]}
+    >
       {error ? (
         <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
       ) : (

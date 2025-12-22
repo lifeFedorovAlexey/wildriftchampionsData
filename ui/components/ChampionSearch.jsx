@@ -22,7 +22,8 @@ export function ChampionSearch({ champions, value, onChange, onSelect }) {
       style={{
         position: "relative",
         width: "100%",
-        marginBottom: "12px",
+        maxWidth: 360,
+        margin: "0 auto 14px",
       }}
     >
       <input

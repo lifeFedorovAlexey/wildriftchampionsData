@@ -22,7 +22,13 @@ const BUTTON_GRADIENTS = {
 
 export default function HomePage() {
   return (
-    <PageWrapper>
+    <PageWrapper
+      title="Wildriftallstats.ru — Статистика по Wild Rift"
+      paragraphs={[
+        "Здесь собраны ключевые метрики по Wild Rift: винрейты, популярность и эффективность чемпионов.",
+        "Данные обновляются регулярно, чтобы можно было быстро понять, что сейчас работает в игре.",
+      ]}
+    >
       <div style={{ display: "grid", gap: 10 }}>
         <MenuButton
           title="Статистика Чемпионов"
