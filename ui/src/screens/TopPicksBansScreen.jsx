@@ -30,10 +30,10 @@ import { API_BASE } from "../constants.js";
 // порядок рангов и их русские названия
 const RANK_KEYS = ["diamondPlus", "masterPlus", "king", "peak"];
 const RANK_LABELS_RU = {
-  diamondPlus: "алмаз",
-  masterPlus: "мастер",
-  king: "гм",
-  peak: "чалик",
+  diamondPlus: "Алмаз",
+  masterPlus: "Мастер",
+  king: "Грандмастер",
+  peak: "Претендент",
 };
 
 const EXCLUDED_RANK_KEYS = new Set(["overall"]);

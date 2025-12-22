@@ -1,8 +1,8 @@
 export const RANK_OPTIONS = [
   { key: "diamondPlus", label: "Алмаз" },
   { key: "masterPlus", label: "Мастер" },
-  { key: "king", label: "ГМ" },
-  { key: "peak", label: "Чалик" },
+  { key: "king", label: "Грандмастер" },
+  { key: "peak", label: "Претендент" },
   { key: "overall", label: "Не CN" },
 ];
 
