@@ -2,7 +2,16 @@ import React from "react";
 import { MenuTitle, MenuSubtitle } from "./styled/Menu.styled.js";
 export const MenuHeader = () => {
   return (
-    <div style={{ marginBottom: "20px" }}>
+    <div
+      style={{
+        flex: "1 1 auto",
+        display: "flex",
+        justifyContent: "center",
+        textAlign: "center",
+        flexDirection: "column",
+        marginBottom: "20px",
+      }}
+    >
       <MenuTitle>Wildriftallstats.ru</MenuTitle>
 
       <MenuSubtitle>
