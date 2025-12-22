@@ -238,9 +238,13 @@ export default function Page() {
         onSelect={setSelectedChampion}
       />
 
-      <RankFilter value={rankKey} onChange={setRankKey} />
-      <LaneFilter value={laneKey} onChange={setLaneKey} />
-      <RangeFilter value={range} onChange={setRange} />
+      {!loading && (
+        <>
+          <RankFilter value={rankKey} onChange={setRankKey} />
+          <LaneFilter value={laneKey} onChange={setLaneKey} />
+          <RangeFilter value={range} onChange={setRange} />
+        </>
+      )}
 
       {!selectedChampion && <TextHint>Выбери чемпиона.</TextHint>}
 
@@ -252,6 +256,7 @@ export default function Page() {
           <TrendTable days={days} />
         </>
       ) : (
+        !loading &&
         selectedChampion && (
           <TextHint>Нет статистики в рамках линии/чемпиона/ранга</TextHint>
         )

@@ -21,30 +21,52 @@ export default function PageWrapper({
   const router = useRouter();
 
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: 12 }}>
-      {/* HEADER LINE */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          marginBottom: 16,
-        }}
-      >
+    <div className="wrap">
+      <header className="top">
         {showBack ? (
-          <nav aria-label="Навигация назад">
+          <nav aria-label="Навигация назад" className="backTop">
             <BackButton onClick={() => router.back()} />
           </nav>
         ) : null}
 
-        {/* Header занимает всю ширину */}
-        <div style={{ flex: 1 }}>
-          <MenuHeader title={title} paragraphs={paragraphs} />
-        </div>
-      </div>
+        <MenuHeader title={title} paragraphs={paragraphs} />
+      </header>
 
-      {/* PAGE CONTENT */}
       <main>{children}</main>
+
+      <style jsx>{`
+        .wrap {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 12px;
+        }
+
+        .top {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 16px;
+        }
+
+        .backTop {
+          display: flex;
+          align-items: center;
+        }
+
+        /* Мобилка: кнопка слева над заголовком */
+        @media (max-width: 520px) {
+          .backTop {
+            margin-bottom: 4px;
+          }
+        }
+
+        /* Десктоп: можно слегка отодвинуть */
+        @media (min-width: 900px) {
+          .backTop {
+            margin-bottom: 8px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

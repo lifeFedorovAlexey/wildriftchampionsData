@@ -267,7 +267,7 @@ export default function Page() {
   return (
     <PageWrapper
       showBack
-      title="Винрейты чемпионов Wild Rift"
+      title="Винрейты, пикрейты, банрейты чемпионов Wild Rift по ролям и рангам"
       paragraphs={[
         "На этой странице собрана статистика винрейтов чемпионов Wild Rift по ролям и рангам.",
       ]}
