@@ -14,7 +14,7 @@ export default function SkinsPage() {
       paragraphs={["Тестируем 3D-просмотр. Пока — Люкс :)"]}
     >
       <div style={{ marginTop: 14 }}>
-        <ModelViewer src="/models/hero.glb" height={520} />
+        <ModelViewer url="/models/hero.glb" height={520} />
       </div>
     </PageWrapper>
   );
