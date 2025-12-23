@@ -1,17 +1,21 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import PageWrapper from "@/components/PageWrapper";
-import Footer from "@/components/Footer";
-import SkinsClient from "./SkinsClient";
+
+const ModelViewer = dynamic(() => import("@/components/ModelViewer"), {
+  ssr: false,
+});
 
 export default function SkinsPage() {
   return (
     <PageWrapper
       title="Скины"
-      paragraphs={[
-        "Тестовая страница под 3D-скины.",
-        "Пока тут Люкс в виде GLB.",
-      ]}
+      paragraphs={["Тестируем 3D-просмотр. Пока — Люкс :)"]}
     >
-      <SkinsClient />
+      <div style={{ marginTop: 14 }}>
+        <ModelViewer src="/models/hero.glb" height={520} />
+      </div>
     </PageWrapper>
   );
 }
