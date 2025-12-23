@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 
 import PageWrapper from "@/components/PageWrapper";
 import RankFilter from "@/components/RankFilter";
@@ -17,7 +18,6 @@ import {
   WrSortable,
   WrIndex,
   WrAvatar,
-  WrAvatarImg,
 } from "@/components/styled/winrateScreen";
 
 // ВАЖНО: для локалки используем прокси из next.config.ts (см. ниже)
@@ -51,17 +51,30 @@ type SortState =
   | { column: null; dir: null };
 
 function ChampAvatar({ name, src }: { name: string; src?: string | null }) {
+  // Next/Image = автоматом:
+  // - отдаст 32x32 (или нужный DPR)
+  // - пережмёт формат (часто в webp/avif)
+  // - закэширует
+  if (!src) return <WrAvatar />;
+
   return (
     <WrAvatar>
-      {src ? (
-        <WrAvatarImg
-          src={src}
-          alt={name}
-          decoding="async"
-          width="64"
-          height="64"
-        />
-      ) : null}
+      <Image
+        src={src}
+        alt={name}
+        width={32}
+        height={32}
+        sizes="32px"
+        loading="lazy"
+        decoding="async"
+        style={{
+          width: 32,
+          height: 32,
+          borderRadius: "50%",
+          display: "block",
+          objectFit: "cover",
+        }}
+      />
     </WrAvatar>
   );
 }
