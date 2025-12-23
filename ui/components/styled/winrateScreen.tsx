@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { BREAKPOINTS, mqMin } from "./tokens";
 
 export const WrWrap = styled.div`
@@ -109,25 +110,22 @@ export const WrIndex = styled.div`
 `;
 
 export const WrAvatar = styled.div`
-  width: 28px;
+  width: 32px;
   height: 32px;
-  border-radius: 4px;
-  overflow: hidden;
-  background: rgba(15, 23, 42, 0.85);
-  flex-shrink: 0;
 
-  ${mqMin(BREAKPOINTS.desktop)} {
-    width: 40px;
-    height: 46px;
-    border-radius: 8px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
 `;
 
-export const WrAvatarImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+export const WrAvatarImg = styled(Image)`
+  width: 32px;
+  height: 32px;
   display: block;
+  border-radius: 8px;
+  object-fit: cover;
 `;
 
 export const WrEmpty = styled.div`

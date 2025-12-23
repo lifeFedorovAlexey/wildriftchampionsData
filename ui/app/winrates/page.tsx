@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
 import RankFilter from "@/components/RankFilter";
@@ -51,30 +51,20 @@ type SortState =
   | { column: null; dir: null };
 
 function ChampAvatar({ name, src }: { name: string; src?: string | null }) {
-  // Next/Image = автоматом:
-  // - отдаст 32x32 (или нужный DPR)
-  // - пережмёт формат (часто в webp/avif)
-  // - закэширует
-  if (!src) return <WrAvatar />;
-
   return (
     <WrAvatar>
-      <Image
-        src={src}
-        alt={name}
-        width={32}
-        height={32}
-        sizes="32px"
-        loading="lazy"
-        decoding="async"
-        style={{
-          width: 32,
-          height: 32,
-          borderRadius: "50%",
-          display: "block",
-          objectFit: "cover",
-        }}
-      />
+      {src ? (
+        <Image
+          src={src}
+          alt={name}
+          width={32}
+          height={32}
+          sizes="32px"
+          // если аватарки реально критичные — можно включить priority для первых N,
+          // но по дефолту не надо, иначе сожрёшь сеть
+          style={{ objectFit: "cover" }}
+        />
+      ) : null}
     </WrAvatar>
   );
 }

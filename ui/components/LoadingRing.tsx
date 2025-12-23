@@ -18,12 +18,14 @@ const Wrap = styled.div`
   position: relative;
 `;
 
-// Маска + эффекты остаются, но теперь внутри будет <video>
-const MaskedMedia = styled.div`
+const MaskedSpin = styled.div`
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  overflow: hidden;
+
+  background-image: url("/wildrift-spin.webp");
+  background-size: cover;
+  background-position: center;
 
   mix-blend-mode: screen;
   filter: saturate(1.2) brightness(1.1);
@@ -40,13 +42,6 @@ const MaskedMedia = styled.div`
     rgba(0, 0, 0, 0.8) 62%,
     rgba(0, 0, 0, 0) 70%
   );
-
-  video {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-  }
 `;
 
 const Caption = styled.div`
@@ -64,46 +59,22 @@ export default function LoadingRing({
 }: {
   label?: string;
 }) {
-  const [mediaReady, setMediaReady] = useState(false);
+  const [imageReady, setImageReady] = useState(false);
 
   useEffect(() => {
-    // Прогреваем видео, чтобы Caption не мигал, и чтобы кольцо стартовало сразу
-    const v = document.createElement("video");
-    v.muted = true;
-    v.playsInline = true;
-    v.preload = "auto";
-    v.src = "/wildrift-spin.webm";
-    const onReady = () => setMediaReady(true);
-
-    v.addEventListener("canplaythrough", onReady, { once: true });
-    v.load();
-
-    return () => {
-      v.removeEventListener("canplaythrough", onReady);
-    };
+    const img = new Image();
+    img.src = "/wildrift-spin.webp";
+    img.onload = () => setImageReady(true);
   }, []);
 
   return (
     <Overlay>
       <div style={{ display: "grid", placeItems: "center" }}>
         <Wrap>
-          <MaskedMedia>
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              aria-hidden="true"
-              onCanPlayThrough={() => setMediaReady(true)}
-            >
-              <source src="/wildrift-spin.webm" type="video/webm" />
-              <source src="/wildrift-spin.mp4" type="video/mp4" />
-            </video>
-          </MaskedMedia>
+          <MaskedSpin />
         </Wrap>
 
-        {mediaReady ? <Caption>{label}</Caption> : null}
+        {imageReady ? <Caption>{label}</Caption> : null}
       </div>
     </Overlay>
   );
