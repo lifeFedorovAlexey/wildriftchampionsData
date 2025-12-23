@@ -25,7 +25,7 @@ export default function PageWrapper({
       <header className="top">
         {showBack ? (
           <nav aria-label="Навигация назад" className="backTop">
-            <BackButton onClick={() => router.back()} />
+            <BackButton onClick={() => router.push("/")} />
           </nav>
         ) : null}
 
