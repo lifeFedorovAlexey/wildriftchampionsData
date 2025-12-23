@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import TelegramInit from "@/components/TelegramInit";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://wildriftallstats.ru"),
@@ -74,6 +75,7 @@ export default function RootLayout({
         />
         <TelegramInit />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
