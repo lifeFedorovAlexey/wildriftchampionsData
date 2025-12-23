@@ -23,7 +23,6 @@ const MaskedGif = styled.div`
   inset: 0;
   border-radius: 50%;
 
-  background-image: url("/wildrift-spin.gif");
   background-size: cover;
   background-position: center;
 
