@@ -76,7 +76,7 @@ function LuxModel({ url }: { url: string }) {
 
 export default function ModelViewer({
   url = "/models/hero.glb",
-  height = 520,
+  height = 1000,
 }: {
   url?: string;
   height?: number;
@@ -85,7 +85,7 @@ export default function ModelViewer({
     <div
       style={{ width: "100%", height, borderRadius: 16, overflow: "hidden" }}
     >
-      <Canvas camera={{ position: [0, 1.2, 2.8], fov: 45 }}>
+      <Canvas camera={{ position: [0.5, 0.7, 2.5], fov: 40 }}>
         <Suspense fallback={<Loader />}>
           <ambientLight intensity={0.6} />
           <directionalLight position={[1, 5, 2]} intensity={1.2} />
@@ -96,9 +96,7 @@ export default function ModelViewer({
           <OrbitControls
             enablePan={false}
             minDistance={1.6}
-            maxDistance={4.2}
-            minPolarAngle={0.35}
-            maxPolarAngle={1.55}
+            maxDistance={2.0}
           />
         </Suspense>
       </Canvas>
