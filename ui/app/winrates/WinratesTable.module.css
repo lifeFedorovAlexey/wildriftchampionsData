@@ -1,0 +1,139 @@
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 36px 2fr 0.7fr 0.9fr 0.9fr 0.9fr;
+  column-gap: 4px;
+  padding: 6px 8px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 54px 2.6fr 0.9fr 1fr 1fr 1fr;
+    column-gap: 10px;
+    padding: 10px 12px;
+  }
+}
+
+.header {
+  font-size: 11px;
+  opacity: 0.8;
+  border-bottom: 1px solid rgba(31, 41, 55, 1);
+  position: sticky;
+  top: 0;
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  margin-top: 16px;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    font-size: 14px;
+  }
+}
+
+.row {
+  font-size: 12px;
+  border-bottom: 1px solid rgba(15, 23, 42, 1);
+}
+
+@media (min-width: 1024px) {
+  .row {
+    font-size: 14px;
+  }
+}
+
+.row:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.sortable {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.sortArrow {
+  display: inline-block;
+  width: 14px;
+  text-align: center;
+  opacity: 0.9;
+  flex: 0 0 14px;
+}
+
+.index {
+  opacity: 0.8;
+}
+
+.heroCell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .heroCell {
+    gap: 10px;
+  }
+}
+
+.heroName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarImg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.empty {
+  padding: 10px 8px;
+  font-size: 13px;
+  opacity: 0.7;
+  text-align: center;
+}
