@@ -204,9 +204,12 @@ export default function Page() {
       })
       .sort((a, b) => a.ts - b.ts);
 
-    const now = Date.now();
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
+    const daysCount = range === "month" ? 31 : 8;
     const cutoff =
-      range === "all" ? 0 : now - (range === "month" ? 30 : 7) * 864e5;
+      range === "all" ? 0 : todayStart.getTime() - (daysCount - 1) * 864e5;
 
     const filtered = mapped.filter((d) => d.ts >= cutoff);
 
