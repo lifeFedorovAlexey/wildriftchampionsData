@@ -60,15 +60,15 @@ function ChampAvatar({ name, src }: { name: string; src?: string | null }) {
           width={32}
           height={32}
           sizes="32px"
-          // если аватарки реально критичные — можно включить priority для первых N,
-          // но по дефолту не надо, иначе сожрёшь сеть
-          style={{ objectFit: "cover" }}
+          quality={60}
+          loading="lazy"
+          decoding="async"
+          style={{ display: "block" }}
         />
       ) : null}
     </WrAvatar>
   );
 }
-
 function winRateColor(v: number | null) {
   if (v == null) return "inherit";
   if (v > 50) return "#4ade80";
