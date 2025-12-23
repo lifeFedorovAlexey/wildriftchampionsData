@@ -207,7 +207,7 @@ export default function Page() {
     const todayStart = new Date();
     todayStart.setHours(0, 0, 0, 0);
 
-    const daysCount = range === "month" ? 31 : 8;
+    const daysCount = range === "month" ? 31 : 7;
     const cutoff =
       range === "all" ? 0 : todayStart.getTime() - (daysCount - 1) * 864e5;
 
