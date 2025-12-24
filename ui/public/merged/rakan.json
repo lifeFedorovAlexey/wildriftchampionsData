@@ -1,0 +1,109 @@
+{
+  "slug": "rakan",
+  "skinCount": 8,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "RAKAN, THE CHARMER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9fb454b2e46e6a1d7f5a969da8a121ee1b490279-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9fb454b2e46e6a1d7f5a969da8a121ee1b490279-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rakan/497000/model.glb",
+        "local": "data\\downloads\\rakan\\497000_rakan.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Rakan"
+    },
+    {
+      "name": "SWEETHEART RAKAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b8d478529f4df24d82c09fd0f85023a4d4f31531-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b8d478529f4df24d82c09fd0f85023a4d4f31531-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rakan/497002/model.glb",
+        "local": "data\\downloads\\rakan\\497002_sweetheart_rakan.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sweetheart Rakan"
+    },
+    {
+      "name": "COSMIC DAWN RAKAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/969e51942d70eb864825aed96512657e993ffc6d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/969e51942d70eb864825aed96512657e993ffc6d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rakan/497001/model.glb",
+        "local": "data\\downloads\\rakan\\497001_cosmic_dawn_rakan.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cosmic Dawn Rakan"
+    },
+    {
+      "name": "STAR GUARDIAN RAKAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c29910b3f4fde02b7d8c4a2de48cfe8841e8f2a7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c29910b3f4fde02b7d8c4a2de48cfe8841e8f2a7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rakan/497005/model.glb",
+        "local": "data\\downloads\\rakan\\497005_star_guardian_rakan.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Rakan"
+    },
+    {
+      "name": "Redeemed Star Guardian Rakan",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a5fe9f978190dfb29fbeb9bff32b4e85cfc81fb0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a5fe9f978190dfb29fbeb9bff32b4e85cfc81fb0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rakan/497036/model.glb",
+        "local": "data\\downloads\\rakan\\497036_redeemed_star_guardian_rakan.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Redeemed Star Guardian Rakan"
+    },
+    {
+      "name": "ELDERWOOD RAKAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ef93809df745175cd5de133bc38252a825e8777a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ef93809df745175cd5de133bc38252a825e8777a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rakan/497009/model.glb",
+        "local": "data\\downloads\\rakan\\497009_elderwood_rakan.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Elderwood Rakan"
+    },
+    {
+      "name": "Celestial Embroidery Rakan",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4e015ad30c042884da6ce175bf638cfd7237b38f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4e015ad30c042884da6ce175bf638cfd7237b38f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CRYSTAL ROSE RAKAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c1413495fbf70ed8c6cb28471c0be3aa9fa7cd1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c1413495fbf70ed8c6cb28471c0be3aa9fa7cd1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

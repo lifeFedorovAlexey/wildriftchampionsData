@@ -1,0 +1,81 @@
+{
+  "slug": "evelynn",
+  "skinCount": 6,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "EVELYNN, AGONY'S EMBRACE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/56ba72ae0efc8cd85cad20ccb594518ed43434a4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/56ba72ae0efc8cd85cad20ccb594518ed43434a4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/evelynn/28000/model.glb",
+        "local": "data\\downloads\\evelynn\\28000_evelynn.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Evelynn"
+    },
+    {
+      "name": "TANGO EVELYNN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bf0af09dce2c1c98d96872237b97961e1bcbf43b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bf0af09dce2c1c98d96872237b97961e1bcbf43b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/evelynn/28003/model.glb",
+        "local": "data\\downloads\\evelynn\\28003_tango_evelynn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Tango Evelynn"
+    },
+    {
+      "name": "K/DA ALL OUT EVELYNN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6b50745f6aab977148c6689f24012d5d14b747be-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6b50745f6aab977148c6689f24012d5d14b747be-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/evelynn/28015/model.glb",
+        "local": "data\\downloads\\evelynn\\28015_k_da_all_out_evelynn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "K/DA ALL OUT Evelynn"
+    },
+    {
+      "name": "GLORIOUS EVELYNN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/74e66f87abe3934f0d0aaf180016554ebb4cbc21-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/74e66f87abe3934f0d0aaf180016554ebb4cbc21-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "COVEN EVELYNN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f9901bcb57de21fec6693790bfb3f824a2ff53e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f9901bcb57de21fec6693790bfb3f824a2ff53e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/evelynn/28024/model.glb",
+        "local": "data\\downloads\\evelynn\\28024_coven_evelynn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Coven Evelynn"
+    },
+    {
+      "name": "Celestial Embroidery Evelynn",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/566ab912163e04b56251f5352a7413ff8264f180-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/566ab912163e04b56251f5352a7413ff8264f180-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

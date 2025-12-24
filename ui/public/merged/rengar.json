@@ -1,0 +1,72 @@
+{
+  "slug": "rengar",
+  "skinCount": 5,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "RENGAR, THE PRIDESTALKER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7d8064aa6c6bf90e29b0fe39877733c396a7734e-6000x3541.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7d8064aa6c6bf90e29b0fe39877733c396a7734e-6000x3541.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rengar/107000/model.glb",
+        "local": "data\\downloads\\rengar\\107000_rengar.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Rengar"
+    },
+    {
+      "name": "NIGHT HUNTER RENGAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9e51a5de262bc003427a13a859b2850ba3fc6969-7000x3939.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9e51a5de262bc003427a13a859b2850ba3fc6969-7000x3939.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rengar/107002/model.glb",
+        "local": "data\\downloads\\rengar\\107002_night_hunter_rengar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Night Hunter Rengar"
+    },
+    {
+      "name": "Mecha Rengar",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c1aec8072526d95a12a786bc7365277f10e3cda5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c1aec8072526d95a12a786bc7365277f10e3cda5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rengar/107008/model.glb",
+        "local": "data\\downloads\\rengar\\107008_mecha_rengar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Mecha Rengar"
+    },
+    {
+      "name": "Pretty Kitty Rengar",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c87759f5ec7e34bd39cc64264acb94e8ab41d25d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c87759f5ec7e34bd39cc64264acb94e8ab41d25d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rengar/107015/model.glb",
+        "local": "data\\downloads\\rengar\\107015_pretty_kitty_rengar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pretty Kitty Rengar"
+    },
+    {
+      "name": "HIGH NOON RENGAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a004c98f12feef2b0debbd7b08f073e51ed6bcd9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a004c98f12feef2b0debbd7b08f073e51ed6bcd9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

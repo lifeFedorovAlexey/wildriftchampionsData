@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "game.gtimg.cn",
         pathname: "/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "cmsassets.rgpub.io",
+        pathname: "/sanity/images/**", // ✅ для изображений скинов WR
+      },
     ],
   },
 

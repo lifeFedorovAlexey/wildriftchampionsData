@@ -1,0 +1,30 @@
+{
+  "slug": "ambessa",
+  "skinCount": 2,
+  "with3d": 1,
+  "skins": [
+    {
+      "name": "AMBESSA, THE MATRIARCH OF WAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/58a4e2d29b9d4077e07de00bb9f42d4aee778c57-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/58a4e2d29b9d4077e07de00bb9f42d4aee778c57-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ambessa/799000/model.glb",
+        "local": "data\\downloads\\ambessa\\799000_ambessa.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Ambessa"
+    },
+    {
+      "name": "Arcane Iron Will Ambessa",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bbe015af3e4bc5014fa2da0de5f3f5370d096319-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bbe015af3e4bc5014fa2da0de5f3f5370d096319-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

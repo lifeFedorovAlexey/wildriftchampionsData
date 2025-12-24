@@ -1,0 +1,146 @@
+{
+  "slug": "fiora",
+  "skinCount": 11,
+  "with3d": 8,
+  "skins": [
+    {
+      "name": "FIORA, THE GRAND DUELIST",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cb2cb92c68dd465fb3547cac187c548f013b3df4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cb2cb92c68dd465fb3547cac187c548f013b3df4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiora/114000/model.glb",
+        "local": "data\\downloads\\fiora\\114000_fiora.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Fiora"
+    },
+    {
+      "name": "ROYAL GUARD FIORA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/50998d93ceb1d6a3c42ce75f3a5611ae42be5f2c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/50998d93ceb1d6a3c42ce75f3a5611ae42be5f2c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiora/114001/model.glb",
+        "local": "data\\downloads\\fiora\\114001_royal_guard_fiora.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Royal Guard Fiora"
+    },
+    {
+      "name": "SOARING SWORD FIORA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0aceeb83d31a7b1bc0672d5d99de6842248f78b6-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0aceeb83d31a7b1bc0672d5d99de6842248f78b6-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiora/114022/model.glb",
+        "local": "data\\downloads\\fiora\\114022_soaring_sword_fiora.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Soaring Sword Fiora"
+    },
+    {
+      "name": "Pool Party Fiora",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b737f58ccb89ec26b2da2c625209b2990f0ebc11-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b737f58ccb89ec26b2da2c625209b2990f0ebc11-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiora/114005/model.glb",
+        "local": "data\\downloads\\fiora\\114005_pool_party_fiora.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pool Party Fiora"
+    },
+    {
+      "name": "PROJECT: Fiora",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/478e3185edea87c4435e307490f9889423f21402-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/478e3185edea87c4435e307490f9889423f21402-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiora/114004/model.glb",
+        "local": "data\\downloads\\fiora\\114004_project_fiora.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Fiora"
+    },
+    {
+      "name": "Glorious Crimson Fiora",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2deaa9143f7593855271f228c99b066663423803-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2deaa9143f7593855271f228c99b066663423803-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Pulsefire Fiora",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7204216868b50fe40ff5fd5b82035542493bc2b1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7204216868b50fe40ff5fd5b82035542493bc2b1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiora/114041/model.glb",
+        "local": "data\\downloads\\fiora\\114041_pulsefire_fiora.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pulsefire Fiora"
+    },
+    {
+      "name": "LUNAR BEAST FIORA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c2c7ab11f2e682775a07eef2ca6af385ce75f2e9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c2c7ab11f2e682775a07eef2ca6af385ce75f2e9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiora/114050/model.glb",
+        "local": "data\\downloads\\fiora\\114050_lunar_beast_fiora.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Lunar Beast Fiora"
+    },
+    {
+      "name": "KBG FIORA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/94eac119fad312677b819ad03205a95fc4af9773-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/94eac119fad312677b819ad03205a95fc4af9773-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "KBG FIORA MYTHIC CHROMA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/26d15661eb29216181dec265672501f17d397210-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/26d15661eb29216181dec265672501f17d397210-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Battle Hound Fiora",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2689f79938dcf48cd0651ca8a62d396d37b10311-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2689f79938dcf48cd0651ca8a62d396d37b10311-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiora/114089/model.glb",
+        "local": "data\\downloads\\fiora\\114089_battle_queen_fiora.glb"
+      },
+      "matchScore": 0.55,
+      "matchedName": "Battle Queen Fiora"
+    }
+  ]
+}

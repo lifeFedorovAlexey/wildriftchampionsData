@@ -1,0 +1,99 @@
+{
+  "slug": "aatrox",
+  "skinCount": 8,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "AATROX, THE DARKIN BLADE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a055c66a60d9803790101d08643def3935544c64-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a055c66a60d9803790101d08643def3935544c64-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/aatrox/266000/model.glb",
+        "local": "data\\downloads\\aatrox\\266000_aatrox.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Aatrox"
+    },
+    {
+      "name": "BLOOD MOON AATROX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c715c932c37d9b7436d18a7ec9d0b93ba00090e7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c715c932c37d9b7436d18a7ec9d0b93ba00090e7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/aatrox/266007/model.glb",
+        "local": "data\\downloads\\aatrox\\266007_blood_moon_aatrox.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blood Moon Aatrox"
+    },
+    {
+      "name": "Shan Hai Scrolls Aatrox",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ca9afae534f5d5a767b3b8cedc8d418e08545430-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ca9afae534f5d5a767b3b8cedc8d418e08545430-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "MECHA AATROX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/90f9c0da2793354b3ddc38ef5e11295a3425b316-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/90f9c0da2793354b3ddc38ef5e11295a3425b316-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/aatrox/266002/model.glb",
+        "local": "data\\downloads\\aatrox\\266002_mecha_aatrox.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Mecha Aatrox"
+    },
+    {
+      "name": "DRAGON LANTERN AATROX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/89c104e9eb5d80f500a0e29bdc07b50d6adfc2d8-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/89c104e9eb5d80f500a0e29bdc07b50d6adfc2d8-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DRAGON LANTERN PRESTIGE AATROX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3a90c5181726180817a97cdcea28da76c58fc695-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3a90c5181726180817a97cdcea28da76c58fc695-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Primordian Aatrox",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/df7671e30ac6c3f07b6fb19a366d5bc59e455e64-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/df7671e30ac6c3f07b6fb19a366d5bc59e455e64-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/aatrox/266033/model.glb",
+        "local": "data\\downloads\\aatrox\\266033_primordian_aatrox.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Primordian Aatrox"
+    },
+    {
+      "name": "WEATHER ENTITY AATROX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ed09cc1c802079af5664c2e57100daf3e17d1753-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ed09cc1c802079af5664c2e57100daf3e17d1753-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

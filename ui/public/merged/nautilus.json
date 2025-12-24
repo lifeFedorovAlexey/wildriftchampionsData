@@ -1,0 +1,58 @@
+{
+  "slug": "nautilus",
+  "skinCount": 4,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "NAUTILUS, THE TITAN OF THE DEPTHS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/717732b6371024b0d8aed42ba1910a714bb5cb4f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/717732b6371024b0d8aed42ba1910a714bb5cb4f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/nautilus/111000/model.glb",
+        "local": "data\\downloads\\nautilus\\111000_nautilus.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Nautilus"
+    },
+    {
+      "name": "ASTRONAUTILUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b47ca23373173a82859a75acb4f5f6e1f389968c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b47ca23373173a82859a75acb4f5f6e1f389968c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/nautilus/111003/model.glb",
+        "local": "data\\downloads\\nautilus\\111003_astronautilus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "AstroNautilus"
+    },
+    {
+      "name": "WARDEN NAUTILUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/192c46f6d2cec4d7ea762c9066d133fe5eae8e47-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/192c46f6d2cec4d7ea762c9066d133fe5eae8e47-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/nautilus/111004/model.glb",
+        "local": "data\\downloads\\nautilus\\111004_warden_nautilus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Warden Nautilus"
+    },
+    {
+      "name": "MECHA NAUTILUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/100c7bbb4cc08a3c0fa8caf48bb7495b2c744de7-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/100c7bbb4cc08a3c0fa8caf48bb7495b2c744de7-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

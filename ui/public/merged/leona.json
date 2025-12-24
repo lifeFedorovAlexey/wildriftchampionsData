@@ -1,0 +1,119 @@
+{
+  "slug": "leona",
+  "skinCount": 8,
+  "with3d": 8,
+  "skins": [
+    {
+      "name": "LEONA, THE RADIANT DAWN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/35facc3a554d7b0401eb2c59a50db0f440de3b4a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/35facc3a554d7b0401eb2c59a50db0f440de3b4a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/leona/89000/model.glb",
+        "local": "data\\downloads\\leona\\89000_leona.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Leona"
+    },
+    {
+      "name": "PROJECT: LEONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/045361725a2ecbd0583d066b8ef07049914f079b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/045361725a2ecbd0583d066b8ef07049914f079b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/leona/89008/model.glb",
+        "local": "data\\downloads\\leona\\89008_project_leona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Leona"
+    },
+    {
+      "name": "BARBECUE LEONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1e1b8a4e63554aec751055f208fe72e64789cf1b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1e1b8a4e63554aec751055f208fe72e64789cf1b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/leona/89009/model.glb",
+        "local": "data\\downloads\\leona\\89009_barbecue_leona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Barbecue Leona"
+    },
+    {
+      "name": "POOL PARTY LEONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9220b0d4ff69bf17890988b7b65278f26676a08f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9220b0d4ff69bf17890988b7b65278f26676a08f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/leona/89004/model.glb",
+        "local": "data\\downloads\\leona\\89004_pool_party_leona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pool Party Leona"
+    },
+    {
+      "name": "LUNAR ECLIPSE LEONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7dc745b123358f2731162f1a831393e62bc78a31-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7dc745b123358f2731162f1a831393e62bc78a31-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/leona/89011/model.glb",
+        "local": "data\\downloads\\leona\\89011_lunar_eclipse_leona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Lunar Eclipse Leona"
+    },
+    {
+      "name": "SOLAR ECLIPSE LEONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d6ff49bfd305759adbbda967e6679825262000b9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d6ff49bfd305759adbbda967e6679825262000b9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/leona/89010/model.glb",
+        "local": "data\\downloads\\leona\\89010_solar_eclipse_leona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Solar Eclipse Leona"
+    },
+    {
+      "name": "HIGH NOON LEONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/986f415497d16db264d44b4bc071512724a60d8a-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/986f415497d16db264d44b4bc071512724a60d8a-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/leona/89034/model.glb",
+        "local": "data\\downloads\\leona\\89034_high_noon_leona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Leona"
+    },
+    {
+      "name": "BATTLE ACADEMIA LEONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f5eefd52d85adbe4ad6f4dfbf697b799eab78100-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f5eefd52d85adbe4ad6f4dfbf697b799eab78100-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/leona/89021/model.glb",
+        "local": "data\\downloads\\leona\\89021_battle_academia_leona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Academia Leona"
+    }
+  ]
+}

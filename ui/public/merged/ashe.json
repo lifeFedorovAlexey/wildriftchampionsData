@@ -1,0 +1,165 @@
+{
+  "slug": "ashe",
+  "skinCount": 12,
+  "with3d": 10,
+  "skins": [
+    {
+      "name": "ASHE, THE FROST ARCHER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6f8c4f1b77a743a1632674574077a302d205bbc1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6f8c4f1b77a743a1632674574077a302d205bbc1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22000/model.glb",
+        "local": "data\\downloads\\ashe\\22000_ashe.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Ashe"
+    },
+    {
+      "name": "FRELJORD ASHE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/26d3511018dfa4a66fcae6b48c9dac4405e8c00e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/26d3511018dfa4a66fcae6b48c9dac4405e8c00e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22001/model.glb",
+        "local": "data\\downloads\\ashe\\22001_freljord_ashe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Freljord Ashe"
+    },
+    {
+      "name": "MARAUDER ASHE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a62886e1a2c5708c7a5d654815edcd756bb810b4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a62886e1a2c5708c7a5d654815edcd756bb810b4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22007/model.glb",
+        "local": "data\\downloads\\ashe\\22007_marauder_ashe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Marauder Ashe"
+    },
+    {
+      "name": "QUEEN ASHE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/48f58e9c2bfd6af9009a6345fd09d97f62495aaf-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/48f58e9c2bfd6af9009a6345fd09d97f62495aaf-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22004/model.glb",
+        "local": "data\\downloads\\ashe\\22004_queen_ashe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Queen Ashe"
+    },
+    {
+      "name": "PROJECT: Ashe",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/443343c566c1ac7cc3a236190858defa592d7bbd-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/443343c566c1ac7cc3a236190858defa592d7bbd-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22008/model.glb",
+        "local": "data\\downloads\\ashe\\22008_project_ashe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Ashe"
+    },
+    {
+      "name": "Fae Dragon Ashe",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/18ab6cd31bdb0b4824eb90226f961d2d9cf9d018-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/18ab6cd31bdb0b4824eb90226f961d2d9cf9d018-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22023/model.glb",
+        "local": "data\\downloads\\ashe\\22023_fae_dragon_ashe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Fae Dragon Ashe"
+    },
+    {
+      "name": "High Noon Ashe",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/02eb32c971c9616210239e9f79c457da4a00c907-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/02eb32c971c9616210239e9f79c457da4a00c907-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22017/model.glb",
+        "local": "data\\downloads\\ashe\\22017_high_noon_ashe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Ashe"
+    },
+    {
+      "name": "Cosmic Queen Ashe",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c7d8d5e2d07202393dde36e468f963b2db10270-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c7d8d5e2d07202393dde36e468f963b2db10270-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22011/model.glb",
+        "local": "data\\downloads\\ashe\\22011_cosmic_queen_ashe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cosmic Queen Ashe"
+    },
+    {
+      "name": "Ocean Song Ashe",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/994cf2394baa26af8c8a96a9d46b292d1d57545c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/994cf2394baa26af8c8a96a9d46b292d1d57545c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22043/model.glb",
+        "local": "data\\downloads\\ashe\\22043_ocean_song_ashe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Ocean Song Ashe"
+    },
+    {
+      "name": "Glorious Armada Ashe",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d3e0ad4397fbb75f8b6705f96cd89fed2544c5b1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d3e0ad4397fbb75f8b6705f96cd89fed2544c5b1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Crystal Rose Ashe",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/37c89a1fb057ce41bb3ab533d1461d3e0ea14a3d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/37c89a1fb057ce41bb3ab533d1461d3e0ea14a3d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "High Noon Ashe Mythic Chroma",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3787bc6d4f6fff1f1a15a442114ff310abd66bbb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3787bc6d4f6fff1f1a15a442114ff310abd66bbb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ashe/22017/model.glb",
+        "local": "data\\downloads\\ashe\\22017_high_noon_ashe.glb"
+      },
+      "matchScore": 0.77,
+      "matchedName": "High Noon Ashe"
+    }
+  ]
+}

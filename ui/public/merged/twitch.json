@@ -1,0 +1,67 @@
+{
+  "slug": "twitch",
+  "skinCount": 5,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "TWITCH, THE PLAGUE RAT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5caabf42760c89590067d7c340ceb00013f0477f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5caabf42760c89590067d7c340ceb00013f0477f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/twitch/29000/model.glb",
+        "local": "data\\downloads\\twitch\\29000_twitch.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Twitch"
+    },
+    {
+      "name": "OMEGA SQUAD TWITCH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4dca19dc1ce777d9c846d8f5ba57d6d5b4b72ad4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4dca19dc1ce777d9c846d8f5ba57d6d5b4b72ad4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/twitch/29008/model.glb",
+        "local": "data\\downloads\\twitch\\29008_omega_squad_twitch.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Omega Squad Twitch"
+    },
+    {
+      "name": "HIGH NOON TWITCH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cfc8c46af7d0c0139c74e5599a22e79969e5fb5e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cfc8c46af7d0c0139c74e5599a22e79969e5fb5e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/twitch/29045/model.glb",
+        "local": "data\\downloads\\twitch\\29045_high_noon_twitch.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Twitch"
+    },
+    {
+      "name": "PROJECT: TWITCH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c8ed1422cb66bb2fee3cc66f440468188343d460-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c8ed1422cb66bb2fee3cc66f440468188343d460-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CHROMACRASH TWITCH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dff79fd74e144881b20b1797d942a27cdbe49259-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dff79fd74e144881b20b1797d942a27cdbe49259-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

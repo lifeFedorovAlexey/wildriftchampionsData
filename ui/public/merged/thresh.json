@@ -1,0 +1,132 @@
+{
+  "slug": "thresh",
+  "skinCount": 10,
+  "with3d": 7,
+  "skins": [
+    {
+      "name": "THRESH, THE CHAIN WARDEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a53657aa31000780bb307e5e973749ea51b2e5a4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a53657aa31000780bb307e5e973749ea51b2e5a4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/thresh/412000/model.glb",
+        "local": "data\\downloads\\thresh\\412000_thresh.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Thresh"
+    },
+    {
+      "name": "PULSEFIRE THRESH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4564066402a44e3801b4b68f4695161dc13fecbb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4564066402a44e3801b4b68f4695161dc13fecbb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/thresh/412013/model.glb",
+        "local": "data\\downloads\\thresh\\412013_pulsefire_thresh.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pulsefire Thresh"
+    },
+    {
+      "name": "BLOOD MOON THRESH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cfeac83379ea195435707988e3921f93bb36dd16-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cfeac83379ea195435707988e3921f93bb36dd16-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/thresh/412003/model.glb",
+        "local": "data\\downloads\\thresh\\412003_blood_moon_thresh.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blood Moon Thresh"
+    },
+    {
+      "name": "HIGH NOON THRESH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/63469689fa25e15610a4c8178703f54e8cca6349-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/63469689fa25e15610a4c8178703f54e8cca6349-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/thresh/412006/model.glb",
+        "local": "data\\downloads\\thresh\\412006_high_noon_thresh.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Thresh"
+    },
+    {
+      "name": "SPIRIT BLOSSOM THRESH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0d1c1f41cd2ec8d5e164a4f98e6721debbda3c39-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0d1c1f41cd2ec8d5e164a4f98e6721debbda3c39-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/thresh/412017/model.glb",
+        "local": "data\\downloads\\thresh\\412017_spirit_blossom_thresh.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Thresh"
+    },
+    {
+      "name": "DREAM RAIDER THRESH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1b423fac7488d3466ebb590f98ac5ffc71544deb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1b423fac7488d3466ebb590f98ac5ffc71544deb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DRAGON LANTERN THRESH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3aed366c318e76931f58d683c62df9cb219fc62c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3aed366c318e76931f58d683c62df9cb219fc62c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Steel Dragon Thresh",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4c70d6981f2f5a39031778fbd191d04c49aac32a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4c70d6981f2f5a39031778fbd191d04c49aac32a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/thresh/412028/model.glb",
+        "local": "data\\downloads\\thresh\\412028_steel_dragon_thresh.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Steel Dragon Thresh"
+    },
+    {
+      "name": "Dark Star Thresh",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8905d0d34f96c4a2ebb7deb2ccbb067a35c91611-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8905d0d34f96c4a2ebb7deb2ccbb067a35c91611-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/thresh/412005/model.glb",
+        "local": "data\\downloads\\thresh\\412005_dark_star_thresh.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dark Star Thresh"
+    },
+    {
+      "name": "CRYPTIC DEPTH THRESH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5fc8eb906d167d61ed82989f18429b202858e455-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5fc8eb906d167d61ed82989f18429b202858e455-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

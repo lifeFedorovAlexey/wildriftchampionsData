@@ -1,0 +1,77 @@
+{
+  "slug": "kassadin",
+  "skinCount": 5,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "KASSADIN, THE VOID WALKER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/95c919558152a310eda41455ea2b03a6e38188be-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/95c919558152a310eda41455ea2b03a6e38188be-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kassadin/38000/model.glb",
+        "local": "data\\downloads\\kassadin\\38000_kassadin.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Kassadin"
+    },
+    {
+      "name": "HARBINGER KASSADIN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7d5aac1b2d69b1a4a758537016a5e23801802d7c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7d5aac1b2d69b1a4a758537016a5e23801802d7c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kassadin/38004/model.glb",
+        "local": "data\\downloads\\kassadin\\38004_harbinger_kassadin.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Harbinger Kassadin"
+    },
+    {
+      "name": "COUNT KASSADIN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bce796d6b6cb7bd12af9502adf9cac272af555ea-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bce796d6b6cb7bd12af9502adf9cac272af555ea-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kassadin/38006/model.glb",
+        "local": "data\\downloads\\kassadin\\38006_count_kassadin.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Count Kassadin"
+    },
+    {
+      "name": "Dragonmancer Kassadin",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/37b810b25c6cffb2afd4bb6a1a88bcc097c8d610-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/37b810b25c6cffb2afd4bb6a1a88bcc097c8d610-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kassadin/38024/model.glb",
+        "local": "data\\downloads\\kassadin\\38024_dragonmancer_kassadin.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dragonmancer Kassadin"
+    },
+    {
+      "name": "COSMIC REAVER KASSADIN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/95cd52f6c670bd34fbbcb17310ee9ee0a32d957c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/95cd52f6c670bd34fbbcb17310ee9ee0a32d957c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kassadin/38005/model.glb",
+        "local": "data\\downloads\\kassadin\\38005_cosmic_reaver_kassadin.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cosmic Reaver Kassadin"
+    }
+  ]
+}

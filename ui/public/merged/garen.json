@@ -1,0 +1,109 @@
+{
+  "slug": "garen",
+  "skinCount": 8,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "GAREN, THE MIGHT OF DEMACIA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/103a1f0f978cfec945126b28e312ef73b4c7a416-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/103a1f0f978cfec945126b28e312ef73b4c7a416-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/garen/86000/model.glb",
+        "local": "data\\downloads\\garen\\86000_garen.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Garen"
+    },
+    {
+      "name": "DREADKNIGHT GAREN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5435400393a7b91758d34ebb18f06478779e2da1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5435400393a7b91758d34ebb18f06478779e2da1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/garen/86004/model.glb",
+        "local": "data\\downloads\\garen\\86004_dreadknight_garen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dreadknight Garen"
+    },
+    {
+      "name": "ROGUE ADMIRAL GAREN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/74b4ac15f2991948900274926b675c57fa9b8a29-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/74b4ac15f2991948900274926b675c57fa9b8a29-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/garen/86010/model.glb",
+        "local": "data\\downloads\\garen\\86010_rogue_admiral_garen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Rogue Admiral Garen"
+    },
+    {
+      "name": "STEEL LEGION GAREN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33e8b8e53532950fe1aa33450e5e62857fdc9214-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33e8b8e53532950fe1aa33450e5e62857fdc9214-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/garen/86006/model.glb",
+        "local": "data\\downloads\\garen\\86006_steel_legion_garen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Steel Legion Garen"
+    },
+    {
+      "name": "GOD-KING GAREN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b3e93aa473d1acc9f9454e303636ebfa134da88f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b3e93aa473d1acc9f9454e303636ebfa134da88f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/garen/86013/model.glb",
+        "local": "data\\downloads\\garen\\86013_god-king_garen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "God-King Garen"
+    },
+    {
+      "name": "WARRING KINGDOMS GAREN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/206e56613788483a89b2c670a48a89e83d1c6cc4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/206e56613788483a89b2c670a48a89e83d1c6cc4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/garen/86011/model.glb",
+        "local": "data\\downloads\\garen\\86011_warring_kingdoms_garen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Warring Kingdoms Garen"
+    },
+    {
+      "name": "GARDEN PARTY GAREN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fa2ebc88ac03dd324971b776b8c5850cc2bfd73a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fa2ebc88ac03dd324971b776b8c5850cc2bfd73a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Soul Fighter Garen",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c8ac2bc60c2bb9bceff65356bc78ad5d94b2f553-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c8ac2bc60c2bb9bceff65356bc78ad5d94b2f553-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

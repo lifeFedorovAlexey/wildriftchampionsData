@@ -1,0 +1,145 @@
+{
+  "slug": "jinx",
+  "skinCount": 12,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "JINX, THE LOOSE CANNON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/58a1d5def09d35ea722ca402db31700f9c2b3580-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/58a1d5def09d35ea722ca402db31700f9c2b3580-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jinx/222000/model.glb",
+        "local": "data\\downloads\\jinx\\222000_jinx.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Jinx"
+    },
+    {
+      "name": "CRIME CITY JINX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c80c78f4b8a1dec74ed61f5d21c3e0a42c945779-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c80c78f4b8a1dec74ed61f5d21c3e0a42c945779-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jinx/222001/model.glb",
+        "local": "data\\downloads\\jinx\\222001_crime_city_jinx.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Crime City Jinx"
+    },
+    {
+      "name": "ZOMBIE SLAYER JINX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/273d577026a59b10e9535067c0483d62376babf8-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/273d577026a59b10e9535067c0483d62376babf8-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jinx/222003/model.glb",
+        "local": "data\\downloads\\jinx\\222003_zombie_slayer_jinx.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Zombie Slayer Jinx"
+    },
+    {
+      "name": "STAR GUARDIAN JINX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8a49b0dc69e9258c048ca6aad61c63eea12d8377-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8a49b0dc69e9258c048ca6aad61c63eea12d8377-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jinx/222004/model.glb",
+        "local": "data\\downloads\\jinx\\222004_star_guardian_jinx.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Jinx"
+    },
+    {
+      "name": "Glorious Jinx",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e51cd15329f20a71fccb05c4c81dd05e99f1601e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e51cd15329f20a71fccb05c4c81dd05e99f1601e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Arcane Jinx",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4351be20f07718bfa6f2607b4ab5d3fcde01fc9b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4351be20f07718bfa6f2607b4ab5d3fcde01fc9b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jinx/222037/model.glb",
+        "local": "data\\downloads\\jinx\\222037_arcane_enemy_jinx.glb"
+      },
+      "matchScore": 0.717,
+      "matchedName": "Arcane Enemy Jinx"
+    },
+    {
+      "name": "LOVESTRUCK JINX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/849c40be59f5625a17216a5d99e871d3e42575e0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/849c40be59f5625a17216a5d99e871d3e42575e0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "STAR GUARDIAN JINX EXQUISITE EDITION",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1d0485089f50accbc3858b2918424820c8765c92-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1d0485089f50accbc3858b2918424820c8765c92-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jinx/222004/model.glb",
+        "local": "data\\downloads\\jinx\\222004_star_guardian_jinx.glb"
+      },
+      "matchScore": 0.77,
+      "matchedName": "Star Guardian Jinx"
+    },
+    {
+      "name": "SUPERVILLAIN JINX FANTASY",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f4f5d9c3394c1258f44cc8588f78b3445bbea07c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f4f5d9c3394c1258f44cc8588f78b3445bbea07c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SUPERVILLAIN JINX FRACTURE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a27370920ebbf3876b7395849e36aa122f774d6-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a27370920ebbf3876b7395849e36aa122f774d6-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SUPERVILLAIN JINX BLAZING DEFIANCE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ba204c1433f3ffbbfac0d799f1a230c97722ca40-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ba204c1433f3ffbbfac0d799f1a230c97722ca40-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SUPERVILLAIN JINX DOOMBRINGER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f6fb52fe44f1df3d481059662656fea82550a48b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f6fb52fe44f1df3d481059662656fea82550a48b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

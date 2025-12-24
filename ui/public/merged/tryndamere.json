@@ -1,0 +1,118 @@
+{
+  "slug": "tryndamere",
+  "skinCount": 9,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "TRYNDAMERE, THE BARBARIAN KING",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f339c6908041e52abf1b3611d92fcd0dd20d1210-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f339c6908041e52abf1b3611d92fcd0dd20d1210-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tryndamere/23000/model.glb",
+        "local": "data\\downloads\\tryndamere\\23000_tryndamere.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Tryndamere"
+    },
+    {
+      "name": "DEMONBLADE TRYNDAMERE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b196b6b27b3d29cbdd24d7ae3be4270fbe4b0469-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b196b6b27b3d29cbdd24d7ae3be4270fbe4b0469-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tryndamere/23004/model.glb",
+        "local": "data\\downloads\\tryndamere\\23004_demonblade_tryndamere.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Demonblade Tryndamere"
+    },
+    {
+      "name": "KING TRYNDAMERE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a8a144edb471d75b9ffd9d1a549850df3b38a5ef-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a8a144edb471d75b9ffd9d1a549850df3b38a5ef-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tryndamere/23002/model.glb",
+        "local": "data\\downloads\\tryndamere\\23002_king_tryndamere.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "King Tryndamere"
+    },
+    {
+      "name": "GLORIOUS TRYNDAMERE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1f91fac7d44f3f5994bdb761eb3630fe90873fcb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1f91fac7d44f3f5994bdb761eb3630fe90873fcb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "WARRING KINGDOMS TRYNDAMERE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6a1d937860e58a57b1aa970fd291d7e85ef97edb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6a1d937860e58a57b1aa970fd291d7e85ef97edb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tryndamere/23006/model.glb",
+        "local": "data\\downloads\\tryndamere\\23006_warring_kingdoms_tryndamere.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Warring Kingdoms Tryndamere"
+    },
+    {
+      "name": "IMMORTAL JOURNEY TRYNDAMERE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9fad802101035f443478d2cf1fb2f0cb86460a35-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9fad802101035f443478d2cf1fb2f0cb86460a35-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "BLOOD MOON TRYNDAMERE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9b81ea71165f72ec9b7505f822e083b5be50dd8c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9b81ea71165f72ec9b7505f822e083b5be50dd8c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tryndamere/23010/model.glb",
+        "local": "data\\downloads\\tryndamere\\23010_blood_moon_tryndamere.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blood Moon Tryndamere"
+    },
+    {
+      "name": "NIGHTBRINGER TRYNDAMERE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/243da317e67fd8e228f67e8834446ccd1fcb3dae-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/243da317e67fd8e228f67e8834446ccd1fcb3dae-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tryndamere/23018/model.glb",
+        "local": "data\\downloads\\tryndamere\\23018_nightbringer_tryndamere.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Nightbringer Tryndamere"
+    },
+    {
+      "name": "Calligraphia Tryndamere",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9dbfbf71c399d011fadb07614ae4e1d723ac08ea-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9dbfbf71c399d011fadb07614ae4e1d723ac08ea-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

@@ -7,12 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.4.2",
     "cheerio": "^1.1.2",
     "dotenv": "^17.2.3",
     "node-fetch": "^3.3.2",
-    "puppeteer": "^24.30.0",
+    "puppeteer": "^24.34.0",
     "three": "^0.182.0"
   },
   "keywords": [
@@ -25,7 +23,5 @@
     "url": "https://github.com/lifeFedorovAlexey/wildRiftChampions/issues"
   },
   "homepage": "https://github.com/lifeFedorovAlexey/wildRiftChampions#readme",
-  "devDependencies": {
-    "styled-components": "^6.1.19"
-  }
+  "devDependencies": {}
 }

@@ -1,0 +1,160 @@
+{
+  "slug": "ahri",
+  "skinCount": 12,
+  "with3d": 9,
+  "skins": [
+    {
+      "name": "AHRI, THE NINE-TAILED FOX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d0784aa64d30b4e407f89b1c8262e773faa72523-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d0784aa64d30b4e407f89b1c8262e773faa72523-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103000/model.glb",
+        "local": "data\\downloads\\ahri\\103000_ahri.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Ahri"
+    },
+    {
+      "name": "FOXFIRE AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e64cfedce9dae833c93bebf31b1796ddb5fc391c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e64cfedce9dae833c93bebf31b1796ddb5fc391c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103003/model.glb",
+        "local": "data\\downloads\\ahri\\103003_foxfire_ahri.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Foxfire Ahri"
+    },
+    {
+      "name": "ARCADE AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/829912e532b34692c78988a422128cad7e91f4e4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/829912e532b34692c78988a422128cad7e91f4e4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103007/model.glb",
+        "local": "data\\downloads\\ahri\\103007_arcade_ahri.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arcade Ahri"
+    },
+    {
+      "name": "K/DA All Out Ahri",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2d7a95d220325cf0e993aae5ce0fdb3ebf0f1f8e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2d7a95d220325cf0e993aae5ce0fdb3ebf0f1f8e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103028/model.glb",
+        "local": "data\\downloads\\ahri\\103028_k_da_all_out_ahri.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "K/DA ALL OUT Ahri"
+    },
+    {
+      "name": "ACADEMY AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1043cb98a5b85937a4c9ad4ac1db81bfec9f22fc-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1043cb98a5b85937a4c9ad4ac1db81bfec9f22fc-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103006/model.glb",
+        "local": "data\\downloads\\ahri\\103006_academy_ahri.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Academy Ahri"
+    },
+    {
+      "name": "POPSTAR AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/db5a585b4e9d1aa5ed3bc822ec0032e606e37762-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/db5a585b4e9d1aa5ed3bc822ec0032e606e37762-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103004/model.glb",
+        "local": "data\\downloads\\ahri\\103004_popstar_ahri.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Popstar Ahri"
+    },
+    {
+      "name": "STAR GUARDIAN AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7cb890a9d625423d552c348ebacc04df13dcf9cc-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7cb890a9d625423d552c348ebacc04df13dcf9cc-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103014/model.glb",
+        "local": "data\\downloads\\ahri\\103014_star_guardian_ahri.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Ahri"
+    },
+    {
+      "name": "Soda Pop Ahri",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3414bacfc0b5cb1536d3ed322086967eb48dcece-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3414bacfc0b5cb1536d3ed322086967eb48dcece-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "STAR GUARDIAN MYTHIC CHROMA AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eb17aa949ec50ab6cc7ca5905dfca465e85bd0c2-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eb17aa949ec50ab6cc7ca5905dfca465e85bd0c2-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103014/model.glb",
+        "local": "data\\downloads\\ahri\\103014_star_guardian_ahri.glb"
+      },
+      "matchScore": 0.65,
+      "matchedName": "Star Guardian Ahri"
+    },
+    {
+      "name": "SPIRIT BLOSSOM AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d14882686b80e032b39b016e5ceef6a282501460-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d14882686b80e032b39b016e5ceef6a282501460-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ahri/103027/model.glb",
+        "local": "data\\downloads\\ahri\\103027_spirit_blossom_ahri.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Ahri"
+    },
+    {
+      "name": "SHAN HAI SCROLLS AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/96355594e481745fed00b3bef747ed97ef4574c2-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/96355594e481745fed00b3bef747ed97ef4574c2-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CRYSTAL ROSE AHRI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/de1089ee0f838a841b54305d218bc880774ccfc5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/de1089ee0f838a841b54305d218bc880774ccfc5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

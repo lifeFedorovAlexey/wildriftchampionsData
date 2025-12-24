@@ -1,0 +1,85 @@
+{
+  "slug": "yuumi",
+  "skinCount": 7,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "YUUMI, THE MAGICAL CAT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a6eed827d86fe3137ba4a574ec7aa50d2920444a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a6eed827d86fe3137ba4a574ec7aa50d2920444a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yuumi/350000/model.glb",
+        "local": "data\\downloads\\yuumi\\350000_yuumi.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Yuumi"
+    },
+    {
+      "name": "HEARTSEEKER YUUMI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bef87096997f6690125c68b2c63440bfd06661a2-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bef87096997f6690125c68b2c63440bfd06661a2-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yuumi/350011/model.glb",
+        "local": "data\\downloads\\yuumi\\350011_heartseeker_yuumi.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Heartseeker Yuumi"
+    },
+    {
+      "name": "BATTLE PRINCIPAL YUUMI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e812a8e619a426727a0798101970d610547ffa76-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e812a8e619a426727a0798101970d610547ffa76-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yuumi/350001/model.glb",
+        "local": "data\\downloads\\yuumi\\350001_battle_principal_yuumi.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Principal Yuumi"
+    },
+    {
+      "name": "FOOD SPIRITS YUUMI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/14e0993b39f3403604d200404ed6a16bf3a09a7d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/14e0993b39f3403604d200404ed6a16bf3a09a7d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CRYSTAL ROSE YUUMI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/131297d7ed24e7ac8d5886743b92496b07c3bad5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/131297d7ed24e7ac8d5886743b92496b07c3bad5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CAFE CUTIES YUUMI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/57b8e85d1ccac9fa3f4d13ef12c4a0f32eb9363a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/57b8e85d1ccac9fa3f4d13ef12c4a0f32eb9363a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CAFE CUTIES YUUMI MYTHIC CHROMA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ceeb2319d4af264966ed4804d250cc8d36fd45d9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ceeb2319d4af264966ed4804d250cc8d36fd45d9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

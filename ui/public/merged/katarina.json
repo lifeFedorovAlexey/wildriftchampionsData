@@ -1,0 +1,123 @@
+{
+  "slug": "katarina",
+  "skinCount": 9,
+  "with3d": 7,
+  "skins": [
+    {
+      "name": "KATARINA, THE SINISTER BLADE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3bc39237edf50d4cfef1886e97f3bdf17a756612-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3bc39237edf50d4cfef1886e97f3bdf17a756612-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/katarina/55000/model.glb",
+        "local": "data\\downloads\\katarina\\55000_katarina.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Katarina"
+    },
+    {
+      "name": "DEATH SWORN KATARINA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7c0e8b9c6c4ac793ae24e9105f88868b078569b4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7c0e8b9c6c4ac793ae24e9105f88868b078569b4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/katarina/55010/model.glb",
+        "local": "data\\downloads\\katarina\\55010_death_sworn_katarina.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Death Sworn Katarina"
+    },
+    {
+      "name": "BILGEWATER KATARINA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/93e2e9ead039836dc8927b1affb19ede455efe80-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/93e2e9ead039836dc8927b1affb19ede455efe80-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/katarina/55003/model.glb",
+        "local": "data\\downloads\\katarina\\55003_bilgewater_katarina.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Bilgewater Katarina"
+    },
+    {
+      "name": "BATTLE ACADEMIA KATARINA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/916a63a4a650b31dfe9549f13e9401e2bdfc83e7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/916a63a4a650b31dfe9549f13e9401e2bdfc83e7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/katarina/55012/model.glb",
+        "local": "data\\downloads\\katarina\\55012_battle_academia_katarina.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Academia Katarina"
+    },
+    {
+      "name": "PROJECT: KATARINA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/801054337dbc72fde81f1c65a3ddd3625976aa1d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/801054337dbc72fde81f1c65a3ddd3625976aa1d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/katarina/55009/model.glb",
+        "local": "data\\downloads\\katarina\\55009_project_katarina.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Katarina"
+    },
+    {
+      "name": "RESISTANCE KATARINA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fc3d80306b41656fc50a90dff9d609dff41b62e7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fc3d80306b41656fc50a90dff9d609dff41b62e7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "WARRING KINGDOMS KARATINA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4419d22bb7f2490745656a2138290bd4cf639ca3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4419d22bb7f2490745656a2138290bd4cf639ca3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/katarina/55008/model.glb",
+        "local": "data\\downloads\\katarina\\55008_warring_kingdoms_katarina.glb"
+      },
+      "matchScore": 0.55,
+      "matchedName": "Warring Kingdoms Katarina"
+    },
+    {
+      "name": "HIGH NOON KATARINA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c01ab6fe63d1b866de1f8e6c0e37c77f6808c521-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c01ab6fe63d1b866de1f8e6c0e37c77f6808c521-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/katarina/55037/model.glb",
+        "local": "data\\downloads\\katarina\\55037_high_noon_katarina.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Katarina"
+    },
+    {
+      "name": "SUMMER PARTY KATARINA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/03bd657b9f2bc12687039b9c3bf80ca61775923d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/03bd657b9f2bc12687039b9c3bf80ca61775923d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

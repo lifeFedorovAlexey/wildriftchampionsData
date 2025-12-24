@@ -1,0 +1,95 @@
+{
+  "slug": "malphite",
+  "skinCount": 7,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "MALPHITE, SHARD OF THE MONOLITH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f82ce98f43caa4dd73e996313ad40eeda380a442-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f82ce98f43caa4dd73e996313ad40eeda380a442-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/malphite/54000/model.glb",
+        "local": "data\\downloads\\malphite\\54000_malphite.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Malphite"
+    },
+    {
+      "name": "GLACIAL MALPHITE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/998c54daa9588f3fce1d8acb4f03ed3a680811d7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/998c54daa9588f3fce1d8acb4f03ed3a680811d7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/malphite/54005/model.glb",
+        "local": "data\\downloads\\malphite\\54005_glacial_malphite.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Glacial Malphite"
+    },
+    {
+      "name": "IRONSIDE MALPHITE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/73895da3d2cc6bba8b88e62ceb76204027be18aa-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/73895da3d2cc6bba8b88e62ceb76204027be18aa-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/malphite/54007/model.glb",
+        "local": "data\\downloads\\malphite\\54007_ironside_malphite.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Ironside Malphite"
+    },
+    {
+      "name": "Mecha Malphite",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fa1fa063f3bd4c537e797e1e95985d2174693d2e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fa1fa063f3bd4c537e797e1e95985d2174693d2e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/malphite/54006/model.glb",
+        "local": "data\\downloads\\malphite\\54006_mecha_malphite.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Mecha Malphite"
+    },
+    {
+      "name": "Obsidian Malphite",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1c397686770d08d437c50504f2b4184fe0c7fd3c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1c397686770d08d437c50504f2b4184fe0c7fd3c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/malphite/54004/model.glb",
+        "local": "data\\downloads\\malphite\\54004_obsidian_malphite.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Obsidian Malphite"
+    },
+    {
+      "name": "Garden Party Malphite",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9748a9069a16796fe3ec6b5bc1c00e18ad7ed30c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9748a9069a16796fe3ec6b5bc1c00e18ad7ed30c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Garden Party Malphite Mythic Chroma",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c0cd18503783d7ce14c9a99eaac009cd05fe4417-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c0cd18503783d7ce14c9a99eaac009cd05fe4417-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

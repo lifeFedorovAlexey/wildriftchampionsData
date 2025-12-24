@@ -1,0 +1,137 @@
+{
+  "slug": "tristana",
+  "skinCount": 10,
+  "with3d": 8,
+  "skins": [
+    {
+      "name": "TRISTANA, THE YORDLE GUNNER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/804c980cf5c025aec176d4e3d16debf2817a068d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/804c980cf5c025aec176d4e3d16debf2817a068d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tristana/18000/model.glb",
+        "local": "data\\downloads\\tristana\\18000_tristana.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Tristana"
+    },
+    {
+      "name": "GUERILLA TRISTANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b8e18bd813dccc3ab952588a5d80f1d350dc9772-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b8e18bd813dccc3ab952588a5d80f1d350dc9772-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tristana/18004/model.glb",
+        "local": "data\\downloads\\tristana\\18004_guerilla_tristana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Guerilla Tristana"
+    },
+    {
+      "name": "LITTLE DEMON TRISTANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/49f9bb662ca46683ee99a375f59ce84fca3b0aff-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/49f9bb662ca46683ee99a375f59ce84fca3b0aff-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tristana/18024/model.glb",
+        "local": "data\\downloads\\tristana\\18024_little_demon_tristana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Little Demon Tristana"
+    },
+    {
+      "name": "OMEGA SQUAD TRISTANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/21b6138288500b29445c23a85d199199d5d12186-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/21b6138288500b29445c23a85d199199d5d12186-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tristana/18012/model.glb",
+        "local": "data\\downloads\\tristana\\18012_omega_squad_tristana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Omega Squad Tristana"
+    },
+    {
+      "name": "HEXPLORER TRISTANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c63a2793f0a53e53b42b077e4714be1b7ede628e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c63a2793f0a53e53b42b077e4714be1b7ede628e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "FIRECRACKER TRISTANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88e07535386f977d08b65871018d9bb6756cfbea-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88e07535386f977d08b65871018d9bb6756cfbea-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tristana/18041/model.glb",
+        "local": "data\\downloads\\tristana\\18041_firecracker_tristana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Firecracker Tristana"
+    },
+    {
+      "name": "SPIRIT BLOSSOM TRISTANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b50a0a72ab1ac1b94e2b69a04f1613923c6dc366-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b50a0a72ab1ac1b94e2b69a04f1613923c6dc366-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tristana/18051/model.glb",
+        "local": "data\\downloads\\tristana\\18051_spirit_blossom_tristana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Tristana"
+    },
+    {
+      "name": "GARDEN PARTY TRISTANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a5645b817749d8c48758ad1922b839ed284c813d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a5645b817749d8c48758ad1922b839ed284c813d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Pengu Cosplay Tristana",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a26668f3b3ff960783010bd880efdf8ed0e5ce9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a26668f3b3ff960783010bd880efdf8ed0e5ce9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tristana/18033/model.glb",
+        "local": "data\\downloads\\tristana\\18033_pengu_cosplay_tristana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pengu Cosplay Tristana"
+    },
+    {
+      "name": "DRAGON TRAINER TRISTANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/00d520d3630c44ccabf66e5f157407640e653af0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/00d520d3630c44ccabf66e5f157407640e653af0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/tristana/18010/model.glb",
+        "local": "data\\downloads\\tristana\\18010_dragon_trainer_tristana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dragon Trainer Tristana"
+    }
+  ]
+}

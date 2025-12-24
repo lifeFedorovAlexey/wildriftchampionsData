@@ -1,0 +1,76 @@
+{
+  "slug": "lillia",
+  "skinCount": 6,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "LILLIA, THE BASHFUL BLOOM",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/073feacb6bcc5adb6e06b700a1a59315b6ce9589-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/073feacb6bcc5adb6e06b700a1a59315b6ce9589-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lillia/876000/model.glb",
+        "local": "data\\downloads\\lillia\\876000_lillia.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Lillia"
+    },
+    {
+      "name": "SPIRIT BLOSSOM LILLIA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/22b82b6ac80926917453e37fcc1d46679e6449ab-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/22b82b6ac80926917453e37fcc1d46679e6449ab-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lillia/876001/model.glb",
+        "local": "data\\downloads\\lillia\\876001_spirit_blossom_lillia.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Lillia"
+    },
+    {
+      "name": "WINTERBLESSED LILLIA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ae419ebe170495941e2ad1cd4d4b970e4c3df068-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ae419ebe170495941e2ad1cd4d4b970e4c3df068-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "NIGHTBRINGER LILLIA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f183d5f411b95a64f5d35b1080a15855e30d41a2-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f183d5f411b95a64f5d35b1080a15855e30d41a2-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lillia/876010/model.glb",
+        "local": "data\\downloads\\lillia\\876010_nightbringer_lillia.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Nightbringer Lillia"
+    },
+    {
+      "name": "COTTONTAIL LILLIA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1e8498b7e5d30944837f1535894b1a16cba34adb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1e8498b7e5d30944837f1535894b1a16cba34adb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "WONDERTOWN LILLIA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/04b620b878aad77cff2a6a66e8bd0faaf85ab460-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/04b620b878aad77cff2a6a66e8bd0faaf85ab460-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

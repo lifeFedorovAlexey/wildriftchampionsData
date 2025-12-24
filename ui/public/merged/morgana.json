@@ -1,0 +1,100 @@
+{
+  "slug": "morgana",
+  "skinCount": 7,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "MORGANA, THE FALLEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b4813d06004a1364fc45c95675032ad716fb0bbb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b4813d06004a1364fc45c95675032ad716fb0bbb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/morgana/25000/model.glb",
+        "local": "data\\downloads\\morgana\\25000_morgana.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Morgana"
+    },
+    {
+      "name": "BLADE MISTRESS MORGANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d5f1aadfd6e0b7240c682b0aaf379a425cdfb330-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d5f1aadfd6e0b7240c682b0aaf379a425cdfb330-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/morgana/25003/model.glb",
+        "local": "data\\downloads\\morgana\\25003_blade_mistress_morgana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blade Mistress Morgana"
+    },
+    {
+      "name": "MAJESTIC EMPRESS MORGANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ce2d0d8657f19ebae2072eb8d3edc6490957307d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ce2d0d8657f19ebae2072eb8d3edc6490957307d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/morgana/25017/model.glb",
+        "local": "data\\downloads\\morgana\\25017_majestic_empress_morgana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Majestic Empress Morgana"
+    },
+    {
+      "name": "BEWITCHING MORGANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7519c04aeda84b8cc28b8e72fe0b3b1be7e06db9-1215x717.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7519c04aeda84b8cc28b8e72fe0b3b1be7e06db9-1215x717.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/morgana/25011/model.glb",
+        "local": "data\\downloads\\morgana\\25011_bewitching_morgana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Bewitching Morgana"
+    },
+    {
+      "name": "Lunar Empress Morgana",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e86138b51be928bd143e9bddfc034db83b2b9f7f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e86138b51be928bd143e9bddfc034db83b2b9f7f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/morgana/25010/model.glb",
+        "local": "data\\downloads\\morgana\\25010_lunar_wraith_morgana.glb"
+      },
+      "matchScore": 0.55,
+      "matchedName": "Lunar Wraith Morgana"
+    },
+    {
+      "name": "COVEN MORGANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dac54e0e62ea6134ece214af12f3adfd2a6dc830-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dac54e0e62ea6134ece214af12f3adfd2a6dc830-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/morgana/25026/model.glb",
+        "local": "data\\downloads\\morgana\\25026_coven_morgana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Coven Morgana"
+    },
+    {
+      "name": "CRYPTIC DEPTH MORGANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/80312fb285b1560f8e82a726b21a97be932bfb6c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/80312fb285b1560f8e82a726b21a97be932bfb6c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "slug": "varus",
+  "skinCount": 10,
+  "with3d": 7,
+  "skins": [
+    {
+      "name": "VARUS, THE ARROW OF RETRIBUTION",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/22bf56e9304b84bc47735cea2ea6a5ed0ea22c93-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/22bf56e9304b84bc47735cea2ea6a5ed0ea22c93-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/varus/110000/model.glb",
+        "local": "data\\downloads\\varus\\110000_varus.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Varus"
+    },
+    {
+      "name": "ARCTIC OPS VARUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e9816b116111902a83b30027451feb02ff7c125b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e9816b116111902a83b30027451feb02ff7c125b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/varus/110003/model.glb",
+        "local": "data\\downloads\\varus\\110003_arctic_ops_varus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arctic Ops Varus"
+    },
+    {
+      "name": "VARUS SWIFTBOLT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cf68479959cfb84d49b0c8958527dc2b91c64e75-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cf68479959cfb84d49b0c8958527dc2b91c64e75-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/varus/110005/model.glb",
+        "local": "data\\downloads\\varus\\110005_varus_swiftbolt.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Varus Swiftbolt"
+    },
+    {
+      "name": "ARCLIGHT VARUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1fa25f4cd7115670702947d0a3b7220f01cc13c9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1fa25f4cd7115670702947d0a3b7220f01cc13c9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/varus/110002/model.glb",
+        "local": "data\\downloads\\varus\\110002_arclight_varus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arclight Varus"
+    },
+    {
+      "name": "DARK STAR VARUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a673fc123a35165ed4c14948744a282e89bd620d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a673fc123a35165ed4c14948744a282e89bd620d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/varus/110006/model.glb",
+        "local": "data\\downloads\\varus\\110006_dark_star_varus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dark Star Varus"
+    },
+    {
+      "name": "HEARTSEEKER VARUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/507f968452bab9d917e424c27e15777e96e7d5e1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/507f968452bab9d917e424c27e15777e96e7d5e1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/varus/110004/model.glb",
+        "local": "data\\downloads\\varus\\110004_heartseeker_varus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Heartseeker Varus"
+    },
+    {
+      "name": "PROJECT: VARUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d902a894f83d44b0884b2f3a33fc10ab0ddf2ef-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d902a894f83d44b0884b2f3a33fc10ab0ddf2ef-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/varus/110016/model.glb",
+        "local": "data\\downloads\\varus\\110016_project_varus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Varus"
+    },
+    {
+      "name": "FIEND QUELLER VARUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d3f44dc56fbd89046c614574b130ea36f8b0d8bd-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d3f44dc56fbd89046c614574b130ea36f8b0d8bd-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "FIEND QUELLER VARUS MYTHIC CHROMA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5fb0cb8224838c1198e7f69b1f82bc7767fedc83-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5fb0cb8224838c1198e7f69b1f82bc7767fedc83-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CALLIGRAPHIA VARUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2232a34f53bf73497f28688717423edd5ff33cc7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2232a34f53bf73497f28688717423edd5ff33cc7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

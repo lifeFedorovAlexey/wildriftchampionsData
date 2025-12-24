@@ -1,0 +1,44 @@
+{
+  "slug": "gnar",
+  "skinCount": 3,
+  "with3d": 2,
+  "skins": [
+    {
+      "name": "GNAR, THE MISSING LINK",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ff1b88267ea1ffcc8758d844a3f2ae5b7c59ae60-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ff1b88267ea1ffcc8758d844a3f2ae5b7c59ae60-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/gnar/150000/model.glb",
+        "local": "data\\downloads\\gnar\\150000_gnar.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Gnar"
+    },
+    {
+      "name": "SUPER GALAXY GNAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8f3ecababe3370186ec0a828347c3be312ea104e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8f3ecababe3370186ec0a828347c3be312ea104e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/gnar/150013/model.glb",
+        "local": "data\\downloads\\gnar\\150013_super_galaxy_gnar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Super Galaxy Gnar"
+    },
+    {
+      "name": "SHAN HAI SCROLLS GNAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/70549b4dc9bdbc6f9984f07729cea6a69f71677e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/70549b4dc9bdbc6f9984f07729cea6a69f71677e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

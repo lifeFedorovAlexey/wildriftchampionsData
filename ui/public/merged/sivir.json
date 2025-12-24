@@ -1,0 +1,58 @@
+{
+  "slug": "sivir",
+  "skinCount": 4,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "SIVIR, THE BATTLE MISTRESS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c366f0dc9ca8255f9362d68a39d4d429961d2bb9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c366f0dc9ca8255f9362d68a39d4d429961d2bb9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sivir/15000/model.glb",
+        "local": "data\\downloads\\sivir\\15000_sivir.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Sivir"
+    },
+    {
+      "name": "BLOOD MOON SIVIR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a4c2dd5f9ae0a15059ea2c53da1bbc78cd632ae6-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a4c2dd5f9ae0a15059ea2c53da1bbc78cd632ae6-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sivir/15016/model.glb",
+        "local": "data\\downloads\\sivir\\15016_blood_moon_sivir.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blood Moon Sivir"
+    },
+    {
+      "name": "Battle Mare Sivir",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c5658440e25a3849a382deb726b7498b023a1345-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c5658440e25a3849a382deb726b7498b023a1345-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Pizza Delivery Sivir",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f05f67a5da7c46299f4dbb0949dcdb3603380eb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f05f67a5da7c46299f4dbb0949dcdb3603380eb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sivir/15010/model.glb",
+        "local": "data\\downloads\\sivir\\15010_pizza_delivery_sivir.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pizza Delivery Sivir"
+    }
+  ]
+}

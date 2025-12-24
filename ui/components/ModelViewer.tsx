@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { Group } from "three";
+import * as THREE from "three";
 import { useAnimations } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import {
@@ -70,21 +71,72 @@ function Loader() {
 function Model({ url }: { url: string }) {
   const group = useRef<Group>(null);
   const gltf = useGLTF(url);
-  const { actions, names } = useAnimations(gltf.animations, group);
+  const { actions, names, mixer } = useAnimations(gltf.animations, group);
+
+  const idxRef = useRef(0);
 
   useEffect(() => {
-    if (!names || names.length === 0) {
+    if (!names?.length) {
       console.warn("Анимаций нет");
       return;
     }
 
-    const action = actions[names[0]];
-    action?.reset().fadeIn(0.2).play();
+    const safeStopAll = () => {
+      if (!actions) return;
+      Object.values(actions).forEach((a) => a?.stop()); // <- важно: a может быть undefined
+    };
+
+    const playByIndex = (i: number) => {
+      if (!actions) return;
+
+      const name = names[i % names.length];
+      const action = actions[name];
+      if (!action) {
+        // если вдруг экшена нет — пропускаем
+        idxRef.current = (i + 1) % names.length;
+        playByIndex(idxRef.current);
+        return;
+      }
+
+      safeStopAll();
+
+      // играем 1 раз и ждём finished
+      action.reset();
+      action.clampWhenFinished = true;
+      action.setLoop(THREE.LoopOnce, 1);
+      action.fadeIn(0.15).play();
+
+      // если анимация "бесконечная" (idle/loop), она может не прислать finished.
+      // Тогда просто переключаем по таймеру (например, через 3 сек).
+      const isLikelyLoop =
+        /Idle|Run|Walk|Channel/i.test(name) || action.getClip().duration > 2.8;
+
+      if (isLikelyLoop) {
+        const t = window.setTimeout(() => {
+          idxRef.current = (idxRef.current + 1) % names.length;
+          playByIndex(idxRef.current);
+        }, 3000);
+        return () => window.clearTimeout(t);
+      }
+
+      return undefined;
+    };
+
+    const onFinished = () => {
+      idxRef.current = (idxRef.current + 1) % names.length;
+      playByIndex(idxRef.current);
+    };
+
+    mixer.addEventListener("finished", onFinished);
+
+    // старт
+    playByIndex(idxRef.current);
 
     return () => {
-      action?.fadeOut(0.2);
+      mixer.removeEventListener("finished", onFinished);
+      safeStopAll();
     };
-  }, [actions, names]);
+  }, [actions, names, mixer]);
 
   return (
     <Bounds fit clip observe margin={1.2}>

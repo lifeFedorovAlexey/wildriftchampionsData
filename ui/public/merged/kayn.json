@@ -1,0 +1,63 @@
+{
+  "slug": "kayn",
+  "skinCount": 4,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "KAYN, THE SHADOW REAPER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/80b2240795bcabb45e48d1b7f97bd8465d5a951f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/80b2240795bcabb45e48d1b7f97bd8465d5a951f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayn/141000/model.glb",
+        "local": "data\\downloads\\kayn\\141000_kayn.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Kayn"
+    },
+    {
+      "name": "SOULHUNTER KAYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a69d63c61aed1e5d0d01de2caf434d3e6972d8bf-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a69d63c61aed1e5d0d01de2caf434d3e6972d8bf-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayn/141001/model.glb",
+        "local": "data\\downloads\\kayn\\141001_soulhunter_kayn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Soulhunter Kayn"
+    },
+    {
+      "name": "HEARTSTEEL KAYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fc3f0657f0d7ed64cd5fb97778cd6d783e486986-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fc3f0657f0d7ed64cd5fb97778cd6d783e486986-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayn/141020/model.glb",
+        "local": "data\\downloads\\kayn\\141020_heartsteel_kayn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "HEARTSTEEL Kayn"
+    },
+    {
+      "name": "NIGHTBRINGER KAYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c2e1affbc9e4a825d22d43bc1fbee628dcc595f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c2e1affbc9e4a825d22d43bc1fbee628dcc595f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayn/141008/model.glb",
+        "local": "data\\downloads\\kayn\\141008_nightbringer_kayn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Nightbringer Kayn"
+    }
+  ]
+}

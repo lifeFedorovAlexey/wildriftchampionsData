@@ -1,0 +1,123 @@
+{
+  "slug": "kaisa",
+  "skinCount": 9,
+  "with3d": 7,
+  "skins": [
+    {
+      "name": "KAI'SA, DAUGHTER OF THE VOID",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/edb207643f6a08c181a3582ce3296a7694f96c31-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/edb207643f6a08c181a3582ce3296a7694f96c31-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "BULLET ANGEL KAI'SA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b486ffbb27a9b494ea3d8fde517320e8fe543839-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b486ffbb27a9b494ea3d8fde517320e8fe543839-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kaisa/145001/model.glb",
+        "local": "data\\downloads\\kaisa\\145001_bullet_angel_kai_sa.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Bullet Angel Kai'Sa"
+    },
+    {
+      "name": "K/DA ALL OUT KAI'SA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4ff24d0371bfb1e0e6245f46b2524af457eb043d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4ff24d0371bfb1e0e6245f46b2524af457eb043d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kaisa/145026/model.glb",
+        "local": "data\\downloads\\kaisa\\145026_k_da_all_out_kai_sa.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "K/DA ALL OUT Kai'Sa"
+    },
+    {
+      "name": "ARCADE KAI'SA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e4f9707bafcab6b36169d4942c294b4ce404c680-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e4f9707bafcab6b36169d4942c294b4ce404c680-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kaisa/145017/model.glb",
+        "local": "data\\downloads\\kaisa\\145017_arcade_kai_sa.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arcade Kai'Sa"
+    },
+    {
+      "name": "LAGOON DRAGON KAI'SA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c81eb188ef4dd06b97ed85c2ee4701f1a7fa126d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c81eb188ef4dd06b97ed85c2ee4701f1a7fa126d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kaisa/145029/model.glb",
+        "local": "data\\downloads\\kaisa\\145029_lagoon_dragon_kai_sa.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Lagoon Dragon Kai'Sa"
+    },
+    {
+      "name": "STAR GUARDIAN KAI'SA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/58e05b265eb177ed49bec3cde368bd977106f544-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/58e05b265eb177ed49bec3cde368bd977106f544-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kaisa/145040/model.glb",
+        "local": "data\\downloads\\kaisa\\145040_star_guardian_kai_sa.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Kai'Sa"
+    },
+    {
+      "name": "Lunar Fairy Kai'Sa",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/337de9e093cf1091a4f111f70faf53ca1a2bf511-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/337de9e093cf1091a4f111f70faf53ca1a2bf511-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kaisa/145000/model.glb",
+        "local": "data\\downloads\\kaisa\\145000_kai_sa.glb"
+      },
+      "matchScore": 0.62,
+      "matchedName": "Kai'Sa"
+    },
+    {
+      "name": "Lunar Fairy Kai'Sa (Special Edition)",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8a2969e783882fde7fc38adda7db7ab35934a215-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8a2969e783882fde7fc38adda7db7ab35934a215-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Crystal Rose Kai'Sa",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c2954947d512dad3dd63c1a151b709e92d2e6f41-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c2954947d512dad3dd63c1a151b709e92d2e6f41-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kaisa/145000/model.glb",
+        "local": "data\\downloads\\kaisa\\145000_kai_sa.glb"
+      },
+      "matchScore": 0.62,
+      "matchedName": "Kai'Sa"
+    }
+  ]
+}

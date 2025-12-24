@@ -7,6 +7,7 @@ import {
   IconTierlist,
   IconPicksBans,
   IconTrends,
+  IconSkins, // ← добавим этот иконку (см. ниже)
 } from "@/components/icons/MenuIcons";
 
 const BUTTON_GRADIENTS = {
@@ -18,6 +19,9 @@ const BUTTON_GRADIENTS = {
   gold: "linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.34))",
   crimson:
     "linear-gradient(135deg, rgba(239,68,68,0.18), rgba(248,113,113,0.34))",
+  // Добавим градиент для скинов
+  skins:
+    "linear-gradient(135deg, rgba(192,132,252,0.18), rgba(168,85,247,0.3))",
 };
 
 export default function HomePage() {
@@ -68,6 +72,15 @@ export default function HomePage() {
           href="/trends"
           gradient={BUTTON_GRADIENTS.purple}
           leftIcon={<IconTrends />}
+        />
+
+        {/* 🔹 Новая кнопка — Скины */}
+        <MenuButton
+          title="3D Скины"
+          subtitle="Просмотр моделей чемпионов"
+          href="/skins"
+          gradient={BUTTON_GRADIENTS.blue}
+          leftIcon={<IconSkins />}
         />
       </div>
 

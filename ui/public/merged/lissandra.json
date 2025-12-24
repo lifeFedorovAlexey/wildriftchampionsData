@@ -1,0 +1,58 @@
+{
+  "slug": "lissandra",
+  "skinCount": 4,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "LISSANDRA, THE ICE WITCH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4d37288efc3db29335dcee8863077c7a2d92f933-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4d37288efc3db29335dcee8863077c7a2d92f933-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lissandra/127000/model.glb",
+        "local": "data\\downloads\\lissandra\\127000_lissandra.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Lissandra"
+    },
+    {
+      "name": "GARDEN PARTY LISSANDRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d423ea466d63890bd4df16e9b52404079486d7e4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d423ea466d63890bd4df16e9b52404079486d7e4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PORCELAIN LISSANDRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4e81f75b178d9d677e7537ede717f7b8f051b859-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4e81f75b178d9d677e7537ede717f7b8f051b859-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lissandra/127023/model.glb",
+        "local": "data\\downloads\\lissandra\\127023_porcelain_lissandra.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Porcelain Lissandra"
+    },
+    {
+      "name": "PRESTIGE PORCELAIN LISSANDRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/22205b4d2e7abb3ccd1fa731f4a03ae23408db0b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/22205b4d2e7abb3ccd1fa731f4a03ae23408db0b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lissandra/127033/model.glb",
+        "local": "data\\downloads\\lissandra\\127033_prestige_porcelain_lissandra.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Prestige Porcelain Lissandra"
+    }
+  ]
+}

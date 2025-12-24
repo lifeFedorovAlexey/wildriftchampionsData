@@ -1,0 +1,127 @@
+{
+  "slug": "caitlyn",
+  "skinCount": 10,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "CAITLYN, THE SHERIFF OF PILTOVER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9c80cfbaab7aff651b98068d7ae5f091045bb248-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9c80cfbaab7aff651b98068d7ae5f091045bb248-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/caitlyn/51000/model.glb",
+        "local": "data\\downloads\\caitlyn\\51000_caitlyn.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Caitlyn"
+    },
+    {
+      "name": "HEADHUNTER CAITLYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/477bf7fb942808a9da059ae409554643c7139816-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/477bf7fb942808a9da059ae409554643c7139816-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/caitlyn/51006/model.glb",
+        "local": "data\\downloads\\caitlyn\\51006_headhunter_caitlyn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Headhunter Caitlyn"
+    },
+    {
+      "name": "Pool Party Caitlyn",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72b787c77c985fba2fe544223df75ea5df9ba208-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72b787c77c985fba2fe544223df75ea5df9ba208-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/caitlyn/51013/model.glb",
+        "local": "data\\downloads\\caitlyn\\51013_pool_party_caitlyn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pool Party Caitlyn"
+    },
+    {
+      "name": "Mythmaker Caitlyn",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dca98c3c445ce1d9ca501c07ef64f3c84aa41376-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dca98c3c445ce1d9ca501c07ef64f3c84aa41376-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "MYTHMAKER CAITLYN (SPECIAL EDITION)",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ec6d38bbf14f4bdb7e7fe44e18e41ad22b25fb8b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ec6d38bbf14f4bdb7e7fe44e18e41ad22b25fb8b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PULSEFIRE CAITLYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0da72193edfd242ea510f317138a565bc59aa9bc-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0da72193edfd242ea510f317138a565bc59aa9bc-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/caitlyn/51011/model.glb",
+        "local": "data\\downloads\\caitlyn\\51011_pulsefire_caitlyn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pulsefire Caitlyn"
+    },
+    {
+      "name": "BATTLE ACADEMIA CAITLYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8a69d61899539786d5c97cb5d636d72ff319fa04-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8a69d61899539786d5c97cb5d636d72ff319fa04-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/caitlyn/51022/model.glb",
+        "local": "data\\downloads\\caitlyn\\51022_battle_academia_caitlyn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Academia Caitlyn"
+    },
+    {
+      "name": "ARCADE CAITLYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/839faac7b2f4ff959bd76cb686fc9088a0b6c4ae-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/839faac7b2f4ff959bd76cb686fc9088a0b6c4ae-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/caitlyn/51019/model.glb",
+        "local": "data\\downloads\\caitlyn\\51019_arcade_caitlyn.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arcade Caitlyn"
+    },
+    {
+      "name": "CRYSTAL ROSE CAITLYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b1b566f2871540bc0cb32927efbe80b54ccd0c2f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b1b566f2871540bc0cb32927efbe80b54ccd0c2f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PRESTIGE SELECT CRYSTAL ROSE CAITLYN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/68efb9efbc5fb2db4c306ceea8dc2b978ac4c220-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/68efb9efbc5fb2db4c306ceea8dc2b978ac4c220-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

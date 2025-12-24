@@ -1,0 +1,99 @@
+{
+  "slug": "jax",
+  "skinCount": 8,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "JAX, GRANDMASTER AT ARMS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3ffcf2d1528cb88e1c31c14482bf1ba35a4cc7b8-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3ffcf2d1528cb88e1c31c14482bf1ba35a4cc7b8-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jax/24000/model.glb",
+        "local": "data\\downloads\\jax\\24000_jax.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Jax"
+    },
+    {
+      "name": "GOD STAFF JAX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6de74613fcce73e98226036928d4dc72bfe414c4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6de74613fcce73e98226036928d4dc72bfe414c4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jax/24013/model.glb",
+        "local": "data\\downloads\\jax\\24013_god_staff_jax.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "God Staff Jax"
+    },
+    {
+      "name": "ANGLER JAX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e6e780232fc4debfbe5df230e6cadedad3e09541-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e6e780232fc4debfbe5df230e6cadedad3e09541-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jax/24003/model.glb",
+        "local": "data\\downloads\\jax\\24003_angler_jax.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Angler Jax"
+    },
+    {
+      "name": "HEXPLORER JAX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9c77d43ea2009a4e4d878489dd1f37c278911a73-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9c77d43ea2009a4e4d878489dd1f37c278911a73-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "WARDEN JAX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/752714af9605d1f5e7fd3fe7af868ee5da78216b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/752714af9605d1f5e7fd3fe7af868ee5da78216b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jax/24012/model.glb",
+        "local": "data\\downloads\\jax\\24012_warden_jax.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Warden Jax"
+    },
+    {
+      "name": "STARGAZER JAX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dbad40ddb04a9b860e2e2d9c8f2abe2e95c2e2c2-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dbad40ddb04a9b860e2e2d9c8f2abe2e95c2e2c2-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Shan Hai Scrolls Jax",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e8950d6d98432b780cd7b2a46aa71a0b764f5ec8-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e8950d6d98432b780cd7b2a46aa71a0b764f5ec8-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DRAGONMANCER JAX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ec54aab91324a27f985cc9369d8c767344e63c77-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ec54aab91324a27f985cc9369d8c767344e63c77-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

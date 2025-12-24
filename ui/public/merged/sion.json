@@ -1,0 +1,49 @@
+{
+  "slug": "sion",
+  "skinCount": 3,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "SION, THE UNDEAD JUGGERNAUT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c2f1ffd51a3bb6057487104a416bd79aa90ccda9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c2f1ffd51a3bb6057487104a416bd79aa90ccda9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sion/14000/model.glb",
+        "local": "data\\downloads\\sion\\14000_sion.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Sion"
+    },
+    {
+      "name": "WARMONGER SION",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/848585d4e9c6358fa9098c264fa5d86b9f623a87-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/848585d4e9c6358fa9098c264fa5d86b9f623a87-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sion/14004/model.glb",
+        "local": "data\\downloads\\sion\\14004_warmonger_sion.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Warmonger Sion"
+    },
+    {
+      "name": "MECHA ZERO SION",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/77e9a57d7bd97fc88e68f93536031a982c8a0f51-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/77e9a57d7bd97fc88e68f93536031a982c8a0f51-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sion/14005/model.glb",
+        "local": "data\\downloads\\sion\\14005_mecha_zero_sion.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Mecha Zero Sion"
+    }
+  ]
+}

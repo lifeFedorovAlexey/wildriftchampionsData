@@ -1,0 +1,72 @@
+{
+  "slug": "pyke",
+  "skinCount": 5,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "PYKE, THE BLOODHARBOR RIPPER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f02797c9649a6b56fa87197ed2a68ea143822974-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f02797c9649a6b56fa87197ed2a68ea143822974-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/pyke/555000/model.glb",
+        "local": "data\\downloads\\pyke\\555000_pyke.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Pyke"
+    },
+    {
+      "name": "SAND WRAITH PYKE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2a3c56a5bd271ddd27dbb392ee53eaf7d230d20d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2a3c56a5bd271ddd27dbb392ee53eaf7d230d20d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/pyke/555001/model.glb",
+        "local": "data\\downloads\\pyke\\555001_sand_wraith_pyke.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sand Wraith Pyke"
+    },
+    {
+      "name": "ASHEN KNIGHT PYKE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fe78619760a44615cf7be05f77fe26f81bc03150-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fe78619760a44615cf7be05f77fe26f81bc03150-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/pyke/555044/model.glb",
+        "local": "data\\downloads\\pyke\\555044_ashen_knight_pyke.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Ashen Knight Pyke"
+    },
+    {
+      "name": "PROJECT: PYKE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6a517f5353f2d2ad36888a2f90c17ae6579595c1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6a517f5353f2d2ad36888a2f90c17ae6579595c1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/pyke/555016/model.glb",
+        "local": "data\\downloads\\pyke\\555016_project_pyke.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Pyke"
+    },
+    {
+      "name": "FIEND QUELLER PYKE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/826ce569e778bf7227cf636db24d35974fd45a24-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/826ce569e778bf7227cf636db24d35974fd45a24-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

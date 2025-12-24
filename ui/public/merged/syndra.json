@@ -1,0 +1,63 @@
+{
+  "slug": "syndra",
+  "skinCount": 4,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "SYNDRA, THE DARK SOVEREIGN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ea0284d333d8d12f1f62753c007af1819c836e48-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ea0284d333d8d12f1f62753c007af1819c836e48-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/syndra/134000/model.glb",
+        "local": "data\\downloads\\syndra\\134000_syndra.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Syndra"
+    },
+    {
+      "name": "SPIRIT BLOSSOM SYNDRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1d30a0616a0b89ffb51da7ee91aba8d82f6fde24-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1d30a0616a0b89ffb51da7ee91aba8d82f6fde24-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/syndra/134044/model.glb",
+        "local": "data\\downloads\\syndra\\134044_spirit_blossom_syndra.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Syndra"
+    },
+    {
+      "name": "STAR GUARDIAN SYNDRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/845c044c5c3d52710cc00facb20a08720bcd0651-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/845c044c5c3d52710cc00facb20a08720bcd0651-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/syndra/134006/model.glb",
+        "local": "data\\downloads\\syndra\\134006_star_guardian_syndra.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Syndra"
+    },
+    {
+      "name": "PRESTIGE STAR GUARDIAN SYNDRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/68e72b73e0e26b2dc8333495c66fa124c2fd5cc1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/68e72b73e0e26b2dc8333495c66fa124c2fd5cc1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/syndra/134034/model.glb",
+        "local": "data\\downloads\\syndra\\134034_prestige_star_guardian_syndra.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Prestige Star Guardian Syndra"
+    }
+  ]
+}

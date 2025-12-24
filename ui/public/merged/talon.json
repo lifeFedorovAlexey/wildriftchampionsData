@@ -1,0 +1,76 @@
+{
+  "slug": "talon",
+  "skinCount": 6,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "TALON, THE BLADE'S SHADOW",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/061dccae83a5209dcce77909e9b6a3d70fd6f9f9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/061dccae83a5209dcce77909e9b6a3d70fd6f9f9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/talon/91000/model.glb",
+        "local": "data\\downloads\\talon\\91000_talon.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Talon"
+    },
+    {
+      "name": "HIGH NOON TALON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d7c6d82fcdb2b579ef03bded94af39c06f77f950-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d7c6d82fcdb2b579ef03bded94af39c06f77f950-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/talon/91038/model.glb",
+        "local": "data\\downloads\\talon\\91038_high_noon_talon.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Talon"
+    },
+    {
+      "name": "ENDURING SWORD TALON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4dca7c0dc7731b172005ea95f7f291a95194eb45-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4dca7c0dc7731b172005ea95f7f291a95194eb45-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/talon/91012/model.glb",
+        "local": "data\\downloads\\talon\\91012_enduring_sword_talon.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Enduring Sword Talon"
+    },
+    {
+      "name": "Splendor Opus Talon",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aea5e8e7231b2a7a48a3aa4996bf595948993ef7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aea5e8e7231b2a7a48a3aa4996bf595948993ef7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "STARGAZER TALON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ce967c6405b45223b47dacf97a6cecd0db029ce2-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ce967c6405b45223b47dacf97a6cecd0db029ce2-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PRESTIGE STARGAZER TALON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/00f1502a339bf29f745e34c3d5165e83c00d355b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/00f1502a339bf29f745e34c3d5165e83c00d355b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

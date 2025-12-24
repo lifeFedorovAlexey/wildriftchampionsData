@@ -1,0 +1,109 @@
+{
+  "slug": "veigar",
+  "skinCount": 8,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "VEIGAR, THE TINY MASTER OF EVIL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8a01db68eac31c09b1debd75ae286c7e840bf410-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8a01db68eac31c09b1debd75ae286c7e840bf410-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/veigar/45000/model.glb",
+        "local": "data\\downloads\\veigar\\45000_veigar.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Veigar"
+    },
+    {
+      "name": "SUPERB VILLAIN VEIGAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8caa0aba99e9c83a242efe3f38206529ffc2d29f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8caa0aba99e9c83a242efe3f38206529ffc2d29f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/veigar/45006/model.glb",
+        "local": "data\\downloads\\veigar\\45006_superb_villain_veigar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Superb Villain Veigar"
+    },
+    {
+      "name": "BAD SANTA VEIGAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4ad13971a263b35e297b4c10a018503fbe5d94cd-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4ad13971a263b35e297b4c10a018503fbe5d94cd-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/veigar/45007/model.glb",
+        "local": "data\\downloads\\veigar\\45007_bad_santa_veigar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Bad Santa Veigar"
+    },
+    {
+      "name": "FURYHORN COSPLAY VEIGAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0eb7d57feac483ae48efe71ce5a6416837d6a70e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0eb7d57feac483ae48efe71ce5a6416837d6a70e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/veigar/45023/model.glb",
+        "local": "data\\downloads\\veigar\\45023_furyhorn_cosplay_veigar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Furyhorn Cosplay Veigar"
+    },
+    {
+      "name": "FINAL BOSS VEIGAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/78caa777603b9a6e9ea4f5178032c6788baf8b47-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/78caa777603b9a6e9ea4f5178032c6788baf8b47-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/veigar/45008/model.glb",
+        "local": "data\\downloads\\veigar\\45008_final_boss_veigar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Final Boss Veigar"
+    },
+    {
+      "name": "MYTHIC CHROMA VEIGA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a630d8c7d5eea2db9620821745d847535abefe36-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a630d8c7d5eea2db9620821745d847535abefe36-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "FOOD SPIRITS VEIGAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6f48c719b2800a80c3261b6b274fc1badeccbfec-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6f48c719b2800a80c3261b6b274fc1badeccbfec-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "OMEGA SQUAD VEIGAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cb9c2897101d5051ae40d52d1dce1a89564e80ee-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cb9c2897101d5051ae40d52d1dce1a89564e80ee-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/veigar/45009/model.glb",
+        "local": "data\\downloads\\veigar\\45009_omega_squad_veigar.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Omega Squad Veigar"
+    }
+  ]
+}

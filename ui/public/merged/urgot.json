@@ -1,0 +1,72 @@
+{
+  "slug": "urgot",
+  "skinCount": 5,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "URGOT, THE DREADNOUGHT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5fea00bed10d24becc8cd2bae09f3e7a24bbd91e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5fea00bed10d24becc8cd2bae09f3e7a24bbd91e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/urgot/6000/model.glb",
+        "local": "data\\downloads\\urgot\\6000_urgot.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Urgot"
+    },
+    {
+      "name": "HIGH NOON URGOT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c504da6d237efb08949d208d76cefb2001b6ab35-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c504da6d237efb08949d208d76cefb2001b6ab35-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/urgot/6009/model.glb",
+        "local": "data\\downloads\\urgot\\6009_high_noon_urgot.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Urgot"
+    },
+    {
+      "name": "MECHA URGOT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6046d39e991deebb43b22ff24231b12435197151-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6046d39e991deebb43b22ff24231b12435197151-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PAJAMA GUARDIAN COSPLAY URGOT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ce8d65262a376b3041fe1b2c2119be47d9c83c1a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ce8d65262a376b3041fe1b2c2119be47d9c83c1a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/urgot/6015/model.glb",
+        "local": "data\\downloads\\urgot\\6015_pajama_guardian_cosplay_urgot.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pajama Guardian Cosplay Urgot"
+    },
+    {
+      "name": "BATTLECAST URGOT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/202890954c5b7acad3d641e15543cfea859dec22-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/202890954c5b7acad3d641e15543cfea859dec22-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/urgot/6003/model.glb",
+        "local": "data\\downloads\\urgot\\6003_battlecast_urgot.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battlecast Urgot"
+    }
+  ]
+}

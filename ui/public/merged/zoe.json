@@ -1,0 +1,53 @@
+{
+  "slug": "zoe",
+  "skinCount": 4,
+  "with3d": 2,
+  "skins": [
+    {
+      "name": "ZOE, THE ASPECT OF TWILIGHT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c65aa213c567724405dff30e16dc9ce336999c62-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c65aa213c567724405dff30e16dc9ce336999c62-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zoe/142000/model.glb",
+        "local": "data\\downloads\\zoe\\142000_zoe.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Zoe"
+    },
+    {
+      "name": "MYTHMAKER ZOE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f771eb4cf60d86df3f4a9e6fdddc6e1a1960026-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f771eb4cf60d86df3f4a9e6fdddc6e1a1960026-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "STAR GUARDIAN ZOE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c9a901f023281098cb6077b27fce8947f7c1331d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c9a901f023281098cb6077b27fce8947f7c1331d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zoe/142009/model.glb",
+        "local": "data\\downloads\\zoe\\142009_star_guardian_zoe.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Zoe"
+    },
+    {
+      "name": "CAFE CUTIES ZOE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d3ba1c41b21619116a2c5e095cbe3fd10dce7662-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d3ba1c41b21619116a2c5e095cbe3fd10dce7662-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

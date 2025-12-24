@@ -1,0 +1,151 @@
+{
+  "slug": "riven",
+  "skinCount": 11,
+  "with3d": 9,
+  "skins": [
+    {
+      "name": "RIVEN, THE EXILE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/da5b159255cb81cafeeb5487a7543f5017154e8f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/da5b159255cb81cafeeb5487a7543f5017154e8f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92000/model.glb",
+        "local": "data\\downloads\\riven\\92000_riven.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Riven"
+    },
+    {
+      "name": "ARCADE RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4c4518c69b6a46144b180553849446ce5658fbfb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4c4518c69b6a46144b180553849446ce5658fbfb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92006/model.glb",
+        "local": "data\\downloads\\riven\\92006_arcade_riven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arcade Riven"
+    },
+    {
+      "name": "SENTINEL RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88b3dac2e96b7914d925c648a2f4159eb8b39748-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88b3dac2e96b7914d925c648a2f4159eb8b39748-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92034/model.glb",
+        "local": "data\\downloads\\riven\\92034_sentinel_riven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sentinel Riven"
+    },
+    {
+      "name": "VALIANT SWORD RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7df374a4c871b40e07b210520808f38751214251-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7df374a4c871b40e07b210520808f38751214251-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92020/model.glb",
+        "local": "data\\downloads\\riven\\92020_valiant_sword_riven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Valiant Sword Riven"
+    },
+    {
+      "name": "DAWNBRINGER RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8b09a37c7d5038152b4c21b61f1f49fe14763689-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8b09a37c7d5038152b4c21b61f1f49fe14763689-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92016/model.glb",
+        "local": "data\\downloads\\riven\\92016_dawnbringer_riven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dawnbringer Riven"
+    },
+    {
+      "name": "CRYSTAL ROSE RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/61b16072d22b02d4a851f495c3805b523b73c123-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/61b16072d22b02d4a851f495c3805b523b73c123-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "NOVA RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c164f4b0b17b012be768211a4d243d3dac8f7026-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c164f4b0b17b012be768211a4d243d3dac8f7026-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PRESTIGE VALIANT SWORD RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3477a9824948e2260890fe95046779c5f921e781-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3477a9824948e2260890fe95046779c5f921e781-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92022/model.glb",
+        "local": "data\\downloads\\riven\\92022_prestige_valiant_sword_riven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Prestige Valiant Sword Riven"
+    },
+    {
+      "name": "SPIRIT BLOSSOM RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9bfc8d82dfe2e7a82be4a24b7bcdd1b2be0c1d6d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9bfc8d82dfe2e7a82be4a24b7bcdd1b2be0c1d6d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92023/model.glb",
+        "local": "data\\downloads\\riven\\92023_spirit_blossom_riven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Riven"
+    },
+    {
+      "name": "PULSEFIRE RIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/15f2080133b4035f1afde68d9527b205bce92bd4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/15f2080133b4035f1afde68d9527b205bce92bd4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92018/model.glb",
+        "local": "data\\downloads\\riven\\92018_pulsefire_riven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pulsefire Riven"
+    },
+    {
+      "name": "Dragonblade Riven",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/01e63792f6fc3bceb17b7c99ec472241b4103d58-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/01e63792f6fc3bceb17b7c99ec472241b4103d58-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/riven/92005/model.glb",
+        "local": "data\\downloads\\riven\\92005_dragonblade_riven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dragonblade Riven"
+    }
+  ]
+}

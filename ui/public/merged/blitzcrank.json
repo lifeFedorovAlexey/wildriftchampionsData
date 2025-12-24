@@ -1,0 +1,81 @@
+{
+  "slug": "blitzcrank",
+  "skinCount": 6,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "BLITZCRANK, THE GREAT STEAM GOLEM",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6488133b65b49ab922dbb32c5c31fbaac0d7133a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6488133b65b49ab922dbb32c5c31fbaac0d7133a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/blitzcrank/53000/model.glb",
+        "local": "data\\downloads\\blitzcrank\\53000_blitzcrank.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Blitzcrank"
+    },
+    {
+      "name": "BATTLE BOSS BLITZCRANK",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d35c61e076a1cf61e9939db37ccf5d0e9f3e8448-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d35c61e076a1cf61e9939db37ccf5d0e9f3e8448-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/blitzcrank/53011/model.glb",
+        "local": "data\\downloads\\blitzcrank\\53011_battle_boss_blitzcrank.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Boss Blitzcrank"
+    },
+    {
+      "name": "BOOM BOOM BLITZCRANK",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9d940804825c64fe0b35fbb5b8b34984b6d69cf3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9d940804825c64fe0b35fbb5b8b34984b6d69cf3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/blitzcrank/53003/model.glb",
+        "local": "data\\downloads\\blitzcrank\\53003_boom_boom_blitzcrank.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Boom Boom Blitzcrank"
+    },
+    {
+      "name": "iBlitzcrank",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7078633b042daa802c10a8ef1a0294093d9c4043-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7078633b042daa802c10a8ef1a0294093d9c4043-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/blitzcrank/53006/model.glb",
+        "local": "data\\downloads\\blitzcrank\\53006_iblitzcrank.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "iBlitzcrank"
+    },
+    {
+      "name": "Cottontail Blitzcrank",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d96df9eb83a276693f1e6246d52785c7882df5b0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d96df9eb83a276693f1e6246d52785c7882df5b0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SPACE GROOVE BLITZCRANK",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bd6267826f606b302c808fb80a727b5197abf2a3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bd6267826f606b302c808fb80a727b5197abf2a3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "slug": "xayah",
+  "skinCount": 9,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "XAYAH, THE REBEL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9fb454b2e46e6a1d7f5a969da8a121ee1b490279-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9fb454b2e46e6a1d7f5a969da8a121ee1b490279-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/xayah/498000/model.glb",
+        "local": "data\\downloads\\xayah\\498000_xayah.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Xayah"
+    },
+    {
+      "name": "COSMIC DUSK XAYAH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/969e51942d70eb864825aed96512657e993ffc6d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/969e51942d70eb864825aed96512657e993ffc6d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/xayah/498001/model.glb",
+        "local": "data\\downloads\\xayah\\498001_cosmic_dusk_xayah.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cosmic Dusk Xayah"
+    },
+    {
+      "name": "SWEETHEART XAYAH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b8d478529f4df24d82c09fd0f85023a4d4f31531-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b8d478529f4df24d82c09fd0f85023a4d4f31531-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/xayah/498002/model.glb",
+        "local": "data\\downloads\\xayah\\498002_sweetheart_xayah.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sweetheart Xayah"
+    },
+    {
+      "name": "STAR GUARDIAN XAYAH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c29910b3f4fde02b7d8c4a2de48cfe8841e8f2a7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c29910b3f4fde02b7d8c4a2de48cfe8841e8f2a7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/xayah/498004/model.glb",
+        "local": "data\\downloads\\xayah\\498004_star_guardian_xayah.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Xayah"
+    },
+    {
+      "name": "Calligraphia Xayah",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/24548e8802b69af6ec450990a6b23c3b1e0cdd22-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/24548e8802b69af6ec450990a6b23c3b1e0cdd22-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Elderwood Xayah",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cdf2c0392d79ceb83db60b8570a58ee465c0e29e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cdf2c0392d79ceb83db60b8570a58ee465c0e29e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/xayah/498008/model.glb",
+        "local": "data\\downloads\\xayah\\498008_elderwood_xayah.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Elderwood Xayah"
+    },
+    {
+      "name": "Celestial Embroidery Xayah",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/21478e13d129adf7af0495d8dd6b12c43e3915db-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/21478e13d129adf7af0495d8dd6b12c43e3915db-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Prestige Select Celestial Embroidery Xayah",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9172be5a9af1b9b535be0e5e842acd0bcd787f90-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9172be5a9af1b9b535be0e5e842acd0bcd787f90-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CRYSTAL ROSE XAYAH",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c1413495fbf70ed8c6cb28471c0be3aa9fa7cd1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c1413495fbf70ed8c6cb28471c0be3aa9fa7cd1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

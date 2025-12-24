@@ -1,0 +1,109 @@
+{
+  "slug": "braum",
+  "skinCount": 8,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "BRAUM, THE HEART OF THE FRELJORD",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/badd74425385b53d847f4f1a962acc39d956321b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/badd74425385b53d847f4f1a962acc39d956321b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/braum/201000/model.glb",
+        "local": "data\\downloads\\braum\\201000_braum.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Braum"
+    },
+    {
+      "name": "DRAGONSLAYER BRAUM",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/227c2754b3c155a4b2a3dc9310fad8282891ca7e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/227c2754b3c155a4b2a3dc9310fad8282891ca7e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/braum/201001/model.glb",
+        "local": "data\\downloads\\braum\\201001_dragonslayer_braum.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dragonslayer Braum"
+    },
+    {
+      "name": "CRIME CITY BRAUM",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1724404d797cc0acf37071f90edc752edd989686-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1724404d797cc0acf37071f90edc752edd989686-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/braum/201011/model.glb",
+        "local": "data\\downloads\\braum\\201011_crime_city_braum.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Crime City Braum"
+    },
+    {
+      "name": "BRAUM LIONHEART",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2168fc6847ec4afdbdb63db5c69578e7e07a0226-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2168fc6847ec4afdbdb63db5c69578e7e07a0226-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/braum/201003/model.glb",
+        "local": "data\\downloads\\braum\\201003_braum_lionheart.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Braum Lionheart"
+    },
+    {
+      "name": "GLORIOUS CROWN BRAUM",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/452c3fa928698cae33baf3cc98dbc6365c026ffa-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/452c3fa928698cae33baf3cc98dbc6365c026ffa-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "El Tigre Braum",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/db9c798e19cbc789e0eb075f6ac2c4ac64b63099-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/db9c798e19cbc789e0eb075f6ac2c4ac64b63099-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/braum/201002/model.glb",
+        "local": "data\\downloads\\braum\\201002_el_tigre_braum.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "El Tigre Braum"
+    },
+    {
+      "name": "Santa Braum",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ec8ba6842e8371790c94435702cb7e9fc426f031-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ec8ba6842e8371790c94435702cb7e9fc426f031-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/braum/201010/model.glb",
+        "local": "data\\downloads\\braum\\201010_santa_braum.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Santa Braum"
+    },
+    {
+      "name": "GARDEN PARTY BRAUM",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9a9978c83c8d5919aac55a456fcd930edac0e55b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9a9978c83c8d5919aac55a456fcd930edac0e55b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}
