@@ -1,7 +1,11 @@
 "use client";
-
+import { useEffect, useRef } from "react";
+import { Group } from "three";
+import { useAnimations } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import {
+  Bounds,
+  Center,
   Environment,
   Html,
   OrbitControls,
@@ -12,7 +16,6 @@ import { Suspense } from "react";
 
 function Loader() {
   const { active, progress, item, loaded, total } = useProgress();
-
   if (!active) return null;
 
   return (
@@ -64,19 +67,39 @@ function Loader() {
   );
 }
 
-function LuxModel({ url }: { url: string }) {
+function Model({ url }: { url: string }) {
+  const group = useRef<Group>(null);
   const gltf = useGLTF(url);
+  const { actions, names } = useAnimations(gltf.animations, group);
+
+  useEffect(() => {
+    if (!names || names.length === 0) {
+      console.warn("Анимаций нет");
+      return;
+    }
+
+    const action = actions[names[0]];
+    action?.reset().fadeIn(0.2).play();
+
+    return () => {
+      action?.fadeOut(0.2);
+    };
+  }, [actions, names]);
 
   return (
-    <group>
-      <primitive object={gltf.scene} />
-    </group>
+    <Bounds fit clip observe margin={1.2}>
+      <Center>
+        <group ref={group}>
+          <primitive object={gltf.scene} />
+        </group>
+      </Center>
+    </Bounds>
   );
 }
 
 export default function ModelViewer({
   url = "/models/hero.glb",
-  height = 1000,
+  height = 800,
 }: {
   url?: string;
   height?: number;
@@ -85,19 +108,15 @@ export default function ModelViewer({
     <div
       style={{ width: "100%", height, borderRadius: 16, overflow: "hidden" }}
     >
-      <Canvas camera={{ position: [0.5, 0.7, 2.5], fov: 40 }}>
+      <Canvas camera={{ fov: 45 }}>
         <Suspense fallback={<Loader />}>
-          <ambientLight intensity={0.6} />
-          <directionalLight position={[1, 5, 2]} intensity={1.2} />
+          <ambientLight intensity={0.8} />
+          <directionalLight position={[3, 6, 3]} intensity={1.4} />
           <Environment preset="studio" />
 
-          <LuxModel url={url} />
+          <OrbitControls makeDefault enablePan={false} />
 
-          <OrbitControls
-            enablePan={false}
-            minDistance={1.6}
-            maxDistance={2.0}
-          />
+          <Model url={url} />
         </Suspense>
       </Canvas>
     </div>
