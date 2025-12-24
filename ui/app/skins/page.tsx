@@ -86,7 +86,7 @@ export default function SkinsPage() {
               >
                 {firstSkin ? (
                   <img
-                    src={firstSkin.image.preview}
+                    src={firstSkin.image.full}
                     alt={name}
                     loading="lazy"
                     style={{

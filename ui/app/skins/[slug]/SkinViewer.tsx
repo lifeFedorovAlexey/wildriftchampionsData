@@ -67,7 +67,7 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
                 }}
               >
                 <Image
-                  src={s.image.preview}
+                  src={s.image.full}
                   alt={s.name}
                   width={160}
                   height={90}
@@ -80,9 +80,7 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
                   }}
                   loading="lazy"
                 />
-
                 <div className={styles.skinName}>{s.name}</div>
-
                 {/* Иконку глаза оставляем. Можно показывать всегда,
                     но если хочешь как раньше — только при canShow3d */}
                 {canShow3d && (
