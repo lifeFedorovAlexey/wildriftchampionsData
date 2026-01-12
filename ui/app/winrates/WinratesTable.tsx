@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./WinratesTable.module.css";
 
 type Row = {
@@ -33,6 +32,30 @@ function banRateColor(v: number | null) {
   return "#4ade80";
 }
 
+/**
+ * Делает src стабильным:
+ * - если пришёл абсолютный url на твой домен и внутри есть "/wr-api/..." — превращаем в относительный "/wr-api/..."
+ *   чтобы не ломать кеш из-за www/без www/прокси.
+ */
+function normalizeIconSrc(src?: string | null) {
+  if (!src) return null;
+
+  // Уже относительный
+  if (src.startsWith("/")) return src;
+
+  try {
+    const u = new URL(src);
+    const i = u.pathname.indexOf("/wr-api/");
+    if (i !== -1) {
+      const path = u.pathname.slice(i) + (u.search || "");
+      return path;
+    }
+    return src;
+  } catch {
+    return src;
+  }
+}
+
 function ChampAvatar({
   name,
   src,
@@ -42,22 +65,22 @@ function ChampAvatar({
   src?: string | null;
   isLcp?: boolean;
 }) {
-  if (!src) return <div className={styles.avatar} aria-hidden="true" />;
+  const iconSrc = normalizeIconSrc(src);
+
+  if (!iconSrc) return <div className={styles.avatar} aria-hidden="true" />;
 
   return (
     <div className={styles.avatar}>
-      <Image
-        src={src}
+      <img
+        src={iconSrc}
         alt={name}
         width={32}
         height={32}
-        sizes="32px"
-        quality={60}
-        priority={!!isLcp}
+        className={styles.avatarImg}
         loading={isLcp ? "eager" : "lazy"}
         fetchPriority={isLcp ? "high" : "auto"}
         decoding="async"
-        className={styles.avatarImg}
+        sizes="32px"
       />
     </div>
   );
