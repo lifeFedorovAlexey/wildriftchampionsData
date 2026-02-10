@@ -29,15 +29,30 @@ async function fetchJson<T>(url: string): Promise<T> {
 }
 
 function buildLatestMap(items: HistoryItem[]) {
-  const latestMap: Record<string, HistoryItem> = {};
-  for (const item of items) {
-    if (!item?.slug || !item?.rank || !item?.lane || !item?.date) continue;
-    const key = `${item.slug}|${item.rank}|${item.lane}`;
-    const prev = latestMap[key];
-    if (!prev || String(item.date) > String(prev.date)) {
-      latestMap[key] = item;
+  // 1) последняя дата для каждого среза rank|lane
+  const latestDateBySlice: Record<string, string> = {};
+  for (const it of items) {
+    if (!it?.rank || !it?.lane || !it?.date) continue;
+    const sliceKey = `${it.rank}|${it.lane}`;
+    const prev = latestDateBySlice[sliceKey];
+    if (!prev || String(it.date) > String(prev)) {
+      latestDateBySlice[sliceKey] = String(it.date);
     }
   }
+
+  // 2) берём только строки строго этой даты
+  const latestMap: Record<string, HistoryItem> = {};
+  for (const it of items) {
+    if (!it?.slug || !it?.rank || !it?.lane || !it?.date) continue;
+    const sliceKey = `${it.rank}|${it.lane}`;
+    const needDate = latestDateBySlice[sliceKey];
+    if (!needDate) continue;
+    if (String(it.date) !== String(needDate)) continue;
+
+    const key = `${it.slug}|${it.rank}|${it.lane}`;
+    latestMap[key] = it;
+  }
+
   return latestMap;
 }
 
@@ -62,9 +77,9 @@ export default async function Page() {
     const baseUrl = getBaseUrlFromEnv();
 
     const champsUrl = `${baseUrl}${API_PREFIX}/api/champions?lang=${encodeURIComponent(
-      language
+      language,
     )}`;
-    const histUrl = `${baseUrl}${API_PREFIX}/api/champion-history`;
+    const histUrl = `${baseUrl}${API_PREFIX}/api/champion-history?latest=1`;
 
     const [champsJson, histJson] = await Promise.all([
       fetchJson<Champion[]>(champsUrl),
