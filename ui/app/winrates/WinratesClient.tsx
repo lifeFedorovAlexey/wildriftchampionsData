@@ -2,12 +2,12 @@
 
 import { useMemo, useState } from "react";
 
+import LaneFilter from "@/components/LaneFilter";
 import PageWrapper from "@/components/PageWrapper";
 import RankFilter from "@/components/RankFilter";
-import LaneFilter from "@/components/LaneFilter";
+import styles from "./WinratesClient.module.css";
 import WinratesTable from "./WinratesTable";
 import { buildWinrateRows, nextSortState } from "./winrates-lib.js";
-import styles from "./WinratesClient.module.css";
 
 type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
 type LaneKey = "top" | "jungle" | "mid" | "adc" | "support";
@@ -133,7 +133,7 @@ export default function WinratesClient({
                 <strong className={styles.tableTitle}>Сводная таблица</strong>
                 {formattedUpdatedAt ? (
                   <p className={styles.tableMeta}>
-                    Обновлено: {formattedUpdatedAt}
+                    Дата прогона: {formattedUpdatedAt}
                   </p>
                 ) : null}
               </div>

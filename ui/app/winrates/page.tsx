@@ -46,7 +46,12 @@ export default async function Page() {
     champions = Array.isArray(champsJson) ? champsJson : [];
     historyItems = Array.isArray(histJson.items) ? histJson.items : [];
     latestStats = buildLatestMap(historyItems);
-    updatedAt = new Date().toISOString();
+    updatedAt = historyItems.reduce<string | null>((latest, item) => {
+      const date = typeof item?.date === "string" ? item.date : null;
+      if (!date) return latest;
+      if (!latest || date > latest) return date;
+      return latest;
+    }, null);
   } catch (err) {
     console.error("Winrates load error:", err);
     error = "Не удалось загрузить статистику винрейтов.";
