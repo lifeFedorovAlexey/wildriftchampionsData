@@ -1,22 +1,20 @@
 "use client";
 
 import { useEffect } from "react";
+import { getTelegramWebApp } from "@/lib/telegram-webapp";
 
 export default function TelegramInit() {
   useEffect(() => {
-    const webApp = (window as any).Telegram?.WebApp;
+    const webApp = getTelegramWebApp();
     if (!webApp) return;
 
-    webApp.ready();
-    webApp.expand();
+    webApp.ready?.();
+    webApp.expand?.();
 
     try {
-      if (typeof webApp.setHeaderColor === "function")
-        webApp.setHeaderColor("#0b1220");
-      if (typeof webApp.setBackgroundColor === "function")
-        webApp.setBackgroundColor("#0b1220");
-      if (typeof webApp.setColorScheme === "function")
-        webApp.setColorScheme("dark");
+      webApp.setHeaderColor?.("#0b1220");
+      webApp.setBackgroundColor?.("#0b1220");
+      webApp.setColorScheme?.("dark");
     } catch {}
   }, []);
 

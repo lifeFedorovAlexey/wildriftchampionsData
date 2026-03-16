@@ -1,6 +1,10 @@
 import WinratesClient from "./WinratesClient";
+import {
+  buildLatestMap,
+  buildStatsUrls,
+  fetchJson,
+} from "./winrates-lib.js";
 
-const API_PREFIX = "/wr-api";
 const language = "ru_ru";
 
 export const revalidate = 60;
@@ -22,84 +26,39 @@ type HistoryItem = {
   strengthLevel?: number | null;
 };
 
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { next: { revalidate } });
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  return (await res.json()) as T;
-}
-
-function buildLatestMap(items: HistoryItem[]) {
-  // 1) последняя дата для каждого среза rank|lane
-  const latestDateBySlice: Record<string, string> = {};
-  for (const it of items) {
-    if (!it?.rank || !it?.lane || !it?.date) continue;
-    const sliceKey = `${it.rank}|${it.lane}`;
-    const prev = latestDateBySlice[sliceKey];
-    if (!prev || String(it.date) > String(prev)) {
-      latestDateBySlice[sliceKey] = String(it.date);
-    }
-  }
-
-  // 2) берём только строки строго этой даты
-  const latestMap: Record<string, HistoryItem> = {};
-  for (const it of items) {
-    if (!it?.slug || !it?.rank || !it?.lane || !it?.date) continue;
-    const sliceKey = `${it.rank}|${it.lane}`;
-    const needDate = latestDateBySlice[sliceKey];
-    if (!needDate) continue;
-    if (String(it.date) !== String(needDate)) continue;
-
-    const key = `${it.slug}|${it.rank}|${it.lane}`;
-    latestMap[key] = it;
-  }
-
-  return latestMap;
-}
-
-function getBaseUrlFromEnv() {
-  const env =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    process.env.SITE_URL ||
-    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-    process.env.VERCEL_URL;
-
-  if (!env) return "http://localhost:3000";
-
-  return env.startsWith("http") ? env : `https://${env}`;
-}
-
 export default async function Page() {
   let champions: Champion[] = [];
   let latestStats: Record<string, HistoryItem> | null = null;
+  let historyItems: HistoryItem[] = [];
   let error: string | null = null;
+  let updatedAt: string | null = null;
 
   try {
-    const baseUrl = getBaseUrlFromEnv();
-
-    const champsUrl = `${baseUrl}${API_PREFIX}/api/champions?lang=${encodeURIComponent(
-      language,
-    )}`;
-    const histUrl = `${baseUrl}${API_PREFIX}/api/champion-history?latest=1`;
+    const { championsUrl, historyUrl } = buildStatsUrls(language);
 
     const [champsJson, histJson] = await Promise.all([
-      fetchJson<Champion[]>(champsUrl),
-      fetchJson<{ items?: HistoryItem[] }>(histUrl),
+      fetchJson(championsUrl, { next: { revalidate } }) as Promise<Champion[]>,
+      fetchJson(historyUrl, {
+        next: { revalidate },
+      }) as Promise<{ items?: HistoryItem[] }>,
     ]);
 
     champions = Array.isArray(champsJson) ? champsJson : [];
-    const items = Array.isArray(histJson.items) ? histJson.items : [];
-    latestStats = buildLatestMap(items);
-  } catch (e) {
-    console.error("Winrates load error:", e);
+    historyItems = Array.isArray(histJson.items) ? histJson.items : [];
+    latestStats = buildLatestMap(historyItems);
+    updatedAt = new Date().toISOString();
+  } catch (err) {
+    console.error("Winrates load error:", err);
     error = "Не удалось загрузить статистику винрейтов.";
   }
 
   return (
     <WinratesClient
-      language={language}
       champions={champions}
       latestStats={latestStats}
+      historyItems={historyItems}
       error={error}
+      updatedAt={updatedAt}
     />
   );
 }

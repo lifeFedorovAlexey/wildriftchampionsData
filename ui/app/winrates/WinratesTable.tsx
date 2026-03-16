@@ -1,6 +1,9 @@
 "use client";
 
+import Image from "next/image";
+
 import styles from "./WinratesTable.module.css";
+import { normalizeIconSrc } from "./winrates-lib.js";
 
 type Row = {
   slug: string;
@@ -11,6 +14,7 @@ type Row = {
   banRate: number | null;
   tierLabel: string;
   tierColor: string;
+  positionDelta: number | null;
 };
 
 function winRateColor(v: number | null) {
@@ -32,28 +36,24 @@ function banRateColor(v: number | null) {
   return "#4ade80";
 }
 
-/**
- * Делает src стабильным:
- * - если пришёл абсолютный url на твой домен и внутри есть "/wr-api/..." — превращаем в относительный "/wr-api/..."
- *   чтобы не ломать кеш из-за www/без www/прокси.
- */
-function normalizeIconSrc(src?: string | null) {
-  if (!src) return null;
-
-  // Уже относительный
-  if (src.startsWith("/")) return src;
-
-  try {
-    const u = new URL(src);
-    const i = u.pathname.indexOf("/wr-api/");
-    if (i !== -1) {
-      const path = u.pathname.slice(i) + (u.search || "");
-      return path;
-    }
-    return src;
-  } catch {
-    return src;
+function formatPositionDelta(delta: number | null) {
+  if (delta == null) {
+    return { text: "—", color: "rgba(148, 163, 184, 0.82)" };
   }
+
+  if (Object.is(delta, -0)) {
+    delta = 0;
+  }
+
+  if (delta > 0) {
+    return { text: `↑${delta}`, color: "#4ade80" };
+  }
+
+  if (delta < 0) {
+    return { text: `↓${Math.abs(delta)}`, color: "#f87171" };
+  }
+
+  return { text: "0", color: "rgba(148, 163, 184, 0.82)" };
 }
 
 function ChampAvatar({
@@ -71,16 +71,15 @@ function ChampAvatar({
 
   return (
     <div className={styles.avatar}>
-      <img
+      <Image
         src={iconSrc}
         alt={name}
         width={32}
         height={32}
-        className={styles.avatarImg}
+        sizes="32px"
         loading={isLcp ? "eager" : "lazy"}
         fetchPriority={isLcp ? "high" : "auto"}
-        decoding="async"
-        sizes="32px"
+        className={styles.avatarImg}
       />
     </div>
   );
@@ -100,13 +99,15 @@ export default function WinratesTable({
       <div className={`${styles.grid} ${styles.header}`} role="row">
         <div className={styles.left}>#</div>
         <div className={styles.left}>Герой</div>
+        <div className={styles.center}>7д</div>
 
         <button
           type="button"
-          className={`${styles.right} ${styles.sortable}`}
+          className={`${styles.sortable} ${styles.sortableCenter}`}
           onClick={() => onSort("strengthLevel")}
+          aria-label="Сортировать по тиру"
         >
-          Тир{" "}
+          Тир
           <span className={styles.sortArrow}>
             {sort.column === "strengthLevel"
               ? sort.dir === "asc"
@@ -118,10 +119,11 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.right} ${styles.sortable}`}
+          className={`${styles.sortable} ${styles.sortableEnd}`}
           onClick={() => onSort("winRate")}
+          aria-label="Сортировать по винрейту"
         >
-          Победы{" "}
+          Винрейт
           <span className={styles.sortArrow}>
             {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
@@ -129,10 +131,11 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.right} ${styles.sortable}`}
+          className={`${styles.sortable} ${styles.sortableEnd}`}
           onClick={() => onSort("pickRate")}
+          aria-label="Сортировать по пикрейту"
         >
-          Пики{" "}
+          Пики
           <span className={styles.sortArrow}>
             {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
@@ -140,60 +143,72 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.right} ${styles.sortable}`}
+          className={`${styles.sortable} ${styles.sortableEnd}`}
           onClick={() => onSort("banRate")}
+          aria-label="Сортировать по банрейту"
         >
-          Баны{" "}
+          Баны
           <span className={styles.sortArrow}>
             {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
         </button>
       </div>
 
-      {rows.map((row, idx) => (
-        <div
-          key={row.slug}
-          className={`${styles.grid} ${styles.row}`}
-          role="row"
-        >
-          <div className={styles.index}>{idx + 1}</div>
+      {rows.map((row, idx) => {
+        const movement = formatPositionDelta(row.positionDelta);
 
-          <div className={styles.heroCell}>
-            <ChampAvatar name={row.name} src={row.icon} isLcp={idx === 0} />
-            <span className={styles.heroName} title={row.name}>
-              {row.name}
-            </span>
-          </div>
-
+        return (
           <div
-            className={styles.right}
-            style={{ fontWeight: 700, color: row.tierColor }}
+            key={row.slug}
+            className={`${styles.grid} ${styles.row}`}
+            role="row"
           >
-            {row.tierLabel}
-          </div>
+            <div className={styles.index}>{idx + 1}</div>
 
-          <div
-            className={styles.right}
-            style={{ color: winRateColor(row.winRate) }}
-          >
-            {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
-          </div>
+            <div className={styles.heroCell}>
+              <ChampAvatar name={row.name} src={row.icon} isLcp={idx === 0} />
+              <span className={styles.heroName} title={row.name}>
+                {row.name}
+              </span>
+            </div>
 
-          <div
-            className={styles.right}
-            style={{ color: pickRateColor(row.pickRate) }}
-          >
-            {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
-          </div>
+            <div
+              className={styles.center}
+              style={{ color: movement.color, fontWeight: 700 }}
+            >
+              {movement.text}
+            </div>
 
-          <div
-            className={styles.right}
-            style={{ color: banRateColor(row.banRate) }}
-          >
-            {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
+            <div
+              className={styles.center}
+              style={{ fontWeight: 700, color: row.tierColor }}
+            >
+              {row.tierLabel}
+            </div>
+
+            <div
+              className={styles.metric}
+              style={{ color: winRateColor(row.winRate) }}
+            >
+              {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
+            </div>
+
+            <div
+              className={styles.metric}
+              style={{ color: pickRateColor(row.pickRate) }}
+            >
+              {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
+            </div>
+
+            <div
+              className={styles.metric}
+              style={{ color: banRateColor(row.banRate) }}
+            >
+              {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
 
       {!rows.length ? (
         <div className={styles.empty}>Нет данных для выбранных фильтров.</div>

@@ -36,9 +36,9 @@ export default function PageWrapper({
 
       <style jsx>{`
         .wrap {
-          max-width: 900px;
+          max-width: var(--page-max-width);
           margin: 0 auto;
-          padding: 12px;
+          padding: 14px 14px 20px;
         }
 
         .top {
@@ -53,15 +53,25 @@ export default function PageWrapper({
           align-items: center;
         }
 
-        /* Мобилка: кнопка слева над заголовком */
-        @media (max-width: 520px) {
+        @media (max-width: 640px) {
+          .wrap {
+            padding: 12px 12px 18px;
+          }
+
           .backTop {
             margin-bottom: 4px;
           }
         }
 
-        /* Десктоп: можно слегка отодвинуть */
-        @media (min-width: 900px) {
+        @media (min-width: 1024px) {
+          .wrap {
+            padding-top: 18px;
+          }
+
+          .top {
+            margin-bottom: 18px;
+          }
+
           .backTop {
             margin-bottom: 8px;
           }

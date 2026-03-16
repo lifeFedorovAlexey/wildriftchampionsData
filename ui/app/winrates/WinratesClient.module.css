@@ -1,0 +1,77 @@
+.shell {
+  display: grid;
+  gap: 14px;
+}
+
+.filtersPanel {
+  display: grid;
+  gap: 18px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 22px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.filterSection {
+  display: grid;
+  gap: 0;
+}
+
+.tableFrame {
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 24px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.tableTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 18px 0;
+}
+
+.tableTitle {
+  display: block;
+  font-size: 16px;
+}
+
+.tableHint {
+  margin: 6px 0 0;
+  color: rgba(226, 232, 240, 0.66);
+  font-size: 13px;
+}
+
+.tableMeta {
+  margin: 6px 0 0;
+  color: rgba(125, 211, 252, 0.72);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.errorBox {
+  padding: 14px 16px;
+  border: 1px solid rgba(248, 113, 113, 0.28);
+  border-radius: 18px;
+  background: rgba(127, 29, 29, 0.22);
+  color: #fecaca;
+}
+
+@media (min-width: 760px) {
+  .filtersPanel {
+    padding: 16px 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    gap: 16px;
+  }
+
+  .filtersPanel {
+    padding: 18px 20px;
+  }
+}

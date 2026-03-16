@@ -10,7 +10,7 @@ export const RANK_OPTIONS = [
 
 export const LANE_OPTIONS: { key: string; label: string }[] = [
   { key: "top", label: "Топ" },
-  { key: "jungle", label: "Лесник" },
+  { key: "jungle", label: "Лес" },
   { key: "mid", label: "Мид" },
   { key: "adc", label: "Стрелок" },
   { key: "support", label: "Поддержка" },

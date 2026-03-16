@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { getTelegramWebApp } from "@/lib/telegram-webapp";
 
 type Props = {
   title: string;
@@ -10,19 +11,12 @@ type Props = {
 };
 
 function detectTelegramWebApp(): boolean {
-  if (typeof window === "undefined") return false;
-
-  const tg = (window as any)?.Telegram;
-  const wa = tg?.WebApp;
-
-  // 1) Должен существовать WebApp
+  const wa = getTelegramWebApp();
   if (!wa) return false;
 
-  // 2) В реальном TG WebApp обычно есть initData (строка) и/или initDataUnsafe.user
   const hasInitData =
     typeof wa.initData === "string" && wa.initData.trim().length > 0;
-
-  const hasUser = !!wa?.initDataUnsafe?.user;
+  const hasUser = Boolean(wa.initDataUnsafe?.user);
 
   return hasInitData || hasUser;
 }
@@ -33,70 +27,105 @@ export default function MenuHeader({
   telegramHref = "https://t.me/life_wr_bot",
   telegramLabel = "@life_wr_bot",
 }: Props) {
-  const [isTelegramWebApp, setIsTelegramWebApp] = useState<boolean | null>(
-    null
-  );
-
-  useEffect(() => {
-    setIsTelegramWebApp(detectTelegramWebApp());
-  }, []);
+  const [isTelegramWebApp] = useState<boolean>(() => detectTelegramWebApp());
 
   return (
-    <header
-      style={{
-        flex: "1 1 auto",
-        display: "flex",
-        justifyContent: "center",
-        textAlign: "center",
-        flexDirection: "column",
-        marginBottom: "20px",
-      }}
-    >
-      <h1
-        style={{
-          fontSize: 22,
-          fontWeight: 800,
-          letterSpacing: 0.2,
-          margin: 0,
-        }}
-      >
-        {title}
-      </h1>
+    <header className="menuHeader">
+      <h1 className="title">{title}</h1>
 
-      {paragraphs.length > 0 && (
-        <div style={{ marginTop: 8, opacity: 0.92, lineHeight: 1.55 }}>
-          {paragraphs.map((p, idx) => (
-            <p
-              key={idx}
-              style={{
-                margin: "0 0 8px",
-                fontSize: 13,
-              }}
-            >
-              {p}
+      {paragraphs.length > 0 ? (
+        <div className="paragraphs">
+          {paragraphs.map((paragraph, idx) => (
+            <p key={idx} className="paragraph">
+              {paragraph}
             </p>
           ))}
         </div>
-      )}
+      ) : null}
 
-      {/* Telegram link — показываем ТОЛЬКО если точно НЕ Telegram */}
-      {isTelegramWebApp === false && (
-        <p style={{ margin: 0, fontSize: 13 }}>
-          Тг:{" "}
+      {!isTelegramWebApp ? (
+        <p className="telegramLine">
+          Tg:{" "}
           <a
             href={telegramHref}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              color: "#a98aff",
-              textDecoration: "none",
-              fontWeight: 600,
-            }}
+            className="telegramLink"
           >
             {telegramLabel}
           </a>
         </p>
-      )}
+      ) : null}
+
+      <style jsx>{`
+        .menuHeader {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 10px;
+          padding: 4px 8px 2px;
+          margin-bottom: 14px;
+        }
+
+        .title {
+          margin: 0;
+          color: #f8fafc;
+          font-size: 24px;
+          font-weight: 800;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          text-wrap: balance;
+        }
+
+        .paragraphs {
+          max-width: 860px;
+        }
+
+        .paragraph {
+          margin: 0;
+          color: rgba(226, 232, 240, 0.92);
+          font-size: 13px;
+          line-height: 1.5;
+        }
+
+        .telegramLine {
+          margin: 0;
+          color: #f8fafc;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.2;
+        }
+
+        .telegramLink {
+          color: #a78bfa;
+          text-decoration: none;
+          font-weight: 700;
+        }
+
+        .telegramLink:hover {
+          color: #c4b5fd;
+        }
+
+        @media (max-width: 640px) {
+          .menuHeader {
+            gap: 8px;
+            margin-bottom: 12px;
+          }
+
+          .title {
+            font-size: 18px;
+          }
+
+          .paragraph {
+            font-size: 12px;
+          }
+
+          .telegramLine {
+            font-size: 13px;
+          }
+        }
+      `}</style>
     </header>
   );
 }

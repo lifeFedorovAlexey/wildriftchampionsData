@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getTelegramWebApp } from "@/lib/telegram-webapp";
 
 const API_BASE = "https://wr-api.vercel.app";
 const INQ_TWITCH_URL = "https://www.twitch.tv/inq_wr";
@@ -14,34 +15,61 @@ const VIEWS = {
   PICKS_BANS: "picks_bans",
 };
 
+function ScreenView({ title, onBack }) {
+  return (
+    <div style={{ padding: 16 }}>
+      <button onClick={onBack} style={{ marginBottom: 12 }}>
+        ← Назад
+      </button>
+      <h1 style={{ margin: 0 }}>{title}</h1>
+      <p style={{ opacity: 0.8 }}>
+        Тут потом подключим реальный экран. Сейчас важнее, что проект живой.
+      </p>
+    </div>
+  );
+}
+
+function MenuButton({ title, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        width: "100%",
+        padding: 14,
+        marginBottom: 10,
+        borderRadius: 12,
+        border: "1px solid rgba(255,255,255,0.08)",
+        background: "rgba(255,255,255,0.04)",
+        color: "#e8ecff",
+        cursor: "pointer",
+        textAlign: "left",
+      }}
+    >
+      {title}
+    </button>
+  );
+}
+
 export default function AppClient() {
-  const [tg, setTg] = useState(null);
+  const tg = getTelegramWebApp() ?? null;
   const [view, setView] = useState(VIEWS.MENU);
   const [updatedAt, setUpdatedAt] = useState(null);
 
-  // Telegram WebApp init (как у тебя было)
-  useEffect(() => {
-    const webApp = window.Telegram?.WebApp;
-    if (!webApp) return;
-
-    setTg(webApp);
-    webApp.ready();
-    webApp.expand();
-
-    try {
-      if (typeof webApp.setHeaderColor === "function")
-        webApp.setHeaderColor("#0b1220");
-      if (typeof webApp.setBackgroundColor === "function")
-        webApp.setBackgroundColor("#0b1220");
-      if (typeof webApp.setColorScheme === "function")
-        webApp.setColorScheme("dark");
-    } catch {}
-  }, []);
-
-  // ping open
   useEffect(() => {
     if (!tg) return;
-    const user = tg.initDataUnsafe?.user;
+
+    tg.ready?.();
+    tg.expand?.();
+
+    try {
+      tg.setHeaderColor?.("#0b1220");
+      tg.setBackgroundColor?.("#0b1220");
+      tg.setColorScheme?.("dark");
+    } catch {}
+  }, [tg]);
+
+  useEffect(() => {
+    const user = tg?.initDataUnsafe?.user;
     if (!user) return;
 
     fetch(`${API_BASE}/api/webapp-open`, {
@@ -56,7 +84,6 @@ export default function AppClient() {
     }).catch(() => {});
   }, [tg]);
 
-  // updatedAt
   useEffect(() => {
     let cancelled = false;
 
@@ -76,35 +103,64 @@ export default function AppClient() {
 
   function openLink(url) {
     if (!url) return;
+
     try {
-      if (tg?.openLink) tg.openLink(url);
-      else window.open(url, "_blank", "noopener,noreferrer");
+      if (tg?.openLink) {
+        tg.openLink(url);
+        return;
+      }
+
+      window.open(url, "_blank", "noopener,noreferrer");
     } catch {
       window.open(url, "_blank", "noopener,noreferrer");
     }
   }
 
-  // Пока вместо твоих “миллиона импортов” — заглушки экранов
-  const Screen = ({ title }) => (
-    <div style={{ padding: 16 }}>
-      <button onClick={() => setView(VIEWS.MENU)} style={{ marginBottom: 12 }}>
-        ← Назад
-      </button>
-      <h1 style={{ margin: 0 }}>{title}</h1>
-      <p style={{ opacity: 0.8 }}>
-        Тут потом подключим реальный экран. Сейчас важнее, что проект живой.
-      </p>
-    </div>
-  );
-
   if (view !== VIEWS.MENU) {
-    if (view === VIEWS.WINRATES) return <Screen title="Статистика чемпионов" />;
-    if (view === VIEWS.WINRATES_INQ)
-      return <Screen title="Тир-лист (авторский)" />;
-    if (view === VIEWS.TIERLIST)
-      return <Screen title="Тир-лист (по статистике)" />;
-    if (view === VIEWS.PICKS_BANS) return <Screen title="Топ пики / баны" />;
-    if (view === VIEWS.GRAPH) return <Screen title="График трендов" />;
+    if (view === VIEWS.WINRATES) {
+      return (
+        <ScreenView
+          title="Статистика чемпионов"
+          onBack={() => setView(VIEWS.MENU)}
+        />
+      );
+    }
+
+    if (view === VIEWS.WINRATES_INQ) {
+      return (
+        <ScreenView
+          title="Тир-лист (авторский)"
+          onBack={() => setView(VIEWS.MENU)}
+        />
+      );
+    }
+
+    if (view === VIEWS.TIERLIST) {
+      return (
+        <ScreenView
+          title="Тир-лист (по статистике)"
+          onBack={() => setView(VIEWS.MENU)}
+        />
+      );
+    }
+
+    if (view === VIEWS.PICKS_BANS) {
+      return (
+        <ScreenView
+          title="Топ пики / баны"
+          onBack={() => setView(VIEWS.MENU)}
+        />
+      );
+    }
+
+    if (view === VIEWS.GRAPH) {
+      return (
+        <ScreenView
+          title="График трендов"
+          onBack={() => setView(VIEWS.MENU)}
+        />
+      );
+    }
   }
 
   return (
@@ -121,7 +177,7 @@ export default function AppClient() {
         </div>
 
         <MenuButton
-          title="Статистика Чемпионов"
+          title="Статистика чемпионов"
           onClick={() => setView(VIEWS.WINRATES)}
         />
         <MenuButton
@@ -145,8 +201,8 @@ export default function AppClient() {
           INQ Twitch:{" "}
           <a
             href={INQ_TWITCH_URL}
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={(event) => {
+              event.preventDefault();
               openLink(INQ_TWITCH_URL);
             }}
             style={{
@@ -160,26 +216,5 @@ export default function AppClient() {
         </div>
       </div>
     </div>
-  );
-}
-
-function MenuButton({ title, onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{
-        width: "100%",
-        padding: 14,
-        marginBottom: 10,
-        borderRadius: 12,
-        border: "1px solid rgba(255,255,255,0.08)",
-        background: "rgba(255,255,255,0.04)",
-        color: "#e8ecff",
-        cursor: "pointer",
-        textAlign: "left",
-      }}
-    >
-      {title}
-    </button>
   );
 }

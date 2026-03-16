@@ -17,39 +17,63 @@ export function RankFilter<T extends string = RankKey>({
   options = RANK_OPTIONS as unknown as ReadonlyArray<{ key: T; label: string }>,
 }: RankFilterProps<T>) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: 6,
-        justifyContent: "center",
-        marginBottom: 4,
-      }}
-    >
-      {options.map((opt) => {
-        const active = opt.key === value;
-        return (
-          <button
-            key={opt.key}
-            type="button"
-            onClick={() => onChange(opt.key)}
-            style={{
-              borderRadius: 999,
-              border: active
-                ? "1px solid rgba(96,165,250,1)"
-                : "1px solid rgba(31,41,55,1)",
-              background: active ? "rgba(37,99,235,0.3)" : "transparent",
-              padding: "4px 8px",
-              fontSize: 11,
-              cursor: "pointer",
-              color: "inherit",
-            }}
-          >
-            {opt.label}
-          </button>
-        );
-      })}
-    </div>
+    <>
+      <div className="rankFilter">
+        {options.map((opt) => {
+          const active = opt.key === value;
+
+          return (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => onChange(opt.key)}
+              className={`chip${active ? " active" : ""}`}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <style jsx>{`
+        .rankFilter {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          justify-content: center;
+        }
+
+        .chip {
+          min-height: 32px;
+          padding: 6px 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(71, 85, 105, 0.72);
+          background: rgba(15, 23, 42, 0.42);
+          color: var(--text-strong);
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 1;
+          cursor: pointer;
+        }
+
+        .chip:hover {
+          border-color: rgba(125, 211, 252, 0.34);
+        }
+
+        .chip.active {
+          border-color: rgba(129, 140, 248, 0.9);
+          background: rgba(67, 56, 202, 0.28);
+          box-shadow: inset 0 0 0 1px rgba(191, 219, 254, 0.08);
+        }
+
+        @media (min-width: 1024px) {
+          .chip {
+            min-height: 34px;
+            padding: 7px 13px;
+          }
+        }
+      `}</style>
+    </>
   );
 }
 
