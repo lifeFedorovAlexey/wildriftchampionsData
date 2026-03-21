@@ -6,7 +6,11 @@ import PageWrapper from "@/components/PageWrapper";
 import StatsFilters from "@/components/StatsFilters";
 import styles from "./WinratesClient.module.css";
 import WinratesTable from "./WinratesTable";
-import { nextSortState, sortPreparedRows } from "./winrates-lib.js";
+import {
+  applyPreparedMovement,
+  nextSortState,
+  sortPreparedRows,
+} from "./winrates-lib.js";
 
 type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
 type LaneKey = "top" | "jungle" | "mid" | "adc" | "support";
@@ -34,11 +38,13 @@ type Row = {
 
 export default function WinratesClient({
   rowsBySlice,
+  sliceHistoryByKey,
   maxRowCount,
   error,
   updatedAt,
 }: {
   rowsBySlice: Record<string, Row[]>;
+  sliceHistoryByKey: Record<string, Array<{ date: string; rows: Row[] }>>;
   maxRowCount: number;
   error: string | null;
   updatedAt: string | null;
@@ -50,10 +56,15 @@ export default function WinratesClient({
     dir: "desc",
   });
 
-  const rows = useMemo(
-    () => sortPreparedRows(rowsBySlice[`${rankKey}|${laneKey}`] || [], sort) as Row[],
-    [laneKey, rankKey, rowsBySlice, sort],
-  );
+  const sliceKey = `${rankKey}|${laneKey}`;
+  const rows = useMemo(() => {
+    const sortedRows = sortPreparedRows(rowsBySlice[sliceKey] || [], sort) as Row[];
+    return applyPreparedMovement(
+      sortedRows,
+      sliceHistoryByKey[sliceKey] || [],
+      sort,
+    ) as Row[];
+  }, [rowsBySlice, sliceHistoryByKey, sliceKey, sort]);
 
   const tableMinHeight = useMemo(() => {
     const rowCount = Math.max(maxRowCount || 0, rows.length || 0, 12);

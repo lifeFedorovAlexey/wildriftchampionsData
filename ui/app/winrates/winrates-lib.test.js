@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  applyPreparedMovement,
   buildLatestMap,
   buildPreparedWinrateSlices,
   buildStatsUrls,
@@ -240,8 +241,8 @@ test("buildPreparedWinrateSlices precomputes per-slice rows from snapshot positi
 
   assert.equal(maxRowCount, 2);
   assert.equal(rowsBySlice["diamondPlus|mid"][0].slug, "ahri");
-  assert.equal(rowsBySlice["diamondPlus|mid"][0].positionDelta, 1);
-  assert.deepEqual(rowsBySlice["diamondPlus|mid"][0].positionTrend, [2, 1]);
+  assert.equal(rowsBySlice["diamondPlus|mid"][0].positionDelta, null);
+  assert.deepEqual(rowsBySlice["diamondPlus|mid"][0].positionTrend, []);
 });
 
 test("sortPreparedRows only reorders precomputed rows on the client", () => {
@@ -266,6 +267,61 @@ test("sortPreparedRows only reorders precomputed rows on the client", () => {
 
   assert.equal(sorted[0].slug, "lux");
   assert.equal(sorted[1].slug, "ahri");
+});
+
+test("applyPreparedMovement restores trend and delta from prepared slice history", () => {
+  const rows = [
+    {
+      slug: "ahri",
+      name: "Ahri",
+      icon: "/ahri.png",
+      winRate: 53.2,
+      pickRate: 3.2,
+      banRate: 1.1,
+      strengthLevel: 2,
+      tierLabel: "A",
+      tierColor: "#facc15",
+      positionDelta: null,
+      positionTrend: [],
+    },
+    {
+      slug: "lux",
+      name: "Lux",
+      icon: "/lux.png",
+      winRate: 51.6,
+      pickRate: 4.1,
+      banRate: 0.9,
+      strengthLevel: 0,
+      tierLabel: "S+",
+      tierColor: "#fb7185",
+      positionDelta: null,
+      positionTrend: [],
+    },
+  ];
+
+  const sliceHistory = [
+    {
+      date: "2026-03-09",
+      rows: [
+        { ...rows[0], winRate: 50.4 },
+        { ...rows[1], winRate: 52.1 },
+      ],
+    },
+    {
+      date: "2026-03-15",
+      rows,
+    },
+  ];
+
+  const prepared = applyPreparedMovement(
+    sortPreparedRows(rows, { column: "winRate", dir: "desc" }),
+    sliceHistory,
+    { column: "winRate", dir: "desc" },
+  );
+
+  assert.equal(prepared[0].slug, "ahri");
+  assert.equal(prepared[0].positionDelta, 1);
+  assert.deepEqual(prepared[0].positionTrend, [2, 1]);
 });
 
 test("strengthToTier returns a neutral placeholder for missing values", () => {

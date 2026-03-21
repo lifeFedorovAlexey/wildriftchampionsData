@@ -44,6 +44,10 @@ type PreparedRow = {
 export default async function Page() {
   let champions: Champion[] = [];
   let rowsBySlice: Record<string, PreparedRow[]> = {};
+  let sliceHistoryByKey: Record<
+    string,
+    Array<{ date: string; rows: PreparedRow[] }>
+  > = {};
   let maxRowCount = 0;
   let error: string | null = null;
   let updatedAt: string | null = null;
@@ -76,10 +80,12 @@ export default async function Page() {
       historyItems,
     }) as {
       rowsBySlice: Record<string, PreparedRow[]>;
+      sliceHistoryByKey: Record<string, Array<{ date: string; rows: PreparedRow[] }>>;
       maxRowCount: number;
     };
 
     rowsBySlice = prepared.rowsBySlice;
+    sliceHistoryByKey = prepared.sliceHistoryByKey;
     maxRowCount = prepared.maxRowCount;
   } catch (err) {
     console.error("Winrates load error:", err);
@@ -89,6 +95,7 @@ export default async function Page() {
   return (
     <WinratesClient
       rowsBySlice={rowsBySlice}
+      sliceHistoryByKey={sliceHistoryByKey}
       maxRowCount={maxRowCount}
       error={error}
       updatedAt={updatedAt}
