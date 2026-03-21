@@ -10,12 +10,15 @@
 
 .title {
   margin: 0;
-  color: #f8fafc;
+  color: #ffffff;
   font-size: 24px;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
   text-wrap: balance;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 28px rgba(15, 23, 42, 0.28);
 }
 
 .paragraphs {
@@ -24,27 +27,27 @@
 
 .paragraph {
   margin: 0;
-  color: rgba(226, 232, 240, 0.92);
+  color: rgba(241, 245, 249, 0.96);
   font-size: 13px;
   line-height: 1.5;
 }
 
 .telegramLine {
   margin: 0;
-  color: #f8fafc;
+  color: #ffffff;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .telegramLink {
-  color: #a78bfa;
+  color: #c4b5fd;
   text-decoration: none;
   font-weight: 700;
 }
 
 .telegramLink:hover {
-  color: #c4b5fd;
+  color: #ddd6fe;
 }
 
 @media (max-width: 640px) {

@@ -11,14 +11,14 @@ import {
 } from "@/components/icons/MenuIcons";
 
 const BUTTON_GRADIENTS = {
-  blue: "linear-gradient(135deg, rgba(56,189,248,0.16), rgba(129,140,248,0.32))",
+  blue: "linear-gradient(135deg, rgba(37,99,235,0.28), rgba(56,189,248,0.2) 55%, rgba(129,140,248,0.34))",
   green:
-    "linear-gradient(135deg, rgba(16,185,129,0.16), rgba(52,211,153,0.32))",
+    "linear-gradient(135deg, rgba(13,148,136,0.26), rgba(16,185,129,0.18) 55%, rgba(52,211,153,0.32))",
   purple:
-    "linear-gradient(135deg, rgba(139,92,246,0.18), rgba(168,85,247,0.3))",
-  gold: "linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.34))",
+    "linear-gradient(135deg, rgba(91,33,182,0.28), rgba(139,92,246,0.2) 58%, rgba(168,85,247,0.34))",
+  gold: "linear-gradient(135deg, rgba(180,83,9,0.26), rgba(245,158,11,0.18) 55%, rgba(251,191,36,0.34))",
   crimson:
-    "linear-gradient(135deg, rgba(239,68,68,0.18), rgba(248,113,113,0.34))",
+    "linear-gradient(135deg, rgba(153,27,27,0.28), rgba(239,68,68,0.18) 55%, rgba(248,113,113,0.34))",
 };
 
 export default function HomePage() {
