@@ -202,6 +202,10 @@ function localizeSituationalLabel(label: string) {
   return label;
 }
 
+function isTranslatedBuildParagraph(value?: string | null) {
+  return /[А-Яа-яЁё]/.test(String(value || ""));
+}
+
 function HoverTooltip({
   tooltip,
   fallbackName,
@@ -448,6 +452,8 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const abilityDict = guide.dictionaries?.abilities;
   const abilities = guide.abilitiesRu ?? [];
   const buildBreakdown = guide.buildBreakdown;
+  const buildBreakdownParagraphs =
+    buildBreakdown?.paragraphs?.filter((paragraph) => isTranslatedBuildParagraph(paragraph)) ?? [];
   const heroSummary = buildOfficialSummary(guide, variant);
   const heroVideoSrc =
     guide.official?.heroMedia?.localVideoPath || guide.official?.heroMedia?.remoteVideoUrl || null;
@@ -640,13 +646,15 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
               </div>
             </div>
           </div>
-          <div className={styles.copyStack}>
-            {buildBreakdown.paragraphs.map((paragraph, index) => (
-              <p key={index} className={styles.copyText}>
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          {buildBreakdownParagraphs.length ? (
+            <div className={styles.copyStack}>
+              {buildBreakdownParagraphs.map((paragraph, index) => (
+                <p key={index} className={styles.copyText}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          ) : null}
         </section>
       ) : null}
 

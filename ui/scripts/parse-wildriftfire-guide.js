@@ -14,13 +14,6 @@ const OUTPUT_ROOT = path.join(
   "wildriftfire",
   "guides",
 );
-const RIOT_MEDIA_ROOT = path.join(
-  __dirname,
-  "..",
-  "public",
-  "riot",
-  "champions",
-);
 
 function fetchHtml(url) {
   const headers = {
@@ -110,33 +103,6 @@ function fetchRiotChampionPage(slug) {
           data += chunk;
         });
         res.on("end", () => resolve(data));
-      })
-      .on("error", reject);
-  });
-}
-
-function downloadBinary(url) {
-  const headers = {
-    "user-agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-    accept: "*/*",
-    "accept-language": "ru-RU,ru;q=0.9,en;q=0.8",
-    "cache-control": "no-cache",
-  };
-
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, { headers }, (res) => {
-        const chunks = [];
-
-        if (res.statusCode !== 200) {
-          reject(new Error(`HTTP ${res.statusCode} for ${url}`));
-          res.resume();
-          return;
-        }
-
-        res.on("data", (chunk) => chunks.push(chunk));
-        res.on("end", () => resolve(Buffer.concat(chunks)));
       })
       .on("error", reject);
   });
@@ -574,16 +540,6 @@ function htmlToText(value = "") {
   );
 }
 
-function getFileExtensionFromUrl(url, fallback = ".bin") {
-  try {
-    const pathname = new URL(url).pathname;
-    const ext = path.extname(pathname);
-    return ext || fallback;
-  } catch {
-    return fallback;
-  }
-}
-
 function parseRiotChampionData(html, slug) {
   const match = html.match(
     /<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/,
@@ -926,7 +882,6 @@ async function scrapeGuide(slug, url = `${SITE_ORIGIN}/guide/${slug}`) {
   const riotHtml = await fetchRiotChampionPage(slug);
   const officialData = parseRiotChampionData(riotHtml, slug);
 
-  await downloadRiotHeroMedia(slug, officialData);
   mergeOfficialDataIntoGuide(guide, officialData);
 
   await enrichDictionaryWithTooltips(guide.dictionaries.items, "Item");
@@ -939,28 +894,6 @@ async function scrapeGuide(slug, url = `${SITE_ORIGIN}/guide/${slug}`) {
   applyOfficialAbilityTooltips(guide);
 
   return guide;
-}
-
-async function downloadRiotHeroMedia(slug, officialData) {
-  const remoteVideoUrl = officialData?.heroMedia?.remoteVideoUrl;
-  if (!remoteVideoUrl) return officialData;
-
-  const extension = getFileExtensionFromUrl(remoteVideoUrl, ".mp4");
-  const championDir = path.join(RIOT_MEDIA_ROOT, slug);
-  const outputPath = path.join(championDir, `hero${extension}`);
-  const publicPath = `/riot/champions/${slug}/hero${extension}`;
-
-  await fs.mkdir(championDir, { recursive: true });
-
-  try {
-    await fs.access(outputPath);
-  } catch {
-    const fileBuffer = await downloadBinary(remoteVideoUrl);
-    await fs.writeFile(outputPath, fileBuffer);
-  }
-
-  officialData.heroMedia.localVideoPath = publicPath;
-  return officialData;
 }
 
 async function main() {
@@ -991,7 +924,6 @@ async function main() {
 
 module.exports = {
   OUTPUT_ROOT,
-  RIOT_MEDIA_ROOT,
   scrapeGuide,
   writeGuideFile,
 };
