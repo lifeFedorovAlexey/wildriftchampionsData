@@ -71,6 +71,26 @@ test("buildStatsUrls prefers explicit API origin and trims trailing slash", () =
   );
 });
 
+test("buildStatsUrls prefers API_PROXY_TARGET when it is provided", () => {
+  const urls = buildStatsUrls("ru_ru", {
+    API_PROXY_TARGET: "https://proxy.example.com/",
+    STATS_API_ORIGIN: "https://stats.example.com/",
+  });
+
+  assert.equal(
+    urls.championsUrl,
+    "https://proxy.example.com/api/champions?lang=ru_ru",
+  );
+  assert.equal(
+    urls.historyUrl,
+    "https://proxy.example.com/api/winrates-snapshot",
+  );
+  assert.equal(
+    urls.updatedAtUrl,
+    "https://proxy.example.com/api/updated-at",
+  );
+});
+
 test("normalizeIconSrc keeps proxy paths stable", () => {
   assert.equal(
     normalizeIconSrc("/wr-api/icons/ahri.png"),

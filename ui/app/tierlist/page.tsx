@@ -34,6 +34,7 @@ export default async function Page() {
 
   try {
     const baseUrl = String(
+      process.env.API_PROXY_TARGET ||
       process.env.NEXT_PUBLIC_STATS_API_ORIGIN ||
         process.env.STATS_API_ORIGIN ||
         process.env.NEXT_PUBLIC_API_ORIGIN ||

@@ -213,6 +213,7 @@ export function buildPreparedWinrateSlices({ champions, historyItems = [] }) {
 
 export function getStatsApiBaseUrl(env = process.env) {
   const raw =
+    env.API_PROXY_TARGET ||
     env.NEXT_PUBLIC_STATS_API_ORIGIN ||
     env.STATS_API_ORIGIN ||
     env.NEXT_PUBLIC_API_ORIGIN ||
