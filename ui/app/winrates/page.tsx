@@ -34,24 +34,23 @@ export default async function Page() {
   let updatedAt: string | null = null;
 
   try {
-    const { championsUrl, historyUrl } = buildStatsUrls(language);
+    const { championsUrl, historyUrl, updatedAtUrl } = buildStatsUrls(language);
 
-    const [champsJson, histJson] = await Promise.all([
+    const [champsJson, histJson, updatedJson] = await Promise.all([
       fetchJson(championsUrl, { next: { revalidate } }) as Promise<Champion[]>,
       fetchJson(historyUrl, {
         next: { revalidate },
       }) as Promise<{ items?: HistoryItem[] }>,
+      fetchJson(updatedAtUrl, {
+        next: { revalidate },
+      }) as Promise<{ updatedAt?: string | null }>,
     ]);
 
     champions = Array.isArray(champsJson) ? champsJson : [];
     historyItems = Array.isArray(histJson.items) ? histJson.items : [];
     latestStats = buildLatestMap(historyItems);
-    updatedAt = historyItems.reduce<string | null>((latest, item) => {
-      const date = typeof item?.date === "string" ? item.date : null;
-      if (!date) return latest;
-      if (!latest || date > latest) return date;
-      return latest;
-    }, null);
+    updatedAt =
+      typeof updatedJson?.updatedAt === "string" ? updatedJson.updatedAt : null;
   } catch (err) {
     console.error("Winrates load error:", err);
     error = "Не удалось загрузить статистику винрейтов.";

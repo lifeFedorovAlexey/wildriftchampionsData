@@ -62,6 +62,10 @@ test("buildStatsUrls prefers explicit API origin and trims trailing slash", () =
     urls.historyUrl,
     "https://stats.example.com/api/champion-history",
   );
+  assert.equal(
+    urls.updatedAtUrl,
+    "https://stats.example.com/api/updated-at",
+  );
 });
 
 test("normalizeIconSrc keeps proxy paths stable", () => {

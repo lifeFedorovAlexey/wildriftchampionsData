@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const apiProxyTarget =
   process.env.API_PROXY_TARGET ||
   process.env.STATS_API_ORIGIN ||
-  "https://wr-api.vercel.app";
+  "http://127.0.0.1:3001";
 
 const nextConfig: NextConfig = {
   compiler: {

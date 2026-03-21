@@ -30,7 +30,7 @@
  * }} SortState
  */
 
-const DEFAULT_STATS_API_ORIGIN = "https://wr-api.vercel.app";
+const DEFAULT_STATS_API_ORIGIN = "http://127.0.0.1:3001";
 const WEEK_IN_MS = 7 * 24 * 60 * 60 * 1000;
 
 export function fetchJson(url, nextOptions) {
@@ -92,6 +92,7 @@ export function buildStatsUrls(language, env = process.env) {
   return {
     championsUrl: `${baseUrl}/api/champions?lang=${encodeURIComponent(language)}`,
     historyUrl: `${baseUrl}/api/champion-history`,
+    updatedAtUrl: `${baseUrl}/api/updated-at`,
   };
 }
 
