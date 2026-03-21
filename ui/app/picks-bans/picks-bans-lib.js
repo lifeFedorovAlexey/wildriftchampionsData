@@ -4,6 +4,16 @@ const HIGH_ELO_RANKS = new Set(["king", "peak"]);
 
 export { EXCLUDED_RANK_KEYS, LOW_ELO_RANKS, HIGH_ELO_RANKS };
 
+const RANK_KEYS = ["diamondPlus", "masterPlus", "king", "peak"];
+const RANK_LABELS_RU = {
+  diamondPlus: "Алмаз",
+  masterPlus: "Мастер",
+  king: "Грандмастер",
+  peak: "Претендент",
+};
+
+export { RANK_KEYS, RANK_LABELS_RU };
+
 export function aggregateLatestPicksBans({
   latestItems,
   champions,
@@ -112,4 +122,41 @@ export function aggregateLatestPicksBans({
   }
 
   return result;
+}
+
+export function buildLaneDetails({ champ, type }) {
+  const lanes = champ?.lanes || {};
+
+  return Object.entries(lanes)
+    .filter(([, laneData]) => {
+      const value = type === "pick" ? laneData?.pick || 0 : laneData?.ban || 0;
+      return value > 0;
+    })
+    .sort(([, left], [, right]) => {
+      const leftValue = type === "pick" ? left?.pick || 0 : left?.ban || 0;
+      const rightValue = type === "pick" ? right?.pick || 0 : right?.ban || 0;
+      return rightValue - leftValue;
+    })
+    .map(([laneKey, laneData]) => {
+      const laneTotal = type === "pick" ? laneData?.pick || 0 : laneData?.ban || 0;
+      const ranksObj =
+        type === "pick"
+          ? laneData?.pickRanks || {}
+          : laneData?.banRanks || {};
+
+      const parts = [];
+      for (const rk of RANK_KEYS) {
+        if (!ranksObj[rk] || EXCLUDED_RANK_KEYS.has(rk)) continue;
+        const label = RANK_LABELS_RU[rk] || rk;
+        parts.push(`${label}: ${Number(ranksObj[rk]).toFixed(2)}%`);
+      }
+
+      return {
+        laneKey,
+        displayLaneName:
+          type === "ban" && laneKey === "all" ? "все линии" : laneKey,
+        laneTotal,
+        parts,
+      };
+    });
 }

@@ -3,13 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
 import LoadingRing from "@/components/LoadingRing";
-
 import { API_BASE } from "@/constants/apiBase";
 import {
   aggregateLatestPicksBans,
-  EXCLUDED_RANK_KEYS,
-  HIGH_ELO_RANKS,
-  LOW_ELO_RANKS,
+  buildLaneDetails,
 } from "./picks-bans-lib";
 import {
   TpAvatar,
@@ -34,14 +31,6 @@ import {
   TpCardWrap,
   TpEmpty,
 } from "@/components/styled/topPicksBans";
-
-const RANK_KEYS = ["diamondPlus", "masterPlus", "king", "peak"] as const;
-const RANK_LABELS_RU: Record<string, string> = {
-  diamondPlus: "Алмаз",
-  masterPlus: "Мастер",
-  king: "Грандмастер",
-  peak: "Претендент",
-};
 
 function ChampAvatarCard({ name, src }: { name: string; src?: string | null }) {
   return (
@@ -83,8 +72,8 @@ function TopChampCard({
       <TpCardInfo>
         <TpCardName>{champ.name}</TpCardName>
         <TpCardSub>
-          ({champ.slug}) —{" "}
-          {type === "pick" ? "средний пикрейт" : "средний банрейт"}:{" "}
+          ({champ.slug}) вЂ”{" "}
+          {type === "pick" ? "СЃСЂРµРґРЅРёР№ РїРёРєСЂРµР№С‚" : "СЃСЂРµРґРЅРёР№ Р±Р°РЅСЂРµР№С‚"}:{" "}
           <span style={{ fontWeight: 600 }}>{totalValue.toFixed(2)}%</span>
         </TpCardSub>
       </TpCardInfo>
@@ -106,18 +95,7 @@ function DetailsModal({
   const { index, champ, type } = data;
   const totalValue =
     type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
-  const lanes = champ.lanes || {};
-
-  const laneEntries = Object.entries(lanes)
-    .filter(([, laneData]: any) => {
-      const val = type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
-      return val > 0;
-    })
-    .sort(([, a]: any, [, b]: any) => {
-      const av = type === "pick" ? a.pick || 0 : a.ban || 0;
-      const bv = type === "pick" ? b.pick || 0 : b.ban || 0;
-      return bv - av;
-    });
+  const laneEntries = buildLaneDetails({ champ, type });
 
   return (
     <TpModalOverlay onClick={onClose}>
@@ -125,42 +103,23 @@ function DetailsModal({
         <TpModalTop>
           <div style={{ minWidth: 0 }}>
             <div style={{ marginBottom: 4 }}>
-              {index + 1}. {String(champ.name).toUpperCase()} ({champ.slug}) —{" "}
-              {type === "pick" ? "средний пикрейт" : "средний банрейт"}:{" "}
+              {index + 1}. {String(champ.name).toUpperCase()} ({champ.slug}) вЂ”{" "}
+              {type === "pick" ? "СЃСЂРµРґРЅРёР№ РїРёРєСЂРµР№С‚" : "СЃСЂРµРґРЅРёР№ Р±Р°РЅСЂРµР№С‚"}:{" "}
               <b>{totalValue.toFixed(2)}%</b>
             </div>
           </div>
-          <TpCloseBtn onClick={onClose}>✕</TpCloseBtn>
+          <TpCloseBtn onClick={onClose}>вњ•</TpCloseBtn>
         </TpModalTop>
 
-        {laneEntries.map(([laneKey, laneData]: any) => {
-          const laneTotal =
-            type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
-          const ranksObj =
-            type === "pick"
-              ? laneData.pickRanks || {}
-              : laneData.banRanks || {};
-
-          const parts: string[] = [];
-          for (const rk of RANK_KEYS) {
-            if (!ranksObj[rk] || EXCLUDED_RANK_KEYS.has(rk)) continue;
-            const label = RANK_LABELS_RU[rk] || rk;
-            parts.push(`${label}: ${Number(ranksObj[rk]).toFixed(2)}%`);
-          }
-
-          const displayLaneName =
-            type === "ban" && laneKey === "all" ? "все линии" : laneKey;
-
-          return (
-            <TpLaneRow key={laneKey}>
-              - {displayLaneName}: {laneTotal.toFixed(2)}%
-              {parts.length > 0 ? <> (из них: {parts.join(", ")})</> : null}
-            </TpLaneRow>
-          );
-        })}
+        {laneEntries.map(({ laneKey, laneTotal, parts, displayLaneName }) => (
+          <TpLaneRow key={laneKey}>
+            - {displayLaneName}: {laneTotal.toFixed(2)}%
+            {parts.length > 0 ? <> (РёР· РЅРёС…: {parts.join(", ")})</> : null}
+          </TpLaneRow>
+        ))}
 
         {!laneEntries.length ? (
-          <div>Для этого чемпиона нет детальной статистики.</div>
+          <div>Р”Р»СЏ СЌС‚РѕРіРѕ С‡РµРјРїРёРѕРЅР° РЅРµС‚ РґРµС‚Р°Р»СЊРЅРѕР№ СЃС‚Р°С‚РёСЃС‚РёРєРё.</div>
         ) : null}
       </TpModal>
     </TpModalOverlay>
@@ -201,7 +160,7 @@ export default function PicksBansPage() {
         });
         setChampImages(imgMap);
       } catch {
-        // не критично
+        // РЅРµ РєСЂРёС‚РёС‡РЅРѕ
       }
     })();
 
@@ -226,7 +185,7 @@ export default function PicksBansPage() {
         setHistoryItems(items);
       } catch {
         if (!cancelled)
-          setError("Не удалось загрузить статистику пиков и банов.");
+          setError("РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРёРєРѕРІ Рё Р±Р°РЅРѕРІ.");
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -260,23 +219,23 @@ export default function PicksBansPage() {
   }, [aggregated, limit]);
 
   const limitLabel =
-    limit === "all" ? "все чемпионы" : `топ-${limit} чемпионов`;
-  const limitTitlePrefix = limit === "all" ? "Все чемпионы" : `Топ-${limit}`;
+    limit === "all" ? "РІСЃРµ С‡РµРјРїРёРѕРЅС‹" : `С‚РѕРї-${limit} С‡РµРјРїРёРѕРЅРѕРІ`;
+  const limitTitlePrefix = limit === "all" ? "Р’СЃРµ С‡РµРјРїРёРѕРЅС‹" : `РўРѕРї-${limit}`;
   const rankRangeLabel =
     rankRange === "low"
-      ? "в алмазе+мастере"
+      ? "РІ Р°Р»РјР°Р·Рµ+РјР°СЃС‚РµСЂРµ"
       : rankRange === "high"
-      ? "в гм+чалике"
-      : "во всех рангах";
+        ? "РІ РіРј+С‡Р°Р»РёРєРµ"
+        : "РІРѕ РІСЃРµС… СЂР°РЅРіР°С…";
 
-  if (loading) return <LoadingRing label="Считаю пики и баны…" />;
+  if (loading) return <LoadingRing label="РЎС‡РёС‚Р°СЋ РїРёРєРё Рё Р±Р°РЅС‹вЂ¦" />;
 
   return (
     <PageWrapper
       showBack
-      title="Пики и баны в Wild Rift"
+      title="РџРёРєРё Рё Р±Р°РЅС‹ РІ Wild Rift"
       paragraphs={[
-        "Здесь показано, каких чемпионов чаще всего выбирают и запрещают в рейтинговых матчах.",
+        "Р—РґРµСЃСЊ РїРѕРєР°Р·Р°РЅРѕ, РєР°РєРёС… С‡РµРјРїРёРѕРЅРѕРІ С‡Р°С‰Рµ РІСЃРµРіРѕ РІС‹Р±РёСЂР°СЋС‚ Рё Р·Р°РїСЂРµС‰Р°СЋС‚ РІ СЂРµР№С‚РёРЅРіРѕРІС‹С… РјР°С‚С‡Р°С….",
       ]}
     >
       {error ? (
@@ -285,27 +244,27 @@ export default function PicksBansPage() {
         <>
           <TpHeader>
             <TpHeaderText>
-              Ниже — {limitLabel} по среднему пикрейту и среднему банрейту за
-              последний день {rankRangeLabel} и на всех линиях. Нажми на
-              карточку чемпиона, чтобы увидеть подробности.
+              РќРёР¶Рµ вЂ” {limitLabel} РїРѕ СЃСЂРµРґРЅРµРјСѓ РїРёРєСЂРµР№С‚Сѓ Рё СЃСЂРµРґРЅРµРјСѓ Р±Р°РЅСЂРµР№С‚Сѓ Р·Р°
+              РїРѕСЃР»РµРґРЅРёР№ РґРµРЅСЊ {rankRangeLabel} Рё РЅР° РІСЃРµС… Р»РёРЅРёСЏС…. РќР°Р¶РјРё РЅР°
+              РєР°СЂС‚РѕС‡РєСѓ С‡РµРјРїРёРѕРЅР°, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё.
             </TpHeaderText>
           </TpHeader>
 
           <TpRow>
             <TpPillButton onClick={() => setLimit(5)} $active={limit === 5}>
-              Топ 5
+              РўРѕРї 5
             </TpPillButton>
             <TpPillButton onClick={() => setLimit(10)} $active={limit === 10}>
-              Топ 10
+              РўРѕРї 10
             </TpPillButton>
             <TpPillButton onClick={() => setLimit(20)} $active={limit === 20}>
-              Топ 20
+              РўРѕРї 20
             </TpPillButton>
             <TpPillButton
               onClick={() => setLimit("all")}
               $active={limit === "all"}
             >
-              Все
+              Р’СЃРµ
             </TpPillButton>
           </TpRow>
 
@@ -314,24 +273,24 @@ export default function PicksBansPage() {
               onClick={() => setRankRange("low")}
               $active={rankRange === "low"}
             >
-              Лоу эло
+              Р›РѕСѓ СЌР»Рѕ
             </TpPillButton>
             <TpPillButton
               onClick={() => setRankRange("high")}
               $active={rankRange === "high"}
             >
-              Хай эло
+              РҐР°Р№ СЌР»Рѕ
             </TpPillButton>
             <TpPillButton
               onClick={() => setRankRange("all")}
               $active={rankRange === "all"}
             >
-              Все ранги
+              Р’СЃРµ СЂР°РЅРіРё
             </TpPillButton>
           </TpRow>
 
           <TpSection $mb={12}>
-            <TpSectionTitle $pad>{limitTitlePrefix} по пикам</TpSectionTitle>
+            <TpSectionTitle $pad>{limitTitlePrefix} РїРѕ РїРёРєР°Рј</TpSectionTitle>
 
             {topPicks.map((champ, idx) => (
               <TpCardWrap key={`pick-${champ.slug}`}>
@@ -348,12 +307,12 @@ export default function PicksBansPage() {
             ))}
 
             {!topPicks.length ? (
-              <TpEmpty>Нет данных для расчёта пиков.</TpEmpty>
+              <TpEmpty>РќРµС‚ РґР°РЅРЅС‹С… РґР»СЏ СЂР°СЃС‡С‘С‚Р° РїРёРєРѕРІ.</TpEmpty>
             ) : null}
           </TpSection>
 
           <TpSection $mb={0}>
-            <TpSectionTitle>{limitTitlePrefix} по банам</TpSectionTitle>
+            <TpSectionTitle>{limitTitlePrefix} РїРѕ Р±Р°РЅР°Рј</TpSectionTitle>
 
             {topBans.map((champ, idx) => (
               <TpCardWrap key={`ban-${champ.slug}`}>
@@ -368,7 +327,7 @@ export default function PicksBansPage() {
             ))}
 
             {!topBans.length ? (
-              <TpEmpty>Нет данных для расчёта банов.</TpEmpty>
+              <TpEmpty>РќРµС‚ РґР°РЅРЅС‹С… РґР»СЏ СЂР°СЃС‡С‘С‚Р° Р±Р°РЅРѕРІ.</TpEmpty>
             ) : null}
           </TpSection>
 
