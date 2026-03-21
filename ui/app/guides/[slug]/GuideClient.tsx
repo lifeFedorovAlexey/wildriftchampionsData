@@ -134,9 +134,18 @@ function localizeLane(value?: string | null) {
   return value || "";
 }
 
+function isGenericVariantTitle(value?: string | null) {
+  const normalized = String(value || "").trim().toLowerCase();
+  return /^build\s*\d+$/i.test(normalized) || /^guide\s*\d+$/i.test(normalized);
+}
+
 function localizeVariantTitle(variant: GuideVariant) {
   const lane = localizeLane(variant.lane);
   if (lane) return lane;
+
+  if (isGenericVariantTitle(variant.title)) {
+    return "";
+  }
 
   return variant.title
     .replace(/\s+Build$/i, "")
@@ -149,16 +158,24 @@ function localizeVariantTitle(variant: GuideVariant) {
 
 function getVariantRoleLabel(variant?: GuideVariant) {
   if (!variant) return "";
-  return localizeLane(variant.lane) || localizeVariantTitle(variant);
+
+  const lane = localizeLane(variant.lane);
+  if (lane) return lane;
+
+  if (isGenericVariantTitle(variant.title)) {
+    return "";
+  }
+
+  return localizeVariantTitle(variant);
 }
 
 function buildOfficialSummary(guide: GuideData, variant?: GuideVariant) {
   const title = guide.champion.title || guide.official?.champion?.title || "";
   const role =
     getVariantRoleLabel(variant) ||
-    guide.official?.roles?.join(" / ") ||
     localizeLane(guide.metadata.recommendedRole) ||
     guide.metadata.recommendedRole ||
+    guide.official?.roles?.join(" / ") ||
     "";
   const difficulty = guide.official?.difficulty || "";
 

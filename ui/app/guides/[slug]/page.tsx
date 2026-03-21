@@ -11,13 +11,19 @@ import {
   toLaneKey,
 } from "../guides-lib";
 
+function isGenericVariantTitle(value?: string | null) {
+  const normalized = String(value || "").trim().toLowerCase();
+  return /^build\s*\d+$/i.test(normalized) || /^guide\s*\d+$/i.test(normalized);
+}
+
 function applyOwnTiers(guide: GuideData, bulk: BulkResponse | null): GuideData {
   if (!guide.variants?.length) {
     return guide;
   }
 
   const variants = guide.variants.map((variant) => {
-    const laneKey = toLaneKey(variant.lane || variant.title || guide.metadata.recommendedRole);
+    const fallbackRole = isGenericVariantTitle(variant.title) ? "" : variant.title;
+    const laneKey = toLaneKey(variant.lane || fallbackRole || guide.metadata.recommendedRole);
     const ownTier = findTierLabelForChampion(
       bulk,
       guide.champion.slug,
