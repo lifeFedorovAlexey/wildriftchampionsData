@@ -66,15 +66,6 @@ export default function WinratesClient({
     ) as Row[];
   }, [rowsBySlice, sliceHistoryByKey, sliceKey, sort]);
 
-  const tableMinHeight = useMemo(() => {
-    const rowCount = Math.max(maxRowCount || 0, rows.length || 0, 12);
-    const headerHeight = 68;
-    const rowHeight = 48;
-    const footerHeight = 20;
-
-    return headerHeight + rowCount * rowHeight + footerHeight;
-  }, [maxRowCount, rows.length]);
-
   const formattedUpdatedAt = useMemo(() => {
     if (!updatedAt) return null;
 
@@ -123,10 +114,7 @@ export default function WinratesClient({
             </div>
           </section>
 
-          <section
-            className={styles.tableFrame}
-            style={{ minHeight: `${tableMinHeight}px` }}
-          >
+          <section className={styles.tableFrame}>
             <div className={styles.tableTop}>
               <div>
                 <strong className={styles.tableTitle}>Сводная таблица</strong>
