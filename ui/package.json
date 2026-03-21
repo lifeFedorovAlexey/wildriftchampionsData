@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test app/winrates/winrates-lib.test.js app/picks-bans/picks-bans-lib.test.js"
+    "test": "node --test app/winrates/winrates-lib.test.js app/picks-bans/picks-bans-lib.test.js app/tier-inq/tier-inq-lib.test.js"
   },
   "dependencies": {
     "@google/model-viewer": "^4.1.0",
