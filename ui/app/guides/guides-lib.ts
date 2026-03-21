@@ -62,6 +62,38 @@ export async function fetchGuideSlugsFromApi(): Promise<string[]> {
   }
 }
 
+export type GuideSummary = {
+  slug: string;
+  name: string;
+  title?: string | null;
+  iconUrl?: string | null;
+  patch?: string | null;
+  tier?: string | null;
+  recommendedRole?: string | null;
+  roles: string[];
+  buildCount: number;
+  updatedAt?: string | null;
+};
+
+export async function fetchGuideSummariesFromApi(): Promise<GuideSummary[]> {
+  try {
+    const baseUrl = getStatsApiBaseUrl();
+    const response = await fetch(`${baseUrl}/api/guides`, {
+      next: { revalidate: 3600 * 24 * 7 },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const payload = (await response.json()) as { items?: GuideSummary[] };
+    return Array.isArray(payload?.items) ? payload.items : [];
+  } catch (error) {
+    console.error("guide summaries api fetch error", error);
+    return [];
+  }
+}
+
 export type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
 export type LaneKey = "top" | "jungle" | "mid" | "adc" | "support";
 

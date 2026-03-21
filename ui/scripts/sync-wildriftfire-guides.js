@@ -51,7 +51,7 @@ function parseCliArgs(argv) {
   const options = {
     all: false,
     dryRun: false,
-    writeLocal: true,
+    writeLocal: false,
     slugs: [],
   };
 

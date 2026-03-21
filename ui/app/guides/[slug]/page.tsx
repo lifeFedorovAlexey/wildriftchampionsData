@@ -1,5 +1,3 @@
-import fs from "node:fs/promises";
-import path from "node:path";
 import { notFound } from "next/navigation";
 
 import PageWrapper from "@/components/PageWrapper";
@@ -12,36 +10,6 @@ import {
   findTierLabelForChampion,
   toLaneKey,
 } from "../guides-lib";
-
-async function readGuideFromFs(slug: string): Promise<GuideData | null> {
-  const filePath = path.join(
-    process.cwd(),
-    "data",
-    "wildriftfire",
-    "guides",
-    `${slug}.json`,
-  );
-
-  try {
-    const raw = await fs.readFile(filePath, "utf8");
-    return JSON.parse(raw) as GuideData;
-  } catch {
-    return null;
-  }
-}
-
-async function listAvailableGuideSlugsFromFs() {
-  const dirPath = path.join(process.cwd(), "data", "wildriftfire", "guides");
-
-  try {
-    const entries = await fs.readdir(dirPath, { withFileTypes: true });
-    return entries
-      .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
-      .map((entry) => entry.name.replace(/\.json$/i, ""));
-  } catch {
-    return [];
-  }
-}
 
 function applyOwnTiers(guide: GuideData, bulk: BulkResponse | null): GuideData {
   if (!guide.variants?.length) {
@@ -81,7 +49,7 @@ export default async function GuidePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const guide = (await fetchGuideFromApi<GuideData>(slug)) || (await readGuideFromFs(slug));
+  const guide = await fetchGuideFromApi<GuideData>(slug);
 
   if (!guide) {
     notFound();
@@ -89,9 +57,7 @@ export default async function GuidePage({
 
   const bulk = await fetchTierlistBulk();
   const guideWithOwnTiers = applyOwnTiers(guide, bulk);
-  const apiSlugs = await fetchGuideSlugsFromApi();
-  guideWithOwnTiers.availableGuideSlugs =
-    apiSlugs.length > 0 ? apiSlugs : await listAvailableGuideSlugsFromFs();
+  guideWithOwnTiers.availableGuideSlugs = await fetchGuideSlugsFromApi();
 
   return (
     <PageWrapper
