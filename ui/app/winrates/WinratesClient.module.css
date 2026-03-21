@@ -33,6 +33,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 18px 18px 0;
+  min-height: 52px;
 }
 
 .tableTitle {
@@ -51,6 +52,7 @@
   color: rgba(125, 211, 252, 0.72);
   font-size: 12px;
   line-height: 1.4;
+  min-height: 17px;
 }
 
 .errorBox {

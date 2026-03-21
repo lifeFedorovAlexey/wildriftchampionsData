@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import styles from "./WinratesTable.module.css";
 import { normalizeIconSrc } from "./winrates-lib.js";
 
@@ -143,14 +141,14 @@ function ChampAvatar({
 
   return (
     <div className={styles.avatar}>
-      <Image
+      <img
         src={iconSrc}
         alt={name}
         width={32}
         height={32}
-        sizes="32px"
         loading={isLcp ? "eager" : "lazy"}
-        fetchPriority={isLcp ? "high" : "auto"}
+        fetchPriority={isLcp ? "high" : undefined}
+        decoding="async"
         className={styles.avatarImg}
       />
     </div>
