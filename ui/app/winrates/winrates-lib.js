@@ -91,7 +91,7 @@ export function buildStatsUrls(language, env = process.env) {
 
   return {
     championsUrl: `${baseUrl}/api/champions?lang=${encodeURIComponent(language)}`,
-    historyUrl: `${baseUrl}/api/champion-history`,
+    historyUrl: `${baseUrl}/api/winrates-snapshot`,
     updatedAtUrl: `${baseUrl}/api/updated-at`,
   };
 }

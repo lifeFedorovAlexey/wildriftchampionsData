@@ -60,7 +60,7 @@ test("buildStatsUrls prefers explicit API origin and trims trailing slash", () =
   );
   assert.equal(
     urls.historyUrl,
-    "https://stats.example.com/api/champion-history",
+    "https://stats.example.com/api/winrates-snapshot",
   );
   assert.equal(
     urls.updatedAtUrl,
