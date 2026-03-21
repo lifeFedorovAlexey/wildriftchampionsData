@@ -21,7 +21,7 @@ jobs:
           host: ${{ secrets.TIMEWEB_HOST }}
           username: ${{ secrets.TIMEWEB_USER }}
           password: ${{ secrets.TIMEWEB_PASSWORD }}
-          script_stop: true
+          debug: true
           script: |
             set -e
             cd /var/www/wildriftchampionsData
@@ -31,5 +31,6 @@ jobs:
             cd /var/www/wildriftchampionsData/ui
             npm ci
             npm run build
-            pm2 restart wildrift-ui --update-env
+            pm2 delete wildrift-ui || true
+            pm2 start npm --name wildrift-ui --cwd /var/www/wildriftchampionsData/ui -- start
             pm2 save
