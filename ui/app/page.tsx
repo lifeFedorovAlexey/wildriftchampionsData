@@ -1,13 +1,13 @@
-import PageWrapper from "@/components/PageWrapper";
 import Footer from "@/components/Footer";
 import MenuButton from "@/components/MenuButton";
+import PageWrapper from "@/components/PageWrapper";
 import {
-  IconWinrate,
+  IconPicksBans,
+  IconSkins,
   IconTierInq,
   IconTierlist,
-  IconPicksBans,
   IconTrends,
-  IconSkins, // ← добавим этот иконку (см. ниже)
+  IconWinrate,
 } from "@/components/icons/MenuIcons";
 
 const BUTTON_GRADIENTS = {
@@ -19,24 +19,21 @@ const BUTTON_GRADIENTS = {
   gold: "linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.34))",
   crimson:
     "linear-gradient(135deg, rgba(239,68,68,0.18), rgba(248,113,113,0.34))",
-  // Добавим градиент для скинов
-  skins:
-    "linear-gradient(135deg, rgba(192,132,252,0.18), rgba(168,85,247,0.3))",
 };
 
 export default function HomePage() {
   return (
     <PageWrapper
-      title="Wildriftallstats.ru — Статистика по Wild Rift"
+      title="Wildriftallstats.ru — статистика по Wild Rift"
       paragraphs={[
         "Здесь собраны ключевые метрики по Wild Rift: винрейты, популярность и эффективность чемпионов.",
-        "Данные обновляются регулярно, чтобы можно было быстро понять, что сейчас работает в игре.",
+        "Данные обновляются регулярно, чтобы можно было быстро понять, что сейчас реально работает в игре.",
       ]}
     >
       <div style={{ display: "grid", gap: 10 }}>
         <MenuButton
-          title="Статистика Чемпионов"
-          subtitle="Винрейты, пики, баны по линиям и рангам"
+          title="Статистика чемпионов"
+          subtitle="Винрейты, пики и баны по линиям и рангам"
           href="/winrates"
           gradient={BUTTON_GRADIENTS.blue}
           leftIcon={<IconWinrate />}
@@ -74,13 +71,20 @@ export default function HomePage() {
           leftIcon={<IconTrends />}
         />
 
-        {/* 🔹 Новая кнопка — Скины */}
         <MenuButton
-          title="3D Скины"
+          title="3D скины"
           subtitle="Просмотр моделей чемпионов"
           href="/skins"
           gradient={BUTTON_GRADIENTS.blue}
           leftIcon={<IconSkins />}
+        />
+
+        <MenuButton
+          title="Гайды"
+          subtitle="Каталог гайдов по чемпионам Wild Rift"
+          href="/guides"
+          gradient={BUTTON_GRADIENTS.gold}
+          leftIcon={<IconTierlist />}
         />
       </div>
 
