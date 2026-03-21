@@ -24,50 +24,28 @@ import {
 import LoadingRing from "@/components/LoadingRing";
 import RangeFilter from "@/components/RangeFilter";
 import TextHint from "@/components/TextHint";
-
-/* ---------- utils ---------- */
-
-function toNum(v: any, fallback = 0) {
-  const n = typeof v === "number" ? v : Number(v);
-  return Number.isFinite(n) ? n : fallback;
-}
-
-function buildLinearTrend(points: any[], yKey: string, xKey = "ts") {
-  const n = points.length;
-  if (!n) return [];
-
-  const xs = points.map((p, i) =>
-    typeof p?.[xKey] === "number" ? p[xKey] : i
-  );
-  const ys = points.map((p) => toNum(p?.[yKey], 0));
-
-  let sumX = 0,
-    sumY = 0,
-    sumXY = 0,
-    sumXX = 0;
-
-  for (let i = 0; i < n; i++) {
-    sumX += xs[i];
-    sumY += ys[i];
-    sumXY += xs[i] * ys[i];
-    sumXX += xs[i] * xs[i];
-  }
-
-  const denom = n * sumXX - sumX * sumX;
-  if (Math.abs(denom) < 1e-12) {
-    const avg = sumY / n;
-    return points.map(() => Number(avg.toFixed(4)));
-  }
-
-  const a = (n * sumXY - sumX * sumY) / denom;
-  const b = (sumY - a * sumX) / n;
-
-  return points.map((_, i) => Number((a * xs[i] + b).toFixed(4)));
-}
+import { buildTrendDays, mapChampionOptions } from "./trends-lib";
 
 /* ---------- table ---------- */
 
-function TrendTable({ days }: { days: any[] }) {
+type TrendDay = {
+  fullDate: string;
+  date: string;
+  ts: number;
+  winRate: number;
+  pickRate: number;
+  banRate: number;
+  winTrend: number;
+  pickTrend: number;
+  banTrend: number;
+};
+
+type ChampionOption = {
+  slug: string;
+  displayName: string;
+};
+
+function TrendTable({ days }: { days: TrendDay[] }) {
   if (!days.length) return null;
 
   const getDelta = (cur: number, prev?: number) => {
@@ -138,8 +116,8 @@ function TrendTable({ days }: { days: any[] }) {
 /* ---------- PAGE ---------- */
 
 export default function Page() {
-  const [champions, setChampions] = useState<any[]>([]);
-  const [selectedChampion, setSelectedChampion] = useState<any>(null);
+  const [champions, setChampions] = useState<ChampionOption[]>([]);
+  const [selectedChampion, setSelectedChampion] = useState<ChampionOption | null>(null);
   const [search, setSearch] = useState("");
 
   const [rankKey, setRankKey] = useState("diamondPlus");
@@ -154,14 +132,7 @@ export default function Page() {
   useEffect(() => {
     fetch(`${API_BASE}/api/champions?lang=ru_ru`)
       .then((r) => r.json())
-      .then((data) =>
-        setChampions(
-          (data || []).map((c: any) => ({
-            slug: c.slug,
-            displayName: c.name || c.slug,
-          }))
-        )
-      )
+      .then((data) => setChampions(mapChampionOptions(data || [])))
       .catch(() => {});
   }, []);
 
@@ -185,44 +156,7 @@ export default function Page() {
       .finally(() => setLoading(false));
   }, [selectedChampion, rankKey, laneKey]);
 
-  const days = useMemo(() => {
-    const mapped = rawHistory
-      .map((i) => {
-        const d = new Date(i.date);
-        return {
-          fullDate: i.date,
-          date: d.toLocaleDateString("ru-RU", {
-            day: "2-digit",
-            month: "2-digit",
-          }),
-          ts: d.getTime(),
-          winRate: toNum(i.winRate),
-          pickRate: toNum(i.pickRate),
-          banRate: toNum(i.banRate),
-        };
-      })
-      .sort((a, b) => a.ts - b.ts);
-
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
-
-    const daysCount = range === "month" ? 31 : 7;
-    const cutoff =
-      range === "all" ? 0 : todayStart.getTime() - (daysCount - 1) * 864e5;
-
-    const filtered = mapped.filter((d) => d.ts >= cutoff);
-
-    const winT = buildLinearTrend(filtered, "winRate");
-    const pickT = buildLinearTrend(filtered, "pickRate");
-    const banT = buildLinearTrend(filtered, "banRate");
-
-    return filtered.map((d, i) => ({
-      ...d,
-      winTrend: winT[i],
-      pickTrend: pickT[i],
-      banTrend: banT[i],
-    }));
-  }, [rawHistory, range]);
+  const days = useMemo(() => buildTrendDays(rawHistory, range), [rawHistory, range]);
 
   return (
     <PageWrapper
