@@ -36,21 +36,27 @@ export default async function Page() {
   try {
     const { championsUrl, historyUrl, updatedAtUrl } = buildStatsUrls(language);
 
-    const [champsJson, histJson, updatedJson] = await Promise.all([
+    const [champsJson, updatedJson] = await Promise.all([
       fetchJson(championsUrl, { next: { revalidate } }) as Promise<Champion[]>,
-      fetchJson(historyUrl, {
-        next: { revalidate },
-      }) as Promise<{ items?: HistoryItem[] }>,
       fetchJson(updatedAtUrl, {
         next: { revalidate },
       }) as Promise<{ updatedAt?: string | null }>,
     ]);
 
     champions = Array.isArray(champsJson) ? champsJson : [];
-    historyItems = Array.isArray(histJson.items) ? histJson.items : [];
-    latestStats = buildLatestMap(historyItems);
     updatedAt =
       typeof updatedJson?.updatedAt === "string" ? updatedJson.updatedAt : null;
+
+    const snapshotUrl = updatedAt
+      ? `${historyUrl}?updatedAt=${encodeURIComponent(updatedAt)}`
+      : historyUrl;
+
+    const histJson = (await fetchJson(snapshotUrl, {
+      next: { revalidate },
+    })) as { items?: HistoryItem[] };
+
+    historyItems = Array.isArray(histJson.items) ? histJson.items : [];
+    latestStats = buildLatestMap(historyItems);
   } catch (err) {
     console.error("Winrates load error:", err);
     error = "Не удалось загрузить статистику винрейтов.";
