@@ -46,6 +46,7 @@ type Row = {
   tierLabel: string;
   tierColor: string;
   positionDelta: number | null;
+  positionTrend: Array<number | null>;
 };
 
 export default function WinratesClient({

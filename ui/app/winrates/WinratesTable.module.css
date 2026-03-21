@@ -9,7 +9,7 @@
   grid-template-columns:
     36px
     minmax(104px, 1.9fr)
-    52px
+    60px
     52px
     minmax(72px, 0.95fr)
     minmax(72px, 0.95fr)
@@ -24,7 +24,7 @@
     grid-template-columns:
       54px
       minmax(220px, 2.6fr)
-      64px
+      74px
       64px
       minmax(96px, 1fr)
       minmax(96px, 1fr)
@@ -81,6 +81,59 @@
 .center {
   text-align: center;
   font-variant-numeric: tabular-nums;
+}
+
+.trendCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 34px;
+  font-variant-numeric: tabular-nums;
+}
+
+.trendValue {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+@media (min-width: 1024px) {
+  .trendValue {
+    font-size: 12px;
+  }
+}
+
+.sparkline {
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 1px 6px rgba(15, 23, 42, 0.35));
+}
+
+.sparkBase {
+  fill: none;
+  stroke: rgba(100, 116, 139, 0.24);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.sparkPath {
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sparkDot {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.sparkPlaceholder {
+  width: 38px;
+  height: 14px;
+  display: block;
 }
 
 .right {

@@ -309,6 +309,57 @@ function buildPositionDeltaMap({
   return deltaMap;
 }
 
+function buildPositionTrendMap({
+  champions,
+  historyItems,
+  rankKey,
+  laneKey,
+  sort,
+}) {
+  if (!Array.isArray(historyItems) || !historyItems.length) {
+    return {};
+  }
+
+  const sliceItems = historyItems.filter(
+    (item) => item?.rank === rankKey && item?.lane === laneKey && item?.date,
+  );
+
+  if (!sliceItems.length) {
+    return {};
+  }
+
+  const recentDates = [...new Set(sliceItems.map((item) => String(item.date)))]
+    .sort()
+    .slice(-7);
+
+  /** @type {Record<string, Array<number | null>>} */
+  const trendMap = {};
+
+  for (const champion of champions) {
+    if (!champion?.slug) continue;
+    trendMap[champion.slug] = recentDates.map(() => null);
+  }
+
+  recentDates.forEach((date, dateIndex) => {
+    const rowsForDate = toSliceRows(
+      champions,
+      buildMapForDate(historyItems, rankKey, laneKey, date),
+      rankKey,
+      laneKey,
+    ).sort((left, right) => compareRows(left, right, sort));
+
+    rowsForDate.forEach((row, rowIndex) => {
+      if (!trendMap[row.slug]) {
+        trendMap[row.slug] = recentDates.map(() => null);
+      }
+
+      trendMap[row.slug][dateIndex] = rowIndex + 1;
+    });
+  });
+
+  return trendMap;
+}
+
 /**
  * @param {{
  *   champions: Champion[];
@@ -338,6 +389,13 @@ export function buildWinrateRows({
     laneKey,
     sort,
   });
+  const positionTrendMap = buildPositionTrendMap({
+    champions,
+    historyItems,
+    rankKey,
+    laneKey,
+    sort,
+  });
 
   const rows = toSliceRows(champions, latestStats, rankKey, laneKey).map((row) => ({
     ...row,
@@ -345,6 +403,10 @@ export function buildWinrateRows({
       Object.prototype.hasOwnProperty.call(positionDeltaMap, row.slug)
         ? positionDeltaMap[row.slug]
         : null,
+    positionTrend:
+      Object.prototype.hasOwnProperty.call(positionTrendMap, row.slug)
+        ? positionTrendMap[row.slug]
+        : [],
   }));
 
   return rows.sort((left, right) => compareRows(left, right, sort));
