@@ -88,8 +88,8 @@ export default function RootLayout({
 
             ym(106001120, 'init', {
               ssr:true,
-              webvisor:true,
-              clickmap:true,
+              webvisor:false,
+              clickmap:false,
               ecommerce:"dataLayer",
               accurateTrackBounce:true,
               trackLinks:true

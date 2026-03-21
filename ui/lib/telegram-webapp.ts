@@ -32,6 +32,30 @@ export function getTelegramWebApp() {
   return (window as TelegramWindow).Telegram?.WebApp;
 }
 
+export function isLikelyTelegramWebAppEnvironment() {
+  if (typeof window === "undefined") return false;
+
+  const webApp = getTelegramWebApp();
+  if (webApp) return true;
+
+  const search = window.location.search || "";
+  if (
+    search.includes("tgWebAppPlatform=") ||
+    search.includes("tgWebAppVersion=") ||
+    search.includes("tgWebAppThemeParams=")
+  ) {
+    return true;
+  }
+
+  const referrer = document.referrer || "";
+  if (referrer.includes("t.me") || referrer.includes("telegram")) {
+    return true;
+  }
+
+  const userAgent = window.navigator.userAgent || "";
+  return /Telegram/i.test(userAgent);
+}
+
 export function initTelegramWebAppAppearance() {
   const webApp = getTelegramWebApp();
   if (!webApp) return false;
