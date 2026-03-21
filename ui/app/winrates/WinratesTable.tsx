@@ -75,8 +75,8 @@ function TrendSparkline({
     return <span className={styles.sparkPlaceholder} aria-hidden="true" />;
   }
 
-  const width = 38;
-  const height = 14;
+  const width = 32;
+  const height = 12;
   const paddingX = 2;
   const paddingY = 2;
   const minValue = Math.min(...points.map((point) => point.value));
@@ -117,7 +117,13 @@ function TrendSparkline({
         className={styles.sparkBase}
       />
       <path d={line} stroke={color} className={styles.sparkPath} />
-      <circle cx={lastX} cy={lastY} r="1.8" fill={color} className={styles.sparkDot} />
+      <circle
+        cx={lastX}
+        cy={lastY}
+        r="1.8"
+        fill={color}
+        className={styles.sparkDot}
+      />
     </svg>
   );
 }
@@ -189,7 +195,8 @@ export default function WinratesTable({
           onClick={() => onSort("winRate")}
           aria-label="Сортировать по винрейту"
         >
-          Винрейт
+          <span className={styles.labelFull}>Винрейт</span>
+          <span className={styles.labelShort}>WR</span>
           <span className={styles.sortArrow}>
             {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
@@ -201,7 +208,8 @@ export default function WinratesTable({
           onClick={() => onSort("pickRate")}
           aria-label="Сортировать по пикрейту"
         >
-          Пики
+          <span className={styles.labelFull}>Пики</span>
+          <span className={styles.labelShort}>PR</span>
           <span className={styles.sortArrow}>
             {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
@@ -213,7 +221,8 @@ export default function WinratesTable({
           onClick={() => onSort("banRate")}
           aria-label="Сортировать по банрейту"
         >
-          Баны
+          <span className={styles.labelFull}>Баны</span>
+          <span className={styles.labelShort}>BR</span>
           <span className={styles.sortArrow}>
             {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
@@ -224,10 +233,7 @@ export default function WinratesTable({
         const movement = formatPositionDelta(row.positionDelta);
 
         return (
-          <div
-            key={row.slug}
-            className={`${styles.grid} ${styles.row}`}
-          >
+          <div key={row.slug} className={`${styles.grid} ${styles.row}`}>
             <div className={styles.index}>{idx + 1}</div>
 
             <div className={styles.heroCell}>
@@ -237,10 +243,7 @@ export default function WinratesTable({
               </span>
             </div>
 
-            <div
-              className={styles.trendCell}
-              style={{ color: movement.color }}
-            >
+            <div className={styles.trendCell} style={{ color: movement.color }}>
               <TrendSparkline values={row.positionTrend} color={movement.color} />
               <span className={styles.trendValue}>{movement.text}</span>
             </div>
@@ -252,24 +255,15 @@ export default function WinratesTable({
               {row.tierLabel}
             </div>
 
-            <div
-              className={styles.metric}
-              style={{ color: winRateColor(row.winRate) }}
-            >
+            <div className={styles.metric} style={{ color: winRateColor(row.winRate) }}>
               {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
             </div>
 
-            <div
-              className={styles.metric}
-              style={{ color: pickRateColor(row.pickRate) }}
-            >
+            <div className={styles.metric} style={{ color: pickRateColor(row.pickRate) }}>
               {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
             </div>
 
-            <div
-              className={styles.metric}
-              style={{ color: banRateColor(row.banRate) }}
-            >
+            <div className={styles.metric} style={{ color: banRateColor(row.banRate) }}>
               {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
             </div>
           </div>
