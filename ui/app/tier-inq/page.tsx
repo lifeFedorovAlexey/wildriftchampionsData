@@ -266,7 +266,7 @@ export default function TierlistInqPage() {
           fetch(
             `${API_BASE}/api/champions?lang=${encodeURIComponent(language)}`
           ),
-          fetch(`${API_BASE}/api/champion-history?latest=1`),
+          fetch(`${API_BASE}/api/latest-stats-snapshot`),
         ]);
 
         if (!champRes.ok) throw new Error(`Champions HTTP ${champRes.status}`);

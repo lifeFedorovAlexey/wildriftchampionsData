@@ -6,6 +6,12 @@ import LoadingRing from "@/components/LoadingRing";
 
 import { API_BASE } from "@/constants/apiBase";
 import {
+  aggregateLatestPicksBans,
+  EXCLUDED_RANK_KEYS,
+  HIGH_ELO_RANKS,
+  LOW_ELO_RANKS,
+} from "./picks-bans-lib";
+import {
   TpAvatar,
   TpAvatarImg,
   TpCard,
@@ -36,10 +42,6 @@ const RANK_LABELS_RU: Record<string, string> = {
   king: "Грандмастер",
   peak: "Претендент",
 };
-
-const EXCLUDED_RANK_KEYS = new Set(["overall"]);
-const LOW_ELO_RANKS = new Set(["diamondPlus", "masterPlus"]);
-const HIGH_ELO_RANKS = new Set(["king", "peak"]);
 
 function ChampAvatarCard({ name, src }: { name: string; src?: string | null }) {
   return (
@@ -215,7 +217,7 @@ export default function PicksBansPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`${API_BASE}/api/champion-history`);
+        const res = await fetch(`${API_BASE}/api/latest-stats-snapshot`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
         if (cancelled) return;
@@ -236,130 +238,11 @@ export default function PicksBansPage() {
   }, []);
 
   const aggregated = useMemo(() => {
-    if (!Array.isArray(historyItems) || historyItems.length === 0) return [];
-
-    const lastDateBySlug: Record<string, string> = {};
-    for (const item of historyItems) {
-      if (!item?.slug || !item?.date) continue;
-      const slug = item.slug;
-      const dateStr = String(item.date);
-      if (!lastDateBySlug[slug] || dateStr > lastDateBySlug[slug]) {
-        lastDateBySlug[slug] = dateStr;
-      }
-    }
-
-    const latestItems = historyItems.filter((item) => {
-      if (!item?.slug || !item?.date) return false;
-      return String(item.date) === lastDateBySlug[item.slug];
+    return aggregateLatestPicksBans({
+      latestItems: historyItems,
+      champions,
+      rankRange,
     });
-
-    const champBySlug: Record<string, any> = {};
-    for (const ch of champions) {
-      if (ch?.slug) champBySlug[ch.slug] = ch;
-    }
-
-    const aggBySlug = new Map<string, any>();
-
-    for (const item of latestItems) {
-      const slug = item.slug;
-      const rankKey = item.rank;
-      const laneKey = item.lane;
-
-      if (!slug || !rankKey || !laneKey) continue;
-      if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
-
-      if (rankRange === "low" && !LOW_ELO_RANKS.has(rankKey)) continue;
-      if (rankRange === "high" && !HIGH_ELO_RANKS.has(rankKey)) continue;
-
-      const pickRate = item.pickRate ?? 0;
-      const banRate = item.banRate ?? 0;
-
-      if (!aggBySlug.has(slug)) {
-        const champion = champBySlug[slug];
-        const displayName =
-          champion?.name && typeof champion.name === "string"
-            ? champion.name
-            : slug;
-
-        aggBySlug.set(slug, {
-          slug,
-          name: displayName,
-          totalPickRate: 0,
-          totalBanRate: 0,
-          lanes: {
-            all: { pick: 0, ban: 0, pickRanks: {}, banRanks: {} },
-          },
-          _totalPickSum: 0,
-          _totalPickCount: 0,
-          _totalBanSum: 0,
-          _totalBanCount: 0,
-          _banRanksAdded: new Set<string>(),
-        });
-      }
-
-      const agg = aggBySlug.get(slug);
-      const lanes = agg.lanes;
-
-      if (!lanes[laneKey]) {
-        lanes[laneKey] = {
-          pick: 0,
-          ban: 0,
-          pickRanks: {},
-          banRanks: {},
-          _pickSum: 0,
-          _pickCount: 0,
-        };
-      }
-
-      agg._totalPickSum += pickRate;
-      agg._totalPickCount += 1;
-      lanes[laneKey]._pickSum += pickRate;
-      lanes[laneKey]._pickCount += 1;
-      lanes[laneKey].pickRanks[rankKey] =
-        (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
-
-      if (!agg._banRanksAdded.has(rankKey)) {
-        agg._totalBanSum += banRate;
-        agg._totalBanCount += 1;
-        lanes.all.banRanks[rankKey] =
-          (lanes.all.banRanks[rankKey] || 0) + banRate;
-        agg._banRanksAdded.add(rankKey);
-      }
-    }
-
-    const result: any[] = [];
-    for (const value of aggBySlug.values()) {
-      value.totalPickRate =
-        value._totalPickCount > 0
-          ? value._totalPickSum / value._totalPickCount
-          : 0;
-      value.totalBanRate =
-        value._totalBanCount > 0
-          ? value._totalBanSum / value._totalBanCount
-          : 0;
-
-      for (const [laneKey, laneData] of Object.entries<any>(value.lanes)) {
-        if (laneKey === "all") continue;
-        const c = laneData._pickCount || 0;
-        const s = laneData._pickSum || 0;
-        laneData.pick = c > 0 ? s / c : 0;
-        delete laneData._pickSum;
-        delete laneData._pickCount;
-      }
-
-      value.lanes.all.ban = value.totalBanRate;
-
-      delete value._totalPickSum;
-      delete value._totalPickCount;
-      delete value._totalBanSum;
-      delete value._totalBanCount;
-      delete value._banRanksAdded;
-
-      if (value.totalPickRate === 0 && value.totalBanRate === 0) continue;
-      result.push(value);
-    }
-
-    return result;
   }, [historyItems, champions, rankRange]);
 
   const topPicks = useMemo(() => {
