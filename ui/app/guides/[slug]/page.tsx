@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import PageWrapper from "@/components/PageWrapper";
@@ -10,6 +11,18 @@ import {
   findTierLabelForChampion,
   toLaneKey,
 } from "../guides-lib";
+
+function buildGuideRoleText(guide: GuideData) {
+  const roles = Array.isArray(guide.official?.roles)
+    ? guide.official.roles.filter(Boolean)
+    : [];
+
+  if (roles.length) {
+    return roles.join(" / ");
+  }
+
+  return guide.metadata.recommendedRole || "";
+}
 
 function isGenericVariantTitle(value?: string | null) {
   const normalized = String(value || "").trim().toLowerCase();
@@ -46,6 +59,78 @@ function applyOwnTiers(guide: GuideData, bulk: BulkResponse | null): GuideData {
       tier: defaultVariant?.ownTier || guide.metadata.tier,
     },
     variants,
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const guide = await fetchGuideFromApi<GuideData>(slug);
+
+  if (!guide) {
+    return {
+      title: "Гайд не найден",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const championName = guide.champion.name;
+  const championTitle = guide.champion.title || guide.official?.champion?.title || "";
+  const roleText = buildGuideRoleText(guide);
+  const tierText = guide.metadata.tier ? ` Тир: ${guide.metadata.tier}.` : "";
+  const patchText = guide.metadata.patch ? ` Патч: ${guide.metadata.patch}.` : "";
+  const description = [
+    `Гайд на ${championName} в Wild Rift.`,
+    championTitle ? `${championTitle}.` : "",
+    roleText ? `Роли: ${roleText}.` : "",
+    "Сборки предметов, руны, прокачка умений, контрпики и синергии.",
+    tierText.trim(),
+    patchText.trim(),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
+
+  const image = guide.champion.iconUrl || "/og.png";
+
+  return {
+    title: `Гайд на ${championName} WR`,
+    description,
+    keywords: [
+      `${championName} Wild Rift`,
+      `${championName} WR`,
+      `гайд ${championName}`,
+      `сборка ${championName} Wild Rift`,
+      `руны ${championName} Wild Rift`,
+    ],
+    alternates: {
+      canonical: `/guides/${slug}`,
+    },
+    openGraph: {
+      title: `Гайд на ${championName} WR`,
+      description,
+      url: `/guides/${slug}`,
+      type: "article",
+      images: [{ url: image, width: 1200, height: 630 }],
+      locale: "ru_RU",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Гайд на ${championName} WR`,
+      description,
+      images: [image],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    },
   };
 }
 
