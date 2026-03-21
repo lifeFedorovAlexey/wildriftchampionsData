@@ -1,0 +1,1921 @@
+{
+  "source": {
+    "site": "wildriftfire",
+    "url": "https://www.wildriftfire.com/guide/lux",
+    "fetchedAt": "2026-03-21T16:05:42.830Z",
+    "contentHash": "2a51f49ffe95c66bc2d5bc7cf014b5fe7d5d6d6d"
+  },
+  "champion": {
+    "slug": "lux",
+    "name": "Lux",
+    "title": "Леди сияния",
+    "iconUrl": "https://www.mobafire.com/images/champion/square/lux.png"
+  },
+  "metadata": {
+    "pageTitle": "Lux :: Wild Rift Build Guide (Patch 7.0f) :: Items, Runes, Abilities",
+    "patch": "7.0f",
+    "recommendedRole": "МАГ / ПОДДЕРЖКА",
+    "tier": "B",
+    "blurb": "Build Lux with confidence with the help of WildRiftFire's build guides. Whether you are completely new to Lux or looking to refine your playstyle, we will help you take your Wild Rift game to the next level. Learn Lux's abilities in detail, the best items to build, which skills to level first, and more. Lux is ranked Tier B (Support Lane) in our Champion Tier List"
+  },
+  "itemBuild": {
+    "starting": [
+      {
+        "id": 132,
+        "kind": "Item",
+        "name": "Spectral Sickle",
+        "slug": "spectral-sickle",
+        "imageUrl": "https://www.wildriftfire.com/images/items/spectral-sickle.png",
+        "imageAlt": "Spectral Sickle"
+      }
+    ],
+    "core": [
+      {
+        "id": 134,
+        "kind": "Item",
+        "name": "Black Mist Scythe",
+        "slug": "black-mist-scythe",
+        "imageUrl": "https://www.wildriftfire.com/images/items/black-mist-scythe.png",
+        "imageAlt": "Black Mist Scythe"
+      },
+      {
+        "id": 63,
+        "kind": "Item",
+        "name": "Infinity Orb",
+        "slug": "infinity-orb",
+        "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+        "imageAlt": "Infinity Orb"
+      },
+      {
+        "id": 166,
+        "kind": "Item",
+        "name": "Oceanid's Trident",
+        "slug": "oceanids-trident",
+        "imageUrl": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
+        "imageAlt": "Oceanid's Trident"
+      }
+    ],
+    "boots": [
+      {
+        "id": 156,
+        "kind": "Item",
+        "name": "Boots of Mana",
+        "slug": "boots-of-mana",
+        "imageUrl": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+        "imageAlt": "Boots of Mana"
+      },
+      {
+        "id": 107,
+        "kind": "Item",
+        "name": "Stasis",
+        "slug": "stasis",
+        "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+        "imageAlt": "Stasis"
+      }
+    ],
+    "finalBuild": [
+      {
+        "id": 134,
+        "kind": "Item",
+        "name": "Black Mist Scythe",
+        "slug": "black-mist-scythe",
+        "imageUrl": "https://www.wildriftfire.com/images/items/black-mist-scythe.png",
+        "imageAlt": "Black Mist Scythe"
+      },
+      {
+        "id": 63,
+        "kind": "Item",
+        "name": "Infinity Orb",
+        "slug": "infinity-orb",
+        "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+        "imageAlt": "Infinity Orb"
+      },
+      {
+        "id": 166,
+        "kind": "Item",
+        "name": "Oceanid's Trident",
+        "slug": "oceanids-trident",
+        "imageUrl": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
+        "imageAlt": "Oceanid's Trident"
+      },
+      {
+        "id": 75,
+        "kind": "Item",
+        "name": "Rabadon's Deathcap",
+        "slug": "rabadons-deathcap",
+        "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
+        "imageAlt": "Rabadon's Deathcap"
+      },
+      {
+        "id": 167,
+        "kind": "Item",
+        "name": "Crown of the Shattered Queen",
+        "slug": "crown-of-the-shattered-queen",
+        "imageUrl": "https://www.wildriftfire.com/images/items/crown-of-the-shattered-queen.png",
+        "imageAlt": "Crown of the Shattered Queen"
+      },
+      {
+        "id": 107,
+        "kind": "Item",
+        "name": "Boots of Mana - Stasis",
+        "slug": "boots-of-mana-stasis",
+        "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+        "imageAlt": "Boots of Mana - Stasis"
+      }
+    ]
+  },
+  "spellsAndRunes": {
+    "summonerSpells": [
+      {
+        "id": 14,
+        "kind": "SummonerSpell",
+        "name": "Flash",
+        "slug": "flash",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+        "imageAlt": "Flash"
+      },
+      {
+        "id": 11,
+        "kind": "SummonerSpell",
+        "name": "Ignite",
+        "slug": "ignite",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/ignite.png",
+        "imageAlt": "Ignite"
+      }
+    ],
+    "runes": [
+      {
+        "id": 130,
+        "kind": "Rune",
+        "name": "Arcane Comet",
+        "slug": "arcane-comet",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/arcane-comet.png",
+        "imageAlt": "Arcane Comet"
+      },
+      {
+        "id": 100,
+        "kind": "Rune",
+        "name": "Scorch",
+        "slug": "scorch",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/scorch.png",
+        "imageAlt": "Scorch"
+      },
+      {
+        "id": 113,
+        "kind": "Rune",
+        "name": "Cheap Shot",
+        "slug": "cheap-shot",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/cheap-shot.png",
+        "imageAlt": "Cheap Shot"
+      },
+      {
+        "id": 112,
+        "kind": "Rune",
+        "name": "Eyeball Collector",
+        "slug": "eyeball-collector",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/eyeball-collector.png",
+        "imageAlt": "Eyeball Collector"
+      },
+      {
+        "id": 107,
+        "kind": "Rune",
+        "name": "Transcendence",
+        "slug": "transcendence",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/transcendence.png",
+        "imageAlt": "Transcendence"
+      }
+    ]
+  },
+  "situationalItems": [
+    {
+      "label": "vs Healing",
+      "options": [
+        {
+          "id": 75,
+          "kind": "Item",
+          "name": "Rabadon's Deathcap",
+          "slug": "rabadons-deathcap",
+          "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
+          "imageAlt": "Rabadon's Deathcap"
+        },
+        {
+          "id": 69,
+          "kind": "Item",
+          "name": "Morellonomicon",
+          "slug": "morellonomicon",
+          "imageUrl": "https://www.wildriftfire.com/images/items/morellonomicon.png",
+          "imageAlt": "Morellonomicon"
+        }
+      ]
+    }
+  ],
+  "situationalRunes": [
+    {
+      "label": "vs Burst Damage",
+      "options": [
+        {
+          "id": 107,
+          "kind": "Rune",
+          "name": "Transcendence",
+          "slug": "transcendence",
+          "imageUrl": "https://www.wildriftfire.com/images/runes/transcendence.png",
+          "imageAlt": "Transcendence"
+        },
+        {
+          "id": 95,
+          "kind": "Rune",
+          "name": "Bone Plating",
+          "slug": "bone-plating",
+          "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+          "imageAlt": "Bone Plating"
+        }
+      ]
+    }
+  ],
+  "skillOrder": {
+    "quickOrder": [
+      {
+        "id": 316,
+        "kind": "Ability",
+        "name": "Prismatic Barrier",
+        "slug": "prismatic-barrier",
+        "imageUrl": "https://www.mobafire.com/images/ability/lux-prismatic-barrier.png",
+        "imageAlt": "Prismatic Barrier"
+      },
+      {
+        "id": 315,
+        "kind": "Ability",
+        "name": "Light Binding",
+        "slug": "light-binding",
+        "imageUrl": "https://www.mobafire.com/images/ability/lux-light-binding.png",
+        "imageAlt": "Light Binding"
+      },
+      {
+        "id": 317,
+        "kind": "Ability",
+        "name": "Lucent Singularity",
+        "slug": "lucent-singularity",
+        "imageUrl": "https://www.mobafire.com/images/ability/lux-lucent-singularity.png",
+        "imageAlt": "Lucent Singularity"
+      }
+    ],
+    "rows": [
+      {
+        "name": "Light Binding",
+        "slug": "light-binding",
+        "levels": [
+          2,
+          8,
+          10,
+          11
+        ]
+      },
+      {
+        "name": "Prismatic Barrier",
+        "slug": "prismatic-barrier",
+        "levels": [
+          3,
+          12,
+          14,
+          15
+        ]
+      },
+      {
+        "name": "Lucent Singularity",
+        "slug": "lucent-singularity",
+        "levels": [
+          1,
+          4,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Final Spark",
+        "slug": "final-spark",
+        "levels": [
+          5,
+          9,
+          13
+        ]
+      }
+    ]
+  },
+  "counters": [
+    {
+      "name": "Pyke",
+      "slug": "pyke",
+      "href": "https://www.wildriftfire.com/guide/pyke",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/pyke.png",
+      "lane": "Support",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+    },
+    {
+      "name": "Nami",
+      "slug": "nami",
+      "href": "https://www.wildriftfire.com/guide/nami",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/nami.png",
+      "lane": "Support",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+    },
+    {
+      "name": "Karma",
+      "slug": "karma",
+      "href": "https://www.wildriftfire.com/guide/karma",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/karma.png",
+      "lane": "Support",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+    }
+  ],
+  "synergies": [
+    {
+      "name": "Jhin",
+      "slug": "jhin",
+      "href": "https://www.wildriftfire.com/guide/jhin",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/jhin.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+    },
+    {
+      "name": "Caitlyn",
+      "slug": "caitlyn",
+      "href": "https://www.wildriftfire.com/guide/caitlyn",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/caitlyn.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+    },
+    {
+      "name": "Varus",
+      "slug": "varus",
+      "href": "https://www.wildriftfire.com/guide/varus",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/varus.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+    }
+  ],
+  "variants": [
+    {
+      "guideId": "60",
+      "title": "Support Build",
+      "lane": null,
+      "tier": "B",
+      "isDefault": true,
+      "itemBuild": {
+        "starting": [
+          {
+            "id": 132,
+            "kind": "Item",
+            "name": "Spectral Sickle",
+            "slug": "spectral-sickle",
+            "imageUrl": "https://www.wildriftfire.com/images/items/spectral-sickle.png",
+            "imageAlt": "Spectral Sickle"
+          }
+        ],
+        "core": [
+          {
+            "id": 134,
+            "kind": "Item",
+            "name": "Black Mist Scythe",
+            "slug": "black-mist-scythe",
+            "imageUrl": "https://www.wildriftfire.com/images/items/black-mist-scythe.png",
+            "imageAlt": "Black Mist Scythe"
+          },
+          {
+            "id": 63,
+            "kind": "Item",
+            "name": "Infinity Orb",
+            "slug": "infinity-orb",
+            "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+            "imageAlt": "Infinity Orb"
+          },
+          {
+            "id": 166,
+            "kind": "Item",
+            "name": "Oceanid's Trident",
+            "slug": "oceanids-trident",
+            "imageUrl": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
+            "imageAlt": "Oceanid's Trident"
+          }
+        ],
+        "boots": [
+          {
+            "id": 156,
+            "kind": "Item",
+            "name": "Boots of Mana",
+            "slug": "boots-of-mana",
+            "imageUrl": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+            "imageAlt": "Boots of Mana"
+          },
+          {
+            "id": 107,
+            "kind": "Item",
+            "name": "Stasis",
+            "slug": "stasis",
+            "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+            "imageAlt": "Stasis"
+          }
+        ],
+        "finalBuild": [
+          {
+            "id": 134,
+            "kind": "Item",
+            "name": "Black Mist Scythe",
+            "slug": "black-mist-scythe",
+            "imageUrl": "https://www.wildriftfire.com/images/items/black-mist-scythe.png",
+            "imageAlt": "Black Mist Scythe"
+          },
+          {
+            "id": 63,
+            "kind": "Item",
+            "name": "Infinity Orb",
+            "slug": "infinity-orb",
+            "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+            "imageAlt": "Infinity Orb"
+          },
+          {
+            "id": 166,
+            "kind": "Item",
+            "name": "Oceanid's Trident",
+            "slug": "oceanids-trident",
+            "imageUrl": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
+            "imageAlt": "Oceanid's Trident"
+          },
+          {
+            "id": 75,
+            "kind": "Item",
+            "name": "Rabadon's Deathcap",
+            "slug": "rabadons-deathcap",
+            "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
+            "imageAlt": "Rabadon's Deathcap"
+          },
+          {
+            "id": 167,
+            "kind": "Item",
+            "name": "Crown of the Shattered Queen",
+            "slug": "crown-of-the-shattered-queen",
+            "imageUrl": "https://www.wildriftfire.com/images/items/crown-of-the-shattered-queen.png",
+            "imageAlt": "Crown of the Shattered Queen"
+          },
+          {
+            "id": 107,
+            "kind": "Item",
+            "name": "Boots of Mana - Stasis",
+            "slug": "boots-of-mana-stasis",
+            "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+            "imageAlt": "Boots of Mana - Stasis"
+          }
+        ]
+      },
+      "spellsAndRunes": {
+        "summonerSpells": [
+          {
+            "id": 14,
+            "kind": "SummonerSpell",
+            "name": "Flash",
+            "slug": "flash",
+            "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+            "imageAlt": "Flash"
+          },
+          {
+            "id": 11,
+            "kind": "SummonerSpell",
+            "name": "Ignite",
+            "slug": "ignite",
+            "imageUrl": "https://www.wildriftfire.com/images/summoners/ignite.png",
+            "imageAlt": "Ignite"
+          }
+        ],
+        "runes": [
+          {
+            "id": 130,
+            "kind": "Rune",
+            "name": "Arcane Comet",
+            "slug": "arcane-comet",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/arcane-comet.png",
+            "imageAlt": "Arcane Comet"
+          },
+          {
+            "id": 100,
+            "kind": "Rune",
+            "name": "Scorch",
+            "slug": "scorch",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/scorch.png",
+            "imageAlt": "Scorch"
+          },
+          {
+            "id": 113,
+            "kind": "Rune",
+            "name": "Cheap Shot",
+            "slug": "cheap-shot",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/cheap-shot.png",
+            "imageAlt": "Cheap Shot"
+          },
+          {
+            "id": 112,
+            "kind": "Rune",
+            "name": "Eyeball Collector",
+            "slug": "eyeball-collector",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/eyeball-collector.png",
+            "imageAlt": "Eyeball Collector"
+          },
+          {
+            "id": 107,
+            "kind": "Rune",
+            "name": "Transcendence",
+            "slug": "transcendence",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/transcendence.png",
+            "imageAlt": "Transcendence"
+          }
+        ]
+      },
+      "situationalItems": [
+        {
+          "label": "vs Healing",
+          "options": [
+            {
+              "id": 75,
+              "kind": "Item",
+              "name": "Rabadon's Deathcap",
+              "slug": "rabadons-deathcap",
+              "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
+              "imageAlt": "Rabadon's Deathcap"
+            },
+            {
+              "id": 69,
+              "kind": "Item",
+              "name": "Morellonomicon",
+              "slug": "morellonomicon",
+              "imageUrl": "https://www.wildriftfire.com/images/items/morellonomicon.png",
+              "imageAlt": "Morellonomicon"
+            }
+          ]
+        }
+      ],
+      "situationalRunes": [
+        {
+          "label": "vs Burst Damage",
+          "options": [
+            {
+              "id": 107,
+              "kind": "Rune",
+              "name": "Transcendence",
+              "slug": "transcendence",
+              "imageUrl": "https://www.wildriftfire.com/images/runes/transcendence.png",
+              "imageAlt": "Transcendence"
+            },
+            {
+              "id": 95,
+              "kind": "Rune",
+              "name": "Bone Plating",
+              "slug": "bone-plating",
+              "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+              "imageAlt": "Bone Plating"
+            }
+          ]
+        }
+      ],
+      "skillOrder": {
+        "quickOrder": [
+          {
+            "id": 316,
+            "kind": "Ability",
+            "name": "Prismatic Barrier",
+            "slug": "prismatic-barrier",
+            "imageUrl": "https://www.mobafire.com/images/ability/lux-prismatic-barrier.png",
+            "imageAlt": "Prismatic Barrier"
+          },
+          {
+            "id": 315,
+            "kind": "Ability",
+            "name": "Light Binding",
+            "slug": "light-binding",
+            "imageUrl": "https://www.mobafire.com/images/ability/lux-light-binding.png",
+            "imageAlt": "Light Binding"
+          },
+          {
+            "id": 317,
+            "kind": "Ability",
+            "name": "Lucent Singularity",
+            "slug": "lucent-singularity",
+            "imageUrl": "https://www.mobafire.com/images/ability/lux-lucent-singularity.png",
+            "imageAlt": "Lucent Singularity"
+          }
+        ],
+        "rows": [
+          {
+            "name": "Light Binding",
+            "slug": "light-binding",
+            "levels": [
+              2,
+              8,
+              10,
+              11
+            ]
+          },
+          {
+            "name": "Prismatic Barrier",
+            "slug": "prismatic-barrier",
+            "levels": [
+              3,
+              12,
+              14,
+              15
+            ]
+          },
+          {
+            "name": "Lucent Singularity",
+            "slug": "lucent-singularity",
+            "levels": [
+              1,
+              4,
+              6,
+              7
+            ]
+          },
+          {
+            "name": "Final Spark",
+            "slug": "final-spark",
+            "levels": [
+              5,
+              9,
+              13
+            ]
+          }
+        ]
+      },
+      "counters": [
+        {
+          "name": "Pyke",
+          "slug": "pyke",
+          "href": "https://www.wildriftfire.com/guide/pyke",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/pyke.png",
+          "lane": "Support",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+        },
+        {
+          "name": "Nami",
+          "slug": "nami",
+          "href": "https://www.wildriftfire.com/guide/nami",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/nami.png",
+          "lane": "Support",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+        },
+        {
+          "name": "Karma",
+          "slug": "karma",
+          "href": "https://www.wildriftfire.com/guide/karma",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/karma.png",
+          "lane": "Support",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+        }
+      ],
+      "synergies": [
+        {
+          "name": "Jhin",
+          "slug": "jhin",
+          "href": "https://www.wildriftfire.com/guide/jhin",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/jhin.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+        },
+        {
+          "name": "Caitlyn",
+          "slug": "caitlyn",
+          "href": "https://www.wildriftfire.com/guide/caitlyn",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/caitlyn.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+        },
+        {
+          "name": "Varus",
+          "slug": "varus",
+          "href": "https://www.wildriftfire.com/guide/varus",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/varus.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+        }
+      ]
+    },
+    {
+      "guideId": "100",
+      "title": "Mid Build",
+      "lane": null,
+      "tier": "B",
+      "isDefault": false,
+      "itemBuild": {
+        "starting": [
+          {
+            "id": 1,
+            "kind": "Item",
+            "name": "Amplifying Tome",
+            "slug": "amplifying-tome",
+            "imageUrl": "https://www.wildriftfire.com/images/items/amplifying-tome.png",
+            "imageAlt": "Amplifying Tome"
+          }
+        ],
+        "core": [
+          {
+            "id": 66,
+            "kind": "Item",
+            "name": "Luden's Echo",
+            "slug": "ludens-echo",
+            "imageUrl": "https://www.wildriftfire.com/images/items/ludens-echo.png",
+            "imageAlt": "Luden's Echo"
+          },
+          {
+            "id": 63,
+            "kind": "Item",
+            "name": "Infinity Orb",
+            "slug": "infinity-orb",
+            "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+            "imageAlt": "Infinity Orb"
+          },
+          {
+            "id": 75,
+            "kind": "Item",
+            "name": "Rabadon's Deathcap",
+            "slug": "rabadons-deathcap",
+            "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
+            "imageAlt": "Rabadon's Deathcap"
+          }
+        ],
+        "boots": [
+          {
+            "id": 156,
+            "kind": "Item",
+            "name": "Boots of Mana",
+            "slug": "boots-of-mana",
+            "imageUrl": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+            "imageAlt": "Boots of Mana"
+          },
+          {
+            "id": 107,
+            "kind": "Item",
+            "name": "Stasis",
+            "slug": "stasis",
+            "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+            "imageAlt": "Stasis"
+          }
+        ],
+        "finalBuild": [
+          {
+            "id": 66,
+            "kind": "Item",
+            "name": "Luden's Echo",
+            "slug": "ludens-echo",
+            "imageUrl": "https://www.wildriftfire.com/images/items/ludens-echo.png",
+            "imageAlt": "Luden's Echo"
+          },
+          {
+            "id": 63,
+            "kind": "Item",
+            "name": "Infinity Orb",
+            "slug": "infinity-orb",
+            "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+            "imageAlt": "Infinity Orb"
+          },
+          {
+            "id": 75,
+            "kind": "Item",
+            "name": "Rabadon's Deathcap",
+            "slug": "rabadons-deathcap",
+            "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
+            "imageAlt": "Rabadon's Deathcap"
+          },
+          {
+            "id": 167,
+            "kind": "Item",
+            "name": "Crown of the Shattered Queen",
+            "slug": "crown-of-the-shattered-queen",
+            "imageUrl": "https://www.wildriftfire.com/images/items/crown-of-the-shattered-queen.png",
+            "imageAlt": "Crown of the Shattered Queen"
+          },
+          {
+            "id": 49,
+            "kind": "Item",
+            "name": "Awakened Soulstealer",
+            "slug": "awakened-soulstealer",
+            "imageUrl": "https://www.wildriftfire.com/images/items/awakened-soulstealer.png",
+            "imageAlt": "Awakened Soulstealer"
+          },
+          {
+            "id": 107,
+            "kind": "Item",
+            "name": "Boots of Mana - Stasis",
+            "slug": "boots-of-mana-stasis",
+            "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+            "imageAlt": "Boots of Mana - Stasis"
+          }
+        ]
+      },
+      "spellsAndRunes": {
+        "summonerSpells": [
+          {
+            "id": 14,
+            "kind": "SummonerSpell",
+            "name": "Flash",
+            "slug": "flash",
+            "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+            "imageAlt": "Flash"
+          },
+          {
+            "id": 17,
+            "kind": "SummonerSpell",
+            "name": "Barrier",
+            "slug": "barrier",
+            "imageUrl": "https://www.wildriftfire.com/images/summoners/barrier.png",
+            "imageAlt": "Barrier"
+          }
+        ],
+        "runes": [
+          {
+            "id": 130,
+            "kind": "Rune",
+            "name": "Arcane Comet",
+            "slug": "arcane-comet",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/arcane-comet.png",
+            "imageAlt": "Arcane Comet"
+          },
+          {
+            "id": 100,
+            "kind": "Rune",
+            "name": "Scorch",
+            "slug": "scorch",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/scorch.png",
+            "imageAlt": "Scorch"
+          },
+          {
+            "id": 113,
+            "kind": "Rune",
+            "name": "Cheap Shot",
+            "slug": "cheap-shot",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/cheap-shot.png",
+            "imageAlt": "Cheap Shot"
+          },
+          {
+            "id": 112,
+            "kind": "Rune",
+            "name": "Eyeball Collector",
+            "slug": "eyeball-collector",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/eyeball-collector.png",
+            "imageAlt": "Eyeball Collector"
+          },
+          {
+            "id": 107,
+            "kind": "Rune",
+            "name": "Transcendence",
+            "slug": "transcendence",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/transcendence.png",
+            "imageAlt": "Transcendence"
+          }
+        ]
+      },
+      "situationalItems": [
+        {
+          "label": "vs Shielding",
+          "options": [
+            {
+              "id": 49,
+              "kind": "Item",
+              "name": "Awakened Soulstealer",
+              "slug": "awakened-soulstealer",
+              "imageUrl": "https://www.wildriftfire.com/images/items/awakened-soulstealer.png",
+              "imageAlt": "Awakened Soulstealer"
+            },
+            {
+              "id": 166,
+              "kind": "Item",
+              "name": "Oceanid's Trident",
+              "slug": "oceanids-trident",
+              "imageUrl": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
+              "imageAlt": "Oceanid's Trident"
+            }
+          ]
+        },
+        {
+          "label": "vs Healing",
+          "options": [
+            {
+              "id": 49,
+              "kind": "Item",
+              "name": "Awakened Soulstealer",
+              "slug": "awakened-soulstealer",
+              "imageUrl": "https://www.wildriftfire.com/images/items/awakened-soulstealer.png",
+              "imageAlt": "Awakened Soulstealer"
+            },
+            {
+              "id": 69,
+              "kind": "Item",
+              "name": "Morellonomicon",
+              "slug": "morellonomicon",
+              "imageUrl": "https://www.wildriftfire.com/images/items/morellonomicon.png",
+              "imageAlt": "Morellonomicon"
+            }
+          ]
+        }
+      ],
+      "situationalRunes": [
+        {
+          "label": "vs Burst Damage",
+          "options": [
+            {
+              "id": 107,
+              "kind": "Rune",
+              "name": "Transcendence",
+              "slug": "transcendence",
+              "imageUrl": "https://www.wildriftfire.com/images/runes/transcendence.png",
+              "imageAlt": "Transcendence"
+            },
+            {
+              "id": 95,
+              "kind": "Rune",
+              "name": "Bone Plating",
+              "slug": "bone-plating",
+              "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+              "imageAlt": "Bone Plating"
+            }
+          ]
+        }
+      ],
+      "skillOrder": {
+        "quickOrder": [
+          {
+            "id": 317,
+            "kind": "Ability",
+            "name": "Lucent Singularity",
+            "slug": "lucent-singularity",
+            "imageUrl": "https://www.mobafire.com/images/ability/lux-lucent-singularity.png",
+            "imageAlt": "Lucent Singularity"
+          },
+          {
+            "id": 315,
+            "kind": "Ability",
+            "name": "Light Binding",
+            "slug": "light-binding",
+            "imageUrl": "https://www.mobafire.com/images/ability/lux-light-binding.png",
+            "imageAlt": "Light Binding"
+          },
+          {
+            "id": 316,
+            "kind": "Ability",
+            "name": "Prismatic Barrier",
+            "slug": "prismatic-barrier",
+            "imageUrl": "https://www.mobafire.com/images/ability/lux-prismatic-barrier.png",
+            "imageAlt": "Prismatic Barrier"
+          }
+        ],
+        "rows": [
+          {
+            "name": "Light Binding",
+            "slug": "light-binding",
+            "levels": [
+              2,
+              8,
+              10,
+              11
+            ]
+          },
+          {
+            "name": "Prismatic Barrier",
+            "slug": "prismatic-barrier",
+            "levels": [
+              3,
+              12,
+              14,
+              15
+            ]
+          },
+          {
+            "name": "Lucent Singularity",
+            "slug": "lucent-singularity",
+            "levels": [
+              1,
+              4,
+              6,
+              7
+            ]
+          },
+          {
+            "name": "Final Spark",
+            "slug": "final-spark",
+            "levels": [
+              5,
+              9,
+              13
+            ]
+          }
+        ]
+      },
+      "counters": [
+        {
+          "name": "Irelia",
+          "slug": "irelia",
+          "href": "https://www.wildriftfire.com/guide/irelia",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/irelia.png",
+          "lane": "Mid",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-mid.png"
+        },
+        {
+          "name": "Kassadin",
+          "slug": "kassadin",
+          "href": "https://www.wildriftfire.com/guide/kassadin",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/kassadin.png",
+          "lane": "Mid",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-mid.png"
+        },
+        {
+          "name": "Yasuo",
+          "slug": "yasuo",
+          "href": "https://www.wildriftfire.com/guide/yasuo",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/yasuo.png",
+          "lane": "Mid",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-mid.png"
+        }
+      ],
+      "synergies": [
+        {
+          "name": "Vi",
+          "slug": "vi",
+          "href": "https://www.wildriftfire.com/guide/vi",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/vi.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png"
+        },
+        {
+          "name": "Amumu",
+          "slug": "amumu",
+          "href": "https://www.wildriftfire.com/guide/amumu",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/amumu.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png"
+        },
+        {
+          "name": "Leona",
+          "slug": "leona",
+          "href": "https://www.wildriftfire.com/guide/leona",
+          "imageUrl": "https://www.wildriftfire.com/images/champion/icon/leona.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+        }
+      ]
+    }
+  ],
+  "buildBreakdown": {
+    "featuredItems": [
+      {
+        "id": 134,
+        "kind": "Item",
+        "name": "Black Mist Scythe",
+        "slug": "black-mist-scythe",
+        "imageUrl": "https://www.wildriftfire.com/images/items/black-mist-scythe.png",
+        "imageAlt": "Black Mist Scythe"
+      },
+      {
+        "id": 63,
+        "kind": "Item",
+        "name": "Infinity Orb",
+        "slug": "infinity-orb",
+        "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+        "imageAlt": "Infinity Orb"
+      },
+      {
+        "id": 166,
+        "kind": "Item",
+        "name": "Oceanid's Trident",
+        "slug": "oceanids-trident",
+        "imageUrl": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
+        "imageAlt": "Oceanid's Trident"
+      },
+      {
+        "id": 75,
+        "kind": "Item",
+        "name": "Rabadon's Deathcap",
+        "slug": "rabadons-deathcap",
+        "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
+        "imageAlt": "Rabadon's Deathcap"
+      },
+      {
+        "id": 167,
+        "kind": "Item",
+        "name": "Crown of the Shattered Queen",
+        "slug": "crown-of-the-shattered-queen",
+        "imageUrl": "https://www.wildriftfire.com/images/items/crown-of-the-shattered-queen.png",
+        "imageAlt": "Crown of the Shattered Queen"
+      },
+      {
+        "id": 107,
+        "kind": "Item",
+        "name": "Boots of Mana - Stasis",
+        "slug": "boots-of-mana-stasis",
+        "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+        "imageAlt": "Boots of Mana - Stasis"
+      }
+    ],
+    "paragraphs": [
+      "Even though this is a support Lux build, she wants to build items that give her ability power to be a carry for her team. Infinity Orb is an excellent Lux item. When enemies are low on health Lux's abilities can crit and deal more damage. This helps her out a lot when trying to one-shot enemy champions with her combo.",
+      "With runes, we have the following:",
+      "Lux has an incredible amount of poke damage with her abilities that can be combo'd together. Arcane Comet will help Lux deal extra damage when poking enemy champions.",
+      "Scorch gives Lux a lot of poking power in the early game. This can help you win trades early on.",
+      "Cheap Shot increases the burst potential when hitting Lux's Light Binding, allowing her to deal true damage.",
+      "Eyeball Collector is great since it gives Lux more Ability Power every time she gets a takedown. Zombie Ward can also be good if you often roam and look to kill wards.",
+      "Ability Power mages like Lux love to build as much Ability taste as possible so they can use their abilities more often. This is especially good on Lux since she can use her combo more often.",
+      "For summoner spells, Flash is a must on most champions. It's a great spell to get you out of a bad situation or allows you to flash and save your ally or even maybe get a kill. Ignite is a great 2nd summoner spell for Lux as you want to look to take aggressive trades in the early game because of your high damage output."
+    ]
+  },
+  "guideAbilities": [],
+  "dictionaries": {
+    "items": {
+      "spectral-sickle": {
+        "id": 132,
+        "name": "Spectral Sickle",
+        "slug": "spectral-sickle",
+        "imageUrl": "https://www.wildriftfire.com/images/items/spectral-sickle.png",
+        "imageAlt": "Spectral Sickle",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Spectral Sickle",
+          "cost": "500",
+          "stats": [],
+          "lines": [
+            "PASSIVE - Versatile: Gain 10 attack damage or 20 ability power.(adaptive) UNIQUE PASSIVE -Gain 1 encircling energy orb every 30 seconds (max 3 orbs). While near an ally, the actions below will trigger Tribute, consuming 1 energy orb to grant you 65 gold and restore your Health by 20 - 80: Using abilities or attacks to damage enemy champions or structures; Attacking minions below 65% Health. This also executes them, and the gold generated from the minion kills is given to the ally nearest to you; If a nearby minion is killed while you have 3 orbs. Upon triggering Tribute, the ally nearest to you gains Tribute stacks.. UNIQUE PASSIVE - Quest: Transform to Black Mist Scythe after granting 750 gold. UNIQUE PASSIVE - Tribute: Deal 1 more damage to Sight Wards revealed by Sweeping Lens, Control Ward, and Scryer's Bloom."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/spectral-sickle.png"
+        }
+      },
+      "black-mist-scythe": {
+        "id": 134,
+        "name": "Black Mist Scythe",
+        "slug": "black-mist-scythe",
+        "imageUrl": "https://www.wildriftfire.com/images/items/black-mist-scythe.png",
+        "imageAlt": "Black Mist Scythe",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Black Mist Scythe",
+          "cost": "0",
+          "stats": [
+            "+10 Ability Haste"
+          ],
+          "lines": [
+            "PASSIVE - Versatile: 14 Attack Damage or 28 Ability Power (adaptive) UNIQUE PASSIVE - Spellcraft: Grant 75 gold every 60 seconds and gain 1 point Spirit Power (max 10). Every point of Spirit Power provides 25 health, 2 Attack Damage or 4 Ability Power (adaptive). PASSIVE - Soulcast: Deal 2 more damage to Sight Wards revealed by Sweeping Lens, Control Ward, and Scryer's Bloom."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/black-mist-scythe.png"
+        }
+      },
+      "infinity-orb": {
+        "id": 63,
+        "name": "Infinity Orb",
+        "slug": "infinity-orb",
+        "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+        "imageAlt": "Infinity Orb",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Infinity Orb",
+          "cost": "2900",
+          "stats": [
+            "+80 Ability Power",
+            "+7% Magic Penetration"
+          ],
+          "lines": [
+            "Destiny: 5% Movement Speed Balance: 15 Magic Penetration Inevitable Demise: Abilities and empowered attacks Critically Strike for 20% bonus damage against enemies below 35% Health. Thunderfall: When an enemy champion dies within 3 second(s) of you applying Inevitable Demise to them, a lightning bolt strikes at the spot where they died, dealing magic damage equal to 50-75 plus 10% Ability Power to nearby enemies."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/infinity-orb.png"
+        }
+      },
+      "oceanids-trident": {
+        "id": 166,
+        "name": "Oceanid's Trident",
+        "slug": "oceanids-trident",
+        "imageUrl": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
+        "imageAlt": "Oceanid's Trident",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Oceanid's Trident",
+          "cost": "2600",
+          "stats": [
+            "+200 Health",
+            "+75 Ability Power",
+            "+7% Magic Penetration"
+          ],
+          "lines": [
+            "Lethal Weapon: Dealing ability damage to an enemy champion reduces any shields they gain for 3s (Area of effect abilities apply 5% of bonus Ability Power + 25% shield reduction, capped at 45%; while single target abilities apply 5% of bonus Ability Power + 40% shield reduction, capped at 60%). When you damage an enemy who is unaffected by Lethal Weapon, all shields on them are reduced by the same values."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/oceanids-trident.png"
+        }
+      },
+      "boots-of-mana": {
+        "id": 156,
+        "name": "Boots of Mana",
+        "slug": "boots-of-mana",
+        "imageUrl": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+        "imageAlt": "Boots of Mana",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Boots of Mana",
+          "cost": "1400",
+          "stats": [
+            "+45 Ability Power",
+            "+45 Movement Speed"
+          ],
+          "lines": [
+            "+150% Mana Regeneration UNIQUE - Magic Break: +8 Magic penetration. UNIQUE - Big Bully: Attacks and active abilities deal 18 bonus physical damage to minions. UNIQUE - Equilibrium: Champions without Mana gain 75% Base Health Regen."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/boots-of-mana.png"
+        }
+      },
+      "stasis": {
+        "id": 107,
+        "name": "Stasis",
+        "slug": "stasis",
+        "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+        "imageAlt": "Stasis",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Stasis",
+          "cost": "1000",
+          "stats": [],
+          "lines": [
+            "UNIQUE - STASIS: Put yourself in stasis for 2.5 seconds, rendering yourself untargetable and invulnerable for the duration but becoming unable to move, declare basic attacks, cast abilities or item actives, or use any summoner spells during this time. (120 second cooldown) Limited to 1 Boots enchantment."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png"
+        }
+      },
+      "rabadons-deathcap": {
+        "id": 75,
+        "name": "Rabadon's Deathcap",
+        "slug": "rabadons-deathcap",
+        "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
+        "imageAlt": "Rabadon's Deathcap",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Rabadon's Deathcap",
+          "cost": "3400",
+          "stats": [
+            "+100 Ability Power",
+            "+7% Magic Penetration"
+          ],
+          "lines": [
+            "UNIQUE - OVERKILL: Increases ability power by 20 - 45 % (based on level)."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png"
+        }
+      },
+      "crown-of-the-shattered-queen": {
+        "id": 167,
+        "name": "Crown of the Shattered Queen",
+        "slug": "crown-of-the-shattered-queen",
+        "imageUrl": "https://www.wildriftfire.com/images/items/crown-of-the-shattered-queen.png",
+        "imageAlt": "Crown of the Shattered Queen",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Crown of the Shattered Queen",
+          "cost": "3000",
+          "stats": [
+            "+200 Mana",
+            "+60 Ability Power",
+            "+20 Ability Haste",
+            "+7% Magic Penetration"
+          ],
+          "lines": [
+            "Safeguard: Grant a spell shield that blocks the next enemy ability. When the shield is broken, reduce incoming damage by 40% for 1s (40s cooldown). Poise: Ability Power increases by 20 while Safeguarded. Dealing magic damage to enemy champions using an active ability reduces Safeguard's cooldown by 4 seconds."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/crown-of-the-shattered-queen.png"
+        }
+      },
+      "boots-of-mana-stasis": {
+        "id": 107,
+        "name": "Boots of Mana - Stasis",
+        "slug": "boots-of-mana-stasis",
+        "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+        "imageAlt": "Boots of Mana - Stasis",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Stasis",
+          "cost": "1000",
+          "stats": [],
+          "lines": [
+            "UNIQUE - STASIS: Put yourself in stasis for 2.5 seconds, rendering yourself untargetable and invulnerable for the duration but becoming unable to move, declare basic attacks, cast abilities or item actives, or use any summoner spells during this time. (120 second cooldown) Limited to 1 Boots enchantment."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png"
+        }
+      },
+      "morellonomicon": {
+        "id": 69,
+        "name": "Morellonomicon",
+        "slug": "morellonomicon",
+        "imageUrl": "https://www.wildriftfire.com/images/items/morellonomicon.png",
+        "imageAlt": "Morellonomicon",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Morellonomicon",
+          "cost": "2600",
+          "stats": [
+            "+150 Health",
+            "+70 Ability Power",
+            "+20 Ability Haste",
+            "+7% Magic Penetration"
+          ],
+          "lines": [
+            "UNIQUE - AFFLICTION: Dealing magic damage to enemy champions inflicts 50% Grievous Wounds for 3 seconds."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/morellonomicon.png"
+        }
+      },
+      "amplifying-tome": {
+        "id": 1,
+        "name": "Amplifying Tome",
+        "slug": "amplifying-tome",
+        "imageUrl": "https://www.wildriftfire.com/images/items/amplifying-tome.png",
+        "imageAlt": "Amplifying Tome",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Amplifying Tome",
+          "cost": "500",
+          "stats": [
+            "+25 Ability Power"
+          ],
+          "lines": [],
+          "imageUrl": "https://www.wildriftfire.com/images/items/amplifying-tome.png"
+        }
+      },
+      "ludens-echo": {
+        "id": 66,
+        "name": "Luden's Echo",
+        "slug": "ludens-echo",
+        "imageUrl": "https://www.wildriftfire.com/images/items/ludens-echo.png",
+        "imageAlt": "Luden's Echo",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Luden's Echo",
+          "cost": "3000",
+          "stats": [
+            "+300 Mana",
+            "+85 Ability Power",
+            "+20 Ability Haste",
+            "+7% Magic Penetration"
+          ],
+          "lines": [
+            "UNIQUE - DISCORDIC ECHO: Moving and casting abilities builds Discord. At 100 Discord your next damaging ability deals 110 (+10% AP) bonus magic damage to your target and up to 3 nearby enemies."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/ludens-echo.png"
+        }
+      },
+      "awakened-soulstealer": {
+        "id": 49,
+        "name": "Awakened Soulstealer",
+        "slug": "awakened-soulstealer",
+        "imageUrl": "https://www.wildriftfire.com/images/items/awakened-soulstealer.png",
+        "imageAlt": "Awakened Soulstealer",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Awakened Soulstealer",
+          "cost": "3000",
+          "stats": [
+            "+150 Health",
+            "+65 Ability Power",
+            "+20 Ability Haste",
+            "+7% Magic Penetration"
+          ],
+          "lines": [
+            "Unique Passive - Soul Hunt: +15 magical penetration Unique Passive - Wandering Soul: Every time you take down an enemy champion within 3 seconds of damaging them, your ability cooldowns are reduced by 25%. You steal 10% of their base Movement Speed for 10 seconds and 50% of their Ability Haste until they respawn. Ability Haste stolen this way stacks."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/awakened-soulstealer.png"
+        }
+      }
+    },
+    "runes": {
+      "arcane-comet": {
+        "id": 130,
+        "name": "Arcane Comet",
+        "slug": "arcane-comet",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/arcane-comet.png",
+        "imageAlt": "Arcane Comet",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Arcane Comet",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Damaging a champion with an ability hurls a comet at their location. When a comet hits an enemy champion, the next comet's damage increases. Damage: 18 - 95 + (3 x total hits on enemy champions) + 35% bonus Attack Damage + 20% Ability Power. Cooldown: 16-8 seconds."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/arcane-comet.png"
+        }
+      },
+      "scorch": {
+        "id": 100,
+        "name": "Scorch",
+        "slug": "scorch",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/scorch.png",
+        "imageAlt": "Scorch",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Scorch",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Dealing ability damage to a champion deals an additional 21-49 magic damage after 1 second. Cooldown: 8s"
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/scorch.png"
+        }
+      },
+      "cheap-shot": {
+        "id": 113,
+        "name": "Cheap Shot",
+        "slug": "cheap-shot",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/cheap-shot.png",
+        "imageAlt": "Cheap Shot",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Cheap Shot",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Deals 10 - 45 bonus true damage to enemies whose movement is impaired. (7 seconds cooldown)."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/cheap-shot.png"
+        }
+      },
+      "eyeball-collector": {
+        "id": 112,
+        "name": "Eyeball Collector",
+        "slug": "eyeball-collector",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/eyeball-collector.png",
+        "imageAlt": "Eyeball Collector",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Eyeball Collector",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Gains 1 Attack Damage or 2 Ability Power when an enemy is taken down, up to 20 stacks, and gains a bonus 10 Attack Damage or 20 Ability Power reaching 20 stacks."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/eyeball-collector.png"
+        }
+      },
+      "transcendence": {
+        "id": 107,
+        "name": "Transcendence",
+        "slug": "transcendence",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/transcendence.png",
+        "imageAlt": "Transcendence",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Transcendence",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Gain a bonus when reaching the following levels: -Level 1: Gain 6 Ability Haste. - Level 5: Gain an additional 6 Ability Haste. - Level 9: After a basic ability hits the target, reduce 10% of the ability's cooldown. (8s cooldown)"
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/transcendence.png"
+        }
+      },
+      "bone-plating": {
+        "id": 95,
+        "name": "Bone Plating",
+        "slug": "bone-plating",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+        "imageAlt": "Bone Plating",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Bone Plating",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Blocks damage from the next triggering champion attack and 2 more attacks."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png"
+        }
+      }
+    },
+    "summonerSpells": {
+      "flash": {
+        "id": 14,
+        "name": "Flash",
+        "slug": "flash",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+        "imageAlt": "Flash",
+        "kind": "SummonerSpell",
+        "tooltip": {
+          "title": "Flash",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Teleport a short distance forward or towards the aimed direction (150 second cooldown)."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png"
+        }
+      },
+      "ignite": {
+        "id": 11,
+        "name": "Ignite",
+        "slug": "ignite",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/ignite.png",
+        "imageAlt": "Ignite",
+        "kind": "SummonerSpell",
+        "tooltip": {
+          "title": "Ignite",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Ignites target enemy champion, dealing 72 - 380 (based on level) true damage over 5 seconds and inflicting them with Grievous Wounds icon.png Grievous Wounds, reducing healing effects by 60% (100 second cooldown)."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/summoners/ignite.png"
+        }
+      },
+      "barrier": {
+        "id": 17,
+        "name": "Barrier",
+        "slug": "barrier",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/barrier.png",
+        "imageAlt": "Barrier",
+        "kind": "SummonerSpell",
+        "tooltip": {
+          "title": "Barrier",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Gain a shield that absorbs 120 - 560 (based on level) damage for 2.5 seconds (100 second cooldown)."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/summoners/barrier.png"
+        }
+      }
+    },
+    "abilities": {
+      "prismatic-barrier": {
+        "id": 316,
+        "name": "Призматический барьер",
+        "slug": "prismatic-barrier",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/2c683da61dd7cc7bbba29448bf89b670339c1b16-96x96.jpg?accountingTag=WR",
+        "imageAlt": "Prismatic Barrier",
+        "kind": "Ability",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/f9cecde17c2c7e072358b6602e026a6887bd6e8b.mp4?accountingTag=WR",
+        "tooltip": {
+          "title": "Призматический барьер",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Люкс бросает свой жезл, который, касаясь союзных чемпионов, искривляет вокруг них лучи света, защищая от входящего урона."
+          ],
+          "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/2c683da61dd7cc7bbba29448bf89b670339c1b16-96x96.jpg?accountingTag=WR"
+        }
+      },
+      "light-binding": {
+        "id": 315,
+        "name": "Сковывание света",
+        "slug": "light-binding",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3f3f744d2a2730e5bf6b7d507f88cc641cc67312-96x96.jpg?accountingTag=WR",
+        "imageAlt": "Light Binding",
+        "kind": "Ability",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/1aa08ea6f34dfb0255c77291881f2d40480f0245.mp4?accountingTag=WR",
+        "tooltip": {
+          "title": "Сковывание света",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Люкс выпускает сферу света, которая наносит урон и обездвиживает до двух врагов."
+          ],
+          "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3f3f744d2a2730e5bf6b7d507f88cc641cc67312-96x96.jpg?accountingTag=WR"
+        }
+      },
+      "lucent-singularity": {
+        "id": 317,
+        "name": "Светящаяся сингулярность",
+        "slug": "lucent-singularity",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/72411e62eff9d511b01253d60225dcb1207dcba0-96x96.jpg?accountingTag=WR",
+        "imageAlt": "Lucent Singularity",
+        "kind": "Ability",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/207e9ab4362556e6ad2a033d42add52dbfcee311.mp4?accountingTag=WR",
+        "tooltip": {
+          "title": "Светящаяся сингулярность",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Люкс создает в указанной области световую аномалию, замедляющую противников. Люкс может взорвать ее, нанеся урон всем находящимся в зоне поражения врагам."
+          ],
+          "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/72411e62eff9d511b01253d60225dcb1207dcba0-96x96.jpg?accountingTag=WR"
+        }
+      },
+      "passive": {
+        "name": "Иллюминация",
+        "slug": "passive",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/090fd8465f3f506ab1ddc5b2ae884acfa34aaa69-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/c119461b59888cae6c77a4f4166ff3f886888a4c.mp4?accountingTag=WR",
+        "tooltip": {
+          "title": "Иллюминация",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Используя атакующие умения, Люкс накладывает на врагов эффект Иллюминации на 5 секунд. Ее последующие автоатаки поджигают находящихся под действием эффекта врагов, нанося им дополнительный магический урон (в зависимости от уровня Люкс), но снимают эффект."
+          ],
+          "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/090fd8465f3f506ab1ddc5b2ae884acfa34aaa69-96x96.jpg?accountingTag=WR"
+        }
+      },
+      "final-spark": {
+        "name": "Последняя искра",
+        "slug": "final-spark",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/681b7dc3ab435f7684ac5288272dce4c88ba0807-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/273a8741c07c0c76a1833d8f69ee0cac277f1125.mp4?accountingTag=WR",
+        "tooltip": {
+          "title": "Последняя искра",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Люкс накапливает энергию и выпускает мощный луч света, наносящий урон всем врагам на своем пути. Кроме того, луч поджигает врагов, на которых наложен эффект Иллюминации, после чего этот эффект обновляется."
+          ],
+          "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/681b7dc3ab435f7684ac5288272dce4c88ba0807-96x96.jpg?accountingTag=WR"
+        }
+      }
+    },
+    "champions": {
+      "pyke": {
+        "name": "Pyke",
+        "slug": "pyke",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/pyke.png",
+        "lane": "Support",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/pyke"
+      },
+      "nami": {
+        "name": "Nami",
+        "slug": "nami",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/nami.png",
+        "lane": "Support",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/nami"
+      },
+      "karma": {
+        "name": "Karma",
+        "slug": "karma",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/karma.png",
+        "lane": "Support",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/karma"
+      },
+      "jhin": {
+        "name": "Jhin",
+        "slug": "jhin",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/jhin.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png",
+        "href": "https://www.wildriftfire.com/guide/jhin"
+      },
+      "caitlyn": {
+        "name": "Caitlyn",
+        "slug": "caitlyn",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/caitlyn.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png",
+        "href": "https://www.wildriftfire.com/guide/caitlyn"
+      },
+      "varus": {
+        "name": "Varus",
+        "slug": "varus",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/varus.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png",
+        "href": "https://www.wildriftfire.com/guide/varus"
+      },
+      "irelia": {
+        "name": "Irelia",
+        "slug": "irelia",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/irelia.png",
+        "lane": "Mid",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-mid.png",
+        "href": "https://www.wildriftfire.com/guide/irelia"
+      },
+      "kassadin": {
+        "name": "Kassadin",
+        "slug": "kassadin",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/kassadin.png",
+        "lane": "Mid",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-mid.png",
+        "href": "https://www.wildriftfire.com/guide/kassadin"
+      },
+      "yasuo": {
+        "name": "Yasuo",
+        "slug": "yasuo",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/yasuo.png",
+        "lane": "Mid",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-mid.png",
+        "href": "https://www.wildriftfire.com/guide/yasuo"
+      },
+      "vi": {
+        "name": "Vi",
+        "slug": "vi",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/vi.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png",
+        "href": "https://www.wildriftfire.com/guide/vi"
+      },
+      "amumu": {
+        "name": "Amumu",
+        "slug": "amumu",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/amumu.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png",
+        "href": "https://www.wildriftfire.com/guide/amumu"
+      },
+      "leona": {
+        "name": "Leona",
+        "slug": "leona",
+        "imageUrl": "https://www.wildriftfire.com/images/champion/icon/leona.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/leona"
+      }
+    }
+  },
+  "official": {
+    "source": {
+      "site": "riot",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/champions/lux/"
+    },
+    "champion": {
+      "name": "ЛЮКС",
+      "title": "Леди сияния"
+    },
+    "roleLabel": "Роль",
+    "roles": [
+      "МАГ",
+      "ПОДДЕРЖКА"
+    ],
+    "difficultyLabel": "Сложность",
+    "difficulty": "Низкая",
+    "heroMedia": {
+      "remoteVideoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/d7c63924dcdc7668dd484ef6cd8b035e86864257.mp4?accountingTag=WR",
+      "localVideoPath": "/riot/champions/lux/hero.mp4"
+    },
+    "abilitiesLabel": "УМЕНИЯ",
+    "abilities": [
+      {
+        "name": "Иллюминация",
+        "slug": "",
+        "subtitle": "ПАССИВНОЕ",
+        "description": "Используя атакующие умения, Люкс накладывает на врагов эффект Иллюминации на 5 секунд. Ее последующие автоатаки поджигают находящихся под действием эффекта врагов, нанося им дополнительный магический урон (в зависимости от уровня Люкс), но снимают эффект.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/090fd8465f3f506ab1ddc5b2ae884acfa34aaa69-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/c119461b59888cae6c77a4f4166ff3f886888a4c.mp4?accountingTag=WR"
+      },
+      {
+        "name": "Сковывание света",
+        "slug": "",
+        "subtitle": "1",
+        "description": "Люкс выпускает сферу света, которая наносит урон и обездвиживает до двух врагов.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3f3f744d2a2730e5bf6b7d507f88cc641cc67312-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/1aa08ea6f34dfb0255c77291881f2d40480f0245.mp4?accountingTag=WR"
+      },
+      {
+        "name": "Призматический барьер",
+        "slug": "",
+        "subtitle": "2",
+        "description": "Люкс бросает свой жезл, который, касаясь союзных чемпионов, искривляет вокруг них лучи света, защищая от входящего урона.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/2c683da61dd7cc7bbba29448bf89b670339c1b16-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/f9cecde17c2c7e072358b6602e026a6887bd6e8b.mp4?accountingTag=WR"
+      },
+      {
+        "name": "Светящаяся сингулярность",
+        "slug": "",
+        "subtitle": "3",
+        "description": "Люкс создает в указанной области световую аномалию, замедляющую противников. Люкс может взорвать ее, нанеся урон всем находящимся в зоне поражения врагам.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/72411e62eff9d511b01253d60225dcb1207dcba0-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/207e9ab4362556e6ad2a033d42add52dbfcee311.mp4?accountingTag=WR"
+      },
+      {
+        "name": "Последняя искра",
+        "slug": "",
+        "subtitle": "АБСОЛЮТНОЕ",
+        "description": "Люкс накапливает энергию и выпускает мощный луч света, наносящий урон всем врагам на своем пути. Кроме того, луч поджигает врагов, на которых наложен эффект Иллюминации, после чего этот эффект обновляется.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/681b7dc3ab435f7684ac5288272dce4c88ba0807-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/273a8741c07c0c76a1833d8f69ee0cac277f1125.mp4?accountingTag=WR"
+      }
+    ],
+    "skinsLabel": "Доступные образы",
+    "skins": [
+      {
+        "name": "ЛЮКС, ЛЕДИ СИЯНИЯ",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/e900839292adf3b36bcf5d57164198b8026b08c4-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "ВОЛШЕБНИЦА ЛЮКС",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/b080543a537beef283e1375f78a718650e9870b5-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "ЛЮКС, ПОХИТИТЕЛЬНИЦА МАГИИ",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/7dfd32d85f90480fe25c46d463590f53193e37aa-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "ЗВЕЗДНАЯ ЗАЩИТНИЦА ЛЮКС",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/72b8876b6518520980b9107286a886534540be7c-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Люкс из Боевой академии",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/01d9b44fbbc2e5e2cbeee343b01a8a008ec693f2-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Хрустальная роза Люкс",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/bdca8e5b706f6b82ff6a224e0d2d10815b9d378b-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Люкс из Стального легиона",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/a2a167a742cb7b0a1c3b82a41a067bf20de5c52f-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Защитница в пижаме Люкс",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/1a2d5187b32dcd380ae29f04b2e7eb2a4ec32038-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Космическая Люкс",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/2c28576ee231d82002720576b9b4e03ee8ea0786-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Темная космическая Люкс",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/afd22f21e1dc4b6e60d7cc23c5848a54e0bc7d73-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Влюбленная Люкс",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/d8f71a5a2f8647093d6f57dde3c366dd519068b9-1920x1080.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Избранная Хрустальная роза Люкс (престижное издание)",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/745b828418c17484c304b518702b16981763fe90-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Люкс в небесном облачении",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/34b92b48457b223a551d8df2bc080b1b87cc1c2c-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Люкс в небесном облачении (мифическая цветовая схема)",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/df03e80284058e2329dfe0be61a1bea6749c1d07-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "ЛЮКС ИЗ ГАЛАКТИКИ ГРУВА",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fd197f869049f23e9157d182f0bf87c3bd7fb82e-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "ЛЮКС, ПРИЗНАНИЕ В ЛЮБВИ",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ddc257f81574f6542c37ea91f2a863902e2a5e44-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "ИЗБРАННАЯ ЛЮКС, ПРИЗНАНИЕ В ЛЮБВИ (ПРЕСТИЖНОЕ ИЗДАНИЕ)",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/14045a8407364ebe29040709c99588f85bc97a71-1280x720.jpg?accountingTag=WR"
+      }
+    ]
+  },
+  "abilitiesRu": [
+    {
+      "name": "Иллюминация",
+      "slug": "passive",
+      "subtitle": "ПАССИВНОЕ",
+      "description": "Используя атакующие умения, Люкс накладывает на врагов эффект Иллюминации на 5 секунд. Ее последующие автоатаки поджигают находящихся под действием эффекта врагов, нанося им дополнительный магический урон (в зависимости от уровня Люкс), но снимают эффект.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/090fd8465f3f506ab1ddc5b2ae884acfa34aaa69-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/c119461b59888cae6c77a4f4166ff3f886888a4c.mp4?accountingTag=WR"
+    },
+    {
+      "name": "Сковывание света",
+      "slug": "light-binding",
+      "subtitle": "1",
+      "description": "Люкс выпускает сферу света, которая наносит урон и обездвиживает до двух врагов.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3f3f744d2a2730e5bf6b7d507f88cc641cc67312-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/1aa08ea6f34dfb0255c77291881f2d40480f0245.mp4?accountingTag=WR"
+    },
+    {
+      "name": "Призматический барьер",
+      "slug": "prismatic-barrier",
+      "subtitle": "2",
+      "description": "Люкс бросает свой жезл, который, касаясь союзных чемпионов, искривляет вокруг них лучи света, защищая от входящего урона.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/2c683da61dd7cc7bbba29448bf89b670339c1b16-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/f9cecde17c2c7e072358b6602e026a6887bd6e8b.mp4?accountingTag=WR"
+    },
+    {
+      "name": "Светящаяся сингулярность",
+      "slug": "lucent-singularity",
+      "subtitle": "3",
+      "description": "Люкс создает в указанной области световую аномалию, замедляющую противников. Люкс может взорвать ее, нанеся урон всем находящимся в зоне поражения врагам.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/72411e62eff9d511b01253d60225dcb1207dcba0-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/207e9ab4362556e6ad2a033d42add52dbfcee311.mp4?accountingTag=WR"
+    },
+    {
+      "name": "Последняя искра",
+      "slug": "final-spark",
+      "subtitle": "АБСОЛЮТНОЕ",
+      "description": "Люкс накапливает энергию и выпускает мощный луч света, наносящий урон всем врагам на своем пути. Кроме того, луч поджигает врагов, на которых наложен эффект Иллюминации, после чего этот эффект обновляется.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/681b7dc3ab435f7684ac5288272dce4c88ba0807-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/273a8741c07c0c76a1833d8f69ee0cac277f1125.mp4?accountingTag=WR"
+    }
+  ]
+}

@@ -82,6 +82,14 @@ export default function HomePage() {
           gradient={BUTTON_GRADIENTS.blue}
           leftIcon={<IconSkins />}
         />
+
+        <MenuButton
+          title="Гайды (beta)"
+          subtitle="Импортированный гайд Braum с WildriftFire"
+          href="/guides/braum"
+          gradient={BUTTON_GRADIENTS.gold}
+          leftIcon={<IconTierlist />}
+        />
       </div>
 
       <div style={{ marginTop: 18 }}>

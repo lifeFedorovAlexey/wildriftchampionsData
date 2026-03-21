@@ -1,0 +1,1058 @@
+{
+  "source": {
+    "site": "wildriftfire",
+    "url": "https://www.wildriftfire.com/guide/viego",
+    "fetchedAt": "2026-03-21T14:39:12.745Z",
+    "contentHash": "03633ea9fcb56d28045382a73e958738d44c380d"
+  },
+  "champion": {
+    "slug": "viego",
+    "name": "Viego",
+    "title": "Падший король",
+    "iconUrl": "https://www.mobafire.com/images/champion/square/viego.png"
+  },
+  "metadata": {
+    "pageTitle": "Viego :: Wild Rift Build Guide (Patch 7.0f) :: Items, Runes, Abilities",
+    "patch": "7.0f",
+    "recommendedRole": "УБИЙЦА",
+    "tier": "S+",
+    "blurb": "Build Viego with confidence with the help of WildRiftFire's build guides. Whether you are completely new to Viego or looking to refine your playstyle, we will help you take your Wild Rift game to the next level. Learn Viego's abilities in detail, the best items to build, which skills to level first, and more. Viego is ranked Tier S+ (Jungle) in our Champion Tier List"
+  },
+  "itemBuild": {
+    "starting": [
+      {
+        "id": 5,
+        "kind": "Item",
+        "name": "Long Sword",
+        "slug": "long-sword",
+        "imageUrl": "https://www.wildriftfire.com/images/items/long-sword.png",
+        "imageAlt": "Long Sword"
+      }
+    ],
+    "core": [
+      {
+        "id": 113,
+        "kind": "Item",
+        "name": "Essence Reaver",
+        "slug": "essence-reaver",
+        "imageUrl": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+        "imageAlt": "Essence Reaver"
+      },
+      {
+        "id": 153,
+        "kind": "Item",
+        "name": "The Collector",
+        "slug": "the-collector",
+        "imageUrl": "https://www.wildriftfire.com/images/items/the-collector.png",
+        "imageAlt": "The Collector"
+      },
+      {
+        "id": 70,
+        "kind": "Item",
+        "name": "Mortal Reminder",
+        "slug": "mortal-reminder",
+        "imageUrl": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+        "imageAlt": "Mortal Reminder"
+      }
+    ],
+    "boots": [
+      {
+        "id": 158,
+        "kind": "Item",
+        "name": "Berserker's Greaves",
+        "slug": "berserkers-greaves",
+        "imageUrl": "https://www.wildriftfire.com/images/items/berserkers-greaves.png",
+        "imageAlt": "Berserker's Greaves"
+      },
+      {
+        "id": 107,
+        "kind": "Item",
+        "name": "Stasis",
+        "slug": "stasis",
+        "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+        "imageAlt": "Stasis"
+      }
+    ],
+    "finalBuild": [
+      {
+        "id": 113,
+        "kind": "Item",
+        "name": "Essence Reaver",
+        "slug": "essence-reaver",
+        "imageUrl": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+        "imageAlt": "Essence Reaver"
+      },
+      {
+        "id": 153,
+        "kind": "Item",
+        "name": "The Collector",
+        "slug": "the-collector",
+        "imageUrl": "https://www.wildriftfire.com/images/items/the-collector.png",
+        "imageAlt": "The Collector"
+      },
+      {
+        "id": 70,
+        "kind": "Item",
+        "name": "Mortal Reminder",
+        "slug": "mortal-reminder",
+        "imageUrl": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+        "imageAlt": "Mortal Reminder"
+      },
+      {
+        "id": 52,
+        "kind": "Item",
+        "name": "Bloodthirster",
+        "slug": "bloodthirster",
+        "imageUrl": "https://www.wildriftfire.com/images/items/bloodthirster.png",
+        "imageAlt": "Bloodthirster"
+      },
+      {
+        "id": 62,
+        "kind": "Item",
+        "name": "Infinity Edge",
+        "slug": "infinity-edge",
+        "imageUrl": "https://www.wildriftfire.com/images/items/infinity-edge.png",
+        "imageAlt": "Infinity Edge"
+      }
+    ]
+  },
+  "spellsAndRunes": {
+    "summonerSpells": [
+      {
+        "id": 14,
+        "kind": "SummonerSpell",
+        "name": "Flash",
+        "slug": "flash",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+        "imageAlt": "Flash"
+      },
+      {
+        "id": 5,
+        "kind": "SummonerSpell",
+        "name": "Smite",
+        "slug": "smite",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/smite.png",
+        "imageAlt": "Smite"
+      }
+    ],
+    "runes": [
+      {
+        "id": 69,
+        "kind": "Rune",
+        "name": "Conqueror",
+        "slug": "conqueror",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/conqueror.png",
+        "imageAlt": "Conqueror"
+      },
+      {
+        "id": 77,
+        "kind": "Rune",
+        "name": "Gathering Storm",
+        "slug": "gathering-storm",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/gathering-storm.png",
+        "imageAlt": "Gathering Storm"
+      },
+      {
+        "id": 117,
+        "kind": "Rune",
+        "name": "Coup de Grace",
+        "slug": "coup-de-grace",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/coup-de-grace.png",
+        "imageAlt": "Coup de Grace"
+      },
+      {
+        "id": 118,
+        "kind": "Rune",
+        "name": "Legend: Alacrity",
+        "slug": "legend-alacrity",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
+        "imageAlt": "Legend: Alacrity"
+      },
+      {
+        "id": 121,
+        "kind": "Rune",
+        "name": "Overgrowth",
+        "slug": "overgrowth",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png",
+        "imageAlt": "Overgrowth"
+      }
+    ]
+  },
+  "situationalItems": [
+    {
+      "label": "vs Crowd Control",
+      "options": [
+        {
+          "id": 107,
+          "kind": "Item",
+          "name": "Stasis",
+          "slug": "stasis",
+          "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+          "imageAlt": "Stasis"
+        },
+        {
+          "id": 104,
+          "kind": "Item",
+          "name": "Quicksilver",
+          "slug": "quicksilver",
+          "imageUrl": "https://www.wildriftfire.com/images/items/quicksilver.png",
+          "imageAlt": "Quicksilver"
+        }
+      ]
+    }
+  ],
+  "situationalRunes": [
+    {
+      "label": "vs Tanks",
+      "options": [
+        {
+          "id": 117,
+          "kind": "Rune",
+          "name": "Coup de Grace",
+          "slug": "coup-de-grace",
+          "imageUrl": "https://www.wildriftfire.com/images/runes/coup-de-grace.png",
+          "imageAlt": "Coup de Grace"
+        },
+        {
+          "id": 99,
+          "kind": "Rune",
+          "name": "Giant Slayer",
+          "slug": "giant-slayer",
+          "imageUrl": "https://www.wildriftfire.com/images/runes/giant-slayer.png",
+          "imageAlt": "Giant Slayer"
+        }
+      ]
+    }
+  ],
+  "skillOrder": {
+    "quickOrder": [
+      {
+        "id": 1017,
+        "kind": "Ability",
+        "name": "Blade of the Ruined King",
+        "slug": "blade-of-the-ruined-king",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-blade-of-the-ruined-king.png",
+        "imageAlt": "Blade of the Ruined King"
+      },
+      {
+        "id": 1019,
+        "kind": "Ability",
+        "name": "Harrowed Path",
+        "slug": "harrowed-path",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-harrowed-path.png",
+        "imageAlt": "Harrowed Path"
+      },
+      {
+        "id": 1018,
+        "kind": "Ability",
+        "name": "Spectral Maw",
+        "slug": "spectral-maw",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-spectral-maw.png",
+        "imageAlt": "Spectral Maw"
+      }
+    ],
+    "rows": [
+      {
+        "name": "Blade of the Ruined King",
+        "slug": "blade-of-the-ruined-king",
+        "levels": [
+          1,
+          3,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Spectral Maw",
+        "slug": "spectral-maw",
+        "levels": [
+          2,
+          12,
+          14,
+          15
+        ]
+      },
+      {
+        "name": "Harrowed Path",
+        "slug": "harrowed-path",
+        "levels": [
+          4,
+          8,
+          10,
+          11
+        ]
+      },
+      {
+        "name": "Heartbreaker",
+        "slug": "heartbreaker",
+        "levels": [
+          5,
+          9,
+          13
+        ]
+      }
+    ]
+  },
+  "counters": [
+    {
+      "name": "Rammus",
+      "slug": "rammus",
+      "href": "https://www.wildriftfire.com/guide/rammus",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/rammus.png",
+      "lane": "Jungle",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png"
+    },
+    {
+      "name": "Amumu",
+      "slug": "amumu",
+      "href": "https://www.wildriftfire.com/guide/amumu",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/amumu.png",
+      "lane": "Jungle",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png"
+    },
+    {
+      "name": "Warwick",
+      "slug": "warwick",
+      "href": "https://www.wildriftfire.com/guide/warwick",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/warwick.png",
+      "lane": "Jungle",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png"
+    }
+  ],
+  "synergies": [
+    {
+      "name": "Nautilus",
+      "slug": "nautilus",
+      "href": "https://www.wildriftfire.com/guide/nautilus",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/nautilus.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+    },
+    {
+      "name": "Leona",
+      "slug": "leona",
+      "href": "https://www.wildriftfire.com/guide/leona",
+      "imageUrl": "https://www.wildriftfire.com/images/champion/icon/leona.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+    },
+    {
+      "name": "Shen",
+      "slug": "shen",
+      "href": "https://www.wildriftfire.com/guide/shen",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/shen.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-solo.png"
+    }
+  ],
+  "buildBreakdown": {
+    "featuredItems": [
+      {
+        "id": 113,
+        "kind": "Item",
+        "name": "Essence Reaver",
+        "slug": "essence-reaver",
+        "imageUrl": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+        "imageAlt": "Essence Reaver"
+      },
+      {
+        "id": 153,
+        "kind": "Item",
+        "name": "The Collector",
+        "slug": "the-collector",
+        "imageUrl": "https://www.wildriftfire.com/images/items/the-collector.png",
+        "imageAlt": "The Collector"
+      },
+      {
+        "id": 70,
+        "kind": "Item",
+        "name": "Mortal Reminder",
+        "slug": "mortal-reminder",
+        "imageUrl": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+        "imageAlt": "Mortal Reminder"
+      },
+      {
+        "id": 52,
+        "kind": "Item",
+        "name": "Bloodthirster",
+        "slug": "bloodthirster",
+        "imageUrl": "https://www.wildriftfire.com/images/items/bloodthirster.png",
+        "imageAlt": "Bloodthirster"
+      },
+      {
+        "id": 62,
+        "kind": "Item",
+        "name": "Infinity Edge",
+        "slug": "infinity-edge",
+        "imageUrl": "https://www.wildriftfire.com/images/items/infinity-edge.png",
+        "imageAlt": "Infinity Edge"
+      },
+      {
+        "id": 107,
+        "kind": "Item",
+        "name": "Berserker's Greaves - Stasis",
+        "slug": "berserkers-greaves-stasis",
+        "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+        "imageAlt": "Berserker's Greaves - Stasis"
+      }
+    ],
+    "paragraphs": [
+      "Viego uses a mixture of AD and Crit items, allowing him to deal a massive amount of burst damage. The Collector synergizes well with Viego's Heartbreaker. His ultimate does more damage the lower the enemy's health, and with The Collector's Death & Taxes passive, you can execute low-health enemies.",
+      "For runes, we have the following:",
+      "Viego is a fighter, so he wants to get in the face of the enemies and attack constantly. Viego's passive from Blade of the Ruined King also helps Viego stack Conqueror incredibly fast. When doing Viego's combo correctly, he can stack Conqueror in under 2 seconds.",
+      "Gathering Storm is the best option from this selection of runes. It helps give Viego an increasing amount of attack damage throughout the game.",
+      "Coup de Grace synergises well with Viego's ultimate Heartbreaker since it does more damage the lower the enemy champion's health. Since Coup de Grace does more damage to enemies below 50% health, it helps Viego deal more damage.",
+      "Legend Alacrity gives Viego Attack Speed when clearing through the jungle or getting enemy takedowns.",
+      "Overgrowth allows Viego to gain permanent health throughout the game when nearby minions or monsters are killed. So the more Viego farms, the more Maximum Health he gets. This will help Viego's survival in the late game.",
+      "For summoner spells, Flash is a must on Viego to Flash away to safety or Flash in to get the killing blow. Smite is a must for when you're playing jungle. It greatly helps you when clearing the jungle and taking epic monsters."
+    ]
+  },
+  "guideAbilities": [
+    {
+      "name": "Sovereign's Domination (Passive)",
+      "slug": "sovereigns-domination-passive",
+      "iconUrl": "https://www.mobafire.com/images/ability/viego-sovereigns-domination.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-sovereigns-domination.webm",
+      "paragraphs": [
+        "The souls of enemy champions that die within a few seconds of being damaged by Viego become wraiths that Viego can possess. When Viego possesses a soul, he gains a free cast of his ultimate, Heartbreaker (this will remove the possession), bonus movement speed, and access to the champion's basic abilities.",
+        "This passive doesn't have a cooldown and can be used multiple times during a teamfight. So, ensure you understand every champion's basic abilities to carry with Viego."
+      ]
+    },
+    {
+      "name": "Blade of the Ruined King (1)",
+      "slug": "blade-of-the-ruined-king-1",
+      "iconUrl": "https://www.mobafire.com/images/ability/viego-blade-of-the-ruined-king.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-blade-of-the-ruined-king.webm",
+      "paragraphs": [
+        "This ability has a passive and an active:",
+        "The passive is after Viego damages an enemy with an ability; his first attack against them within a few seconds strikes twice. This double auto attack works on stacking Conqueror and/or Blade of the Ruined King (item), making it incredibly powerful with Viego.",
+        "The active is Viego stabs forward, dealing physical damage. Attack Speed reduces the cast time, meaning we can stack Conqueror quicker the more attack speed Viego has."
+      ]
+    },
+    {
+      "name": "Spectral Maw (2)",
+      "slug": "spectral-maw-2",
+      "iconUrl": "https://www.mobafire.com/images/ability/viego-spectral-maw.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-spectral-maw.webm",
+      "paragraphs": [
+        "Viego can charge Spectral Maw, slowing him, but the more Viego charges, the longer the stun duration will be on an enemy when Viego casts the ability.",
+        "When engaging with Viego, you always want to start the fight with Spectral Maw. The stun will give him enough time to auto-attack and use other abilities."
+      ]
+    },
+    {
+      "name": "Harrowed Path (3)",
+      "slug": "harrowed-path-3",
+      "iconUrl": "https://www.mobafire.com/images/ability/viego-harrowed-path.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-harrowed-path.webm",
+      "paragraphs": [
+        "Viego sends a spectre to haunt the first terrain hit with Black Mist. While inside the Black Mist, Viego becomes camouflaged and gains movement and attack speed.",
+        "When clearing through the jungle, use Harrowed Path to help Viego's clear speed. Viego's enemies can see the Black Mist when it goes around the terrain they have vision. Keep this in mind when looking for ganks with Viego."
+      ]
+    },
+    {
+      "name": "Heartbreaker (Ultimate)",
+      "slug": "heartbreaker-ultimate",
+      "iconUrl": "https://www.mobafire.com/images/ability/viego-heartbreaker.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-heartbreaker.webm",
+      "paragraphs": [
+        "Viego teleports to a target location and deals damage to all enemies in the area. Viego deals bonus damage the more missing health the enemies have. This means that most of the time, Viego doesn't want to use his ultimate unless the enemy is low on health. If Viego hits multiple enemy champions with his Heartbreaker, he will knock all other enemies away."
+      ]
+    }
+  ],
+  "dictionaries": {
+    "items": {
+      "long-sword": {
+        "id": 5,
+        "name": "Long Sword",
+        "slug": "long-sword",
+        "imageUrl": "https://www.wildriftfire.com/images/items/long-sword.png",
+        "imageAlt": "Long Sword",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Long Sword",
+          "cost": "500",
+          "stats": [
+            "+12 Attack Damage"
+          ],
+          "lines": [],
+          "imageUrl": "https://www.wildriftfire.com/images/items/long-sword.png"
+        }
+      },
+      "essence-reaver": {
+        "id": 113,
+        "name": "Essence Reaver",
+        "slug": "essence-reaver",
+        "imageUrl": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+        "imageAlt": "Essence Reaver",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Essence Reaver",
+          "cost": "3000",
+          "stats": [
+            "+35 Attack Damage",
+            "+25% Critical Strike Chance",
+            "+20 Ability Haste"
+          ],
+          "lines": [
+            "UNIQUE - Mana Siphon: Attacks restore 3% missing Mana on-hit. UNIQUE - Spellblade: Casting an ability generates a Spellblade charge (max 3 charges) that lasts up to 10s. Hitting an enemy with an attack consumes a charge, dealing 90% base Attack Damage as physical damage and granting 40 Movement Speed for 2s, This Bonus damage can Critically Strike. Each ability generates only one charge per 2s."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/essence-reaver.png"
+        }
+      },
+      "the-collector": {
+        "id": 153,
+        "name": "The Collector",
+        "slug": "the-collector",
+        "imageUrl": "https://www.wildriftfire.com/images/items/the-collector.png",
+        "imageAlt": "The Collector",
+        "kind": "Item",
+        "tooltip": {
+          "title": "The Collector",
+          "cost": "2900",
+          "stats": [
+            "+45 Attack Damage",
+            "+25% Critical Strike Chance"
+          ],
+          "lines": [
+            "UNIQUE - Killer: +10 Armor Penetration. UNIQUE - Death and Taxes: Dealing damage that would leave an enemy champion below (4%+2% Critical Rate) executes them, permanently increasing the max health percentage execution threshold by 0.1%."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/the-collector.png"
+        }
+      },
+      "mortal-reminder": {
+        "id": 70,
+        "name": "Mortal Reminder",
+        "slug": "mortal-reminder",
+        "imageUrl": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+        "imageAlt": "Mortal Reminder",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Mortal Reminder",
+          "cost": "3300",
+          "stats": [
+            "+25 Attack Damage",
+            "+15% Attack Speed",
+            "+25% Critical Strike Chance"
+          ],
+          "lines": [
+            "UNIQUE - LAST WHISPER: +30% Armor Penetration, Attacks that Critically Strike gain an additional 6% Armor Penetration. UNIQUE - Sepsis: Dealing physical damage to enemy champions applies 50% Grievous Wounds for 3 seconds."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/mortal-reminder.png"
+        }
+      },
+      "berserkers-greaves": {
+        "id": 158,
+        "name": "Berserker's Greaves",
+        "slug": "berserkers-greaves",
+        "imageUrl": "https://www.wildriftfire.com/images/items/berserkers-greaves.png",
+        "imageAlt": "Berserker's Greaves",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Berserker's Greaves",
+          "cost": "1400",
+          "stats": [
+            "+15 Attack Damage",
+            "+35% Attack Speed",
+            "+45 Movement Speed"
+          ],
+          "lines": [
+            "UNIQUE - Blessed Blade: Attacks restore 10 Health on hit."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/berserkers-greaves.png"
+        }
+      },
+      "stasis": {
+        "id": 107,
+        "name": "Stasis",
+        "slug": "stasis",
+        "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png",
+        "imageAlt": "Stasis",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Stasis",
+          "cost": "1000",
+          "stats": [],
+          "lines": [
+            "UNIQUE - STASIS: Put yourself in stasis for 2.5 seconds, rendering yourself untargetable and invulnerable for the duration but becoming unable to move, declare basic attacks, cast abilities or item actives, or use any summoner spells during this time. (120 second cooldown) Limited to 1 Boots enchantment."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/stasis.png"
+        }
+      },
+      "bloodthirster": {
+        "id": 52,
+        "name": "Bloodthirster",
+        "slug": "bloodthirster",
+        "imageUrl": "https://www.wildriftfire.com/images/items/bloodthirster.png",
+        "imageAlt": "Bloodthirster",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Bloodthirster",
+          "cost": "3000",
+          "stats": [
+            "+250 Health",
+            "+55 Attack Damage",
+            "+25% Critical Strike Chance"
+          ],
+          "lines": [
+            "UNIQUE - BLOODY: +8% Physical Vamp, Attacks that Critically Strike gain an additional 4% Physical Vamp."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/bloodthirster.png"
+        }
+      },
+      "infinity-edge": {
+        "id": 62,
+        "name": "Infinity Edge",
+        "slug": "infinity-edge",
+        "imageUrl": "https://www.wildriftfire.com/images/items/infinity-edge.png",
+        "imageAlt": "Infinity Edge",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Infinity Edge",
+          "cost": "3400",
+          "stats": [
+            "+60 Attack Damage",
+            "+25% Critical Strike Chance"
+          ],
+          "lines": [
+            "UNIQUE - INFINITY: Critical strikes deal 205% damage instead of 175%. UNIQUE - Limit Break: When your total Critical Rate gain from items exceeds 100%, every 1% excess Critical Rate grants 0.6% Critical Strike Damage."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/infinity-edge.png"
+        }
+      },
+      "quicksilver": {
+        "id": 104,
+        "name": "Quicksilver",
+        "slug": "quicksilver",
+        "imageUrl": "https://www.wildriftfire.com/images/items/quicksilver.png",
+        "imageAlt": "Quicksilver",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Quicksilver",
+          "cost": "500",
+          "stats": [],
+          "lines": [
+            "UNIQUE - QUICKSILVER: Grants immunity to Crown Control effects for 0.25 seconds and grants 30% Tenacity and 30% Slow Resistance for 1.5 seconds. (70 second cooldown) Limited to 1 Boots enchantment."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/quicksilver.png"
+        }
+      }
+    },
+    "runes": {
+      "conqueror": {
+        "id": 69,
+        "name": "Conqueror",
+        "slug": "conqueror",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/conqueror.png",
+        "imageAlt": "Conqueror",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Conqueror",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Basic attacks and abilities generate stacks of Conqueror on enemy champions hit, up to one per attack or cast. Each stack of Conqueror lasts 6 seconds and grants 3 - 7 (based on level) bonus (Adaptive) Attack Damage 4 - 12 (based on level) or Ability Power 4 - 11 (based on level), stacking up to 6 times, for a maximum of 12 - 36 (based on level) bonus Attack Damage or 18 - 54 (based on level) Ability Power (Adaptive). While fully stacked, gain 8 % melle ( 5% ranged) Physical Vamp and Magical Vamp. Adaptive Damage: Deals either physical or magic damage depending on your bonus stats, defaulting based on the origin of the effect."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/conqueror.png"
+        }
+      },
+      "gathering-storm": {
+        "id": 77,
+        "name": "Gathering Storm",
+        "slug": "gathering-storm",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/gathering-storm.png",
+        "imageAlt": "Gathering Storm",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Gathering Storm",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Every 3 min, gain 2 AD or 4 AP / 5 AD or 10 AP / 9 AD or 18 AP / 14 AD or 28 AP [...] (Adaptive)"
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/gathering-storm.png"
+        }
+      },
+      "coup-de-grace": {
+        "id": 117,
+        "name": "Coup de Grace",
+        "slug": "coup-de-grace",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/coup-de-grace.png",
+        "imageAlt": "Coup de Grace",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Coup de Grace",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "When an enemy has less than 40% health, deals 8% bonus adaptive damage."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/coup-de-grace.png"
+        }
+      },
+      "legend-alacrity": {
+        "id": 118,
+        "name": "Legend: Alacrity",
+        "slug": "legend-alacrity",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
+        "imageAlt": "Legend: Alacrity",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Legend: Alacrity",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Gain 3% bonus attack speed when engaging in taking down monsters, enemy champions and minions, up to 20% at maximum stacks."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/legend-alacrity.png"
+        }
+      },
+      "overgrowth": {
+        "id": 121,
+        "name": "Overgrowth",
+        "slug": "overgrowth",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png",
+        "imageAlt": "Overgrowth",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Overgrowth",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "When 1 monster or 2 minions are killed nearby, permanently gain 3 Max Health. Max Health can be increased indefinitely. Gains bonus 3% Max Health upon reaching 30 stacks."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png"
+        }
+      },
+      "giant-slayer": {
+        "id": 99,
+        "name": "Giant Slayer",
+        "slug": "giant-slayer",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/giant-slayer.png",
+        "imageAlt": "Giant Slayer",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Giant Slayer",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Deals bonus damage based on the enemy champion's bonus health, up to 16% bonus damage when the enemy champion has 1600 bonus health."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/giant-slayer.png"
+        }
+      }
+    },
+    "summonerSpells": {
+      "flash": {
+        "id": 14,
+        "name": "Flash",
+        "slug": "flash",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+        "imageAlt": "Flash",
+        "kind": "SummonerSpell",
+        "tooltip": {
+          "title": "Flash",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Teleport a short distance forward or towards the aimed direction (150 second cooldown)."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png"
+        }
+      },
+      "smite": {
+        "id": 5,
+        "name": "Smite",
+        "slug": "smite",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/smite.png",
+        "imageAlt": "Smite",
+        "kind": "SummonerSpell",
+        "tooltip": {
+          "title": "Smite",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Passive-Jungle Expertise: 20% Gold / XP from jungle monsters but temporarily earn 60% less Gold / XP from minions. 15% damage and 15% additional ability damage to jungle monsters. Restore 40 health over 5 seconds while fighting jungle monsters. Restore 4 mana every second while in the jungle or river. Starting at 11:00, defeating Jungle Camps no longer grant 20% Bonus Gold. Active: Deal 600 true damage to a large or epic monster or minion and restore 70 (+10% total Health) health. Upgrade to Chilling Smite after 3 uses."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/summoners/smite.png"
+        }
+      }
+    },
+    "abilities": {
+      "blade-of-the-ruined-king": {
+        "id": 1017,
+        "name": "Blade of the Ruined King",
+        "slug": "blade-of-the-ruined-king",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-blade-of-the-ruined-king.png",
+        "imageAlt": "Blade of the Ruined King",
+        "kind": "Ability",
+        "tooltip": {
+          "title": null,
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Passive: Attacks deal bonus physical damage equal to 3% / 4% / 5% / 6% of the target's current Health. After damaging an enemy with an ability, Viego's first attack against them within 5 seconds strikes twice, dealing physical damage equal to 15% of AD (+15% AP) and healing himself for 135% of the damage dealt. Passive bonuses are kept during Possession.Active: Stabs forward, dealing 20 / 40 / 60 / 80 ((+ 80% AD) * (1 + 0.5% bonus Critical rate)) physical damage.This ability's cast time reduces with Attack Speed."
+          ],
+          "imageUrl": "https://www.mobafire.com/images/ability/viego-blade-of-the-ruined-king.png"
+        }
+      },
+      "harrowed-path": {
+        "id": 1019,
+        "name": "Harrowed Path",
+        "slug": "harrowed-path",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-harrowed-path.png",
+        "imageAlt": "Harrowed Path",
+        "kind": "Ability",
+        "tooltip": {
+          "title": null,
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Sends forth a specter to haunt the first terrain hit with Black Mist for 6 seconds. While inside the Black Mist, Viego becomes camouflaged and gains 25% / 30% / 35% / 40% Movement Speed (+0.04% AP) and 45% / 50% / 55% / 60% Attack Speed."
+          ],
+          "imageUrl": "https://www.mobafire.com/images/ability/viego-harrowed-path.png"
+        }
+      },
+      "spectral-maw": {
+        "id": 1018,
+        "name": "Spectral Maw",
+        "slug": "spectral-maw",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-spectral-maw.png",
+        "imageAlt": "Spectral Maw",
+        "kind": "Ability",
+        "tooltip": {
+          "title": null,
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Charge: Gathers Black Mist and charges up for 3 seconds, slowing himself by 10% during this period.Cast: Dashes forward and hurls the ball of gathered Black Mist, dealing 80 / 150 / 220 / 290 (+90% AP) magic damage to the first enemy hit and stunning them for 0.4 - 1.25 seconds ( based on charge time)."
+          ],
+          "imageUrl": "https://www.mobafire.com/images/ability/viego-spectral-maw.png"
+        }
+      },
+      "sovereigns-domination-passive": {
+        "name": "Sovereign's Domination (Passive)",
+        "slug": "sovereigns-domination-passive",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-sovereigns-domination.png",
+        "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-sovereigns-domination.webm",
+        "kind": "Ability",
+        "id": null
+      },
+      "blade-of-the-ruined-king-1": {
+        "name": "Blade of the Ruined King (1)",
+        "slug": "blade-of-the-ruined-king-1",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-blade-of-the-ruined-king.png",
+        "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-blade-of-the-ruined-king.webm",
+        "kind": "Ability",
+        "id": null
+      },
+      "spectral-maw-2": {
+        "name": "Spectral Maw (2)",
+        "slug": "spectral-maw-2",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-spectral-maw.png",
+        "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-spectral-maw.webm",
+        "kind": "Ability",
+        "id": null
+      },
+      "harrowed-path-3": {
+        "name": "Harrowed Path (3)",
+        "slug": "harrowed-path-3",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-harrowed-path.png",
+        "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-harrowed-path.webm",
+        "kind": "Ability",
+        "id": null
+      },
+      "heartbreaker-ultimate": {
+        "name": "Heartbreaker (Ultimate)",
+        "slug": "heartbreaker-ultimate",
+        "imageUrl": "https://www.mobafire.com/images/ability/viego-heartbreaker.png",
+        "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/viego-heartbreaker.webm",
+        "kind": "Ability",
+        "id": null
+      }
+    },
+    "champions": {
+      "rammus": {
+        "name": "Rammus",
+        "slug": "rammus",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/rammus.png",
+        "lane": "Jungle",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png",
+        "href": "https://www.wildriftfire.com/guide/rammus"
+      },
+      "amumu": {
+        "name": "Amumu",
+        "slug": "amumu",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/amumu.png",
+        "lane": "Jungle",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png",
+        "href": "https://www.wildriftfire.com/guide/amumu"
+      },
+      "warwick": {
+        "name": "Warwick",
+        "slug": "warwick",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/warwick.png",
+        "lane": "Jungle",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-jungle.png",
+        "href": "https://www.wildriftfire.com/guide/warwick"
+      },
+      "nautilus": {
+        "name": "Nautilus",
+        "slug": "nautilus",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/nautilus.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/nautilus"
+      },
+      "leona": {
+        "name": "Leona",
+        "slug": "leona",
+        "imageUrl": "https://www.wildriftfire.com/images/champion/icon/leona.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/leona"
+      },
+      "shen": {
+        "name": "Shen",
+        "slug": "shen",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/shen.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-solo.png",
+        "href": "https://www.wildriftfire.com/guide/shen"
+      }
+    }
+  },
+  "official": {
+    "source": {
+      "site": "riot",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/champions/viego/"
+    },
+    "champion": {
+      "name": "ВИЕГО",
+      "title": "Падший король"
+    },
+    "roleLabel": "Роль",
+    "roles": [
+      "УБИЙЦА"
+    ],
+    "difficultyLabel": "Сложность",
+    "difficulty": "Средняя",
+    "abilitiesLabel": "УМЕНИЯ",
+    "abilities": [
+      {
+        "name": "ПРАВО СИЛЬНОГО",
+        "slug": "",
+        "subtitle": "ПАССИВНОЕ",
+        "description": "Враги, погибшие около Виего, превращаются в призраков. Атаковав призрака, Виего на время берет под контроль тело соответствующего врага. При этом он лечится на процент от максимального запаса здоровья цели, получает доступ к ее базовым умениям и предметам и может бесплатно применить свое абсолютное умение.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/b8f7f3d99331fc10fcdbb0e025aa1d4bba2001b0-64x64.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/80cbc0d6a9ee109ecfa457207507f19e2d363145.mp4?accountingTag=WR"
+      },
+      {
+        "name": "КЛИНОК ПАДШЕГО КОРОЛЯ",
+        "slug": "",
+        "subtitle": "1",
+        "description": "Призрачный клинок Виего всегда наносит дополнительный урон при попадании, который зависит от текущего запаса здоровья цели. Кроме того, когда Виего атакует врага, который недавно был поражен его умением, он бьет дважды и похищает его здоровье. Виего может активировать это умение, совершив выпад с мечом и пронзив врагов перед собой.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/713f726d2e4919f1947f2137484b3b603b6ec7cf-65x65.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/2cb45e22d5398240105751bb1ea37933602ce5bf.mp4?accountingTag=WR"
+      },
+      {
+        "name": "ПРИЗРАЧНАЯ ПАСТЬ",
+        "slug": "",
+        "subtitle": "2",
+        "description": "После подготовки Виего совершает рывок, выпуская сгусток черного тумана, который оглушает первого пораженного врага.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/72a48b1a29fe8275c4c1cf1e8e7fb7576a04b37c-65x65.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/1d56080318ff03bfbdefe30f0c71da6409861edd.mp4?accountingTag=WR"
+      },
+      {
+        "name": "ПУТЬ СТРАХА",
+        "slug": "",
+        "subtitle": "3",
+        "description": "Виего приказывает черному туману окружить элемент ландшафта. Когда Виего прячется в тумане, он становится призраком, получая маскировку, а также увеличивая скорость передвижения и скорость атаки.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/a451588ae7e8d381a480d0213d54b48bbb188e36-64x64.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/d0c2b59218974488d043dab87ce926327d6a7417.mp4?accountingTag=WR"
+      },
+      {
+        "name": "РАЗБИТОЕ СЕРДЦЕ",
+        "slug": "",
+        "subtitle": "АБСОЛЮТНОЕ",
+        "description": "Виего телепортируется в выбранное место неподалеку и поражает вражеского чемпиона, пронзая его сердце и создавая вокруг разрушительную волну, которая отбрасывает остальных врагов поблизости.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/abe11e5c8f70824e6f2c13c32c663da1960398cc-64x64.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/b7117ac88895b388a4d7a4a3184442623afe23c5.mp4?accountingTag=WR"
+      }
+    ],
+    "skinsLabel": "Доступные образы",
+    "skins": [
+      {
+        "name": "ВИЕГО, ПАДШИЙ КОРОЛЬ",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/9ffb1f3b4e65a9e755b3cd7d4678bdcecab5f7fb-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "АРКАДНЫЙ ВИЕГО",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/06aa32bdb2c78298479eb669a43923cef0185d31-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Хрустальная роза Виего",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/8ebe172c9ea377a4164229d5fa388800edb4d580-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "ПРЕДВЕСТНИК ЗАРИ ВИЕГО",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e0708f9b5114d05ea402fe64e968de1bbcdc9818-1920x1080.jpg?accountingTag=WR"
+      },
+      {
+        "name": "ПРЕДВЕСТНИК ЗАРИ ВИЕГО (МИФИЧЕСКАЯ ЦВЕТОВАЯ СХЕМА)",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ad49434c3402faf71de7b67ae20399883c8c448d-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "КАЛЛИГРАФ ВИЕГО",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8c56ae2153a3d0b3ebc4a164d0f4d3eaa3c38a65-1280x720.jpg?accountingTag=WR"
+      }
+    ]
+  },
+  "abilitiesRu": [
+    {
+      "name": "ПРАВО СИЛЬНОГО",
+      "slug": "sovereigns-domination-passive",
+      "subtitle": "ПАССИВНОЕ",
+      "description": "Враги, погибшие около Виего, превращаются в призраков. Атаковав призрака, Виего на время берет под контроль тело соответствующего врага. При этом он лечится на процент от максимального запаса здоровья цели, получает доступ к ее базовым умениям и предметам и может бесплатно применить свое абсолютное умение.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/b8f7f3d99331fc10fcdbb0e025aa1d4bba2001b0-64x64.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/80cbc0d6a9ee109ecfa457207507f19e2d363145.mp4?accountingTag=WR"
+    },
+    {
+      "name": "КЛИНОК ПАДШЕГО КОРОЛЯ",
+      "slug": "blade-of-the-ruined-king-1",
+      "subtitle": "1",
+      "description": "Призрачный клинок Виего всегда наносит дополнительный урон при попадании, который зависит от текущего запаса здоровья цели. Кроме того, когда Виего атакует врага, который недавно был поражен его умением, он бьет дважды и похищает его здоровье. Виего может активировать это умение, совершив выпад с мечом и пронзив врагов перед собой.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/713f726d2e4919f1947f2137484b3b603b6ec7cf-65x65.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/2cb45e22d5398240105751bb1ea37933602ce5bf.mp4?accountingTag=WR"
+    },
+    {
+      "name": "ПРИЗРАЧНАЯ ПАСТЬ",
+      "slug": "spectral-maw-2",
+      "subtitle": "2",
+      "description": "После подготовки Виего совершает рывок, выпуская сгусток черного тумана, который оглушает первого пораженного врага.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/72a48b1a29fe8275c4c1cf1e8e7fb7576a04b37c-65x65.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/1d56080318ff03bfbdefe30f0c71da6409861edd.mp4?accountingTag=WR"
+    },
+    {
+      "name": "ПУТЬ СТРАХА",
+      "slug": "harrowed-path-3",
+      "subtitle": "3",
+      "description": "Виего приказывает черному туману окружить элемент ландшафта. Когда Виего прячется в тумане, он становится призраком, получая маскировку, а также увеличивая скорость передвижения и скорость атаки.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/a451588ae7e8d381a480d0213d54b48bbb188e36-64x64.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/d0c2b59218974488d043dab87ce926327d6a7417.mp4?accountingTag=WR"
+    },
+    {
+      "name": "РАЗБИТОЕ СЕРДЦЕ",
+      "slug": "heartbreaker-ultimate",
+      "subtitle": "АБСОЛЮТНОЕ",
+      "description": "Виего телепортируется в выбранное место неподалеку и поражает вражеского чемпиона, пронзая его сердце и создавая вокруг разрушительную волну, которая отбрасывает остальных врагов поблизости.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/abe11e5c8f70824e6f2c13c32c663da1960398cc-64x64.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/b7117ac88895b388a4d7a4a3184442623afe23c5.mp4?accountingTag=WR"
+    }
+  ]
+}

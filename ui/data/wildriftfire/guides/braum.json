@@ -1,0 +1,1701 @@
+{
+  "source": {
+    "site": "wildriftfire",
+    "url": "https://www.wildriftfire.com/guide/braum",
+    "fetchedAt": "2026-03-21T15:32:16.780Z",
+    "contentHash": "4e27a6316dd4764a51dc77e95a8a59fc5db39bef"
+  },
+  "champion": {
+    "slug": "braum",
+    "name": "Braum",
+    "title": "Сердце Фрельйорда",
+    "iconUrl": "https://www.mobafire.com/images/champion/square/braum.png"
+  },
+  "metadata": {
+    "pageTitle": "Braum :: Wild Rift Build Guide (Patch 7.0f) :: Items, Runes, Abilities",
+    "patch": "7.0f",
+    "recommendedRole": "ПОДДЕРЖКА / ТАНК",
+    "tier": "S+",
+    "blurb": "Build Braum with confidence with the help of WildRiftFire's build guides. Whether you are completely new to Braum or looking to refine your playstyle, we will help you take your Wild Rift game to the next level. Learn Braum's abilities in detail, the best items to build, which skills to level first, and more. Braum is ranked Tier S+ (Support Lane) in our Champion Tier List"
+  },
+  "itemBuild": {
+    "starting": [
+      {
+        "id": 135,
+        "kind": "Item",
+        "name": "Relic Shield",
+        "slug": "relic-shield",
+        "imageUrl": "https://www.wildriftfire.com/images/items/relic-shield.png",
+        "imageAlt": "Relic Shield"
+      }
+    ],
+    "core": [
+      {
+        "id": 137,
+        "kind": "Item",
+        "name": "Bulwark of the Mountain",
+        "slug": "bulwark-of-the-mountain",
+        "imageUrl": "https://www.wildriftfire.com/images/items/bulwark-of-the-mountain.png",
+        "imageAlt": "Bulwark of the Mountain"
+      },
+      {
+        "id": 188,
+        "kind": "Item",
+        "name": "Redemption",
+        "slug": "redemption",
+        "imageUrl": "https://www.wildriftfire.com/images/items/redemption.png",
+        "imageAlt": "Redemption"
+      },
+      {
+        "id": 217,
+        "kind": "Item",
+        "name": "Knight's Vow",
+        "slug": "knights-vow",
+        "imageUrl": "https://www.wildriftfire.com/images/items/knights-vow.png",
+        "imageAlt": "Knight's Vow"
+      }
+    ],
+    "boots": [
+      {
+        "id": 99,
+        "kind": "Item",
+        "name": "Plated Steelcaps",
+        "slug": "plated-steelcaps",
+        "imageUrl": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+        "imageAlt": "Plated Steelcaps"
+      },
+      {
+        "id": 102,
+        "kind": "Item",
+        "name": "Locket",
+        "slug": "locket",
+        "imageUrl": "https://www.wildriftfire.com/images/items/locket.png",
+        "imageAlt": "Locket"
+      }
+    ],
+    "finalBuild": [
+      {
+        "id": 137,
+        "kind": "Item",
+        "name": "Bulwark of the Mountain",
+        "slug": "bulwark-of-the-mountain",
+        "imageUrl": "https://www.wildriftfire.com/images/items/bulwark-of-the-mountain.png",
+        "imageAlt": "Bulwark of the Mountain"
+      },
+      {
+        "id": 188,
+        "kind": "Item",
+        "name": "Redemption",
+        "slug": "redemption",
+        "imageUrl": "https://www.wildriftfire.com/images/items/redemption.png",
+        "imageAlt": "Redemption"
+      },
+      {
+        "id": 217,
+        "kind": "Item",
+        "name": "Knight's Vow",
+        "slug": "knights-vow",
+        "imageUrl": "https://www.wildriftfire.com/images/items/knights-vow.png",
+        "imageAlt": "Knight's Vow"
+      },
+      {
+        "id": 74,
+        "kind": "Item",
+        "name": "Protector's Vow",
+        "slug": "protectors-vow",
+        "imageUrl": "https://www.wildriftfire.com/images/items/protectors-vow.png",
+        "imageAlt": "Protector's Vow"
+      },
+      {
+        "id": 193,
+        "kind": "Item",
+        "name": "Kaenic Rookern",
+        "slug": "kaenic-rookern",
+        "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+        "imageAlt": "Kaenic Rookern"
+      },
+      {
+        "id": 102,
+        "kind": "Item",
+        "name": "Plated Steelcaps - Locket",
+        "slug": "plated-steelcaps-locket",
+        "imageUrl": "https://www.wildriftfire.com/images/items/locket.png",
+        "imageAlt": "Plated Steelcaps - Locket"
+      }
+    ]
+  },
+  "spellsAndRunes": {
+    "summonerSpells": [
+      {
+        "id": 14,
+        "kind": "SummonerSpell",
+        "name": "Flash",
+        "slug": "flash",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+        "imageAlt": "Flash"
+      },
+      {
+        "id": 3,
+        "kind": "SummonerSpell",
+        "name": "Heal",
+        "slug": "heal",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/heal.png",
+        "imageAlt": "Heal"
+      }
+    ],
+    "runes": [
+      {
+        "id": 110,
+        "kind": "Rune",
+        "name": "Glacial Augment",
+        "slug": "glacial-augment",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/glacial-augment.png",
+        "imageAlt": "Glacial Augment"
+      },
+      {
+        "id": 75,
+        "kind": "Rune",
+        "name": "Font of Life",
+        "slug": "font-of-life",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/font-of-life.png",
+        "imageAlt": "Font of Life"
+      },
+      {
+        "id": 95,
+        "kind": "Rune",
+        "name": "Bone Plating",
+        "slug": "bone-plating",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+        "imageAlt": "Bone Plating"
+      },
+      {
+        "id": 121,
+        "kind": "Rune",
+        "name": "Overgrowth",
+        "slug": "overgrowth",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png",
+        "imageAlt": "Overgrowth"
+      },
+      {
+        "id": 114,
+        "kind": "Rune",
+        "name": "Ingenious Hunter",
+        "slug": "ingenious-hunter",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/ingenious-hunter.png",
+        "imageAlt": "Ingenious Hunter"
+      }
+    ]
+  },
+  "situationalItems": [
+    {
+      "label": "vs Healing",
+      "options": [
+        {
+          "id": 193,
+          "kind": "Item",
+          "name": "Kaenic Rookern",
+          "slug": "kaenic-rookern",
+          "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+          "imageAlt": "Kaenic Rookern"
+        },
+        {
+          "id": 86,
+          "kind": "Item",
+          "name": "Thornmail",
+          "slug": "thornmail",
+          "imageUrl": "https://www.wildriftfire.com/images/items/thornmail.png",
+          "imageAlt": "Thornmail"
+        }
+      ]
+    },
+    {
+      "label": "vs Critical Strike Damage",
+      "options": [
+        {
+          "id": 193,
+          "kind": "Item",
+          "name": "Kaenic Rookern",
+          "slug": "kaenic-rookern",
+          "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+          "imageAlt": "Kaenic Rookern"
+        },
+        {
+          "id": 76,
+          "kind": "Item",
+          "name": "Randuin's Omen",
+          "slug": "randuins-omen",
+          "imageUrl": "https://www.wildriftfire.com/images/items/randuins-omen.png",
+          "imageAlt": "Randuin's Omen"
+        }
+      ]
+    },
+    {
+      "label": "vs Attack Speed",
+      "options": [
+        {
+          "id": 193,
+          "kind": "Item",
+          "name": "Kaenic Rookern",
+          "slug": "kaenic-rookern",
+          "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+          "imageAlt": "Kaenic Rookern"
+        },
+        {
+          "id": 110,
+          "kind": "Item",
+          "name": "Frozen Heart",
+          "slug": "frozen-heart",
+          "imageUrl": "https://www.wildriftfire.com/images/items/frozen-heart.png",
+          "imageAlt": "Frozen Heart"
+        }
+      ]
+    },
+    {
+      "label": "vs Ability Power",
+      "options": [
+        {
+          "id": 99,
+          "kind": "Item",
+          "name": "Plated Steelcaps",
+          "slug": "plated-steelcaps",
+          "imageUrl": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+          "imageAlt": "Plated Steelcaps"
+        },
+        {
+          "id": 98,
+          "kind": "Item",
+          "name": "Mercury's Treads",
+          "slug": "mercurys-treads",
+          "imageUrl": "https://www.wildriftfire.com/images/items/mercurys-treads.png",
+          "imageAlt": "Mercury's Treads"
+        }
+      ]
+    }
+  ],
+  "situationalRunes": [
+    {
+      "label": "vs Poke",
+      "options": [
+        {
+          "id": 95,
+          "kind": "Rune",
+          "name": "Bone Plating",
+          "slug": "bone-plating",
+          "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+          "imageAlt": "Bone Plating"
+        },
+        {
+          "id": 96,
+          "kind": "Rune",
+          "name": "Second Wind",
+          "slug": "second-wind",
+          "imageUrl": "https://www.wildriftfire.com/images/runes/second-wind.png",
+          "imageAlt": "Second Wind"
+        }
+      ]
+    },
+    {
+      "label": "vs Crowd Control",
+      "options": [
+        {
+          "id": 121,
+          "kind": "Rune",
+          "name": "Overgrowth",
+          "slug": "overgrowth",
+          "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png",
+          "imageAlt": "Overgrowth"
+        },
+        {
+          "id": 108,
+          "kind": "Rune",
+          "name": "Perseverance",
+          "slug": "perseverance",
+          "imageUrl": "https://www.wildriftfire.com/images/runes/perseverance.png",
+          "imageAlt": "Perseverance"
+        }
+      ]
+    }
+  ],
+  "skillOrder": {
+    "quickOrder": [
+      {
+        "id": 658,
+        "kind": "Ability",
+        "name": "Winter's Bite",
+        "slug": "winters-bite",
+        "imageUrl": "https://www.mobafire.com/images/ability/braum-winters-bite.png",
+        "imageAlt": "Winter's Bite"
+      },
+      {
+        "id": 660,
+        "kind": "Ability",
+        "name": "Unbreakable",
+        "slug": "unbreakable",
+        "imageUrl": "https://www.mobafire.com/images/ability/braum-unbreakable.png",
+        "imageAlt": "Unbreakable"
+      },
+      {
+        "id": 659,
+        "kind": "Ability",
+        "name": "Stand Behind Me",
+        "slug": "stand-behind-me",
+        "imageUrl": "https://www.mobafire.com/images/ability/braum-stand-behind-me.png",
+        "imageAlt": "Stand Behind Me"
+      }
+    ],
+    "rows": [
+      {
+        "name": "Winter's Bite",
+        "slug": "winters-bite",
+        "levels": [
+          1,
+          4,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Stand Behind Me",
+        "slug": "stand-behind-me",
+        "levels": [
+          3,
+          12,
+          14,
+          15
+        ]
+      },
+      {
+        "name": "Unbreakable",
+        "slug": "unbreakable",
+        "levels": [
+          2,
+          8,
+          10,
+          11
+        ]
+      },
+      {
+        "name": "Glacial Fissure",
+        "slug": "glacial-fissure",
+        "levels": [
+          5,
+          9,
+          13
+        ]
+      }
+    ]
+  },
+  "counters": [
+    {
+      "name": "Senna",
+      "slug": "senna",
+      "href": "https://www.wildriftfire.com/guide/senna",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/senna.png",
+      "lane": "Support",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+    },
+    {
+      "name": "Bard",
+      "slug": "bard",
+      "href": "https://www.wildriftfire.com/guide/bard",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/bard.png",
+      "lane": "Support",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+    },
+    {
+      "name": "Zilean",
+      "slug": "zilean",
+      "href": "https://www.wildriftfire.com/guide/zilean",
+      "imageUrl": "https://www.wildriftfire.com/images/champion/icon/zilean.png",
+      "lane": "Support",
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+    }
+  ],
+  "synergies": [
+    {
+      "name": "Ashe",
+      "slug": "ashe",
+      "href": "https://www.wildriftfire.com/guide/ashe",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/ashe.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+    },
+    {
+      "name": "Lucian",
+      "slug": "lucian",
+      "href": "https://www.wildriftfire.com/guide/lucian",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/lucian.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+    },
+    {
+      "name": "Ezreal",
+      "slug": "ezreal",
+      "href": "https://www.wildriftfire.com/guide/ezreal",
+      "imageUrl": "https://www.mobafire.com/images/champion/square/ezreal.png",
+      "lane": null,
+      "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+    }
+  ],
+  "variants": [
+    {
+      "guideId": "default",
+      "title": "Build 1",
+      "lane": null,
+      "tier": null,
+      "isDefault": true,
+      "itemBuild": {
+        "starting": [
+          {
+            "id": 135,
+            "kind": "Item",
+            "name": "Relic Shield",
+            "slug": "relic-shield",
+            "imageUrl": "https://www.wildriftfire.com/images/items/relic-shield.png",
+            "imageAlt": "Relic Shield"
+          }
+        ],
+        "core": [
+          {
+            "id": 137,
+            "kind": "Item",
+            "name": "Bulwark of the Mountain",
+            "slug": "bulwark-of-the-mountain",
+            "imageUrl": "https://www.wildriftfire.com/images/items/bulwark-of-the-mountain.png",
+            "imageAlt": "Bulwark of the Mountain"
+          },
+          {
+            "id": 188,
+            "kind": "Item",
+            "name": "Redemption",
+            "slug": "redemption",
+            "imageUrl": "https://www.wildriftfire.com/images/items/redemption.png",
+            "imageAlt": "Redemption"
+          },
+          {
+            "id": 217,
+            "kind": "Item",
+            "name": "Knight's Vow",
+            "slug": "knights-vow",
+            "imageUrl": "https://www.wildriftfire.com/images/items/knights-vow.png",
+            "imageAlt": "Knight's Vow"
+          }
+        ],
+        "boots": [
+          {
+            "id": 99,
+            "kind": "Item",
+            "name": "Plated Steelcaps",
+            "slug": "plated-steelcaps",
+            "imageUrl": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+            "imageAlt": "Plated Steelcaps"
+          },
+          {
+            "id": 102,
+            "kind": "Item",
+            "name": "Locket",
+            "slug": "locket",
+            "imageUrl": "https://www.wildriftfire.com/images/items/locket.png",
+            "imageAlt": "Locket"
+          }
+        ],
+        "finalBuild": [
+          {
+            "id": 137,
+            "kind": "Item",
+            "name": "Bulwark of the Mountain",
+            "slug": "bulwark-of-the-mountain",
+            "imageUrl": "https://www.wildriftfire.com/images/items/bulwark-of-the-mountain.png",
+            "imageAlt": "Bulwark of the Mountain"
+          },
+          {
+            "id": 188,
+            "kind": "Item",
+            "name": "Redemption",
+            "slug": "redemption",
+            "imageUrl": "https://www.wildriftfire.com/images/items/redemption.png",
+            "imageAlt": "Redemption"
+          },
+          {
+            "id": 217,
+            "kind": "Item",
+            "name": "Knight's Vow",
+            "slug": "knights-vow",
+            "imageUrl": "https://www.wildriftfire.com/images/items/knights-vow.png",
+            "imageAlt": "Knight's Vow"
+          },
+          {
+            "id": 74,
+            "kind": "Item",
+            "name": "Protector's Vow",
+            "slug": "protectors-vow",
+            "imageUrl": "https://www.wildriftfire.com/images/items/protectors-vow.png",
+            "imageAlt": "Protector's Vow"
+          },
+          {
+            "id": 193,
+            "kind": "Item",
+            "name": "Kaenic Rookern",
+            "slug": "kaenic-rookern",
+            "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+            "imageAlt": "Kaenic Rookern"
+          },
+          {
+            "id": 102,
+            "kind": "Item",
+            "name": "Plated Steelcaps - Locket",
+            "slug": "plated-steelcaps-locket",
+            "imageUrl": "https://www.wildriftfire.com/images/items/locket.png",
+            "imageAlt": "Plated Steelcaps - Locket"
+          }
+        ]
+      },
+      "spellsAndRunes": {
+        "summonerSpells": [
+          {
+            "id": 14,
+            "kind": "SummonerSpell",
+            "name": "Flash",
+            "slug": "flash",
+            "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+            "imageAlt": "Flash"
+          },
+          {
+            "id": 3,
+            "kind": "SummonerSpell",
+            "name": "Heal",
+            "slug": "heal",
+            "imageUrl": "https://www.wildriftfire.com/images/summoners/heal.png",
+            "imageAlt": "Heal"
+          }
+        ],
+        "runes": [
+          {
+            "id": 110,
+            "kind": "Rune",
+            "name": "Glacial Augment",
+            "slug": "glacial-augment",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/glacial-augment.png",
+            "imageAlt": "Glacial Augment"
+          },
+          {
+            "id": 75,
+            "kind": "Rune",
+            "name": "Font of Life",
+            "slug": "font-of-life",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/font-of-life.png",
+            "imageAlt": "Font of Life"
+          },
+          {
+            "id": 95,
+            "kind": "Rune",
+            "name": "Bone Plating",
+            "slug": "bone-plating",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+            "imageAlt": "Bone Plating"
+          },
+          {
+            "id": 121,
+            "kind": "Rune",
+            "name": "Overgrowth",
+            "slug": "overgrowth",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png",
+            "imageAlt": "Overgrowth"
+          },
+          {
+            "id": 114,
+            "kind": "Rune",
+            "name": "Ingenious Hunter",
+            "slug": "ingenious-hunter",
+            "imageUrl": "https://www.wildriftfire.com/images/runes/ingenious-hunter.png",
+            "imageAlt": "Ingenious Hunter"
+          }
+        ]
+      },
+      "situationalItems": [
+        {
+          "label": "vs Healing",
+          "options": [
+            {
+              "id": 193,
+              "kind": "Item",
+              "name": "Kaenic Rookern",
+              "slug": "kaenic-rookern",
+              "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+              "imageAlt": "Kaenic Rookern"
+            },
+            {
+              "id": 86,
+              "kind": "Item",
+              "name": "Thornmail",
+              "slug": "thornmail",
+              "imageUrl": "https://www.wildriftfire.com/images/items/thornmail.png",
+              "imageAlt": "Thornmail"
+            }
+          ]
+        },
+        {
+          "label": "vs Critical Strike Damage",
+          "options": [
+            {
+              "id": 193,
+              "kind": "Item",
+              "name": "Kaenic Rookern",
+              "slug": "kaenic-rookern",
+              "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+              "imageAlt": "Kaenic Rookern"
+            },
+            {
+              "id": 76,
+              "kind": "Item",
+              "name": "Randuin's Omen",
+              "slug": "randuins-omen",
+              "imageUrl": "https://www.wildriftfire.com/images/items/randuins-omen.png",
+              "imageAlt": "Randuin's Omen"
+            }
+          ]
+        },
+        {
+          "label": "vs Attack Speed",
+          "options": [
+            {
+              "id": 193,
+              "kind": "Item",
+              "name": "Kaenic Rookern",
+              "slug": "kaenic-rookern",
+              "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+              "imageAlt": "Kaenic Rookern"
+            },
+            {
+              "id": 110,
+              "kind": "Item",
+              "name": "Frozen Heart",
+              "slug": "frozen-heart",
+              "imageUrl": "https://www.wildriftfire.com/images/items/frozen-heart.png",
+              "imageAlt": "Frozen Heart"
+            }
+          ]
+        },
+        {
+          "label": "vs Ability Power",
+          "options": [
+            {
+              "id": 99,
+              "kind": "Item",
+              "name": "Plated Steelcaps",
+              "slug": "plated-steelcaps",
+              "imageUrl": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+              "imageAlt": "Plated Steelcaps"
+            },
+            {
+              "id": 98,
+              "kind": "Item",
+              "name": "Mercury's Treads",
+              "slug": "mercurys-treads",
+              "imageUrl": "https://www.wildriftfire.com/images/items/mercurys-treads.png",
+              "imageAlt": "Mercury's Treads"
+            }
+          ]
+        }
+      ],
+      "situationalRunes": [
+        {
+          "label": "vs Poke",
+          "options": [
+            {
+              "id": 95,
+              "kind": "Rune",
+              "name": "Bone Plating",
+              "slug": "bone-plating",
+              "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+              "imageAlt": "Bone Plating"
+            },
+            {
+              "id": 96,
+              "kind": "Rune",
+              "name": "Second Wind",
+              "slug": "second-wind",
+              "imageUrl": "https://www.wildriftfire.com/images/runes/second-wind.png",
+              "imageAlt": "Second Wind"
+            }
+          ]
+        },
+        {
+          "label": "vs Crowd Control",
+          "options": [
+            {
+              "id": 121,
+              "kind": "Rune",
+              "name": "Overgrowth",
+              "slug": "overgrowth",
+              "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png",
+              "imageAlt": "Overgrowth"
+            },
+            {
+              "id": 108,
+              "kind": "Rune",
+              "name": "Perseverance",
+              "slug": "perseverance",
+              "imageUrl": "https://www.wildriftfire.com/images/runes/perseverance.png",
+              "imageAlt": "Perseverance"
+            }
+          ]
+        }
+      ],
+      "skillOrder": {
+        "quickOrder": [
+          {
+            "id": 658,
+            "kind": "Ability",
+            "name": "Winter's Bite",
+            "slug": "winters-bite",
+            "imageUrl": "https://www.mobafire.com/images/ability/braum-winters-bite.png",
+            "imageAlt": "Winter's Bite"
+          },
+          {
+            "id": 660,
+            "kind": "Ability",
+            "name": "Unbreakable",
+            "slug": "unbreakable",
+            "imageUrl": "https://www.mobafire.com/images/ability/braum-unbreakable.png",
+            "imageAlt": "Unbreakable"
+          },
+          {
+            "id": 659,
+            "kind": "Ability",
+            "name": "Stand Behind Me",
+            "slug": "stand-behind-me",
+            "imageUrl": "https://www.mobafire.com/images/ability/braum-stand-behind-me.png",
+            "imageAlt": "Stand Behind Me"
+          }
+        ],
+        "rows": [
+          {
+            "name": "Winter's Bite",
+            "slug": "winters-bite",
+            "levels": [
+              1,
+              4,
+              6,
+              7
+            ]
+          },
+          {
+            "name": "Stand Behind Me",
+            "slug": "stand-behind-me",
+            "levels": [
+              3,
+              12,
+              14,
+              15
+            ]
+          },
+          {
+            "name": "Unbreakable",
+            "slug": "unbreakable",
+            "levels": [
+              2,
+              8,
+              10,
+              11
+            ]
+          },
+          {
+            "name": "Glacial Fissure",
+            "slug": "glacial-fissure",
+            "levels": [
+              5,
+              9,
+              13
+            ]
+          }
+        ]
+      },
+      "counters": [
+        {
+          "name": "Senna",
+          "slug": "senna",
+          "href": "https://www.wildriftfire.com/guide/senna",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/senna.png",
+          "lane": "Support",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+        },
+        {
+          "name": "Bard",
+          "slug": "bard",
+          "href": "https://www.wildriftfire.com/guide/bard",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/bard.png",
+          "lane": "Support",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+        },
+        {
+          "name": "Zilean",
+          "slug": "zilean",
+          "href": "https://www.wildriftfire.com/guide/zilean",
+          "imageUrl": "https://www.wildriftfire.com/images/champion/icon/zilean.png",
+          "lane": "Support",
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png"
+        }
+      ],
+      "synergies": [
+        {
+          "name": "Ashe",
+          "slug": "ashe",
+          "href": "https://www.wildriftfire.com/guide/ashe",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/ashe.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+        },
+        {
+          "name": "Lucian",
+          "slug": "lucian",
+          "href": "https://www.wildriftfire.com/guide/lucian",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/lucian.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+        },
+        {
+          "name": "Ezreal",
+          "slug": "ezreal",
+          "href": "https://www.wildriftfire.com/guide/ezreal",
+          "imageUrl": "https://www.mobafire.com/images/champion/square/ezreal.png",
+          "lane": null,
+          "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png"
+        }
+      ]
+    }
+  ],
+  "buildBreakdown": {
+    "featuredItems": [
+      {
+        "id": 137,
+        "kind": "Item",
+        "name": "Bulwark of the Mountain",
+        "slug": "bulwark-of-the-mountain",
+        "imageUrl": "https://www.wildriftfire.com/images/items/bulwark-of-the-mountain.png",
+        "imageAlt": "Bulwark of the Mountain"
+      },
+      {
+        "id": 188,
+        "kind": "Item",
+        "name": "Redemption",
+        "slug": "redemption",
+        "imageUrl": "https://www.wildriftfire.com/images/items/redemption.png",
+        "imageAlt": "Redemption"
+      },
+      {
+        "id": 217,
+        "kind": "Item",
+        "name": "Knight's Vow",
+        "slug": "knights-vow",
+        "imageUrl": "https://www.wildriftfire.com/images/items/knights-vow.png",
+        "imageAlt": "Knight's Vow"
+      },
+      {
+        "id": 74,
+        "kind": "Item",
+        "name": "Protector's Vow",
+        "slug": "protectors-vow",
+        "imageUrl": "https://www.wildriftfire.com/images/items/protectors-vow.png",
+        "imageAlt": "Protector's Vow"
+      },
+      {
+        "id": 193,
+        "kind": "Item",
+        "name": "Kaenic Rookern",
+        "slug": "kaenic-rookern",
+        "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+        "imageAlt": "Kaenic Rookern"
+      },
+      {
+        "id": 102,
+        "kind": "Item",
+        "name": "Plated Steelcaps - Locket",
+        "slug": "plated-steelcaps-locket",
+        "imageUrl": "https://www.wildriftfire.com/images/items/locket.png",
+        "imageAlt": "Plated Steelcaps - Locket"
+      }
+    ],
+    "paragraphs": [
+      "Redemption has great synergy with Braum. Since Braum will always be close to ally champions using Stand Behind Me and Unbreakable, the healing will benefit your team, especially during teamfights.",
+      "Knight's Vow increases the tankiness of your carry as the item redirects damage they take to you. In return, the damage your carry deals heals you for a small amount.",
+      "Protector's Vow also has incredible synergy with Braum, giving a shield to his closest ally when either you or them take any damage.",
+      "For runes we have:",
+      "Braum doesn't have many Keystone options. Glacial Augment is the best option to add slows on top of his crowd control and reduce the enemy's damage.",
+      "Braum has a lot of ways to proc Font of Life, especially if you hit Winter's Bite. This can help Braum and his team heal over time.",
+      "This row depends on your lane matchup. Bone Plating is a solid rune in a melee matchup that can do a lot of burst damage.",
+      "Second Wind is excellent in poke lanes, which is good for Braum as he suffers in these matchups.",
+      "Overgrowth's extra health will help Braum survive longer, which is important when playing as a front-line tank.",
+      "When vs Crowd Control Perseverance works great with Braum, giving him more tank stats to survive.",
+      "Ingenious Hunter reduces the cooldown of Braum's core items, Redemption and Protectors' Vow and Radiant Virtue. This allows him to protect his team more often during fights.",
+      "Flash is a must to take on Braum. It can help you survive and be good when you need to keep your team alive using Flash with Stand Behind Me.Since Braum will always stand close to ally champions, Heal is another way to keep your allies alive."
+    ]
+  },
+  "guideAbilities": [
+    {
+      "name": "Concussive Blows (Passive)",
+      "slug": "concussive-blows-passive",
+      "iconUrl": "https://www.mobafire.com/images/ability/braum-concussive-blows.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/braum-concussive-blows.webm",
+      "paragraphs": [
+        "Braum's attacks apply Concussive Blows for a few seconds. Once the first stack is applied, allied champions attacks also stack Concussive Blows. Upon reaching 4 stacks, the enemy is stunned for a second and takes magic damage.",
+        "Concussive blows can be applied to multiple targets at once, so you always want to attack every enemy at least once, so your team can benefit the most from his passive. Winter's Bite can also apply a stack of Concussive Blows."
+      ]
+    },
+    {
+      "name": "Winter's Bite (1)",
+      "slug": "winters-bite-1",
+      "iconUrl": "https://www.mobafire.com/images/ability/braum-winters-bite.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/braum-winters-bite.webm",
+      "paragraphs": [
+        "Braum launches ice that deals magic damage and slows enemies hit for a few seconds while applying a stack of Concussive Blows.",
+        "Winter's Bite is Braum's way of starting a fight from a small distance. When hitting an enemy, it makes it easier for you and your allies to follow up with attacks that can also help stack Braum's passive. Be aware that Winter's Bite does not go through minions, so make sure nothing is standing between you and the enemy."
+      ]
+    },
+    {
+      "name": "Stand Behind Me (2)",
+      "slug": "stand-behind-me-2",
+      "iconUrl": "https://www.mobafire.com/images/ability/braum-stand-behind-me.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/braum-stand-behind-me.webm",
+      "paragraphs": [
+        "Braum leaps to an ally, granting himself and his ally armor and magic resist for a few seconds on arrival.",
+        "Stand Behind Me helps Braum reach his allies to peel for them. This will put Braum between his ally and the enemy champion, which is a great position to use Winter's Bite + Unbreakable. Stand Behind Me can also be used to jump to ally minions. This can be used aggressively during the laning phase to get an advantage."
+      ]
+    },
+    {
+      "name": "Unbreakable (3)",
+      "slug": "unbreakable-3",
+      "iconUrl": "https://www.mobafire.com/images/ability/braum-unbreakable.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/braum-unbreakable.webm",
+      "paragraphs": [
+        "Braum raises his shield, intercepting projectiles for a few seconds, negating the first instance of damage from whichever direction he faces and taking reduced damage afterwards. Whilst Braum's shield is raised, he also gains movement speed.",
+        "Unbreakable helps Braum protect his allies by blocking big Area of Effect abilities and auto attacks. Unbreakable can also block enemies from attacking towers and minions — a neat little trick to tilt your enemies."
+      ]
+    },
+    {
+      "name": "Glacial Fissure (Ultimate)",
+      "slug": "glacial-fissure-ultimate",
+      "iconUrl": "https://www.mobafire.com/images/ability/braum-glacial-fissure.png",
+      "videoUrl": "https://www.wildriftfire.com/images/champions/abilities/braum-glacial-fissure.webm",
+      "paragraphs": [
+        "Braum slams the ground and opens a fissure, dealing magic damage and knocking up enemies for a second. The Fissure slows enemies and lasts a few seconds.",
+        "Glacial Fissure is an excellent ability during teamfights for the knockup, slows and zone control. It is also a good disengage tool to help peel against enemies that jump on top of you or your allies."
+      ]
+    }
+  ],
+  "dictionaries": {
+    "items": {
+      "relic-shield": {
+        "id": 135,
+        "name": "Relic Shield",
+        "slug": "relic-shield",
+        "imageUrl": "https://www.wildriftfire.com/images/items/relic-shield.png",
+        "imageAlt": "Relic Shield",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Relic Shield",
+          "cost": "500",
+          "stats": [
+            "+125 Health"
+          ],
+          "lines": [
+            "UNIQUE PASSIVE - Tribute: Gain 1 encircling energy orb every 30 seconds (max 3 orbs). While near an ally, the actions below will trigger Tribute, consuming 1 energy orb to grant you 65 gold and restore your Health by 20 - 80: Using abilities or attacks to damage enemy champions or structures; Attacking minions below 65% Health. This also executes them, and the gold generated from the minion kills is given to the ally nearest to you; If a nearby minion is killed while you have 3 orbs. Upon triggering Tribute, the ally nearest to you gains Tribute stacks. UNIQUE PASSIVE - Spoils of War: Deal 1 more damage to Sight Wards revealed by Sweeping Lens, Control Ward, and Scryer's Bloom."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/relic-shield.png"
+        }
+      },
+      "bulwark-of-the-mountain": {
+        "id": 137,
+        "name": "Bulwark of the Mountain",
+        "slug": "bulwark-of-the-mountain",
+        "imageUrl": "https://www.wildriftfire.com/images/items/bulwark-of-the-mountain.png",
+        "imageAlt": "Bulwark of the Mountain",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Bulwark of the Mountain",
+          "cost": "0",
+          "stats": [
+            "+175 Health",
+            "+10 Ability Haste"
+          ],
+          "lines": [
+            "UNIQUE PASSIVE - Spellcraft: Grant 75 gold every 60 seconds and gain 1 point Spirit Power (max 10). Every point of Spirit Power provides 25 health, 2 Attack Damage or 4 Ability Power (adaptive). UNIQUE PASSIVE - Soulcast: Deal 2 more damage to Sight Wards revealed by Sweeping Lens, Control Ward, and Scryer's Bloom."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/bulwark-of-the-mountain.png"
+        }
+      },
+      "redemption": {
+        "id": 188,
+        "name": "Redemption",
+        "slug": "redemption",
+        "imageUrl": "https://www.wildriftfire.com/images/items/redemption.png",
+        "imageAlt": "Redemption",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Redemption",
+          "cost": "2600",
+          "stats": [
+            "+400 Health",
+            "+300 Mana",
+            "+20 Ability Haste"
+          ],
+          "lines": [
+            "Eternity: Restore Mana equal to 15% of the damage taken from champions. When consuming Mana, restore health equal to 20% of mana consumed. Every cast restores Maximum 15 Health.",
+            "Salvation: Every 8s, restore (40 + 7% Bonus Health) health to all allied champions within 350 units. If there are no allied champions within range, the effect is not triggered."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/redemption.png"
+        }
+      },
+      "knights-vow": {
+        "id": 217,
+        "name": "Knight's Vow",
+        "slug": "knights-vow",
+        "imageUrl": "https://www.wildriftfire.com/images/items/knights-vow.png",
+        "imageAlt": "Knight's Vow",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Knight's Vow",
+          "cost": "2600",
+          "stats": [
+            "+400 Health",
+            "+40 Armor",
+            "+10 Ability Haste"
+          ],
+          "lines": [
+            "SACRIFICE: When your Worthy ally is nearby, 12% of the damage they take is redirected to you, and you are healed for 10% of the damage they deal to champions.",
+            "PLEDGE: When you buy the item, you can designate an ally champion who is Worthy. (You can re-designate another champion by selling and repurchasing the item)"
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/knights-vow.png"
+        }
+      },
+      "plated-steelcaps": {
+        "id": 99,
+        "name": "Plated Steelcaps",
+        "slug": "plated-steelcaps",
+        "imageUrl": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+        "imageAlt": "Plated Steelcaps",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Plated Steelcaps",
+          "cost": "1000",
+          "stats": [
+            "+150 Health",
+            "+35 Armor",
+            "+45 Movement Speed"
+          ],
+          "lines": [
+            "+100% Health Regen UNIQUE - BLOCK: Reduces physical damage taken from champions by 3% - 9% (based on level). Limited to 1 Boots item."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/plated-steelcaps.png"
+        }
+      },
+      "locket": {
+        "id": 102,
+        "name": "Locket",
+        "slug": "locket",
+        "imageUrl": "https://www.wildriftfire.com/images/items/locket.png",
+        "imageAlt": "Locket",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Locket",
+          "cost": "500",
+          "stats": [],
+          "lines": [
+            "UNIQUE - LOCKET: Shield yourself and all nearby allied champions from 60 - 330 (based on level) damage for 2.5 seconds. (60 second cooldown) Limited to 1 Boots enchantment."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/locket.png"
+        }
+      },
+      "protectors-vow": {
+        "id": 74,
+        "name": "Protector's Vow",
+        "slug": "protectors-vow",
+        "imageUrl": "https://www.wildriftfire.com/images/items/protectors-vow.png",
+        "imageAlt": "Protector's Vow",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Protector's Vow",
+          "cost": "2700",
+          "stats": [
+            "+250 Health",
+            "+40 Armor",
+            "+40 Magic Resist"
+          ],
+          "lines": [
+            "UNIQUE - PROTECTOR: Raise your Guard when next to an allied champion. If you or your ally take damage from a champion, monster, or turret, both of you receive a 100 (+30% bonus health) shield for 1.5 seconds. Each time you take damage from an enemy champion's attack or ability, this effect's cooldown is reduced by 1 second. (20 second cooldown)"
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/protectors-vow.png"
+        }
+      },
+      "kaenic-rookern": {
+        "id": 193,
+        "name": "Kaenic Rookern",
+        "slug": "kaenic-rookern",
+        "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png",
+        "imageAlt": "Kaenic Rookern",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Kaenic Rookern",
+          "cost": "2800",
+          "stats": [
+            "+350 Health",
+            "+100 Health Regeneration",
+            "+75 Magic Resist"
+          ],
+          "lines": [
+            "Magebane - After not taking magic damage for 12 seconds, gain a magic shield that absorbs damage (equal to 70-180+10% of max Health)."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/kaenic-rookern.png"
+        }
+      },
+      "plated-steelcaps-locket": {
+        "id": 102,
+        "name": "Plated Steelcaps - Locket",
+        "slug": "plated-steelcaps-locket",
+        "imageUrl": "https://www.wildriftfire.com/images/items/locket.png",
+        "imageAlt": "Plated Steelcaps - Locket",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Locket",
+          "cost": "500",
+          "stats": [],
+          "lines": [
+            "UNIQUE - LOCKET: Shield yourself and all nearby allied champions from 60 - 330 (based on level) damage for 2.5 seconds. (60 second cooldown) Limited to 1 Boots enchantment."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/locket.png"
+        }
+      },
+      "thornmail": {
+        "id": 86,
+        "name": "Thornmail",
+        "slug": "thornmail",
+        "imageUrl": "https://www.wildriftfire.com/images/items/thornmail.png",
+        "imageAlt": "Thornmail",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Thornmail",
+          "cost": "2700",
+          "stats": [
+            "+200 Health",
+            "+75 Armor"
+          ],
+          "lines": [
+            "UNIQUE - THORNS: When Struck by an attack, deal 20 + 6% Bonus Armor + 2% Bonus Health Magic Damage to the attacker. UNIQUE - ENTWINE: Apply Grievous Wounds to enemy champions for 3s when struck by their attacks or dealing damage to them."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/thornmail.png"
+        }
+      },
+      "randuins-omen": {
+        "id": 76,
+        "name": "Randuin's Omen",
+        "slug": "randuins-omen",
+        "imageUrl": "https://www.wildriftfire.com/images/items/randuins-omen.png",
+        "imageAlt": "Randuin's Omen",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Randuin's Omen",
+          "cost": "2800",
+          "stats": [
+            "+400 Health",
+            "+75 Armor"
+          ],
+          "lines": [
+            "UNIQUE - Countercurrent: Gain a stack of Countercurrent when Critically Struck. Each Stack of Countercurrent grants 5% Movement Speed and 5% Slow Resist, Max 4 stacks. UNIQUE - Resilience: Critical Strikes deal 20% less damage to you."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/randuins-omen.png"
+        }
+      },
+      "frozen-heart": {
+        "id": 110,
+        "name": "Frozen Heart",
+        "slug": "frozen-heart",
+        "imageUrl": "https://www.wildriftfire.com/images/items/frozen-heart.png",
+        "imageAlt": "Frozen Heart",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Frozen Heart",
+          "cost": "2700",
+          "stats": [
+            "+80 Armor",
+            "+200 Mana",
+            "+25 Ability Haste"
+          ],
+          "lines": [
+            "UNIQUE - Winter's Caress: Basic attacks and magic damage caused by you or inflicted upon you will apply stacks of Chill to the enemy champion for 3 seconds. Each stack of Chill slows enemy attack speed by 9%, up to a maximum of 4 stacks or 36% Attack Speed reduction. Each individual ability has a 3 second cooldown on applying Chill stacks."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/frozen-heart.png"
+        }
+      },
+      "mercurys-treads": {
+        "id": 98,
+        "name": "Mercury's Treads",
+        "slug": "mercurys-treads",
+        "imageUrl": "https://www.wildriftfire.com/images/items/mercurys-treads.png",
+        "imageAlt": "Mercury's Treads",
+        "kind": "Item",
+        "tooltip": {
+          "title": "Mercury's Treads",
+          "cost": "1000",
+          "stats": [
+            "+200 Health",
+            "+35 Magic Resist",
+            "+45 Movement Speed"
+          ],
+          "lines": [
+            "+100% Health Regen UNIQUE - DISSOLVE: Reduces magic damage taken from champions by 3% - 10% (based on level). Limited to 1 Boots item."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/items/mercurys-treads.png"
+        }
+      }
+    },
+    "runes": {
+      "glacial-augment": {
+        "id": 110,
+        "name": "Glacial Augment",
+        "slug": "glacial-augment",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/glacial-augment.png",
+        "imageAlt": "Glacial Augment",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Glacial Augment",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Landing an attack on an enemy champion reduces their Movement Speed by 20% for 1.5s. This effect only affects each champion up to a maximum of 1 time(s) within 10s. Immobilizing an enemy champion triggers 3 glacial rays that radiate toward you, creating a frozen region that lasts for 3s. Movement Speed of enemies within the region is reduced by (1.5% of the champion's Max Health +20)%. The damage that they deal is also reduced by 12%. Upon leaving the frozen region. Movement Speed reduction will continue to persist for 1.5s. (20s cooldown)"
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/glacial-augment.png"
+        }
+      },
+      "font-of-life": {
+        "id": 75,
+        "name": "Font of Life",
+        "slug": "font-of-life",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/font-of-life.png",
+        "imageAlt": "Font of Life",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Font of Life",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Hitting an enemy champion with an attack or ability marks them. When you or allies damage marked champions, heal those allies and yourself. Each ally can trigger this healing once per mark. Team heal: 3% max HP + 15% your AP. Self heal: 1% max HP + 5% your AP."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/font-of-life.png"
+        }
+      },
+      "bone-plating": {
+        "id": 95,
+        "name": "Bone Plating",
+        "slug": "bone-plating",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+        "imageAlt": "Bone Plating",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Bone Plating",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Blocks damage from the next triggering champion attack and 2 more attacks."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/bone-plating.png"
+        }
+      },
+      "overgrowth": {
+        "id": 121,
+        "name": "Overgrowth",
+        "slug": "overgrowth",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png",
+        "imageAlt": "Overgrowth",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Overgrowth",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "When 1 monster or 2 minions are killed nearby, permanently gain 3 Max Health. Max Health can be increased indefinitely. Gains bonus 3% Max Health upon reaching 30 stacks."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/overgrowth.png"
+        }
+      },
+      "ingenious-hunter": {
+        "id": 114,
+        "name": "Ingenious Hunter",
+        "slug": "ingenious-hunter",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/ingenious-hunter.png",
+        "imageAlt": "Ingenious Hunter",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Ingenious Hunter",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Gains 20 Item Ability Haste. Gains a bonus 5 item Ability Haste after each unique enemy champion takedown. Stacks up to 5 times."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/ingenious-hunter.png"
+        }
+      },
+      "second-wind": {
+        "id": 96,
+        "name": "Second Wind",
+        "slug": "second-wind",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/second-wind.png",
+        "imageAlt": "Second Wind",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Second Wind",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Gain 5 health every 5 seconds. After taking damage from an enemy champion regenerate 6 (+2% of your missing health) over the next 5 seconds. This effect is doubled for melee champions."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/second-wind.png"
+        }
+      },
+      "perseverance": {
+        "id": 108,
+        "name": "Perseverance",
+        "slug": "perseverance",
+        "imageUrl": "https://www.wildriftfire.com/images/runes/perseverance.png",
+        "imageAlt": "Perseverance",
+        "kind": "Rune",
+        "tooltip": {
+          "title": "Perseverance",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Gain 10% tenacity. While immobilized, gain 15 - 25 armor and magic resistance for 1.5 seconds. Refresh duration when immobilized multiple times."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/runes/perseverance.png"
+        }
+      }
+    },
+    "summonerSpells": {
+      "flash": {
+        "id": 14,
+        "name": "Flash",
+        "slug": "flash",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png",
+        "imageAlt": "Flash",
+        "kind": "SummonerSpell",
+        "tooltip": {
+          "title": "Flash",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Teleport a short distance forward or towards the aimed direction (150 second cooldown)."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/summoners/flash.png"
+        }
+      },
+      "heal": {
+        "id": 3,
+        "name": "Heal",
+        "slug": "heal",
+        "imageUrl": "https://www.wildriftfire.com/images/summoners/heal.png",
+        "imageAlt": "Heal",
+        "kind": "SummonerSpell",
+        "tooltip": {
+          "title": "Heal",
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Restores 100-400 Health to you and the most wounded nearby ally champion, and grants 30% bonus movement speed for 2s. Healing is halved for champions recently affected by Heal. Cooldown: 100 seconds."
+          ],
+          "imageUrl": "https://www.wildriftfire.com/images/summoners/heal.png"
+        }
+      }
+    },
+    "abilities": {
+      "winters-bite": {
+        "id": 658,
+        "name": "Winter's Bite",
+        "slug": "winters-bite",
+        "imageUrl": "https://www.mobafire.com/images/ability/braum-winters-bite.png",
+        "imageAlt": "Winter's Bite",
+        "kind": "Ability",
+        "tooltip": {
+          "title": null,
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Lauches ice that deals 60 / 120 / 180 / 240 (+3% HP) magic damage and slows the enemy hit by 70% for 2 seconds. Applies a stack of Concussive Blows."
+          ],
+          "imageUrl": "https://www.mobafire.com/images/ability/braum-winters-bite.png"
+        }
+      },
+      "unbreakable": {
+        "id": 660,
+        "name": "Unbreakable",
+        "slug": "unbreakable",
+        "imageUrl": "https://www.mobafire.com/images/ability/braum-unbreakable.png",
+        "imageAlt": "Unbreakable",
+        "kind": "Ability",
+        "tooltip": {
+          "title": null,
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Raises his shield, intercepting projectiles for 4 seconds. Braum negates the first instance of damage wichever direction he faces and takes 35% / 40% / 45% / 50% reduced damage afterwards. Braum gains 15% Movement Speed while his shield is raised."
+          ],
+          "imageUrl": "https://www.mobafire.com/images/ability/braum-unbreakable.png"
+        }
+      },
+      "stand-behind-me": {
+        "id": 659,
+        "name": "Stand Behind Me",
+        "slug": "stand-behind-me",
+        "imageUrl": "https://www.mobafire.com/images/ability/braum-stand-behind-me.png",
+        "imageAlt": "Stand Behind Me",
+        "kind": "Ability",
+        "tooltip": {
+          "title": null,
+          "cost": null,
+          "stats": [],
+          "lines": [
+            "Leaps to an ally. Braum and the ally gain 10 / 15 / 20 / 25 (+10% / 12% / 14% / 16% Armor) Armor and 10 / 15 / 20 / 25 (+10% / 12% / 14% / 16% MR) Magic Resist for 3 seconds on arrival."
+          ],
+          "imageUrl": "https://www.mobafire.com/images/ability/braum-stand-behind-me.png"
+        }
+      },
+      "concussive-blows-passive": {
+        "name": "Оглушающие удары",
+        "slug": "concussive-blows-passive",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/a02ed9496ecb2abea5a5f6155adad3d364c8d881-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/6e775d06e65279e00e0ed1e1e11cb7cf315adf05.mp4?accountingTag=WR",
+        "kind": "Ability",
+        "id": null
+      },
+      "winters-bite-1": {
+        "name": "Укус зимы",
+        "slug": "winters-bite-1",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/4dbb7e9d62e639780af93f4fd99860b2caae2658-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/56d56e6e9a74884f16f73c95a6295708718c9678.mp4?accountingTag=WR",
+        "kind": "Ability",
+        "id": null
+      },
+      "stand-behind-me-2": {
+        "name": "Прячься за меня",
+        "slug": "stand-behind-me-2",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/bd950a1381808356e13876f290c1542d2b7d2cf8-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/bc466afe15ed3c498a6379b67b54cc260094494d.mp4?accountingTag=WR",
+        "kind": "Ability",
+        "id": null
+      },
+      "unbreakable-3": {
+        "name": "Неуязвимый",
+        "slug": "unbreakable-3",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/45e02e412c681b26f4a170f022e5f4c4346c782d-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/9f114ceaaf602e4525c1fd0b15cf26b30b7fad89.mp4?accountingTag=WR",
+        "kind": "Ability",
+        "id": null
+      },
+      "glacial-fissure-ultimate": {
+        "name": "Ледниковый разлом",
+        "slug": "glacial-fissure-ultimate",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/ddcc54008d13e59d8d8596395a712f95ecfdc629-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/83bba8942417acc2eb6380c2f649d961b6be92a0.mp4?accountingTag=WR",
+        "kind": "Ability",
+        "id": null
+      }
+    },
+    "champions": {
+      "senna": {
+        "name": "Senna",
+        "slug": "senna",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/senna.png",
+        "lane": "Support",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/senna"
+      },
+      "bard": {
+        "name": "Bard",
+        "slug": "bard",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/bard.png",
+        "lane": "Support",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/bard"
+      },
+      "zilean": {
+        "name": "Zilean",
+        "slug": "zilean",
+        "imageUrl": "https://www.wildriftfire.com/images/champion/icon/zilean.png",
+        "lane": "Support",
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-support.png",
+        "href": "https://www.wildriftfire.com/guide/zilean"
+      },
+      "ashe": {
+        "name": "Ashe",
+        "slug": "ashe",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/ashe.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png",
+        "href": "https://www.wildriftfire.com/guide/ashe"
+      },
+      "lucian": {
+        "name": "Lucian",
+        "slug": "lucian",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/lucian.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png",
+        "href": "https://www.wildriftfire.com/guide/lucian"
+      },
+      "ezreal": {
+        "name": "Ezreal",
+        "slug": "ezreal",
+        "imageUrl": "https://www.mobafire.com/images/champion/square/ezreal.png",
+        "lane": null,
+        "laneImageUrl": "https://www.wildriftfire.com/images/lanes/white-duo.png",
+        "href": "https://www.wildriftfire.com/guide/ezreal"
+      }
+    }
+  },
+  "official": {
+    "source": {
+      "site": "riot",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/champions/braum/"
+    },
+    "champion": {
+      "name": "БРАУМ",
+      "title": "Сердце Фрельйорда"
+    },
+    "roleLabel": "Роль",
+    "roles": [
+      "ПОДДЕРЖКА",
+      "ТАНК"
+    ],
+    "difficultyLabel": "Сложность",
+    "difficulty": "Средняя",
+    "heroMedia": {
+      "remoteVideoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/dbdc080f4852d87442107bda03a24a03dfad021e.mp4?accountingTag=WR",
+      "localVideoPath": "/riot/champions/braum/hero.mp4"
+    },
+    "abilitiesLabel": "УМЕНИЯ",
+    "abilities": [
+      {
+        "name": "Оглушающие удары",
+        "slug": "",
+        "subtitle": "ПАССИВНОЕ",
+        "description": "Автоатаки Браума накладывают на врагов заряды Оглушающих ударов. После появления первого заряда на цели автоатаки союзников начинают накладывать на нее дополнительные заряды. Цель, получившая 4 заряда, получает магический урон и оглушается. В течение следующих нескольких секунд цель не может получить новые заряды Оглушающих ударов, но получает дополнительный магический урон от автоатак Браума.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/a02ed9496ecb2abea5a5f6155adad3d364c8d881-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/6e775d06e65279e00e0ed1e1e11cb7cf315adf05.mp4?accountingTag=WR"
+      },
+      {
+        "name": "Укус зимы",
+        "slug": "",
+        "subtitle": "1",
+        "description": "Браум стряхивает лед со своего щита, направляя его прямо вперед. Цель, пораженная льдом, получает магический урон, замедляется и получает заряд Оглушающих ударов.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/4dbb7e9d62e639780af93f4fd99860b2caae2658-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/56d56e6e9a74884f16f73c95a6295708718c9678.mp4?accountingTag=WR"
+      },
+      {
+        "name": "Прячься за меня",
+        "slug": "",
+        "subtitle": "2",
+        "description": "Браум бросается на помощь союзному чемпиону или миньону. Оказавшись рядом с ним, Браум и его союзник получают дополнительную броню и сопротивление магии на несколько секунд.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/bd950a1381808356e13876f290c1542d2b7d2cf8-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/bc466afe15ed3c498a6379b67b54cc260094494d.mp4?accountingTag=WR"
+      },
+      {
+        "name": "Неуязвимый",
+        "slug": "",
+        "subtitle": "3",
+        "description": "Браум поднимает щит и уменьшает урон от всех атак с определенного направления. Первая атака блокируется целиком, остальные наносят лишь часть урона все то время, пока щит поднят. Браум также перехватывает все выстрелы - они наносят ему урон и разрушаются.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/45e02e412c681b26f4a170f022e5f4c4346c782d-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/9f114ceaaf602e4525c1fd0b15cf26b30b7fad89.mp4?accountingTag=WR"
+      },
+      {
+        "name": "Ледниковый разлом",
+        "slug": "",
+        "subtitle": "АБСОЛЮТНОЕ",
+        "description": "Браум бьет щитом по земле, создавая мощный и дальнобойный направленный удар. Пораженные враги подбрасываются в воздух, получают урон и замедляются.",
+        "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/ddcc54008d13e59d8d8596395a712f95ecfdc629-96x96.jpg?accountingTag=WR",
+        "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/83bba8942417acc2eb6380c2f649d961b6be92a0.mp4?accountingTag=WR"
+      }
+    ],
+    "skinsLabel": "Доступные образы",
+    "skins": [
+      {
+        "name": "БРАУМ, СЕРДЦЕ ФРЕЛЬЙОРДА",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/badd74425385b53d847f4f1a962acc39d956321b-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "УБИЙЦА ДРАКОНОВ БРАУМ",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/227c2754b3c155a4b2a3dc9310fad8282891ca7e-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "БРАУМ ИЗ ПРЕСТУПНОГО ГОРОДА",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/1724404d797cc0acf37071f90edc752edd989686-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "БРАУМ ЛЬВИНОЕ СЕРДЦЕ",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/2168fc6847ec4afdbdb63db5c69578e7e07a0226-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Блистательный король Браум",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/452c3fa928698cae33baf3cc98dbc6365c026ffa-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Эль Тигре Браум",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/db9c798e19cbc789e0eb075f6ac2c4ac64b63099-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "Санта-Браум",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/ec8ba6842e8371790c94435702cb7e9fc426f031-1280x720.jpg?accountingTag=WR"
+      },
+      {
+        "name": "БРАУМ НА ВЕЧЕРИНКЕ В САДУ",
+        "slug": "",
+        "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9a9978c83c8d5919aac55a456fcd930edac0e55b-1280x720.jpg?accountingTag=WR"
+      }
+    ]
+  },
+  "abilitiesRu": [
+    {
+      "name": "Оглушающие удары",
+      "slug": "concussive-blows-passive",
+      "subtitle": "ПАССИВНОЕ",
+      "description": "Автоатаки Браума накладывают на врагов заряды Оглушающих ударов. После появления первого заряда на цели автоатаки союзников начинают накладывать на нее дополнительные заряды. Цель, получившая 4 заряда, получает магический урон и оглушается. В течение следующих нескольких секунд цель не может получить новые заряды Оглушающих ударов, но получает дополнительный магический урон от автоатак Браума.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/a02ed9496ecb2abea5a5f6155adad3d364c8d881-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/6e775d06e65279e00e0ed1e1e11cb7cf315adf05.mp4?accountingTag=WR"
+    },
+    {
+      "name": "Укус зимы",
+      "slug": "winters-bite-1",
+      "subtitle": "1",
+      "description": "Браум стряхивает лед со своего щита, направляя его прямо вперед. Цель, пораженная льдом, получает магический урон, замедляется и получает заряд Оглушающих ударов.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/4dbb7e9d62e639780af93f4fd99860b2caae2658-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/56d56e6e9a74884f16f73c95a6295708718c9678.mp4?accountingTag=WR"
+    },
+    {
+      "name": "Прячься за меня",
+      "slug": "stand-behind-me-2",
+      "subtitle": "2",
+      "description": "Браум бросается на помощь союзному чемпиону или миньону. Оказавшись рядом с ним, Браум и его союзник получают дополнительную броню и сопротивление магии на несколько секунд.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/bd950a1381808356e13876f290c1542d2b7d2cf8-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/bc466afe15ed3c498a6379b67b54cc260094494d.mp4?accountingTag=WR"
+    },
+    {
+      "name": "Неуязвимый",
+      "slug": "unbreakable-3",
+      "subtitle": "3",
+      "description": "Браум поднимает щит и уменьшает урон от всех атак с определенного направления. Первая атака блокируется целиком, остальные наносят лишь часть урона все то время, пока щит поднят. Браум также перехватывает все выстрелы - они наносят ему урон и разрушаются.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/45e02e412c681b26f4a170f022e5f4c4346c782d-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/9f114ceaaf602e4525c1fd0b15cf26b30b7fad89.mp4?accountingTag=WR"
+    },
+    {
+      "name": "Ледниковый разлом",
+      "slug": "glacial-fissure-ultimate",
+      "subtitle": "АБСОЛЮТНОЕ",
+      "description": "Браум бьет щитом по земле, создавая мощный и дальнобойный направленный удар. Пораженные враги подбрасываются в воздух, получают урон и замедляются.",
+      "iconUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data/ddcc54008d13e59d8d8596395a712f95ecfdc629-96x96.jpg?accountingTag=WR",
+      "videoUrl": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/83bba8942417acc2eb6380c2f649d961b6be92a0.mp4?accountingTag=WR"
+    }
+  ]
+}
