@@ -75,6 +75,140 @@ export function buildLatestMap(items) {
   return latestMap;
 }
 
+function getChampionName(champion) {
+  if (typeof champion?.name === "string" && champion.name.trim()) {
+    return champion.name;
+  }
+
+  return champion?.slug || "";
+}
+
+function groupHistoryBySlice(items) {
+  /** @type {Record<string, HistoryItem[]>} */
+  const sliceMap = {};
+
+  for (const item of items) {
+    if (!item?.rank || !item?.lane || !item?.date || !item?.slug) continue;
+
+    const sliceKey = `${item.rank}|${item.lane}`;
+    if (!sliceMap[sliceKey]) {
+      sliceMap[sliceKey] = [];
+    }
+
+    sliceMap[sliceKey].push(item);
+  }
+
+  return sliceMap;
+}
+
+function getRecentDates(items) {
+  return [...new Set(items.map((item) => String(item.date)))]
+    .sort()
+    .slice(-7);
+}
+
+function buildRowsForSlice(champions, sliceItems) {
+  const recentDates = getRecentDates(sliceItems);
+  const latestDate = recentDates[recentDates.length - 1] ?? null;
+  const previousDate =
+    recentDates.length > 1 ? recentDates[0] : null;
+
+  if (!latestDate) return [];
+
+  /** @type {Record<string, Champion>} */
+  const championBySlug = {};
+  for (const champion of champions) {
+    if (!champion?.slug) continue;
+    championBySlug[champion.slug] = champion;
+  }
+
+  /** @type {Record<string, HistoryItem>} */
+  const latestBySlug = {};
+  /** @type {Record<string, HistoryItem>} */
+  const previousBySlug = {};
+  /** @type {Record<string, Array<number | null>>} */
+  const trendBySlug = {};
+
+  for (const item of sliceItems) {
+    if (!trendBySlug[item.slug]) {
+      trendBySlug[item.slug] = recentDates.map(() => null);
+    }
+  }
+
+  recentDates.forEach((date, dateIndex) => {
+    for (const item of sliceItems) {
+      if (String(item.date) !== date) continue;
+      trendBySlug[item.slug][dateIndex] = item.position ?? null;
+    }
+  });
+
+  for (const item of sliceItems) {
+    const itemDate = String(item.date);
+
+    if (itemDate === latestDate) {
+      latestBySlug[item.slug] = item;
+    } else if (previousDate && itemDate === previousDate) {
+      previousBySlug[item.slug] = item;
+    }
+  }
+
+  return Object.values(latestBySlug)
+    .sort((left, right) => {
+      const leftPos = left.position ?? Number.POSITIVE_INFINITY;
+      const rightPos = right.position ?? Number.POSITIVE_INFINITY;
+      return leftPos - rightPos;
+    })
+    .map((item) => {
+      const champion = championBySlug[item.slug];
+      const tier = strengthToTier(item.strengthLevel ?? null);
+      const previous = previousBySlug[item.slug];
+
+      return {
+        slug: item.slug,
+        name: getChampionName(champion),
+        icon: champion?.icon || null,
+        winRate: item.winRate ?? null,
+        pickRate: item.pickRate ?? null,
+        banRate: item.banRate ?? null,
+        strengthLevel: item.strengthLevel ?? null,
+        tierLabel: tier.label,
+        tierColor: tier.color,
+        positionDelta:
+          typeof item.position === "number" && typeof previous?.position === "number"
+            ? previous.position - item.position
+            : null,
+        positionTrend: trendBySlug[item.slug] || [],
+      };
+    });
+}
+
+/**
+ * @param {{
+ *   champions: Champion[];
+ *   historyItems?: HistoryItem[];
+ * }} params
+ */
+export function buildPreparedWinrateSlices({ champions, historyItems = [] }) {
+  if (!Array.isArray(champions) || !champions.length) {
+    return { rowsBySlice: {}, maxRowCount: 0 };
+  }
+
+  const sliceMap = groupHistoryBySlice(historyItems);
+  /** @type {Record<string, ReturnType<typeof buildRowsForSlice>>} */
+  const rowsBySlice = {};
+  let maxRowCount = 0;
+
+  for (const [sliceKey, sliceItems] of Object.entries(sliceMap)) {
+    const rows = buildRowsForSlice(champions, sliceItems);
+    rowsBySlice[sliceKey] = rows;
+    if (rows.length > maxRowCount) {
+      maxRowCount = rows.length;
+    }
+  }
+
+  return { rowsBySlice, maxRowCount };
+}
+
 export function getStatsApiBaseUrl(env = process.env) {
   const raw =
     env.NEXT_PUBLIC_STATS_API_ORIGIN ||
@@ -165,6 +299,11 @@ function compareRows(left, right, sort) {
   return sort.dir === "desc"
     ? rightValue - leftValue
     : leftValue - rightValue;
+}
+
+export function sortPreparedRows(rows, sort) {
+  if (!Array.isArray(rows) || !rows.length) return [];
+  return [...rows].sort((left, right) => compareRows(left, right, sort));
 }
 
 function toSliceRows(champions, statsMap, rankKey, laneKey) {

@@ -3,10 +3,12 @@ import assert from "node:assert/strict";
 
 import {
   buildLatestMap,
+  buildPreparedWinrateSlices,
   buildStatsUrls,
   buildWinrateRows,
   nextSortState,
   normalizeIconSrc,
+  sortPreparedRows,
   strengthToTier,
 } from "./winrates-lib.js";
 
@@ -69,7 +71,10 @@ test("buildStatsUrls prefers explicit API origin and trims trailing slash", () =
 });
 
 test("normalizeIconSrc keeps proxy paths stable", () => {
-  assert.equal(normalizeIconSrc("/wr-api/icons/ahri.png"), "/wr-api/icons/ahri.png");
+  assert.equal(
+    normalizeIconSrc("/wr-api/icons/ahri.png"),
+    "/wr-api/icons/ahri.png",
+  );
   assert.equal(
     normalizeIconSrc("https://wildriftallstats.ru/wr-api/icons/ahri.png?v=2"),
     "/wr-api/icons/ahri.png?v=2",
@@ -81,14 +86,20 @@ test("nextSortState rotates desc -> asc -> reset", () => {
     column: "winRate",
     dir: "desc",
   });
-  assert.deepEqual(nextSortState({ column: "winRate", dir: "desc" }, "winRate"), {
-    column: "winRate",
-    dir: "asc",
-  });
-  assert.deepEqual(nextSortState({ column: "winRate", dir: "asc" }, "winRate"), {
-    column: null,
-    dir: null,
-  });
+  assert.deepEqual(
+    nextSortState({ column: "winRate", dir: "desc" }, "winRate"),
+    {
+      column: "winRate",
+      dir: "asc",
+    },
+  );
+  assert.deepEqual(
+    nextSortState({ column: "winRate", dir: "asc" }, "winRate"),
+    {
+      column: null,
+      dir: null,
+    },
+  );
 });
 
 test("buildWinrateRows applies tier mapping, sorting and weekly position delta", () => {
@@ -175,6 +186,86 @@ test("buildWinrateRows applies tier mapping, sorting and weekly position delta",
   assert.equal(rows[0].positionDelta, 1);
   assert.equal(rows[1].slug, "lux");
   assert.equal(rows[1].positionDelta, -1);
+});
+
+test("buildPreparedWinrateSlices precomputes per-slice rows from snapshot positions", () => {
+  const champions = [
+    { slug: "ahri", name: "Ahri", icon: "/ahri.png" },
+    { slug: "lux", name: "Lux", icon: "/lux.png" },
+  ];
+
+  const historyItems = [
+    {
+      slug: "ahri",
+      rank: "diamondPlus",
+      lane: "mid",
+      date: "2026-03-09",
+      position: 2,
+      winRate: 50.4,
+      strengthLevel: 2,
+    },
+    {
+      slug: "lux",
+      rank: "diamondPlus",
+      lane: "mid",
+      date: "2026-03-09",
+      position: 1,
+      winRate: 52.1,
+      strengthLevel: 0,
+    },
+    {
+      slug: "ahri",
+      rank: "diamondPlus",
+      lane: "mid",
+      date: "2026-03-15",
+      position: 1,
+      winRate: 53.2,
+      strengthLevel: 2,
+    },
+    {
+      slug: "lux",
+      rank: "diamondPlus",
+      lane: "mid",
+      date: "2026-03-15",
+      position: 2,
+      winRate: 51.6,
+      strengthLevel: 0,
+    },
+  ];
+
+  const { rowsBySlice, maxRowCount } = buildPreparedWinrateSlices({
+    champions,
+    historyItems,
+  });
+
+  assert.equal(maxRowCount, 2);
+  assert.equal(rowsBySlice["diamondPlus|mid"][0].slug, "ahri");
+  assert.equal(rowsBySlice["diamondPlus|mid"][0].positionDelta, 1);
+  assert.deepEqual(rowsBySlice["diamondPlus|mid"][0].positionTrend, [2, 1]);
+});
+
+test("sortPreparedRows only reorders precomputed rows on the client", () => {
+  const rows = [
+    {
+      slug: "ahri",
+      winRate: 51.1,
+      pickRate: 2.1,
+      banRate: 1.2,
+      strengthLevel: 2,
+    },
+    {
+      slug: "lux",
+      winRate: 53.4,
+      pickRate: 4.1,
+      banRate: 3.2,
+      strengthLevel: 0,
+    },
+  ];
+
+  const sorted = sortPreparedRows(rows, { column: "winRate", dir: "desc" });
+
+  assert.equal(sorted[0].slug, "lux");
+  assert.equal(sorted[1].slug, "ahri");
 });
 
 test("strengthToTier returns a neutral placeholder for missing values", () => {

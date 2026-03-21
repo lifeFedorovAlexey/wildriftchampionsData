@@ -6,27 +6,10 @@ import PageWrapper from "@/components/PageWrapper";
 import StatsFilters from "@/components/StatsFilters";
 import styles from "./WinratesClient.module.css";
 import WinratesTable from "./WinratesTable";
-import { buildWinrateRows, nextSortState } from "./winrates-lib.js";
+import { nextSortState, sortPreparedRows } from "./winrates-lib.js";
 
 type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
 type LaneKey = "top" | "jungle" | "mid" | "adc" | "support";
-
-type Champion = {
-  slug: string;
-  name?: string | null;
-  icon?: string | null;
-};
-
-type HistoryItem = {
-  date: string;
-  slug: string;
-  rank: string;
-  lane: string;
-  winRate?: number | null;
-  pickRate?: number | null;
-  banRate?: number | null;
-  strengthLevel?: number | null;
-};
 
 type SortState =
   | {
@@ -50,15 +33,13 @@ type Row = {
 };
 
 export default function WinratesClient({
-  champions,
-  latestStats,
-  historyItems,
+  rowsBySlice,
+  maxRowCount,
   error,
   updatedAt,
 }: {
-  champions: Champion[];
-  latestStats: Record<string, HistoryItem> | null;
-  historyItems: HistoryItem[];
+  rowsBySlice: Record<string, Row[]>;
+  maxRowCount: number;
   error: string | null;
   updatedAt: string | null;
 }) {
@@ -70,17 +51,18 @@ export default function WinratesClient({
   });
 
   const rows = useMemo(
-    () =>
-      buildWinrateRows({
-        champions,
-        latestStats,
-        historyItems,
-        rankKey,
-        laneKey,
-        sort,
-      }) as Row[],
-    [champions, historyItems, laneKey, latestStats, rankKey, sort],
+    () => sortPreparedRows(rowsBySlice[`${rankKey}|${laneKey}`] || [], sort) as Row[],
+    [laneKey, rankKey, rowsBySlice, sort],
   );
+
+  const tableMinHeight = useMemo(() => {
+    const rowCount = Math.max(maxRowCount || 0, rows.length || 0, 12);
+    const headerHeight = 68;
+    const rowHeight = 48;
+    const footerHeight = 20;
+
+    return headerHeight + rowCount * rowHeight + footerHeight;
+  }, [maxRowCount, rows.length]);
 
   const formattedUpdatedAt = useMemo(() => {
     if (!updatedAt) return null;
@@ -130,7 +112,10 @@ export default function WinratesClient({
             </div>
           </section>
 
-          <section className={styles.tableFrame}>
+          <section
+            className={styles.tableFrame}
+            style={{ minHeight: `${tableMinHeight}px` }}
+          >
             <div className={styles.tableTop}>
               <div>
                 <strong className={styles.tableTitle}>Сводная таблица</strong>

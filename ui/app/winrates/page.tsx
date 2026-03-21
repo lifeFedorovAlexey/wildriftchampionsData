@@ -1,6 +1,6 @@
 import WinratesClient from "./WinratesClient";
 import {
-  buildLatestMap,
+  buildPreparedWinrateSlices,
   buildStatsUrls,
   fetchJson,
 } from "./winrates-lib.js";
@@ -20,16 +20,31 @@ type HistoryItem = {
   slug: string;
   rank: string;
   lane: string;
+  position?: number | null;
   winRate?: number | null;
   pickRate?: number | null;
   banRate?: number | null;
   strengthLevel?: number | null;
 };
 
+type PreparedRow = {
+  slug: string;
+  name: string;
+  icon: string | null;
+  winRate: number | null;
+  pickRate: number | null;
+  banRate: number | null;
+  strengthLevel: number | null;
+  tierLabel: string;
+  tierColor: string;
+  positionDelta: number | null;
+  positionTrend: Array<number | null>;
+};
+
 export default async function Page() {
   let champions: Champion[] = [];
-  let latestStats: Record<string, HistoryItem> | null = null;
-  let historyItems: HistoryItem[] = [];
+  let rowsBySlice: Record<string, PreparedRow[]> = {};
+  let maxRowCount = 0;
   let error: string | null = null;
   let updatedAt: string | null = null;
 
@@ -55,8 +70,17 @@ export default async function Page() {
       next: { revalidate },
     })) as { items?: HistoryItem[] };
 
-    historyItems = Array.isArray(histJson.items) ? histJson.items : [];
-    latestStats = buildLatestMap(historyItems);
+    const historyItems = Array.isArray(histJson.items) ? histJson.items : [];
+    const prepared = buildPreparedWinrateSlices({
+      champions,
+      historyItems,
+    }) as {
+      rowsBySlice: Record<string, PreparedRow[]>;
+      maxRowCount: number;
+    };
+
+    rowsBySlice = prepared.rowsBySlice;
+    maxRowCount = prepared.maxRowCount;
   } catch (err) {
     console.error("Winrates load error:", err);
     error = "Не удалось загрузить статистику винрейтов.";
@@ -64,9 +88,8 @@ export default async function Page() {
 
   return (
     <WinratesClient
-      champions={champions}
-      latestStats={latestStats}
-      historyItems={historyItems}
+      rowsBySlice={rowsBySlice}
+      maxRowCount={maxRowCount}
       error={error}
       updatedAt={updatedAt}
     />
