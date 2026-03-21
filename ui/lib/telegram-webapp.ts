@@ -24,8 +24,26 @@ type TelegramWindow = Window & {
   };
 };
 
+export const TELEGRAM_WEBAPP_READY_EVENT = "telegram-webapp-ready";
+
 export function getTelegramWebApp() {
   if (typeof window === "undefined") return undefined;
 
   return (window as TelegramWindow).Telegram?.WebApp;
+}
+
+export function initTelegramWebAppAppearance() {
+  const webApp = getTelegramWebApp();
+  if (!webApp) return false;
+
+  webApp.ready?.();
+  webApp.expand?.();
+
+  try {
+    webApp.setHeaderColor?.("#0b1220");
+    webApp.setBackgroundColor?.("#0b1220");
+    webApp.setColorScheme?.("dark");
+  } catch {}
+
+  return true;
 }

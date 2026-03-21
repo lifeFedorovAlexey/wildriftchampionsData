@@ -1,7 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { getTelegramWebApp } from "@/lib/telegram-webapp";
+import React, { useEffect, useState } from "react";
+import {
+  getTelegramWebApp,
+  TELEGRAM_WEBAPP_READY_EVENT,
+} from "@/lib/telegram-webapp";
 import styles from "./MenuHeader.module.css";
 
 type Props = {
@@ -28,7 +31,23 @@ export default function MenuHeader({
   telegramHref = "https://t.me/life_wr_bot",
   telegramLabel = "@life_wr_bot",
 }: Props) {
-  const [isTelegramWebApp] = useState<boolean>(() => detectTelegramWebApp());
+  const [isTelegramWebApp, setIsTelegramWebApp] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const syncTelegramState = () => {
+      setIsTelegramWebApp(detectTelegramWebApp());
+    };
+
+    syncTelegramState();
+    window.addEventListener(TELEGRAM_WEBAPP_READY_EVENT, syncTelegramState);
+
+    return () => {
+      window.removeEventListener(
+        TELEGRAM_WEBAPP_READY_EVENT,
+        syncTelegramState
+      );
+    };
+  }, []);
 
   return (
     <header className={styles.menuHeader}>
@@ -44,7 +63,7 @@ export default function MenuHeader({
         </div>
       ) : null}
 
-      {!isTelegramWebApp ? (
+      {isTelegramWebApp === false ? (
         <p className={styles.telegramLine}>
           Tg:{" "}
           <a

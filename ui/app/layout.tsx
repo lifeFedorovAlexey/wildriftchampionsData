@@ -100,11 +100,6 @@ export default function RootLayout({
       </head>
 
       <body>
-        <Script
-          src="https://telegram.org/js/telegram-web-app.js"
-          strategy="beforeInteractive"
-        />
-
         <TelegramInit />
 
         {/* ✅ ВАЖНО: оборачиваем children */}

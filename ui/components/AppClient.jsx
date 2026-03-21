@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getTelegramWebApp } from "@/lib/telegram-webapp";
+import {
+  getTelegramWebApp,
+  initTelegramWebAppAppearance,
+  TELEGRAM_WEBAPP_READY_EVENT,
+} from "@/lib/telegram-webapp";
 import { API_BASE, INQ_TWITCH_URL } from "@/constants/apiBase";
 
 const VIEWS = {
@@ -49,22 +53,28 @@ function MenuButton({ title, onClick }) {
 }
 
 export default function AppClient() {
-  const tg = getTelegramWebApp() ?? null;
   const [view, setView] = useState(VIEWS.MENU);
   const [updatedAt, setUpdatedAt] = useState(null);
+  const [telegramReadyTick, setTelegramReadyTick] = useState(0);
+  const tg = getTelegramWebApp() ?? null;
+
+  useEffect(() => {
+    const onTelegramReady = () => {
+      setTelegramReadyTick((tick) => tick + 1);
+    };
+
+    onTelegramReady();
+    window.addEventListener(TELEGRAM_WEBAPP_READY_EVENT, onTelegramReady);
+
+    return () => {
+      window.removeEventListener(TELEGRAM_WEBAPP_READY_EVENT, onTelegramReady);
+    };
+  }, []);
 
   useEffect(() => {
     if (!tg) return;
-
-    tg.ready?.();
-    tg.expand?.();
-
-    try {
-      tg.setHeaderColor?.("#0b1220");
-      tg.setBackgroundColor?.("#0b1220");
-      tg.setColorScheme?.("dark");
-    } catch {}
-  }, [tg]);
+    initTelegramWebAppAppearance();
+  }, [tg, telegramReadyTick]);
 
   useEffect(() => {
     const user = tg?.initDataUnsafe?.user;
@@ -80,7 +90,7 @@ export default function AppClient() {
         lastName: user.last_name || null,
       }),
     }).catch(() => {});
-  }, [tg]);
+  }, [tg, telegramReadyTick]);
 
   useEffect(() => {
     let cancelled = false;

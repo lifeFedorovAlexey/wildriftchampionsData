@@ -1,22 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
-import { getTelegramWebApp } from "@/lib/telegram-webapp";
+import { useEffect, useState } from "react";
+import Script from "next/script";
+import {
+  TELEGRAM_WEBAPP_READY_EVENT,
+  initTelegramWebAppAppearance,
+} from "@/lib/telegram-webapp";
 
 export default function TelegramInit() {
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
-    const webApp = getTelegramWebApp();
-    if (!webApp) return;
+    if (!loaded && !initTelegramWebAppAppearance()) return;
 
-    webApp.ready?.();
-    webApp.expand?.();
+    window.dispatchEvent(new Event(TELEGRAM_WEBAPP_READY_EVENT));
+  }, [loaded]);
 
-    try {
-      webApp.setHeaderColor?.("#0b1220");
-      webApp.setBackgroundColor?.("#0b1220");
-      webApp.setColorScheme?.("dark");
-    } catch {}
-  }, []);
-
-  return null;
+  return (
+    <Script
+      src="https://telegram.org/js/telegram-web-app.js"
+      strategy="afterInteractive"
+      onLoad={() => setLoaded(true)}
+    />
+  );
 }
