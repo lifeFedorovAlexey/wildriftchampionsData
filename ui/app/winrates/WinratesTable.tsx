@@ -162,7 +162,7 @@ export default function WinratesTable({
 }) {
   return (
     <div className={styles.wrap}>
-      <div className={`${styles.grid} ${styles.header}`} role="row">
+      <div className={`${styles.grid} ${styles.header}`}>
         <div className={styles.left}>#</div>
         <div className={styles.left}>Герой</div>
         <div className={styles.center}>7д</div>
@@ -227,7 +227,6 @@ export default function WinratesTable({
           <div
             key={row.slug}
             className={`${styles.grid} ${styles.row}`}
-            role="row"
           >
             <div className={styles.index}>{idx + 1}</div>
 

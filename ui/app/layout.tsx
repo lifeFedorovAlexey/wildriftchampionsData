@@ -73,15 +73,8 @@ export default function RootLayout({
       <head>
         <meta name="color-scheme" content="dark" />
 
-        <link
-          rel="preconnect"
-          href="https://game.gtimg.cn"
-          crossOrigin="anonymous"
-        />
-        <link rel="dns-prefetch" href="//game.gtimg.cn" />
-
         {/* Yandex.Metrika */}
-        <Script id="yandex-metrika" strategy="afterInteractive">
+        <Script id="yandex-metrika" strategy="lazyOnload">
           {`
             (function(m,e,t,r,i,k,a){
               m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; 
