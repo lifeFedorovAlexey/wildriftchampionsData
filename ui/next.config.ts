@@ -1,5 +1,10 @@
 import type { NextConfig } from "next";
 
+const apiProxyTarget =
+  process.env.API_PROXY_TARGET ||
+  process.env.STATS_API_ORIGIN ||
+  "https://wr-api.vercel.app";
+
 const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
@@ -25,7 +30,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/wr-api/:path*",
-        destination: "https://wr-api.vercel.app/:path*",
+        destination: `${apiProxyTarget}/:path*`,
       },
     ];
   },

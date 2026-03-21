@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getTelegramWebApp } from "@/lib/telegram-webapp";
-
-const API_BASE = "https://wr-api.vercel.app";
-const INQ_TWITCH_URL = "https://www.twitch.tv/inq_wr";
+import { API_BASE, INQ_TWITCH_URL } from "@/constants/apiBase";
 
 const VIEWS = {
   MENU: "menu",

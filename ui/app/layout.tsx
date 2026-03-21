@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import TelegramInit from "@/components/TelegramInit";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import StyledComponentsRegistry from "./StyledComponentsRegistry";
 
 export const metadata: Metadata = {
@@ -117,8 +116,6 @@ export default function RootLayout({
 
         {/* ✅ ВАЖНО: оборачиваем children */}
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-
-        <SpeedInsights />
 
         <noscript>
           <div>
