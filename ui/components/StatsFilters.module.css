@@ -1,0 +1,29 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.extra {
+  display: flex;
+  justify-content: center;
+}
+
+.compact {
+  gap: 8px;
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    gap: 12px;
+  }
+
+  .compact {
+    gap: 10px;
+  }
+}

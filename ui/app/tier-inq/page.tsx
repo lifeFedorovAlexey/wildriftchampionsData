@@ -2,8 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
-import RankFilter from "@/components/RankFilter";
-import LaneFilter from "@/components/LaneFilter";
+import StatsFilters from "@/components/StatsFilters";
 import StreamerSocials from "@/components/StreamerSocials";
 
 import LoadingRing from "@/components/LoadingRing";
@@ -398,10 +397,12 @@ export default function TierlistInqPage() {
   );
 
   const filters = (
-    <>
-      <RankFilter value={rankKey} onChange={setRankKey} />
-      <LaneFilter value={laneKey} onChange={setLaneKey} />
-    </>
+    <StatsFilters
+      rankValue={rankKey}
+      onRankChange={setRankKey}
+      laneValue={laneKey}
+      onLaneChange={setLaneKey}
+    />
   );
 
   if (loading) return <LoadingRing label="Считаю тир-лист…" />;

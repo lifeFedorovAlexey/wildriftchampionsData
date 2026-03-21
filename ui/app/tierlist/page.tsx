@@ -3,8 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
-import RankFilter from "@/components/RankFilter";
-import LaneFilter from "@/components/LaneFilter";
+import StatsFilters from "@/components/StatsFilters";
 import LoadingRing from "@/components/LoadingRing";
 
 import { API_BASE } from "@/constants/apiBase";
@@ -159,9 +158,12 @@ export default function TierlistPage() {
         <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
       ) : (
         <TlWrap>
-          {/* filters */}
-          <RankFilter value={rankKey} onChange={setRankKey} />
-          <LaneFilter value={laneKey} onChange={setLaneKey} />
+          <StatsFilters
+            rankValue={rankKey}
+            onRankChange={setRankKey}
+            laneValue={laneKey}
+            onLaneChange={setLaneKey}
+          />
 
           <TlHeader>
             <TlTitle>Тир-лист чемпионов</TlTitle>

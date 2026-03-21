@@ -5,8 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
 import TrendChartBlock from "@/components/TrendCharts";
 
-import RankFilter from "@/components/RankFilter";
-import LaneFilter from "@/components/LaneFilter";
+import StatsFilters from "@/components/StatsFilters";
 
 import ChampionSearch from "@/components/ChampionSearch";
 
@@ -242,11 +241,13 @@ export default function Page() {
       />
 
       {!loading && (
-        <>
-          <RankFilter value={rankKey} onChange={setRankKey} />
-          <LaneFilter value={laneKey} onChange={setLaneKey} />
-          <RangeFilter value={range} onChange={setRange} />
-        </>
+        <StatsFilters
+          rankValue={rankKey}
+          onRankChange={setRankKey}
+          laneValue={laneKey}
+          onLaneChange={setLaneKey}
+          extraControls={<RangeFilter value={range} onChange={setRange} />}
+        />
       )}
 
       {!selectedChampion && <TextHint>Выбери чемпиона.</TextHint>}

@@ -2,9 +2,8 @@
 
 import { useMemo, useState } from "react";
 
-import LaneFilter from "@/components/LaneFilter";
 import PageWrapper from "@/components/PageWrapper";
-import RankFilter from "@/components/RankFilter";
+import StatsFilters from "@/components/StatsFilters";
 import styles from "./WinratesClient.module.css";
 import WinratesTable from "./WinratesTable";
 import { buildWinrateRows, nextSortState } from "./winrates-lib.js";
@@ -119,11 +118,13 @@ export default function WinratesClient({
         <div className={styles.shell}>
           <section className={styles.filtersPanel}>
             <div className={styles.filterSection}>
-              <RankFilter value={rankKey} onChange={onRankChange} />
-            </div>
-
-            <div className={styles.filterSection}>
-              <LaneFilter value={laneKey} onChange={onLaneChange} />
+              <StatsFilters
+                rankValue={rankKey}
+                onRankChange={onRankChange}
+                laneValue={laneKey}
+                onLaneChange={onLaneChange}
+                compact
+              />
             </div>
           </section>
 
