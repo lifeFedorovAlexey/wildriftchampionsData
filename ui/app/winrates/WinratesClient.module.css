@@ -8,7 +8,7 @@
   gap: 18px;
   padding: 14px 16px;
   border: none;
-  border-radius: 22px;
+  border-radius: var(--radius-lg);
   background: transparent;
   box-shadow: none;
 }
@@ -21,8 +21,8 @@
 .tableFrame {
   overflow: hidden;
   border: 1px solid rgba(148, 163, 184, 0.14);
-  border-radius: 24px;
-  background: transparent;
+  border-radius: var(--radius-xl);
+  background: rgba(8, 15, 29, 0.92);
   box-shadow: none;
   contain: layout paint;
 }
@@ -49,7 +49,7 @@
 
 .tableMeta {
   margin: 6px 0 0;
-  color: rgba(125, 211, 252, 0.72);
+  color: rgba(184, 220, 245, 0.78);
   font-size: 12px;
   line-height: 1.4;
   min-height: 17px;
@@ -58,7 +58,7 @@
 .errorBox {
   padding: 14px 16px;
   border: 1px solid rgba(248, 113, 113, 0.28);
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   background: rgba(127, 29, 29, 0.22);
   color: #fecaca;
 }
@@ -103,7 +103,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(191, 219, 254, 0.12),
+    rgba(224, 241, 253, 0.12),
     transparent
   );
   animation: skeleton-shimmer 1.4s ease-in-out infinite;
@@ -112,52 +112,52 @@
 .skeletonChip {
   width: 84px;
   height: 34px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .skeletonLane {
   width: 44px;
   height: 44px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .skeletonAvatar {
   width: 32px;
   height: 32px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   flex: 0 0 auto;
 }
 
 .skeletonName {
   width: 86px;
   height: 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .skeletonTrend {
   width: 38px;
   height: 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .skeletonValue {
   width: 22px;
   height: 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .skeletonTier {
   display: inline-block;
   width: 28px;
   height: 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .skeletonMetric {
   display: inline-block;
   width: 46px;
   height: 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 @keyframes skeleton-shimmer {

@@ -16,18 +16,18 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   background: ${COLORS.cardBg};
   border: 1px solid ${COLORS.cardBorder};
   overflow: hidden;
 `;
 
 export const CardInner = styled.div`
-  padding: 10px;
+  padding: var(--space-3);
   box-sizing: border-box;
 
   ${mqMin(BREAKPOINTS.desktop)} {
-    padding: 14px;
+    padding: var(--space-4);
   }
 `;
 
@@ -48,8 +48,8 @@ interface SectionTitleProps {
 export const SectionTitle = styled.div<SectionTitleProps>`
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 6px;
-  padding: ${(p) => (p.$pad ? "5px" : "0")};
+  margin-bottom: var(--space-2);
+  padding: ${(p) => (p.$pad ? "var(--space-1)" : "0")};
 `;
 
 interface PillButtonProps {
@@ -60,9 +60,9 @@ interface PillButtonProps {
 }
 
 export const PillButton = styled.button<PillButtonProps>`
-  padding: 4px 10px;
+  padding: var(--space-1) 10px;
   font-size: 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all 0.12s ease-out;
   user-select: none;

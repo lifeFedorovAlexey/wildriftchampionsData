@@ -1,12 +1,15 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ChampionAvatar from "@/components/ui/ChampionAvatar";
+import SearchField from "@/components/ui/SearchField";
 
 import styles from "./index.module.css";
 
 type GuideListItem = {
   slug: string;
   name: string;
+  localizedName?: string | null;
   title?: string | null;
   iconUrl?: string | null;
   patch?: string | null;
@@ -84,6 +87,7 @@ export default function GuidesIndexClient({
       const roles = getDisplayRoles(item);
       const haystack = [
         item.name,
+        item.localizedName || "",
         item.title || "",
         item.slug,
         roles.join(" "),
@@ -99,13 +103,12 @@ export default function GuidesIndexClient({
   return (
     <section className={styles.page}>
       <div className={styles.searchWrap}>
-        <input
+        <SearchField
           className={styles.search}
-          type="search"
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={setQuery}
           placeholder="Найти чемпиона или роль"
-          aria-label="Поиск по гайдам"
+          ariaLabel="Поиск по гайдам"
         />
         <div className={styles.meta}>
           {filteredItems.length} из {items.length}
@@ -119,11 +122,16 @@ export default function GuidesIndexClient({
           return (
             <a key={item.slug} className={styles.card} href={`/guides/${item.slug}`}>
               <div className={styles.cardTop}>
-                {item.iconUrl ? (
-                  <img className={styles.icon} src={item.iconUrl} alt={item.name} />
-                ) : (
-                  <div className={styles.iconFallback}>{item.name.slice(0, 1)}</div>
-                )}
+                <ChampionAvatar
+                  name={item.name}
+                  src={item.iconUrl}
+                  mobileSize={68}
+                  desktopSize={68}
+                  mobileRadius={16}
+                  desktopRadius={16}
+                  className={styles.icon}
+                  fallbackClassName={styles.iconFallback}
+                />
 
                 <div className={styles.titleWrap}>
                   <h2 className={styles.name}>{item.name}</h2>

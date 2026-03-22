@@ -9,7 +9,7 @@
   gap: 16px;
   padding: 22px;
   min-height: 340px;
-  border-radius: 28px;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-soft);
   overflow: hidden;
   background:
@@ -63,7 +63,7 @@
 .heroIcon {
   width: 88px;
   height: 88px;
-  border-radius: 24px;
+  border-radius: var(--radius-lg);
   object-fit: cover;
   border: 1px solid var(--border-strong);
 }
@@ -107,7 +107,7 @@
   align-items: center;
   min-height: 44px;
   padding: 8px 14px 8px 16px;
-  border-radius: 16px 9px 16px 9px;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(139, 163, 199, 0.24);
   background:
     linear-gradient(180deg, rgba(18, 24, 38, 0.82), rgba(10, 14, 26, 0.88));
@@ -117,14 +117,9 @@
   font-size: 13px;
   letter-spacing: 0.01em;
   cursor: pointer;
-  transition:
-    border-color 140ms ease,
-    transform 140ms ease,
-    background 140ms ease,
+  transition: border-color 140ms ease, transform 140ms ease, background 140ms ease,
     box-shadow 140ms ease;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 10px 24px rgba(2, 6, 23, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 24px rgba(2, 6, 23, 0.16);
 }
 
 .variantTab strong,
@@ -133,7 +128,7 @@
   place-items: center;
   width: 22px;
   height: 22px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: linear-gradient(180deg, rgba(250, 204, 21, 0.92), rgba(202, 138, 4, 0.92));
   color: #111827;
   font-size: 11px;
@@ -156,11 +151,11 @@
 
 .metaPill {
   display: inline-flex;
-  gap: 9px;
+  gap: 8px;
   align-items: center;
-  min-height: 40px;
-  padding: 8px 14px;
-  border-radius: 999px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
   background:
     linear-gradient(180deg, rgba(15, 21, 35, 0.84), rgba(8, 12, 22, 0.88));
   border: 1px solid rgba(123, 144, 180, 0.2);
@@ -171,15 +166,15 @@
 
 .metaPillLabel {
   color: rgba(191, 203, 227, 0.72);
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
 
 .metaPillValue {
   color: var(--text-strong);
-  font-weight: 900;
-  font-size: 13px;
+  font-weight: 800;
+  font-size: 12px;
   letter-spacing: 0.01em;
 }
 
@@ -210,7 +205,7 @@
 
 .panel {
   padding: 18px;
-  border-radius: 24px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-soft);
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(11, 17, 31, 0.96));
   box-shadow: var(--panel-shadow);
@@ -234,7 +229,7 @@
 .buildSection {
   grid-column: span 4;
   padding: 14px;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.78);
   border: 1px solid var(--border-soft);
   min-height: 100%;
@@ -243,7 +238,7 @@
 .buildSectionWide {
   grid-column: span 12;
   padding: 14px;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.78);
   border: 1px solid var(--border-soft);
 }
@@ -285,7 +280,7 @@
   height: 56px;
   margin: 0 auto;
   display: block;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   object-fit: cover;
   border: 2px solid rgba(125, 211, 252, 0.44);
   background: rgba(11, 16, 36, 0.96);
@@ -323,7 +318,7 @@
   z-index: 20;
   width: min(320px, calc(100vw - 32px));
   padding: 14px;
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   background: rgba(8, 10, 18, 0.98);
   border: 1px solid var(--border-strong);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.46);
@@ -352,7 +347,7 @@
 .tooltipImage {
   width: 52px;
   height: 52px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
   flex: 0 0 auto;
 }
@@ -465,7 +460,7 @@
 .skillLevel,
 .skillLevelActive {
   min-height: 34px;
-  border-radius: 6px;
+  border-radius: var(--radius-xs);
   background: rgba(24, 28, 63, 0.94);
   border: 1px solid rgba(112, 113, 168, 0.18);
   display: grid;
@@ -506,7 +501,7 @@
   height: 84px;
   margin: 0 auto;
   display: block;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   object-fit: cover;
   border: 2px solid rgba(125, 211, 252, 0.44);
   box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.1);
@@ -519,7 +514,7 @@
 
 .situationalRow {
   padding: 12px;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.74);
 }
 
@@ -583,7 +578,7 @@
   align-content: start;
   min-height: 100%;
   padding: 16px;
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.78);
 }
 
@@ -603,7 +598,7 @@
 .patchIcon {
   width: 52px;
   height: 52px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
 }
 
@@ -619,7 +614,7 @@
   width: 120px;
   height: 32px;
   padding: 0 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
   background: rgba(125, 211, 252, 0.14);
   border: 1px solid rgba(125, 211, 252, 0.36);
   color: var(--accent-blue);
@@ -634,7 +629,7 @@
 
 .patchCard {
   padding: 16px;
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.78);
 }
 
@@ -679,7 +674,7 @@
   .variantTab,
   .variantTabActive,
   .metaPill {
-    min-height: 40px;
+    min-height: 36px;
   }
 
   .buildGrid {

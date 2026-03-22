@@ -1,15 +1,15 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
 }
 
 .tile {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9; /* ✅ Карточка теперь горизонтальная! */
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   background: #111;
@@ -29,7 +29,7 @@
   right: 0;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
   color: white;
-  padding: 10px;
+  padding: var(--space-2);
   font-weight: bold;
   font-size: 0.9em;
   text-align: center;

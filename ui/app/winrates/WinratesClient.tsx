@@ -1,16 +1,26 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
-import StatsFilters from "@/components/StatsFilters";
+import {
+  FiltersSkeleton,
+  TableSkeleton,
+} from "@/components/ui/LazySkeletons";
 import styles from "./WinratesClient.module.css";
-import WinratesTable from "./WinratesTable";
 import {
   applyPreparedMovement,
   nextSortState,
   sortPreparedRows,
 } from "./winrates-lib.js";
+
+const StatsFilters = dynamic(() => import("@/components/StatsFilters"), {
+  loading: () => <FiltersSkeleton />,
+});
+const WinratesTable = dynamic(() => import("./WinratesTable"), {
+  loading: () => <TableSkeleton />,
+});
 
 type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
 type LaneKey = "top" | "jungle" | "mid" | "adc" | "support";
@@ -36,18 +46,69 @@ type Row = {
   positionTrend: Array<number | null>;
 };
 
+function WinratesContent({
+  rows,
+  sort,
+  onSort,
+  formattedUpdatedAt,
+  rankKey,
+  onRankChange,
+  laneKey,
+  onLaneChange,
+}: {
+  rows: Row[];
+  sort: SortState;
+  onSort: (column: "winRate" | "pickRate" | "banRate" | "strengthLevel") => void;
+  formattedUpdatedAt: string | null;
+  rankKey: RankKey;
+  onRankChange: (key: string) => void;
+  laneKey: LaneKey;
+  onLaneChange: (key: string) => void;
+}) {
+  return (
+    <div className={styles.shell}>
+      <section className={styles.filtersPanel}>
+        <div className={styles.filterSection}>
+          <StatsFilters
+            rankValue={rankKey}
+            onRankChange={onRankChange}
+            laneValue={laneKey}
+            onLaneChange={onLaneChange}
+            compact
+          />
+        </div>
+      </section>
+
+      <section className={styles.tableFrame}>
+        <div className={styles.tableTop}>
+          <div>
+            <strong className={styles.tableTitle}>Сводная таблица</strong>
+            {formattedUpdatedAt ? (
+              <p className={styles.tableMeta}>Дата прогона: {formattedUpdatedAt}</p>
+            ) : null}
+          </div>
+        </div>
+
+        <WinratesTable rows={rows} sort={sort} onSort={onSort} />
+      </section>
+    </div>
+  );
+}
+
 export default function WinratesClient({
   rowsBySlice,
   sliceHistoryByKey,
   maxRowCount,
   error,
   updatedAt,
+  embedded = false,
 }: {
   rowsBySlice: Record<string, Row[]>;
   sliceHistoryByKey: Record<string, Array<{ date: string; rows: Row[] }>>;
   maxRowCount: number;
   error: string | null;
   updatedAt: string | null;
+  embedded?: boolean;
 }) {
   const [rankKey, setRankKey] = useState<RankKey>("diamondPlus");
   const [laneKey, setLaneKey] = useState<LaneKey>("top");
@@ -55,6 +116,8 @@ export default function WinratesClient({
     column: "winRate",
     dir: "desc",
   });
+
+  void maxRowCount;
 
   const sliceKey = `${rankKey}|${laneKey}`;
   const rows = useMemo(() => {
@@ -90,46 +153,35 @@ export default function WinratesClient({
     setSort((prev) => nextSortState(prev, column) as SortState);
   };
 
+  if (error) {
+    return <div className={styles.errorBox}>{error}</div>;
+  }
+
+  const content = (
+    <WinratesContent
+      rows={rows}
+      sort={sort}
+      onSort={onSort}
+      formattedUpdatedAt={formattedUpdatedAt}
+      rankKey={rankKey}
+      onRankChange={onRankChange}
+      laneKey={laneKey}
+      onLaneChange={onLaneChange}
+    />
+  );
+
+  if (embedded) {
+    return content;
+  }
+
   return (
     <PageWrapper
-      showBack
       title="Винрейты, пики и баны чемпионов Wild Rift"
       paragraphs={[
         "Смотри актуальную силу чемпионов по линиям и рангам: винрейт, пикрейт, банрейт и итоговый тир на одном экране.",
       ]}
     >
-      {error ? (
-        <div className={styles.errorBox}>{error}</div>
-      ) : (
-        <div className={styles.shell}>
-          <section className={styles.filtersPanel}>
-            <div className={styles.filterSection}>
-              <StatsFilters
-                rankValue={rankKey}
-                onRankChange={onRankChange}
-                laneValue={laneKey}
-                onLaneChange={onLaneChange}
-                compact
-              />
-            </div>
-          </section>
-
-          <section className={styles.tableFrame}>
-            <div className={styles.tableTop}>
-              <div>
-                <strong className={styles.tableTitle}>Сводная таблица</strong>
-                {formattedUpdatedAt ? (
-                  <p className={styles.tableMeta}>
-                    Дата прогона: {formattedUpdatedAt}
-                  </p>
-                ) : null}
-              </div>
-            </div>
-
-            <WinratesTable rows={rows} sort={sort} onSort={onSort} />
-          </section>
-        </div>
-      )}
+      {content}
     </PageWrapper>
   );
 }

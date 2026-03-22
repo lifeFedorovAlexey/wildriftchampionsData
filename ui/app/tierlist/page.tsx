@@ -1,8 +1,12 @@
-import TierlistClient from "./TierlistClient";
+import dynamic from "next/dynamic";
+import { TierlistSkeleton } from "@/components/ui/LazySkeletons";
+import { getStatsApiBaseUrl } from "../../lib/stats-api-origin.js";
+
+const TierlistClient = dynamic(() => import("./TierlistClient"), {
+  loading: () => <TierlistSkeleton />,
+});
 
 export const revalidate = 60;
-
-const DEFAULT_STATS_API_ORIGIN = "http://127.0.0.1:3001";
 
 type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
 type LaneKey = "top" | "jungle" | "mid" | "adc" | "support";
@@ -33,14 +37,7 @@ export default async function Page() {
   let error: string | null = null;
 
   try {
-    const baseUrl = String(
-      process.env.API_PROXY_TARGET ||
-      process.env.NEXT_PUBLIC_STATS_API_ORIGIN ||
-        process.env.STATS_API_ORIGIN ||
-        process.env.NEXT_PUBLIC_API_ORIGIN ||
-        process.env.API_ORIGIN ||
-        DEFAULT_STATS_API_ORIGIN,
-    ).replace(/\/+$/, "");
+    const baseUrl = getStatsApiBaseUrl(process.env);
 
     const response = await fetch(`${baseUrl}/api/tierlist-bulk?lang=ru_ru`, {
       next: { revalidate },

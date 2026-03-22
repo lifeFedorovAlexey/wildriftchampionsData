@@ -33,7 +33,6 @@ function SkeletonRow({ index }: { index: number }) {
 export default function Loading() {
   return (
     <PageWrapper
-      showBack
       title="Винрейты, пики и баны чемпионов Wild Rift"
       paragraphs={[
         "Смотри актуальную силу чемпионов по линиям и рангам: винрейт, пикрейт, банрейт и итоговый тир на одном экране.",

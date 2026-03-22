@@ -2,7 +2,7 @@
 
 import React from "react";
 import { RANK_OPTIONS } from "./screensConstants";
-import styles from "./RankFilter.module.css";
+import { PillButton, PillGroup } from "./ui/PillGroup";
 
 export type RankKey = (typeof RANK_OPTIONS)[number]["key"];
 
@@ -18,22 +18,21 @@ export function RankFilter<T extends string = RankKey>({
   options = RANK_OPTIONS as unknown as ReadonlyArray<{ key: T; label: string }>,
 }: RankFilterProps<T>) {
   return (
-    <div className={styles.rankFilter}>
+    <PillGroup>
       {options.map((opt) => {
         const active = opt.key === value;
 
         return (
-          <button
+          <PillButton
             key={opt.key}
-            type="button"
+            active={active}
             onClick={() => onChange(opt.key)}
-            className={`${styles.chip} ${active ? styles.active : ""}`.trim()}
           >
             {opt.label}
-          </button>
+          </PillButton>
         );
       })}
-    </div>
+    </PillGroup>
   );
 }
 

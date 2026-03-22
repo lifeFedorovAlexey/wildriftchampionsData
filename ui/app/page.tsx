@@ -1,96 +1,119 @@
-import Footer from "@/components/Footer";
-import MenuButton from "@/components/MenuButton";
-import PageWrapper from "@/components/PageWrapper";
+import dynamic from "next/dynamic";
+import { WinratesSkeleton } from "@/components/ui/LazySkeletons";
 import {
-  IconPicksBans,
-  IconSkins,
-  IconTierInq,
-  IconTierlist,
-  IconTrends,
-  IconWinrate,
-} from "@/components/icons/MenuIcons";
+  buildPreparedWinrateSlices,
+  buildStatsUrls,
+  fetchJson,
+} from "./winrates/winrates-lib.js";
+import styles from "./page.module.css";
 
-const BUTTON_GRADIENTS = {
-  blue: "linear-gradient(135deg, rgba(37,99,235,0.28), rgba(56,189,248,0.2) 55%, rgba(129,140,248,0.34))",
-  green:
-    "linear-gradient(135deg, rgba(13,148,136,0.26), rgba(16,185,129,0.18) 55%, rgba(52,211,153,0.32))",
-  purple:
-    "linear-gradient(135deg, rgba(91,33,182,0.28), rgba(139,92,246,0.2) 58%, rgba(168,85,247,0.34))",
-  gold: "linear-gradient(135deg, rgba(180,83,9,0.26), rgba(245,158,11,0.18) 55%, rgba(251,191,36,0.34))",
-  crimson:
-    "linear-gradient(135deg, rgba(153,27,27,0.28), rgba(239,68,68,0.18) 55%, rgba(248,113,113,0.34))",
+const WinratesClient = dynamic(() => import("./winrates/WinratesClient"), {
+  loading: () => <WinratesSkeleton embedded />,
+});
+
+const language = "ru_ru";
+
+export const revalidate = 60;
+
+type Champion = {
+  slug: string;
+  name?: string | null;
+  icon?: string | null;
 };
 
-export default function HomePage() {
+type HistoryItem = {
+  date: string;
+  slug: string;
+  rank: string;
+  lane: string;
+  position?: number | null;
+  winRate?: number | null;
+  pickRate?: number | null;
+  banRate?: number | null;
+  strengthLevel?: number | null;
+};
+
+type PreparedRow = {
+  slug: string;
+  name: string;
+  icon: string | null;
+  winRate: number | null;
+  pickRate: number | null;
+  banRate: number | null;
+  strengthLevel: number | null;
+  tierLabel: string;
+  tierColor: string;
+  positionDelta: number | null;
+  positionTrend: Array<number | null>;
+};
+
+export default async function HomePage() {
+  let champions: Champion[] = [];
+  let rowsBySlice: Record<string, PreparedRow[]> = {};
+  let sliceHistoryByKey: Record<string, Array<{ date: string; rows: PreparedRow[] }>> = {};
+  let maxRowCount = 0;
+  let error: string | null = null;
+  let updatedAt: string | null = null;
+
+  try {
+    const { championsUrl, historyUrl, updatedAtUrl } = buildStatsUrls(language);
+
+    const [champsJson, updatedJson] = await Promise.all([
+      fetchJson(championsUrl, { next: { revalidate } }) as Promise<Champion[]>,
+      fetchJson(updatedAtUrl, {
+        next: { revalidate },
+      }) as Promise<{ updatedAt?: string | null }>,
+    ]);
+
+    champions = Array.isArray(champsJson) ? champsJson : [];
+    updatedAt =
+      typeof updatedJson?.updatedAt === "string" ? updatedJson.updatedAt : null;
+
+    const snapshotUrl = updatedAt
+      ? `${historyUrl}?updatedAt=${encodeURIComponent(updatedAt)}`
+      : historyUrl;
+
+    const histJson = (await fetchJson(snapshotUrl, {
+      next: { revalidate },
+    })) as { items?: HistoryItem[] };
+
+    const historyItems = Array.isArray(histJson.items) ? histJson.items : [];
+    const prepared = buildPreparedWinrateSlices({
+      champions,
+      historyItems,
+    }) as {
+      rowsBySlice: Record<string, PreparedRow[]>;
+      sliceHistoryByKey: Record<string, Array<{ date: string; rows: PreparedRow[] }>>;
+      maxRowCount: number;
+    };
+
+    rowsBySlice = prepared.rowsBySlice;
+    sliceHistoryByKey = prepared.sliceHistoryByKey;
+    maxRowCount = prepared.maxRowCount;
+  } catch (err) {
+    console.error("Home winrates load error:", err);
+    error = "Не удалось загрузить статистику чемпионов.";
+  }
+
   return (
-    <PageWrapper
-      title="Wildriftallstats.ru — статистика по Wild Rift"
-      paragraphs={[
-        "Здесь собраны ключевые метрики по Wild Rift: винрейты, популярность и эффективность чемпионов.",
-        "Данные обновляются регулярно, чтобы можно было быстро понять, что сейчас реально работает в игре.",
-      ]}
-    >
-      <div style={{ display: "grid", gap: 10 }}>
-        <MenuButton
-          title="Статистика чемпионов"
-          subtitle="Винрейты, пики и баны по линиям и рангам"
-          href="/winrates"
-          gradient={BUTTON_GRADIENTS.blue}
-          leftIcon={<IconWinrate />}
-        />
+    <div className={styles.page}>
+      <section className={styles.hero}>
+        <h1 className={styles.title}>Статистика чемпионов</h1>
+        <p className={styles.lead}>
+          Здесь собраны ключевые метрики по Wild Rift: винрейты, популярность и
+          эффективность чемпионов. Данные обновляются регулярно, чтобы можно было
+          быстро понять, что сейчас реально работает в игре.
+        </p>
+      </section>
 
-        <MenuButton
-          title="Тир-лист (авторский)"
-          subtitle="Формулы при поддержке INQ"
-          href="/tier-inq"
-          gradient={BUTTON_GRADIENTS.crimson}
-          leftIcon={<IconTierInq />}
-        />
-
-        <MenuButton
-          title="Тир-лист (по статистике)"
-          subtitle="Формируется из strength level"
-          href="/tierlist"
-          gradient={BUTTON_GRADIENTS.gold}
-          leftIcon={<IconTierlist />}
-        />
-
-        <MenuButton
-          title="Топ пики / баны"
-          subtitle="Самые популярные и банимые чемпионы"
-          href="/picks-bans"
-          gradient={BUTTON_GRADIENTS.green}
-          leftIcon={<IconPicksBans />}
-        />
-
-        <MenuButton
-          title="График трендов"
-          subtitle="Изменение винрейтов по времени"
-          href="/trends"
-          gradient={BUTTON_GRADIENTS.purple}
-          leftIcon={<IconTrends />}
-        />
-
-        <MenuButton
-          title="3D скины"
-          subtitle="Просмотр моделей чемпионов"
-          href="/skins"
-          gradient={BUTTON_GRADIENTS.blue}
-          leftIcon={<IconSkins />}
-        />
-
-        <MenuButton
-          title="Гайды"
-          subtitle="Каталог гайдов по чемпионам Wild Rift"
-          href="/guides"
-          gradient={BUTTON_GRADIENTS.gold}
-          leftIcon={<IconTierlist />}
-        />
-      </div>
-
-      <div style={{ marginTop: 18 }}>
-        <Footer />
-      </div>
-    </PageWrapper>
+      <WinratesClient
+        rowsBySlice={rowsBySlice}
+        sliceHistoryByKey={sliceHistoryByKey}
+        maxRowCount={maxRowCount}
+        error={error}
+        updatedAt={updatedAt}
+        embedded
+      />
+    </div>
   );
 }

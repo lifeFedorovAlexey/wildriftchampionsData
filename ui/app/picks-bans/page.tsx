@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import PageWrapper from "@/components/PageWrapper";
 import LoadingRing from "@/components/LoadingRing";
 import { API_BASE } from "@/constants/apiBase";
@@ -9,8 +10,6 @@ import {
   buildLaneDetails,
 } from "./picks-bans-lib";
 import {
-  TpAvatar,
-  TpAvatarImg,
   TpCard,
   TpCardIndex,
   TpCardInfo,
@@ -32,22 +31,6 @@ import {
   TpEmpty,
 } from "@/components/styled/topPicksBans";
 
-function ChampAvatarCard({ name, src }: { name: string; src?: string | null }) {
-  return (
-    <TpAvatar>
-      {src ? (
-        <TpAvatarImg
-          src={src}
-          alt={name}
-          decoding="async"
-          width="64"
-          height="64"
-        />
-      ) : null}
-    </TpAvatar>
-  );
-}
-
 function TopChampCard({
   index,
   champ,
@@ -67,7 +50,14 @@ function TopChampCard({
   return (
     <TpCard $type={type} onClick={onClick}>
       <TpCardIndex>#{index + 1}</TpCardIndex>
-      <ChampAvatarCard name={champ.name} src={imgUrl} />
+      <ChampionAvatar
+        name={champ.name}
+        src={imgUrl}
+        mobileSize={44}
+        desktopSize={64}
+        mobileRadius={14}
+        desktopRadius={18}
+      />
 
       <TpCardInfo>
         <TpCardName>{champ.name}</TpCardName>
@@ -232,14 +222,13 @@ export default function PicksBansPage() {
 
   return (
     <PageWrapper
-      showBack
       title="Пики и баны в Wild Rift"
       paragraphs={[
         "Здесь показано, каких чемпионов чаще всего выбирают и запрещают в рейтинговых матчах.",
       ]}
     >
       {error ? (
-        <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
+        <div style={{ padding: "var(--space-3)", opacity: 0.9 }}>{error}</div>
       ) : (
         <>
           <TpHeader>

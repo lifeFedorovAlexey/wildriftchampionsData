@@ -10,14 +10,14 @@ export const WrWrap = styled.div`
 export const WrGrid = styled.div`
   display: grid;
   grid-template-columns: 36px 2fr 0.7fr 0.9fr 0.9fr 0.9fr;
-  column-gap: 4px;
-  padding: 6px 8px;
+  column-gap: var(--space-1);
+  padding: var(--space-2) var(--space-2);
   align-items: center;
 
   ${mqMin(BREAKPOINTS.desktop)} {
     grid-template-columns: 54px 2.6fr 0.9fr 1fr 1fr 1fr;
-    column-gap: 10px;
-    padding: 10px 12px;
+    column-gap: var(--space-3);
+    padding: var(--space-3) var(--space-3);
   }
 `;
 
@@ -30,7 +30,7 @@ export const WrHeader = styled(WrGrid)`
   background: rgba(15, 23, 42, 0.96);
   backdrop-filter: blur(8px);
   z-index: 1;
-  margin-top: 16px;
+  margin-top: var(--space-4);
 
   ${mqMin(BREAKPOINTS.desktop)} {
     font-size: 14px;
@@ -66,11 +66,11 @@ export const WrRow = styled(WrGrid)`
 export const WrHeroCell = styled.div`
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-2);
   min-width: 0;
 
   ${mqMin(BREAKPOINTS.desktop)} {
-    gap: 10px;
+    gap: var(--space-3);
   }
 `;
 
@@ -92,7 +92,7 @@ export const WrSortable = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
+  gap: var(--space-1);
   white-space: nowrap;
   line-height: 1;
 
@@ -124,12 +124,12 @@ export const WrAvatarImg = styled(Image)`
   width: 32px;
   height: 32px;
   display: block;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
 `;
 
 export const WrEmpty = styled.div`
-  padding: 10px 8px;
+  padding: var(--space-3) var(--space-2);
   font-size: 13px;
   opacity: 0.7;
 `;

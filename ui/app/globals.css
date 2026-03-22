@@ -6,13 +6,32 @@
   --surface-0: rgba(8, 13, 27, 0.9);
   --surface-1: rgba(15, 23, 42, 0.82);
   --surface-2: rgba(17, 24, 39, 0.94);
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
   --border-soft: rgba(148, 163, 184, 0.14);
   --border-strong: rgba(148, 163, 184, 0.22);
   --text-main: #e8ecff;
   --text-strong: #f8fafc;
   --text-soft: rgba(226, 232, 240, 0.74);
-  --accent-blue: #7dd3fc;
-  --accent-indigo: #a78bfa;
+  --accent-blue: #84c0ee;
+  --accent-indigo: #84c0ee;
+  --accent-primary: #84c0ee;
+  --accent-primary-strong: #75b6e6;
+  --accent-primary-soft: rgba(132, 192, 238, 0.16);
+  --accent-primary-border: rgba(132, 192, 238, 0.38);
+  --accent-primary-text: rgba(224, 241, 253, 0.94);
   --accent-green: #86efac;
   --accent-gold: #fbbf24;
   --panel-shadow: 0 18px 50px rgba(2, 6, 23, 0.22);
@@ -20,13 +39,27 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
+  position: relative;
   margin: 0;
-  background: linear-gradient(180deg, #0d1020 0%, #090d18 100%);
+  background: #020617;
   color: var(--text-main);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 192, 238, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(3, 7, 18, 0.98) 0%, rgba(2, 6, 23, 1) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100vh, 100% 100%;
 }
 
 a {

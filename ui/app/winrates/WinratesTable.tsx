@@ -1,5 +1,7 @@
 "use client";
 
+import ChampionAvatar from "@/components/ui/ChampionAvatar";
+
 import styles from "./WinratesTable.module.css";
 import { normalizeIconSrc } from "./winrates-lib.js";
 
@@ -126,35 +128,6 @@ function TrendSparkline({
   );
 }
 
-function ChampAvatar({
-  name,
-  src,
-  isLcp,
-}: {
-  name: string;
-  src?: string | null;
-  isLcp?: boolean;
-}) {
-  const iconSrc = normalizeIconSrc(src);
-
-  if (!iconSrc) return <div className={styles.avatar} aria-hidden="true" />;
-
-  return (
-    <div className={styles.avatar}>
-      <img
-        src={iconSrc}
-        alt={name}
-        width={32}
-        height={32}
-        loading={isLcp ? "eager" : "lazy"}
-        fetchPriority={isLcp ? "high" : undefined}
-        decoding="async"
-        className={styles.avatarImg}
-      />
-    </div>
-  );
-}
-
 export default function WinratesTable({
   rows,
   sort,
@@ -235,7 +208,18 @@ export default function WinratesTable({
             <div className={styles.index}>{idx + 1}</div>
 
             <div className={styles.heroCell}>
-              <ChampAvatar name={row.name} src={row.icon} isLcp={idx === 0} />
+              <ChampionAvatar
+                name={row.name}
+                src={normalizeIconSrc(row.icon)}
+                mobileSize={26}
+                desktopSize={34}
+                mobileRadius={10}
+                desktopRadius={12}
+                loading={idx === 0 ? "eager" : "lazy"}
+                fetchPriority={idx === 0 ? "high" : undefined}
+                className={styles.avatar}
+                imageClassName={styles.avatarImg}
+              />
               <span className={styles.heroName} title={row.name}>
                 {row.name}
               </span>
