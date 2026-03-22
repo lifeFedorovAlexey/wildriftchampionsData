@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import SearchField from "@/components/ui/SearchField";
+import styles from "./ChampionSearch.module.css";
+
 export function ChampionSearch({ champions, value, onChange, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,51 +21,21 @@ export function ChampionSearch({ champions, value, onChange, onSelect }) {
   }, [champions, value]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        maxWidth: 360,
-        margin: "0 auto 14px",
-      }}
-    >
-      <input
+    <div className={styles.shell}>
+      <SearchField
         type="text"
-        placeholder="Поиск чемпиона…"
         value={value}
-        onChange={(e) => {
-          onChange(e.target.value);
+        onChange={(nextValue) => {
+          onChange(nextValue);
           setIsOpen(true);
         }}
         onFocus={() => setIsOpen(true)}
-        style={{
-          width: "100%",
-          padding: "8px 10px",
-          borderRadius: 999,
-          border: "1px solid rgba(55,65,81,1)",
-          background: "rgba(15,23,42,0.9)",
-          color: "#e5e7eb",
-          fontSize: 13,
-          outline: "none",
-        }}
+        placeholder="Поиск чемпиона…"
+        ariaLabel="Поиск чемпиона"
       />
 
-      {isOpen && filtered.length > 0 && (
-        <div
-          style={{
-            position: "absolute",
-            top: "100%",
-            left: 0,
-            right: 0,
-            marginTop: 4,
-            maxHeight: 260,
-            overflowY: "auto",
-            background: "rgba(15,23,42,0.98)",
-            borderRadius: 12,
-            border: "1px solid rgba(31,41,55,1)",
-            zIndex: 20,
-          }}
-        >
+      {isOpen && filtered.length > 0 ? (
+        <div className={styles.dropdown}>
           {filtered.map((champ) => (
             <button
               key={champ.slug}
@@ -72,30 +45,14 @@ export function ChampionSearch({ champions, value, onChange, onSelect }) {
                 onChange(champ.displayName);
                 setIsOpen(false);
               }}
-              style={{
-                width: "100%",
-                textAlign: "left",
-                padding: "6px 10px",
-                border: "none",
-                background: "transparent",
-                color: "#e5e7eb",
-                fontSize: 13,
-                cursor: "pointer",
-              }}
+              className={styles.option}
             >
-              <div style={{ fontSize: 13 }}>{champ.displayName}</div>
-              <div
-                style={{
-                  fontSize: 11,
-                  opacity: 0.6,
-                }}
-              >
-                {champ.slug}
-              </div>
+              <div className={styles.name}>{champ.displayName}</div>
+              <div className={styles.slug}>{champ.slug}</div>
             </button>
           ))}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

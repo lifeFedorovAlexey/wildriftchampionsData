@@ -46,15 +46,11 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
 
   return (
     <div className={styles.container}>
-      <h1 style={{ textAlign: "center", margin: "20px 0" }}>
-        {data.slug.toUpperCase()}
-      </h1>
+      <h1 className={styles.pageTitle}>{data.slug.toUpperCase()}</h1>
 
       <div className={styles.skinList}>
         {data.skins.map((s, idx) => {
           const canShow3d = !!(s.has3d && s.model?.cdn);
-
-          console.log(s.image);
 
           return (
             <div key={idx} className={styles.skinItem}>
@@ -71,13 +67,7 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
                   alt={s.name}
                   width={160}
                   height={90}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    aspectRatio: "16 / 9",
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                  }}
+                  className={styles.thumbImage}
                   loading="lazy"
                 />
                 <div className={styles.skinName}>{s.name}</div>
@@ -131,13 +121,7 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
                 alt={skin.name}
                 width={1280}
                 height={720}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  aspectRatio: "16 / 9",
-                  objectFit: "contain",
-                  borderRadius: "12px",
-                }}
+                className={styles.overlayImage}
                 priority
               />
             )}

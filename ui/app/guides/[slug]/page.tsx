@@ -152,7 +152,6 @@ export default async function GuidePage({
 
   return (
     <PageWrapper
-      showBack
       title={`Гайд: ${guideWithOwnTiers.champion.name}`}
       paragraphs={[
         "Сборки, руны и матчапы приходят из WildriftFire через наш WR API, описания способностей берутся с официальной страницы Riot на русском, а тир подтягивается из нашего тир-листа.",

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import AppHeader from "@/components/AppHeader";
+import Footer from "@/components/Footer";
 import "./globals.css";
 import TelegramInit from "@/components/TelegramInit";
 import YandexMetrikaInit from "@/components/YandexMetrikaInit";
@@ -21,21 +23,9 @@ export const metadata: Metadata = {
     "WR пикрейт",
     "WR банрейт",
     "пики и баны WR",
-    "WR пики и баны",
-    "тирлист WR",
     "WR тирлист",
     "мета WR",
-    "топ чемпионы WR",
-    "топ пики WR",
-    "винрейты Wild Rift",
-    "пикрейт Wild Rift",
-    "банрейт Wild Rift",
-    "мета Wild Rift",
     "статистика Wild Rift",
-    "статистика чемпионов Wild Rift",
-    "лучшие чемпионы Wild Rift",
-    "что пикать в Wild Rift",
-    "что банить в Wild Rift",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -77,7 +67,11 @@ export default function RootLayout({
       <body>
         <TelegramInit />
         <YandexMetrikaInit />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <AppHeader />
+          {children}
+          <Footer />
+        </StyledComponentsRegistry>
 
         <noscript>
           <div>

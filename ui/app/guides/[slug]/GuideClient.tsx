@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ChampionAvatar from "@/components/ui/ChampionAvatar";
 
 import styles from "./page.module.css";
 
@@ -383,9 +384,14 @@ function MatchupPanel({
           const hasGuide = availableSlugSet.has(item.slug);
           const content = (
             <>
-              {item.imageUrl ? (
-                <img className={styles.matchupImage} src={item.imageUrl} alt={item.name} />
-              ) : null}
+              <ChampionAvatar
+                name={item.name}
+                src={item.imageUrl}
+                shape="circle"
+                mobileSize={68}
+                desktopSize={84}
+                className={styles.matchupImage}
+              />
               <div className={styles.matchupName}>{item.name}</div>
               {item.lane ? <div className={styles.matchupMeta}>{item.lane}</div> : null}
             </>
@@ -538,10 +544,14 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         <div className={styles.heroContent}>
           <div className={styles.heroMain}>
             {!heroVideoSrc && guide.champion.iconUrl ? (
-              <img
-                className={styles.heroIcon}
+              <ChampionAvatar
+                name={guide.champion.name}
                 src={guide.champion.iconUrl}
-                alt={guide.champion.name}
+                mobileSize={88}
+                desktopSize={88}
+                mobileRadius={22}
+                desktopRadius={22}
+                className={styles.heroIcon}
               />
             ) : null}
 

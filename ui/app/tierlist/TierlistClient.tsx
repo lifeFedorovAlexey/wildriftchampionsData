@@ -3,10 +3,9 @@
 import { useMemo, useState } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
+import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import StatsFilters from "@/components/StatsFilters";
 import {
-  TlChampCard,
-  TlChampIcon,
   tierColor,
   TlTierRow,
   TlTierBadge,
@@ -50,9 +49,15 @@ function TierChampionIcon({ champ }: { champ: TierChampion }) {
   }`;
 
   return (
-    <TlChampCard title={title}>
-      {champ.icon ? <TlChampIcon src={champ.icon} alt={champ.name} /> : null}
-    </TlChampCard>
+    <ChampionAvatar
+      name={champ.name}
+      src={champ.icon}
+      title={title}
+      mobileSize={44}
+      desktopSize={54}
+      mobileRadius={12}
+      desktopRadius={14}
+    />
   );
 }
 
@@ -104,14 +109,13 @@ export default function TierlistClient({
 
   return (
     <PageWrapper
-      showBack
       title="Автоматический тир-лист чемпионов Wild Rift"
       paragraphs={[
         "Тир-лист строится автоматически на основе статистических данных strength level.",
       ]}
     >
       {error ? (
-        <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
+        <div style={{ padding: "var(--space-3)", opacity: 0.9 }}>{error}</div>
       ) : (
         <TlWrap>
           <StatsFilters

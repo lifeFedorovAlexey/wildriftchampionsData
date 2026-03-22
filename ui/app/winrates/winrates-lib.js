@@ -30,7 +30,7 @@
  * }} SortState
  */
 
-const DEFAULT_STATS_API_ORIGIN = "http://127.0.0.1:3001";
+import { getStatsApiBaseUrl } from "../../lib/stats-api-origin.js";
 const WEEK_IN_MS = 7 * 24 * 60 * 60 * 1000;
 
 export function fetchJson(url, nextOptions) {
@@ -209,18 +209,6 @@ export function buildPreparedWinrateSlices({ champions, historyItems = [] }) {
   }
 
   return { rowsBySlice, sliceHistoryByKey, maxRowCount };
-}
-
-export function getStatsApiBaseUrl(env = process.env) {
-  const raw =
-    env.API_PROXY_TARGET ||
-    env.NEXT_PUBLIC_STATS_API_ORIGIN ||
-    env.STATS_API_ORIGIN ||
-    env.NEXT_PUBLIC_API_ORIGIN ||
-    env.API_ORIGIN ||
-    DEFAULT_STATS_API_ORIGIN;
-
-  return String(raw).replace(/\/+$/, "");
 }
 
 export function buildStatsUrls(language, env = process.env) {

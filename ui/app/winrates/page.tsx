@@ -1,9 +1,14 @@
-import WinratesClient from "./WinratesClient";
+import dynamic from "next/dynamic";
+import { WinratesSkeleton } from "@/components/ui/LazySkeletons";
 import {
   buildPreparedWinrateSlices,
   buildStatsUrls,
   fetchJson,
 } from "./winrates-lib.js";
+
+const WinratesClient = dynamic(() => import("./WinratesClient"), {
+  loading: () => <WinratesSkeleton />,
+});
 
 const language = "ru_ru";
 

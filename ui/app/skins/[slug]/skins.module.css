@@ -1,7 +1,7 @@
 /* ===== Layout ===== */
 
 .container {
-  padding: 20px;
+  padding: var(--space-5);
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -9,11 +9,16 @@
 .skinList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
 }
 
 .skinItem {
+  text-align: center;
+}
+
+.pageTitle {
+  margin: var(--space-5) 0;
   text-align: center;
 }
 
@@ -22,7 +27,7 @@
 .imageWrapper {
   position: relative;
   border: 2px solid #333;
-  border-radius: 8px;
+  border-radius: var(--radius-xs);
   overflow: hidden;
   aspect-ratio: 16 / 9;
 }
@@ -31,7 +36,7 @@
   font-size: 0.8em;
   color: white;
   background: rgba(0, 0, 0, 0.7);
-  padding: 4px;
+  padding: var(--space-1);
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -70,7 +75,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 24px;
+  padding: var(--space-6);
 }
 
 .overlayContent {
@@ -78,7 +83,7 @@
   width: min(1200px, 100%);
   height: min(90vh, 100%);
   background: #111;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
 
   display: flex;
@@ -91,8 +96,8 @@
 
 .closeButton {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: var(--space-3);
+  right: var(--space-3);
   background: #333;
   color: white;
   border: none;
@@ -111,11 +116,11 @@
 /* ===== Controls (анимации) ===== */
 
 .controls {
-  margin: 10px 0;
+  margin: var(--space-2) 0;
   color: white;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
   font-size: 14px;
 }
 
@@ -125,7 +130,7 @@
   border: none;
   width: 32px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
 }
 
@@ -143,8 +148,24 @@
 .loader {
   color: #aaa;
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: var(--space-5);
   text-align: center;
+}
+
+.thumbImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+}
+
+.overlayImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
 }
 
 model-viewer::part(default-ar-button) {

@@ -1,9 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
-import StatsFilters from "@/components/StatsFilters";
-import StreamerSocials from "@/components/StreamerSocials";
+import ChampionAvatar from "@/components/ui/ChampionAvatar";
+import {
+  FiltersSkeleton,
+  SocialsSkeleton,
+} from "@/components/ui/LazySkeletons";
 
 import LoadingRing from "@/components/LoadingRing";
 import { API_BASE } from "@/constants/apiBase";
@@ -14,8 +18,6 @@ import {
   TlWeightSliderLabel,
   TlWeightSliderValue,
   TlRange,
-  TlChampCard,
-  TlChampIcon,
   tierColor,
   TlTierRow,
   TlTierBadge,
@@ -45,6 +47,13 @@ import {
   TlCalcList,
   TlCalcSumRow,
 } from "@/components/styled/tierlistInq";
+
+const StatsFilters = dynamic(() => import("@/components/StatsFilters"), {
+  loading: () => <FiltersSkeleton />,
+});
+const StreamerSocials = dynamic(() => import("@/components/StreamerSocials"), {
+  loading: () => <SocialsSkeleton />,
+});
 
 /* -------------------- UI helpers -------------------- */
 
@@ -107,18 +116,22 @@ function TierChampionIcon({
   onClick?: (c: TierChamp) => void;
 }) {
   return (
-    <TlChampCard
+    <ChampionAvatar
+      name={champ.name}
+      src={champ.icon}
       title={`${champ.name} • ${champ.totalScore} очк.`}
+      mobileSize={44}
+      desktopSize={54}
+      mobileRadius={12}
+      desktopRadius={14}
       onClick={() => onClick?.(champ)}
-      style={{ cursor: "pointer" }}
-      role="button"
-      tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") onClick?.(champ);
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick?.(champ);
+        }
       }}
-    >
-      {champ.icon ? <TlChampIcon src={champ.icon} alt={champ.name} /> : null}
-    </TlChampCard>
+    />
   );
 }
 
@@ -281,8 +294,7 @@ export default function TierlistInqPage() {
   if (loading) return <LoadingRing label="Считаю тир-лист…" />;
 
   return (
-    <PageWrapper
-      showBack
+    <PageWrapper
       title="Тир-лист с настраеваемыми весами от INQ"
       paragraphs={[
         "Этот раздел позволяет получить тир-лист под конкретные условия: ранг, линия или фильтры.",
@@ -290,7 +302,7 @@ export default function TierlistInqPage() {
       ]}
     >
       {error ? (
-        <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
+        <div style={{ padding: "var(--space-3)", opacity: 0.9 }}>{error}</div>
       ) : (
         <TlWrap>
           {filters}

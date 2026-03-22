@@ -1,7 +1,7 @@
 .wrap {
   width: 100%;
   margin: 0 auto;
-  padding: 0 4px 10px;
+  padding: 0;
 }
 
 .grid {
@@ -44,7 +44,7 @@
   backdrop-filter: blur(14px);
   z-index: 2;
   margin-top: 10px;
-  border-radius: 18px 18px 0 0;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   font-variant-numeric: tabular-nums;
 }
 
@@ -60,6 +60,10 @@
   transition: background 140ms ease;
 }
 
+.row:last-of-type {
+  border-bottom: 0;
+}
+
 @media (min-width: 1024px) {
   .row {
     font-size: 14px;
@@ -71,7 +75,7 @@
 }
 
 .row:hover {
-  background: rgba(96, 165, 250, 0.08);
+  background: rgba(132, 192, 238, 0.1);
 }
 
 .left {
@@ -172,7 +176,7 @@
 }
 
 .sortable:hover {
-  color: #bfdbfe;
+  color: var(--accent-primary-text);
 }
 
 .sortArrow {
@@ -193,7 +197,7 @@
 
 .index {
   opacity: 0.8;
-  color: rgba(191, 219, 254, 0.72);
+  color: rgba(184, 220, 245, 0.78);
   font-variant-numeric: tabular-nums;
 }
 
@@ -230,7 +234,7 @@
   width: 26px;
   height: 26px;
   display: block;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
   box-shadow: 0 10px 20px rgba(15, 23, 42, 0.35);
 }
@@ -244,7 +248,7 @@
   .avatarImg {
     width: 34px;
     height: 34px;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
   }
 }
 

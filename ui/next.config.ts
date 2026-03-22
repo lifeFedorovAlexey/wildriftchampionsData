@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
+import { getStatsApiBaseUrl } from "./lib/stats-api-origin.js";
 
-const apiProxyTarget =
-  process.env.API_PROXY_TARGET ||
-  process.env.STATS_API_ORIGIN ||
-  "http://127.0.0.1:3001";
+const apiProxyTarget = getStatsApiBaseUrl(process.env);
 
 const nextConfig: NextConfig = {
   compiler: {

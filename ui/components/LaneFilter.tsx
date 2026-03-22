@@ -3,7 +3,7 @@
 import React from "react";
 import { LANE_OPTIONS } from "@/components/screensConstants";
 import { RoleIcon } from "./RoleIcon";
-import styles from "./LaneFilter.module.css";
+import { PillButton, PillGroup } from "./ui/PillGroup";
 
 export type LaneKey = (typeof LANE_OPTIONS)[number]["key"];
 
@@ -19,27 +19,27 @@ export function LaneFilter<T extends string = LaneKey>({
   options = LANE_OPTIONS as unknown as ReadonlyArray<{ key: T; label: string }>,
 }: LaneFilterProps<T>) {
   return (
-    <div className={styles.laneFilter}>
+    <PillGroup>
       {options.map((opt) => {
         const active = opt.key === value;
 
         return (
-          <button
+          <PillButton
             key={opt.key}
-            type="button"
+            active={active}
+            iconOnly
             onClick={() => onChange(opt.key)}
             title={opt.label}
             aria-label={opt.label}
-            className={`${styles.laneButton} ${active ? styles.active : ""}`.trim()}
           >
             <RoleIcon
               laneKey={opt.key as "top" | "jungle" | "mid" | "adc" | "support"}
               size={30}
             />
-          </button>
+          </PillButton>
         );
       })}
-    </div>
+    </PillGroup>
   );
 }
 

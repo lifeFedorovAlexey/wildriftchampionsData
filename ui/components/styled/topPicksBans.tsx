@@ -3,28 +3,30 @@ import styled from "styled-components";
 import { PillButton, SectionTitle } from "./primitives";
 
 export const TpHeader = styled.div`
-  margin-bottom: 10px;
+  margin-top: -10px;
+  margin-bottom: 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   flex-wrap: wrap;
-  padding: 10px 5px;
+  padding: 0 5px 2px;
 `;
 
 export const TpHeaderText = styled.div`
   font-size: 13px;
   opacity: 0.85;
+  line-height: 1.45;
 `;
 
 export const TpRow = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 6px;
   flex-wrap: wrap;
-  padding: 5px;
+  padding: 2px 5px;
 `;
 
 export const TpLimitBtn = styled(PillButton)`
@@ -63,7 +65,7 @@ interface TpCardProps {
 
 export const TpCard = styled.div<TpCardProps>`
   position: relative;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 10px;
   display: flex;
   align-items: center;
@@ -95,7 +97,7 @@ export const TpCardIndex = styled.div`
 export const TpAvatar = styled.div`
   width: 40px;
   height: 44px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   background: rgba(15, 23, 42, 0.9);
   border: 1px solid rgba(51, 65, 85, 0.9);
@@ -150,7 +152,7 @@ export const TpModalOverlay = styled.div`
 
 export const TpModal = styled.div`
   background: rgba(15, 23, 42, 0.98);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(148, 163, 184, 0.7);
   max-width: 520px;
   width: 90%;
@@ -190,7 +192,7 @@ interface TpPillButtonProps {
 export const TpPillButton = styled.button<TpPillButtonProps>`
   padding: 4px 10px;
   font-size: 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 1px solid
     ${({ $active, $variant }) =>
       $variant === "rank"
