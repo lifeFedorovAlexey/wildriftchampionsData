@@ -1,26 +1,16 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
-import {
-  FiltersSkeleton,
-  TableSkeleton,
-} from "@/components/ui/LazySkeletons";
+import StatsFilters from "@/components/StatsFilters";
 import styles from "./WinratesClient.module.css";
+import WinratesTable from "./WinratesTable";
 import {
   applyPreparedMovement,
   nextSortState,
   sortPreparedRows,
 } from "./winrates-lib.js";
-
-const StatsFilters = dynamic(() => import("@/components/StatsFilters"), {
-  loading: () => <FiltersSkeleton />,
-});
-const WinratesTable = dynamic(() => import("./WinratesTable"), {
-  loading: () => <TableSkeleton />,
-});
 
 type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
 type LaneKey = "top" | "jungle" | "mid" | "adc" | "support";
