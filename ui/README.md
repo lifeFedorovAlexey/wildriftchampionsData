@@ -1,6 +1,11 @@
 # Wild Rift SSR
 
-Frontend for `wildriftallstats.ru` running on Next.js.
+Next.js frontend for `wildriftallstats.ru`.
+
+## Version
+
+- Current version: `1.1.0`
+- Release branch format: `release/x.y.z`
 
 ## Commands
 
@@ -22,12 +27,11 @@ npm run sync:guides:all
 - `GUIDES_SYNC_API_ORIGIN` - WR API origin used by the guide sync job
 - `GUIDES_SYNC_IMPORT_URL` - optional full import endpoint override
 - `GUIDES_SYNC_TOKEN` - bearer token for guide import requests
-- `GUIDES_SYNC_SECRET` - optional shared secret header for guide import requests
+- `GUIDES_SYNC_SECRET` - shared secret header for guide import requests
 
 Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_TARGET`.
-For local development, set either `API_PROXY_TARGET` or `STATS_API_ORIGIN` to a reachable stats backend.
 
-## Guides Flow
+## Guides flow
 
 - `ui/scripts/parse-wildriftfire-guide.js` scrapes one champion guide and writes a local JSON cache
 - `ui/scripts/sync-wildriftfire-guides.js` scrapes one or many champions and upserts them into the WR API
@@ -39,15 +43,14 @@ Expected WR API endpoints:
 - `GET /api/guides/:slug?lang=ru_ru`
 - `GET /api/guides?fields=slug`
 
-The import payload is:
+## Release checklist
 
-```json
-{
-  "guide": { "...full normalized guide payload..." },
-  "source": "wildriftfire",
-  "fetchedAt": "2026-03-21T12:00:00.000Z"
-}
-```
+1. Bump `version` in `package.json` and `package-lock.json`
+2. Add release notes to `/CHANGELOG.md`
+3. Run `npm run test`
+4. Run `npm run build`
+5. Verify the guide sync secrets point to `https://wildriftallstats.ru/wr-api`
+6. Push the release branch as `release/x.y.z`
 
 ## Production
 
