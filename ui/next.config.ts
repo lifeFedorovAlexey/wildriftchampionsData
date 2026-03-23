@@ -14,17 +14,8 @@ const nextConfig: NextConfig = {
       {
         pathname: "/wr-api/icons/**",
       },
-    ],
-    remotePatterns: [
       {
-        protocol: "https",
-        hostname: "game.gtimg.cn",
-        pathname: "/images/**",
-      },
-      {
-        protocol: "https",
-        hostname: "cmsassets.rgpub.io",
-        pathname: "/sanity/images/**", // ✅ для изображений скинов WR
+        pathname: "/wr-api/assets/**",
       },
     ],
   },

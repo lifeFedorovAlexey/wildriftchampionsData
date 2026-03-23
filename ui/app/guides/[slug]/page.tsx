@@ -97,7 +97,7 @@ export async function generateMetadata({
     .join(" ")
     .trim();
 
-  const image = guide.champion.iconUrl || "/og.png";
+  const image = "/og.png";
 
   return {
     title: `Гайд на ${championName} WR`,
