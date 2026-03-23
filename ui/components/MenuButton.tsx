@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import styles from "./MenuButton.module.css";
 
 type Props = {
   title: string;
@@ -14,83 +17,31 @@ export default function MenuButton({
   subtitle,
   href,
   gradient,
-  rightIcon = "→",
+  rightIcon = "->",
   leftIcon = null,
 }: Props) {
   return (
-    <a
-      href={href}
-      style={{
-        display: "block",
-        padding: "10px 12px",
-        borderRadius: 12,
-        border: "1px solid rgba(255,255,255,0.10)",
-        cursor: "pointer",
-        background:
-          gradient ||
-          "linear-gradient(135deg, rgba(56,189,248,0.16), rgba(129,140,248,0.32))",
-        color: "inherit",
-        textAlign: "left",
-        textDecoration: "none",
-        width: "100%",
-        boxSizing: "border-box",
-      }}
-    >
+    <a href={href} className={styles.menuButton}>
       <div
+        className={styles.menuButtonBg}
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 12,
+          background:
+            gradient ||
+            "linear-gradient(135deg, rgba(56,189,248,0.16), rgba(129,140,248,0.32))",
         }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            minWidth: 0,
-          }}
-        >
-          {leftIcon ? (
-            <span
-              style={{
-                width: 34,
-                height: 34,
-                borderRadius: 12,
-                display: "grid",
-                placeItems: "center",
-                background: "rgba(0,0,0,0.14)",
-                border: "1px solid rgba(255,255,255,0.14)",
-                flex: "0 0 auto",
-              }}
-            >
-              {leftIcon}
-            </span>
-          ) : null}
+      />
 
-          <div style={{ minWidth: 0 }}>
-            <div
-              style={{
-                fontSize: 14,
-                fontWeight: 700,
-                marginBottom: 2,
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {title}
-            </div>
-            {subtitle ? (
-              <div style={{ fontSize: 12, opacity: 0.85 }}>{subtitle}</div>
-            ) : null}
+      <div className={styles.content}>
+        <div className={styles.leftSide}>
+          {leftIcon ? <span className={styles.iconShell}>{leftIcon}</span> : null}
+
+          <div className={styles.textBlock}>
+            <div className={styles.title}>{title}</div>
+            {subtitle ? <div className={styles.subtitle}>{subtitle}</div> : null}
           </div>
         </div>
 
-        <span style={{ fontSize: 18, opacity: 0.8, flex: "0 0 auto" }}>
-          {rightIcon}
-        </span>
+        <span className={styles.rightIcon}>{rightIcon}</span>
       </div>
     </a>
   );

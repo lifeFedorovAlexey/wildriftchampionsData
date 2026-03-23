@@ -1,8 +1,8 @@
-"use client";
-
 import styled from "styled-components";
 
-export function tierColor(tier: any) {
+type TierName = string | null | undefined;
+
+export function tierColor(tier: TierName) {
   switch (tier) {
     case "S+":
       return "#f97316";
@@ -20,7 +20,7 @@ export function tierColor(tier: any) {
   }
 }
 
-export function tierBg(tier: any) {
+export function tierBg(tier: TierName) {
   switch (tier) {
     case "S+":
       return "#b78aff";
@@ -87,7 +87,6 @@ export const TlTierRow = styled.div`
   }
 `;
 
-/** Левая цветная “плашка” как в TierMaker */
 interface TlTierBadgeProps {
   $bg?: string;
 }
@@ -96,17 +95,12 @@ export const TlTierBadge = styled.div<TlTierBadgeProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-weight: 800;
   letter-spacing: 0.5px;
-
   border-radius: 10px;
-  background: ${(p) => p.$bg || "rgba(148,163,184,0.25)"};
+  background: ${(props) => props.$bg || "rgba(148,163,184,0.25)"};
   color: rgba(15, 23, 42, 0.95);
-
-  /* чтобы выглядело как “лейбл” слева */
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-
   font-size: 14px;
 
   @media (min-width: 900px) {
@@ -114,13 +108,11 @@ export const TlTierBadge = styled.div<TlTierBadgeProps>`
   }
 `;
 
-/** Правая полоса */
 export const TlTierChamps = styled.div`
   border-radius: 12px;
   background: rgba(15, 23, 42, 0.55);
   border: 1px solid rgba(31, 41, 55, 0.9);
   padding: 6px;
-
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -131,17 +123,14 @@ export const TlTierChamps = styled.div`
   }
 `;
 
-/** Одна иконка чемпа (без текста) */
 export const TlChampCard = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 8px;
   overflow: hidden;
   flex: 0 0 auto;
-
   background: rgba(2, 6, 23, 0.55);
   border: 1px solid rgba(51, 65, 85, 0.95);
-
   transform: translateZ(0);
   transition: transform 0.12s ease-out, border-color 0.12s ease-out;
 
@@ -163,8 +152,6 @@ export const TlChampIcon = styled.img`
   object-fit: cover;
   display: block;
 `;
-
-/* ---------- NEW: веса ---------- */
 
 export const TlWeightsBox = styled.div`
   margin-top: 12px;
@@ -205,17 +192,13 @@ export const TlRange = styled.input`
   width: 100%;
 `;
 
-/* ---------- NEW: модалка расчёта ---------- */
-
 export const TlModalOverlay = styled.div`
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 16px;
   z-index: 9999;
 `;
@@ -271,8 +254,6 @@ export const TlModalCloseBtn = styled.button`
   cursor: pointer;
 `;
 
-/* ---------- NEW: строки расчёта ---------- */
-
 export const TlCalcList = styled.div`
   margin-top: 14px;
   display: grid;
@@ -316,7 +297,6 @@ export const TlCalcSumRow = styled.div`
   font-weight: 800;
 `;
 
-/* заглушки оставляем, чтобы твои импорты не ломались */
 export const TlChampIconWrap = styled.div``;
 export const TlChampName = styled.div``;
 export const TlChampWr = styled.div``;

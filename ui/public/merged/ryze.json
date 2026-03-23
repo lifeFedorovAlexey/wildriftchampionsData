@@ -1,0 +1,30 @@
+{
+  "slug": "ryze",
+  "skinCount": 2,
+  "with3d": 1,
+  "skins": [
+    {
+      "name": "RYZE, THE RUNE MAGE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/81bc030fb4479a72316348b6a39433c2bf01c543-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/81bc030fb4479a72316348b6a39433c2bf01c543-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ryze/13000/model.glb",
+        "local": "data\\downloads\\ryze\\13000_ryze.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Ryze"
+    },
+    {
+      "name": "SOULFIGHTER RYZE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/04f2671ff61c7ff84cb6ac12ac2a8895de9b81c7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/04f2671ff61c7ff84cb6ac12ac2a8895de9b81c7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

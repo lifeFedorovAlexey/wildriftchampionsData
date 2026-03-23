@@ -1,0 +1,100 @@
+{
+  "slug": "olaf",
+  "skinCount": 7,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "OLAF, THE BERSERKER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/57d0ebe92191dce4c206861d5715283b66c78e02-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/57d0ebe92191dce4c206861d5715283b66c78e02-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/olaf/2000/model.glb",
+        "local": "data\\downloads\\olaf\\2000_olaf.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Olaf"
+    },
+    {
+      "name": "BROLAF",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d63517d5de83004d922398f91e52ac7cc818551f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d63517d5de83004d922398f91e52ac7cc818551f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/olaf/2003/model.glb",
+        "local": "data\\downloads\\olaf\\2003_brolaf.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Brolaf"
+    },
+    {
+      "name": "PENTAKILL OLAF",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ef25cdb0a2c5b882c3239155b1bb15d209e6887d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ef25cdb0a2c5b882c3239155b1bb15d209e6887d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/olaf/2004/model.glb",
+        "local": "data\\downloads\\olaf\\2004_pentakill_olaf.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pentakill Olaf"
+    },
+    {
+      "name": "MARAUDER OLAF",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b8054a118ea8e79b605c815fc09d3581ccf7c019-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b8054a118ea8e79b605c815fc09d3581ccf7c019-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/olaf/2005/model.glb",
+        "local": "data\\downloads\\olaf\\2005_marauder_olaf.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Marauder Olaf"
+    },
+    {
+      "name": "DRAGONSLAYER OLAF",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bcd6b14f57eabae0c94a020f2694bb593f6e7a7a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bcd6b14f57eabae0c94a020f2694bb593f6e7a7a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/olaf/2016/model.glb",
+        "local": "data\\downloads\\olaf\\2016_dragonslayer_olaf.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dragonslayer Olaf"
+    },
+    {
+      "name": "SENTINEL OLAF",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ffac19d3330c8c5caa4f424e194e77300dcaa0ea-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ffac19d3330c8c5caa4f424e194e77300dcaa0ea-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/olaf/2025/model.glb",
+        "local": "data\\downloads\\olaf\\2025_sentinel_olaf.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sentinel Olaf"
+    },
+    {
+      "name": "GLORIOUS ARMADA OLAF",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b82db4ea76821f92789af36492b96ab04c77ae00-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b82db4ea76821f92789af36492b96ab04c77ae00-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

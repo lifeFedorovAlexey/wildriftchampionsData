@@ -1,0 +1,169 @@
+{
+  "slug": "ezreal",
+  "skinCount": 13,
+  "with3d": 9,
+  "skins": [
+    {
+      "name": "EZREAL, THE PRODIGAL EXPLORER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d338ad08b163fe8e280fe563e45c2a88870479c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d338ad08b163fe8e280fe563e45c2a88870479c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81000/model.glb",
+        "local": "data\\downloads\\ezreal\\81000_ezreal.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Ezreal"
+    },
+    {
+      "name": "DEBONAIR EZREAL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72caeb9c146d08a9f4de34485b582a530deebf6d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72caeb9c146d08a9f4de34485b582a530deebf6d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81007/model.glb",
+        "local": "data\\downloads\\ezreal\\81007_debonair_ezreal.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Debonair Ezreal"
+    },
+    {
+      "name": "FROSTED EZREAL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/767752d02f646368212407ec93eb1b4de5689bfb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/767752d02f646368212407ec93eb1b4de5689bfb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81003/model.glb",
+        "local": "data\\downloads\\ezreal\\81003_frosted_ezreal.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Frosted Ezreal"
+    },
+    {
+      "name": "STAR GUARDIAN EZREAL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/01b92cf5ca9e317d3ac34904ed1255b9c4d2aa22-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/01b92cf5ca9e317d3ac34904ed1255b9c4d2aa22-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81018/model.glb",
+        "local": "data\\downloads\\ezreal\\81018_star_guardian_ezreal.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Ezreal"
+    },
+    {
+      "name": "Battle Academia Ezreal",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a20c4ee46fa6d9924d02735fdfa8ee686a83a74c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a20c4ee46fa6d9924d02735fdfa8ee686a83a74c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81021/model.glb",
+        "local": "data\\downloads\\ezreal\\81021_battle_academia_ezreal.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Academia Ezreal"
+    },
+    {
+      "name": "Crystal Rose Ezreal",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/950c5316dcc3947bbde1e3f496ad4c83af8b7178-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/950c5316dcc3947bbde1e3f496ad4c83af8b7178-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Pajama Guardian Ezreal",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ef3a5f4664c5cef1169c0e5a8ee45894f1a1425d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ef3a5f4664c5cef1169c0e5a8ee45894f1a1425d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81020/model.glb",
+        "local": "data\\downloads\\ezreal\\81020_pajama_guardian_ezreal.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pajama Guardian Ezreal"
+    },
+    {
+      "name": "Arcade Ezreal",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f7440b9405324c1ad14414720a050b0b04bb69ba-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f7440b9405324c1ad14414720a050b0b04bb69ba-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81009/model.glb",
+        "local": "data\\downloads\\ezreal\\81009_arcade_ezreal.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arcade Ezreal"
+    },
+    {
+      "name": "Battle Academia Ezreal Mythic Chroma",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/022daa0162c79bf6f30b30602dce43a1b93284d7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/022daa0162c79bf6f30b30602dce43a1b93284d7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81021/model.glb",
+        "local": "data\\downloads\\ezreal\\81021_battle_academia_ezreal.glb"
+      },
+      "matchScore": 0.77,
+      "matchedName": "Battle Academia Ezreal"
+    },
+    {
+      "name": "HEARTSTEEL EZREAL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55c3336306e5673247b2a81bf9df4b079e3f2825-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55c3336306e5673247b2a81bf9df4b079e3f2825-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ezreal/81043/model.glb",
+        "local": "data\\downloads\\ezreal\\81043_heartsteel_ezreal.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "HEARTSTEEL Ezreal"
+    },
+    {
+      "name": "LOVESTRUCK EZREAL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/490000f7e63542bd13959612bf1175590f5c5f63-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/490000f7e63542bd13959612bf1175590f5c5f63-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "WEATHER ENTITY EZREAL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55065bed42df389dccd1d71dcc280d5f8921e7fe-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55065bed42df389dccd1d71dcc280d5f8921e7fe-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PRESTIGE SELECT WEATHER ENTITY EZREAL",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/47a84c9bc253104c72906e4b740b55f1ad3156ea-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/47a84c9bc253104c72906e4b740b55f1ad3156ea-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "slug": "sett",
+  "skinCount": 9,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "SETT, THE BOSS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c26cc1e86f8fa3fd0ad334e6cecb16fca4c20756-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c26cc1e86f8fa3fd0ad334e6cecb16fca4c20756-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sett/875000/model.glb",
+        "local": "data\\downloads\\sett\\875000_sett.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Sett"
+    },
+    {
+      "name": "FIRECRACKER SETT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3f2ee7ed0faa08b6e3c06a30a25cf9992a10d8d5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3f2ee7ed0faa08b6e3c06a30a25cf9992a10d8d5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sett/875019/model.glb",
+        "local": "data\\downloads\\sett\\875019_firecracker_sett.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Firecracker Sett"
+    },
+    {
+      "name": "Supreme Cells Sett",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/400d579701367313cdc09539396c89be44cb7df5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/400d579701367313cdc09539396c89be44cb7df5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SPIRIT BLOSSOM SETT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dfece600e68d85621a7baf7f99748e81bc9b9e26-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dfece600e68d85621a7baf7f99748e81bc9b9e26-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sett/875038/model.glb",
+        "local": "data\\downloads\\sett\\875038_spirit_blossom_sett.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Sett"
+    },
+    {
+      "name": "HEARTSTEEL SETT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/03004744804af7dfa904013cc4925225c270a8ce-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/03004744804af7dfa904013cc4925225c270a8ce-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sett/875056/model.glb",
+        "local": "data\\downloads\\sett\\875056_heartsteel_sett.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "HEARTSTEEL Sett"
+    },
+    {
+      "name": "Obsidian Dragon Sett",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8edbecdb4b16b2109f36ba1bcf0b0894f202d660-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8edbecdb4b16b2109f36ba1bcf0b0894f202d660-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sett/875008/model.glb",
+        "local": "data\\downloads\\sett\\875008_obsidian_dragon_sett.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Obsidian Dragon Sett"
+    },
+    {
+      "name": "Splendor Opus Sett",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/327686b7a5b3d35b6f37a6d3ca5a366de19b5d4d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/327686b7a5b3d35b6f37a6d3ca5a366de19b5d4d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Splendor Opus Sett Mythic Chroma",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a96585d58c1a6d658b6d6c57febd2a86c566a9c3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a96585d58c1a6d658b6d6c57febd2a86c566a9c3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CRYSTAL ROSE SETT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5b6d97bc28306825b20911e4f5d233393d8f05df-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5b6d97bc28306825b20911e4f5d233393d8f05df-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

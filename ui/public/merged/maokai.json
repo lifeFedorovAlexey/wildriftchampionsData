@@ -1,0 +1,44 @@
+{
+  "slug": "maokai",
+  "skinCount": 3,
+  "with3d": 2,
+  "skins": [
+    {
+      "name": "MAOKAI, THE TWISTED TREANT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0067f5bcafdb71002a5a91b9b89307dac5ff7421-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0067f5bcafdb71002a5a91b9b89307dac5ff7421-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/maokai/57000/model.glb",
+        "local": "data\\downloads\\maokai\\57000_maokai.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Maokai"
+    },
+    {
+      "name": "MEOWKAI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6635c2cf4085fba7d38e3aaa472c5d840577fb1d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6635c2cf4085fba7d38e3aaa472c5d840577fb1d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/maokai/57006/model.glb",
+        "local": "data\\downloads\\maokai\\57006_meowkai.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Meowkai"
+    },
+    {
+      "name": "MECHA MAOKAI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/60fd6225b81899c56d53a8a44567fb1c70846aff-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/60fd6225b81899c56d53a8a44567fb1c70846aff-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

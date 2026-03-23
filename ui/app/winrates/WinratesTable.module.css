@@ -1,0 +1,270 @@
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns:
+    22px
+    minmax(78px, 1.5fr)
+    40px
+    24px
+    minmax(50px, 0.74fr)
+    minmax(50px, 0.74fr)
+    minmax(50px, 0.74fr);
+  column-gap: 3px;
+  padding: 6px 3px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns:
+      54px
+      minmax(220px, 2.6fr)
+      74px
+      64px
+      minmax(96px, 1fr)
+      minmax(96px, 1fr)
+      minmax(96px, 1fr);
+    column-gap: 10px;
+    padding: 10px 12px;
+  }
+}
+
+.header {
+  font-size: 9px;
+  opacity: 0.8;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+  position: sticky;
+  top: 8px;
+  background: rgba(8, 15, 29, 0.92);
+  backdrop-filter: blur(14px);
+  z-index: 2;
+  margin-top: 10px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    font-size: 14px;
+  }
+}
+
+.row {
+  font-size: 10px;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.9);
+  transition: background 140ms ease;
+}
+
+.row:last-of-type {
+  border-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .row {
+    font-size: 14px;
+  }
+}
+
+.row:nth-child(even) {
+  background: rgba(148, 163, 184, 0.04);
+}
+
+.row:hover {
+  background: rgba(132, 192, 238, 0.1);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.trendCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 30px;
+  font-variant-numeric: tabular-nums;
+}
+
+.trendValue {
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+@media (min-width: 1024px) {
+  .trendValue {
+    font-size: 12px;
+  }
+}
+
+.sparkline {
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 1px 6px rgba(15, 23, 42, 0.35));
+}
+
+.sparkBase {
+  fill: none;
+  stroke: rgba(100, 116, 139, 0.24);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.sparkPath {
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sparkDot {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.sparkPlaceholder {
+  width: 32px;
+  height: 12px;
+  display: block;
+}
+
+.right {
+  text-align: right;
+}
+
+.metric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.sortable {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+  line-height: 1;
+  transition: color 120ms ease;
+  width: 100%;
+}
+
+.sortableCenter {
+  justify-content: center;
+}
+
+.sortableEnd {
+  justify-content: flex-end;
+}
+
+.sortable:hover {
+  color: var(--accent-primary-text);
+}
+
+.sortArrow {
+  display: inline-block;
+  width: 8px;
+  text-align: center;
+  opacity: 0.9;
+  flex: 0 0 8px;
+}
+
+.labelFull {
+  display: none;
+}
+
+.labelShort {
+  display: inline;
+}
+
+.index {
+  opacity: 0.8;
+  color: rgba(184, 220, 245, 0.78);
+  font-variant-numeric: tabular-nums;
+}
+
+.heroCell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .heroCell {
+    gap: 10px;
+  }
+}
+
+.heroName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+}
+
+.avatar {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarImg {
+  width: 26px;
+  height: 26px;
+  display: block;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.35);
+}
+
+@media (min-width: 1024px) {
+  .avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  .avatarImg {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .labelFull {
+    display: inline;
+  }
+
+  .labelShort {
+    display: none;
+  }
+}
+
+.empty {
+  padding: 20px 8px 16px;
+  font-size: 13px;
+  opacity: 0.7;
+  text-align: center;
+}

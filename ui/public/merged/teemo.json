@@ -1,0 +1,137 @@
+{
+  "slug": "teemo",
+  "skinCount": 10,
+  "with3d": 8,
+  "skins": [
+    {
+      "name": "TEEMO, THE SWIFT SCOUT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1dec87dd6e583aa7031db63150d8b86611e2f177-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1dec87dd6e583aa7031db63150d8b86611e2f177-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/teemo/17000/model.glb",
+        "local": "data\\downloads\\teemo\\17000_teemo.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Teemo"
+    },
+    {
+      "name": "COTTONTAIL TEEMO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f6ea0954dd9387c57790f2f60766ac3033bac35e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f6ea0954dd9387c57790f2f60766ac3033bac35e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/teemo/17005/model.glb",
+        "local": "data\\downloads\\teemo\\17005_cottontail_teemo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cottontail Teemo"
+    },
+    {
+      "name": "LITTLE DEVIL TEEMO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/05316bf0fd2ead7f164a667a45411419cc84d688-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/05316bf0fd2ead7f164a667a45411419cc84d688-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/teemo/17014/model.glb",
+        "local": "data\\downloads\\teemo\\17014_little_devil_teemo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Little Devil Teemo"
+    },
+    {
+      "name": "PANDA TEEMO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/271847a3d4bd1071417d718755cc67899853ac80-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/271847a3d4bd1071417d718755cc67899853ac80-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/teemo/17007/model.glb",
+        "local": "data\\downloads\\teemo\\17007_panda_teemo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Panda Teemo"
+    },
+    {
+      "name": "OMEGA SQUAD TEEMO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/344976d813c1649d130f059a024d9c0f676d88a3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/344976d813c1649d130f059a024d9c0f676d88a3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/teemo/17008/model.glb",
+        "local": "data\\downloads\\teemo\\17008_omega_squad_teemo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Omega Squad Teemo"
+    },
+    {
+      "name": "HEXPLORER TEEMO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2fdd7cf1766ccc82bfe6ebf8df87f75a54f76c35-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2fdd7cf1766ccc82bfe6ebf8df87f75a54f76c35-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "FIRECRACKER TEEMO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a2dbacd5f3726661b14bca1679e448d2921d6930-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a2dbacd5f3726661b14bca1679e448d2921d6930-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/teemo/17037/model.glb",
+        "local": "data\\downloads\\teemo\\17037_firecracker_teemo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Firecracker Teemo"
+    },
+    {
+      "name": "SPIRIT BLOSSOM TEEMO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eeceb198f28dd461675b99037c9469228c5b3410-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eeceb198f28dd461675b99037c9469228c5b3410-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/teemo/17025/model.glb",
+        "local": "data\\downloads\\teemo\\17025_spirit_blossom_teemo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Teemo"
+    },
+    {
+      "name": "BEEMO TEEMO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/166fc1c8b58e62312e1c3a2986a1d5a0f778675a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/166fc1c8b58e62312e1c3a2986a1d5a0f778675a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/teemo/17018/model.glb",
+        "local": "data\\downloads\\teemo\\17018_beemo.glb"
+      },
+      "matchScore": 0.67,
+      "matchedName": "Beemo"
+    },
+    {
+      "name": "Splendor Opus Teemo",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6dcd976bf4060312855db91d62a7292841441360-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6dcd976bf4060312855db91d62a7292841441360-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

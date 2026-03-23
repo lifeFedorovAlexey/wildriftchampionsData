@@ -1,0 +1,58 @@
+{
+  "slug": "zyra",
+  "skinCount": 4,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "ZYRA, RISE OF THE THORNS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a8024c119c807782f62205c90b8aec7f19ef8ad0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a8024c119c807782f62205c90b8aec7f19ef8ad0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zyra/143000/model.glb",
+        "local": "data\\downloads\\zyra\\143000_zyra.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Zyra"
+    },
+    {
+      "name": "COVEN ZYRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ae60b2b84dde0bc231f202fdabda9da3e4eef524-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ae60b2b84dde0bc231f202fdabda9da3e4eef524-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zyra/143005/model.glb",
+        "local": "data\\downloads\\zyra\\143005_coven_zyra.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Coven Zyra"
+    },
+    {
+      "name": "DRAGON LANTERN ZYRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dc641cf82fb4dd30e744569e983221d764dff78e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dc641cf82fb4dd30e744569e983221d764dff78e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zyra/143004/model.glb",
+        "local": "data\\downloads\\zyra\\143004_dragon_sorceress_zyra.glb"
+      },
+      "matchScore": 0.55,
+      "matchedName": "Dragon Sorceress Zyra"
+    },
+    {
+      "name": "MYSTICAL HERALD ZYRA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/67f889ae20210b5351de19566fcc2be3cb2a2bdb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/67f889ae20210b5351de19566fcc2be3cb2a2bdb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

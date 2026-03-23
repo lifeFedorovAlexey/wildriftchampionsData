@@ -1,0 +1,95 @@
+{
+  "slug": "ziggs",
+  "skinCount": 7,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "ZIGGS, THE HEXPLOSIVES EXPERT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d9950b3db477cb0e72a27d478116babb896f9a02-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d9950b3db477cb0e72a27d478116babb896f9a02-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ziggs/115000/model.glb",
+        "local": "data\\downloads\\ziggs\\115000_ziggs.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Ziggs"
+    },
+    {
+      "name": "MASTER ARCANIST ZIGGS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/86f4bb745e187afe5aef6c2fadc9f51492cd0b8b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/86f4bb745e187afe5aef6c2fadc9f51492cd0b8b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ziggs/115005/model.glb",
+        "local": "data\\downloads\\ziggs\\115005_master_arcanist_ziggs.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Master Arcanist Ziggs"
+    },
+    {
+      "name": "MAD SCIENTIST ZIGGS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f48b6a0f5db74f09c246dfb0fc2baaaf1c67d8c0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f48b6a0f5db74f09c246dfb0fc2baaaf1c67d8c0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ziggs/115001/model.glb",
+        "local": "data\\downloads\\ziggs\\115001_mad_scientist_ziggs.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Mad Scientist Ziggs"
+    },
+    {
+      "name": "BATTLE BOSS ZIGGS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f025637949e9472d3af6ae89436fdf1446e8f8d0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f025637949e9472d3af6ae89436fdf1446e8f8d0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ziggs/115006/model.glb",
+        "local": "data\\downloads\\ziggs\\115006_battle_boss_ziggs.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Boss Ziggs"
+    },
+    {
+      "name": "COTTONTAIL ZIGGS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a0164773f6a7fe230d3b9a4c2dfbe69a763db3ff-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a0164773f6a7fe230d3b9a4c2dfbe69a763db3ff-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PORCELAIN ZIGGS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9331abe5e8798cf8bb01903373787c7972a87225-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9331abe5e8798cf8bb01903373787c7972a87225-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "POOL PARTY ZIGGS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bf9f06460561e07df0744439efe9e8d331d037e4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bf9f06460561e07df0744439efe9e8d331d037e4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ziggs/115003/model.glb",
+        "local": "data\\downloads\\ziggs\\115003_pool_party_ziggs.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pool Party Ziggs"
+    }
+  ]
+}

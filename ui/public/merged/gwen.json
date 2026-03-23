@@ -1,0 +1,113 @@
+{
+  "slug": "gwen",
+  "skinCount": 9,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "GWEN, THE HALLOWED SEAMSTRESS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b66d5f718f37a94229555741f8cadeecfffa431d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b66d5f718f37a94229555741f8cadeecfffa431d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/gwen/887000/model.glb",
+        "local": "data\\downloads\\gwen\\887000_gwen.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Gwen"
+    },
+    {
+      "name": "SPACE GROOVE GWEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/903eaf91d9d74cc5cf0684a07901a30dcfed9c54-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/903eaf91d9d74cc5cf0684a07901a30dcfed9c54-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/gwen/887001/model.glb",
+        "local": "data\\downloads\\gwen\\887001_space_groove_gwen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Space Groove Gwen"
+    },
+    {
+      "name": "MYTHMAKER GWEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7cb50118aad726037fd2a54a50592ec77fd23da4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7cb50118aad726037fd2a54a50592ec77fd23da4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CRYSTAL ROSE GWEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/845547e67bd92b63dbd5749435d8ac06960f5680-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/845547e67bd92b63dbd5749435d8ac06960f5680-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PRESTIGE CRYSTAL ROSE GWEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7a61b490ab41c2e43a8be3d32e9148fff3ad49b4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7a61b490ab41c2e43a8be3d32e9148fff3ad49b4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SOUL FIGHTER GWEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ba4aa9d7cd6036cb16ba9505e1147eeb5abc5a2d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ba4aa9d7cd6036cb16ba9505e1147eeb5abc5a2d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/gwen/887020/model.glb",
+        "local": "data\\downloads\\gwen\\887020_soul_fighter_gwen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Soul Fighter Gwen"
+    },
+    {
+      "name": "CAFE CUTIES GWEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f769bcb3c7203273860b56ea5269c57bdce8d03a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f769bcb3c7203273860b56ea5269c57bdce8d03a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/gwen/887011/model.glb",
+        "local": "data\\downloads\\gwen\\887011_cafe_cuties_gwen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cafe Cuties Gwen"
+    },
+    {
+      "name": "STARGAZER GWEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e8959e79ca2442b94126c48d598b57d9964c136c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e8959e79ca2442b94126c48d598b57d9964c136c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "BATTLE CAT GWEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d301e40fa066da93605610e563e707a86ef0e73e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d301e40fa066da93605610e563e707a86ef0e73e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/gwen/887030/model.glb",
+        "local": "data\\downloads\\gwen\\887030_battle_queen_gwen.glb"
+      },
+      "matchScore": 0.55,
+      "matchedName": "Battle Queen Gwen"
+    }
+  ]
+}

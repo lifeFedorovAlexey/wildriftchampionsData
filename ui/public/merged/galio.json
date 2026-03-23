@@ -1,0 +1,104 @@
+{
+  "slug": "galio",
+  "skinCount": 8,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "GALIO, THE COLOSSUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f70e6075653847cd26f1ce49019f975f08653f0e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f70e6075653847cd26f1ce49019f975f08653f0e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/galio/3000/model.glb",
+        "local": "data\\downloads\\galio\\3000_galio.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Galio"
+    },
+    {
+      "name": "INFERNAL GALIO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3fcbffcdc7fc6316c1c474c8b2f273eb202e6ba9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3fcbffcdc7fc6316c1c474c8b2f273eb202e6ba9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/galio/3013/model.glb",
+        "local": "data\\downloads\\galio\\3013_infernal_galio.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Infernal Galio"
+    },
+    {
+      "name": "DEBONAIR GALIO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cd2b45d8162ccd73db8dff0ebc17693da107ebf5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cd2b45d8162ccd73db8dff0ebc17693da107ebf5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/galio/3005/model.glb",
+        "local": "data\\downloads\\galio\\3005_debonair_galio.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Debonair Galio"
+    },
+    {
+      "name": "GATEKEEPER GALIO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/40347560454541f36fb6565c8a25ad58544b3e32-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/40347560454541f36fb6565c8a25ad58544b3e32-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/galio/3004/model.glb",
+        "local": "data\\downloads\\galio\\3004_gatekeeper_galio.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Gatekeeper Galio"
+    },
+    {
+      "name": "HEXPLORER GALIO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/208b85aec1ec617eb045ee70af64ea3591d85c3a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/208b85aec1ec617eb045ee70af64ea3591d85c3a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "MECHA GALIO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c4ba5ca98c751357b3a764f471f37e746d20cba6-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c4ba5ca98c751357b3a764f471f37e746d20cba6-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "BIRDIO GALIO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b9982d49415078ed6b1f82ce6c04dd29cc3530e7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b9982d49415078ed6b1f82ce6c04dd29cc3530e7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/galio/3006/model.glb",
+        "local": "data\\downloads\\galio\\3006_birdio.glb"
+      },
+      "matchScore": 0.67,
+      "matchedName": "Birdio"
+    },
+    {
+      "name": "GLORIOUS AIGRETTE GALIO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0b14eb74003cbb745ed443562aeba2a8794e8a28-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0b14eb74003cbb745ed443562aeba2a8794e8a28-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

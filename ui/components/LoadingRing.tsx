@@ -18,12 +18,12 @@ const Wrap = styled.div`
   position: relative;
 `;
 
-const MaskedGif = styled.div`
+const MaskedSpin = styled.div`
   position: absolute;
   inset: 0;
   border-radius: 50%;
 
-  background-image: url("/wildrift-spin.gif");
+  background-image: url("/wildrift-spin.webp");
   background-size: cover;
   background-position: center;
 
@@ -63,7 +63,7 @@ export default function LoadingRing({
 
   useEffect(() => {
     const img = new Image();
-    img.src = "/wildrift-spin.gif";
+    img.src = "/wildrift-spin.webp";
     img.onload = () => setImageReady(true);
   }, []);
 
@@ -71,7 +71,7 @@ export default function LoadingRing({
     <Overlay>
       <div style={{ display: "grid", placeItems: "center" }}>
         <Wrap>
-          <MaskedGif />
+          <MaskedSpin />
         </Wrap>
 
         {imageReady ? <Caption>{label}</Caption> : null}

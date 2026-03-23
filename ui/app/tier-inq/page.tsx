@@ -1,21 +1,23 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
-import RankFilter from "@/components/RankFilter";
-import LaneFilter from "@/components/LaneFilter";
-import StreamerSocials from "@/components/StreamerSocials";
+import ChampionAvatar from "@/components/ui/ChampionAvatar";
+import {
+  FiltersSkeleton,
+  SocialsSkeleton,
+} from "@/components/ui/LazySkeletons";
 
 import LoadingRing from "@/components/LoadingRing";
 import { API_BASE } from "@/constants/apiBase";
+import { buildLatestStatsMap, buildTierBuckets } from "./tier-inq-lib";
 import {
   TlWeightSliderWrap,
   TlWeightSliderTop,
   TlWeightSliderLabel,
   TlWeightSliderValue,
   TlRange,
-  TlChampCard,
-  TlChampIcon,
   tierColor,
   TlTierRow,
   TlTierBadge,
@@ -46,50 +48,12 @@ import {
   TlCalcSumRow,
 } from "@/components/styled/tierlistInq";
 
-/* -------------------- RULES: points -------------------- */
-
-function pointsWinrate(v: number | null) {
-  if (v == null) return 0;
-  if (v >= 55) return 6;
-  if (v >= 53 && v < 55) return 5;
-  if (v >= 51 && v < 53) return 4;
-  if (v >= 50 && v < 51) return 3;
-  if (v >= 49 && v < 50) return 2;
-  if (v >= 48 && v < 49) return 1;
-  return 0;
-}
-
-function pointsBanrate(v: number | null) {
-  if (v == null) return 0;
-  if (v >= 50) return 6;
-  if (v >= 30 && v < 50) return 5;
-  if (v >= 20 && v < 30) return 4;
-  if (v >= 10 && v < 20) return 3;
-  if (v >= 5 && v < 10) return 2;
-  if (v >= 2 && v < 5) return 1;
-  return 0;
-}
-
-function pointsPickrate(v: number | null) {
-  if (v == null) return 0;
-  if (v >= 20) return 6;
-  if (v >= 15 && v < 20) return 5;
-  if (v >= 10 && v < 15) return 4;
-  if (v >= 5 && v < 10) return 3;
-  if (v >= 3 && v < 5) return 2;
-  if (v >= 1 && v < 3) return 1;
-  return 0;
-}
-
-function scoreToTier(score: number) {
-  if (score >= 15) return "S+";
-  if (score >= 12) return "S";
-  if (score >= 10) return "A";
-  if (score >= 7) return "B";
-  if (score >= 3) return "C";
-  if (score >= 1) return "D";
-  return null;
-}
+const StatsFilters = dynamic(() => import("@/components/StatsFilters"), {
+  loading: () => <FiltersSkeleton />,
+});
+const StreamerSocials = dynamic(() => import("@/components/StreamerSocials"), {
+  loading: () => <SocialsSkeleton />,
+});
 
 /* -------------------- UI helpers -------------------- */
 
@@ -152,18 +116,22 @@ function TierChampionIcon({
   onClick?: (c: TierChamp) => void;
 }) {
   return (
-    <TlChampCard
+    <ChampionAvatar
+      name={champ.name}
+      src={champ.icon}
       title={`${champ.name} • ${champ.totalScore} очк.`}
+      mobileSize={44}
+      desktopSize={54}
+      mobileRadius={12}
+      desktopRadius={14}
       onClick={() => onClick?.(champ)}
-      style={{ cursor: "pointer" }}
-      role="button"
-      tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") onClick?.(champ);
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick?.(champ);
+        }
       }}
-    >
-      {champ.icon ? <TlChampIcon src={champ.icon} alt={champ.name} /> : null}
-    </TlChampCard>
+    />
   );
 }
 
@@ -242,7 +210,10 @@ export default function TierlistInqPage() {
   const [wPick, setWPick] = useState(1);
   const [wBan, setWBan] = useState(1);
 
-  const tiersOrder = useMemo(() => ["S+", "S", "A", "B", "C", "D"], []);
+  const tiersOrder = useMemo(
+    () => ["S+", "S", "A", "B", "C", "D"] as const,
+    []
+  );
 
   const [champions, setChampions] = useState<any[]>([]);
   const [latestStats, setLatestStats] = useState<Record<string, any> | null>(
@@ -267,7 +238,7 @@ export default function TierlistInqPage() {
           fetch(
             `${API_BASE}/api/champions?lang=${encodeURIComponent(language)}`
           ),
-          fetch(`${API_BASE}/api/champion-history?latest=1`),
+          fetch(`${API_BASE}/api/latest-stats-snapshot`),
         ]);
 
         if (!champRes.ok) throw new Error(`Champions HTTP ${champRes.status}`);
@@ -280,20 +251,7 @@ export default function TierlistInqPage() {
         setChampions(Array.isArray(champsJson) ? champsJson : []);
 
         const items = Array.isArray(histJson.items) ? histJson.items : [];
-        const latestMap: Record<string, any> = {};
-
-        for (const item of items) {
-          if (!item || !item.slug || !item.rank || !item.lane || !item.date)
-            continue;
-
-          const key = `${item.slug}|${item.rank}|${item.lane}`;
-          const prev = latestMap[key];
-
-          if (!prev) latestMap[key] = item;
-          else if (String(item.date) > String(prev.date)) latestMap[key] = item;
-        }
-
-        setLatestStats(latestMap);
+        setLatestStats(buildLatestStatsMap(items));
       } catch (e) {
         console.error("Ошибка загрузки данных для TierlistInqPage", e);
         if (!cancelled) setError("Не удалось загрузить тир-лист.");
@@ -308,107 +266,35 @@ export default function TierlistInqPage() {
     };
   }, [language]);
 
-  const tiers = useMemo(() => {
-    const out: Record<string, TierChamp[]> = {
-      "S+": [],
-      S: [],
-      A: [],
-      B: [],
-      C: [],
-      D: [],
-    };
-    if (!champions.length || !latestStats) return out;
-
-    let maxDate: string | null = null;
-
-    for (const champ of champions) {
-      const slug = champ?.slug;
-      if (!slug) continue;
-
-      const key = `${slug}|${rankKey}|${laneKey}`;
-      const stat = (latestStats as any)[key];
-      if (!stat) continue;
-
-      const name =
-        typeof champ.name === "string" && champ.name.trim() ? champ.name : slug;
-
-      const winRate = stat.winRate ?? null;
-      const pickRate = stat.pickRate ?? null;
-      const banRate = stat.banRate ?? null;
-
-      const winPts = pointsWinrate(winRate);
-      const pickPts = pointsPickrate(pickRate);
-      const banPts = pointsBanrate(banRate);
-
-      const totalScoreRaw = winPts * wWin + pickPts * wPick + banPts * wBan;
-      const totalScore = Math.round(totalScoreRaw * 10) / 10;
-
-      const tier = scoreToTier(totalScore);
-      if (!tier) continue;
-
-      if (stat.date != null) {
-        const d = String(stat.date);
-        if (!maxDate || d > maxDate) maxDate = d;
-      }
-
-      out[tier].push({
-        slug,
-        name,
-        icon: champ.icon || null,
-
-        winRate,
-        pickRate,
-        banRate,
-
-        winPts,
-        pickPts,
-        banPts,
-
-        wWin,
-        wPick,
-        wBan,
-
-        totalScoreRaw,
-        totalScore,
-
-        computedTier: tier,
-      });
-    }
-
-    for (const t of Object.keys(out)) {
-      out[t].sort((a, b) => {
-        if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
-
-        const bw = b.winRate ?? -999;
-        const aw = a.winRate ?? -999;
-        if (bw !== aw) return bw - aw;
-
-        const bp = b.pickRate ?? -999;
-        const ap = a.pickRate ?? -999;
-        return bp - ap;
-      });
-    }
-
-    setDate(maxDate);
-    return out;
+  const { tiers, date: derivedDate } = useMemo(() => {
+    return buildTierBuckets({
+      champions,
+      latestStats: latestStats ?? {},
+      rankKey,
+      laneKey,
+      weights: { wWin, wPick, wBan },
+    });
   }, [champions, latestStats, rankKey, laneKey, wWin, wPick, wBan]);
 
-  const hasAny = tiersOrder.some(
-    (t) => Array.isArray(tiers[t]) && tiers[t].length > 0
-  );
+  useEffect(() => {
+    setDate(derivedDate);
+  }, [derivedDate]);
+
+  const hasAny = tiersOrder.some((t) => tiers[t].length > 0);
 
   const filters = (
-    <>
-      <RankFilter value={rankKey} onChange={setRankKey} />
-      <LaneFilter value={laneKey} onChange={setLaneKey} />
-    </>
+    <StatsFilters
+      rankValue={rankKey}
+      onRankChange={setRankKey}
+      laneValue={laneKey}
+      onLaneChange={setLaneKey}
+    />
   );
 
   if (loading) return <LoadingRing label="Считаю тир-лист…" />;
 
   return (
-    <PageWrapper
-      showBack
+    <PageWrapper
       title="Тир-лист с настраеваемыми весами от INQ"
       paragraphs={[
         "Этот раздел позволяет получить тир-лист под конкретные условия: ранг, линия или фильтры.",
@@ -416,7 +302,7 @@ export default function TierlistInqPage() {
       ]}
     >
       {error ? (
-        <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
+        <div style={{ padding: "var(--space-3)", opacity: 0.9 }}>{error}</div>
       ) : (
         <TlWrap>
           {filters}

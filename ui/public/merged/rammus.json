@@ -1,0 +1,49 @@
+{
+  "slug": "rammus",
+  "skinCount": 3,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "RAMMUS, THE ARMORDILLO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1ed884fe7366bd78eed61ec99ba1fec24c2bd06d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1ed884fe7366bd78eed61ec99ba1fec24c2bd06d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rammus/33000/model.glb",
+        "local": "data\\downloads\\rammus\\33000_rammus.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Rammus"
+    },
+    {
+      "name": "MOLTEN RAMMUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9fbd48634d0152abd9eadcdfcc51db2836f116f0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9fbd48634d0152abd9eadcdfcc51db2836f116f0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rammus/33003/model.glb",
+        "local": "data\\downloads\\rammus\\33003_molten_rammus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Molten Rammus"
+    },
+    {
+      "name": "SWEEPER RAMMUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b28451a21b3d4cc3a515efe9cc5acc1a5322c4ae-1280x755.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b28451a21b3d4cc3a515efe9cc5acc1a5322c4ae-1280x755.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rammus/33008/model.glb",
+        "local": "data\\downloads\\rammus\\33008_sweeper_rammus.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sweeper Rammus"
+    }
+  ]
+}

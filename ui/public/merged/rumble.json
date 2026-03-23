@@ -1,0 +1,35 @@
+{
+  "slug": "rumble",
+  "skinCount": 2,
+  "with3d": 2,
+  "skins": [
+    {
+      "name": "RUMBLE, THE MECHANIZED MENACE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/92989c47f54b2c47e5e78f2c66a2916694c847ff-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/92989c47f54b2c47e5e78f2c66a2916694c847ff-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rumble/68000/model.glb",
+        "local": "data\\downloads\\rumble\\68000_rumble.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Rumble"
+    },
+    {
+      "name": "BADLANDS BARON RUMBLE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bbd93000a9d2ec2714a4bed83e5089aae13d0b58-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bbd93000a9d2ec2714a4bed83e5089aae13d0b58-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/rumble/68004/model.glb",
+        "local": "data\\downloads\\rumble\\68004_badlands_baron_rumble.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Badlands Baron Rumble"
+    }
+  ]
+}

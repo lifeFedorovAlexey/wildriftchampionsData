@@ -1,0 +1,132 @@
+{
+  "slug": "sona",
+  "skinCount": 10,
+  "with3d": 7,
+  "skins": [
+    {
+      "name": "SONA, MAVEN OF THE STRINGS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6560d1f55adc0269afc48d436b71ce487dc8f566-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6560d1f55adc0269afc48d436b71ce487dc8f566-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sona/37000/model.glb",
+        "local": "data\\downloads\\sona\\37000_sona.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Sona"
+    },
+    {
+      "name": "PENTAKILL SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d4bdcc6d88ef582da6539b606fa06615b9035975-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d4bdcc6d88ef582da6539b606fa06615b9035975-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sona/37002/model.glb",
+        "local": "data\\downloads\\sona\\37002_pentakill_sona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pentakill Sona"
+    },
+    {
+      "name": "MUSE SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dc004b75d18ca5dcce54bcf2988e15ac6a9ca090-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dc004b75d18ca5dcce54bcf2988e15ac6a9ca090-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sona/37001/model.glb",
+        "local": "data\\downloads\\sona\\37001_muse_sona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Muse Sona"
+    },
+    {
+      "name": "SWEETHEART SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9c3e276c871c7371b245af737b39f1d3a39ee032-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9c3e276c871c7371b245af737b39f1d3a39ee032-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sona/37007/model.glb",
+        "local": "data\\downloads\\sona\\37007_sweetheart_sona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sweetheart Sona"
+    },
+    {
+      "name": "ARCADE SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/46f89788524e5401b21df8326fd7020e463d64e0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/46f89788524e5401b21df8326fd7020e463d64e0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sona/37005/model.glb",
+        "local": "data\\downloads\\sona\\37005_arcade_sona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arcade Sona"
+    },
+    {
+      "name": "CRYSTAL ROSE SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7b2ef66923be318e473e7f57d2b25f3f21372228-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7b2ef66923be318e473e7f57d2b25f3f21372228-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "STAR GUARDIAN SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d99ecf50741d109ac836c13834ae622401607c3a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d99ecf50741d109ac836c13834ae622401607c3a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sona/37035/model.glb",
+        "local": "data\\downloads\\sona\\37035_star_guardian_sona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Sona"
+    },
+    {
+      "name": "GUQIN SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ac85885d04c7d1e845d856891e21b25ce23400fa-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ac85885d04c7d1e845d856891e21b25ce23400fa-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/sona/37004/model.glb",
+        "local": "data\\downloads\\sona\\37004_guqin_sona.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Guqin Sona"
+    },
+    {
+      "name": "STARGAZER SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4384d688c2b474cfff03e89aea48810260baf65d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4384d688c2b474cfff03e89aea48810260baf65d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CALLIGRAPHIA  SONA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/67627978cf6bc1c5ad6f5285da5a65ab87710c46-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/67627978cf6bc1c5ad6f5285da5a65ab87710c46-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

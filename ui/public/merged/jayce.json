@@ -1,0 +1,109 @@
+{
+  "slug": "jayce",
+  "skinCount": 8,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "JAYCE, THE DEFENDER OF TOMORROW",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f6d6396a20783f376781599aae6003c3d70ee417-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f6d6396a20783f376781599aae6003c3d70ee417-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jayce/126000/model.glb",
+        "local": "data\\downloads\\jayce\\126000_jayce.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Jayce"
+    },
+    {
+      "name": "JAYCE BRIGHTHAMMER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fe05a6250573f1be982e4d157f471785ed62f0fb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fe05a6250573f1be982e4d157f471785ed62f0fb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jayce/126004/model.glb",
+        "local": "data\\downloads\\jayce\\126004_jayce_brighthammer.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Jayce Brighthammer"
+    },
+    {
+      "name": "SUPERHERO JAYCE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4a3651390a1f6831b6b290619a4d02cfedccd15c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4a3651390a1f6831b6b290619a4d02cfedccd15c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Forsaken Jayce",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ff5a035bcf3b97865a1603c1b0b4707dbbc75404-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ff5a035bcf3b97865a1603c1b0b4707dbbc75404-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jayce/126003/model.glb",
+        "local": "data\\downloads\\jayce\\126003_forsaken_jayce.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Forsaken Jayce"
+    },
+    {
+      "name": "CRYSTAL ROSE JAYCE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/45755cc6a805c76de4b74dd3c2852e147729c071-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/45755cc6a805c76de4b74dd3c2852e147729c071-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "BATTLE ACADEMIA JAYCE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/43f65de6ba63e1eceb77183dc5f7c712eb31e5d4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/43f65de6ba63e1eceb77183dc5f7c712eb31e5d4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jayce/126005/model.glb",
+        "local": "data\\downloads\\jayce\\126005_battle_academia_jayce.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Academia Jayce"
+    },
+    {
+      "name": "Debonair Jayce",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b88c2360896a2a383ad8a7edc8f8a8a5594b850c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b88c2360896a2a383ad8a7edc8f8a8a5594b850c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jayce/126002/model.glb",
+        "local": "data\\downloads\\jayce\\126002_debonair_jayce.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Debonair Jayce"
+    },
+    {
+      "name": "RESISTANCE JAYCE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e85d457f214276d6cd2bffdc2c0da9628b75f4d0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e85d457f214276d6cd2bffdc2c0da9628b75f4d0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/jayce/126015/model.glb",
+        "local": "data\\downloads\\jayce\\126015_resistance_jayce.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Resistance Jayce"
+    }
+  ]
+}

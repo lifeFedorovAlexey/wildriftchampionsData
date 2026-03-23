@@ -1,0 +1,109 @@
+{
+  "slug": "yone",
+  "skinCount": 8,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "YONE, THE UNFORGOTTEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/996d4d732c68f8059de5e82ad974fab1026f48a7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/996d4d732c68f8059de5e82ad974fab1026f48a7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yone/777000/model.glb",
+        "local": "data\\downloads\\yone\\777000_yone.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Yone"
+    },
+    {
+      "name": "CRYSTAL ROSE YONE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/25f52adedb3ca6e31c92683b9dc9f8995e30783d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/25f52adedb3ca6e31c92683b9dc9f8995e30783d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DAWNBRINGER YONE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88898ab6b9596e7c3a19e310c138315a5c1c4f98-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88898ab6b9596e7c3a19e310c138315a5c1c4f98-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yone/777019/model.glb",
+        "local": "data\\downloads\\yone\\777019_dawnbringer_yone.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dawnbringer Yone"
+    },
+    {
+      "name": "SPIRIT BLOSSOM YONE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2bee85831b4a0b668af3c6765e9b1d811003efbf-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2bee85831b4a0b668af3c6765e9b1d811003efbf-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yone/777001/model.glb",
+        "local": "data\\downloads\\yone\\777001_spirit_blossom_yone.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Yone"
+    },
+    {
+      "name": "HEARTSTEEL YONE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8ed3972cde9e15faea8a807def61c85fdf094466-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8ed3972cde9e15faea8a807def61c85fdf094466-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yone/777045/model.glb",
+        "local": "data\\downloads\\yone\\777045_heartsteel_yone.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "HEARTSTEEL Yone"
+    },
+    {
+      "name": "PRESTIGE HEARTSTEEL YONE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/54bccb25ce8e4b6460115fbd82efbb61ba635eeb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/54bccb25ce8e4b6460115fbd82efbb61ba635eeb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yone/777046/model.glb",
+        "local": "data\\downloads\\yone\\777046_prestige_heartsteel_yone.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Prestige HEARTSTEEL Yone"
+    },
+    {
+      "name": "FIEND QUELLER YONE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/28a559dfaa320f5b9641c3dc116fe3f6f9cea155-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/28a559dfaa320f5b9641c3dc116fe3f6f9cea155-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "HIGH NOON YONE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6e6bbee8c58825ddb3387b11e6634ac186b19651-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6e6bbee8c58825ddb3387b11e6634ac186b19651-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yone/777055/model.glb",
+        "local": "data\\downloads\\yone\\777055_high_noon_yone.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Yone"
+    }
+  ]
+}

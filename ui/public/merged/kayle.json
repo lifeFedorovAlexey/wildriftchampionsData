@@ -1,0 +1,86 @@
+{
+  "slug": "kayle",
+  "skinCount": 6,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "KAYLE, THE RIGHTEOUS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a4c286f313fb275c51e903494a955fa1dd9bd65f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a4c286f313fb275c51e903494a955fa1dd9bd65f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayle/10000/model.glb",
+        "local": "data\\downloads\\kayle\\10000_kayle.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Kayle"
+    },
+    {
+      "name": "VIRIDIAN KAYLE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88b59803e4ac8422f229fe6adf984c8ec0bff11b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88b59803e4ac8422f229fe6adf984c8ec0bff11b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayle/10002/model.glb",
+        "local": "data\\downloads\\kayle\\10002_viridian_kayle.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Viridian Kayle"
+    },
+    {
+      "name": "PSYOPS KAYLE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/99ddaf7c69046492b96ee641be724e8035a1d853-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/99ddaf7c69046492b96ee641be724e8035a1d853-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayle/10015/model.glb",
+        "local": "data\\downloads\\kayle\\10015_psyops_kayle.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PsyOps Kayle"
+    },
+    {
+      "name": "DRAGONSLAYER KAYLE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d00e24d052cbae5428239d746a39bda1be6d0ec-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d00e24d052cbae5428239d746a39bda1be6d0ec-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayle/10024/model.glb",
+        "local": "data\\downloads\\kayle\\10024_dragonslayer_kayle.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dragonslayer Kayle"
+    },
+    {
+      "name": "Immortal Journey Kayle",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/432355296949a4d71d7fe14460eb1e889788b9b8-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/432355296949a4d71d7fe14460eb1e889788b9b8-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kayle/10057/model.glb",
+        "local": "data\\downloads\\kayle\\10057_immortal_journey_kayle.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Immortal Journey Kayle"
+    },
+    {
+      "name": "CRYPTIC DEPTH KAYLE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3cdc59a5314bd17d6ef2aabc884d4ff419c96693-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3cdc59a5314bd17d6ef2aabc884d4ff419c96693-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

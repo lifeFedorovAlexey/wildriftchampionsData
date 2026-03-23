@@ -1,0 +1,86 @@
+{
+  "slug": "khazix",
+  "skinCount": 6,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "KHA'ZIX, THE VOIDREAVER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2fde750363a485aa460ccb77a82e85eea56c2709-1920x1134.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2fde750363a485aa460ccb77a82e85eea56c2709-1920x1134.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/khazix/121000/model.glb",
+        "local": "data\\downloads\\khazix\\121000_kha_zix.glb"
+      },
+      "matchScore": 0.67,
+      "matchedName": "Kha'Zix"
+    },
+    {
+      "name": "DEATH BLOSSOM KHA'ZIX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fe3f2d477ff0b0357bd8ca5f3f96a830b1544088-1920x1152.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fe3f2d477ff0b0357bd8ca5f3f96a830b1544088-1920x1152.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/khazix/121003/model.glb",
+        "local": "data\\downloads\\khazix\\121003_death_blossom_kha_zix.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Death Blossom Kha'Zix"
+    },
+    {
+      "name": "Dark Star Kha'Zix",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/803246fe642f9f13a9207932836c683ae13f7bc7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/803246fe642f9f13a9207932836c683ae13f7bc7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/khazix/121004/model.glb",
+        "local": "data\\downloads\\khazix\\121004_dark_star_kha_zix.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dark Star Kha'Zix"
+    },
+    {
+      "name": "Mecha Kha'Zix",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9847912613c605a93eb58ce73049f8ea79c8ff10-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9847912613c605a93eb58ce73049f8ea79c8ff10-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/khazix/121001/model.glb",
+        "local": "data\\downloads\\khazix\\121001_mecha_kha_zix.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Mecha Kha'Zix"
+    },
+    {
+      "name": "DREAM RAIDER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eb880dc7284eda38d639253fb8530eac697e657b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eb880dc7284eda38d639253fb8530eac697e657b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "HIGH NOON KHA'ZIX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d6ead953c0f01c62483be6ba6c45517a7a4d64f1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d6ead953c0f01c62483be6ba6c45517a7a4d64f1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/khazix/121000/model.glb",
+        "local": "data\\downloads\\khazix\\121000_kha_zix.glb"
+      },
+      "matchScore": 0.62,
+      "matchedName": "Kha'Zix"
+    }
+  ]
+}

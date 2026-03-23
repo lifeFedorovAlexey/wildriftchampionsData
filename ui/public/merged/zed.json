@@ -1,0 +1,119 @@
+{
+  "slug": "zed",
+  "skinCount": 8,
+  "with3d": 8,
+  "skins": [
+    {
+      "name": "ZED, THE MASTER OF SHADOWS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8f3ed8a6035c324664d0e917126ceb04ad0c8cbf-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8f3ed8a6035c324664d0e917126ceb04ad0c8cbf-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zed/238000/model.glb",
+        "local": "data\\downloads\\zed\\238000_zed.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Zed"
+    },
+    {
+      "name": "SHOCKBLADE ZED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c34577cdc7e5ab46b1f5890fc391a9fa76b73965-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c34577cdc7e5ab46b1f5890fc391a9fa76b73965-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zed/238001/model.glb",
+        "local": "data\\downloads\\zed\\238001_shockblade_zed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Shockblade Zed"
+    },
+    {
+      "name": "DEATH SWORN ZED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/11066c451c18c45c3640f9c1b0c5e5a4d867c4da-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/11066c451c18c45c3640f9c1b0c5e5a4d867c4da-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zed/238011/model.glb",
+        "local": "data\\downloads\\zed\\238011_death_sworn_zed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Death Sworn Zed"
+    },
+    {
+      "name": "PROJECT: ZED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d18f0992cfc608577a9bfc50460a2bcde74c9eae-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d18f0992cfc608577a9bfc50460a2bcde74c9eae-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zed/238003/model.glb",
+        "local": "data\\downloads\\zed\\238003_project_zed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Zed"
+    },
+    {
+      "name": "GALAXY SLAYER ZED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d51872a9619b59d1a76ac99e2f23f6936727c2bd-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d51872a9619b59d1a76ac99e2f23f6936727c2bd-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zed/238013/model.glb",
+        "local": "data\\downloads\\zed\\238013_galaxy_slayer_zed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Galaxy Slayer Zed"
+    },
+    {
+      "name": "IMMORTAL JOURNEY ZED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3ce14bf1a4e6d5ebfd34553bfd74ff80aaac0275-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3ce14bf1a4e6d5ebfd34553bfd74ff80aaac0275-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zed/238049/model.glb",
+        "local": "data\\downloads\\zed\\238049_immortal_journey_zed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Immortal Journey Zed"
+    },
+    {
+      "name": "PSYOPS ZED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bf896c9db7765e989b2ec9ea2729254b20282f1d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bf896c9db7765e989b2ec9ea2729254b20282f1d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zed/238015/model.glb",
+        "local": "data\\downloads\\zed\\238015_psyops_zed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PsyOps Zed"
+    },
+    {
+      "name": "GALAXY SLAYER ZED EXQUISITE EDITION",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1c04027437d09704e5a6254a6b73ea5525c94155-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1c04027437d09704e5a6254a6b73ea5525c94155-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zed/238013/model.glb",
+        "local": "data\\downloads\\zed\\238013_galaxy_slayer_zed.glb"
+      },
+      "matchScore": 0.77,
+      "matchedName": "Galaxy Slayer Zed"
+    }
+  ]
+}

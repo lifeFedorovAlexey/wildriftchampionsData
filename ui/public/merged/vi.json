@@ -1,0 +1,123 @@
+{
+  "slug": "vi",
+  "skinCount": 9,
+  "with3d": 7,
+  "skins": [
+    {
+      "name": "VI, THE PILTOVER ENFORCER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/46420c9c094ce3ce968c9463ba193c186fd67b44-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/46420c9c094ce3ce968c9463ba193c186fd67b44-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vi/254000/model.glb",
+        "local": "data\\downloads\\vi\\254000_vi.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Vi"
+    },
+    {
+      "name": "DEMON VI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/953a4ac039fb90fed1e2829153cf9486fcc18f26-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/953a4ac039fb90fed1e2829153cf9486fcc18f26-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vi/254004/model.glb",
+        "local": "data\\downloads\\vi\\254004_demon_vi.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Demon Vi"
+    },
+    {
+      "name": "DEBONAIR VI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6be140cbf75ae5d2a51fe3f5b2118021dee19694-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6be140cbf75ae5d2a51fe3f5b2118021dee19694-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vi/254003/model.glb",
+        "local": "data\\downloads\\vi\\254003_debonair_vi.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Debonair Vi"
+    },
+    {
+      "name": "PROJECT: VI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/12c1579f33a8517b5380f3d4df0a35492eadad42-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/12c1579f33a8517b5380f3d4df0a35492eadad42-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vi/254011/model.glb",
+        "local": "data\\downloads\\vi\\254011_project_vi.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Vi"
+    },
+    {
+      "name": "ARCANE VI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e37bbbaa0694192068e0207fa6dcbe5f6092b800-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e37bbbaa0694192068e0207fa6dcbe5f6092b800-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vi/254029/model.glb",
+        "local": "data\\downloads\\vi\\254029_arcane_undercity_vi.glb"
+      },
+      "matchScore": 0.717,
+      "matchedName": "Arcane Undercity Vi"
+    },
+    {
+      "name": "WARRING KINGDOMS VI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2b2485fe0002186eade7c1d0e5aaf19c62181df9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2b2485fe0002186eade7c1d0e5aaf19c62181df9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vi/254005/model.glb",
+        "local": "data\\downloads\\vi\\254005_warring_kingdoms_vi.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Warring Kingdoms Vi"
+    },
+    {
+      "name": "OFFICER VI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/36dc24cce311389baa10a55a7ad9fd8e0d9c39a6-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/36dc24cce311389baa10a55a7ad9fd8e0d9c39a6-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vi/254002/model.glb",
+        "local": "data\\downloads\\vi\\254002_officer_vi.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Officer Vi"
+    },
+    {
+      "name": "CRYSTAL ROSE VI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eda68e14caca5be7dd559edfc863b491114f66e1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eda68e14caca5be7dd559edfc863b491114f66e1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SUPERHERO VI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1b0154a7155c848c6ce2a12a4f0c955eb11d7640-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1b0154a7155c848c6ce2a12a4f0c955eb11d7640-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

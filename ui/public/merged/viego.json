@@ -1,0 +1,66 @@
+{
+  "slug": "viego",
+  "skinCount": 6,
+  "with3d": 1,
+  "skins": [
+    {
+      "name": "VIEGO, THE RUINED KING",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9ffb1f3b4e65a9e755b3cd7d4678bdcecab5f7fb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9ffb1f3b4e65a9e755b3cd7d4678bdcecab5f7fb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/viego/234000/model.glb",
+        "local": "data\\downloads\\viego\\234000_viego.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Viego"
+    },
+    {
+      "name": "ARCADE VIEGO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/06aa32bdb2c78298479eb669a43923cef0185d31-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/06aa32bdb2c78298479eb669a43923cef0185d31-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Crystal Rose Viego",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8ebe172c9ea377a4164229d5fa388800edb4d580-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8ebe172c9ea377a4164229d5fa388800edb4d580-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DAWNBRINGER VIEGO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e0708f9b5114d05ea402fe64e968de1bbcdc9818-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e0708f9b5114d05ea402fe64e968de1bbcdc9818-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DAWNBRINGER VIEGO MYTHIC CHROMA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ad49434c3402faf71de7b67ae20399883c8c448d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ad49434c3402faf71de7b67ae20399883c8c448d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CALLIGRAPHIA VIEGO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8c56ae2153a3d0b3ebc4a164d0f4d3eaa3c38a65-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8c56ae2153a3d0b3ebc4a164d0f4d3eaa3c38a65-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

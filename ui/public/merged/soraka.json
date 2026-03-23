@@ -1,0 +1,95 @@
+{
+  "slug": "soraka",
+  "skinCount": 7,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "SORAKA, THE STARCHILD",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b7b139bc86dbd964f0e6039a31b9d1d6e8904b5b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b7b139bc86dbd964f0e6039a31b9d1d6e8904b5b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/soraka/16000/model.glb",
+        "local": "data\\downloads\\soraka\\16000_soraka.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Soraka"
+    },
+    {
+      "name": "ORDER OF THE BANANA SORAKA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0d6aa58435f38e7e3d76e382b12643e60715cf48-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0d6aa58435f38e7e3d76e382b12643e60715cf48-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/soraka/16005/model.glb",
+        "local": "data\\downloads\\soraka\\16005_order_of_the_banana_soraka.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Order of the Banana Soraka"
+    },
+    {
+      "name": "PROGRAM SORAKA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b5f961ba609318779a6eefa1ae127d375fdb774e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b5f961ba609318779a6eefa1ae127d375fdb774e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/soraka/16006/model.glb",
+        "local": "data\\downloads\\soraka\\16006_program_soraka.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Program Soraka"
+    },
+    {
+      "name": "WINTER WONDER SORAKA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/40e7021ffbd90f292b1962524c6b48e2c2fe2eea-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/40e7021ffbd90f292b1962524c6b48e2c2fe2eea-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/soraka/16009/model.glb",
+        "local": "data\\downloads\\soraka\\16009_winter_wonder_soraka.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Winter Wonder Soraka"
+    },
+    {
+      "name": "STARGAZER SORAKA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d8aabc54e6c399214f488d7e5fc71b39673f3fad-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d8aabc54e6c399214f488d7e5fc71b39673f3fad-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "STAR GUARDIAN SORAKA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/652b98e62ca96dd31e243984e6b560ba02600e60-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/652b98e62ca96dd31e243984e6b560ba02600e60-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/soraka/16007/model.glb",
+        "local": "data\\downloads\\soraka\\16007_star_guardian_soraka.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Soraka"
+    },
+    {
+      "name": "Battle Sheep Soraka",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/be09e53a60b983c9f3925efb30acf5d24a6b0db3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/be09e53a60b983c9f3925efb30acf5d24a6b0db3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

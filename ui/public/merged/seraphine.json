@@ -1,0 +1,99 @@
+{
+  "slug": "seraphine",
+  "skinCount": 8,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "SERAPHINE, THE STARRY-EYED SONGSTRESS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ca6a54fa8593a284f1031bd53c6d08091a16b918-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ca6a54fa8593a284f1031bd53c6d08091a16b918-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/seraphine/147000/model.glb",
+        "local": "data\\downloads\\seraphine\\147000_seraphine.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Seraphine"
+    },
+    {
+      "name": "K/DA ALL OUT SERAPHINE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e4e6e6d969f18df9c1b20639d8505ae0e2ddae13-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e4e6e6d969f18df9c1b20639d8505ae0e2ddae13-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/seraphine/147001/model.glb",
+        "local": "data\\downloads\\seraphine\\147001_k_da_all_out_seraphine_indie.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "K/DA ALL OUT Seraphine Indie"
+    },
+    {
+      "name": "STAR GUARDIAN SERAPHINE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/10f7a3e42991ded9859ebe526f7b96fc51895cb3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/10f7a3e42991ded9859ebe526f7b96fc51895cb3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/seraphine/147034/model.glb",
+        "local": "data\\downloads\\seraphine\\147034_star_guardian_seraphine.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Seraphine"
+    },
+    {
+      "name": "MYTHMAKER SERAPHINE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/048aa60f00788a93b8246bb9c43005cc408ab50f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/048aa60f00788a93b8246bb9c43005cc408ab50f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "OCEAN SONG SERAPHINE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/364582af1ce616708d664c06ae14c1fe524515be-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/364582af1ce616708d664c06ae14c1fe524515be-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/seraphine/147014/model.glb",
+        "local": "data\\downloads\\seraphine\\147014_ocean_song_seraphine.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Ocean Song Seraphine"
+    },
+    {
+      "name": "CRYSTAL ROSE SERAPHINE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1363da3b54dd6106a8e4e318a1203e1d18070c31-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1363da3b54dd6106a8e4e318a1203e1d18070c31-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "GARDEN PARTY SERAPHINE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8f6d1182d15cfa8c8f39b3f43a6026afbf21b942-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8f6d1182d15cfa8c8f39b3f43a6026afbf21b942-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SUMMER PARTY SERAPHINE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8bb2bcea3549f29832e818767070c2b4c0cc1e02-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8bb2bcea3549f29832e818767070c2b4c0cc1e02-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

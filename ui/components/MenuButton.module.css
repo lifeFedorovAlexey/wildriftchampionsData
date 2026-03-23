@@ -1,0 +1,109 @@
+.menuButton {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+  background: #0b1220;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.menuButton:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.07);
+  background: #0f172a;
+}
+
+.menuButton:first-child {
+  padding: 21px;
+  background: #162036;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.menuButton:first-child:hover {
+  background: #1a2740;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.menuButtonBg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.iconShell {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.6);
+  flex: 0 0 auto;
+}
+
+.textBlock {
+  min-width: 0;
+}
+
+.title {
+  margin-bottom: 3px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menuButton:first-child .title {
+  font-size: 17px;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.subtitle :global(.inqAccent) {
+  color: #8b5cf6;
+  font-weight: 600;
+}
+
+.rightIcon {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 18px;
+  flex: 0 0 auto;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.menuButton:hover .rightIcon {
+  color: rgba(255, 255, 255, 0.5);
+  transform: translateX(2px);
+}

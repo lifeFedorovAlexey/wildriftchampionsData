@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import PageWrapper from "@/components/PageWrapper";
 import LoadingRing from "@/components/LoadingRing";
-
 import { API_BASE } from "@/constants/apiBase";
 import {
-  TpAvatar,
-  TpAvatarImg,
+  aggregateLatestPicksBans,
+  buildLaneDetails,
+} from "./picks-bans-lib";
+import {
   TpCard,
   TpCardIndex,
   TpCardInfo,
@@ -29,34 +31,6 @@ import {
   TpEmpty,
 } from "@/components/styled/topPicksBans";
 
-const RANK_KEYS = ["diamondPlus", "masterPlus", "king", "peak"] as const;
-const RANK_LABELS_RU: Record<string, string> = {
-  diamondPlus: "Алмаз",
-  masterPlus: "Мастер",
-  king: "Грандмастер",
-  peak: "Претендент",
-};
-
-const EXCLUDED_RANK_KEYS = new Set(["overall"]);
-const LOW_ELO_RANKS = new Set(["diamondPlus", "masterPlus"]);
-const HIGH_ELO_RANKS = new Set(["king", "peak"]);
-
-function ChampAvatarCard({ name, src }: { name: string; src?: string | null }) {
-  return (
-    <TpAvatar>
-      {src ? (
-        <TpAvatarImg
-          src={src}
-          alt={name}
-          decoding="async"
-          width="64"
-          height="64"
-        />
-      ) : null}
-    </TpAvatar>
-  );
-}
-
 function TopChampCard({
   index,
   champ,
@@ -76,7 +50,14 @@ function TopChampCard({
   return (
     <TpCard $type={type} onClick={onClick}>
       <TpCardIndex>#{index + 1}</TpCardIndex>
-      <ChampAvatarCard name={champ.name} src={imgUrl} />
+      <ChampionAvatar
+        name={champ.name}
+        src={imgUrl}
+        mobileSize={44}
+        desktopSize={64}
+        mobileRadius={14}
+        desktopRadius={18}
+      />
 
       <TpCardInfo>
         <TpCardName>{champ.name}</TpCardName>
@@ -104,18 +85,7 @@ function DetailsModal({
   const { index, champ, type } = data;
   const totalValue =
     type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
-  const lanes = champ.lanes || {};
-
-  const laneEntries = Object.entries(lanes)
-    .filter(([, laneData]: any) => {
-      const val = type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
-      return val > 0;
-    })
-    .sort(([, a]: any, [, b]: any) => {
-      const av = type === "pick" ? a.pick || 0 : a.ban || 0;
-      const bv = type === "pick" ? b.pick || 0 : b.ban || 0;
-      return bv - av;
-    });
+  const laneEntries = buildLaneDetails({ champ, type });
 
   return (
     <TpModalOverlay onClick={onClose}>
@@ -128,34 +98,15 @@ function DetailsModal({
               <b>{totalValue.toFixed(2)}%</b>
             </div>
           </div>
-          <TpCloseBtn onClick={onClose}>✕</TpCloseBtn>
+          <TpCloseBtn onClick={onClose}>×</TpCloseBtn>
         </TpModalTop>
 
-        {laneEntries.map(([laneKey, laneData]: any) => {
-          const laneTotal =
-            type === "pick" ? laneData.pick || 0 : laneData.ban || 0;
-          const ranksObj =
-            type === "pick"
-              ? laneData.pickRanks || {}
-              : laneData.banRanks || {};
-
-          const parts: string[] = [];
-          for (const rk of RANK_KEYS) {
-            if (!ranksObj[rk] || EXCLUDED_RANK_KEYS.has(rk)) continue;
-            const label = RANK_LABELS_RU[rk] || rk;
-            parts.push(`${label}: ${Number(ranksObj[rk]).toFixed(2)}%`);
-          }
-
-          const displayLaneName =
-            type === "ban" && laneKey === "all" ? "все линии" : laneKey;
-
-          return (
-            <TpLaneRow key={laneKey}>
-              - {displayLaneName}: {laneTotal.toFixed(2)}%
-              {parts.length > 0 ? <> (из них: {parts.join(", ")})</> : null}
-            </TpLaneRow>
-          );
-        })}
+        {laneEntries.map(({ laneKey, laneTotal, parts, displayLaneName }) => (
+          <TpLaneRow key={laneKey}>
+            - {displayLaneName}: {laneTotal.toFixed(2)}%
+            {parts.length > 0 ? <> (из них: {parts.join(", ")})</> : null}
+          </TpLaneRow>
+        ))}
 
         {!laneEntries.length ? (
           <div>Для этого чемпиона нет детальной статистики.</div>
@@ -215,7 +166,7 @@ export default function PicksBansPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`${API_BASE}/api/champion-history`);
+        const res = await fetch(`${API_BASE}/api/latest-stats-snapshot`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
         if (cancelled) return;
@@ -236,130 +187,11 @@ export default function PicksBansPage() {
   }, []);
 
   const aggregated = useMemo(() => {
-    if (!Array.isArray(historyItems) || historyItems.length === 0) return [];
-
-    const lastDateBySlug: Record<string, string> = {};
-    for (const item of historyItems) {
-      if (!item?.slug || !item?.date) continue;
-      const slug = item.slug;
-      const dateStr = String(item.date);
-      if (!lastDateBySlug[slug] || dateStr > lastDateBySlug[slug]) {
-        lastDateBySlug[slug] = dateStr;
-      }
-    }
-
-    const latestItems = historyItems.filter((item) => {
-      if (!item?.slug || !item?.date) return false;
-      return String(item.date) === lastDateBySlug[item.slug];
+    return aggregateLatestPicksBans({
+      latestItems: historyItems,
+      champions,
+      rankRange,
     });
-
-    const champBySlug: Record<string, any> = {};
-    for (const ch of champions) {
-      if (ch?.slug) champBySlug[ch.slug] = ch;
-    }
-
-    const aggBySlug = new Map<string, any>();
-
-    for (const item of latestItems) {
-      const slug = item.slug;
-      const rankKey = item.rank;
-      const laneKey = item.lane;
-
-      if (!slug || !rankKey || !laneKey) continue;
-      if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
-
-      if (rankRange === "low" && !LOW_ELO_RANKS.has(rankKey)) continue;
-      if (rankRange === "high" && !HIGH_ELO_RANKS.has(rankKey)) continue;
-
-      const pickRate = item.pickRate ?? 0;
-      const banRate = item.banRate ?? 0;
-
-      if (!aggBySlug.has(slug)) {
-        const champion = champBySlug[slug];
-        const displayName =
-          champion?.name && typeof champion.name === "string"
-            ? champion.name
-            : slug;
-
-        aggBySlug.set(slug, {
-          slug,
-          name: displayName,
-          totalPickRate: 0,
-          totalBanRate: 0,
-          lanes: {
-            all: { pick: 0, ban: 0, pickRanks: {}, banRanks: {} },
-          },
-          _totalPickSum: 0,
-          _totalPickCount: 0,
-          _totalBanSum: 0,
-          _totalBanCount: 0,
-          _banRanksAdded: new Set<string>(),
-        });
-      }
-
-      const agg = aggBySlug.get(slug);
-      const lanes = agg.lanes;
-
-      if (!lanes[laneKey]) {
-        lanes[laneKey] = {
-          pick: 0,
-          ban: 0,
-          pickRanks: {},
-          banRanks: {},
-          _pickSum: 0,
-          _pickCount: 0,
-        };
-      }
-
-      agg._totalPickSum += pickRate;
-      agg._totalPickCount += 1;
-      lanes[laneKey]._pickSum += pickRate;
-      lanes[laneKey]._pickCount += 1;
-      lanes[laneKey].pickRanks[rankKey] =
-        (lanes[laneKey].pickRanks[rankKey] || 0) + pickRate;
-
-      if (!agg._banRanksAdded.has(rankKey)) {
-        agg._totalBanSum += banRate;
-        agg._totalBanCount += 1;
-        lanes.all.banRanks[rankKey] =
-          (lanes.all.banRanks[rankKey] || 0) + banRate;
-        agg._banRanksAdded.add(rankKey);
-      }
-    }
-
-    const result: any[] = [];
-    for (const value of aggBySlug.values()) {
-      value.totalPickRate =
-        value._totalPickCount > 0
-          ? value._totalPickSum / value._totalPickCount
-          : 0;
-      value.totalBanRate =
-        value._totalBanCount > 0
-          ? value._totalBanSum / value._totalBanCount
-          : 0;
-
-      for (const [laneKey, laneData] of Object.entries<any>(value.lanes)) {
-        if (laneKey === "all") continue;
-        const c = laneData._pickCount || 0;
-        const s = laneData._pickSum || 0;
-        laneData.pick = c > 0 ? s / c : 0;
-        delete laneData._pickSum;
-        delete laneData._pickCount;
-      }
-
-      value.lanes.all.ban = value.totalBanRate;
-
-      delete value._totalPickSum;
-      delete value._totalPickCount;
-      delete value._totalBanSum;
-      delete value._totalBanCount;
-      delete value._banRanksAdded;
-
-      if (value.totalPickRate === 0 && value.totalBanRate === 0) continue;
-      result.push(value);
-    }
-
-    return result;
   }, [historyItems, champions, rankRange]);
 
   const topPicks = useMemo(() => {
@@ -383,21 +215,20 @@ export default function PicksBansPage() {
     rankRange === "low"
       ? "в алмазе+мастере"
       : rankRange === "high"
-      ? "в гм+чалике"
-      : "во всех рангах";
+        ? "в гм+чалике"
+        : "во всех рангах";
 
   if (loading) return <LoadingRing label="Считаю пики и баны…" />;
 
   return (
     <PageWrapper
-      showBack
       title="Пики и баны в Wild Rift"
       paragraphs={[
         "Здесь показано, каких чемпионов чаще всего выбирают и запрещают в рейтинговых матчах.",
       ]}
     >
       {error ? (
-        <div style={{ padding: 12, opacity: 0.9 }}>{error}</div>
+        <div style={{ padding: "var(--space-3)", opacity: 0.9 }}>{error}</div>
       ) : (
         <>
           <TpHeader>

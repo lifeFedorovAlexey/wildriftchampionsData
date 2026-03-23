@@ -1,0 +1,72 @@
+{
+  "slug": "shen",
+  "skinCount": 5,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "SHEN, THE EYE OF TWILIGHT",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/173b6da6ac6e02215f5be30a56c7af4313e2a0b3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/173b6da6ac6e02215f5be30a56c7af4313e2a0b3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/shen/98000/model.glb",
+        "local": "data\\downloads\\shen\\98000_shen.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Shen"
+    },
+    {
+      "name": "BLOOD MOON SHEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b94e51f87144f341d003c29af5daab6a45d3bc55-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b94e51f87144f341d003c29af5daab6a45d3bc55-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/shen/98004/model.glb",
+        "local": "data\\downloads\\shen\\98004_blood_moon_shen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blood Moon Shen"
+    },
+    {
+      "name": "PULSEFIRE SHEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0c202196084c751c3551aa879ba9cf50cd4d6f83-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0c202196084c751c3551aa879ba9cf50cd4d6f83-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/shen/98015/model.glb",
+        "local": "data\\downloads\\shen\\98015_pulsefire_shen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pulsefire Shen"
+    },
+    {
+      "name": "INFERNAL SHEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1336161badda205d7f879d2119f525bc4c4d6f76-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1336161badda205d7f879d2119f525bc4c4d6f76-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/shen/98016/model.glb",
+        "local": "data\\downloads\\shen\\98016_infernal_shen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Infernal Shen"
+    },
+    {
+      "name": "NIGHTBRINGER SHEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2a1e0c03b18163e59af5c2b6af245705fff961b9-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2a1e0c03b18163e59af5c2b6af245705fff961b9-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

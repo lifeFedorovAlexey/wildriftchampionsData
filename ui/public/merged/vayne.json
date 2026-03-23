@@ -1,0 +1,151 @@
+{
+  "slug": "vayne",
+  "skinCount": 11,
+  "with3d": 9,
+  "skins": [
+    {
+      "name": "VAYNE, THE NIGHT HUNTER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a605527886d58f1de2abb5cdcef040f3b14014db-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a605527886d58f1de2abb5cdcef040f3b14014db-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67000/model.glb",
+        "local": "data\\downloads\\vayne\\67000_vayne.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Vayne"
+    },
+    {
+      "name": "ARCLIGHT VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6f12e5281a05486cd686f7f376b257093f8134f9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6f12e5281a05486cd686f7f376b257093f8134f9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67006/model.glb",
+        "local": "data\\downloads\\vayne\\67006_arclight_vayne.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arclight Vayne"
+    },
+    {
+      "name": "DRAGONSLAYER VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4befda8292f8db66cf250abe43a7e81a976c063c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4befda8292f8db66cf250abe43a7e81a976c063c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67003/model.glb",
+        "local": "data\\downloads\\vayne\\67003_dragonslayer_vayne.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dragonslayer Vayne"
+    },
+    {
+      "name": "HEARTSEEKER VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/433fa7a0c05e8c9b6d44be58b4efa05775778e82-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/433fa7a0c05e8c9b6d44be58b4efa05775778e82-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67004/model.glb",
+        "local": "data\\downloads\\vayne\\67004_heartseeker_vayne.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Heartseeker Vayne"
+    },
+    {
+      "name": "SENTINEL VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/49c8830c780ea0961d1ac1e2ada4fdf0946e5c01-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/49c8830c780ea0961d1ac1e2ada4fdf0946e5c01-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67025/model.glb",
+        "local": "data\\downloads\\vayne\\67025_sentinel_vayne.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sentinel Vayne"
+    },
+    {
+      "name": "PROJECT: VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/73a3f20c2c5d1359a73ea15ee916c1006883c977-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/73a3f20c2c5d1359a73ea15ee916c1006883c977-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67011/model.glb",
+        "local": "data\\downloads\\vayne\\67011_project_vayne.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Vayne"
+    },
+    {
+      "name": "FIRECRACKER VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/266861ab394c2ffb2050d8da15b50715e74d1075-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/266861ab394c2ffb2050d8da15b50715e74d1075-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67012/model.glb",
+        "local": "data\\downloads\\vayne\\67012_firecracker_vayne.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Firecracker Vayne"
+    },
+    {
+      "name": "CRYSTAL ROSE VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ffbc2d2b3ac9ab125e719bbde610e8567a3cfeea-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ffbc2d2b3ac9ab125e719bbde610e8567a3cfeea-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Battle Bat Vayne",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d833885639e4d67296251cc0e193d9551fd52b90-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d833885639e4d67296251cc0e193d9551fd52b90-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67032/model.glb",
+        "local": "data\\downloads\\vayne\\67032_battle_bat_vayne.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Bat Vayne"
+    },
+    {
+      "name": "CALLIGRAPHIA VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4ac85830121552c58a6a3bfaf750ca8cf7b79c14-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4ac85830121552c58a6a3bfaf750ca8cf7b79c14-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PRESTIGE CALLIGRAPHIA VAYNE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2d876332078d424b5c79c2723b6452f3f7768d2f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2d876332078d424b5c79c2723b6452f3f7768d2f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vayne/67013/model.glb",
+        "local": "data\\downloads\\vayne\\67013_prestige_firecracker_vayne.glb"
+      },
+      "matchScore": 0.55,
+      "matchedName": "Prestige Firecracker Vayne"
+    }
+  ]
+}

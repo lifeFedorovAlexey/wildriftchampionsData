@@ -1,0 +1,72 @@
+{
+  "slug": "singed",
+  "skinCount": 5,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "SINGED, THE MAD CHEMIST",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7b5094bc72e20464617898cbadac1cdb9d89838f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7b5094bc72e20464617898cbadac1cdb9d89838f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/singed/27000/model.glb",
+        "local": "data\\downloads\\singed\\27000_singed.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Singed"
+    },
+    {
+      "name": "SURFER SINGED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c8a4950eb8ab4fd3784f203e67bba7af8eebf99a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c8a4950eb8ab4fd3784f203e67bba7af8eebf99a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/singed/27003/model.glb",
+        "local": "data\\downloads\\singed\\27003_surfer_singed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Surfer Singed"
+    },
+    {
+      "name": "AUGMENTED SINGED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/810068d2c85d4513ced73d533ce345a11eb8b337-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/810068d2c85d4513ced73d533ce345a11eb8b337-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/singed/27005/model.glb",
+        "local": "data\\downloads\\singed\\27005_augmented_singed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Augmented Singed"
+    },
+    {
+      "name": "BEEKEEPER SINGED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cbbede94d1002a5082c3e8d9456b6f4a38b83c4c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cbbede94d1002a5082c3e8d9456b6f4a38b83c4c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/singed/27009/model.glb",
+        "local": "data\\downloads\\singed\\27009_beekeeper_singed.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Beekeeper Singed"
+    },
+    {
+      "name": "CHROMACRASH SINGED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/53d7aa73f583066c1fe3056704fef8859d550ad7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/53d7aa73f583066c1fe3056704fef8859d550ad7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

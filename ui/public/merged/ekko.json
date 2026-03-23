@@ -1,0 +1,90 @@
+{
+  "slug": "ekko",
+  "skinCount": 7,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "EKKO, THE BOY WHO SHATTERED TIME",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d36fd24d685ada709ac5079ae787620ad6e056f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d36fd24d685ada709ac5079ae787620ad6e056f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ekko/245000/model.glb",
+        "local": "data\\downloads\\ekko\\245000_ekko.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Ekko"
+    },
+    {
+      "name": "SANDSTORM EKKO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e15c2ce5b9e5202c44b669560fb5e68d20782b3c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e15c2ce5b9e5202c44b669560fb5e68d20782b3c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ekko/245001/model.glb",
+        "local": "data\\downloads\\ekko\\245001_sandstorm_ekko.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sandstorm Ekko"
+    },
+    {
+      "name": "PSYCHIC DETECTIVE EKKO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/365dbfb04fef70dba17722f26c9821c032717949-96x96.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/365dbfb04fef70dba17722f26c9821c032717949-96x96.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "LOVESTRUCK EKKO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8dffc11d4deac3ec4fc366ccdcbf0ea596de399e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8dffc11d4deac3ec4fc366ccdcbf0ea596de399e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CHROMACRASH EKKO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ebd4de4fb4a3506d90054f87f9fb57cea2134516-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ebd4de4fb4a3506d90054f87f9fb57cea2134516-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "FIRELIGHT EKKO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bbe015af3e4bc5014fa2da0de5f3f5370d096319-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bbe015af3e4bc5014fa2da0de5f3f5370d096319-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ekko/245036/model.glb",
+        "local": "data\\downloads\\ekko\\245036_arcane_firelight_ekko.glb"
+      },
+      "matchScore": 0.787,
+      "matchedName": "Arcane Firelight Ekko"
+    },
+    {
+      "name": "TRUE DAMAGE EKKO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9f61d23a45954fe29fb5d7e1d8462aa924691fe0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9f61d23a45954fe29fb5d7e1d8462aa924691fe0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/ekko/245019/model.glb",
+        "local": "data\\downloads\\ekko\\245019_true_damage_ekko.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "True Damage Ekko"
+    }
+  ]
+}

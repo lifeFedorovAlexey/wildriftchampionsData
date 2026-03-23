@@ -1,0 +1,53 @@
+{
+  "slug": "vladimir",
+  "skinCount": 4,
+  "with3d": 2,
+  "skins": [
+    {
+      "name": "VLADIMIR, THE CRIMSON REAPER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aa10b117ebb8ecb836d32f98dd05e2b14c3e08e8-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aa10b117ebb8ecb836d32f98dd05e2b14c3e08e8-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vladimir/8000/model.glb",
+        "local": "data\\downloads\\vladimir\\8000_vladimir.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Vladimir"
+    },
+    {
+      "name": "NIGHTBRINGER VLADIMIR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1e0f5b58130e49040cc631396c011be2f633e792-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1e0f5b58130e49040cc631396c011be2f633e792-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/vladimir/8014/model.glb",
+        "local": "data\\downloads\\vladimir\\8014_nightbringer_vladimir.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Nightbringer Vladimir"
+    },
+    {
+      "name": "Crystal Rose Vladimir",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7d6d77ad0f1ccbf2eb3833b001f7c1f154ac7f48-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7d6d77ad0f1ccbf2eb3833b001f7c1f154ac7f48-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "WEATHER ENTITY VLADIMIR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a297e4144602d5a6f3e4ef41240db22283183c6-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a297e4144602d5a6f3e4ef41240db22283183c6-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

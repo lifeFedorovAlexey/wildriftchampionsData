@@ -1,0 +1,49 @@
+{
+  "slug": "fiddlesticks",
+  "skinCount": 3,
+  "with3d": 3,
+  "skins": [
+    {
+      "name": "FIDDLESTICKS, THE ANCIENT FEAR",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3fcd880462760394311c5c89ecff355f6b9a2a74-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3fcd880462760394311c5c89ecff355f6b9a2a74-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiddlesticks/9000/model.glb",
+        "local": "data\\downloads\\fiddlesticks\\9000_fiddlesticks.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Fiddlesticks"
+    },
+    {
+      "name": "PUMPKINHEAD FIDDLESTICKS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33267ba6d69eae639f3e8e1b5b9f27781cfdd4ab-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33267ba6d69eae639f3e8e1b5b9f27781cfdd4ab-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiddlesticks/9004/model.glb",
+        "local": "data\\downloads\\fiddlesticks\\9004_pumpkinhead_fiddlesticks.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pumpkinhead Fiddlesticks"
+    },
+    {
+      "name": "STAR NEMESIS FIDDLESTICKS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eb7e5e91da666f88ae4e9a5e9ca98bbb6b5a5052-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eb7e5e91da666f88ae4e9a5e9ca98bbb6b5a5052-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/fiddlesticks/9027/model.glb",
+        "local": "data\\downloads\\fiddlesticks\\9027_star_nemesis_fiddlesticks.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Nemesis Fiddlesticks"
+    }
+  ]
+}

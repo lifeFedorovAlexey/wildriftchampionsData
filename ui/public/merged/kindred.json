@@ -1,0 +1,63 @@
+{
+  "slug": "kindred",
+  "skinCount": 4,
+  "with3d": 4,
+  "skins": [
+    {
+      "name": "KINDRED, THE ETERNAL HUNTERS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/58971359312ebd83ad6e952b5d7f77d4d225930c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/58971359312ebd83ad6e952b5d7f77d4d225930c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kindred/203000/model.glb",
+        "local": "data\\downloads\\kindred\\203000_kindred.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Kindred"
+    },
+    {
+      "name": "WOOF AND LAMB KINDRED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/20d081f530b4af537fd81fed3f2d99f23f1c64a0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/20d081f530b4af537fd81fed3f2d99f23f1c64a0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kindred/203022/model.glb",
+        "local": "data\\downloads\\kindred\\203022_woof_and_lamb_kindred.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Woof and Lamb Kindred"
+    },
+    {
+      "name": "PORCELAIN KINDRED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/56a5a0577a9ad334f5f5091db90471b179db517f-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/56a5a0577a9ad334f5f5091db90471b179db517f-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kindred/203012/model.glb",
+        "local": "data\\downloads\\kindred\\203012_porcelain_kindred.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Porcelain Kindred"
+    },
+    {
+      "name": "SPIRIT BLOSSOM KINDRED",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e58d42fb5357afd76aca0c56b43c11084fa7c1e2-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e58d42fb5357afd76aca0c56b43c11084fa7c1e2-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kindred/203003/model.glb",
+        "local": "data\\downloads\\kindred\\203003_spirit_blossom_kindred.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Kindred"
+    }
+  ]
+}

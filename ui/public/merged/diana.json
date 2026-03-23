@@ -1,0 +1,114 @@
+{
+  "slug": "diana",
+  "skinCount": 8,
+  "with3d": 7,
+  "skins": [
+    {
+      "name": "DIANA, SCORN OF THE MOON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f0dff3f11bab0913cae4baf809702697a2de568c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f0dff3f11bab0913cae4baf809702697a2de568c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/diana/131000/model.glb",
+        "local": "data\\downloads\\diana\\131000_diana.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Diana"
+    },
+    {
+      "name": "DARK VALKYRIE DIANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5f9aa41995f4a84414418becdbdbd803fb4e7953-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5f9aa41995f4a84414418becdbdbd803fb4e7953-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/diana/131001/model.glb",
+        "local": "data\\downloads\\diana\\131001_dark_valkyrie_diana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dark Valkyrie Diana"
+    },
+    {
+      "name": "INFERNAL DIANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5ef06688f74402523f59a5315387cae9a58db5b0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5ef06688f74402523f59a5315387cae9a58db5b0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/diana/131003/model.glb",
+        "local": "data\\downloads\\diana\\131003_infernal_diana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Infernal Diana"
+    },
+    {
+      "name": "BLOOD MOON DIANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6ec949e385ba271c2b06651390433e8e73acc4a9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6ec949e385ba271c2b06651390433e8e73acc4a9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/diana/131011/model.glb",
+        "local": "data\\downloads\\diana\\131011_blood_moon_diana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blood Moon Diana"
+    },
+    {
+      "name": "FIRECRACKER DIANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2667d22d8c011a2740684f58d4d357e83530c87e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2667d22d8c011a2740684f58d4d357e83530c87e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/diana/131037/model.glb",
+        "local": "data\\downloads\\diana\\131037_firecracker_diana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Firecracker Diana"
+    },
+    {
+      "name": "LUNAR GODDESS DIANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aacea318d2fcaa94199f74350ced2afb8ecae985-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aacea318d2fcaa94199f74350ced2afb8ecae985-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/diana/131002/model.glb",
+        "local": "data\\downloads\\diana\\131002_lunar_goddess_diana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Lunar Goddess Diana"
+    },
+    {
+      "name": "SENTINEL DIANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/30435e1638278b852a788f7094ffd7390e55cfe6-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/30435e1638278b852a788f7094ffd7390e55cfe6-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/diana/131027/model.glb",
+        "local": "data\\downloads\\diana\\131027_sentinel_diana.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sentinel Diana"
+    },
+    {
+      "name": "IMMORTAL JOURNEY DIANA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c9970866937cd438775151b4b211ccac7372e34-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5c9970866937cd438775151b4b211ccac7372e34-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

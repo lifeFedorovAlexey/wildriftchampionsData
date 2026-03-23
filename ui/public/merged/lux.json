@@ -1,0 +1,192 @@
+{
+  "slug": "lux",
+  "skinCount": 15,
+  "with3d": 10,
+  "skins": [
+    {
+      "name": "LUX, THE LADY OF LUMINOSITY",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e900839292adf3b36bcf5d57164198b8026b08c4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e900839292adf3b36bcf5d57164198b8026b08c4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99000/model.glb",
+        "local": "data\\downloads\\lux\\99000_lux.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Lux"
+    },
+    {
+      "name": "SORCERESS LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b080543a537beef283e1375f78a718650e9870b5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b080543a537beef283e1375f78a718650e9870b5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99001/model.glb",
+        "local": "data\\downloads\\lux\\99001_sorceress_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sorceress Lux"
+    },
+    {
+      "name": "SPELLTHIEF LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7dfd32d85f90480fe25c46d463590f53193e37aa-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7dfd32d85f90480fe25c46d463590f53193e37aa-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99002/model.glb",
+        "local": "data\\downloads\\lux\\99002_spellthief_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spellthief Lux"
+    },
+    {
+      "name": "STAR GUARDIAN LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72b8876b6518520980b9107286a886534540be7c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72b8876b6518520980b9107286a886534540be7c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99006/model.glb",
+        "local": "data\\downloads\\lux\\99006_star_guardian_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Lux"
+    },
+    {
+      "name": "BATTLE ACADEMIA LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/01d9b44fbbc2e5e2cbeee343b01a8a008ec693f2-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/01d9b44fbbc2e5e2cbeee343b01a8a008ec693f2-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99015/model.glb",
+        "local": "data\\downloads\\lux\\99015_battle_academia_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Academia Lux"
+    },
+    {
+      "name": "CRYSTAL ROSE LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bdca8e5b706f6b82ff6a224e0d2d10815b9d378b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bdca8e5b706f6b82ff6a224e0d2d10815b9d378b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "STEEL LEGION LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a2a167a742cb7b0a1c3b82a41a067bf20de5c52f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a2a167a742cb7b0a1c3b82a41a067bf20de5c52f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99005/model.glb",
+        "local": "data\\downloads\\lux\\99005_steel_legion_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Steel Legion Lux"
+    },
+    {
+      "name": "PAJAMA GUARDIAN LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a2d5187b32dcd380ae29f04b2e7eb2a4ec32038-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a2d5187b32dcd380ae29f04b2e7eb2a4ec32038-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99014/model.glb",
+        "local": "data\\downloads\\lux\\99014_pajama_guardian_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pajama Guardian Lux"
+    },
+    {
+      "name": "COSMIC LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2c28576ee231d82002720576b9b4e03ee8ea0786-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2c28576ee231d82002720576b9b4e03ee8ea0786-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99018/model.glb",
+        "local": "data\\downloads\\lux\\99018_cosmic_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cosmic Lux"
+    },
+    {
+      "name": "DARK COSMIC LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/afd22f21e1dc4b6e60d7cc23c5848a54e0bc7d73-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/afd22f21e1dc4b6e60d7cc23c5848a54e0bc7d73-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99017/model.glb",
+        "local": "data\\downloads\\lux\\99017_dark_cosmic_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dark Cosmic Lux"
+    },
+    {
+      "name": "LOVESTRUCK LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d8f71a5a2f8647093d6f57dde3c366dd519068b9-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d8f71a5a2f8647093d6f57dde3c366dd519068b9-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Prestige Select Crystal Rose Lux",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/745b828418c17484c304b518702b16981763fe90-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/745b828418c17484c304b518702b16981763fe90-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Celestial Embroidery Lux",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34b92b48457b223a551d8df2bc080b1b87cc1c2c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34b92b48457b223a551d8df2bc080b1b87cc1c2c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Celestial Embroidery Lux Mythic Chroma",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/df03e80284058e2329dfe0be61a1bea6749c1d07-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/df03e80284058e2329dfe0be61a1bea6749c1d07-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SPACE GROOVE LUX",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fd197f869049f23e9157d182f0bf87c3bd7fb82e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fd197f869049f23e9157d182f0bf87c3bd7fb82e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lux/99019/model.glb",
+        "local": "data\\downloads\\lux\\99019_space_groove_lux.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Space Groove Lux"
+    }
+  ]
+}

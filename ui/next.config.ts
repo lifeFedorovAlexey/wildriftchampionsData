@@ -1,12 +1,39 @@
 import type { NextConfig } from "next";
+import { getStatsApiBaseUrl } from "./lib/stats-api-origin.js";
+
+const apiProxyTarget = getStatsApiBaseUrl(process.env);
 
 const nextConfig: NextConfig = {
+  compiler: {
+    styledComponents: true,
+  },
+
+  images: {
+    formats: ["image/avif", "image/webp"],
+    localPatterns: [
+      {
+        pathname: "/wr-api/icons/**",
+      },
+    ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "game.gtimg.cn",
+        pathname: "/images/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cmsassets.rgpub.io",
+        pathname: "/sanity/images/**", // ✅ для изображений скинов WR
+      },
+    ],
+  },
+
   async rewrites() {
     return [
       {
-        // всё что начинается с /wr-api/... прокинем на твой внешний API
         source: "/wr-api/:path*",
-        destination: "https://wr-api.vercel.app/:path*",
+        destination: `${apiProxyTarget}/:path*`,
       },
     ];
   },

@@ -1,0 +1,178 @@
+{
+  "slug": "yasuo",
+  "skinCount": 14,
+  "with3d": 9,
+  "skins": [
+    {
+      "name": "YASUO, THE UNFORGIVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1f90294b1452c84d02407ca7af638a6b20e0c48f-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1f90294b1452c84d02407ca7af638a6b20e0c48f-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157000/model.glb",
+        "local": "data\\downloads\\yasuo\\157000_yasuo.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Yasuo"
+    },
+    {
+      "name": "HIGH NOON YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/056ba804fc8515e6afb36d5e964e9ce4fba99ff5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/056ba804fc8515e6afb36d5e964e9ce4fba99ff5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157001/model.glb",
+        "local": "data\\downloads\\yasuo\\157001_high_noon_yasuo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Yasuo"
+    },
+    {
+      "name": "BATTLE BOSS YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e2730588946cb02a713bd015781bec9383cd2827-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e2730588946cb02a713bd015781bec9383cd2827-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157017/model.glb",
+        "local": "data\\downloads\\yasuo\\157017_battle_boss_yasuo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Boss Yasuo"
+    },
+    {
+      "name": "PROJECT: YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/91eb85588b471a364f904a8bc1c1e4d7d1ef517b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/91eb85588b471a364f904a8bc1c1e4d7d1ef517b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157002/model.glb",
+        "local": "data\\downloads\\yasuo\\157002_project_yasuo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Yasuo"
+    },
+    {
+      "name": "BLOOD MOON YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/adf4f0d43134638c87f2d56590d8e647224faeb8-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/adf4f0d43134638c87f2d56590d8e647224faeb8-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157003/model.glb",
+        "local": "data\\downloads\\yasuo\\157003_blood_moon_yasuo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blood Moon Yasuo"
+    },
+    {
+      "name": "NIGHTBRINGER YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cbcb87534045d31c0b40fe1e44bac97d60dc6a98-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cbcb87534045d31c0b40fe1e44bac97d60dc6a98-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157009/model.glb",
+        "local": "data\\downloads\\yasuo\\157009_nightbringer_yasuo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Nightbringer Yasuo"
+    },
+    {
+      "name": "SOUL FIGHTER YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8219a92de1cdb2cd2cb59bcedd02e11ccc4b8603-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8219a92de1cdb2cd2cb59bcedd02e11ccc4b8603-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PRESTIGE SELECT CALLIGRAPHIA YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fdd8afaeeeb01ee413ab61f6ba18c82430eae765-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fdd8afaeeeb01ee413ab61f6ba18c82430eae765-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Truth Dragon Yasuo",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ca62ddfdc829d98e3556739be02d196a71576d4b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ca62ddfdc829d98e3556739be02d196a71576d4b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157054/model.glb",
+        "local": "data\\downloads\\yasuo\\157054_truth_dragon_yasuo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Truth Dragon Yasuo"
+    },
+    {
+      "name": "SPIRIT BLOSSOM YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/afa522550a4deb6bc612eb7578f2072c1cf61c26-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/afa522550a4deb6bc612eb7578f2072c1cf61c26-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157036/model.glb",
+        "local": "data\\downloads\\yasuo\\157036_spirit_blossom_yasuo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Yasuo"
+    },
+    {
+      "name": "CALLIGRAPHIA YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4b48f737d4fea3b790be36f2256238b3780c4adb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4b48f737d4fea3b790be36f2256238b3780c4adb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SUMMER PARTY YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a46882ffbb84dfe532557bab9f410c89d85131a7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a46882ffbb84dfe532557bab9f410c89d85131a7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SUMMER PARTY YASUO EXQUISITE EDITION",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/84ec4597506e5198797ad9d2965f49c929a043a4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/84ec4597506e5198797ad9d2965f49c929a043a4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "TRUE DAMAGE YASUO",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/40c5a513d362193f39061134dd62ea15629e2be4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/40c5a513d362193f39061134dd62ea15629e2be4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/yasuo/157018/model.glb",
+        "local": "data\\downloads\\yasuo\\157018_true_damage_yasuo.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "True Damage Yasuo"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "kennen",
+  "skinCount": 6,
+  "with3d": 5,
+  "skins": [
+    {
+      "name": "KENNEN, THE HEART OF THE TEMPEST",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/be68dda79d0a329b9592234cc321c643ab0e154c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/be68dda79d0a329b9592234cc321c643ab0e154c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kennen/85000/model.glb",
+        "local": "data\\downloads\\kennen\\85000_kennen.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Kennen"
+    },
+    {
+      "name": "ARCTIC OPS KENNEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4d8209a60d778f2927f2eabfbe61d675fb33358b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4d8209a60d778f2927f2eabfbe61d675fb33358b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kennen/85005/model.glb",
+        "local": "data\\downloads\\kennen\\85005_arctic_ops_kennen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arctic Ops Kennen"
+    },
+    {
+      "name": "SUPER KENNEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3dae7db9b1c5be6e54cc598741a2ce91e290bb6d-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3dae7db9b1c5be6e54cc598741a2ce91e290bb6d-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kennen/85007/model.glb",
+        "local": "data\\downloads\\kennen\\85007_super_kennen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Super Kennen"
+    },
+    {
+      "name": "Blood Moon Kennen",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/217a098969ec72822bba4d31186e058fa2d42acc-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/217a098969ec72822bba4d31186e058fa2d42acc-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kennen/85006/model.glb",
+        "local": "data\\downloads\\kennen\\85006_blood_moon_kennen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blood Moon Kennen"
+    },
+    {
+      "name": "Infernal Kennen",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8d90070357643379a8a6b9c7bfeeb7d04d44ec49-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8d90070357643379a8a6b9c7bfeeb7d04d44ec49-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/kennen/85008/model.glb",
+        "local": "data\\downloads\\kennen\\85008_infernal_kennen.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Infernal Kennen"
+    },
+    {
+      "name": "Psychic Detective Kennen",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aca96fdb778ca0e03fec13418dd3e6ec8c5f4137-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aca96fdb778ca0e03fec13418dd3e6ec8c5f4137-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+.stack {
+  display: grid;
+  gap: 10px;
+}
+
+.stackCompact {
+  display: grid;
+  gap: 8px;
+}
+
+@media (min-width: 1024px) {
+  .stack {
+    gap: 12px;
+  }
+
+  .stackCompact {
+    gap: 10px;
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "slug": "brand",
+  "skinCount": 9,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "BRAND, THE BURNING VENGEANCE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/efa24fb71e244d1e1b0bd443306026dc1a84cd17-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/efa24fb71e244d1e1b0bd443306026dc1a84cd17-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/brand/63000/model.glb",
+        "local": "data\\downloads\\brand\\63000_brand.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Brand"
+    },
+    {
+      "name": "ARCLIGHT BRAND",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9144f0963b60fa7a7087eed6afe41ab0f2bf33e1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9144f0963b60fa7a7087eed6afe41ab0f2bf33e1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/brand/63007/model.glb",
+        "local": "data\\downloads\\brand\\63007_arclight_brand.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Arclight Brand"
+    },
+    {
+      "name": "SPIRIT FIRE BRAND",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/84a7ce0871c4bea7bc392322c91ecfb417a66864-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/84a7ce0871c4bea7bc392322c91ecfb417a66864-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/brand/63005/model.glb",
+        "local": "data\\downloads\\brand\\63005_spirit_fire_brand.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Fire Brand"
+    },
+    {
+      "name": "ZOMBIE BRAND",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0565c284dc8824935b5a651265ae6721f7c95113-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0565c284dc8824935b5a651265ae6721f7c95113-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/brand/63004/model.glb",
+        "local": "data\\downloads\\brand\\63004_zombie_brand.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Zombie Brand"
+    },
+    {
+      "name": "CHROMACRASH BRAND",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/589837815e4e883b5d004e58ab1e6d9e463c8502-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/589837815e4e883b5d004e58ab1e6d9e463c8502-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "CHROMACRASH BRAND SPECIAL EDITION",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a13ffb2771bd3d114b4cda8b64b16b85b02a63d8-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a13ffb2771bd3d114b4cda8b64b16b85b02a63d8-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Eternal Dragon Brand",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e4a4eb330979b564b3c4a88f2722ef54d0a3c053-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e4a4eb330979b564b3c4a88f2722ef54d0a3c053-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/brand/63008/model.glb",
+        "local": "data\\downloads\\brand\\63008_eternal_dragon_brand.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Eternal Dragon Brand"
+    },
+    {
+      "name": "Marauder Brand",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f8781b6c766e52733d9fbcb12af5a30b6f79e998-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f8781b6c766e52733d9fbcb12af5a30b6f79e998-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "BATTLE BOSS BRAND",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0829047a5fcd397114cd26ef170c3dc291cd4eb4-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0829047a5fcd397114cd26ef170c3dc291cd4eb4-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/brand/63006/model.glb",
+        "local": "data\\downloads\\brand\\63006_battle_boss_brand.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Boss Brand"
+    }
+  ]
+}

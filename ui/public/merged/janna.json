@@ -1,0 +1,109 @@
+{
+  "slug": "janna",
+  "skinCount": 8,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "JANNA, THE STORM'S FURY",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/441662804065fad895d22dd866562aac54cf6a02-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/441662804065fad895d22dd866562aac54cf6a02-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/janna/40000/model.glb",
+        "local": "data\\downloads\\janna\\40000_janna.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Janna"
+    },
+    {
+      "name": "SACRED SWORD JANNA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/299edffec15e8bc430062848b667dd726331b48e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/299edffec15e8bc430062848b667dd726331b48e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/janna/40008/model.glb",
+        "local": "data\\downloads\\janna\\40008_sacred_sword_janna.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sacred Sword Janna"
+    },
+    {
+      "name": "TEMPEST JANNA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/21e9a8448a12f758b204f791a0d0ca1a62346e47-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/21e9a8448a12f758b204f791a0d0ca1a62346e47-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/janna/40001/model.glb",
+        "local": "data\\downloads\\janna\\40001_tempest_janna.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Tempest Janna"
+    },
+    {
+      "name": "STAR GUARDIAN JANNA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6bd5d43474ad3c0ca4f8514d976cbbc1e5126082-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6bd5d43474ad3c0ca4f8514d976cbbc1e5126082-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/janna/40007/model.glb",
+        "local": "data\\downloads\\janna\\40007_star_guardian_janna.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Janna"
+    },
+    {
+      "name": "FORECAST JANNA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c21b1aff59d5cc85d1fac4f9a681fc5a5a87c8a1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c21b1aff59d5cc85d1fac4f9a681fc5a5a87c8a1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/janna/40005/model.glb",
+        "local": "data\\downloads\\janna\\40005_forecast_janna.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Forecast Janna"
+    },
+    {
+      "name": "BEWITCHING JANNA",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/579734ffba044e6cc8d9636f648a0a222de072c3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/579734ffba044e6cc8d9636f648a0a222de072c3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/janna/40013/model.glb",
+        "local": "data\\downloads\\janna\\40013_bewitching_janna.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Bewitching Janna"
+    },
+    {
+      "name": "Calligraphia Janna",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a3b2b9651dfd46972a45b5bbebc646f807dea6f7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a3b2b9651dfd46972a45b5bbebc646f807dea6f7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "Glorious Aigrette Janna",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6e9c6b282a9e984610770e6a863dade0ba49df65-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6e9c6b282a9e984610770e6a863dade0ba49df65-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

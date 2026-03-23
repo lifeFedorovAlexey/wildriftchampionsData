@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wild Rift SSR
 
-## Getting Started
+Next.js frontend for `wildriftallstats.ru`.
 
-First, run the development server:
+## Version
+
+- Current version: `1.1.0`
+- Release branch format: `release/x.y.z`
+
+## Commands
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run test
+npm run scrape:guide -- lux
+npm run sync:guides -- lux braum
+npm run sync:guides:all
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `API_PROXY_TARGET` - server-side proxy target for `/wr-api/*`
+- `STATS_API_ORIGIN` - direct stats API origin for server fetches
+- `NEXT_PUBLIC_API_BASE` - public base path for browser requests, default `/wr-api`
+- `GUIDES_SYNC_API_ORIGIN` - WR API origin used by the guide sync job
+- `GUIDES_SYNC_IMPORT_URL` - optional full import endpoint override
+- `GUIDES_SYNC_TOKEN` - bearer token for guide import requests
+- `GUIDES_SYNC_SECRET` - shared secret header for guide import requests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_TARGET`.
 
-## Learn More
+## Guides flow
 
-To learn more about Next.js, take a look at the following resources:
+- `ui/scripts/parse-wildriftfire-guide.js` scrapes one champion guide and writes a local JSON cache
+- `ui/scripts/sync-wildriftfire-guides.js` scrapes one or many champions and upserts them into the WR API
+- the guides page first tries `GET /api/guides/:slug?lang=ru_ru` from the WR API and only falls back to local JSON if the API has no guide yet
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Expected WR API endpoints:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `POST /api/guides/import`
+- `GET /api/guides/:slug?lang=ru_ru`
+- `GET /api/guides?fields=slug`
 
-## Deploy on Vercel
+## Release checklist
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Bump `version` in `package.json` and `package-lock.json`
+2. Add release notes to `/CHANGELOG.md`
+3. Run `npm run test`
+4. Run `npm run build`
+5. Verify the guide sync secrets point to `https://wildriftallstats.ru/wr-api`
+6. Push the release branch as `release/x.y.z`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Production
+
+Production deploys run to the Timeweb server via GitHub Actions.

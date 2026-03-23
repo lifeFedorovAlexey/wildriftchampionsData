@@ -1,0 +1,35 @@
+{
+  "slug": "nidalee",
+  "skinCount": 2,
+  "with3d": 2,
+  "skins": [
+    {
+      "name": "NIDALEE, THE BESTIAL HUNTRESS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4627c25711128d96e58839fa96556a96223b3e8b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4627c25711128d96e58839fa96556a96223b3e8b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/nidalee/76000/model.glb",
+        "local": "data\\downloads\\nidalee\\76000_nidalee.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Nidalee"
+    },
+    {
+      "name": "SPIRIT BLOSSOM NIDALEE",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7b3bde330b5d790e6f406c9661bcce23be952fdc-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7b3bde330b5d790e6f406c9661bcce23be952fdc-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/nidalee/76058/model.glb",
+        "local": "data\\downloads\\nidalee\\76058_spirit_blossom_nidalee.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Spirit Blossom Nidalee"
+    }
+  ]
+}

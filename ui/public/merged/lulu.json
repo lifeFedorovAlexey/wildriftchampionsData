@@ -1,0 +1,142 @@
+{
+  "slug": "lulu",
+  "skinCount": 10,
+  "with3d": 9,
+  "skins": [
+    {
+      "name": "LULU, THE FAE SORCERESS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e9f882cff2563e8f04a3f5e3e055d4b77f391a5c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e9f882cff2563e8f04a3f5e3e055d4b77f391a5c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117000/model.glb",
+        "local": "data\\downloads\\lulu\\117000_lulu.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Lulu"
+    },
+    {
+      "name": "DRAGON TRAINER LULU",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f4a0a9ff793bc38f7db1d6707d9256510b80ae1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f4a0a9ff793bc38f7db1d6707d9256510b80ae1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117003/model.glb",
+        "local": "data\\downloads\\lulu\\117003_dragon_trainer_lulu.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Dragon Trainer Lulu"
+    },
+    {
+      "name": "WICKED LULU",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f9d36d003684a6d0df0b37f6963f76306a720641-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f9d36d003684a6d0df0b37f6963f76306a720641-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117002/model.glb",
+        "local": "data\\downloads\\lulu\\117002_wicked_lulu.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Wicked Lulu"
+    },
+    {
+      "name": "STAR GUARDIAN LULU",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2ea8dc93aa3b0a8d3baef391f3a2df09acfad35e-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2ea8dc93aa3b0a8d3baef391f3a2df09acfad35e-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117006/model.glb",
+        "local": "data\\downloads\\lulu\\117006_star_guardian_lulu.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Star Guardian Lulu"
+    },
+    {
+      "name": "POOL PARTY LULU",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/977167ef15c26416acb5ac3022fe5480fba76beb-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/977167ef15c26416acb5ac3022fe5480fba76beb-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117005/model.glb",
+        "local": "data\\downloads\\lulu\\117005_pool_party_lulu.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pool Party Lulu"
+    },
+    {
+      "name": "GLORIOUS LULU",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5a31da81c347383ff605882a2839baefee334801-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5a31da81c347383ff605882a2839baefee334801-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "WINTER WONDER LULU",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cf1d061aae5a6e8ff906cbe711c0c5cab9790550-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cf1d061aae5a6e8ff906cbe711c0c5cab9790550-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117004/model.glb",
+        "local": "data\\downloads\\lulu\\117004_winter_wonder_lulu.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Winter Wonder Lulu"
+    },
+    {
+      "name": "COSMIC ENCHANTRESS LULU",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/beaa12a60825443154daea63226c6363cc028057-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/beaa12a60825443154daea63226c6363cc028057-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117014/model.glb",
+        "local": "data\\downloads\\lulu\\117014_cosmic_enchantress_lulu.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cosmic Enchantress Lulu"
+    },
+    {
+      "name": "Pajama Guardian Lulu",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8e7d7ca2020969421c73f72086fe564969db256c-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8e7d7ca2020969421c73f72086fe564969db256c-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117015/model.glb",
+        "local": "data\\downloads\\lulu\\117015_pajama_guardian_lulu.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pajama Guardian Lulu"
+    },
+    {
+      "name": "SPACE GROOVE LULU",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7203b77ca52200c4b832eb9f8b53b23ef29af95a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7203b77ca52200c4b832eb9f8b53b23ef29af95a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lulu/117026/model.glb",
+        "local": "data\\downloads\\lulu\\117026_space_groove_lulu.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Space Groove Lulu"
+    }
+  ]
+}

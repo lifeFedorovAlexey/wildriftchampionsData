@@ -1,0 +1,71 @@
+{
+  "slug": "zeri",
+  "skinCount": 6,
+  "with3d": 2,
+  "skins": [
+    {
+      "name": "ZERI, THE SPARK OF ZAUN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f796f3c8e05ec1bde0806c091ca2a5b5cd71acc5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f796f3c8e05ec1bde0806c091ca2a5b5cd71acc5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zeri/221000/model.glb",
+        "local": "data\\downloads\\zeri\\221000_zeri.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Zeri"
+    },
+    {
+      "name": "PROJECT ZERI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/85205a39f6716bb4c647e6ff7d032dcbc0599494-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/85205a39f6716bb4c647e6ff7d032dcbc0599494-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DRAGON LANTERN ZERI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cd76388537beecdb294662ceaa8dddf214901bd3-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cd76388537beecdb294662ceaa8dddf214901bd3-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "OCEAN SONG ZERI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b34a7b86c21b4e94606c606fa754fb532ed15252-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b34a7b86c21b4e94606c606fa754fb532ed15252-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/zeri/221010/model.glb",
+        "local": "data\\downloads\\zeri\\221010_ocean_song_zeri.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Ocean Song Zeri"
+    },
+    {
+      "name": "CHROMACRASH ZERI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0b6c5950f12fa5a45c3734a0ef339b733749e6fe-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0b6c5950f12fa5a45c3734a0ef339b733749e6fe-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "BATTLE SQUIRREL ZERI",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4663cd7d0d62a985b730bdfd03483231fb737690-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4663cd7d0d62a985b730bdfd03483231fb737690-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

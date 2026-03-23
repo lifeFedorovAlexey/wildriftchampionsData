@@ -1,11 +1,9 @@
-"use client";
-
 import styled from "styled-components";
 
 import { BREAKPOINTS, mqMin } from "./tokens";
 
 export const TrTableWrap = styled.div`
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: rgba(15, 23, 42, 0.9);
   padding: 6px;
   display: flex;

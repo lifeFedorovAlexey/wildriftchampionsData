@@ -1,0 +1,183 @@
+.shell {
+  display: grid;
+  gap: 14px;
+}
+
+.filtersPanel {
+  display: grid;
+  gap: 18px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  box-shadow: none;
+}
+
+.filterSection {
+  display: grid;
+  gap: 0;
+}
+
+.tableFrame {
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: var(--radius-xl);
+  background: rgba(8, 15, 29, 0.92);
+  box-shadow: none;
+  contain: layout paint;
+}
+
+.tableTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 18px 0;
+  min-height: 52px;
+}
+
+.tableTitle {
+  display: block;
+  font-size: 16px;
+}
+
+.tableHint {
+  margin: 6px 0 0;
+  color: rgba(226, 232, 240, 0.66);
+  font-size: 13px;
+}
+
+.tableMeta {
+  margin: 6px 0 0;
+  color: rgba(184, 220, 245, 0.78);
+  font-size: 12px;
+  line-height: 1.4;
+  min-height: 17px;
+}
+
+.errorBox {
+  padding: 14px 16px;
+  border: 1px solid rgba(248, 113, 113, 0.28);
+  border-radius: var(--radius-md);
+  background: rgba(127, 29, 29, 0.22);
+  color: #fecaca;
+}
+
+.skeletonFilterBlock {
+  display: grid;
+  gap: 12px;
+}
+
+.skeletonChips,
+.skeletonLanes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skeletonChip,
+.skeletonLane,
+.skeletonAvatar,
+.skeletonName,
+.skeletonTrend,
+.skeletonValue,
+.skeletonTier,
+.skeletonMetric {
+  position: relative;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.skeletonChip::after,
+.skeletonLane::after,
+.skeletonAvatar::after,
+.skeletonName::after,
+.skeletonTrend::after,
+.skeletonValue::after,
+.skeletonTier::after,
+.skeletonMetric::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(224, 241, 253, 0.12),
+    transparent
+  );
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+.skeletonChip {
+  width: 84px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+}
+
+.skeletonLane {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+}
+
+.skeletonAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  flex: 0 0 auto;
+}
+
+.skeletonName {
+  width: 86px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+}
+
+.skeletonTrend {
+  width: 38px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+}
+
+.skeletonValue {
+  width: 22px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+}
+
+.skeletonTier {
+  display: inline-block;
+  width: 28px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+}
+
+.skeletonMetric {
+  display: inline-block;
+  width: 46px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (min-width: 760px) {
+  .filtersPanel {
+    padding: 16px 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    gap: 16px;
+  }
+
+  .filtersPanel {
+    padding: 18px 20px;
+  }
+}

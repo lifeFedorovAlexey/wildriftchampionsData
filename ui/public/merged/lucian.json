@@ -1,0 +1,109 @@
+{
+  "slug": "lucian",
+  "skinCount": 8,
+  "with3d": 6,
+  "skins": [
+    {
+      "name": "LUCIAN, THE PURIFIER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/746e3c40ac077e00a69b62d6f0b6fcc44dbe20a7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/746e3c40ac077e00a69b62d6f0b6fcc44dbe20a7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lucian/236000/model.glb",
+        "local": "data\\downloads\\lucian\\236000_lucian.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Lucian"
+    },
+    {
+      "name": "HIRED GUN LUCIAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b3a40be60b8af3d690480418a96d6fbf9853c8bc-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b3a40be60b8af3d690480418a96d6fbf9853c8bc-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lucian/236001/model.glb",
+        "local": "data\\downloads\\lucian\\236001_hired_gun_lucian.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Hired Gun Lucian"
+    },
+    {
+      "name": "High Noon Lucian",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/35cc41f1064dc4820300eb87722a70a595b459da-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/35cc41f1064dc4820300eb87722a70a595b459da-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lucian/236008/model.glb",
+        "local": "data\\downloads\\lucian\\236008_high_noon_lucian.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "High Noon Lucian"
+    },
+    {
+      "name": "Pulsefire Lucian",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/846c71f074eb9ef0dd7212304a0a932a8e369967-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/846c71f074eb9ef0dd7212304a0a932a8e369967-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lucian/236018/model.glb",
+        "local": "data\\downloads\\lucian\\236018_pulsefire_lucian.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pulsefire Lucian"
+    },
+    {
+      "name": "PRESTIGE SELECT HIGH NOON LUCIAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a2a67c5a237ec85f41477de5b974a5ac97758cde-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a2a67c5a237ec85f41477de5b974a5ac97758cde-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lucian/236008/model.glb",
+        "local": "data\\downloads\\lucian\\236008_high_noon_lucian.glb"
+      },
+      "matchScore": 0.72,
+      "matchedName": "High Noon Lucian"
+    },
+    {
+      "name": "Soul Fighter Lucian",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/971e5aa8c4d463b1745aff62c7896eccc4df0ba5-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/971e5aa8c4d463b1745aff62c7896eccc4df0ba5-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "PROJECT: LUCIAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/56450ed95010c89844ddafd028dcec209c3be41b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/56450ed95010c89844ddafd028dcec209c3be41b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/lucian/236006/model.glb",
+        "local": "data\\downloads\\lucian\\236006_project_lucian.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Lucian"
+    },
+    {
+      "name": "NOVA LUCIAN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1dae3a3b38b7edee62b57c1634bc53c929c7037a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1dae3a3b38b7edee62b57c1634bc53c929c7037a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

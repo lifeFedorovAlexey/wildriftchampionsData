@@ -1,0 +1,132 @@
+{
+  "slug": "draven",
+  "skinCount": 10,
+  "with3d": 7,
+  "skins": [
+    {
+      "name": "DRAVEN, THE GLORIOUS EXECUTIONER",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b266a9278eb4853be59cd70a88a0143ee2454ae7-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b266a9278eb4853be59cd70a88a0143ee2454ae7-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/draven/119000/model.glb",
+        "local": "data\\downloads\\draven\\119000_draven.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Draven"
+    },
+    {
+      "name": "PRIMETIME DRAVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8fddc80911f3aa6f4971911e30239e94b340c153-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8fddc80911f3aa6f4971911e30239e94b340c153-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/draven/119003/model.glb",
+        "local": "data\\downloads\\draven\\119003_primetime_draven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Primetime Draven"
+    },
+    {
+      "name": "SOUL REAVER DRAVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1ab6a1abb80404758536ea3e681c9f666e20c166-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1ab6a1abb80404758536ea3e681c9f666e20c166-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/draven/119001/model.glb",
+        "local": "data\\downloads\\draven\\119001_soul_reaver_draven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Soul Reaver Draven"
+    },
+    {
+      "name": "Draven Draven",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4bbcf72e844ae1358893c22b85a74de828cd5798-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4bbcf72e844ae1358893c22b85a74de828cd5798-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/draven/119000/model.glb",
+        "local": "data\\downloads\\draven\\119000_draven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Draven"
+    },
+    {
+      "name": "Ruined Draven",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/39e30678c4ec1e1c6c3d48d66b8f990890428f89-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/39e30678c4ec1e1c6c3d48d66b8f990890428f89-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/draven/119020/model.glb",
+        "local": "data\\downloads\\draven\\119020_ruined_draven.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Ruined Draven"
+    },
+    {
+      "name": "Glorious Crimson Draven",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1027fa349e85ed7146d9646e22d59870caa9a565-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1027fa349e85ed7146d9646e22d59870caa9a565-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SOUL FIGHTER DRAVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0f09368500ef59839e69ab1c2a521cf58a93cae5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0f09368500ef59839e69ab1c2a521cf58a93cae5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/draven/119001/model.glb",
+        "local": "data\\downloads\\draven\\119001_soul_reaver_draven.glb"
+      },
+      "matchScore": 0.55,
+      "matchedName": "Soul Reaver Draven"
+    },
+    {
+      "name": "Soul Fighter Draven (Special Edition)",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c889dfaddb37eb8798d5e15100b4259da4c2398a-1280x723.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c889dfaddb37eb8798d5e15100b4259da4c2398a-1280x723.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DAWNBRINGER DRAVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8e061b507533ae9ebfafcbd0da00530824cdbb6a-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8e061b507533ae9ebfafcbd0da00530824cdbb6a-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/draven/119006/model.glb",
+        "local": "data\\downloads\\draven\\119006_draven_draven.glb"
+      },
+      "matchScore": 0.62,
+      "matchedName": "Draven Draven"
+    },
+    {
+      "name": "MYSTICAL HERALD DRAVEN",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cd05ac418ef5d37eb5be6c02de6dc1511f9dba74-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cd05ac418ef5d37eb5be6c02de6dc1511f9dba74-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    }
+  ]
+}

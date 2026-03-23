@@ -1,0 +1,119 @@
+{
+  "slug": "renekton",
+  "skinCount": 8,
+  "with3d": 8,
+  "skins": [
+    {
+      "name": "RENEKTON, THE BUTCHER OF THE SANDS",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fed3a0a74de3a0da364300657aac77c300d9250b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fed3a0a74de3a0da364300657aac77c300d9250b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/renekton/58000/model.glb",
+        "local": "data\\downloads\\renekton\\58000_renekton.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Renekton"
+    },
+    {
+      "name": "SCORCHED EARTH RENEKTON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/53e7842dea7d63e0c6aa4cf287a95101afa76b84-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/53e7842dea7d63e0c6aa4cf287a95101afa76b84-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/renekton/58005/model.glb",
+        "local": "data\\downloads\\renekton\\58005_scorched_earth_renekton.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Scorched Earth Renekton"
+    },
+    {
+      "name": "POOL PARTY RENEKTON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7054d60934c10cb2ef0956a704091f6a15981434-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7054d60934c10cb2ef0956a704091f6a15981434-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/renekton/58006/model.glb",
+        "local": "data\\downloads\\renekton\\58006_pool_party_renekton.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pool Party Renekton"
+    },
+    {
+      "name": "PREHISTORIC RENEKTON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cf28e009fc2fb3b81a284fe9f47953eb7d980e79-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cf28e009fc2fb3b81a284fe9f47953eb7d980e79-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/renekton/58007/model.glb",
+        "local": "data\\downloads\\renekton\\58007_prehistoric_renekton.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Prehistoric Renekton"
+    },
+    {
+      "name": "RENEKTOY",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8aadc09860a5ea7550cc01ef5dec2a1a8f2793d1-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8aadc09860a5ea7550cc01ef5dec2a1a8f2793d1-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/renekton/58009/model.glb",
+        "local": "data\\downloads\\renekton\\58009_renektoy.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Renektoy"
+    },
+    {
+      "name": "PROJECT: RENEKTON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b3c17704b27b4591c780c130ac2e9e2151e3e229-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b3c17704b27b4591c780c130ac2e9e2151e3e229-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/renekton/58026/model.glb",
+        "local": "data\\downloads\\renekton\\58026_project_renekton.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "PROJECT: Renekton"
+    },
+    {
+      "name": "BLACKFROST RENEKTON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4721ed43e43d610939a8f3b34b17e4a42a562cec-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4721ed43e43d610939a8f3b34b17e4a42a562cec-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/renekton/58018/model.glb",
+        "local": "data\\downloads\\renekton\\58018_blackfrost_renekton.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Blackfrost Renekton"
+    },
+    {
+      "name": "HEXTECH RENEKTON",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/07b71248f4d48a92c1f6067dc0d114341cc955fc-1920x1080.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/07b71248f4d48a92c1f6067dc0d114341cc955fc-1920x1080.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/renekton/58017/model.glb",
+        "local": "data\\downloads\\renekton\\58017_hextech_renekton.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Hextech Renekton"
+    }
+  ]
+}

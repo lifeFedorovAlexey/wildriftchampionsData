@@ -1,0 +1,155 @@
+{
+  "slug": "graves",
+  "skinCount": 12,
+  "with3d": 8,
+  "skins": [
+    {
+      "name": "GRAVES, THE OUTLAW",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3c8ffdb9fef5090341a73da16f06cd6574fc517b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3c8ffdb9fef5090341a73da16f06cd6574fc517b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/graves/104000/model.glb",
+        "local": "data\\downloads\\graves\\104000_graves.glb"
+      },
+      "matchScore": 0.85,
+      "matchedName": "Graves"
+    },
+    {
+      "name": "CRIME CITY GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f784ad57ae66de2f1744305324ddc028ed84114-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f784ad57ae66de2f1744305324ddc028ed84114-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/graves/104003/model.glb",
+        "local": "data\\downloads\\graves\\104003_crime_city_graves.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Crime City Graves"
+    },
+    {
+      "name": "PRAETORIAN GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e0cc13e9c8b40dfde83a8d1a2b28f41b8e1987c9-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e0cc13e9c8b40dfde83a8d1a2b28f41b8e1987c9-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/graves/104018/model.glb",
+        "local": "data\\downloads\\graves\\104018_praetorian_graves.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Praetorian Graves"
+    },
+    {
+      "name": "CUTTHROAT GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/786d31d2105e802d03545e6fbe685beed02b47b5-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/786d31d2105e802d03545e6fbe685beed02b47b5-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/graves/104006/model.glb",
+        "local": "data\\downloads\\graves\\104006_cutthroat_graves.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Cutthroat Graves"
+    },
+    {
+      "name": "Battle Professor Graves",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5921bdcb5e04862b041f65af12077aaf3735ebaa-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5921bdcb5e04862b041f65af12077aaf3735ebaa-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/graves/104025/model.glb",
+        "local": "data\\downloads\\graves\\104025_battle_professor_graves.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Battle Professor Graves"
+    },
+    {
+      "name": "MARAUDER GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b5c32eba1771f88c64170f60f5e9138bbbae4465-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b5c32eba1771f88c64170f60f5e9138bbbae4465-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "POOL PARTY GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/db7611d1b7a31907542bb6a152a2e4c676dd7fae-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/db7611d1b7a31907542bb6a152a2e4c676dd7fae-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/graves/104005/model.glb",
+        "local": "data\\downloads\\graves\\104005_pool_party_graves.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Pool Party Graves"
+    },
+    {
+      "name": "SUPER VILLAIN GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9b086dc611732874cb8b0c466212cc4c672f2fa0-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9b086dc611732874cb8b0c466212cc4c672f2fa0-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "SENTINEL GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e30e81a109b0cd284e3e6e36d7dbb30d0fe10199-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e30e81a109b0cd284e3e6e36d7dbb30d0fe10199-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/graves/104035/model.glb",
+        "local": "data\\downloads\\graves\\104035_sentinel_graves.glb"
+      },
+      "matchScore": 1,
+      "matchedName": "Sentinel Graves"
+    },
+    {
+      "name": "DRAGON LANTERN GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cfd9436258230e2df2a55751840567148baea504-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cfd9436258230e2df2a55751840567148baea504-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "DRAGON LANTERN (SPECIAL EDITION) GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6455efb1546c5e8042b13df395de8d36713c1146-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6455efb1546c5e8042b13df395de8d36713c1146-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": false,
+      "model": null
+    },
+    {
+      "name": "BATTLE TIGER GRAVES",
+      "image": {
+        "preview": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a7156719fda224a9702fc88b0ba9b15227cb577b-1280x720.jpg?accountingTag=WR&auto=format&fit=crop&q=80&h=188&w=334&crop=center",
+        "full": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a7156719fda224a9702fc88b0ba9b15227cb577b-1280x720.jpg?accountingTag=WR&auto=format&fit=fill&q=80&w=1280"
+      },
+      "has3d": true,
+      "model": {
+        "cdn": "https://cdn.modelviewer.lol/lol/models/graves/104025/model.glb",
+        "local": "data\\downloads\\graves\\104025_battle_professor_graves.glb"
+      },
+      "matchScore": 0.55,
+      "matchedName": "Battle Professor Graves"
+    }
+  ]
+}
