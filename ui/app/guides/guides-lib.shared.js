@@ -6,7 +6,7 @@ export async function fetchGuideFromApi(slug) {
   try {
     const baseUrl = getStatsApiBaseUrl();
     const response = await fetch(`${baseUrl}/api/guides/${encodeURIComponent(slug)}?lang=ru_ru`, {
-      next: { revalidate: 3600 * 24 * 7 },
+      cache: "no-store",
     });
 
     if (response.status === 404) {
