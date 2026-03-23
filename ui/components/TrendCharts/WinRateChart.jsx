@@ -5,6 +5,7 @@ import {
   AreaChart,
   Area,
   CartesianGrid,
+  Dot,
   XAxis,
   YAxis,
   Tooltip,
@@ -64,6 +65,27 @@ export const WinRateChart = React.memo(function WinRateChart({
         stroke="#4ade80"
         strokeWidth={2}
         fill="url(#trendWin)"
+        dot={(props) => {
+          const { cx, cy, payload } = props || {};
+
+          if (!payload?.eventCount || !Number.isFinite(cx) || !Number.isFinite(cy)) {
+            return null;
+          }
+
+          return (
+            <g>
+              <Dot
+                cx={cx}
+                cy={cy}
+                r={7}
+                fill="rgba(15, 23, 42, 0.98)"
+                stroke="#facc15"
+                strokeWidth={2}
+              />
+              <Dot cx={cx} cy={cy} r={2.5} fill="#facc15" stroke="none" />
+            </g>
+          );
+        }}
         activeDot={{ r: 4 }}
       />
 

@@ -8,6 +8,54 @@
   gap: 8px;
 }
 
+.eventsCard {
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.95);
+  padding: 12px;
+}
+
+.eventsTitle {
+  font-size: 13px;
+  opacity: 0.88;
+  margin-bottom: 10px;
+}
+
+.eventsList {
+  display: grid;
+  gap: 10px;
+}
+
+.eventRow {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.eventDate {
+  font-size: 12px;
+  font-weight: 700;
+  color: #93c5fd;
+}
+
+.eventBody {
+  display: grid;
+  gap: 4px;
+}
+
+.eventHeadline {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.eventSummary {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(226, 232, 240, 0.86);
+  white-space: pre-line;
+}
+
 @media (min-width: 1024px) {
   .stack {
     gap: 12px;
@@ -15,5 +63,12 @@
 
   .stackCompact {
     gap: 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  .eventRow {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 }

@@ -57,6 +57,18 @@ type ChampionOption = {
   displayName: string;
 };
 
+type ChampionEvent = {
+  id: number;
+  date: string | null;
+  championSlug: string;
+  type: string;
+  scope: string;
+  abilityName: string | null;
+  skinName: string | null;
+  title: string | null;
+  summary: string | null;
+};
+
 function TrendTable({ days }: { days: TrendDay[] }) {
   if (!days.length) return null;
 
@@ -127,6 +139,29 @@ function TrendTable({ days }: { days: TrendDay[] }) {
   );
 }
 
+function ChampionEventsPanel({ events }: { events: ChampionEvent[] }) {
+  if (!events.length) return null;
+
+  return (
+    <div className={styles.eventsCard}>
+      <div className={styles.eventsTitle}>События чемпиона</div>
+      <div className={styles.eventsList}>
+        {events.map((event) => (
+          <div key={event.id} className={styles.eventRow}>
+            <div className={styles.eventDate}>{event.date ?? "—"}</div>
+            <div className={styles.eventBody}>
+              <div className={styles.eventHeadline}>{event.title || "Обновление"}</div>
+              {event.summary ? (
+                <div className={styles.eventSummary}>{event.summary}</div>
+              ) : null}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Page() {
   const [champions, setChampions] = useState<ChampionOption[]>([]);
   const [selectedChampion, setSelectedChampion] = useState<ChampionOption | null>(null);
@@ -137,7 +172,9 @@ export default function Page() {
   const [range, setRange] = useState<"week" | "month" | "all">("week");
 
   const [rawHistory, setRawHistory] = useState<any[]>([]);
+  const [championEvents, setChampionEvents] = useState<ChampionEvent[]>([]);
   const [loading, setLoading] = useState(false);
+  const [eventsLoading, setEventsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -167,6 +204,56 @@ export default function Page() {
   }, [selectedChampion, rankKey, laneKey]);
 
   const days = useMemo(() => buildTrendDays(rawHistory, range), [rawHistory, range]);
+  const dateWindow = useMemo(() => {
+    if (!days.length) return null;
+
+    return {
+      from: days[0]?.fullDate ?? null,
+      to: days[days.length - 1]?.fullDate ?? null,
+    };
+  }, [days]);
+
+  useEffect(() => {
+    if (!selectedChampion || !dateWindow?.from || !dateWindow?.to) {
+      setChampionEvents([]);
+      return;
+    }
+
+    setEventsLoading(true);
+
+    const params = new URLSearchParams({
+      slug: selectedChampion.slug,
+      from: dateWindow.from,
+      to: dateWindow.to,
+      limit: "100",
+    });
+
+    fetch(`${API_BASE}/api/champion-events?${params}`)
+      .then((response) => response.json())
+      .then((payload) => setChampionEvents(payload.items || []))
+      .catch(() => setChampionEvents([]))
+      .finally(() => setEventsLoading(false));
+  }, [selectedChampion, dateWindow]);
+
+  const enrichedDays = useMemo(() => {
+    const eventsByDate = new Map<string, ChampionEvent[]>();
+
+    for (const event of championEvents) {
+      if (!event?.date) continue;
+      const bucket = eventsByDate.get(event.date) || [];
+      bucket.push(event);
+      eventsByDate.set(event.date, bucket);
+    }
+
+    return days.map((day: TrendDay) => {
+      const events = eventsByDate.get(day.fullDate) || [];
+      return {
+        ...day,
+        events,
+        eventCount: events.length,
+      };
+    });
+  }, [days, championEvents]);
 
   return (
     <PageWrapper
@@ -199,15 +286,20 @@ export default function Page() {
 
       {loading ? <LoadingRing label="Считаю тренды..." /> : null}
 
-      {!loading && selectedChampion && days.length > 0 ? (
+      {!loading && selectedChampion && enrichedDays.length > 0 ? (
         <div className={styles.stackCompact}>
-          <TrendChartBlock days={days} />
-          <TrendTable days={days} />
+          <TrendChartBlock days={enrichedDays} />
+          <ChampionEventsPanel events={championEvents} />
+          <TrendTable days={enrichedDays} />
         </div>
       ) : null}
 
-      {!loading && selectedChampion && !days.length ? (
+      {!loading && selectedChampion && !enrichedDays.length ? (
         <TextHint>Нет статистики в рамках линии, чемпиона или ранга.</TextHint>
+      ) : null}
+
+      {!loading && !eventsLoading && selectedChampion && enrichedDays.length > 0 && !championEvents.length ? (
+        <TextHint>В выбранном диапазоне для этого чемпиона пока не найдено событий обновлений.</TextHint>
       ) : null}
 
       {error ? <TextHint>{error}</TextHint> : null}
