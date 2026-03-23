@@ -121,6 +121,12 @@ function buildBaseRow(championBySlug, item) {
     strengthLevel: item.strengthLevel ?? null,
     tierLabel: tier.label,
     tierColor: tier.color,
+    winRateDelta: null,
+    pickRateDelta: null,
+    banRateDelta: null,
+    winRateTrend: [],
+    pickRateTrend: [],
+    banRateTrend: [],
   };
 }
 
@@ -292,6 +298,18 @@ function compareRows(left, right, sort) {
     : leftValue - rightValue;
 }
 
+function compareRowsByMetric(left, right, metricKey) {
+  if (metricKey === "strengthLevel") {
+    const leftValue = left.strengthLevel ?? 999;
+    const rightValue = right.strengthLevel ?? 999;
+    return leftValue - rightValue;
+  }
+
+  const leftValue = left[metricKey] ?? 0;
+  const rightValue = right[metricKey] ?? 0;
+  return rightValue - leftValue;
+}
+
 export function sortPreparedRows(rows, sort) {
   if (!Array.isArray(rows) || !rows.length) return [];
   return [...rows].sort((left, right) => compareRows(left, right, sort));
@@ -324,16 +342,117 @@ export function applyPreparedMovement(rows, sliceHistory, sort) {
       typeof previousIndex === "number" ? previousIndex - (index + 1) : null;
   });
 
+  const previousWinRateRows = [...(orderedHistory[0]?.rows || [])].sort(
+    (left, right) => compareRowsByMetric(left, right, "winRate"),
+  );
+  const currentWinRateRows = [...(orderedHistory[orderedHistory.length - 1]?.rows || [])].sort(
+    (left, right) => compareRowsByMetric(left, right, "winRate"),
+  );
+  const previousPickRateRows = [...(orderedHistory[0]?.rows || [])].sort(
+    (left, right) => compareRowsByMetric(left, right, "pickRate"),
+  );
+  const currentPickRateRows = [...(orderedHistory[orderedHistory.length - 1]?.rows || [])].sort(
+    (left, right) => compareRowsByMetric(left, right, "pickRate"),
+  );
+  const previousBanRateRows = [...(orderedHistory[0]?.rows || [])].sort(
+    (left, right) => compareRowsByMetric(left, right, "banRate"),
+  );
+  const currentBanRateRows = [...(orderedHistory[orderedHistory.length - 1]?.rows || [])].sort(
+    (left, right) => compareRowsByMetric(left, right, "banRate"),
+  );
+
+  /** @type {Record<string, number>} */
+  const previousWinRateIndexBySlug = {};
+  previousWinRateRows.forEach((row, index) => {
+    previousWinRateIndexBySlug[row.slug] = index + 1;
+  });
+
+  /** @type {Record<string, number>} */
+  const previousPickRateIndexBySlug = {};
+  previousPickRateRows.forEach((row, index) => {
+    previousPickRateIndexBySlug[row.slug] = index + 1;
+  });
+
+  /** @type {Record<string, number>} */
+  const previousBanRateIndexBySlug = {};
+  previousBanRateRows.forEach((row, index) => {
+    previousBanRateIndexBySlug[row.slug] = index + 1;
+  });
+
+  /** @type {Record<string, number | null>} */
+  const winRateDeltaBySlug = {};
+  currentWinRateRows.forEach((row, index) => {
+    const previousIndex = previousWinRateIndexBySlug[row.slug];
+    winRateDeltaBySlug[row.slug] =
+      typeof previousIndex === "number" ? previousIndex - (index + 1) : null;
+  });
+
+  /** @type {Record<string, number | null>} */
+  const pickRateDeltaBySlug = {};
+  currentPickRateRows.forEach((row, index) => {
+    const previousIndex = previousPickRateIndexBySlug[row.slug];
+    pickRateDeltaBySlug[row.slug] =
+      typeof previousIndex === "number" ? previousIndex - (index + 1) : null;
+  });
+
+  /** @type {Record<string, number | null>} */
+  const banRateDeltaBySlug = {};
+  currentBanRateRows.forEach((row, index) => {
+    const previousIndex = previousBanRateIndexBySlug[row.slug];
+    banRateDeltaBySlug[row.slug] =
+      typeof previousIndex === "number" ? previousIndex - (index + 1) : null;
+  });
+
   /** @type {Record<string, Array<number | null>>} */
   const trendBySlug = {};
+  /** @type {Record<string, Array<number | null>>} */
+  const winRateTrendBySlug = {};
+  /** @type {Record<string, Array<number | null>>} */
+  const pickRateTrendBySlug = {};
+  /** @type {Record<string, Array<number | null>>} */
+  const banRateTrendBySlug = {};
   orderedHistory.forEach((entry, dateIndex) => {
     const sortedRows = sortPreparedRows(entry.rows || [], sort);
+    const winRateRows = [...(entry.rows || [])].sort((left, right) =>
+      compareRowsByMetric(left, right, "winRate"),
+    );
+    const pickRateRows = [...(entry.rows || [])].sort((left, right) =>
+      compareRowsByMetric(left, right, "pickRate"),
+    );
+    const banRateRows = [...(entry.rows || [])].sort((left, right) =>
+      compareRowsByMetric(left, right, "banRate"),
+    );
+
     sortedRows.forEach((row, rowIndex) => {
       if (!trendBySlug[row.slug]) {
         trendBySlug[row.slug] = orderedHistory.map(() => null);
       }
 
       trendBySlug[row.slug][dateIndex] = rowIndex + 1;
+    });
+
+    winRateRows.forEach((row, rowIndex) => {
+      if (!winRateTrendBySlug[row.slug]) {
+        winRateTrendBySlug[row.slug] = orderedHistory.map(() => null);
+      }
+
+      winRateTrendBySlug[row.slug][dateIndex] = rowIndex + 1;
+    });
+
+    pickRateRows.forEach((row, rowIndex) => {
+      if (!pickRateTrendBySlug[row.slug]) {
+        pickRateTrendBySlug[row.slug] = orderedHistory.map(() => null);
+      }
+
+      pickRateTrendBySlug[row.slug][dateIndex] = rowIndex + 1;
+    });
+
+    banRateRows.forEach((row, rowIndex) => {
+      if (!banRateTrendBySlug[row.slug]) {
+        banRateTrendBySlug[row.slug] = orderedHistory.map(() => null);
+      }
+
+      banRateTrendBySlug[row.slug][dateIndex] = rowIndex + 1;
     });
   });
 
@@ -347,6 +466,30 @@ export function applyPreparedMovement(rows, sliceHistory, sort) {
       Object.prototype.hasOwnProperty.call(trendBySlug, row.slug)
         ? trendBySlug[row.slug]
         : [],
+    winRateTrend:
+      Object.prototype.hasOwnProperty.call(winRateTrendBySlug, row.slug)
+        ? winRateTrendBySlug[row.slug]
+        : [],
+    winRateDelta:
+      Object.prototype.hasOwnProperty.call(winRateDeltaBySlug, row.slug)
+        ? winRateDeltaBySlug[row.slug]
+        : null,
+    pickRateTrend:
+      Object.prototype.hasOwnProperty.call(pickRateTrendBySlug, row.slug)
+        ? pickRateTrendBySlug[row.slug]
+        : [],
+    pickRateDelta:
+      Object.prototype.hasOwnProperty.call(pickRateDeltaBySlug, row.slug)
+        ? pickRateDeltaBySlug[row.slug]
+        : null,
+    banRateTrend:
+      Object.prototype.hasOwnProperty.call(banRateTrendBySlug, row.slug)
+        ? banRateTrendBySlug[row.slug]
+        : [],
+    banRateDelta:
+      Object.prototype.hasOwnProperty.call(banRateDeltaBySlug, row.slug)
+        ? banRateDeltaBySlug[row.slug]
+        : null,
   }));
 }
 
@@ -543,6 +686,109 @@ function buildPositionTrendMap({
   return trendMap;
 }
 
+function buildMetricTrendMap({
+  champions,
+  historyItems,
+  rankKey,
+  laneKey,
+  metricKey,
+}) {
+  if (!Array.isArray(historyItems) || !historyItems.length) {
+    return {};
+  }
+
+  const sliceItems = historyItems.filter(
+    (item) => item?.rank === rankKey && item?.lane === laneKey && item?.date,
+  );
+
+  if (!sliceItems.length) {
+    return {};
+  }
+
+  const recentDates = [...new Set(sliceItems.map((item) => String(item.date)))]
+    .sort()
+    .slice(-7);
+
+  /** @type {Record<string, Array<number | null>>} */
+  const trendMap = {};
+
+  for (const champion of champions) {
+    if (!champion?.slug) continue;
+    trendMap[champion.slug] = recentDates.map(() => null);
+  }
+
+  recentDates.forEach((date, dateIndex) => {
+    const rowsForDate = toSliceRows(
+      champions,
+      buildMapForDate(historyItems, rankKey, laneKey, date),
+      rankKey,
+      laneKey,
+    ).sort((left, right) => compareRowsByMetric(left, right, metricKey));
+
+    rowsForDate.forEach((row, rowIndex) => {
+      if (!trendMap[row.slug]) {
+        trendMap[row.slug] = recentDates.map(() => null);
+      }
+
+      trendMap[row.slug][dateIndex] = rowIndex + 1;
+    });
+  });
+
+  return trendMap;
+}
+
+function buildMetricDeltaMap({
+  champions,
+  historyItems,
+  rankKey,
+  laneKey,
+  metricKey,
+}) {
+  if (!Array.isArray(historyItems) || !historyItems.length) {
+    return {};
+  }
+
+  const { currentDate, previousDate } = findNearestWeeklyDate(
+    historyItems,
+    rankKey,
+    laneKey,
+  );
+
+  if (!currentDate || !previousDate) {
+    return {};
+  }
+
+  const currentRows = toSliceRows(
+    champions,
+    buildMapForDate(historyItems, rankKey, laneKey, currentDate),
+    rankKey,
+    laneKey,
+  ).sort((left, right) => compareRowsByMetric(left, right, metricKey));
+
+  const previousRows = toSliceRows(
+    champions,
+    buildMapForDate(historyItems, rankKey, laneKey, previousDate),
+    rankKey,
+    laneKey,
+  ).sort((left, right) => compareRowsByMetric(left, right, metricKey));
+
+  /** @type {Record<string, number>} */
+  const previousIndexBySlug = {};
+  previousRows.forEach((row, index) => {
+    previousIndexBySlug[row.slug] = index + 1;
+  });
+
+  /** @type {Record<string, number | null>} */
+  const deltaMap = {};
+  currentRows.forEach((row, index) => {
+    const previousIndex = previousIndexBySlug[row.slug];
+    deltaMap[row.slug] =
+      typeof previousIndex === "number" ? previousIndex - (index + 1) : null;
+  });
+
+  return deltaMap;
+}
+
 /**
  * @param {{
  *   champions: Champion[];
@@ -579,6 +825,48 @@ export function buildWinrateRows({
     laneKey,
     sort,
   });
+  const winRateTrendMap = buildMetricTrendMap({
+    champions,
+    historyItems,
+    rankKey,
+    laneKey,
+    metricKey: "winRate",
+  });
+  const pickRateTrendMap = buildMetricTrendMap({
+    champions,
+    historyItems,
+    rankKey,
+    laneKey,
+    metricKey: "pickRate",
+  });
+  const banRateTrendMap = buildMetricTrendMap({
+    champions,
+    historyItems,
+    rankKey,
+    laneKey,
+    metricKey: "banRate",
+  });
+  const winRateDeltaMap = buildMetricDeltaMap({
+    champions,
+    historyItems,
+    rankKey,
+    laneKey,
+    metricKey: "winRate",
+  });
+  const pickRateDeltaMap = buildMetricDeltaMap({
+    champions,
+    historyItems,
+    rankKey,
+    laneKey,
+    metricKey: "pickRate",
+  });
+  const banRateDeltaMap = buildMetricDeltaMap({
+    champions,
+    historyItems,
+    rankKey,
+    laneKey,
+    metricKey: "banRate",
+  });
 
   const rows = toSliceRows(champions, latestStats, rankKey, laneKey).map((row) => ({
     ...row,
@@ -590,6 +878,30 @@ export function buildWinrateRows({
       Object.prototype.hasOwnProperty.call(positionTrendMap, row.slug)
         ? positionTrendMap[row.slug]
         : [],
+    winRateTrend:
+      Object.prototype.hasOwnProperty.call(winRateTrendMap, row.slug)
+        ? winRateTrendMap[row.slug]
+        : [],
+    pickRateTrend:
+      Object.prototype.hasOwnProperty.call(pickRateTrendMap, row.slug)
+        ? pickRateTrendMap[row.slug]
+        : [],
+    banRateTrend:
+      Object.prototype.hasOwnProperty.call(banRateTrendMap, row.slug)
+        ? banRateTrendMap[row.slug]
+        : [],
+    winRateDelta:
+      Object.prototype.hasOwnProperty.call(winRateDeltaMap, row.slug)
+        ? winRateDeltaMap[row.slug]
+        : null,
+    pickRateDelta:
+      Object.prototype.hasOwnProperty.call(pickRateDeltaMap, row.slug)
+        ? pickRateDeltaMap[row.slug]
+        : null,
+    banRateDelta:
+      Object.prototype.hasOwnProperty.call(banRateDeltaMap, row.slug)
+        ? banRateDeltaMap[row.slug]
+        : null,
   }));
 
   return rows.sort((left, right) => compareRows(left, right, sort));

@@ -16,6 +16,12 @@ type Row = {
   tierColor: string;
   positionDelta: number | null;
   positionTrend: Array<number | null>;
+  winRateTrend: Array<number | null>;
+  pickRateTrend: Array<number | null>;
+  banRateTrend: Array<number | null>;
+  winRateDelta: number | null;
+  pickRateDelta: number | null;
+  banRateDelta: number | null;
 };
 
 function winRateColor(v: number | null) {
@@ -142,7 +148,7 @@ export default function WinratesTable({
       <div className={`${styles.grid} ${styles.header}`}>
         <div className={styles.left}>#</div>
         <div className={styles.left}>Герой</div>
-        <div className={styles.center}>7д</div>
+        <div className={`${styles.center} ${styles.mobileOnly}`}>7д</div>
 
         <button
           type="button"
@@ -172,6 +178,10 @@ export default function WinratesTable({
             {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
         </button>
+        <div
+          className={`${styles.metricTrendHeader} ${styles.desktopOnly}`}
+          aria-hidden="true"
+        />
 
         <button
           type="button"
@@ -185,6 +195,10 @@ export default function WinratesTable({
             {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
         </button>
+        <div
+          className={`${styles.metricTrendHeader} ${styles.desktopOnly}`}
+          aria-hidden="true"
+        />
 
         <button
           type="button"
@@ -198,10 +212,17 @@ export default function WinratesTable({
             {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
         </button>
+        <div
+          className={`${styles.metricTrendHeader} ${styles.desktopOnly}`}
+          aria-hidden="true"
+        />
       </div>
 
       {rows.map((row, idx) => {
         const movement = formatPositionDelta(row.positionDelta);
+        const winRateMovement = formatPositionDelta(row.winRateDelta);
+        const pickRateMovement = formatPositionDelta(row.pickRateDelta);
+        const banRateMovement = formatPositionDelta(row.banRateDelta);
 
         return (
           <div key={row.slug} className={`${styles.grid} ${styles.row}`}>
@@ -225,7 +246,10 @@ export default function WinratesTable({
               </span>
             </div>
 
-            <div className={styles.trendCell} style={{ color: movement.color }}>
+            <div
+              className={`${styles.trendCell} ${styles.mobileOnly}`}
+              style={{ color: movement.color }}
+            >
               <TrendSparkline values={row.positionTrend} color={movement.color} />
               <span className={styles.trendValue}>{movement.text}</span>
             </div>
@@ -240,13 +264,43 @@ export default function WinratesTable({
             <div className={styles.metric} style={{ color: winRateColor(row.winRate) }}>
               {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
             </div>
+            <div
+              className={`${styles.metricTrendCell} ${styles.desktopOnly}`}
+              style={{ color: winRateMovement.color }}
+            >
+              <TrendSparkline
+                values={row.winRateTrend}
+                color={winRateMovement.color}
+              />
+              <span className={styles.trendValue}>{winRateMovement.text}</span>
+            </div>
 
             <div className={styles.metric} style={{ color: pickRateColor(row.pickRate) }}>
               {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
             </div>
+            <div
+              className={`${styles.metricTrendCell} ${styles.desktopOnly}`}
+              style={{ color: pickRateMovement.color }}
+            >
+              <TrendSparkline
+                values={row.pickRateTrend}
+                color={pickRateMovement.color}
+              />
+              <span className={styles.trendValue}>{pickRateMovement.text}</span>
+            </div>
 
             <div className={styles.metric} style={{ color: banRateColor(row.banRate) }}>
               {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
+            </div>
+            <div
+              className={`${styles.metricTrendCell} ${styles.desktopOnly}`}
+              style={{ color: banRateMovement.color }}
+            >
+              <TrendSparkline
+                values={row.banRateTrend}
+                color={banRateMovement.color}
+              />
+              <span className={styles.trendValue}>{banRateMovement.text}</span>
             </div>
           </div>
         );

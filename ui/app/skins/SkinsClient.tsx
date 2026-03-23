@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import PageWrapper from "@/components/PageWrapper";
+import { ensureLocalAssetSrc } from "@/lib/asset-safety";
 import styles from "./skins.module.css";
 import { ChampionSkinsData } from "../types/skin";
+import { normalizeSkinImageSrc } from "./skin-assets";
 
 export default function SkinsClient() {
   const [champions, setChampions] = useState<ChampionSkinsData[]>([]);
@@ -84,7 +86,12 @@ export default function SkinsClient() {
               >
                 {firstSkin ? (
                   <img
-                    src={firstSkin.image.full}
+                    src={
+                      ensureLocalAssetSrc(
+                        "SkinsClient.tile",
+                        normalizeSkinImageSrc(champ.slug, firstSkin.name, firstSkin.image.full),
+                      ) || ""
+                    }
                     alt={name}
                     loading="lazy"
                     style={{

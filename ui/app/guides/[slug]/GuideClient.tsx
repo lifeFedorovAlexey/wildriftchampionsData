@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
+import { ensureLocalAssetSrc } from "@/lib/asset-safety";
 
 import styles from "./page.module.css";
 
@@ -222,7 +223,7 @@ function HoverTooltip({
         {tooltip.imageUrl ? (
           <img
             className={styles.tooltipImage}
-            src={tooltip.imageUrl}
+            src={ensureLocalAssetSrc("GuideClient.tooltip", tooltip.imageUrl) || ""}
             alt={tooltip.title || fallbackName}
           />
         ) : null}
@@ -267,7 +268,11 @@ function OrbCard({
     <article className={compact ? styles.orbCardCompact : styles.orbCard}>
       <div className={styles.orbMediaWrap}>
         {item.imageUrl ? (
-          <img className={styles.orbMedia} src={item.imageUrl} alt={item.name} />
+          <img
+            className={styles.orbMedia}
+            src={ensureLocalAssetSrc("GuideClient.orb", item.imageUrl) || ""}
+            alt={item.name}
+          />
         ) : null}
         <HoverTooltip tooltip={item.tooltip} fallbackName={item.name} />
       </div>
@@ -326,7 +331,11 @@ function SkillOrderPanel({
               <div key={`${item.slug}-${index}`} className={styles.quickItem}>
                 <div className={styles.quickOrbWrap}>
                   {item.imageUrl ? (
-                    <img className={styles.quickOrb} src={item.imageUrl} alt={item.name} />
+                    <img
+                      className={styles.quickOrb}
+                      src={ensureLocalAssetSrc("GuideClient.quickOrb", item.imageUrl) || ""}
+                      alt={item.name}
+                    />
                   ) : null}
                   <HoverTooltip tooltip={item.tooltip} fallbackName={item.name} />
                 </div>
@@ -461,8 +470,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const buildBreakdownParagraphs =
     buildBreakdown?.paragraphs?.filter((paragraph) => isTranslatedBuildParagraph(paragraph)) ?? [];
   const heroSummary = buildOfficialSummary(guide, variant);
-  const heroVideoSrc =
-    guide.official?.heroMedia?.localVideoPath || guide.official?.heroMedia?.remoteVideoUrl || null;
+  const heroVideoSrc = guide.official?.heroMedia?.localVideoPath || null;
 
   const abilityNameBySlug = new Map(
     abilities.map((ability) => [normalizeAbilitySlug(ability.slug), ability.name]),
@@ -529,7 +537,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             <video
               className={styles.heroBackdropVideo}
               src={heroVideoSrc}
-              poster={guide.champion.iconUrl || undefined}
+              poster={ensureLocalAssetSrc("GuideClient.heroPoster", guide.champion.iconUrl) || undefined}
               autoPlay
               muted
               loop
@@ -687,7 +695,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                       {abilityImageSrc ? (
                         <img
                           className={styles.abilityIcon}
-                          src={abilityImageSrc}
+                          src={ensureLocalAssetSrc("GuideClient.ability", abilityImageSrc) || ""}
                           alt={ability.name}
                         />
                       ) : null}

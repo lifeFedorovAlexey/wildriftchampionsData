@@ -1,15 +1,10 @@
-import dynamic from "next/dynamic";
-import { WinratesSkeleton } from "@/components/ui/LazySkeletons";
+import WinratesClient from "./winrates/WinratesClient";
 import {
   buildPreparedWinrateSlices,
   buildStatsUrls,
   fetchJson,
 } from "./winrates/winrates-lib.js";
 import styles from "./page.module.css";
-
-const WinratesClient = dynamic(() => import("./winrates/WinratesClient"), {
-  loading: () => <WinratesSkeleton embedded />,
-});
 
 const language = "ru_ru";
 
@@ -45,6 +40,12 @@ type PreparedRow = {
   tierColor: string;
   positionDelta: number | null;
   positionTrend: Array<number | null>;
+  winRateTrend: Array<number | null>;
+  pickRateTrend: Array<number | null>;
+  banRateTrend: Array<number | null>;
+  winRateDelta: number | null;
+  pickRateDelta: number | null;
+  banRateDelta: number | null;
 };
 
 export default async function HomePage() {

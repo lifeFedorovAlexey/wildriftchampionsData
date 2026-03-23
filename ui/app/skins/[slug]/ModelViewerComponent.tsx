@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ensureLocalAssetSrc } from "@/lib/asset-safety";
 import styles from "./skins.module.css";
-
-console.log("✅ ModelViewerComponent: загружен (клиент)");
 
 export default function ModelViewerComponent({
   modelSrc,
@@ -16,101 +15,78 @@ export default function ModelViewerComponent({
   const [animationNames, setAnimationNames] = useState<string[]>([]);
   const [currentAnimIndex, setCurrentAnimIndex] = useState(0);
   const modelViewerRef = useRef<HTMLDivElement>(null);
-  const scriptLoaded = useRef(false);
+  const elementReadyRef = useRef(false);
 
   useEffect(() => {
-    console.log("✅ ModelViewerComponent: useEffect запущен");
-
-    if (scriptLoaded.current) {
-      console.log("✅ model-viewer уже загружен — пропускаем");
+    if (elementReadyRef.current) {
       return;
     }
 
-    const script = document.createElement("script");
-    script.type = "module";
-    script.src =
-      "https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js";
+    let cancelled = false;
 
-    script.onload = () => {
-      console.log("✅ model-viewer успешно загружен с CDN");
-    };
-
-    script.onerror = () => {
-      console.error("❌ Ошибка загрузки model-viewer с CDN");
-    };
-
-    document.head.appendChild(script);
-    scriptLoaded.current = true;
+    import("@google/model-viewer")
+      .then(() => {
+        if (!cancelled) {
+          elementReadyRef.current = true;
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to load local model-viewer bundle", error);
+      });
 
     return () => {
-      if (script.parentNode) {
-        document.head.removeChild(script);
-        console.log("✅ model-viewer script удалён");
-      }
+      cancelled = true;
     };
   }, []);
 
   useEffect(() => {
-    console.log("✅ ModelViewerComponent: проверка modelSrc", modelSrc);
-
     setIsLoading(true);
     setAnimationNames([]);
     setCurrentAnimIndex(0);
 
     const modelViewer = modelViewerRef.current?.querySelector(
-      "model-viewer"
+      "model-viewer",
     ) as any;
 
-    if (!modelViewer) {
-      console.error("❌ model-viewer не найден в DOM");
+    if (!modelViewer || !elementReadyRef.current) {
       return;
     }
 
     const forcePlay = (name?: string) => {
       try {
         if (name) modelViewer.animationName = name;
-
-        // 🔥 иногда нужно пнуть
         modelViewer.pause?.();
         modelViewer.currentTime = 0;
-
-        // autoplay бывает включен атрибутом, но мы всё равно дернем play()
         modelViewer.play?.();
-
-        console.log("▶️ play() вызван для:", modelViewer.animationName);
-      } catch (e) {
-        console.error("❌ forcePlay ошибка:", e);
+      } catch (error) {
+        console.error("Model animation playback failed", error);
       }
     };
 
     const onLoad = () => {
-      console.log("✅ Модель загружена!");
       setIsLoading(false);
 
       const anims = (modelViewer.availableAnimations || [])
         .slice()
-        .sort((a: string, b: string) => {
-          const isIdleA = /^idle/i.test(a);
-          const isIdleB = /^idle/i.test(b);
+        .sort((left: string, right: string) => {
+          const isIdleLeft = /^idle/i.test(left);
+          const isIdleRight = /^idle/i.test(right);
 
-          if (isIdleA && !isIdleB) return -1;
-          if (!isIdleA && isIdleB) return 1;
-          return a.localeCompare(b);
+          if (isIdleLeft && !isIdleRight) return -1;
+          if (!isIdleLeft && isIdleRight) return 1;
+          return left.localeCompare(right);
         });
-      console.log("📦 Анимации:", anims);
 
       setAnimationNames(anims);
 
       if (anims.length > 0) {
         setCurrentAnimIndex(0);
         forcePlay(anims[0]);
-      } else {
-        console.log("📭 Нет анимаций — используем по умолчанию");
       }
     };
 
-    const onError = (e: any) => {
-      console.error("❌ Ошибка загрузки модели:", e);
+    const onError = (error: unknown) => {
+      console.error("Model loading failed", error);
       setIsLoading(false);
     };
 
@@ -124,23 +100,19 @@ export default function ModelViewerComponent({
     };
   }, [modelSrc]);
 
-  const applyAnimByIndex = (idx: number) => {
+  const applyAnimByIndex = (index: number) => {
     const modelViewer = modelViewerRef.current?.querySelector(
-      "model-viewer"
+      "model-viewer",
     ) as any;
 
-    const name = animationNames[idx];
+    const name = animationNames[index];
     if (!modelViewer || !name) return;
 
-    setCurrentAnimIndex(idx);
-
-    // та же логика “пнуть”
+    setCurrentAnimIndex(index);
     modelViewer.pause?.();
     modelViewer.animationName = name;
     modelViewer.currentTime = 0;
     modelViewer.play?.();
-
-    console.log("▶️ Анимация изменена на:", name);
   };
 
   const nextAnim = () => {
@@ -158,9 +130,7 @@ export default function ModelViewerComponent({
 
   return (
     <>
-      {isLoading && (
-        <div className={styles.loader}>🌀 Загрузка 3D модели...</div>
-      )}
+      {isLoading ? <div className={styles.loader}>Загрузка 3D модели...</div> : null}
 
       <div
         style={{
@@ -171,7 +141,7 @@ export default function ModelViewerComponent({
       >
         <div ref={modelViewerRef} style={{ width: "100%", height: "100%" }}>
           <model-viewer
-            src={modelSrc}
+            src={ensureLocalAssetSrc("ModelViewerComponent.model", modelSrc) || ""}
             alt={skinName}
             camera-controls
             shadow-intensity="1"
@@ -190,13 +160,13 @@ export default function ModelViewerComponent({
           ></model-viewer>
         </div>
 
-        {animationNames.length > 1 && (
+        {animationNames.length > 1 ? (
           <div className={styles.controls}>
             <button onClick={prevAnim}>←</button>
             <span>{animationNames[currentAnimIndex] || "Default"}</span>
             <button onClick={nextAnim}>→</button>
           </div>
-        )}
+        ) : null}
       </div>
     </>
   );

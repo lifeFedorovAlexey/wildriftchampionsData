@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ensureLocalAssetSrc } from "@/lib/asset-safety";
 import styles from "./skins.module.css";
 import dynamic from "next/dynamic";
 import { ChampionSkinsData } from "@/app/types/skin";
+import { normalizeSkinImageSrc, normalizeSkinModelSrc } from "../skin-assets";
 
 const ModelViewer = dynamic(() => import("./ModelViewerComponent"), {
   ssr: false,
@@ -16,7 +18,15 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const skin = data.skins[selectedSkinIndex];
-  const has3d = !!(skin.has3d && skin.model?.cdn);
+  const normalizedModelSrc = ensureLocalAssetSrc(
+    "SkinViewer.model",
+    normalizeSkinModelSrc(data.slug, skin.name, skin.model?.cdn),
+  );
+  const normalizedImageSrc = ensureLocalAssetSrc(
+    "SkinViewer.image",
+    normalizeSkinImageSrc(data.slug, skin.name, skin.image.full),
+  );
+  const has3d = !!(skin.has3d && normalizedModelSrc);
 
   const openOverlay = (idx: number) => {
     setSelectedSkinIndex(idx);
@@ -50,7 +60,17 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
 
       <div className={styles.skinList}>
         {data.skins.map((s, idx) => {
-          const canShow3d = !!(s.has3d && s.model?.cdn);
+          const imageSrc = ensureLocalAssetSrc(
+            "SkinViewer.thumb",
+            normalizeSkinImageSrc(data.slug, s.name, s.image.full),
+          );
+          const canShow3d = !!(
+            s.has3d &&
+            ensureLocalAssetSrc(
+              "SkinViewer.thumbModel",
+              normalizeSkinModelSrc(data.slug, s.name, s.model?.cdn),
+            )
+          );
 
           return (
             <div key={idx} className={styles.skinItem}>
@@ -63,7 +83,7 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
                 }}
               >
                 <Image
-                  src={s.image.full}
+                  src={imageSrc || "/og.png"}
                   alt={s.name}
                   width={160}
                   height={90}
@@ -113,11 +133,11 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
               ×
             </button>
 
-            {has3d && skin.model?.cdn ? (
-              <ModelViewer modelSrc={skin.model.cdn} skinName={skin.name} />
+            {has3d && normalizedModelSrc ? (
+              <ModelViewer modelSrc={normalizedModelSrc} skinName={skin.name} />
             ) : (
               <Image
-                src={skin.image.full}
+                src={normalizedImageSrc || "/og.png"}
                 alt={skin.name}
                 width={1280}
                 height={720}

@@ -3,6 +3,7 @@
 import type { KeyboardEventHandler } from "react";
 import Link from "next/link";
 
+import { ensureLocalAssetSrc } from "@/lib/asset-safety";
 import styles from "./ChampionAvatar.module.css";
 
 type ChampionAvatarProps = {
@@ -70,9 +71,11 @@ export default function ChampionAvatar({
     className,
   );
 
-  const content = src ? (
+  const safeSrc = ensureLocalAssetSrc("ChampionAvatar", src);
+
+  const content = safeSrc ? (
     <img
-      src={src}
+      src={safeSrc}
       alt={alt || name}
       title={title}
       loading={loading}

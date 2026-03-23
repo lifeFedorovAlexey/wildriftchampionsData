@@ -19,18 +19,40 @@
   align-items: center;
 }
 
+.desktopOnly {
+  display: none;
+}
+
+.mobileOnly {
+  display: flex;
+}
+
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns:
       54px
       minmax(220px, 2.6fr)
-      74px
       64px
       minmax(96px, 1fr)
+      48px
       minmax(96px, 1fr)
-      minmax(96px, 1fr);
+      48px
+      minmax(96px, 1fr)
+      48px;
     column-gap: 10px;
     padding: 10px 12px;
+  }
+
+  .desktopOnly {
+    display: flex;
+  }
+
+  .mobileOnly {
+    display: none;
+  }
+
+  .trendCell.mobileOnly {
+    display: none;
   }
 }
 
@@ -147,6 +169,19 @@
 .metric {
   text-align: right;
   font-variant-numeric: tabular-nums;
+}
+
+.metricTrendHeader {
+  width: 100%;
+  min-height: 1px;
+}
+
+.metricTrendCell {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  min-height: 30px;
 }
 
 .sortable {
