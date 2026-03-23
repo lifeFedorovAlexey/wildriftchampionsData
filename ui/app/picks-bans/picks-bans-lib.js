@@ -8,7 +8,7 @@ const RANK_KEYS = ["diamondPlus", "masterPlus", "king", "peak"];
 const RANK_LABELS_RU = {
   diamondPlus: "Алмаз",
   masterPlus: "Мастер",
-  king: "Грандмастер",
+  king: "ГМ",
   peak: "Претендент",
 };
 
@@ -88,7 +88,8 @@ export function aggregateLatestPicksBans({
     if (!agg._banRanksAdded.has(rankKey)) {
       agg._totalBanSum += banRate;
       agg._totalBanCount += 1;
-      lanes.all.banRanks[rankKey] = (lanes.all.banRanks[rankKey] || 0) + banRate;
+      lanes.all.banRanks[rankKey] =
+        (lanes.all.banRanks[rankKey] || 0) + banRate;
       agg._banRanksAdded.add(rankKey);
     }
   }
@@ -96,7 +97,9 @@ export function aggregateLatestPicksBans({
   const result = [];
   for (const value of aggBySlug.values()) {
     value.totalPickRate =
-      value._totalPickCount > 0 ? value._totalPickSum / value._totalPickCount : 0;
+      value._totalPickCount > 0
+        ? value._totalPickSum / value._totalPickCount
+        : 0;
     value.totalBanRate =
       value._totalBanCount > 0 ? value._totalBanSum / value._totalBanCount : 0;
 
@@ -138,11 +141,10 @@ export function buildLaneDetails({ champ, type }) {
       return rightValue - leftValue;
     })
     .map(([laneKey, laneData]) => {
-      const laneTotal = type === "pick" ? laneData?.pick || 0 : laneData?.ban || 0;
+      const laneTotal =
+        type === "pick" ? laneData?.pick || 0 : laneData?.ban || 0;
       const ranksObj =
-        type === "pick"
-          ? laneData?.pickRanks || {}
-          : laneData?.banRanks || {};
+        type === "pick" ? laneData?.pickRanks || {} : laneData?.banRanks || {};
 
       const parts = [];
       for (const rk of RANK_KEYS) {
