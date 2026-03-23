@@ -1,6 +1,7 @@
 "use client";
 
 import type { KeyboardEventHandler } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ensureLocalAssetSrc } from "@/lib/asset-safety";
@@ -29,6 +30,15 @@ type ChampionAvatarProps = {
 
 function cx(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
+}
+
+function withRequestedIconSize(src: string | null, size: number) {
+  if (!src || !src.startsWith("/wr-api/icons/")) {
+    return src;
+  }
+
+  const separator = src.includes("?") ? "&" : "?";
+  return `${src}${separator}size=${size}`;
 }
 
 export default function ChampionAvatar({
@@ -71,13 +81,21 @@ export default function ChampionAvatar({
     className,
   );
 
-  const safeSrc = ensureLocalAssetSrc("ChampionAvatar", src);
+  const sizes = `(max-width: 768px) ${mobileSize}px, ${desktopSize}px`;
+  const requestedSize = Math.max(mobileSize, desktopSize);
+  const safeSrc = withRequestedIconSize(
+    ensureLocalAssetSrc("ChampionAvatar", src),
+    requestedSize,
+  );
 
   const content = safeSrc ? (
-    <img
+    <Image
       src={safeSrc}
       alt={alt || name}
       title={title}
+      width={requestedSize}
+      height={requestedSize}
+      sizes={sizes}
       loading={loading}
       fetchPriority={fetchPriority}
       decoding={decoding}

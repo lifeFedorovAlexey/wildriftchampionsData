@@ -13,6 +13,8 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      S3_PUBLIC_BASE_URL: ${{ vars.S3_PUBLIC_BASE_URL }}
 
     steps:
       - name: Deploy over SSH
@@ -30,8 +32,15 @@ jobs:
             git checkout main
             git pull --ff-only origin main
             cd /var/www/wildriftchampionsData/ui
+            touch .env.production.local
+            if grep -q '^S3_PUBLIC_BASE_URL=' .env.production.local; then
+              sed -i "s|^S3_PUBLIC_BASE_URL=.*|S3_PUBLIC_BASE_URL=${S3_PUBLIC_BASE_URL}|" .env.production.local
+            else
+              printf '%s\n' "S3_PUBLIC_BASE_URL=${S3_PUBLIC_BASE_URL}" >> .env.production.local
+            fi
             npm ci
             npm run build
             pm2 delete wildrift-ui || true
             pm2 start npm --name wildrift-ui --cwd /var/www/wildriftchampionsData/ui -- start
             pm2 save
+          envs: S3_PUBLIC_BASE_URL
