@@ -14,13 +14,13 @@ export default function ModelViewerComponent({
   skinName: string;
 }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isViewerReady, setIsViewerReady] = useState(false);
   const [animationNames, setAnimationNames] = useState<string[]>([]);
   const [currentAnimIndex, setCurrentAnimIndex] = useState(0);
-  const modelViewerRef = useRef<HTMLDivElement>(null);
-  const elementReadyRef = useRef(false);
+  const modelViewerRef = useRef<any>(null);
 
   useEffect(() => {
-    if (elementReadyRef.current) {
+    if (isViewerReady) {
       return;
     }
 
@@ -29,32 +29,36 @@ export default function ModelViewerComponent({
     import("@google/model-viewer")
       .then(() => {
         if (!cancelled) {
-          elementReadyRef.current = true;
+          setIsViewerReady(true);
         }
       })
       .catch((error) => {
         console.error("Failed to load local model-viewer bundle", error);
+        if (!cancelled) {
+          setIsLoading(false);
+        }
       });
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [isViewerReady]);
 
   useEffect(() => {
     setIsLoading(true);
     setAnimationNames([]);
     setCurrentAnimIndex(0);
 
-    const modelViewer = modelViewerRef.current?.querySelector("model-viewer") as any;
-
-    if (!modelViewer || !elementReadyRef.current) {
+    const modelViewer = modelViewerRef.current;
+    if (!modelViewer || !isViewerReady) {
       return;
     }
 
     const forcePlay = (name?: string) => {
       try {
-        if (name) modelViewer.animationName = name;
+        if (name) {
+          modelViewer.animationName = name;
+        }
         modelViewer.pause?.();
         modelViewer.currentTime = 0;
         modelViewer.play?.();
@@ -98,13 +102,15 @@ export default function ModelViewerComponent({
       modelViewer.removeEventListener("error", onError);
       modelViewer.pause?.();
     };
-  }, [modelSrc]);
+  }, [isViewerReady, modelSrc]);
 
   const applyAnimByIndex = (index: number) => {
-    const modelViewer = modelViewerRef.current?.querySelector("model-viewer") as any;
-
+    const modelViewer = modelViewerRef.current;
     const name = animationNames[index];
-    if (!modelViewer || !name) return;
+
+    if (!modelViewer || !name) {
+      return;
+    }
 
     setCurrentAnimIndex(index);
     modelViewer.pause?.();
@@ -136,8 +142,10 @@ export default function ModelViewerComponent({
           height: "80vh",
         }}
       >
-        <div ref={modelViewerRef} style={{ width: "100%", height: "100%" }}>
+        <div style={{ width: "100%", height: "100%" }}>
           <model-viewer
+            key={modelSrc}
+            ref={modelViewerRef}
             src={ensureLocalAssetSrc("ModelViewerComponent.model", modelSrc) || ""}
             alt={skinName}
             camera-controls

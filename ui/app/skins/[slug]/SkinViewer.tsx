@@ -113,7 +113,11 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
             </button>
 
             {has3d && normalizedModelSrc ? (
-              <ModelViewer modelSrc={normalizedModelSrc} skinName={skin.name} />
+              <ModelViewer
+                key={normalizedModelSrc}
+                modelSrc={normalizedModelSrc}
+                skinName={skin.name}
+              />
             ) : (
               <Image
                 src={normalizedImageSrc || "/og.png"}
