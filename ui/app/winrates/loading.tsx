@@ -10,7 +10,7 @@ function SkeletonRow({ index }: { index: number }) {
         <span className={styles.skeletonAvatar} />
         <span className={styles.skeletonName} />
       </div>
-      <div className={tableStyles.trendCell}>
+      <div className={`${tableStyles.trendCell} ${tableStyles.mobileOnly}`}>
         <span className={styles.skeletonTrend} />
         <span className={styles.skeletonValue} />
       </div>
@@ -20,11 +20,20 @@ function SkeletonRow({ index }: { index: number }) {
       <div className={tableStyles.metric}>
         <span className={styles.skeletonMetric} />
       </div>
-      <div className={tableStyles.metric}>
-        <span className={styles.skeletonMetric} />
+      <div className={`${tableStyles.metricTrendCell} ${tableStyles.desktopOnly}`}>
+        <span className={styles.skeletonTrend} />
       </div>
       <div className={tableStyles.metric}>
         <span className={styles.skeletonMetric} />
+      </div>
+      <div className={`${tableStyles.metricTrendCell} ${tableStyles.desktopOnly}`}>
+        <span className={styles.skeletonTrend} />
+      </div>
+      <div className={tableStyles.metric}>
+        <span className={styles.skeletonMetric} />
+      </div>
+      <div className={`${tableStyles.metricTrendCell} ${tableStyles.desktopOnly}`}>
+        <span className={styles.skeletonTrend} />
       </div>
     </div>
   );
@@ -68,11 +77,23 @@ export default function Loading() {
             <div className={`${tableStyles.grid} ${tableStyles.header}`}>
               <div className={tableStyles.left}>#</div>
               <div className={tableStyles.left}>Герой</div>
-              <div className={tableStyles.center}>7д</div>
+              <div className={`${tableStyles.center} ${tableStyles.mobileOnly}`}>7д</div>
               <div className={tableStyles.center}>Тир</div>
               <div className={tableStyles.right}>Винрейт</div>
+              <div
+                className={`${tableStyles.metricTrendHeader} ${tableStyles.desktopOnly}`}
+                aria-hidden="true"
+              />
               <div className={tableStyles.right}>Пики</div>
+              <div
+                className={`${tableStyles.metricTrendHeader} ${tableStyles.desktopOnly}`}
+                aria-hidden="true"
+              />
               <div className={tableStyles.right}>Баны</div>
+              <div
+                className={`${tableStyles.metricTrendHeader} ${tableStyles.desktopOnly}`}
+                aria-hidden="true"
+              />
             </div>
 
             {Array.from({ length: 12 }, (_, index) => (

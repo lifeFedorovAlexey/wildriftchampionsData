@@ -44,6 +44,12 @@ type Row = {
   tierColor: string;
   positionDelta: number | null;
   positionTrend: Array<number | null>;
+  winRateTrend: Array<number | null>;
+  pickRateTrend: Array<number | null>;
+  banRateTrend: Array<number | null>;
+  winRateDelta: number | null;
+  pickRateDelta: number | null;
+  banRateDelta: number | null;
 };
 
 function WinratesContent({
