@@ -163,10 +163,7 @@ export default function AppClient() {
 
     if (view === VIEWS.GRAPH) {
       return (
-        <ScreenView
-          title="График трендов"
-          onBack={() => setView(VIEWS.MENU)}
-        />
+        <ScreenView title="График трендов" onBack={() => setView(VIEWS.MENU)} />
       );
     }
   }
@@ -176,7 +173,7 @@ export default function AppClient() {
       style={{ minHeight: "100vh", background: "#0b0e1c", color: "#e8ecff" }}
     >
       <div style={{ maxWidth: 560, margin: "0 auto", padding: 16 }}>
-        <h1 style={{ marginTop: 8, marginBottom: 8 }}>Wild Rift Stats</h1>
+        <h1 style={{ marginTop: 8, marginBottom: 8 }}>Wild Rift All Stats</h1>
 
         <div style={{ opacity: 0.8, marginBottom: 16 }}>
           {updatedAt
