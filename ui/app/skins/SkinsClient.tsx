@@ -15,16 +15,14 @@ export default function SkinsClient({
 }) {
   return (
     <PageWrapper
-      title="РЎРєРёРЅС‹"
+      title="Скины"
       paragraphs={[
-        "РџСЂРѕСЃРјРѕС‚СЂ 3D-РјРѕРґРµР»РµР№ С„Р°РЅР°С‚СЃРєРёС… СЃРєРёРЅРѕРІ С‡РµРјРїРёРѕРЅРѕРІ League of Legends вЂ” СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… Рё РЅРµ СЃРѕРІСЃРµРј РІРµСЂСЃРёРё Wild Rift.",
+        "Просмотр 3D-моделей фанатских скинов чемпионов League of Legends — соответствующих и не совсем версии Wild Rift.",
       ]}
     >
       <div className={styles.grid}>
         {champions.length === 0 ? (
-          <p>
-            РќРµС‚ РґР°РЅРЅС‹С… Рѕ СЃРєРёРЅР°С…. РЎРЅР°С‡Р°Р»Р° РЅСѓР¶РЅРѕ РёРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ СЃРєРёРЅС‹ РІ WR API.
-          </p>
+          <p>Нет данных о скинах. Сначала нужно импортировать скины в WR API.</p>
         ) : (
           champions.map((champ) => {
             const firstSkin = champ.skins[0];

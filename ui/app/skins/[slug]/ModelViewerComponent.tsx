@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
 import { ensureLocalAssetSrc } from "@/lib/asset-safety";
+
 import styles from "./skins.module.css";
 
 export default function ModelViewerComponent({
@@ -44,9 +46,7 @@ export default function ModelViewerComponent({
     setAnimationNames([]);
     setCurrentAnimIndex(0);
 
-    const modelViewer = modelViewerRef.current?.querySelector(
-      "model-viewer",
-    ) as any;
+    const modelViewer = modelViewerRef.current?.querySelector("model-viewer") as any;
 
     if (!modelViewer || !elementReadyRef.current) {
       return;
@@ -101,9 +101,7 @@ export default function ModelViewerComponent({
   }, [modelSrc]);
 
   const applyAnimByIndex = (index: number) => {
-    const modelViewer = modelViewerRef.current?.querySelector(
-      "model-viewer",
-    ) as any;
+    const modelViewer = modelViewerRef.current?.querySelector("model-viewer") as any;
 
     const name = animationNames[index];
     if (!modelViewer || !name) return;
@@ -123,8 +121,7 @@ export default function ModelViewerComponent({
 
   const prevAnim = () => {
     if (animationNames.length <= 1) return;
-    const prev =
-      currentAnimIndex === 0 ? animationNames.length - 1 : currentAnimIndex - 1;
+    const prev = currentAnimIndex === 0 ? animationNames.length - 1 : currentAnimIndex - 1;
     applyAnimByIndex(prev);
   };
 

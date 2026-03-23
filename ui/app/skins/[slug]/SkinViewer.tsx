@@ -11,7 +11,7 @@ import styles from "./skins.module.css";
 
 const ModelViewer = dynamic(() => import("./ModelViewerComponent"), {
   ssr: false,
-  loading: () => <p className={styles.loader}>Р—Р°РіСЂСѓР·РєР° 3D-РїСЂРѕСЃРјРѕС‚СЂР°...</p>,
+  loading: () => <p className={styles.loader}>Загрузка 3D-просмотра...</p>,
 });
 
 export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
@@ -89,9 +89,9 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
                       e.stopPropagation();
                       openOverlay(idx);
                     }}
-                    aria-label="РћС‚РєСЂС‹С‚СЊ"
+                    aria-label="Открыть"
                   >
-                    рџ‘ЃпёЏ
+                    👁️
                   </button>
                 ) : null}
               </div>
@@ -107,9 +107,9 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
               type="button"
               className={styles.closeButton}
               onClick={closeOverlay}
-              aria-label="Р—Р°РєСЂС‹С‚СЊ"
+              aria-label="Закрыть"
             >
-              Г—
+              ×
             </button>
 
             {has3d && normalizedModelSrc ? (
