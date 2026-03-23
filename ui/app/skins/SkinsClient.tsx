@@ -1,77 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
+
 import PageWrapper from "@/components/PageWrapper";
 import { ensureLocalAssetSrc } from "@/lib/asset-safety";
+
+import type { ChampionSkinsData } from "./skins-lib";
 import styles from "./skins.module.css";
-import { ChampionSkinsData } from "../types/skin";
-import { normalizeSkinImageSrc } from "./skin-assets";
 
-export default function SkinsClient() {
-  const [champions, setChampions] = useState<ChampionSkinsData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    async function loadChampions() {
-      try {
-        const indexRes = await fetch("/merged/index.json");
-        if (!indexRes.ok) throw new Error("Не удалось загрузить index.json");
-        const slugs: string[] = await indexRes.json();
-
-        const loaded = await Promise.all(
-          slugs.map(async (slug): Promise<ChampionSkinsData | null> => {
-            try {
-              const res = await fetch(`/merged/${slug}.json`, {
-                next: { revalidate: 3600 },
-              });
-              if (!res.ok) {
-                console.warn(`Не удалось загрузить /merged/${slug}.json`);
-                return null;
-              }
-              const data: ChampionSkinsData = await res.json();
-              return data;
-            } catch (err) {
-              console.error(`Ошибка загрузки ${slug}:`, err);
-              return null;
-            }
-          }),
-        );
-
-        const validChampions = loaded.filter(
-          (champ): champ is ChampionSkinsData => champ !== null,
-        );
-        setChampions(validChampions);
-      } catch (err) {
-        console.error("Ошибка загрузки списка чемпионов:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadChampions();
-  }, []);
-
-  if (loading) {
-    return (
-      <PageWrapper title="Скины" paragraphs={["Загрузка..."]}>
-        <p>Загружаем чемпионов...</p>
-      </PageWrapper>
-    );
-  }
-
+export default function SkinsClient({
+  champions,
+}: {
+  champions: ChampionSkinsData[];
+}) {
   return (
     <PageWrapper
-      title="Скины"
+      title="РЎРєРёРЅС‹"
       paragraphs={[
-        "Просмотр 3D-моделей фанатских скинов чемпионов League of Legends — соответствующих и не совсем версии Wild Rift.",
+        "РџСЂРѕСЃРјРѕС‚СЂ 3D-РјРѕРґРµР»РµР№ С„Р°РЅР°С‚СЃРєРёС… СЃРєРёРЅРѕРІ С‡РµРјРїРёРѕРЅРѕРІ League of Legends вЂ” СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… Рё РЅРµ СЃРѕРІСЃРµРј РІРµСЂСЃРёРё Wild Rift.",
       ]}
     >
       <div className={styles.grid}>
         {champions.length === 0 ? (
           <p>
-            Нет данных о скинах. Убедитесь, что папка <code>/public/merged</code>{" "}
-            содержит JSON-файлы, включая <code>index.json</code>.
+            РќРµС‚ РґР°РЅРЅС‹С… Рѕ СЃРєРёРЅР°С…. РЎРЅР°С‡Р°Р»Р° РЅСѓР¶РЅРѕ РёРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ СЃРєРёРЅС‹ РІ WR API.
           </p>
         ) : (
           champions.map((champ) => {
@@ -79,19 +31,10 @@ export default function SkinsClient() {
             const name = champ.slug.toUpperCase();
 
             return (
-              <Link
-                key={champ.slug}
-                href={`/skins/${champ.slug}`}
-                className={styles.tile}
-              >
+              <Link key={champ.slug} href={`/skins/${champ.slug}`} className={styles.tile}>
                 {firstSkin ? (
                   <img
-                    src={
-                      ensureLocalAssetSrc(
-                        "SkinsClient.tile",
-                        normalizeSkinImageSrc(champ.slug, firstSkin.name, firstSkin.image.full),
-                      ) || ""
-                    }
+                    src={ensureLocalAssetSrc("SkinsClient.tile", firstSkin.image.full) || ""}
                     alt={name}
                     loading="lazy"
                     style={{

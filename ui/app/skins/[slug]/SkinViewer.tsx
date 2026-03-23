@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { ensureLocalAssetSrc } from "@/lib/asset-safety";
-import styles from "./skins.module.css";
 import dynamic from "next/dynamic";
-import { ChampionSkinsData } from "@/app/types/skin";
-import { normalizeSkinImageSrc, normalizeSkinModelSrc } from "../skin-assets";
+import Image from "next/image";
+
+import { ensureLocalAssetSrc } from "@/lib/asset-safety";
+
+import type { ChampionSkinsData } from "../skins-lib";
+import styles from "./skins.module.css";
 
 const ModelViewer = dynamic(() => import("./ModelViewerComponent"), {
   ssr: false,
-  loading: () => <p className={styles.loader}>Загрузка 3D-просмотра...</p>,
+  loading: () => <p className={styles.loader}>Р—Р°РіСЂСѓР·РєР° 3D-РїСЂРѕСЃРјРѕС‚СЂР°...</p>,
 });
 
 export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
@@ -18,14 +19,8 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const skin = data.skins[selectedSkinIndex];
-  const normalizedModelSrc = ensureLocalAssetSrc(
-    "SkinViewer.model",
-    normalizeSkinModelSrc(data.slug, skin.name, skin.model?.cdn),
-  );
-  const normalizedImageSrc = ensureLocalAssetSrc(
-    "SkinViewer.image",
-    normalizeSkinImageSrc(data.slug, skin.name, skin.image.full),
-  );
+  const normalizedModelSrc = ensureLocalAssetSrc("SkinViewer.model", skin.model?.cdn);
+  const normalizedImageSrc = ensureLocalAssetSrc("SkinViewer.image", skin.image.full);
   const has3d = !!(skin.has3d && normalizedModelSrc);
 
   const openOverlay = (idx: number) => {
@@ -35,16 +30,18 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
 
   const closeOverlay = () => setIsOpen(false);
 
-  // ESC закрывает оверлей
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeOverlay();
     };
-    if (isOpen) window.addEventListener("keydown", onKeyDown);
+
+    if (isOpen) {
+      window.addEventListener("keydown", onKeyDown);
+    }
+
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen]);
 
-  // блокируем скролл страницы, пока открыт оверлей
   useEffect(() => {
     if (!isOpen) return;
     const prev = document.body.style.overflow;
@@ -60,16 +57,9 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
 
       <div className={styles.skinList}>
         {data.skins.map((s, idx) => {
-          const imageSrc = ensureLocalAssetSrc(
-            "SkinViewer.thumb",
-            normalizeSkinImageSrc(data.slug, s.name, s.image.full),
-          );
+          const imageSrc = ensureLocalAssetSrc("SkinViewer.thumb", s.image.full);
           const canShow3d = !!(
-            s.has3d &&
-            ensureLocalAssetSrc(
-              "SkinViewer.thumbModel",
-              normalizeSkinModelSrc(data.slug, s.name, s.model?.cdn),
-            )
+            s.has3d && ensureLocalAssetSrc("SkinViewer.thumbModel", s.model?.cdn)
           );
 
           return (
@@ -91,9 +81,7 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
                   loading="lazy"
                 />
                 <div className={styles.skinName}>{s.name}</div>
-                {/* Иконку глаза оставляем. Можно показывать всегда,
-                    но если хочешь как раньше — только при canShow3d */}
-                {canShow3d && (
+                {canShow3d ? (
                   <button
                     type="button"
                     className={styles.eyeButton}
@@ -101,36 +89,27 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
                       e.stopPropagation();
                       openOverlay(idx);
                     }}
-                    aria-label="Открыть"
+                    aria-label="РћС‚РєСЂС‹С‚СЊ"
                   >
-                    👁️
+                    рџ‘ЃпёЏ
                   </button>
-                )}
+                ) : null}
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Оверлей поверх всего */}
-      {isOpen && (
-        <div
-          className={styles.overlay}
-          role="dialog"
-          aria-modal="true"
-          onClick={closeOverlay}
-        >
-          <div
-            className={styles.overlayContent}
-            onClick={(e) => e.stopPropagation()}
-          >
+      {isOpen ? (
+        <div className={styles.overlay} role="dialog" aria-modal="true" onClick={closeOverlay}>
+          <div className={styles.overlayContent} onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               className={styles.closeButton}
               onClick={closeOverlay}
-              aria-label="Закрыть"
+              aria-label="Р—Р°РєСЂС‹С‚СЊ"
             >
-              ×
+              Г—
             </button>
 
             {has3d && normalizedModelSrc ? (
@@ -147,7 +126,7 @@ export default function SkinViewer({ data }: { data: ChampionSkinsData }) {
             )}
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
