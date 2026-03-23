@@ -1,0 +1,138 @@
+.page {
+  display: grid;
+  gap: 18px;
+}
+
+.empty {
+  padding: 20px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: rgba(10, 15, 27, 0.9);
+  color: var(--text-soft);
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background:
+    radial-gradient(circle at top right, rgba(125, 211, 252, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(10, 15, 27, 0.98));
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--panel-shadow);
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(125, 211, 252, 0.4);
+}
+
+.top {
+  display: grid;
+  gap: 12px;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(20, 29, 49, 0.9);
+  border: 1px solid rgba(125, 211, 252, 0.16);
+  color: var(--accent-blue);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: clamp(22px, 4vw, 30px);
+  line-height: 1.1;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stat {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 7px 11px;
+  border-radius: var(--radius-pill);
+  background: rgba(12, 18, 33, 0.88);
+  border: 1px solid var(--border-soft);
+  color: var(--text-soft);
+  font-size: 13px;
+}
+
+.stat strong {
+  color: var(--text-strong);
+}
+
+.preview {
+  display: grid;
+  gap: 10px;
+}
+
+.previewTitle {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.previewList {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.previewItem {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(9, 14, 24, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.previewItem strong {
+  color: var(--text-strong);
+  font-size: 14px;
+}
+
+.previewItem span {
+  color: var(--text-soft);
+  line-height: 1.45;
+}

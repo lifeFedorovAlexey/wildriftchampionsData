@@ -1,0 +1,143 @@
+.page {
+  display: grid;
+  gap: 20px;
+}
+
+.hero {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background:
+    radial-gradient(circle at top right, rgba(125, 211, 252, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(10, 15, 27, 0.98));
+  box-shadow: var(--panel-shadow);
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(20, 29, 49, 0.9);
+  border: 1px solid rgba(125, 211, 252, 0.16);
+  color: var(--accent-blue);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: clamp(26px, 4vw, 38px);
+  line-height: 1.1;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(125, 211, 252, 0.25);
+  color: var(--text-strong);
+  text-decoration: none;
+  background: rgba(10, 15, 27, 0.75);
+}
+
+.stats {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.statCard {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  background: rgba(9, 14, 24, 0.88);
+}
+
+.statLabel {
+  color: var(--text-soft);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.statValue {
+  color: var(--text-strong);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.section {
+  display: grid;
+  gap: 14px;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 22px;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: rgba(10, 15, 27, 0.88);
+}
+
+.cardTitle {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 18px;
+}
+
+.cardText {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+.subList {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-soft);
+}
+
+.empty {
+  color: var(--text-soft);
+}

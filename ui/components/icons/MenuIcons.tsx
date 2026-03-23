@@ -170,3 +170,19 @@ export function IconSkins() {
     </svg>
   );
 }
+
+export function IconNews({ size = 22 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+      style={{ display: "block" }}
+    >
+      <path d="M5 4.5A2.5 2.5 0 0 0 2.5 7v10A2.5 2.5 0 0 0 5 19.5h14A2.5 2.5 0 0 0 21.5 17V7A2.5 2.5 0 0 0 19 4.5H5Zm0 1.5h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1Zm2 2.25h6v1.5H7v-1.5Zm0 3.5h10v1.5H7v-1.5Zm0 3.5h10v1.5H7v-1.5Z" />
+    </svg>
+  );
+}
