@@ -4,6 +4,13 @@ import { getStatsApiBaseUrl } from "./lib/stats-api-origin.js";
 const apiProxyTarget = getStatsApiBaseUrl(process.env);
 const storageBaseUrl = process.env.S3_PUBLIC_BASE_URL || "";
 const storageUrl = storageBaseUrl ? new URL(storageBaseUrl) : null;
+const storageRemotePatterns = [
+  {
+    protocol: "https" as const,
+    hostname: "s3.twcstorage.ru",
+    pathname: "/**",
+  },
+];
 
 const nextConfig: NextConfig = {
   compiler: {
@@ -22,13 +29,14 @@ const nextConfig: NextConfig = {
     ],
     remotePatterns: storageUrl
       ? [
+          ...storageRemotePatterns,
           {
             protocol: storageUrl.protocol.replace(":", "") as "http" | "https",
             hostname: storageUrl.hostname,
             pathname: `${storageUrl.pathname.replace(/\/$/, "") || ""}/**`,
           },
         ]
-      : [],
+      : storageRemotePatterns,
   },
 
   async rewrites() {
