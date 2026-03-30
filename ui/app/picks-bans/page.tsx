@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import LoadingRing from "@/components/LoadingRing";
 import PageWrapper from "@/components/PageWrapper";
+import StatsFilters from "@/components/StatsFilters";
 import styles from "./page.module.css";
 import { API_BASE } from "@/constants/apiBase";
 import {
@@ -39,6 +40,9 @@ type MonthlyByRange = {
   all: Record<string, TrendInfo>;
 };
 
+type RankRangeKey = "low" | "high" | "all";
+type PicksBansLaneKey = "all" | "top" | "jungle" | "mid" | "adc" | "support";
+
 type DetailsState =
   | null
   | {
@@ -47,13 +51,13 @@ type DetailsState =
       type: "pick" | "ban";
     };
 
-const LANE_LABELS: Record<string, string> = {
+const LANE_LABELS: Record<PicksBansLaneKey, string> = {
+  all: "Все линии",
   top: "Топ",
   jungle: "Лес",
   mid: "Мид",
   adc: "ADC",
   support: "Саппорт",
-  all: "Все линии",
 };
 
 function formatPercentDelta(delta: number | null) {
@@ -142,7 +146,7 @@ function TrendSparkline({
 }
 
 function getLanePresence(champ: AggregatedChampion, type: "pick" | "ban") {
-  const entries = Object.entries(champ?.lanes || {})
+  return Object.entries(champ?.lanes || {})
     .filter(([laneKey, laneData]) => {
       if (laneKey === "all") return false;
       const value = type === "pick" ? laneData?.pick || 0 : laneData?.ban || 0;
@@ -153,9 +157,7 @@ function getLanePresence(champ: AggregatedChampion, type: "pick" | "ban") {
       const rightValue = type === "pick" ? right?.pick || 0 : right?.ban || 0;
       return rightValue - leftValue;
     })
-    .map(([laneKey]) => LANE_LABELS[laneKey] || laneKey);
-
-  return entries;
+    .map(([laneKey]) => LANE_LABELS[laneKey as PicksBansLaneKey] || laneKey);
 }
 
 function TopChampCard({
@@ -317,7 +319,8 @@ export default function PicksBansPage() {
   const [details, setDetails] = useState<DetailsState>(null);
 
   const [limit, setLimit] = useState<5 | 10 | 20 | "all">(5);
-  const [rankRange, setRankRange] = useState<"low" | "high" | "all">("low");
+  const [rankRange, setRankRange] = useState<RankRangeKey>("low");
+  const [laneFilter, setLaneFilter] = useState<PicksBansLaneKey>("all");
 
   useEffect(() => {
     let cancelled = false;
@@ -394,8 +397,9 @@ export default function PicksBansPage() {
       latestItems: historyItems,
       champions,
       rankRange,
+      laneFilter,
     });
-  }, [historyItems, champions, rankRange]);
+  }, [historyItems, champions, rankRange, laneFilter]);
 
   const topPicks = useMemo(() => {
     const sorted = [...aggregated].sort(
@@ -419,6 +423,7 @@ export default function PicksBansPage() {
       : rankRange === "high"
         ? "гм + претендент"
         : "все ранги";
+  const laneLabel = LANE_LABELS[laneFilter];
 
   const trendsForRange = monthlyByRange[rankRange] || {};
 
@@ -438,60 +443,57 @@ export default function PicksBansPage() {
       ) : (
         <div className={styles.shell}>
           <section className={styles.filtersPanel}>
-            <div className={styles.filterBlock}>
-              <div className={styles.filterLabel}>Объем выдачи</div>
-              <div className={styles.pillRow}>
-                {[5, 10, 20].map((value) => (
-                  <button
-                    key={value}
-                    type="button"
-                    className={`${styles.pill} ${limit === value ? styles.pillActive : ""}`}
-                    onClick={() => setLimit(value as 5 | 10 | 20)}
-                  >
-                    Топ {value}
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  className={`${styles.pill} ${limit === "all" ? styles.pillActive : ""}`}
-                  onClick={() => setLimit("all")}
-                >
-                  Все
-                </button>
-              </div>
-            </div>
-
-            <div className={styles.filterBlock}>
-              <div className={styles.filterLabel}>Диапазон рангов</div>
-              <div className={styles.pillRow}>
-                <button
-                  type="button"
-                  className={`${styles.pill} ${rankRange === "low" ? styles.pillActive : ""}`}
-                  onClick={() => setRankRange("low")}
-                >
-                  Лоу эло
-                </button>
-                <button
-                  type="button"
-                  className={`${styles.pill} ${rankRange === "high" ? styles.pillActive : ""}`}
-                  onClick={() => setRankRange("high")}
-                >
-                  Хай эло
-                </button>
-                <button
-                  type="button"
-                  className={`${styles.pill} ${rankRange === "all" ? styles.pillActive : ""}`}
-                  onClick={() => setRankRange("all")}
-                >
-                  Все ранги
-                </button>
-              </div>
-            </div>
+            <StatsFilters
+              rankValue={rankRange}
+              onRankChange={(key) => setRankRange(key as RankRangeKey)}
+              laneValue={laneFilter}
+              onLaneChange={(key) => setLaneFilter(key as PicksBansLaneKey)}
+              rankOptions={[
+                { key: "low", label: "Лоу эло" },
+                { key: "high", label: "Хай эло" },
+                { key: "all", label: "Все ранги" },
+              ]}
+              laneOptions={[
+                { key: "all", label: "Все" },
+                { key: "top", label: "Топ" },
+                { key: "jungle", label: "Лес" },
+                { key: "mid", label: "Мид" },
+                { key: "adc", label: "ADC" },
+                { key: "support", label: "Саппорт" },
+              ]}
+              compact
+              extraControls={
+                <div className={styles.filterBlock}>
+                  <div className={styles.filterLabel}>Объем выдачи</div>
+                  <div className={styles.pillRow}>
+                    {[5, 10, 20].map((value) => (
+                      <button
+                        key={value}
+                        type="button"
+                        className={`${styles.pill} ${limit === value ? styles.pillActive : ""}`}
+                        onClick={() => setLimit(value as 5 | 10 | 20)}
+                      >
+                        Топ {value}
+                      </button>
+                    ))}
+                    <button
+                      type="button"
+                      className={`${styles.pill} ${limit === "all" ? styles.pillActive : ""}`}
+                      onClick={() => setLimit("all")}
+                    >
+                      Все
+                    </button>
+                  </div>
+                </div>
+              }
+            />
 
             <div className={styles.filterNote}>
               <span>{limitLabel}</span>
               <span>·</span>
               <span>{rankRangeLabel}</span>
+              <span>·</span>
+              <span>{laneLabel}</span>
               <span>·</span>
               <span>в карточке видно текущее значение и движение за 30 дней</span>
             </div>

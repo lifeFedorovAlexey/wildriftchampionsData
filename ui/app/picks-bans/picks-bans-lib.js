@@ -18,6 +18,7 @@ export function aggregateLatestPicksBans({
   latestItems,
   champions,
   rankRange,
+  laneFilter = "all",
 }) {
   if (!Array.isArray(latestItems) || latestItems.length === 0) return [];
 
@@ -37,6 +38,7 @@ export function aggregateLatestPicksBans({
     if (EXCLUDED_RANK_KEYS.has(rankKey)) continue;
     if (rankRange === "low" && !LOW_ELO_RANKS.has(rankKey)) continue;
     if (rankRange === "high" && !HIGH_ELO_RANKS.has(rankKey)) continue;
+    if (laneFilter !== "all" && laneKey !== laneFilter) continue;
 
     const pickRate = item.pickRate ?? 0;
     const banRate = item.banRate ?? 0;

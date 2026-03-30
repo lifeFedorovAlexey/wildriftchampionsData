@@ -22,20 +22,27 @@ export function LaneFilter<T extends string = LaneKey>({
     <PillGroup>
       {options.map((opt) => {
         const active = opt.key === value;
+        const isIconLane = ["top", "jungle", "mid", "adc", "support"].includes(
+          String(opt.key),
+        );
 
         return (
           <PillButton
             key={opt.key}
             active={active}
-            iconOnly
+            iconOnly={isIconLane}
             onClick={() => onChange(opt.key)}
             title={opt.label}
             aria-label={opt.label}
           >
-            <RoleIcon
-              laneKey={opt.key as "top" | "jungle" | "mid" | "adc" | "support"}
-              size={30}
-            />
+            {isIconLane ? (
+              <RoleIcon
+                laneKey={opt.key as "top" | "jungle" | "mid" | "adc" | "support"}
+                size={30}
+              />
+            ) : (
+              opt.label
+            )}
           </PillButton>
         );
       })}
