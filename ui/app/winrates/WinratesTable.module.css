@@ -17,7 +17,7 @@
 }
 
 .desktopOnly {
-  display: none;
+  display: none !important;
 }
 
 .mobileOnly {
@@ -38,7 +38,7 @@
   }
 
   .desktopOnly {
-    display: flex;
+    display: flex !important;
   }
 
   .mobileOnly {
