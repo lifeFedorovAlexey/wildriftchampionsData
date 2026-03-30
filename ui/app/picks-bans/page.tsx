@@ -56,7 +56,7 @@ const LANE_LABELS: Record<PicksBansLaneKey, string> = {
   top: "Топ",
   jungle: "Лес",
   mid: "Мид",
-  adc: "ADC",
+  adc: "Стрелок",
   support: "Саппорт",
 };
 
@@ -458,7 +458,7 @@ export default function PicksBansPage() {
                 { key: "top", label: "Топ" },
                 { key: "jungle", label: "Лес" },
                 { key: "mid", label: "Мид" },
-                { key: "adc", label: "ADC" },
+                { key: "adc", label: "Стрелок" },
                 { key: "support", label: "Саппорт" },
               ]}
               compact
