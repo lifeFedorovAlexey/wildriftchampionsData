@@ -1,6 +1,5 @@
 import WinratesClient from "./WinratesClient";
 import {
-  buildPreparedWinrateSlices,
   buildStatsUrls,
   fetchJson,
 } from "./winrates-lib.js";
@@ -47,13 +46,15 @@ type PreparedRow = {
   banRateDelta: number | null;
 };
 
+type SnapshotResponse = {
+  items?: HistoryItem[];
+  rowsBySlice?: Record<string, PreparedRow[]>;
+  maxRowCount?: number;
+};
+
 export default async function Page() {
   let champions: Champion[] = [];
   let rowsBySlice: Record<string, PreparedRow[]> = {};
-  let sliceHistoryByKey: Record<
-    string,
-    Array<{ date: string; rows: PreparedRow[] }>
-  > = {};
   let maxRowCount = 0;
   let error: string | null = null;
   let updatedAt: string | null = null;
@@ -78,21 +79,17 @@ export default async function Page() {
 
     const histJson = (await fetchJson(snapshotUrl, {
       next: { revalidate },
-    })) as { items?: HistoryItem[] };
+    })) as SnapshotResponse;
 
-    const historyItems = Array.isArray(histJson.items) ? histJson.items : [];
-    const prepared = buildPreparedWinrateSlices({
-      champions,
-      historyItems,
-    }) as {
-      rowsBySlice: Record<string, PreparedRow[]>;
-      sliceHistoryByKey: Record<string, Array<{ date: string; rows: PreparedRow[] }>>;
-      maxRowCount: number;
-    };
-
-    rowsBySlice = prepared.rowsBySlice;
-    sliceHistoryByKey = prepared.sliceHistoryByKey;
-    maxRowCount = prepared.maxRowCount;
+    void champions;
+    rowsBySlice =
+      histJson && typeof histJson === "object" && "rowsBySlice" in histJson
+        ? (histJson.rowsBySlice as Record<string, PreparedRow[]>)
+        : {};
+    maxRowCount =
+      histJson && typeof histJson === "object" && typeof histJson.maxRowCount === "number"
+        ? histJson.maxRowCount
+        : 0;
   } catch (err) {
     console.error("Winrates load error:", err);
     error = "Не удалось загрузить статистику винрейтов.";
@@ -101,7 +98,6 @@ export default async function Page() {
   return (
     <WinratesClient
       rowsBySlice={rowsBySlice}
-      sliceHistoryByKey={sliceHistoryByKey}
       maxRowCount={maxRowCount}
       error={error}
       updatedAt={updatedAt}

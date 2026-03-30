@@ -43,7 +43,7 @@ function banRateColor(v: number | null) {
   return "#4ade80";
 }
 
-function formatPositionDelta(delta: number | null) {
+function formatPercentDelta(delta: number | null) {
   if (delta == null) {
     return { text: "—", color: "rgba(148, 163, 184, 0.82)" };
   }
@@ -53,14 +53,14 @@ function formatPositionDelta(delta: number | null) {
   }
 
   if (delta > 0) {
-    return { text: `↑${delta}`, color: "#4ade80" };
+    return { text: `+${delta.toFixed(2)}%`, color: "#4ade80" };
   }
 
   if (delta < 0) {
-    return { text: `↓${Math.abs(delta)}`, color: "#f87171" };
+    return { text: `${delta.toFixed(2)}%`, color: "#f87171" };
   }
 
-  return { text: "0", color: "rgba(148, 163, 184, 0.82)" };
+  return { text: "0.00%", color: "rgba(148, 163, 184, 0.82)" };
 }
 
 function TrendSparkline({
@@ -219,10 +219,10 @@ export default function WinratesTable({
       </div>
 
       {rows.map((row, idx) => {
-        const movement = formatPositionDelta(row.positionDelta);
-        const winRateMovement = formatPositionDelta(row.winRateDelta);
-        const pickRateMovement = formatPositionDelta(row.pickRateDelta);
-        const banRateMovement = formatPositionDelta(row.banRateDelta);
+        const movement = formatPercentDelta(row.positionDelta);
+        const winRateMovement = formatPercentDelta(row.winRateDelta);
+        const pickRateMovement = formatPercentDelta(row.pickRateDelta);
+        const banRateMovement = formatPercentDelta(row.banRateDelta);
 
         return (
           <div key={row.slug} className={`${styles.grid} ${styles.row}`}>

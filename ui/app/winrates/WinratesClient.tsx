@@ -7,7 +7,6 @@ import StatsFilters from "@/components/StatsFilters";
 import styles from "./WinratesClient.module.css";
 import WinratesTable from "./WinratesTable";
 import {
-  applyPreparedMovement,
   nextSortState,
   sortPreparedRows,
 } from "./winrates-lib.js";
@@ -93,14 +92,12 @@ function WinratesContent({
 
 export default function WinratesClient({
   rowsBySlice,
-  sliceHistoryByKey,
   maxRowCount,
   error,
   updatedAt,
   embedded = false,
 }: {
   rowsBySlice: Record<string, Row[]>;
-  sliceHistoryByKey: Record<string, Array<{ date: string; rows: Row[] }>>;
   maxRowCount: number;
   error: string | null;
   updatedAt: string | null;
@@ -117,13 +114,8 @@ export default function WinratesClient({
 
   const sliceKey = `${rankKey}|${laneKey}`;
   const rows = useMemo(() => {
-    const sortedRows = sortPreparedRows(rowsBySlice[sliceKey] || [], sort) as Row[];
-    return applyPreparedMovement(
-      sortedRows,
-      sliceHistoryByKey[sliceKey] || [],
-      sort,
-    ) as Row[];
-  }, [rowsBySlice, sliceHistoryByKey, sliceKey, sort]);
+    return sortPreparedRows(rowsBySlice[sliceKey] || [], sort) as Row[];
+  }, [rowsBySlice, sliceKey, sort]);
 
   const formattedUpdatedAt = useMemo(() => {
     if (!updatedAt) return null;
