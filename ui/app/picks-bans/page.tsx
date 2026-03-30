@@ -47,6 +47,15 @@ type DetailsState =
       type: "pick" | "ban";
     };
 
+const LANE_LABELS: Record<string, string> = {
+  top: "Топ",
+  jungle: "Лес",
+  mid: "Мид",
+  adc: "ADC",
+  support: "Саппорт",
+  all: "Все линии",
+};
+
 function formatPercentDelta(delta: number | null) {
   if (delta == null) {
     return { text: "—", color: "rgba(148, 163, 184, 0.82)" };
@@ -132,6 +141,23 @@ function TrendSparkline({
   );
 }
 
+function getLanePresence(champ: AggregatedChampion, type: "pick" | "ban") {
+  const entries = Object.entries(champ?.lanes || {})
+    .filter(([laneKey, laneData]) => {
+      if (laneKey === "all") return false;
+      const value = type === "pick" ? laneData?.pick || 0 : laneData?.ban || 0;
+      return value > 0;
+    })
+    .sort(([, left], [, right]) => {
+      const leftValue = type === "pick" ? left?.pick || 0 : left?.ban || 0;
+      const rightValue = type === "pick" ? right?.pick || 0 : right?.ban || 0;
+      return rightValue - leftValue;
+    })
+    .map(([laneKey]) => LANE_LABELS[laneKey] || laneKey);
+
+  return entries;
+}
+
 function TopChampCard({
   index,
   champ,
@@ -160,6 +186,7 @@ function TopChampCard({
   const trendMovement = formatPercentDelta(trendDelta);
   const trendLabel =
     type === "pick" ? "Движение пикрейта за 30 дней" : "Движение банрейта за 30 дней";
+  const lanePresence = getLanePresence(champ, type);
 
   return (
     <button type="button" className={styles.cardRow} onClick={onClick}>
@@ -182,6 +209,15 @@ function TopChampCard({
               <span className={styles.cardSlug}>{champ.slug}</span>
               <span>{metricLabel}</span>
             </div>
+            {lanePresence.length ? (
+              <div className={styles.cardLanes}>
+                {lanePresence.map((lane) => (
+                  <span key={lane} className={styles.cardLaneChip}>
+                    {lane}
+                  </span>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <div className={styles.cardMetricBlock}>
