@@ -26,6 +26,19 @@ type AggregatedChampion = {
   lanes: Record<string, any>;
 };
 
+type TrendInfo = {
+  pickRateTrend: Array<number | null>;
+  banRateTrend: Array<number | null>;
+  pickRateDelta: number | null;
+  banRateDelta: number | null;
+};
+
+type MonthlyByRange = {
+  low: Record<string, TrendInfo>;
+  high: Record<string, TrendInfo>;
+  all: Record<string, TrendInfo>;
+};
+
 type DetailsState =
   | null
   | {
@@ -34,17 +47,104 @@ type DetailsState =
       type: "pick" | "ban";
     };
 
+function formatPercentDelta(delta: number | null) {
+  if (delta == null) {
+    return { text: "—", color: "rgba(148, 163, 184, 0.82)" };
+  }
+
+  if (Object.is(delta, -0)) {
+    delta = 0;
+  }
+
+  if (delta > 0) {
+    return { text: `+${delta.toFixed(2)}%`, color: "#86efac" };
+  }
+
+  if (delta < 0) {
+    return { text: `${delta.toFixed(2)}%`, color: "#fda4af" };
+  }
+
+  return { text: "0.00%", color: "rgba(148, 163, 184, 0.82)" };
+}
+
+function TrendSparkline({
+  values,
+  color,
+}: {
+  values: Array<number | null>;
+  color: string;
+}) {
+  const points = values
+    .map((value, index) => ({ value, index }))
+    .filter(
+      (point): point is { value: number; index: number } =>
+        typeof point.value === "number" && Number.isFinite(point.value),
+    );
+
+  if (points.length < 2) {
+    return <span className={styles.sparkPlaceholder} aria-hidden="true" />;
+  }
+
+  const width = 94;
+  const height = 28;
+  const paddingX = 2;
+  const paddingY = 3;
+  const minValue = Math.min(...points.map((point) => point.value));
+  const maxValue = Math.max(...points.map((point) => point.value));
+  const valueRange = Math.max(maxValue - minValue, 1);
+  const stepX =
+    values.length > 1
+      ? (width - paddingX * 2) / Math.max(values.length - 1, 1)
+      : 0;
+
+  const line = points
+    .map((point, pointIndex) => {
+      const x = paddingX + point.index * stepX;
+      const y =
+        paddingY +
+        ((point.value - minValue) / valueRange) * (height - paddingY * 2);
+
+      return `${pointIndex === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
+    })
+    .join(" ");
+
+  const lastPoint = points[points.length - 1];
+  const lastX = paddingX + lastPoint.index * stepX;
+  const lastY =
+    paddingY +
+    ((lastPoint.value - minValue) / valueRange) * (height - paddingY * 2);
+
+  return (
+    <svg
+      className={styles.sparkline}
+      viewBox={`0 0 ${width} ${height}`}
+      width={width}
+      height={height}
+      aria-hidden="true"
+    >
+      <path
+        d={`M${paddingX} ${(height / 2).toFixed(2)} H${(width - paddingX).toFixed(2)}`}
+        className={styles.sparkBase}
+      />
+      <path d={line} stroke={color} className={styles.sparkPath} />
+      <circle cx={lastX} cy={lastY} r="2" fill={color} className={styles.sparkDot} />
+    </svg>
+  );
+}
+
 function TopChampCard({
   index,
   champ,
   type,
   imgUrl,
+  trend,
   onClick,
 }: {
   index: number;
   champ: AggregatedChampion;
   type: "pick" | "ban";
   imgUrl?: string | null;
+  trend?: TrendInfo | null;
   onClick: () => void;
 }) {
   const totalValue =
@@ -53,6 +153,13 @@ function TopChampCard({
     type === "pick" ? "Средний пикрейт" : "Средний банрейт";
   const accentClass =
     type === "pick" ? styles.valuePick : styles.valueBan;
+  const trendValues =
+    type === "pick" ? trend?.pickRateTrend || [] : trend?.banRateTrend || [];
+  const trendDelta =
+    type === "pick" ? trend?.pickRateDelta ?? null : trend?.banRateDelta ?? null;
+  const trendMovement = formatPercentDelta(trendDelta);
+  const trendLabel =
+    type === "pick" ? "Движение пикрейта за 30 дней" : "Движение банрейта за 30 дней";
 
   return (
     <button type="button" className={styles.cardRow} onClick={onClick}>
@@ -69,14 +176,28 @@ function TopChampCard({
 
       <div className={styles.cardBody}>
         <div className={styles.cardTitleRow}>
-          <div className={styles.cardName}>{champ.name}</div>
-          <div className={`${styles.cardValue} ${accentClass}`}>
-            {totalValue.toFixed(2)}%
+          <div className={styles.cardHeading}>
+            <div className={styles.cardName}>{champ.name}</div>
+            <div className={styles.cardMeta}>
+              <span className={styles.cardSlug}>{champ.slug}</span>
+              <span>{metricLabel}</span>
+            </div>
           </div>
-        </div>
-        <div className={styles.cardMeta}>
-          <span className={styles.cardSlug}>{champ.slug}</span>
-          <span>{metricLabel}</span>
+
+          <div className={styles.cardMetricBlock}>
+            <div className={styles.cardTrend} title={trendLabel}>
+              <TrendSparkline values={trendValues} color={trendMovement.color} />
+              <span
+                className={styles.cardTrendValue}
+                style={{ color: trendMovement.color }}
+              >
+                {trendMovement.text}
+              </span>
+            </div>
+            <div className={`${styles.cardValue} ${accentClass}`}>
+              {totalValue.toFixed(2)}%
+            </div>
+          </div>
         </div>
       </div>
     </button>
@@ -150,6 +271,11 @@ export default function PicksBansPage() {
     {},
   );
   const [historyItems, setHistoryItems] = useState<any[]>([]);
+  const [monthlyByRange, setMonthlyByRange] = useState<MonthlyByRange>({
+    low: {},
+    high: {},
+    all: {},
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [details, setDetails] = useState<DetailsState>(null);
@@ -177,7 +303,7 @@ export default function PicksBansPage() {
         });
         setChampImages(imageMap);
       } catch {
-        // leave page usable without icons
+        // keep page usable without icons
       }
     })();
 
@@ -199,7 +325,20 @@ export default function PicksBansPage() {
         if (cancelled) return;
 
         const items = Array.isArray(json.items) ? json.items : [];
+        const monthly =
+          json?.picksBansMonthly &&
+          typeof json.picksBansMonthly === "object" &&
+          json.picksBansMonthly.byRange &&
+          typeof json.picksBansMonthly.byRange === "object"
+            ? json.picksBansMonthly.byRange
+            : { low: {}, high: {}, all: {} };
+
         setHistoryItems(items);
+        setMonthlyByRange({
+          low: monthly.low || {},
+          high: monthly.high || {},
+          all: monthly.all || {},
+        });
       } catch {
         if (!cancelled) {
           setError("Не удалось загрузить статистику пиков и банов.");
@@ -244,6 +383,8 @@ export default function PicksBansPage() {
       : rankRange === "high"
         ? "гм + претендент"
         : "все ранги";
+
+  const trendsForRange = monthlyByRange[rankRange] || {};
 
   if (loading) {
     return <LoadingRing label="Считаю пики и баны..." />;
@@ -316,7 +457,7 @@ export default function PicksBansPage() {
               <span>·</span>
               <span>{rankRangeLabel}</span>
               <span>·</span>
-              <span>клик по карточке открывает разбивку по линиям</span>
+              <span>в карточке видно текущее значение и движение за 30 дней</span>
             </div>
           </section>
 
@@ -339,6 +480,7 @@ export default function PicksBansPage() {
                     champ={champion}
                     type="pick"
                     imgUrl={champImages[champion.slug]}
+                    trend={trendsForRange[champion.slug] || null}
                     onClick={() =>
                       setDetails({ index, champ: champion, type: "pick" })
                     }
@@ -371,6 +513,7 @@ export default function PicksBansPage() {
                     champ={champion}
                     type="ban"
                     imgUrl={champImages[champion.slug]}
+                    trend={trendsForRange[champion.slug] || null}
                     onClick={() =>
                       setDetails({ index, champ: champion, type: "ban" })
                     }

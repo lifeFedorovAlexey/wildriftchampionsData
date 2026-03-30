@@ -135,10 +135,16 @@
 }
 
 .cardTitleRow {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   gap: 12px;
+}
+
+.cardHeading {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
 }
 
 .cardName {
@@ -168,6 +174,7 @@
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.02em;
+  text-align: right;
 }
 
 .valuePick {
@@ -176,6 +183,59 @@
 
 .valueBan {
   color: #fda4af;
+}
+
+.cardMetricBlock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  min-width: 0;
+}
+
+.cardTrend {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  min-width: 94px;
+}
+
+.cardTrendValue {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.sparkline {
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 1px 6px rgba(15, 23, 42, 0.35));
+}
+
+.sparkBase {
+  fill: none;
+  stroke: rgba(100, 116, 139, 0.2);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.sparkPath {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sparkDot {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.sparkPlaceholder {
+  width: 94px;
+  height: 28px;
+  display: block;
 }
 
 .emptyState {
@@ -321,13 +381,22 @@
   }
 
   .cardTitleRow {
+    grid-template-columns: 1fr;
     align-items: flex-start;
-    flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
 
   .cardName {
     font-size: 15px;
+  }
+
+  .cardMetricBlock {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .cardTrend {
+    align-items: flex-start;
   }
 
   .cardValue {
