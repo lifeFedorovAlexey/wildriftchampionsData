@@ -1,35 +1,38 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
-import PageWrapper from "@/components/PageWrapper";
 import LoadingRing from "@/components/LoadingRing";
+import PageWrapper from "@/components/PageWrapper";
+import styles from "./page.module.css";
 import { API_BASE } from "@/constants/apiBase";
 import {
   aggregateLatestPicksBans,
   buildLaneDetails,
 } from "./picks-bans-lib";
-import {
-  TpCard,
-  TpCardIndex,
-  TpCardInfo,
-  TpCardName,
-  TpCardSub,
-  TpCardValue,
-  TpModalOverlay,
-  TpModal,
-  TpModalTop,
-  TpCloseBtn,
-  TpLaneRow,
-  TpHeader,
-  TpHeaderText,
-  TpRow,
-  TpPillButton,
-  TpSection,
-  TpSectionTitle,
-  TpCardWrap,
-  TpEmpty,
-} from "@/components/styled/topPicksBans";
+
+type ChampionRecord = {
+  slug: string;
+  name?: string | null;
+  icon?: string | null;
+};
+
+type AggregatedChampion = {
+  slug: string;
+  name: string;
+  totalPickRate: number;
+  totalBanRate: number;
+  lanes: Record<string, any>;
+};
+
+type DetailsState =
+  | null
+  | {
+      index: number;
+      champ: AggregatedChampion;
+      type: "pick" | "ban";
+    };
 
 function TopChampCard({
   index,
@@ -39,37 +42,44 @@ function TopChampCard({
   onClick,
 }: {
   index: number;
-  champ: any;
+  champ: AggregatedChampion;
   type: "pick" | "ban";
   imgUrl?: string | null;
   onClick: () => void;
 }) {
   const totalValue =
     type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
+  const metricLabel =
+    type === "pick" ? "Средний пикрейт" : "Средний банрейт";
+  const accentClass =
+    type === "pick" ? styles.valuePick : styles.valueBan;
 
   return (
-    <TpCard $type={type} onClick={onClick}>
-      <TpCardIndex>#{index + 1}</TpCardIndex>
+    <button type="button" className={styles.cardRow} onClick={onClick}>
+      <div className={styles.cardRank}>#{index + 1}</div>
+
       <ChampionAvatar
         name={champ.name}
         src={imgUrl}
-        mobileSize={44}
-        desktopSize={64}
-        mobileRadius={14}
-        desktopRadius={18}
+        mobileSize={40}
+        desktopSize={52}
+        mobileRadius={12}
+        desktopRadius={14}
       />
 
-      <TpCardInfo>
-        <TpCardName>{champ.name}</TpCardName>
-        <TpCardSub>
-          ({champ.slug}) —{" "}
-          {type === "pick" ? "средний пикрейт" : "средний банрейт"}:{" "}
-          <span style={{ fontWeight: 600 }}>{totalValue.toFixed(2)}%</span>
-        </TpCardSub>
-      </TpCardInfo>
-
-      <TpCardValue>{totalValue.toFixed(2)}%</TpCardValue>
-    </TpCard>
+      <div className={styles.cardBody}>
+        <div className={styles.cardTitleRow}>
+          <div className={styles.cardName}>{champ.name}</div>
+          <div className={`${styles.cardValue} ${accentClass}`}>
+            {totalValue.toFixed(2)}%
+          </div>
+        </div>
+        <div className={styles.cardMeta}>
+          <span className={styles.cardSlug}>{champ.slug}</span>
+          <span>{metricLabel}</span>
+        </div>
+      </div>
+    </button>
   );
 }
 
@@ -77,7 +87,7 @@ function DetailsModal({
   data,
   onClose,
 }: {
-  data: null | { index: number; champ: any; type: "pick" | "ban" };
+  data: DetailsState;
   onClose: () => void;
 }) {
   if (!data) return null;
@@ -86,47 +96,63 @@ function DetailsModal({
   const totalValue =
     type === "pick" ? champ.totalPickRate || 0 : champ.totalBanRate || 0;
   const laneEntries = buildLaneDetails({ champ, type });
+  const metricLabel =
+    type === "pick" ? "Средний пикрейт" : "Средний банрейт";
 
   return (
-    <TpModalOverlay onClick={onClose}>
-      <TpModal onClick={(e) => e.stopPropagation()}>
-        <TpModalTop>
-          <div style={{ minWidth: 0 }}>
-            <div style={{ marginBottom: 4 }}>
-              {index + 1}. {String(champ.name).toUpperCase()} ({champ.slug}) —{" "}
-              {type === "pick" ? "средний пикрейт" : "средний банрейт"}:{" "}
-              <b>{totalValue.toFixed(2)}%</b>
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modal} onClick={(event) => event.stopPropagation()}>
+        <div className={styles.modalTop}>
+          <div>
+            <div className={styles.modalEyebrow}>
+              #{index + 1} · {metricLabel}
+            </div>
+            <h3 className={styles.modalTitle}>{champ.name}</h3>
+            <div className={styles.modalSummary}>
+              {champ.slug} · {totalValue.toFixed(2)}%
             </div>
           </div>
-          <TpCloseBtn onClick={onClose}>×</TpCloseBtn>
-        </TpModalTop>
 
-        {laneEntries.map(({ laneKey, laneTotal, parts, displayLaneName }) => (
-          <TpLaneRow key={laneKey}>
-            - {displayLaneName}: {laneTotal.toFixed(2)}%
-            {parts.length > 0 ? <> (из них: {parts.join(", ")})</> : null}
-          </TpLaneRow>
-        ))}
+          <button type="button" className={styles.closeBtn} onClick={onClose}>
+            ×
+          </button>
+        </div>
 
-        {!laneEntries.length ? (
-          <div>Для этого чемпиона нет детальной статистики.</div>
-        ) : null}
-      </TpModal>
-    </TpModalOverlay>
+        <div className={styles.modalSectionTitle}>Разбивка по линиям</div>
+
+        {laneEntries.length ? (
+          <div className={styles.modalList}>
+            {laneEntries.map(({ laneKey, laneTotal, parts, displayLaneName }) => (
+              <div key={laneKey} className={styles.modalRow}>
+                <div className={styles.modalLane}>{displayLaneName}</div>
+                <div className={styles.modalLaneValue}>{laneTotal.toFixed(2)}%</div>
+                {parts.length ? (
+                  <div className={styles.modalLaneMeta}>{parts.join(" · ")}</div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.modalEmpty}>
+            Для этого чемпиона нет детальной статистики.
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 
 export default function PicksBansPage() {
   const language = "ru_ru";
 
-  const [champions, setChampions] = useState<any[]>([]);
+  const [champions, setChampions] = useState<ChampionRecord[]>([]);
   const [champImages, setChampImages] = useState<Record<string, string | null>>(
-    {}
+    {},
   );
   const [historyItems, setHistoryItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [details, setDetails] = useState<any>(null);
+  const [details, setDetails] = useState<DetailsState>(null);
 
   const [limit, setLimit] = useState<5 | 10 | 20 | "all">(5);
   const [rankRange, setRankRange] = useState<"low" | "high" | "all">("low");
@@ -136,21 +162,22 @@ export default function PicksBansPage() {
 
     (async () => {
       try {
-        const res = await fetch(
-          `${API_BASE}/api/champions?lang=${encodeURIComponent(language)}`
+        const response = await fetch(
+          `${API_BASE}/api/champions?lang=${encodeURIComponent(language)}`,
         );
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = await res.json();
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const json = await response.json();
         if (cancelled) return;
 
         setChampions(json || []);
-        const imgMap: Record<string, string | null> = {};
-        (json || []).forEach((ch: any) => {
-          if (ch?.slug) imgMap[ch.slug] = ch.icon || null;
+
+        const imageMap: Record<string, string | null> = {};
+        (json || []).forEach((champion: ChampionRecord) => {
+          if (champion?.slug) imageMap[champion.slug] = champion.icon || null;
         });
-        setChampImages(imgMap);
+        setChampImages(imageMap);
       } catch {
-        // не критично
+        // leave page usable without icons
       }
     })();
 
@@ -166,16 +193,17 @@ export default function PicksBansPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`${API_BASE}/api/latest-stats-snapshot`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = await res.json();
+        const response = await fetch(`${API_BASE}/api/latest-stats-snapshot`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const json = await response.json();
         if (cancelled) return;
 
         const items = Array.isArray(json.items) ? json.items : [];
         setHistoryItems(items);
       } catch {
-        if (!cancelled)
+        if (!cancelled) {
           setError("Не удалось загрузить статистику пиков и банов.");
+        }
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -196,132 +224,168 @@ export default function PicksBansPage() {
 
   const topPicks = useMemo(() => {
     const sorted = [...aggregated].sort(
-      (a, b) => (b.totalPickRate || 0) - (a.totalPickRate || 0)
+      (left, right) => (right.totalPickRate || 0) - (left.totalPickRate || 0),
     );
     return limit === "all" ? sorted : sorted.slice(0, limit);
   }, [aggregated, limit]);
 
   const topBans = useMemo(() => {
     const sorted = [...aggregated].sort(
-      (a, b) => (b.totalBanRate || 0) - (a.totalBanRate || 0)
+      (left, right) => (right.totalBanRate || 0) - (left.totalBanRate || 0),
     );
     return limit === "all" ? sorted : sorted.slice(0, limit);
   }, [aggregated, limit]);
 
   const limitLabel =
-    limit === "all" ? "все чемпионы" : `топ-${limit} чемпионов`;
-  const limitTitlePrefix = limit === "all" ? "Все чемпионы" : `Топ-${limit}`;
+    limit === "all" ? "Все чемпионы" : `Топ-${limit} чемпионов`;
   const rankRangeLabel =
     rankRange === "low"
-      ? "в алмазе+мастере"
+      ? "алмаз + мастер"
       : rankRange === "high"
-        ? "в гм+чалике"
-        : "во всех рангах";
+        ? "гм + претендент"
+        : "все ранги";
 
-  if (loading) return <LoadingRing label="Считаю пики и баны…" />;
+  if (loading) {
+    return <LoadingRing label="Считаю пики и баны..." />;
+  }
 
   return (
     <PageWrapper
       title="Пики и баны в Wild Rift"
       paragraphs={[
-        "Здесь показано, каких чемпионов чаще всего выбирают и запрещают в рейтинговых матчах.",
+        "Ниже собраны чемпионы, которых чаще всего выбирают и запрещают в рейтинговых матчах. Данные сгруппированы по последнему срезу и помогают быстро увидеть, кто доминирует в текущей мете.",
       ]}
     >
       {error ? (
-        <div style={{ padding: "var(--space-3)", opacity: 0.9 }}>{error}</div>
+        <div className={styles.errorBox}>{error}</div>
       ) : (
-        <>
-          <TpHeader>
-            <TpHeaderText>
-              Ниже — {limitLabel} по среднему пикрейту и среднему банрейту за
-              последний день {rankRangeLabel} и на всех линиях. Нажми на
-              карточку чемпиона, чтобы увидеть подробности.
-            </TpHeaderText>
-          </TpHeader>
+        <div className={styles.shell}>
+          <section className={styles.filtersPanel}>
+            <div className={styles.filterBlock}>
+              <div className={styles.filterLabel}>Объем выдачи</div>
+              <div className={styles.pillRow}>
+                {[5, 10, 20].map((value) => (
+                  <button
+                    key={value}
+                    type="button"
+                    className={`${styles.pill} ${limit === value ? styles.pillActive : ""}`}
+                    onClick={() => setLimit(value as 5 | 10 | 20)}
+                  >
+                    Топ {value}
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  className={`${styles.pill} ${limit === "all" ? styles.pillActive : ""}`}
+                  onClick={() => setLimit("all")}
+                >
+                  Все
+                </button>
+              </div>
+            </div>
 
-          <TpRow>
-            <TpPillButton onClick={() => setLimit(5)} $active={limit === 5}>
-              Топ 5
-            </TpPillButton>
-            <TpPillButton onClick={() => setLimit(10)} $active={limit === 10}>
-              Топ 10
-            </TpPillButton>
-            <TpPillButton onClick={() => setLimit(20)} $active={limit === 20}>
-              Топ 20
-            </TpPillButton>
-            <TpPillButton
-              onClick={() => setLimit("all")}
-              $active={limit === "all"}
-            >
-              Все
-            </TpPillButton>
-          </TpRow>
+            <div className={styles.filterBlock}>
+              <div className={styles.filterLabel}>Диапазон рангов</div>
+              <div className={styles.pillRow}>
+                <button
+                  type="button"
+                  className={`${styles.pill} ${rankRange === "low" ? styles.pillActive : ""}`}
+                  onClick={() => setRankRange("low")}
+                >
+                  Лоу эло
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.pill} ${rankRange === "high" ? styles.pillActive : ""}`}
+                  onClick={() => setRankRange("high")}
+                >
+                  Хай эло
+                </button>
+                <button
+                  type="button"
+                  className={`${styles.pill} ${rankRange === "all" ? styles.pillActive : ""}`}
+                  onClick={() => setRankRange("all")}
+                >
+                  Все ранги
+                </button>
+              </div>
+            </div>
 
-          <TpRow>
-            <TpPillButton
-              onClick={() => setRankRange("low")}
-              $active={rankRange === "low"}
-            >
-              Лоу эло
-            </TpPillButton>
-            <TpPillButton
-              onClick={() => setRankRange("high")}
-              $active={rankRange === "high"}
-            >
-              Хай эло
-            </TpPillButton>
-            <TpPillButton
-              onClick={() => setRankRange("all")}
-              $active={rankRange === "all"}
-            >
-              Все ранги
-            </TpPillButton>
-          </TpRow>
+            <div className={styles.filterNote}>
+              <span>{limitLabel}</span>
+              <span>·</span>
+              <span>{rankRangeLabel}</span>
+              <span>·</span>
+              <span>клик по карточке открывает разбивку по линиям</span>
+            </div>
+          </section>
 
-          <TpSection $mb={12}>
-            <TpSectionTitle $pad>{limitTitlePrefix} по пикам</TpSectionTitle>
+          <section className={styles.tableFrame}>
+            <div className={styles.tableTop}>
+              <div>
+                <strong className={styles.tableTitle}>Топ по пикам</strong>
+                <p className={styles.tableMeta}>
+                  Чемпионы с самым высоким средним пикрейтом по выбранному срезу.
+                </p>
+              </div>
+            </div>
 
-            {topPicks.map((champ, idx) => (
-              <TpCardWrap key={`pick-${champ.slug}`}>
-                <TopChampCard
-                  index={idx}
-                  champ={champ}
-                  type="pick"
-                  imgUrl={champImages[champ.slug]}
-                  onClick={() =>
-                    setDetails({ index: idx, champ, type: "pick" })
-                  }
-                />
-              </TpCardWrap>
-            ))}
+            <div className={styles.sectionBody}>
+              {topPicks.length ? (
+                topPicks.map((champion, index) => (
+                  <TopChampCard
+                    key={`pick-${champion.slug}`}
+                    index={index}
+                    champ={champion}
+                    type="pick"
+                    imgUrl={champImages[champion.slug]}
+                    onClick={() =>
+                      setDetails({ index, champ: champion, type: "pick" })
+                    }
+                  />
+                ))
+              ) : (
+                <div className={styles.emptyState}>
+                  Нет данных для расчета пиков.
+                </div>
+              )}
+            </div>
+          </section>
 
-            {!topPicks.length ? (
-              <TpEmpty>Нет данных для расчёта пиков.</TpEmpty>
-            ) : null}
-          </TpSection>
+          <section className={styles.tableFrame}>
+            <div className={styles.tableTop}>
+              <div>
+                <strong className={styles.tableTitle}>Топ по банам</strong>
+                <p className={styles.tableMeta}>
+                  Чемпионы с самым высоким средним банрейтом по выбранному срезу.
+                </p>
+              </div>
+            </div>
 
-          <TpSection $mb={0}>
-            <TpSectionTitle>{limitTitlePrefix} по банам</TpSectionTitle>
-
-            {topBans.map((champ, idx) => (
-              <TpCardWrap key={`ban-${champ.slug}`}>
-                <TopChampCard
-                  index={idx}
-                  champ={champ}
-                  type="ban"
-                  imgUrl={champImages[champ.slug]}
-                  onClick={() => setDetails({ index: idx, champ, type: "ban" })}
-                />
-              </TpCardWrap>
-            ))}
-
-            {!topBans.length ? (
-              <TpEmpty>Нет данных для расчёта банов.</TpEmpty>
-            ) : null}
-          </TpSection>
+            <div className={styles.sectionBody}>
+              {topBans.length ? (
+                topBans.map((champion, index) => (
+                  <TopChampCard
+                    key={`ban-${champion.slug}`}
+                    index={index}
+                    champ={champion}
+                    type="ban"
+                    imgUrl={champImages[champion.slug]}
+                    onClick={() =>
+                      setDetails({ index, champ: champion, type: "ban" })
+                    }
+                  />
+                ))
+              ) : (
+                <div className={styles.emptyState}>
+                  Нет данных для расчета банов.
+                </div>
+              )}
+            </div>
+          </section>
 
           <DetailsModal data={details} onClose={() => setDetails(null)} />
-        </>
+        </div>
       )}
     </PageWrapper>
   );
