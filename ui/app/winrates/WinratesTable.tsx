@@ -166,6 +166,10 @@ export default function WinratesTable({
           </span>
         </button>
 
+        <div
+          className={`${styles.metricTrendHeader} ${styles.desktopOnly}`}
+          aria-hidden="true"
+        />
         <button
           type="button"
           className={`${styles.sortable} ${styles.sortableEnd}`}
@@ -178,11 +182,11 @@ export default function WinratesTable({
             {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
         </button>
+
         <div
           className={`${styles.metricTrendHeader} ${styles.desktopOnly}`}
           aria-hidden="true"
         />
-
         <button
           type="button"
           className={`${styles.sortable} ${styles.sortableEnd}`}
@@ -195,11 +199,11 @@ export default function WinratesTable({
             {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
         </button>
+
         <div
           className={`${styles.metricTrendHeader} ${styles.desktopOnly}`}
           aria-hidden="true"
         />
-
         <button
           type="button"
           className={`${styles.sortable} ${styles.sortableEnd}`}
@@ -212,10 +216,6 @@ export default function WinratesTable({
             {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
           </span>
         </button>
-        <div
-          className={`${styles.metricTrendHeader} ${styles.desktopOnly}`}
-          aria-hidden="true"
-        />
       </div>
 
       {rows.map((row, idx) => {
@@ -261,9 +261,6 @@ export default function WinratesTable({
               {row.tierLabel}
             </div>
 
-            <div className={styles.metric} style={{ color: winRateColor(row.winRate) }}>
-              {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
-            </div>
             <div
               className={`${styles.metricTrendCell} ${styles.desktopOnly}`}
               style={{ color: winRateMovement.color }}
@@ -274,10 +271,10 @@ export default function WinratesTable({
               />
               <span className={styles.trendValue}>{winRateMovement.text}</span>
             </div>
-
-            <div className={styles.metric} style={{ color: pickRateColor(row.pickRate) }}>
-              {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
+            <div className={styles.metric} style={{ color: winRateColor(row.winRate) }}>
+              {row.winRate != null ? `${row.winRate.toFixed(2)}%` : "—"}
             </div>
+
             <div
               className={`${styles.metricTrendCell} ${styles.desktopOnly}`}
               style={{ color: pickRateMovement.color }}
@@ -288,10 +285,10 @@ export default function WinratesTable({
               />
               <span className={styles.trendValue}>{pickRateMovement.text}</span>
             </div>
-
-            <div className={styles.metric} style={{ color: banRateColor(row.banRate) }}>
-              {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
+            <div className={styles.metric} style={{ color: pickRateColor(row.pickRate) }}>
+              {row.pickRate != null ? `${row.pickRate.toFixed(2)}%` : "—"}
             </div>
+
             <div
               className={`${styles.metricTrendCell} ${styles.desktopOnly}`}
               style={{ color: banRateMovement.color }}
@@ -301,6 +298,9 @@ export default function WinratesTable({
                 color={banRateMovement.color}
               />
               <span className={styles.trendValue}>{banRateMovement.text}</span>
+            </div>
+            <div className={styles.metric} style={{ color: banRateColor(row.banRate) }}>
+              {row.banRate != null ? `${row.banRate.toFixed(2)}%` : "—"}
             </div>
           </div>
         );
