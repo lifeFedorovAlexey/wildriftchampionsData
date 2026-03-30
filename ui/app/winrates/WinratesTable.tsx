@@ -197,7 +197,7 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.sortable} ${styles.sortableEnd}`}
+          className={`${styles.sortable} ${styles.sortableEnd} ${styles.desktopOnly}`}
           onClick={() => onSort("winRate")}
           aria-label="Сортировать по винрейту"
         >
@@ -210,7 +210,7 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.sortable} ${styles.sortableEnd}`}
+          className={`${styles.sortable} ${styles.sortableEnd} ${styles.desktopOnly}`}
           onClick={() => onSort("pickRate")}
           aria-label="Сортировать по пикрейту"
         >
@@ -223,7 +223,7 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.sortable} ${styles.sortableEnd}`}
+          className={`${styles.sortable} ${styles.sortableEnd} ${styles.desktopOnly}`}
           onClick={() => onSort("banRate")}
           aria-label="Сортировать по банрейту"
         >

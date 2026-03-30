@@ -10,10 +10,7 @@
     22px
     minmax(78px, 1.5fr)
     40px
-    24px
-    minmax(64px, 0.9fr)
-    minmax(64px, 0.9fr)
-    minmax(64px, 0.9fr);
+    24px;
   column-gap: 3px;
   padding: 6px 3px;
   align-items: center;
