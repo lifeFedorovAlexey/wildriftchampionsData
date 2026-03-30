@@ -163,6 +163,20 @@ function MetricCell({
   );
 }
 
+function MobileMetricValue({
+  value,
+  valueColor,
+}: {
+  value: number | null;
+  valueColor: string;
+}) {
+  return (
+    <div className={styles.mobileMetric} style={{ color: valueColor }}>
+      {value != null ? `${value.toFixed(2)}%` : "—"}
+    </div>
+  );
+}
+
 export default function WinratesTable({
   rows,
   sort,
@@ -197,7 +211,7 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.sortable} ${styles.sortableEnd} ${styles.desktopOnly}`}
+          className={`${styles.sortable} ${styles.sortableEnd}`}
           onClick={() => onSort("winRate")}
           aria-label="Сортировать по винрейту"
         >
@@ -210,7 +224,7 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.sortable} ${styles.sortableEnd} ${styles.desktopOnly}`}
+          className={`${styles.sortable} ${styles.sortableEnd}`}
           onClick={() => onSort("pickRate")}
           aria-label="Сортировать по пикрейту"
         >
@@ -223,7 +237,7 @@ export default function WinratesTable({
 
         <button
           type="button"
-          className={`${styles.sortable} ${styles.sortableEnd} ${styles.desktopOnly}`}
+          className={`${styles.sortable} ${styles.sortableEnd}`}
           onClick={() => onSort("banRate")}
           aria-label="Сортировать по банрейту"
         >
@@ -284,6 +298,10 @@ export default function WinratesTable({
               trendValues={row.winRateTrend}
               movement={winRateMovement}
             />
+            <MobileMetricValue
+              value={row.winRate}
+              valueColor={winRateColor(row.winRate)}
+            />
 
             <MetricCell
               value={row.pickRate}
@@ -291,12 +309,20 @@ export default function WinratesTable({
               trendValues={row.pickRateTrend}
               movement={pickRateMovement}
             />
+            <MobileMetricValue
+              value={row.pickRate}
+              valueColor={pickRateColor(row.pickRate)}
+            />
 
             <MetricCell
               value={row.banRate}
               valueColor={banRateColor(row.banRate)}
               trendValues={row.banRateTrend}
               movement={banRateMovement}
+            />
+            <MobileMetricValue
+              value={row.banRate}
+              valueColor={banRateColor(row.banRate)}
             />
           </div>
         );
