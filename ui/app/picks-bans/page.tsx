@@ -114,7 +114,8 @@ function TrendSparkline({
     .map((point, pointIndex) => {
       const x = paddingX + point.index * stepX;
       const y =
-        paddingY +
+        height -
+        paddingY -
         ((point.value - minValue) / valueRange) * (height - paddingY * 2);
 
       return `${pointIndex === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
@@ -124,7 +125,8 @@ function TrendSparkline({
   const lastPoint = points[points.length - 1];
   const lastX = paddingX + lastPoint.index * stepX;
   const lastY =
-    paddingY +
+    height -
+    paddingY -
     ((lastPoint.value - minValue) / valueRange) * (height - paddingY * 2);
 
   return (
