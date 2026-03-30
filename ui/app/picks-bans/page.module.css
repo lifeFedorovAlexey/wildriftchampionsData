@@ -1,15 +1,15 @@
 .shell {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .filtersPanel {
   display: grid;
-  gap: 16px;
-  padding: 18px 20px;
+  gap: 14px;
+  padding: 16px 18px;
   border: 1px solid rgba(148, 163, 184, 0.14);
   border-radius: var(--radius-xl);
-  background: rgba(8, 15, 29, 0.92);
+  background: rgba(8, 15, 29, 0.88);
 }
 
 .filterBlock {
@@ -34,8 +34,8 @@
   border-radius: var(--radius-pill);
   background: rgba(15, 23, 42, 0.86);
   color: rgba(226, 232, 240, 0.82);
-  padding: 9px 16px;
-  font-size: 14px;
+  padding: 8px 14px;
+  font-size: 13px;
   line-height: 1;
   cursor: pointer;
   transition:
@@ -75,12 +75,12 @@
 }
 
 .tableTop {
-  padding: 18px 18px 0;
+  padding: 16px 18px 0;
 }
 
 .tableTitle {
   display: block;
-  font-size: 18px;
+  font-size: 17px;
   color: #ffffff;
 }
 
@@ -93,21 +93,20 @@
 
 .sectionBody {
   display: grid;
-  gap: 10px;
-  padding: 16px 18px 18px;
+  gap: 8px;
+  padding: 14px 18px 18px;
 }
 
 .cardRow {
   display: grid;
-  grid-template-columns: 52px 52px 1fr;
-  gap: 14px;
+  grid-template-columns: 40px 48px 1fr;
+  gap: 12px;
   align-items: center;
   width: 100%;
-  padding: 14px 16px;
-  border: 1px solid rgba(148, 163, 184, 0.12);
-  border-radius: 18px;
-  background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.88));
+  padding: 12px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 16px;
+  background: rgba(27, 34, 51, 0.7);
   text-align: left;
   cursor: pointer;
   transition:
@@ -117,22 +116,21 @@
 }
 
 .cardRow:hover {
-  border-color: rgba(147, 197, 253, 0.28);
+  border-color: rgba(147, 197, 253, 0.2);
   transform: translateY(-1px);
-  background:
-    linear-gradient(135deg, rgba(17, 24, 39, 0.94), rgba(37, 48, 70, 0.92));
+  background: rgba(31, 40, 60, 0.78);
 }
 
 .cardRank {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgba(226, 232, 240, 0.72);
 }
 
 .cardBody {
   display: grid;
-  gap: 6px;
+  gap: 4px;
   min-width: 0;
 }
 
@@ -145,9 +143,9 @@
 
 .cardName {
   min-width: 0;
-  font-size: 18px;
-  font-weight: 800;
-  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.96);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -157,8 +155,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  color: rgba(203, 213, 225, 0.74);
-  font-size: 13px;
+  color: rgba(203, 213, 225, 0.68);
+  font-size: 12px;
 }
 
 .cardSlug {
@@ -167,9 +165,9 @@
 
 .cardValue {
   flex: 0 0 auto;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .valuePick {
@@ -313,13 +311,13 @@
   }
 
   .cardRow {
-    grid-template-columns: 42px 44px 1fr;
-    gap: 12px;
-    padding: 13px 14px;
+    grid-template-columns: 34px 42px 1fr;
+    gap: 10px;
+    padding: 11px 12px;
   }
 
   .cardRank {
-    font-size: 22px;
+    font-size: 15px;
   }
 
   .cardTitleRow {
@@ -329,11 +327,11 @@
   }
 
   .cardName {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .cardValue {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .modal {
