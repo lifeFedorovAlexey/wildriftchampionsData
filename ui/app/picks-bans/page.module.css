@@ -6,10 +6,10 @@
 .filtersPanel {
   display: grid;
   gap: 14px;
-  padding: 16px 18px;
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  border-radius: var(--radius-xl);
-  background: rgba(8, 15, 29, 0.88);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .filterBlock {
@@ -377,7 +377,7 @@
 
 @media (max-width: 760px) {
   .filtersPanel {
-    padding: 16px;
+    padding: 0;
   }
 
   .tableTop {
