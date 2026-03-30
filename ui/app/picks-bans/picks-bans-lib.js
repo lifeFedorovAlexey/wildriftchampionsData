@@ -77,6 +77,9 @@ export function aggregateLatestPicksBans({
         banRanks: {},
         _pickSum: 0,
         _pickCount: 0,
+        _banSum: 0,
+        _banCount: 0,
+        _banRanksAdded: new Set(),
       };
     }
 
@@ -94,6 +97,14 @@ export function aggregateLatestPicksBans({
         (lanes.all.banRanks[rankKey] || 0) + banRate;
       agg._banRanksAdded.add(rankKey);
     }
+
+    if (!lanes[laneKey]._banRanksAdded.has(rankKey)) {
+      lanes[laneKey]._banSum += banRate;
+      lanes[laneKey]._banCount += 1;
+      lanes[laneKey].banRanks[rankKey] =
+        (lanes[laneKey].banRanks[rankKey] || 0) + banRate;
+      lanes[laneKey]._banRanksAdded.add(rankKey);
+    }
   }
 
   const result = [];
@@ -107,11 +118,17 @@ export function aggregateLatestPicksBans({
 
     for (const [laneKey, laneData] of Object.entries(value.lanes)) {
       if (laneKey === "all") continue;
-      const c = laneData._pickCount || 0;
-      const s = laneData._pickSum || 0;
-      laneData.pick = c > 0 ? s / c : 0;
+      const pickCount = laneData._pickCount || 0;
+      const pickSum = laneData._pickSum || 0;
+      const banCount = laneData._banCount || 0;
+      const banSum = laneData._banSum || 0;
+      laneData.pick = pickCount > 0 ? pickSum / pickCount : 0;
+      laneData.ban = banCount > 0 ? banSum / banCount : 0;
       delete laneData._pickSum;
       delete laneData._pickCount;
+      delete laneData._banSum;
+      delete laneData._banCount;
+      delete laneData._banRanksAdded;
     }
 
     value.lanes.all.ban = value.totalBanRate;
