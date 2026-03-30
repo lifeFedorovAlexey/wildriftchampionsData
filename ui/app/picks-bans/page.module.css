@@ -389,36 +389,67 @@
   }
 
   .cardRow {
-    grid-template-columns: 34px 42px 1fr;
-    gap: 10px;
-    padding: 11px 12px;
+    grid-template-columns: 28px 40px minmax(0, 1fr);
+    gap: 8px;
+    padding: 10px 11px;
   }
 
   .cardRank {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .cardTitleRow {
-    grid-template-columns: 1fr;
-    align-items: flex-start;
-    gap: 8px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px;
   }
 
   .cardName {
-    font-size: 15px;
+    font-size: 14px;
   }
 
-  .cardMetricBlock {
-    width: 100%;
-    justify-content: space-between;
+  .cardMeta {
+    gap: 6px;
+    font-size: 11px;
   }
 
   .cardTrend {
-    align-items: flex-start;
+    align-items: flex-end;
+    min-width: 68px;
+  }
+
+  .cardTrendValue {
+    font-size: 10px;
+  }
+
+  .sparkline {
+    width: 68px;
+    height: 22px;
+  }
+
+  .sparkPlaceholder {
+    width: 68px;
+    height: 22px;
+  }
+
+  .cardMetricBlock {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 4px;
   }
 
   .cardValue {
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  .cardLanes {
+    gap: 4px;
+  }
+
+  .cardLaneChip {
+    padding: 2px 6px;
+    font-size: 10px;
   }
 
   .modal {
