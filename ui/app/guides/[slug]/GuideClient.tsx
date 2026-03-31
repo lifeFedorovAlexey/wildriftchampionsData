@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import type { ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import { ensureLocalAssetSrc } from "@/lib/asset-safety";
 
@@ -257,6 +258,47 @@ function HoverTooltip({
   );
 }
 
+function TooltipTrigger({
+  tooltip,
+  fallbackName,
+  children,
+}: {
+  tooltip?: EntityTooltip | null;
+  fallbackName: string;
+  children: ReactNode;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      if (!rootRef.current?.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    window.addEventListener("pointerdown", handlePointerDown);
+    return () => window.removeEventListener("pointerdown", handlePointerDown);
+  }, [isOpen]);
+
+  if (!tooltip) {
+    return <div className={styles.tooltipTrigger}>{children}</div>;
+  }
+
+  return (
+    <div
+      ref={rootRef}
+      className={isOpen ? styles.tooltipTriggerActive : styles.tooltipTrigger}
+      onClick={() => setIsOpen((value) => !value)}
+    >
+      {children}
+      <HoverTooltip tooltip={tooltip} fallbackName={fallbackName} />
+    </div>
+  );
+}
+
 function OrbCard({
   item,
   compact = false,
@@ -266,16 +308,17 @@ function OrbCard({
 }) {
   return (
     <article className={compact ? styles.orbCardCompact : styles.orbCard}>
-      <div className={styles.orbMediaWrap}>
-        {item.imageUrl ? (
-          <img
-            className={styles.orbMedia}
-            src={ensureLocalAssetSrc("GuideClient.orb", item.imageUrl) || ""}
-            alt={item.name}
-          />
-        ) : null}
-        <HoverTooltip tooltip={item.tooltip} fallbackName={item.name} />
-      </div>
+      <TooltipTrigger tooltip={item.tooltip} fallbackName={item.name}>
+        <div className={styles.orbMediaWrap}>
+          {item.imageUrl ? (
+            <img
+              className={styles.orbMedia}
+              src={ensureLocalAssetSrc("GuideClient.orb", item.imageUrl) || ""}
+              alt={item.name}
+            />
+          ) : null}
+        </div>
+      </TooltipTrigger>
       <div className={styles.orbName}>{item.name}</div>
       {item.lane ? <div className={styles.orbMeta}>{item.lane}</div> : null}
     </article>
@@ -329,16 +372,17 @@ function SkillOrderPanel({
           <div className={styles.quickIcons}>
             {quickOrder.map((item, index) => (
               <div key={`${item.slug}-${index}`} className={styles.quickItem}>
-                <div className={styles.quickOrbWrap}>
-                  {item.imageUrl ? (
-                    <img
-                      className={styles.quickOrb}
-                      src={ensureLocalAssetSrc("GuideClient.quickOrb", item.imageUrl) || ""}
-                      alt={item.name}
-                    />
-                  ) : null}
-                  <HoverTooltip tooltip={item.tooltip} fallbackName={item.name} />
-                </div>
+                <TooltipTrigger tooltip={item.tooltip} fallbackName={item.name}>
+                  <div className={styles.quickOrbWrap}>
+                    {item.imageUrl ? (
+                      <img
+                        className={styles.quickOrb}
+                        src={ensureLocalAssetSrc("GuideClient.quickOrb", item.imageUrl) || ""}
+                        alt={item.name}
+                      />
+                    ) : null}
+                  </div>
+                </TooltipTrigger>
                 {index < quickOrder.length - 1 ? (
                   <span className={styles.quickArrow}>{">"}</span>
                 ) : null}
@@ -691,19 +735,20 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
               return (
                 <article key={ability.slug} className={styles.abilityCard}>
                   <div className={styles.abilityHead}>
-                    <div className={styles.quickOrbWrap}>
-                      {abilityImageSrc ? (
-                        <img
-                          className={styles.abilityIcon}
-                          src={ensureLocalAssetSrc("GuideClient.ability", abilityImageSrc) || ""}
-                          alt={ability.name}
-                        />
-                      ) : null}
-                      <HoverTooltip
-                        tooltip={abilityWithTooltip.tooltip}
-                        fallbackName={ability.name}
-                      />
-                    </div>
+                    <TooltipTrigger
+                      tooltip={abilityWithTooltip.tooltip}
+                      fallbackName={ability.name}
+                    >
+                      <div className={styles.quickOrbWrap}>
+                        {abilityImageSrc ? (
+                          <img
+                            className={styles.abilityIcon}
+                            src={ensureLocalAssetSrc("GuideClient.ability", abilityImageSrc) || ""}
+                            alt={ability.name}
+                          />
+                        ) : null}
+                      </div>
+                    </TooltipTrigger>
                     <div className={styles.abilityHeading}>
                       <div className={styles.abilityTitle}>{ability.name}</div>
                       {hotkey ? <div className={styles.abilityBadge}>{hotkey}</div> : null}
