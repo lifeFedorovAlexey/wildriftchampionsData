@@ -77,18 +77,16 @@ export default function AppClient() {
   }, [tg, telegramReadyTick]);
 
   useEffect(() => {
-    const user = tg?.initDataUnsafe?.user;
-    if (!user) return;
+    const initData = typeof tg?.initData === "string" ? tg.initData : "";
+    if (!initData) return;
 
     fetch(`${API_BASE}/api/webapp-open`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        tgId: user.id,
-        username: user.username || null,
-        firstName: user.first_name || null,
-        lastName: user.last_name || null,
-      }),
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-init-data": initData,
+      },
+      body: "{}",
     }).catch(() => {});
   }, [tg, telegramReadyTick]);
 
