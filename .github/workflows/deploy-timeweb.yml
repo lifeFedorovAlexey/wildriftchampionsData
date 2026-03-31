@@ -53,6 +53,12 @@ jobs:
                 printf '%s\n' "${key}=${value}" >> "$file"
               fi
             }
+            restore_env_from_pm2() {
+              key="$1"
+              file="$2"
+              value="$(node -e 'const key = process.argv[1]; const { execSync } = require("child_process"); try { const list = JSON.parse(execSync("pm2 jlist", { encoding: "utf8" })); const proc = list.find((entry) => entry.name === "wr-api"); const env = proc?.pm2_env?.env || proc?.pm2_env || {}; const value = env[key]; if (value) process.stdout.write(String(value)); } catch {}' "$key")"
+              upsert_env_if_present "$key" "$value" "$file"
+            }
             cd /var/www/wr-api
             git stash push --include-untracked -m "deploy-api-from-ui-$(date +%s)" || true
             git fetch origin
@@ -65,8 +71,16 @@ jobs:
             upsert_env_if_present S3_PUBLIC_BASE_URL "${S3_PUBLIC_BASE_URL}" .env
             upsert_env_if_present S3_FORCE_PATH_STYLE "${S3_FORCE_PATH_STYLE}" .env
             upsert_env_if_present ASSET_PUBLIC_MODE "${ASSET_PUBLIC_MODE}" .env
+            restore_env_from_pm2 DATABASE_URL .env
+            restore_env_from_pm2 S3_ENDPOINT .env
+            restore_env_from_pm2 S3_BUCKET .env
+            restore_env_from_pm2 S3_ACCESS_KEY_ID .env
+            restore_env_from_pm2 S3_SECRET_ACCESS_KEY .env
+            restore_env_from_pm2 S3_PUBLIC_BASE_URL .env
+            restore_env_from_pm2 S3_FORCE_PATH_STYLE .env
+            restore_env_from_pm2 ASSET_PUBLIC_MODE .env
             npm ci
-            node ./scripts/backfill-guide-hero-media.mjs || true
+            node ./scripts/backfill-guide-hero-media.mjs
             pm2 delete wr-api || true
             pm2 start npm --name wr-api --cwd /var/www/wr-api -- start
             pm2 save
