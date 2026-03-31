@@ -225,6 +225,16 @@ function formatPercent(value?: number | null) {
   return typeof value === "number" && Number.isFinite(value) ? `${value.toFixed(1)}%` : "—";
 }
 
+function getRiftWinRateClass(value?: number | null) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return styles.riftStatValueNeutral;
+  }
+
+  if (value > 50) return styles.riftStatValuePositive;
+  if (value < 50) return styles.riftStatValueNegative;
+  return styles.riftStatValueNeutral;
+}
+
 function isGenericVariantTitle(value?: string | null) {
   const normalized = String(value || "").trim().toLowerCase();
   return /^build\s*\d+$/i.test(normalized) || /^guide\s*\d+$/i.test(normalized);
@@ -625,7 +635,7 @@ function RiftBuildPanel({
             <div className={styles.riftBuildMeta}>
               <div>
                 <div className={styles.riftStatLabel}>Процент побед</div>
-                <div className={styles.riftStatValue}>{formatPercent(entry.winRate)}</div>
+                <div className={`${styles.riftStatValue} ${getRiftWinRateClass(entry.winRate)}`}>{formatPercent(entry.winRate)}</div>
               </div>
               <div>
                 <div className={styles.riftStatLabel}>Коэффициент выбора</div>
@@ -691,7 +701,7 @@ function RiftMatchupsPanel({
               <div className={styles.riftMatchupStats}>
                 <div>
                   <div className={styles.riftStatLabel}>Процент выигрышей</div>
-                  <div className={styles.riftStatValue}>{formatPercent(item.winRate)}</div>
+                  <div className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>{formatPercent(item.winRate)}</div>
                 </div>
                 <div>
                   <div className={styles.riftStatLabel}>Коэффициент выбора</div>

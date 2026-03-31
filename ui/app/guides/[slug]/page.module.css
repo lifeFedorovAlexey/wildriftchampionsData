@@ -569,10 +569,21 @@
 
 .riftStatValue {
   margin-top: 6px;
-  color: #7fe084;
   font-weight: 800;
   font-size: 24px;
   line-height: 1;
+}
+
+.riftStatValuePositive {
+  color: #7fe084;
+}
+
+.riftStatValueNegative {
+  color: #ff7d7d;
+}
+
+.riftStatValueNeutral {
+  color: var(--text-main);
 }
 
 .riftStatMuted {
