@@ -142,6 +142,7 @@ async function main() {
 
   const results = [];
   const failures = [];
+  const skippedNoGuide = [];
 
   for (const slug of slugs) {
     try {
@@ -156,6 +157,7 @@ async function main() {
 
       if (message.includes("HTTP 404")) {
         console.warn(`No guide page for ${slug}, skipping`);
+        skippedNoGuide.push(slug);
         continue;
       }
 
@@ -169,6 +171,8 @@ async function main() {
       {
         total: slugs.length,
         synced: results.length,
+        skippedNoGuideCount: skippedNoGuide.length,
+        skippedNoGuide,
         failed: failures.length,
         failures,
       },
