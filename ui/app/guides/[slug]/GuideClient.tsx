@@ -103,6 +103,8 @@ type RiftGgLaneBlock<TEntry> = {
   worst?: RiftGgMatchupEntry[];
 };
 
+const INITIAL_RIFT_MATCHUPS_COUNT = 8;
+
 export type GuideData = {
   champion: {
     name: string;
@@ -676,12 +678,18 @@ function RiftMatchupsPanel({
   availableGuideSlugs?: string[];
 }) {
   const availableSlugSet = new Set(availableGuideSlugs);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const visibleItems = isExpanded ? items : items.slice(0, INITIAL_RIFT_MATCHUPS_COUNT);
+
+  useEffect(() => {
+    setIsExpanded(false);
+  }, [items]);
 
   return (
     <section className={styles.panel}>
       <h2 className={styles.panelTitle}>{title}</h2>
       <div className={styles.riftMatchupsGrid}>
-        {items.map((item) => {
+        {visibleItems.map((item) => {
           const slug = item.opponentSlug;
           const name = item.opponent?.name || slug;
           const hasGuide = availableSlugSet.has(slug);
@@ -725,6 +733,17 @@ function RiftMatchupsPanel({
           );
         })}
       </div>
+      {items.length > INITIAL_RIFT_MATCHUPS_COUNT ? (
+        <div className={styles.riftPanelFooter}>
+          <button
+            type="button"
+            className={styles.riftMoreButton}
+            onClick={() => setIsExpanded((value) => !value)}
+          >
+            {isExpanded ? "Свернуть" : `Показать еще (${items.length})`}
+          </button>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -772,6 +791,21 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
   const selectedRunes = pickRiftBlock(riftgg?.runes);
   const selectedSpells = pickRiftBlock(riftgg?.spells);
+  const selectedMatchupEntries = selectedMatchups[0]?.entries || [];
+  const bestMatchups = selectedMatchupEntries
+    .slice()
+    .sort((left, right) => {
+      const winDelta = (right.winRate ?? -Infinity) - (left.winRate ?? -Infinity);
+      if (winDelta !== 0) return winDelta;
+      return (right.pickRate ?? -Infinity) - (left.pickRate ?? -Infinity);
+    });
+  const worstMatchups = selectedMatchupEntries
+    .slice()
+    .sort((left, right) => {
+      const winDelta = (left.winRate ?? Infinity) - (right.winRate ?? Infinity);
+      if (winDelta !== 0) return winDelta;
+      return (right.pickRate ?? -Infinity) - (left.pickRate ?? -Infinity);
+    });
 
   const buildSections = variant
     ? [
@@ -962,12 +996,12 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
           <div className={styles.topGrid}>
             <RiftMatchupsPanel
               title="Лучшие матчапы"
-              items={selectedMatchups[0]?.best || []}
+              items={bestMatchups}
               availableGuideSlugs={guide.availableGuideSlugs}
             />
             <RiftMatchupsPanel
               title="Худшие матчапы"
-              items={selectedMatchups[0]?.worst || []}
+              items={worstMatchups}
               availableGuideSlugs={guide.availableGuideSlugs}
             />
           </div>

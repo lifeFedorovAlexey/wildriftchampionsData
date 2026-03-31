@@ -613,6 +613,36 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.riftPanelFooter {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.riftMoreButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 211, 252, 0.26);
+  background: rgba(17, 24, 39, 0.82);
+  color: var(--text-strong);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.riftMoreButton:hover {
+  background: rgba(27, 36, 53, 0.92);
+  border-color: rgba(125, 211, 252, 0.42);
+  transform: translateY(-1px);
+}
+
 .riftBuildCard {
   display: grid;
   gap: 14px;
