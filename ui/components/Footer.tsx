@@ -6,7 +6,6 @@ const navLinks = [
   { href: "/tier-inq", label: "Тир-лист" },
   { href: "/trends", label: "Тренды" },
   { href: "/guides", label: "Гайды" },
-  { href: "/skins", label: "3D скины" },
 ];
 
 const sourceLinks = [
