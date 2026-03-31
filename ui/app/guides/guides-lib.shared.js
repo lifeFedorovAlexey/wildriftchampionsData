@@ -1,23 +1,17 @@
 import { getStatsApiBaseUrl } from "../../lib/stats-api-origin.js";
+import { fetchApiJson } from "../../lib/server-api.js";
 
 export { getStatsApiBaseUrl };
 
 export async function fetchGuideFromApi(slug) {
   try {
-    const baseUrl = getStatsApiBaseUrl();
-    const response = await fetch(`${baseUrl}/api/guides/${encodeURIComponent(slug)}?lang=ru_ru`, {
-      cache: "no-store",
+    return await fetchApiJson(`/api/guides/${encodeURIComponent(slug)}?lang=ru_ru`, {
+      fetchOptions: {
+        cache: "no-store",
+      },
+      allowNotFound: true,
+      fallback: null,
     });
-
-    if (response.status === 404) {
-      return null;
-    }
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    return await response.json();
   } catch (error) {
     console.error("guide api fetch error", error);
     return null;
@@ -26,16 +20,12 @@ export async function fetchGuideFromApi(slug) {
 
 export async function fetchGuideSlugsFromApi() {
   try {
-    const baseUrl = getStatsApiBaseUrl();
-    const response = await fetch(`${baseUrl}/api/guides?fields=slug`, {
-      next: { revalidate: 3600 * 24 * 7 },
+    const payload = await fetchApiJson("/api/guides?fields=slug", {
+      fetchOptions: {
+        next: { revalidate: 3600 * 24 * 7 },
+      },
+      fallback: [],
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const payload = await response.json();
 
     if (Array.isArray(payload)) {
       return payload.filter(Boolean);
@@ -52,16 +42,12 @@ export async function fetchGuideSlugsFromApi() {
 
 export async function fetchChampionNamesFromApi() {
   try {
-    const baseUrl = getStatsApiBaseUrl();
-    const response = await fetch(`${baseUrl}/api/champions?lang=ru_ru`, {
-      next: { revalidate: 3600 * 24 * 7 },
+    const payload = await fetchApiJson("/api/champions?lang=ru_ru", {
+      fetchOptions: {
+        next: { revalidate: 3600 * 24 * 7 },
+      },
+      fallback: [],
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const payload = await response.json();
     const items = Array.isArray(payload) ? payload : [];
 
     return items.reduce((acc, item) => {
@@ -80,16 +66,12 @@ export async function fetchChampionNamesFromApi() {
 
 export async function fetchGuideSummariesFromApi() {
   try {
-    const baseUrl = getStatsApiBaseUrl();
-    const response = await fetch(`${baseUrl}/api/guides`, {
-      next: { revalidate: 3600 * 24 * 7 },
+    const payload = await fetchApiJson("/api/guides", {
+      fetchOptions: {
+        next: { revalidate: 3600 * 24 * 7 },
+      },
+      fallback: { items: [] },
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const payload = await response.json();
     return Array.isArray(payload?.items) ? payload.items : [];
   } catch (error) {
     console.error("guide summaries api fetch error", error);
@@ -133,16 +115,12 @@ export function toLaneKey(value) {
 
 export async function fetchTierlistBulk() {
   try {
-    const baseUrl = getStatsApiBaseUrl();
-    const response = await fetch(`${baseUrl}/api/tierlist-bulk?lang=ru_ru`, {
-      next: { revalidate: 60 },
+    return await fetchApiJson("/api/tierlist-bulk?lang=ru_ru", {
+      fetchOptions: {
+        next: { revalidate: 60 },
+      },
+      fallback: null,
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    return await response.json();
   } catch (error) {
     console.error("guide tierlist-bulk error", error);
     return null;

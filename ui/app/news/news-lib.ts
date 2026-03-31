@@ -1,4 +1,4 @@
-import { getStatsApiBaseUrl } from "../guides/guides-lib.shared.js";
+import { fetchApiJson } from "@/lib/server-api.js";
 
 export type NewsListItem = {
   id: number;
@@ -94,16 +94,12 @@ export type NewsDetail = {
 
 export async function fetchNewsListFromApi(limit = 24): Promise<NewsListItem[]> {
   try {
-    const baseUrl = getStatsApiBaseUrl();
-    const response = await fetch(`${baseUrl}/api/news?limit=${encodeURIComponent(String(limit))}`, {
-      next: { revalidate: 300 },
+    const payload = await fetchApiJson(`/api/news?limit=${encodeURIComponent(String(limit))}`, {
+      fetchOptions: {
+        next: { revalidate: 300 },
+      },
+      fallback: { items: [] },
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const payload = await response.json();
     return Array.isArray(payload?.items) ? payload.items : [];
   } catch (error) {
     console.error("news list api fetch error", error);
@@ -113,20 +109,13 @@ export async function fetchNewsListFromApi(limit = 24): Promise<NewsListItem[]> 
 
 export async function fetchNewsDetailFromApi(id: string): Promise<NewsDetail | null> {
   try {
-    const baseUrl = getStatsApiBaseUrl();
-    const response = await fetch(`${baseUrl}/api/news/${encodeURIComponent(id)}`, {
-      next: { revalidate: 300 },
-    });
-
-    if (response.status === 404) {
-      return null;
-    }
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    return (await response.json()) as NewsDetail;
+    return (await fetchApiJson(`/api/news/${encodeURIComponent(id)}`, {
+      fetchOptions: {
+        next: { revalidate: 300 },
+      },
+      allowNotFound: true,
+      fallback: null,
+    })) as NewsDetail | null;
   } catch (error) {
     console.error("news detail api fetch error", error);
     return null;

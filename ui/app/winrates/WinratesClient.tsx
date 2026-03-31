@@ -6,6 +6,7 @@ import PageWrapper from "@/components/PageWrapper";
 import StatsFilters from "@/components/StatsFilters";
 import styles from "./WinratesClient.module.css";
 import WinratesTable from "./WinratesTable";
+import type { WinrateRow, WinratesRowsBySlice } from "./types";
 import {
   nextSortState,
   sortPreparedRows,
@@ -21,26 +22,6 @@ type SortState =
     }
   | { column: null; dir: null };
 
-type Row = {
-  slug: string;
-  name: string;
-  icon: string | null;
-  winRate: number | null;
-  pickRate: number | null;
-  banRate: number | null;
-  strengthLevel: number | null;
-  tierLabel: string;
-  tierColor: string;
-  positionDelta: number | null;
-  positionTrend: Array<number | null>;
-  winRateTrend: Array<number | null>;
-  pickRateTrend: Array<number | null>;
-  banRateTrend: Array<number | null>;
-  winRateDelta: number | null;
-  pickRateDelta: number | null;
-  banRateDelta: number | null;
-};
-
 function WinratesContent({
   rows,
   sort,
@@ -51,7 +32,7 @@ function WinratesContent({
   laneKey,
   onLaneChange,
 }: {
-  rows: Row[];
+  rows: WinrateRow[];
   sort: SortState;
   onSort: (column: "winRate" | "pickRate" | "banRate" | "strengthLevel") => void;
   formattedUpdatedAt: string | null;
@@ -97,7 +78,7 @@ export default function WinratesClient({
   updatedAt,
   embedded = false,
 }: {
-  rowsBySlice: Record<string, Row[]>;
+  rowsBySlice: WinratesRowsBySlice;
   maxRowCount: number;
   error: string | null;
   updatedAt: string | null;
@@ -114,7 +95,7 @@ export default function WinratesClient({
 
   const sliceKey = `${rankKey}|${laneKey}`;
   const rows = useMemo(() => {
-    return sortPreparedRows(rowsBySlice[sliceKey] || [], sort) as Row[];
+    return sortPreparedRows(rowsBySlice[sliceKey] || [], sort) as WinrateRow[];
   }, [rowsBySlice, sliceKey, sort]);
 
   const formattedUpdatedAt = useMemo(() => {

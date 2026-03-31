@@ -10,7 +10,7 @@
     "scrape:guide": "node scripts/parse-wildriftfire-guide.js",
     "sync:guides": "node scripts/sync-wildriftfire-guides.js",
     "sync:guides:all": "node scripts/sync-wildriftfire-guides.js --all",
-    "test": "node --test lib/stats-api-origin.test.js app/winrates/winrates-lib.test.js app/picks-bans/picks-bans-lib.test.js app/tier-inq/tier-inq-lib.test.js app/trends/trends-lib.test.js app/tierlist/tierlist-lib.test.js app/guides/guides-lib.test.js"
+    "test": "node --test lib/stats-api-origin.test.js lib/server-api.test.js app/winrates/winrates-lib.test.js app/winrates/load-winrates-page.test.js app/picks-bans/picks-bans-lib.test.js app/tier-inq/tier-inq-lib.test.js app/trends/trends-lib.test.js app/tierlist/tierlist-lib.test.js app/guides/guides-lib.test.js"
   },
   "dependencies": {
     "@google/model-viewer": "^4.1.0",

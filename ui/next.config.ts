@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { getStatsApiBaseUrl } from "./lib/stats-api-origin.js";
 
 const apiProxyTarget = getStatsApiBaseUrl(process.env);
+const configDir = path.dirname(fileURLToPath(import.meta.url));
 const storageBaseUrl = process.env.S3_PUBLIC_BASE_URL || "";
 const storageUrl = storageBaseUrl ? new URL(storageBaseUrl) : null;
 const storageRemotePatterns = [
@@ -15,6 +18,9 @@ const storageRemotePatterns = [
 const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
+  },
+  turbopack: {
+    root: configDir,
   },
 
   images: {

@@ -5,6 +5,7 @@ import {
   applyPreparedMovement,
   buildLatestMap,
   buildPreparedWinrateSlices,
+  buildStatsPaths,
   buildStatsUrls,
   buildWinrateRows,
   nextSortState,
@@ -69,6 +70,16 @@ test("buildStatsUrls prefers explicit API origin and trims trailing slash", () =
     urls.updatedAtUrl,
     "https://stats.example.com/api/updated-at",
   );
+});
+
+test("buildStatsPaths returns stable local wr-api paths", () => {
+  const urls = buildStatsPaths("ru_ru");
+
+  assert.deepEqual(urls, {
+    championsPath: "/api/champions?lang=ru_ru",
+    historyPath: "/api/winrates-snapshot",
+    updatedAtPath: "/api/updated-at",
+  });
 });
 
 test("buildStatsUrls prefers API_PROXY_TARGET when it is provided", () => {

@@ -1,4 +1,4 @@
-import { getStatsApiBaseUrl } from "@/lib/stats-api-origin.js";
+import { fetchApiJson } from "@/lib/server-api.js";
 
 export type SkinImage = {
   preview: string | null;
@@ -29,22 +29,12 @@ type SkinsListResponse = {
   items: ChampionSkinsData[];
 };
 
-async function fetchJson(pathname: string) {
-  const baseUrl = getStatsApiBaseUrl(process.env);
-  const response = await fetch(`${baseUrl}${pathname}`, {
-    next: { revalidate: 3600 },
-  });
-
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} for ${pathname}`);
-  }
-
-  return response.json();
-}
-
 export async function fetchSkinsListFromApi(): Promise<ChampionSkinsData[]> {
   try {
-    const payload = (await fetchJson("/api/skins")) as SkinsListResponse;
+    const payload = (await fetchApiJson("/api/skins", {
+      fetchOptions: { next: { revalidate: 3600 } },
+      fallback: { items: [] },
+    })) as SkinsListResponse;
     return Array.isArray(payload?.items) ? payload.items : [];
   } catch {
     return [];
@@ -53,7 +43,11 @@ export async function fetchSkinsListFromApi(): Promise<ChampionSkinsData[]> {
 
 export async function fetchSkinDetailFromApi(slug: string): Promise<ChampionSkinsData | null> {
   try {
-    return (await fetchJson(`/api/skins/${encodeURIComponent(slug)}`)) as ChampionSkinsData;
+    return (await fetchApiJson(`/api/skins/${encodeURIComponent(slug)}`, {
+      fetchOptions: { next: { revalidate: 3600 } },
+      allowNotFound: true,
+      fallback: null,
+    })) as ChampionSkinsData | null;
   } catch {
     return null;
   }

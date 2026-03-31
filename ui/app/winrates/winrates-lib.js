@@ -227,6 +227,14 @@ export function buildStatsUrls(language, env = process.env) {
   };
 }
 
+export function buildStatsPaths(language) {
+  return {
+    championsPath: `/api/champions?lang=${encodeURIComponent(language)}`,
+    historyPath: "/api/winrates-snapshot",
+    updatedAtPath: "/api/updated-at",
+  };
+}
+
 export function normalizeIconSrc(src) {
   if (!src) return null;
   if (src.startsWith("/")) return src;
