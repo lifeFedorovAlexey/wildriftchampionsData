@@ -65,6 +65,8 @@ type GuideVariant = {
 type RiftGgDictionaryItem = {
   slug: string;
   name: string;
+  imageUrl?: string | null;
+  tooltipImageUrl?: string | null;
   price?: string | null;
   effects?: string[];
   description?: string[];
@@ -319,6 +321,7 @@ function toRiftTooltip(item?: RiftGgDictionaryItem | null): EntityTooltip | null
 
   return {
     title: item.name,
+    imageUrl: item.tooltipImageUrl || item.imageUrl || null,
     stats,
     lines,
   };
@@ -649,6 +652,7 @@ function RiftBuildPanel({
                 const entity: GuideEntity = {
                   slug,
                   name: dictItem?.name || slug,
+                  imageUrl: dictItem?.imageUrl || null,
                   tooltip: toRiftTooltip(dictItem),
                 };
 
