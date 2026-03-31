@@ -149,13 +149,14 @@ export default async function GuidePage({
   const bulk = await fetchTierlistBulk();
   const guideWithOwnTiers = applyOwnTiers(guide, bulk);
   guideWithOwnTiers.availableGuideSlugs = await fetchGuideSlugsFromApi();
+  const guideDataSourceParagraph = guideWithOwnTiers.riftgg
+    ? "Матчапы, предметы, руны и заклинания для этого гайда приходят из RiftGG CN Stats через наш WR API, описания способностей берутся с официальной страницы Riot на русском, а тир подтягивается из нашего тир-листа."
+    : "Для этого гайда сейчас показывается базовый fallback из нашего WR API: сборки, руны и матчапы идут из основного гайда, а описания способностей берутся с официальной страницы Riot на русском. Блок RiftGG CN Stats появится, когда данные для этого чемпиона будут доступны в API.";
 
   return (
     <PageWrapper
       title={`Гайд: ${guideWithOwnTiers.champion.name}`}
-      paragraphs={[
-        "Матчапы, предметы, руны и заклинания для этого гайда приходят из RiftGG CN Stats через наш WR API, описания способностей берутся с официальной страницы Riot на русском, а тир подтягивается из нашего тир-листа.",
-      ]}
+      paragraphs={[guideDataSourceParagraph]}
     >
       <GuideClient guide={guideWithOwnTiers} />
     </PageWrapper>
