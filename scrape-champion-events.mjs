@@ -14,10 +14,9 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { loadChampionsFromDir } from "./utils/championsFs.js";
-
 const BASE_URL =
   process.env.BASE_URL_RIOT || "https://wildrift.leagueoflegends.com";
+const DEFAULT_STATS_API_ORIGIN = "http://127.0.0.1:3001";
 
 const PATCHES_LIST_URL = `${BASE_URL}/ru-ru/news/game-updates/`;
 
@@ -26,6 +25,34 @@ const __dirname = path.dirname(__filename);
 
 const DATA_DIR = path.join(__dirname, "data");
 const EVENTS_PATH = path.join(DATA_DIR, "champion-events.json");
+
+function getStatsApiBaseUrl() {
+  const raw =
+    process.env.STATS_API_ORIGIN ||
+    process.env.API_PROXY_TARGET ||
+    process.env.GUIDES_SYNC_API_ORIGIN ||
+    process.env.API_ORIGIN ||
+    DEFAULT_STATS_API_ORIGIN;
+
+  return String(raw).replace(/\/+$/, "");
+}
+
+async function loadChampionsFromApi() {
+  const response = await fetch(`${getStatsApiBaseUrl()}/api/champions?lang=ru_ru`);
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    throw new Error(
+      `Не удалось загрузить чемпионов из WR API: HTTP ${response.status}${body ? ` - ${body}` : ""}`,
+    );
+  }
+
+  const payload = await response.json().catch(() => null);
+  if (!Array.isArray(payload)) {
+    throw new Error("Не удалось загрузить чемпионов из WR API: ожидался массив");
+  }
+
+  return payload;
+}
 
 // ================== FS ==================
 
@@ -348,20 +375,25 @@ async function scrapePatchPage(page, patch, champNameKeys) {
 async function main() {
   console.log("🚀 Старт scrape-champion-events.mjs");
 
-  const championsBySlug = loadChampionsFromDir(); // Map<slug, champ>
-  if (championsBySlug.size === 0) {
-    console.error("❌ champions пуст. Сначала собери чемпионов.");
+  const champions = await loadChampionsFromApi();
+  if (!champions.length) {
+    console.error("❌ WR API вернул пустой список чемпионов.");
     process.exit(1);
   }
 
   // name -> slug (ru/en/slug)
   const nameToSlug = new Map();
-  for (const [slug, champ] of championsBySlug.entries()) {
-    const names = [];
+  for (const champ of champions) {
+    const slug = String(champ?.slug || "").trim();
+    if (!slug) continue;
 
-    if (champ.name?.ru_ru) names.push(champ.name.ru_ru);
-    if (champ.name?.en_us) names.push(champ.name.en_us);
-    if (champ.name?.default) names.push(champ.name.default);
+    const names = [];
+    const localizations = champ?.nameLocalizations || {};
+
+    if (localizations.ru_ru) names.push(localizations.ru_ru);
+    if (localizations.en_us) names.push(localizations.en_us);
+    if (localizations.zh_cn) names.push(localizations.zh_cn);
+    if (champ.name) names.push(champ.name);
     names.push(slug);
 
     for (const n of names) {

@@ -18,7 +18,7 @@ Release docs:
 
 - `ui/` - Next.js frontend, guide sync scripts, styles and app routes
 - `.github/workflows/` - deploy and scheduled sync jobs
-- `champions/` - champion data used by sync and stats flows
+- `wr-api/` - API, champion import pipeline and storage-backed media delivery
 
 ## Notes
 

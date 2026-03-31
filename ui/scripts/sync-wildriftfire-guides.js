@@ -1,11 +1,6 @@
 /* eslint-disable no-console */
-const fs = require("node:fs/promises");
-const path = require("node:path");
-
 const { scrapeGuide, writeGuideFile } = require("./parse-wildriftfire-guide.js");
 
-const PROJECT_ROOT = path.join(__dirname, "..", "..");
-const CHAMPIONS_DIR = path.join(PROJECT_ROOT, "champions");
 const DEFAULT_STATS_API_ORIGIN = "http://127.0.0.1:3001";
 
 function getStatsApiBaseUrl() {
@@ -38,11 +33,26 @@ function getSyncHeaders() {
 }
 
 async function listChampionSlugs() {
-  const entries = await fs.readdir(CHAMPIONS_DIR, { withFileTypes: true });
+  const baseUrl = getStatsApiBaseUrl();
+  const response = await fetch(`${baseUrl}/api/champions?lang=ru_ru`, {
+    headers: getSyncHeaders(),
+  });
 
-  return entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
-    .map((entry) => entry.name.replace(/\.json$/i, ""))
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    throw new Error(
+      `Champion slug fetch failed: HTTP ${response.status}${body ? ` - ${body}` : ""}`,
+    );
+  }
+
+  const payload = await response.json().catch(() => null);
+  if (!Array.isArray(payload)) {
+    throw new Error("Champion slug fetch failed: expected array payload");
+  }
+
+  return payload
+    .map((entry) => String(entry?.slug || "").trim())
+    .filter(Boolean)
     .sort();
 }
 

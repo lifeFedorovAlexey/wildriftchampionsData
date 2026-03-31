@@ -34,7 +34,7 @@ Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_
 ## Guides flow
 
 - `ui/scripts/parse-wildriftfire-guide.js` scrapes one champion guide and writes a local JSON cache
-- `ui/scripts/sync-wildriftfire-guides.js` scrapes one or many champions and upserts them into the WR API
+- `ui/scripts/sync-wildriftfire-guides.js` gets champion slugs from the WR API, scrapes one or many guides, and upserts them into the WR API
 - the guides page first tries `GET /api/guides/:slug?lang=ru_ru` from the WR API and only falls back to local JSON if the API has no guide yet
 
 Expected WR API endpoints:
