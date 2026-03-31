@@ -203,6 +203,16 @@
   gap: 18px;
 }
 
+.riftFilters {
+  display: grid;
+  gap: 18px;
+}
+
+.riftFilterGroup {
+  display: grid;
+  gap: 10px;
+}
+
 .panel {
   padding: 18px;
   border-radius: var(--radius-lg);
@@ -505,6 +515,103 @@
   text-decoration: none;
 }
 
+.riftMatchupLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.riftMatchupsGrid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.riftMatchupCard {
+  display: grid;
+  gap: 12px;
+  min-height: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(17, 24, 39, 0.78);
+  border: 1px solid var(--border-soft);
+}
+
+.riftMatchupHead {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.riftMatchupName {
+  color: var(--text-strong);
+  font-weight: 800;
+}
+
+.riftMatchupLane {
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 12px;
+}
+
+.riftMatchupStats,
+.riftBuildMeta {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.riftStatLabel {
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.riftStatValue {
+  margin-top: 6px;
+  color: #7fe084;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.riftStatMuted {
+  margin-top: 6px;
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.riftRankBadge {
+  justify-self: end;
+  display: inline-grid;
+  place-items: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.18);
+  color: #7fe084;
+  font-weight: 800;
+}
+
+.riftBuildRows {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.riftBuildCard {
+  display: grid;
+  gap: 14px;
+  min-height: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(17, 24, 39, 0.78);
+  border: 1px solid var(--border-soft);
+}
+
 .matchupImage {
   width: 84px;
   height: 84px;
@@ -678,6 +785,20 @@
   .variantTabs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .riftMatchupsGrid,
+  .riftBuildRows {
+    grid-template-columns: 1fr;
+  }
+
+  .riftMatchupStats,
+  .riftBuildMeta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .riftRankBadge {
+    justify-self: start;
   }
 
   .variantTab,

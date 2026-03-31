@@ -62,6 +62,45 @@ type GuideVariant = {
   synergies: GuideEntity[];
 };
 
+type RiftGgDictionaryItem = {
+  slug: string;
+  name: string;
+  price?: string | null;
+  effects?: string[];
+  description?: string[];
+};
+
+type RiftGgMatchupEntry = {
+  opponentSlug: string;
+  opponent?: {
+    slug: string;
+    name: string;
+    iconUrl?: string | null;
+    roles?: string[];
+  } | null;
+  winRate?: number | null;
+  pickRate?: number | null;
+  winRateRank?: number | null;
+  pickRateRank?: number | null;
+};
+
+type RiftGgBuildEntry = {
+  entrySlugs: string[];
+  winRate?: number | null;
+  pickRate?: number | null;
+  winRateRank?: number | null;
+  pickRateRank?: number | null;
+};
+
+type RiftGgLaneBlock<TEntry> = {
+  rank: string;
+  lane: string;
+  dataDate?: string | null;
+  entries?: TEntry[];
+  best?: RiftGgMatchupEntry[];
+  worst?: RiftGgMatchupEntry[];
+};
+
 export type GuideData = {
   champion: {
     name: string;
@@ -100,6 +139,20 @@ export type GuideData = {
     summonerSpells?: Record<string, GuideEntity>;
     abilities?: Record<string, GuideEntity>;
   };
+  riftgg?: {
+    source: string;
+    availableRanks?: string[];
+    availableLanes?: string[];
+    matchups?: RiftGgLaneBlock<RiftGgMatchupEntry>[];
+    coreItems?: RiftGgLaneBlock<RiftGgBuildEntry>[];
+    runes?: RiftGgLaneBlock<RiftGgBuildEntry>[];
+    spells?: RiftGgLaneBlock<RiftGgBuildEntry>[];
+    dictionaries?: {
+      items?: Record<string, RiftGgDictionaryItem>;
+      runes?: Record<string, RiftGgDictionaryItem>;
+      spells?: Record<string, RiftGgDictionaryItem>;
+    };
+  } | null;
 };
 
 function withTooltip(
@@ -135,6 +188,41 @@ function localizeLane(value?: string | null) {
   if (normalized.includes("duo")) return "Дуо";
 
   return value || "";
+}
+
+function localizeRiftRank(value?: string | null) {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (normalized === "diamond_plus") return "Бриллиант+";
+  if (normalized === "master_plus") return "Мастер+";
+  if (normalized === "challenger") return "Челленджер";
+  if (normalized === "super_server") return "Суперсервер";
+  return value || "";
+}
+
+function localizeRiftLane(value?: string | null) {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (normalized === "top") return "Барон";
+  if (normalized === "jungle") return "Лес";
+  if (normalized === "mid") return "Мид";
+  if (normalized === "adc") return "Дракон";
+  if (normalized === "support") return "Поддержка";
+  return localizeLane(value);
+}
+
+function toRiftLaneKey(value?: string | null) {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (normalized.includes("support") || normalized.includes("поддерж")) return "support";
+  if (normalized.includes("mid") || normalized.includes("мид")) return "mid";
+  if (normalized.includes("jungle") || normalized.includes("лес")) return "jungle";
+  if (normalized.includes("baron") || normalized.includes("топ")) return "top";
+  if (normalized.includes("duo") || normalized.includes("dragon") || normalized.includes("адк")) {
+    return "adc";
+  }
+  return "";
+}
+
+function formatPercent(value?: number | null) {
+  return typeof value === "number" && Number.isFinite(value) ? `${value.toFixed(1)}%` : "—";
 }
 
 function isGenericVariantTitle(value?: string | null) {
@@ -203,6 +291,27 @@ function localizeSituationalLabel(label: string) {
   if (normalized === "vs burst damage") return "Против взрывного урона";
 
   return label;
+}
+
+function toRiftTooltip(item?: RiftGgDictionaryItem | null): EntityTooltip | null {
+  if (!item) return null;
+
+  const stats = item.price ? [`Стоимость: ${item.price}`] : [];
+  const lines = Array.isArray(item.effects) && item.effects.length
+    ? item.effects
+    : Array.isArray(item.description)
+      ? item.description
+      : [];
+
+  if (!stats.length && !lines.length) {
+    return null;
+  }
+
+  return {
+    title: item.name,
+    stats,
+    lines,
+  };
 }
 
 function isTranslatedBuildParagraph(value?: string | null) {
@@ -496,6 +605,116 @@ function SituationalPanel({
   );
 }
 
+function RiftBuildPanel({
+  title,
+  blocks,
+  dictionary,
+}: {
+  title: string;
+  blocks: RiftGgLaneBlock<RiftGgBuildEntry>[];
+  dictionary?: Record<string, RiftGgDictionaryItem>;
+}) {
+  if (!blocks.length) return null;
+
+  return (
+    <section className={styles.panel}>
+      <h2 className={styles.panelTitle}>{title}</h2>
+      <div className={styles.riftBuildRows}>
+        {blocks[0].entries?.slice(0, 7).map((entry, index) => (
+          <article key={`${title}-${index}`} className={styles.riftBuildCard}>
+            <div className={styles.riftBuildMeta}>
+              <div>
+                <div className={styles.riftStatLabel}>Процент побед</div>
+                <div className={styles.riftStatValue}>{formatPercent(entry.winRate)}</div>
+              </div>
+              <div>
+                <div className={styles.riftStatLabel}>Коэффициент выбора</div>
+                <div className={styles.riftStatMuted}>{formatPercent(entry.pickRate)}</div>
+              </div>
+              {entry.winRateRank ? <div className={styles.riftRankBadge}>#{entry.winRateRank}</div> : null}
+            </div>
+            <div className={styles.orbRow}>
+              {entry.entrySlugs.map((slug) => {
+                const dictItem = dictionary?.[slug];
+                const entity: GuideEntity = {
+                  slug,
+                  name: dictItem?.name || slug,
+                  tooltip: toRiftTooltip(dictItem),
+                };
+
+                return <OrbCard key={`${title}-${index}-${slug}`} item={entity} compact />;
+              })}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function RiftMatchupsPanel({
+  title,
+  items,
+  availableGuideSlugs = [],
+}: {
+  title: string;
+  items: RiftGgMatchupEntry[];
+  availableGuideSlugs?: string[];
+}) {
+  const availableSlugSet = new Set(availableGuideSlugs);
+
+  return (
+    <section className={styles.panel}>
+      <h2 className={styles.panelTitle}>{title}</h2>
+      <div className={styles.riftMatchupsGrid}>
+        {items.map((item) => {
+          const slug = item.opponentSlug;
+          const name = item.opponent?.name || slug;
+          const hasGuide = availableSlugSet.has(slug);
+          const content = (
+            <article className={styles.riftMatchupCard}>
+              <div className={styles.riftMatchupHead}>
+                <ChampionAvatar
+                  name={name}
+                  src={item.opponent?.iconUrl || null}
+                  shape="circle"
+                  mobileSize={52}
+                  desktopSize={52}
+                />
+                <div>
+                  <div className={styles.riftMatchupName}>{name}</div>
+                  <div className={styles.riftMatchupLane}>
+                    {localizeRiftLane(item.opponent?.roles?.[0] || null)}
+                  </div>
+                </div>
+              </div>
+              <div className={styles.riftMatchupStats}>
+                <div>
+                  <div className={styles.riftStatLabel}>Процент выигрышей</div>
+                  <div className={styles.riftStatValue}>{formatPercent(item.winRate)}</div>
+                </div>
+                <div>
+                  <div className={styles.riftStatLabel}>Коэффициент выбора</div>
+                  <div className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</div>
+                </div>
+                {item.winRateRank ? <div className={styles.riftRankBadge}>#{item.winRateRank}</div> : null}
+              </div>
+            </article>
+          );
+
+          return hasGuide ? (
+            <a key={`${title}-${slug}`} className={styles.riftMatchupLink} href={`/guides/${slug}`}>
+              {content}
+            </a>
+          ) : (
+            <div key={`${title}-${slug}`}>{content}</div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 export default function GuideClient({ guide }: { guide: GuideData }) {
   const variants = guide.variants?.length ? guide.variants : [];
   const defaultIndex = Math.max(
@@ -515,10 +734,30 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     buildBreakdown?.paragraphs?.filter((paragraph) => isTranslatedBuildParagraph(paragraph)) ?? [];
   const heroSummary = buildOfficialSummary(guide, variant);
   const heroVideoSrc = guide.official?.heroMedia?.localVideoPath || null;
+  const riftgg = guide.riftgg || null;
 
   const abilityNameBySlug = new Map(
     abilities.map((ability) => [normalizeAbilitySlug(ability.slug), ability.name]),
   );
+
+  const defaultRiftRank =
+    riftgg?.availableRanks?.[0] ||
+    riftgg?.matchups?.[0]?.rank ||
+    "diamond_plus";
+  const defaultRiftLane =
+    toRiftLaneKey(variant?.lane || guide.metadata.recommendedRole || "") ||
+    riftgg?.availableLanes?.[0] ||
+    "mid";
+  const [selectedRiftRank, setSelectedRiftRank] = useState(defaultRiftRank);
+  const [selectedRiftLane, setSelectedRiftLane] = useState(defaultRiftLane);
+
+  const pickRiftBlock = <TEntry,>(blocks?: RiftGgLaneBlock<TEntry>[]) =>
+    blocks?.filter((block) => block.rank === selectedRiftRank && block.lane === selectedRiftLane) || [];
+
+  const selectedMatchups = pickRiftBlock(riftgg?.matchups);
+  const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
+  const selectedRunes = pickRiftBlock(riftgg?.runes);
+  const selectedSpells = pickRiftBlock(riftgg?.spells);
 
   const buildSections = variant
     ? [
@@ -668,31 +907,107 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         </div>
       </section>
 
-      <div className={styles.topGrid}>
-        <BuildPanel title="Сборка предметов" sections={buildSections} />
-        <BuildPanel title="Заклинания и руны" sections={spellSections} />
-      </div>
+      {riftgg ? (
+        <>
+          <section className={styles.panel}>
+            <h2 className={styles.panelTitle}>Китайская статистика RiftGG</h2>
+            <div className={styles.riftFilters}>
+              <div className={styles.riftFilterGroup}>
+                <div className={styles.sectionEyebrow}>Ранг</div>
+                <div className={styles.variantTabs}>
+                  {(riftgg.availableRanks || []).map((rank) => (
+                    <button
+                      key={rank}
+                      type="button"
+                      onClick={() => setSelectedRiftRank(rank)}
+                      className={selectedRiftRank === rank ? styles.variantTabActive : styles.variantTab}
+                    >
+                      <span>{localizeRiftRank(rank)}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.riftFilterGroup}>
+                <div className={styles.sectionEyebrow}>Положение</div>
+                <div className={styles.variantTabs}>
+                  {(riftgg.availableLanes || []).map((lane) => (
+                    <button
+                      key={lane}
+                      type="button"
+                      onClick={() => setSelectedRiftLane(lane)}
+                      className={selectedRiftLane === lane ? styles.variantTabActive : styles.variantTab}
+                    >
+                      <span>{localizeRiftLane(lane)}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div className={styles.topGrid}>
+            <RiftMatchupsPanel
+              title="Лучшие матчапы"
+              items={selectedMatchups[0]?.best || []}
+              availableGuideSlugs={guide.availableGuideSlugs}
+            />
+            <RiftMatchupsPanel
+              title="Худшие матчапы"
+              items={selectedMatchups[0]?.worst || []}
+              availableGuideSlugs={guide.availableGuideSlugs}
+            />
+          </div>
+
+          <div className={styles.topGrid}>
+            <RiftBuildPanel
+              title="Основные предметы"
+              blocks={selectedCoreItems}
+              dictionary={riftgg.dictionaries?.items}
+            />
+            <RiftBuildPanel
+              title="Руны"
+              blocks={selectedRunes}
+              dictionary={riftgg.dictionaries?.runes}
+            />
+          </div>
+
+          <RiftBuildPanel
+            title="Заклинания"
+            blocks={selectedSpells}
+            dictionary={riftgg.dictionaries?.spells}
+          />
+        </>
+      ) : (
+        <>
+          <div className={styles.topGrid}>
+            <BuildPanel title="Сборка предметов" sections={buildSections} />
+            <BuildPanel title="Заклинания и руны" sections={spellSections} />
+          </div>
+
+          <div className={styles.middleGrid}>
+            <div className={styles.sideStack}>
+              <MatchupPanel
+                title="Контрпики"
+                items={variant?.counters ?? []}
+                availableGuideSlugs={guide.availableGuideSlugs}
+              />
+              <MatchupPanel
+                title="Сочетается"
+                items={variant?.synergies ?? []}
+                availableGuideSlugs={guide.availableGuideSlugs}
+              />
+            </div>
+          </div>
+
+          <div className={styles.topGrid}>
+            <SituationalPanel title="Ситуативные предметы" rows={situationalItems} />
+            <SituationalPanel title="Ситуативные руны" rows={situationalRunes} />
+          </div>
+        </>
+      )}
 
       <div className={styles.middleGrid}>
         <SkillOrderPanel quickOrder={quickOrder} rows={skillRows} />
-
-        <div className={styles.sideStack}>
-          <MatchupPanel
-            title="Контрпики"
-            items={variant?.counters ?? []}
-            availableGuideSlugs={guide.availableGuideSlugs}
-          />
-          <MatchupPanel
-            title="Сочетается"
-            items={variant?.synergies ?? []}
-            availableGuideSlugs={guide.availableGuideSlugs}
-          />
-        </div>
-      </div>
-
-      <div className={styles.topGrid}>
-        <SituationalPanel title="Ситуативные предметы" rows={situationalItems} />
-        <SituationalPanel title="Ситуативные руны" rows={situationalRunes} />
       </div>
 
       {buildBreakdown ? (

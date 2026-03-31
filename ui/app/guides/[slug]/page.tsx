@@ -154,7 +154,7 @@ export default async function GuidePage({
     <PageWrapper
       title={`Гайд: ${guideWithOwnTiers.champion.name}`}
       paragraphs={[
-        "Сборки, руны и матчапы приходят из WildriftFire через наш WR API, описания способностей берутся с официальной страницы Riot на русском, а тир подтягивается из нашего тир-листа.",
+        "Матчапы, предметы, руны и заклинания для этого гайда приходят из RiftGG CN Stats через наш WR API, описания способностей берутся с официальной страницы Riot на русском, а тир подтягивается из нашего тир-листа.",
       ]}
     >
       <GuideClient guide={guideWithOwnTiers} />
