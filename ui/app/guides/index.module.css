@@ -25,6 +25,7 @@
 
 .filtersRow {
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -32,8 +33,10 @@
 }
 
 .meta {
+  width: 100%;
   color: var(--text-soft);
   font-size: 13px;
+  text-align: center;
 }
 
 .grid {
