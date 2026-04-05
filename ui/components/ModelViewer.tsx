@@ -174,5 +174,3 @@ export default function ModelViewer({
     </div>
   );
 }
-
-useGLTF.preload("/models/hero.glb");
