@@ -18,18 +18,20 @@
 }
 
 .supportRow {
-  display: inline-flex;
-  flex-wrap: wrap;
+  width: min(420px, 100%);
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-top: 18px;
+  gap: 16px;
 }
 
 .supportLogoLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-self: end;
   padding: 8px 12px;
   border-radius: 14px;
   background: #f6f6f6;
@@ -54,6 +56,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-self: start;
   padding: 6px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -175,11 +178,19 @@
   }
 
   .supportRow {
+    width: auto;
     margin-top: 16px;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .supportLogo {
     width: 108px;
+  }
+
+  .supportLogoLink,
+  .supportQrLink {
+    justify-self: center;
   }
 
   .supportQr {
