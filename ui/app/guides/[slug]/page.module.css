@@ -764,6 +764,10 @@
   min-width: 108px;
 }
 
+.riftBuildMeta .riftRankBadge {
+  margin-left: auto;
+}
+
 .riftBuildItems {
   display: grid;
   gap: 10px;
@@ -1015,6 +1019,10 @@
 
   .riftBuildStat {
     min-width: 82px;
+  }
+
+  .riftBuildMeta .riftRankBadge {
+    margin-left: 0;
   }
 
   .riftBuildItems {

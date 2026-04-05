@@ -627,7 +627,6 @@ function RiftBuildPanel({
         {blocks[0].entries?.slice(0, 7).map((entry, index) => (
           <article key={`${title}-${index}`} className={styles.riftBuildCard}>
             <div className={styles.riftBuildMeta}>
-              {entry.winRateRank ? <div className={styles.riftRankBadge}>#{entry.winRateRank}</div> : null}
               <div className={styles.riftBuildStat}>
                 <div className={styles.riftStatLabel}>Процент побед</div>
                 <div className={`${styles.riftStatValue} ${getRiftWinRateClass(entry.winRate)}`}>{formatPercent(entry.winRate)}</div>
@@ -636,6 +635,7 @@ function RiftBuildPanel({
                 <div className={styles.riftStatLabel}>Коэффициент выбора</div>
                 <div className={styles.riftStatMuted}>{formatPercent(entry.pickRate)}</div>
               </div>
+              {entry.winRateRank ? <div className={styles.riftRankBadge}>#{entry.winRateRank}</div> : null}
             </div>
             <div className={styles.riftBuildItems}>
               {entry.entrySlugs.map((slug) => {
