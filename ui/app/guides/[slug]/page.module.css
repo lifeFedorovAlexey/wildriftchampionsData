@@ -1079,6 +1079,53 @@
     min-height: 36px;
   }
 
+  .quickOrderRow {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .quickIcons {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .quickItem {
+    gap: 6px;
+  }
+
+  .quickOrb {
+    width: 36px;
+    height: 36px;
+  }
+
+  .quickArrow {
+    font-size: 14px;
+  }
+
+  .skillRows {
+    gap: 10px;
+  }
+
+  .skillRow {
+    gap: 6px;
+  }
+
+  .skillName {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .skillLevels {
+    gap: 4px;
+  }
+
+  .skillLevel,
+  .skillLevelActive {
+    min-height: 30px;
+    font-size: 12px;
+  }
+
   .buildGrid {
     grid-template-columns: 1fr;
   }
@@ -1093,9 +1140,26 @@
     width: 68px;
   }
 
+  .buildSectionWide .orbRow {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .buildSectionWide .orbCard,
+  .buildSectionWide .orbCardCompact {
+    width: 100%;
+  }
+
   .orbMedia {
     width: 50px;
     height: 50px;
+  }
+
+  .buildSectionWide .orbName {
+    font-size: 11px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
   }
 
   .matchupGrid {
