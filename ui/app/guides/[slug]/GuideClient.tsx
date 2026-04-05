@@ -607,6 +607,32 @@ function getEntityInitials(value?: string | null) {
     .toUpperCase();
 }
 
+function splitRiftMatchupPreview(items: RiftGgMatchupEntry[]) {
+  const total = items.length;
+
+  if (total <= INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT * 2) {
+    const lowerHalfCount = Math.floor(total / 2);
+    const upperHalfCount = Math.floor(total / 2);
+    const hasMiddleItem = total % 2 === 1;
+    const middleIndex = Math.floor(total / 2);
+    const middleItem = hasMiddleItem ? items[middleIndex] : null;
+    const middleGoesToBest = (middleItem?.winRate ?? 0) >= 50;
+
+    const bestCount = upperHalfCount + (hasMiddleItem && middleGoesToBest ? 1 : 0);
+    const worstCount = lowerHalfCount + (hasMiddleItem && !middleGoesToBest ? 1 : 0);
+
+    return {
+      best: items.slice(0, bestCount),
+      worst: worstCount > 0 ? items.slice(total - worstCount) : [],
+    };
+  }
+
+  return {
+    best: items.slice(0, INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT),
+    worst: items.slice(-INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT),
+  };
+}
+
 function RiftBuildPanel({
   title,
   blocks,
@@ -741,8 +767,9 @@ function RiftMatchupsPanel({
   const availableSlugSet = new Set(availableGuideSlugs);
   const [isExpanded, setIsExpanded] = useState(false);
   const orderedItems = bestItems;
-  const topItems = orderedItems.slice(0, INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT);
-  const bottomItems = orderedItems.slice(-INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT);
+  const preview = splitRiftMatchupPreview(orderedItems);
+  const topItems = preview.best;
+  const bottomItems = preview.worst;
 
   useEffect(() => {
     setIsExpanded(false);
