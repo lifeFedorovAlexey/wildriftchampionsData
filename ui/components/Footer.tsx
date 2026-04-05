@@ -36,21 +36,16 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className={styles.supportBlock}>
-          <div className={styles.supportText}>
-            <p className={styles.supportCopy}>
-              Поддержка помогает оплачивать сервер и обновление данных.
-            </p>
-            <a
-              href={SUPPORT_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.supportButton}
-            >
-              Поддержать проект
-            </a>
-          </div>
-
+        <div className={styles.supportRow}>
+          <span className={styles.supportBrand}>Boosty</span>
+          <a
+            href={SUPPORT_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.supportLink}
+          >
+            Поддержать проект
+          </a>
           <a
             href={SUPPORT_LINK}
             target="_blank"
