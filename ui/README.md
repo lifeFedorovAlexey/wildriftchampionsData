@@ -26,7 +26,6 @@ npm run sync:guides:all
 - `NEXT_PUBLIC_API_BASE` - public base path for browser requests, default `/wr-api`
 - `GUIDES_SYNC_API_ORIGIN` - WR API origin used by the guide sync job
 - `GUIDES_SYNC_IMPORT_URL` - optional full import endpoint override
-- `GUIDES_SYNC_TOKEN` - bearer token for guide import requests
 - `GUIDES_SYNC_SECRET` - shared secret header for guide import requests
 
 Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_TARGET`.

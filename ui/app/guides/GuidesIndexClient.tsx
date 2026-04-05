@@ -4,8 +4,16 @@ import { useMemo, useState } from "react";
 import LaneFilter, { type LaneKey } from "@/components/LaneFilter";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import SearchField from "@/components/ui/SearchField";
+import guideShared from "@/shared/guides-shared.js";
 
 import styles from "./index.module.css";
+
+const {
+  normalizeGuideText,
+  localizeGuideRole,
+  toGuideLaneKey,
+  inferGuideLaneKeysFromRole,
+} = guideShared;
 
 type GuideListItem = {
   slug: string;
@@ -21,9 +29,7 @@ type GuideListItem = {
   buildCount: number;
 };
 
-function normalize(value: string) {
-  return value.trim().toLowerCase();
-}
+const normalize = normalizeGuideText;
 
 const LANE_FILTER_OPTIONS: ReadonlyArray<{ key: "all" | LaneKey; label: string }> = [
   { key: "all", label: "Все" },
@@ -55,43 +61,15 @@ const TIER_SORT_ORDER: Record<string, number> = {
   d: 9,
 };
 
-function localizeRole(value?: string | null) {
-  const normalized = normalize(String(value || ""));
-
-  if (!normalized) return "";
-
-  if (/^build\s*\d+$/i.test(normalized) || /^guide\s*\d+$/i.test(normalized)) {
-    return "";
-  }
-
-  if (normalized.includes("support") || normalized.includes("саппорт")) return "Саппорт";
-  if (normalized.includes("mid") || normalized.includes("мид")) return "Мид";
-  if (normalized.includes("jungle") || normalized.includes("лес")) return "Лес";
-  if (normalized.includes("baron") || normalized.includes("топ")) return "Барон";
-  if (normalized.includes("solo")) return "Барон";
-  if (normalized.includes("duo") || normalized.includes("adc") || normalized.includes("адк")) {
-    return "АДК";
-  }
-  if (normalized.includes("marksman") || normalized.includes("стрелок")) return "Стрелок";
-  if (normalized.includes("mage") || normalized.includes("маг")) return "Маг";
-  if (normalized.includes("assassin") || normalized.includes("убийца")) return "Убийца";
-  if (normalized.includes("tank") || normalized.includes("танк")) return "Танк";
-  if (normalized.includes("fighter") || normalized.includes("warrior") || normalized.includes("воин")) {
-    return "Воин";
-  }
-
-  return String(value || "").trim();
-}
-
 function splitRecommendedRoles(value?: string | null) {
   return String(value || "")
     .split("/")
-    .map((item) => localizeRole(item))
+    .map((item) => localizeGuideRole(item))
     .filter(Boolean);
 }
 
 function getDisplayRoles(item: GuideListItem) {
-  const normalizedRoles = item.roles.map((role) => localizeRole(role)).filter(Boolean);
+  const normalizedRoles = item.roles.map((role) => localizeGuideRole(role)).filter(Boolean);
   if (normalizedRoles.length) {
     return Array.from(new Set(normalizedRoles));
   }
@@ -104,72 +82,10 @@ function getDisplayRoles(item: GuideListItem) {
   return [];
 }
 
-function toLaneKey(value?: string | null): LaneKey | null {
-  const normalized = normalize(String(value || ""));
-
-  if (!normalized) return null;
-  if (normalized.includes("support") || normalized.includes("саппорт") || normalized.includes("поддерж")) return "support";
-  if (normalized.includes("mid") || normalized.includes("мид")) return "mid";
-  if (normalized.includes("jungle") || normalized.includes("лес")) return "jungle";
-  if (normalized.includes("solo") || normalized.includes("baron") || normalized.includes("барон") || normalized.includes("топ")) return "top";
-  if (
-    normalized.includes("duo") ||
-    normalized.includes("adc") ||
-    normalized.includes("дракон") ||
-    normalized.includes("адк") ||
-    normalized.includes("marksman") ||
-    normalized.includes("стрелок")
-  ) return "adc";
-
-  return null;
-}
-
-function inferLaneKeysFromRole(value?: string | null): LaneKey[] {
-  const normalized = normalize(String(value || ""));
-  if (!normalized) return [];
-
-  const lanes = new Set<LaneKey>();
-
-  if (normalized.includes("marksman") || normalized.includes("стрелок")) {
-    lanes.add("adc");
-  }
-
-  if (
-    normalized.includes("support") ||
-    normalized.includes("саппорт") ||
-    normalized.includes("поддерж") ||
-    normalized.includes("enchanter")
-  ) {
-    lanes.add("support");
-  }
-
-  if (normalized.includes("mage") || normalized.includes("маг")) {
-    lanes.add("mid");
-  }
-
-  if (normalized.includes("assassin") || normalized.includes("убийца")) {
-    lanes.add("mid");
-    lanes.add("jungle");
-  }
-
-  if (normalized.includes("fighter") || normalized.includes("warrior") || normalized.includes("воин")) {
-    lanes.add("top");
-    lanes.add("jungle");
-  }
-
-  if (normalized.includes("tank") || normalized.includes("танк")) {
-    lanes.add("top");
-    lanes.add("jungle");
-    lanes.add("support");
-  }
-
-  return Array.from(lanes);
-}
-
 function getLaneKeys(item: GuideListItem): LaneKey[] {
   const directKeys = [
-    ...item.roles.map((role) => toLaneKey(role)),
-    toLaneKey(item.recommendedRole),
+    ...item.roles.map((role) => toGuideLaneKey(role) as LaneKey | null),
+    toGuideLaneKey(item.recommendedRole) as LaneKey | null,
   ].filter(Boolean) as LaneKey[];
 
   if (directKeys.length) {
@@ -178,8 +94,8 @@ function getLaneKeys(item: GuideListItem): LaneKey[] {
 
   return Array.from(
     new Set([
-      ...item.roles.flatMap((role) => inferLaneKeysFromRole(role)),
-      ...inferLaneKeysFromRole(item.recommendedRole),
+      ...item.roles.flatMap((role) => inferGuideLaneKeysFromRole(role) as LaneKey[]),
+      ...(inferGuideLaneKeysFromRole(item.recommendedRole) as LaneKey[]),
     ]),
   );
 }

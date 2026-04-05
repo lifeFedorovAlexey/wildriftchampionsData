@@ -20,14 +20,7 @@ function getSyncHeaders() {
   const headers = {
     "content-type": "application/json",
   };
-  const bearerToken =
-    process.env.GUIDES_SYNC_TOKEN || process.env.CHAMPIONS_SYNC_TOKEN || "";
-  const sharedSecret =
-    process.env.GUIDES_SYNC_SECRET || process.env.CHAMPIONS_SYNC_SECRET || "";
-
-  if (bearerToken) {
-    headers.authorization = `Bearer ${bearerToken}`;
-  }
+  const sharedSecret = process.env.GUIDES_SYNC_SECRET || "";
 
   if (sharedSecret) {
     headers["x-guides-sync-secret"] = sharedSecret;

@@ -1,45 +1,10 @@
 import { getStatsApiBaseUrl } from "../../lib/stats-api-origin.js";
 import { fetchApiJson } from "../../lib/server-api.js";
+import guideShared from "../../shared/guides-shared.js";
 
 export { getStatsApiBaseUrl };
 
-const SLUG_RIOT_REMAP = {
-  nunu: "nunu-willump",
-  monkeyking: "wukong",
-  xinzhao: "xin-zhao",
-  aurelionsol: "aurelion-sol",
-  jarvaniv: "jarvan-iv",
-  leesin: "lee-sin",
-  drmundo: "dr-mundo",
-  missfortune: "miss-fortune",
-  twistedfate: "twisted-fate",
-  masteryi: "master-yi",
-};
-
-const SLUG_LOCAL_REMAP = Object.fromEntries(
-  Object.entries(SLUG_RIOT_REMAP).map(([localSlug, riotSlug]) => [riotSlug, localSlug]),
-);
-
-function mapToRiotSlug(slug) {
-  return SLUG_RIOT_REMAP[slug] ?? slug;
-}
-
-function mapToLocalSlug(slug) {
-  return SLUG_LOCAL_REMAP[slug] ?? slug;
-}
-
-function getSlugAliases(slug) {
-  const normalized = String(slug || "").trim();
-  if (!normalized) return [];
-
-  return Array.from(
-    new Set([
-      normalized,
-      mapToRiotSlug(normalized),
-      mapToLocalSlug(normalized),
-    ].filter(Boolean)),
-  );
-}
+const { mapToLocalSlug, getGuideSlugAliases, toGuideLaneKey } = guideShared;
 
 function normalizeGuidePayloadSlug(guide, requestedSlug) {
   if (!guide || typeof guide !== "object") return guide;
@@ -75,7 +40,7 @@ function normalizeGuideSummaryItems(items = []) {
 }
 
 export async function fetchGuideFromApi(slug) {
-  for (const alias of getSlugAliases(slug)) {
+  for (const alias of getGuideSlugAliases(slug)) {
     try {
       const payload = await fetchApiJson(`/api/guides/${encodeURIComponent(alias)}?lang=ru_ru`, {
         fetchOptions: {
@@ -178,38 +143,7 @@ export async function fetchGuideSummariesFromApi() {
 }
 
 export function toLaneKey(value) {
-  const normalized = String(value || "").trim().toLowerCase();
-
-  if (normalized.includes("support") || normalized.includes("саппорт")) {
-    return "support";
-  }
-
-  if (normalized.includes("mid") || normalized.includes("мид")) {
-    return "mid";
-  }
-
-  if (normalized.includes("jungle") || normalized.includes("лес")) {
-    return "jungle";
-  }
-
-  if (
-    normalized.includes("solo") ||
-    normalized.includes("baron") ||
-    normalized.includes("барон") ||
-    normalized.includes("топ")
-  ) {
-    return "top";
-  }
-
-  if (
-    normalized.includes("duo") ||
-    normalized.includes("adc") ||
-    normalized.includes("адк")
-  ) {
-    return "adc";
-  }
-
-  return null;
+  return toGuideLaneKey(value);
 }
 
 export async function fetchTierlistBulk() {

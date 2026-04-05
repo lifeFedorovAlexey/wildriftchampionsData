@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import guideShared from "../../shared/guides-shared.js";
 
 import {
   fetchChampionIndexFromApi,
@@ -11,6 +12,8 @@ import {
   getStatsApiBaseUrl,
   toLaneKey,
 } from "./guides-lib.shared.js";
+
+const { getGuideSlugAliases, localizeGuideLane } = guideShared;
 
 function withEnv(env, fn) {
   const previous = {
@@ -188,6 +191,13 @@ test("toLaneKey understands lane labels", () => {
   assert.equal(toLaneKey("ADC"), "adc");
   assert.equal(toLaneKey("лес"), "jungle");
   assert.equal(toLaneKey("unknown"), null);
+});
+
+test("shared guide helpers normalize slug aliases and lane labels", () => {
+  assert.deepEqual(getGuideSlugAliases("monkeyking"), ["monkeyking", "wukong"]);
+  assert.deepEqual(getGuideSlugAliases("wukong"), ["wukong", "monkeyking"]);
+  assert.equal(localizeGuideLane("Solo"), "Барон");
+  assert.equal(localizeGuideLane("adc"), "Дракон");
 });
 
 test("findTierLabelForChampion finds a champion tier by lane slice", () => {

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import { ensureLocalAssetSrc } from "@/lib/asset-safety";
+import guideShared from "@/shared/guides-shared.js";
 
 import styles from "./page.module.css";
 
@@ -103,8 +104,8 @@ type RiftGgLaneBlock<TEntry> = {
   worst?: RiftGgMatchupEntry[];
 };
 
-const INITIAL_RIFT_MATCHUPS_COUNT = 8;
 const INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT = 5;
+const { localizeGuideLane, toGuideLaneKey } = guideShared;
 
 export type GuideData = {
   champion: {
@@ -183,19 +184,6 @@ function formatAbilityHotkey(subtitle?: string | null) {
   return subtitle || "";
 }
 
-function localizeLane(value?: string | null) {
-  const normalized = String(value || "").trim().toLowerCase();
-
-  if (normalized.includes("support")) return "Саппорт";
-  if (normalized.includes("mid")) return "Мид";
-  if (normalized.includes("jungle")) return "Лес";
-  if (normalized.includes("solo")) return "Барон";
-  if (normalized.includes("baron")) return "Барон";
-  if (normalized.includes("duo")) return "Дуо";
-
-  return value || "";
-}
-
 function localizeRiftRank(value?: string | null) {
   const normalized = String(value || "").trim().toLowerCase();
   if (normalized === "diamond_plus") return "Алмаз+";
@@ -212,19 +200,7 @@ function localizeRiftLane(value?: string | null) {
   if (normalized === "mid") return "Мид";
   if (normalized === "adc") return "Дракон";
   if (normalized === "support") return "Поддержка";
-  return localizeLane(value);
-}
-
-function toRiftLaneKey(value?: string | null) {
-  const normalized = String(value || "").trim().toLowerCase();
-  if (normalized.includes("support") || normalized.includes("поддерж")) return "support";
-  if (normalized.includes("mid") || normalized.includes("мид")) return "mid";
-  if (normalized.includes("jungle") || normalized.includes("лес")) return "jungle";
-  if (normalized.includes("solo") || normalized.includes("baron") || normalized.includes("топ")) return "top";
-  if (normalized.includes("duo") || normalized.includes("dragon") || normalized.includes("адк")) {
-    return "adc";
-  }
-  return "";
+  return localizeGuideLane(value);
 }
 
 function formatPercent(value?: number | null) {
@@ -247,7 +223,7 @@ function isGenericVariantTitle(value?: string | null) {
 }
 
 function localizeVariantTitle(variant: GuideVariant) {
-  const lane = localizeLane(variant.lane);
+  const lane = localizeGuideLane(variant.lane);
   if (lane) return lane;
 
   if (isGenericVariantTitle(variant.title)) {
@@ -266,7 +242,7 @@ function localizeVariantTitle(variant: GuideVariant) {
 function getVariantRoleLabel(variant?: GuideVariant) {
   if (!variant) return "";
 
-  const lane = localizeLane(variant.lane);
+  const lane = localizeGuideLane(variant.lane);
   if (lane) return lane;
 
   if (isGenericVariantTitle(variant.title)) {
@@ -280,7 +256,7 @@ function buildOfficialSummary(guide: GuideData, variant?: GuideVariant) {
   const title = guide.champion.title || guide.official?.champion?.title || "";
   const role =
     getVariantRoleLabel(variant) ||
-    localizeLane(guide.metadata.recommendedRole) ||
+    localizeGuideLane(guide.metadata.recommendedRole) ||
     guide.metadata.recommendedRole ||
     guide.official?.roles?.join(" / ") ||
     "";
@@ -823,7 +799,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     riftgg?.matchups?.[0]?.rank ||
     "diamond_plus";
   const defaultRiftLane =
-    toRiftLaneKey(variant?.lane || guide.metadata.recommendedRole || "") ||
+    (toGuideLaneKey(variant?.lane || guide.metadata.recommendedRole || "") || "") ||
     riftgg?.availableLanes?.[0] ||
     "mid";
   const [selectedRiftRank, setSelectedRiftRank] = useState(defaultRiftRank);
@@ -839,7 +815,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     const seen = new Set<string>();
 
     variants.forEach((item, index) => {
-      const riftLane = toRiftLaneKey(item.lane || item.title || "");
+      const riftLane = toGuideLaneKey(item.lane || item.title || "") || "";
       const key = riftLane || `variant:${item.guideId}`;
       if (seen.has(key)) return;
       seen.add(key);
@@ -1047,7 +1023,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
               <span className={styles.metaPillLabel}>Роль</span>
               <span className={styles.metaPillValue}>
                 {getVariantRoleLabel(variant) ||
-                  localizeLane(guide.metadata.recommendedRole) ||
+                  localizeGuideLane(guide.metadata.recommendedRole) ||
                   guide.metadata.recommendedRole ||
                   "-"}
               </span>
