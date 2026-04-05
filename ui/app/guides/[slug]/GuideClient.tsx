@@ -686,27 +686,38 @@ function RiftMatchupCompactCard({
   const name = item.opponent?.name || slug;
   const hasGuide = availableSlugSet.has(slug);
   const content = (
-    <article className={styles.riftMatchupCompactCard}>
-      <div className={styles.riftMatchupCompactHead}>
+    <article className={styles.riftMatchupCard}>
+      <div className={styles.riftMatchupHead}>
         <ChampionAvatar
           name={name}
           src={item.opponent?.iconUrl || null}
           shape="circle"
-          mobileSize={40}
-          desktopSize={40}
+          mobileSize={52}
+          desktopSize={52}
         />
-        <div className={styles.riftMatchupCompactHeading}>
-          <div className={styles.riftMatchupCompactName}>{name}</div>
-          <div className={styles.riftMatchupCompactMeta}>
-            {item.winRateRank ? <span className={styles.riftCompactRank}>#{item.winRateRank}</span> : null}
-            <span className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>
-              {formatPercent(item.winRate)}
-            </span>
-            <span className={styles.riftStatInlineMeta}>
-              <span className={styles.riftStatInlineLabel}>PR</span>
-              <span className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</span>
-            </span>
+        <div>
+          <div className={styles.riftMatchupName}>{name}</div>
+          {item.opponent?.roles?.length ? (
+            <div className={styles.riftMatchupLane}>{localizeGuideLane(item.opponent.roles[0])}</div>
+          ) : null}
+        </div>
+      </div>
+      <div className={styles.riftMatchupStats}>
+        {item.winRateRank ? (
+          <div className={styles.riftBuildStat}>
+            <div className={styles.riftStatLabel}>Ранг</div>
+            <div className={styles.riftCompactRank}>#{item.winRateRank}</div>
           </div>
+        ) : null}
+        <div className={styles.riftBuildStat}>
+          <div className={styles.riftStatLabel}>Винрейт</div>
+          <div className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>
+            {formatPercent(item.winRate)}
+          </div>
+        </div>
+        <div className={styles.riftBuildStat}>
+          <div className={styles.riftStatLabel}>Пикрейт</div>
+          <div className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</div>
         </div>
       </div>
     </article>
@@ -759,7 +770,7 @@ function RiftMatchupsPanel({
       {isExpanded ? (
         <>
           <div className={styles.sectionEyebrow}>Лучшие</div>
-          <div className={styles.riftMatchupsSingleList}>
+          <div className={styles.riftMatchupsGrid}>
             {orderedItems.map((item) => (
               <RiftMatchupCompactCard
                 key={`all-${item.opponentSlug}`}
@@ -773,7 +784,7 @@ function RiftMatchupsPanel({
       ) : (
         <>
           <div className={styles.sectionEyebrow}>Лучшие</div>
-          <div className={styles.riftMatchupsSingleList}>
+          <div className={styles.riftMatchupsGrid}>
             {topItems.map((item) => (
               <RiftMatchupCompactCard
                 key={`top-${item.opponentSlug}`}
@@ -794,7 +805,7 @@ function RiftMatchupsPanel({
             </div>
           ) : null}
           <div className={styles.sectionEyebrow}>Худшие</div>
-          <div className={styles.riftMatchupsSingleList}>
+          <div className={styles.riftMatchupsGrid}>
             {bottomItems.map((item) => (
               <RiftMatchupCompactCard
                 key={`bottom-${item.opponentSlug}`}
