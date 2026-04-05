@@ -13,6 +13,10 @@
   margin-bottom: var(--space-4);
 }
 
+.top > a {
+  align-self: flex-start;
+}
+
 @media (max-width: 640px) {
   .wrap {
     padding: var(--space-3) var(--space-3) var(--space-4);

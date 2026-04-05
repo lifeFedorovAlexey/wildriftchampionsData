@@ -1,6 +1,4 @@
 "use client";
-
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
@@ -984,13 +982,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         <div className={styles.heroOverlay} aria-hidden="true" />
 
         <div className={styles.heroContent}>
-          <Link href="/guides" className={styles.guidesBackLink}>
-            <span className={styles.guidesBackIcon} aria-hidden="true">
-              ←
-            </span>
-            <span>К гайдам</span>
-          </Link>
-
           <div className={styles.heroMain}>
             {!heroVideoSrc && guide.champion.iconUrl ? (
               <ChampionAvatar

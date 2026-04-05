@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import PageWrapper from "@/components/PageWrapper";
 import GuideClient, { type GuideData } from "./GuideClient";
+import styles from "./page.module.css";
 import {
   type BulkResponse,
   fetchGuideFromApi,
@@ -155,6 +157,11 @@ export default async function GuidePage({
     <PageWrapper
       title={`Гайд: ${guideWithOwnTiers.champion.name}`}
       paragraphs={[guideLeadParagraph]}
+      topContent={
+        <Link href="/guides" className={styles.guidesBackLink}>
+          ← К гайдам
+        </Link>
+      }
     >
       <GuideClient guide={guideWithOwnTiers} />
     </PageWrapper>
