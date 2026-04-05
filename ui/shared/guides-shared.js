@@ -77,7 +77,12 @@ function localizeGuideRole(value = "") {
   if (normalized.includes("mid") || normalized.includes("мид")) return "Мид";
   if (normalized.includes("jungle") || normalized.includes("лес")) return "Лес";
   if (normalized.includes("solo") || normalized.includes("baron") || normalized.includes("барон") || normalized.includes("топ")) return "Барон";
-  if (normalized.includes("duo") || normalized.includes("adc") || normalized.includes("адк")) return "АДК";
+  if (
+    normalized.includes("duo") ||
+    normalized.includes("дуо") ||
+    normalized.includes("adc") ||
+    normalized.includes("адк")
+  ) return "АДК";
   if (normalized.includes("marksman") || normalized.includes("стрелок")) return "Стрелок";
   if (normalized.includes("mage") || normalized.includes("маг")) return "Маг";
   if (normalized.includes("assassin") || normalized.includes("убийца")) return "Убийца";
@@ -109,6 +114,7 @@ function toGuideLaneKey(value = "") {
   if (normalized.includes("solo") || normalized.includes("baron") || normalized.includes("барон") || normalized.includes("топ")) return "top";
   if (
     normalized.includes("duo") ||
+    normalized.includes("дуо") ||
     normalized.includes("adc") ||
     normalized.includes("дракон") ||
     normalized.includes("адк") ||
