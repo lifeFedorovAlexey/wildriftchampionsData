@@ -572,6 +572,10 @@
   margin: 12px 0 10px;
 }
 
+.riftMatchupsDivider + .sectionEyebrow {
+  margin-top: 6px;
+}
+
 .riftMatchupCompactCard {
   display: grid;
   gap: 6px;
