@@ -87,6 +87,7 @@ export default function ChampionAvatar({
     ensureLocalAssetSrc("ChampionAvatar", src),
     requestedSize,
   );
+  const isWrApiAsset = Boolean(safeSrc && safeSrc.startsWith("/wr-api/"));
 
   const content = safeSrc ? (
     <Image
@@ -99,6 +100,7 @@ export default function ChampionAvatar({
       loading={loading}
       fetchPriority={fetchPriority}
       decoding={decoding}
+      unoptimized={isWrApiAsset}
       className={cx(styles.image, imageClassName)}
     />
   ) : (
