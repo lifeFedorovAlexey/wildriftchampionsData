@@ -188,6 +188,7 @@ function localizeLane(value?: string | null) {
   if (normalized.includes("support")) return "Саппорт";
   if (normalized.includes("mid")) return "Мид";
   if (normalized.includes("jungle")) return "Лес";
+  if (normalized.includes("solo")) return "Барон";
   if (normalized.includes("baron")) return "Барон";
   if (normalized.includes("duo")) return "Дуо";
 
@@ -218,7 +219,7 @@ function toRiftLaneKey(value?: string | null) {
   if (normalized.includes("support") || normalized.includes("поддерж")) return "support";
   if (normalized.includes("mid") || normalized.includes("мид")) return "mid";
   if (normalized.includes("jungle") || normalized.includes("лес")) return "jungle";
-  if (normalized.includes("baron") || normalized.includes("топ")) return "top";
+  if (normalized.includes("solo") || normalized.includes("baron") || normalized.includes("топ")) return "top";
   if (normalized.includes("duo") || normalized.includes("dragon") || normalized.includes("адк")) {
     return "adc";
   }
@@ -783,6 +784,46 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     "mid";
   const [selectedRiftRank, setSelectedRiftRank] = useState(defaultRiftRank);
   const [selectedRiftLane, setSelectedRiftLane] = useState(defaultRiftLane);
+  const laneTabs = (() => {
+    const tabs: Array<{
+      key: string;
+      label: string;
+      ownTier?: string | null;
+      variantIndex: number;
+      riftLane?: string | null;
+    }> = [];
+    const seen = new Set<string>();
+
+    variants.forEach((item, index) => {
+      const riftLane = toRiftLaneKey(item.lane || item.title || "");
+      const key = riftLane || `variant:${item.guideId}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      tabs.push({
+        key,
+        label: riftLane ? localizeRiftLane(riftLane) : localizeVariantTitle(item),
+        ownTier: item.ownTier,
+        variantIndex: index,
+        riftLane,
+      });
+    });
+
+    if (!tabs.length) {
+      (riftgg?.availableLanes || []).forEach((lane) => {
+        if (seen.has(lane)) return;
+        seen.add(lane);
+        tabs.push({
+          key: lane,
+          label: localizeRiftLane(lane),
+          ownTier: null,
+          variantIndex: defaultIndex,
+          riftLane: lane,
+        });
+      });
+    }
+
+    return tabs;
+  })();
 
   const pickRiftBlock = <TEntry,>(blocks?: RiftGgLaneBlock<TEntry>[]) =>
     blocks?.filter((block) => block.rank === selectedRiftRank && block.lane === selectedRiftLane) || [];
@@ -903,19 +944,26 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             </div>
           </div>
 
-          {variants.length > 1 ? (
+          {laneTabs.length > 1 ? (
             <div className={styles.variantTabs}>
-              {variants.map((item, index) => {
-                const active = index === selectedVariantIndex;
+              {laneTabs.map((item) => {
+                const active = item.riftLane
+                  ? selectedRiftLane === item.riftLane
+                  : item.variantIndex === selectedVariantIndex;
 
                 return (
                   <button
-                    key={item.guideId}
+                    key={item.key}
                     type="button"
-                    onClick={() => setSelectedVariantIndex(index)}
+                    onClick={() => {
+                      setSelectedVariantIndex(item.variantIndex);
+                      if (item.riftLane) {
+                        setSelectedRiftLane(item.riftLane);
+                      }
+                    }}
                     className={active ? styles.variantTabActive : styles.variantTab}
                   >
-                    <span>{localizeVariantTitle(item)}</span>
+                    <span>{item.label}</span>
                     {item.ownTier ? <strong>{item.ownTier}</strong> : null}
                   </button>
                 );
@@ -943,23 +991,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                 </div>
               ) : null}
 
-              {(riftgg.availableLanes || []).length ? (
-                <div className={styles.riftFilterGroup}>
-                  <div className={styles.sectionEyebrow}>Положение</div>
-                  <div className={styles.variantTabs}>
-                    {(riftgg.availableLanes || []).map((lane) => (
-                      <button
-                        key={lane}
-                        type="button"
-                        onClick={() => setSelectedRiftLane(lane)}
-                        className={selectedRiftLane === lane ? styles.variantTabActive : styles.variantTab}
-                      >
-                        <span>{localizeRiftLane(lane)}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
             </div>
           ) : null}
 
