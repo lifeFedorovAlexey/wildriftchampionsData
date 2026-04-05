@@ -16,6 +16,8 @@ const sourceLinks = [
   },
 ];
 
+const SUPPORT_LINK = "https://boosty.to/lifeonfire/donate";
+
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -32,6 +34,20 @@ export default function Footer() {
               </Link>
             ))}
           </nav>
+        </div>
+
+        <div className={styles.supportBlock}>
+          <p className={styles.supportCopy}>
+            Поддержка помогает оплачивать сервер и обновление данных.
+          </p>
+          <a
+            href={SUPPORT_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.supportButton}
+          >
+            Поддержать проект
+          </a>
         </div>
 
         <div className={styles.bottomRow}>

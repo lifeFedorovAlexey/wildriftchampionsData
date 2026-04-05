@@ -17,6 +17,51 @@
   justify-items: center;
 }
 
+.supportBlock {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.supportCopy {
+  margin: 0;
+  color: rgba(236, 241, 255, 0.72);
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.supportButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.88);
+  border: 1px solid rgba(125, 211, 252, 0.24);
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    transform 140ms ease;
+}
+
+.supportButton:hover {
+  background: rgba(27, 36, 53, 0.94);
+  border-color: rgba(125, 211, 252, 0.42);
+  transform: translateY(-1px);
+}
+
 .brandBlock {
   display: grid;
   gap: 0;
@@ -110,6 +155,11 @@
 
   .nav {
     gap: 8px 14px;
+  }
+
+  .supportBlock {
+    padding: 14px 12px;
+    margin-top: 16px;
   }
 
   .disclaimer {
