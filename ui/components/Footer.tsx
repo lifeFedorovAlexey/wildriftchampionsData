@@ -37,16 +37,32 @@ export default function Footer() {
         </div>
 
         <div className={styles.supportBlock}>
-          <p className={styles.supportCopy}>
-            Поддержка помогает оплачивать сервер и обновление данных.
-          </p>
+          <div className={styles.supportText}>
+            <p className={styles.supportCopy}>
+              Поддержка помогает оплачивать сервер и обновление данных.
+            </p>
+            <a
+              href={SUPPORT_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.supportButton}
+            >
+              Поддержать проект
+            </a>
+          </div>
+
           <a
             href={SUPPORT_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.supportButton}
+            className={styles.supportQrLink}
+            aria-label="QR-код для поддержки проекта"
           >
-            Поддержать проект
+            <img
+              src="/boosty-donate-qr.png"
+              alt="QR-код для поддержки проекта"
+              className={styles.supportQr}
+            />
           </a>
         </div>
 

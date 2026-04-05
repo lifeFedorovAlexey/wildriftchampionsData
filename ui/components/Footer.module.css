@@ -19,8 +19,9 @@
 
 .supportBlock {
   display: grid;
-  gap: 10px;
-  justify-items: center;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   margin-top: 18px;
   padding: 16px 18px;
   border-radius: 18px;
@@ -28,12 +29,18 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.supportText {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
 .supportCopy {
   margin: 0;
   color: rgba(236, 241, 255, 0.72);
   font-size: 13px;
   line-height: 1.45;
-  text-align: center;
+  text-align: left;
 }
 
 .supportButton {
@@ -60,6 +67,35 @@
   background: rgba(27, 36, 53, 0.94);
   border-color: rgba(125, 211, 252, 0.42);
   transform: translateY(-1px);
+}
+
+.supportQrLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 16, 36, 0.76);
+  text-decoration: none;
+  transition:
+    border-color 140ms ease,
+    transform 140ms ease,
+    background 140ms ease;
+}
+
+.supportQrLink:hover {
+  background: rgba(17, 24, 39, 0.92);
+  border-color: rgba(125, 211, 252, 0.32);
+  transform: translateY(-1px);
+}
+
+.supportQr {
+  width: 72px;
+  height: 72px;
+  display: block;
+  border-radius: 10px;
+  background: #fff;
 }
 
 .brandBlock {
@@ -160,6 +196,21 @@
   .supportBlock {
     padding: 14px 12px;
     margin-top: 16px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .supportText {
+    justify-items: center;
+  }
+
+  .supportCopy {
+    text-align: center;
+  }
+
+  .supportQr {
+    width: 64px;
+    height: 64px;
   }
 
   .disclaimer {
