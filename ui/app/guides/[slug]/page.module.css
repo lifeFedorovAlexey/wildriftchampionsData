@@ -1041,7 +1041,46 @@
   }
 
   .riftMatchupStats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .riftMatchupCard {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .riftMatchupHead {
+    gap: 10px;
+  }
+
+  .riftMatchupName {
+    font-size: 15px;
+    line-height: 1.05;
+  }
+
+  .riftMatchupLane {
+    margin-top: 2px;
+    font-size: 11px;
+  }
+
+  .riftStatLabel {
+    font-size: 10px;
+  }
+
+  .riftStatValue {
+    font-size: 15px;
+  }
+
+  .riftStatMuted {
+    font-size: 13px;
+  }
+
+  .riftCompactRank {
+    min-width: 34px;
+    min-height: 20px;
+    padding: 0 6px;
+    font-size: 10px;
   }
 
   .riftRankBadge {
