@@ -37,14 +37,18 @@ export default function Footer() {
         </div>
 
         <div className={styles.supportRow}>
-          <span className={styles.supportBrand}>Boosty</span>
           <a
             href={SUPPORT_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.supportLink}
+            className={styles.supportLogoLink}
+            aria-label="Boosty"
           >
-            Поддержать проект
+            <img
+              src="/boosty-logo.svg"
+              alt="Boosty"
+              className={styles.supportLogo}
+            />
           </a>
           <a
             href={SUPPORT_LINK}

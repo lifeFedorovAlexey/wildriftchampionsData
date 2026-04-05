@@ -26,45 +26,25 @@
   margin-top: 18px;
 }
 
-.supportBrand {
+.supportLogoLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 34px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #f8fafc;
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.supportLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 34px;
-  padding: 0 14px;
-  border-radius: 999px;
-  background: rgba(17, 24, 39, 0.7);
-  border: 1px solid rgba(125, 211, 252, 0.24);
-  color: #f8fafc;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1;
   text-decoration: none;
   transition:
-    background 140ms ease,
-    border-color 140ms ease,
+    opacity 140ms ease,
     transform 140ms ease;
 }
 
-.supportLink:hover {
-  background: rgba(27, 36, 53, 0.94);
-  border-color: rgba(125, 211, 252, 0.42);
+.supportLogoLink:hover {
+  opacity: 0.92;
   transform: translateY(-1px);
+}
+
+.supportLogo {
+  width: 126px;
+  height: auto;
+  display: block;
 }
 
 .supportQrLink {
@@ -193,6 +173,10 @@
 
   .supportRow {
     margin-top: 16px;
+  }
+
+  .supportLogo {
+    width: 112px;
   }
 
   .supportQr {
