@@ -112,7 +112,14 @@ function toLaneKey(value?: string | null): LaneKey | null {
   if (normalized.includes("mid") || normalized.includes("мид")) return "mid";
   if (normalized.includes("jungle") || normalized.includes("лес")) return "jungle";
   if (normalized.includes("solo") || normalized.includes("baron") || normalized.includes("барон") || normalized.includes("топ")) return "top";
-  if (normalized.includes("duo") || normalized.includes("adc") || normalized.includes("дракон") || normalized.includes("адк")) return "adc";
+  if (
+    normalized.includes("duo") ||
+    normalized.includes("adc") ||
+    normalized.includes("дракон") ||
+    normalized.includes("адк") ||
+    normalized.includes("marksman") ||
+    normalized.includes("стрелок")
+  ) return "adc";
 
   return null;
 }
