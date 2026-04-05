@@ -703,7 +703,10 @@ function RiftMatchupCompactCard({
             <span className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>
               {formatPercent(item.winRate)}
             </span>
-            <span className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</span>
+            <span className={styles.riftStatInlineMeta}>
+              <span className={styles.riftStatInlineLabel}>PR</span>
+              <span className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</span>
+            </span>
             {item.winRateRank ? <span className={styles.riftCompactRank}>#{item.winRateRank}</span> : null}
           </div>
         </div>

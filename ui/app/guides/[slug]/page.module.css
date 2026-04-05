@@ -607,6 +607,20 @@
   align-items: center;
 }
 
+.riftStatInlineMeta {
+  display: inline-flex;
+  gap: 5px;
+  align-items: baseline;
+}
+
+.riftStatInlineLabel {
+  color: var(--text-soft);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .riftCompactRank {
   display: inline-flex;
   align-items: center;
