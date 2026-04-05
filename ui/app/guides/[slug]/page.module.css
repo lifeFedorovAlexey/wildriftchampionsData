@@ -752,20 +752,17 @@
 }
 
 .riftBuildMeta {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 12px;
-  align-items: center;
+  grid-template-columns: auto minmax(108px, auto) minmax(108px, auto);
+  align-items: start;
+  justify-content: start;
 }
 
 .riftBuildStat {
   display: grid;
   gap: 3px;
   min-width: 108px;
-}
-
-.riftBuildMeta .riftRankBadge {
-  margin-left: auto;
 }
 
 .riftBuildItems {
@@ -1011,18 +1008,15 @@
   }
 
   .riftBuildMeta {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 8px;
-    align-items: center;
+    grid-template-columns: auto minmax(82px, auto) minmax(82px, auto);
+    align-items: start;
+    justify-content: start;
   }
 
   .riftBuildStat {
     min-width: 82px;
-  }
-
-  .riftBuildMeta .riftRankBadge {
-    margin-left: 0;
   }
 
   .riftBuildItems {
