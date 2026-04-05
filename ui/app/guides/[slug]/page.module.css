@@ -624,8 +624,7 @@
   font-size: 12px;
 }
 
-.riftMatchupStats,
-.riftBuildMeta {
+.riftMatchupStats {
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -680,7 +679,7 @@
 .riftBuildRows {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .riftPanelFooter {
@@ -715,28 +714,60 @@
 
 .riftBuildCard {
   display: grid;
-  gap: 10px;
-  min-height: 100%;
-  padding: 12px;
+  gap: 12px;
+  padding: 12px 14px;
   border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.68);
   border: 1px solid var(--border-soft);
 }
 
-.riftBuildCard :global(article.orbCardCompact) {
-  width: 58px;
+.riftBuildMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
 }
 
-.riftBuildCard :global(.quickOrb),
-.riftBuildCard :global(.orbMedia) {
-  width: 40px;
-  height: 40px;
+.riftBuildStat {
+  display: grid;
+  gap: 3px;
+  min-width: 108px;
 }
 
-.riftBuildCard :global(.orbName) {
-  margin-top: 6px;
+.riftBuildItems {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
+  align-items: start;
+}
+
+.riftBuildItem {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
+}
+
+.riftBuildItemMedia {
+  position: relative;
+}
+
+.riftBuildItemIcon {
+  width: 44px;
+  height: 44px;
+  display: block;
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+  border: 2px solid rgba(125, 211, 252, 0.42);
+  background: rgba(11, 16, 36, 0.96);
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.08);
+}
+
+.riftBuildItemName {
+  color: var(--text-main);
   font-size: 11px;
   line-height: 1.15;
+  text-wrap: balance;
 }
 
 .matchupImage {
@@ -919,13 +950,22 @@
     grid-template-columns: 1fr;
   }
 
-  .riftMatchupStats,
-  .riftBuildMeta {
+  .riftMatchupStats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .riftRankBadge {
     justify-self: start;
+  }
+
+  .riftBuildMeta {
+    display: grid;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .riftBuildItems {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .variantTab,

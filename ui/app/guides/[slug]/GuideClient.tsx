@@ -616,17 +616,17 @@ function RiftBuildPanel({
         {blocks[0].entries?.slice(0, 7).map((entry, index) => (
           <article key={`${title}-${index}`} className={styles.riftBuildCard}>
             <div className={styles.riftBuildMeta}>
-              <div>
+              {entry.winRateRank ? <div className={styles.riftRankBadge}>#{entry.winRateRank}</div> : null}
+              <div className={styles.riftBuildStat}>
                 <div className={styles.riftStatLabel}>Процент побед</div>
                 <div className={`${styles.riftStatValue} ${getRiftWinRateClass(entry.winRate)}`}>{formatPercent(entry.winRate)}</div>
               </div>
-              <div>
+              <div className={styles.riftBuildStat}>
                 <div className={styles.riftStatLabel}>Коэффициент выбора</div>
                 <div className={styles.riftStatMuted}>{formatPercent(entry.pickRate)}</div>
               </div>
-              {entry.winRateRank ? <div className={styles.riftRankBadge}>#{entry.winRateRank}</div> : null}
             </div>
-            <div className={styles.orbRow}>
+            <div className={styles.riftBuildItems}>
               {entry.entrySlugs.map((slug) => {
                 const dictItem = dictionary?.[slug];
                 const entity: GuideEntity = {
@@ -636,7 +636,22 @@ function RiftBuildPanel({
                   tooltip: toRiftTooltip(dictItem),
                 };
 
-                return <OrbCard key={`${title}-${index}-${slug}`} item={entity} compact />;
+                return (
+                  <article key={`${title}-${index}-${slug}`} className={styles.riftBuildItem}>
+                    <TooltipTrigger tooltip={entity.tooltip} fallbackName={entity.name}>
+                      <div className={styles.riftBuildItemMedia}>
+                        {entity.imageUrl ? (
+                          <img
+                            className={styles.riftBuildItemIcon}
+                            src={ensureLocalAssetSrc("GuideClient.riftBuild", entity.imageUrl) || ""}
+                            alt={entity.name}
+                          />
+                        ) : null}
+                      </div>
+                    </TooltipTrigger>
+                    <div className={styles.riftBuildItemName}>{entity.name}</div>
+                  </article>
+                );
               })}
             </div>
           </article>
