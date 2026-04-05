@@ -520,6 +520,91 @@
   text-decoration: none;
 }
 
+.riftMatchupsPreview {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+}
+
+.riftMatchupsPreviewColumn {
+  display: grid;
+  gap: 8px;
+}
+
+.riftMatchupsPreviewCenter {
+  display: grid;
+  place-items: center;
+  align-self: center;
+}
+
+.riftMatchupsCompactList,
+.riftMatchupsCompactListExpanded {
+  display: grid;
+  gap: 8px;
+}
+
+.riftMatchupsCompactListExpanded {
+  margin-top: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.riftMatchupsTabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  justify-content: center;
+}
+
+.riftMatchupCompactCard {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(17, 24, 39, 0.62);
+  border: 1px solid var(--border-soft);
+}
+
+.riftMatchupCompactHead {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.riftMatchupCompactHeading {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.riftMatchupCompactName {
+  color: var(--text-strong);
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.riftMatchupCompactMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.riftCompactRank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.14);
+  color: #7fe084;
+  font-weight: 800;
+  font-size: 12px;
+}
+
 .riftMatchupsGrid {
   display: grid;
   gap: 14px;
@@ -568,9 +653,8 @@
 }
 
 .riftStatValue {
-  margin-top: 6px;
   font-weight: 800;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 1;
 }
 
@@ -587,10 +671,9 @@
 }
 
 .riftStatMuted {
-  margin-top: 6px;
   color: var(--text-main);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 1;
 }
 
@@ -616,7 +699,7 @@
 .riftPanelFooter {
   display: flex;
   justify-content: center;
-  margin-top: 18px;
+  margin-top: 14px;
 }
 
 .riftMoreButton {
@@ -651,6 +734,16 @@
   border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.78);
   border: 1px solid var(--border-soft);
+}
+
+@media (max-width: 900px) {
+  .riftMatchupsPreview {
+    grid-template-columns: 1fr;
+  }
+
+  .riftMatchupsPreviewCenter {
+    order: 3;
+  }
 }
 
 .matchupImage {

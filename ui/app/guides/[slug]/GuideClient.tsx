@@ -104,6 +104,7 @@ type RiftGgLaneBlock<TEntry> = {
 };
 
 const INITIAL_RIFT_MATCHUPS_COUNT = 8;
+const INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT = 4;
 
 export type GuideData = {
   champion: {
@@ -669,79 +670,149 @@ function RiftBuildPanel({
   );
 }
 
+function RiftMatchupCompactCard({
+  item,
+  availableSlugSet,
+}: {
+  item: RiftGgMatchupEntry;
+  availableSlugSet: Set<string>;
+}) {
+  const slug = item.opponentSlug;
+  const name = item.opponent?.name || slug;
+  const hasGuide = availableSlugSet.has(slug);
+  const content = (
+    <article className={styles.riftMatchupCompactCard}>
+      <div className={styles.riftMatchupCompactHead}>
+        <ChampionAvatar
+          name={name}
+          src={item.opponent?.iconUrl || null}
+          shape="circle"
+          mobileSize={40}
+          desktopSize={40}
+        />
+        <div className={styles.riftMatchupCompactHeading}>
+          <div className={styles.riftMatchupCompactName}>{name}</div>
+          <div className={styles.riftMatchupCompactMeta}>
+            <span className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>
+              {formatPercent(item.winRate)}
+            </span>
+            <span className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</span>
+            {item.winRateRank ? <span className={styles.riftCompactRank}>#{item.winRateRank}</span> : null}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+
+  return hasGuide ? (
+    <a key={slug} className={styles.riftMatchupLink} href={`/guides/${slug}`}>
+      {content}
+    </a>
+  ) : (
+    <div key={slug}>{content}</div>
+  );
+}
+
 function RiftMatchupsPanel({
-  title,
-  items,
+  bestItems,
+  worstItems,
   availableGuideSlugs = [],
 }: {
-  title: string;
-  items: RiftGgMatchupEntry[];
+  bestItems: RiftGgMatchupEntry[];
+  worstItems: RiftGgMatchupEntry[];
   availableGuideSlugs?: string[];
 }) {
   const availableSlugSet = new Set(availableGuideSlugs);
   const [isExpanded, setIsExpanded] = useState(false);
-  const visibleItems = isExpanded ? items : items.slice(0, INITIAL_RIFT_MATCHUPS_COUNT);
+  const [selectedGroup, setSelectedGroup] = useState<"best" | "worst">("best");
+  const activeItems = selectedGroup === "best" ? bestItems : worstItems;
+  const visibleItems = isExpanded ? activeItems : activeItems.slice(0, INITIAL_RIFT_MATCHUPS_COUNT);
 
   useEffect(() => {
     setIsExpanded(false);
-  }, [items]);
+    setSelectedGroup("best");
+  }, [bestItems, worstItems]);
 
   return (
     <section className={styles.panel}>
-      <h2 className={styles.panelTitle}>{title}</h2>
-      <div className={styles.riftMatchupsGrid}>
-        {visibleItems.map((item) => {
-          const slug = item.opponentSlug;
-          const name = item.opponent?.name || slug;
-          const hasGuide = availableSlugSet.has(slug);
-          const content = (
-            <article className={styles.riftMatchupCard}>
-              <div className={styles.riftMatchupHead}>
-                <ChampionAvatar
-                  name={name}
-                  src={item.opponent?.iconUrl || null}
-                  shape="circle"
-                  mobileSize={52}
-                  desktopSize={52}
-                />
-                <div>
-                  <div className={styles.riftMatchupName}>{name}</div>
-                  <div className={styles.riftMatchupLane}>
-                    {localizeRiftLane(item.opponent?.roles?.[0] || null)}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.riftMatchupStats}>
-                <div>
-                  <div className={styles.riftStatLabel}>Процент выигрышей</div>
-                  <div className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>{formatPercent(item.winRate)}</div>
-                </div>
-                <div>
-                  <div className={styles.riftStatLabel}>Коэффициент выбора</div>
-                  <div className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</div>
-                </div>
-                {item.winRateRank ? <div className={styles.riftRankBadge}>#{item.winRateRank}</div> : null}
-              </div>
-            </article>
-          );
+      <h2 className={styles.panelTitle}>Матчапы</h2>
 
-          return hasGuide ? (
-            <a key={`${title}-${slug}`} className={styles.riftMatchupLink} href={`/guides/${slug}`}>
-              {content}
-            </a>
-          ) : (
-            <div key={`${title}-${slug}`}>{content}</div>
-          );
-        })}
+      <div className={styles.riftMatchupsPreview}>
+        <div className={styles.riftMatchupsPreviewColumn}>
+          <div className={styles.sectionEyebrow}>Лучшие</div>
+          <div className={styles.riftMatchupsCompactList}>
+            {bestItems.slice(0, INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT).map((item) => (
+              <RiftMatchupCompactCard
+                key={`best-${item.opponentSlug}`}
+                item={item}
+                availableSlugSet={availableSlugSet}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.riftMatchupsPreviewCenter}>
+          <button
+            type="button"
+            className={styles.riftMoreButton}
+            onClick={() => setIsExpanded((value) => !value)}
+          >
+            {isExpanded ? "Скрыть список" : `Весь список (${Math.max(bestItems.length, worstItems.length)})`}
+          </button>
+        </div>
+
+        <div className={styles.riftMatchupsPreviewColumn}>
+          <div className={styles.sectionEyebrow}>Худшие</div>
+          <div className={styles.riftMatchupsCompactList}>
+            {worstItems.slice(0, INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT).map((item) => (
+              <RiftMatchupCompactCard
+                key={`worst-${item.opponentSlug}`}
+                item={item}
+                availableSlugSet={availableSlugSet}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      {items.length > INITIAL_RIFT_MATCHUPS_COUNT ? (
+
+      {isExpanded ? (
+        <>
+          <div className={styles.riftMatchupsTabs}>
+            <button
+              type="button"
+              className={selectedGroup === "best" ? styles.variantTabActive : styles.variantTab}
+              onClick={() => setSelectedGroup("best")}
+            >
+              <span>Лучшие</span>
+            </button>
+            <button
+              type="button"
+              className={selectedGroup === "worst" ? styles.variantTabActive : styles.variantTab}
+              onClick={() => setSelectedGroup("worst")}
+            >
+              <span>Худшие</span>
+            </button>
+          </div>
+          <div className={styles.riftMatchupsCompactListExpanded}>
+            {visibleItems.map((item) => (
+              <RiftMatchupCompactCard
+                key={`${selectedGroup}-${item.opponentSlug}`}
+                item={item}
+                availableSlugSet={availableSlugSet}
+              />
+            ))}
+          </div>
+        </>
+      ) : null}
+
+      {isExpanded && activeItems.length > INITIAL_RIFT_MATCHUPS_COUNT ? (
         <div className={styles.riftPanelFooter}>
           <button
             type="button"
             className={styles.riftMoreButton}
             onClick={() => setIsExpanded((value) => !value)}
           >
-            {isExpanded ? "Свернуть" : `Показать еще (${items.length})`}
+            Свернуть
           </button>
         </div>
       ) : null}
@@ -1030,13 +1101,8 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         <>
           <div className={styles.topGrid}>
             <RiftMatchupsPanel
-              title="Лучшие матчапы"
-              items={bestMatchups}
-              availableGuideSlugs={guide.availableGuideSlugs}
-            />
-            <RiftMatchupsPanel
-              title="Худшие матчапы"
-              items={worstMatchups}
+              bestItems={bestMatchups}
+              worstItems={worstMatchups}
               availableGuideSlugs={guide.availableGuideSlugs}
             />
           </div>
