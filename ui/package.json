@@ -33,7 +33,7 @@
     "@types/react-dom": "^19",
     "@types/styled-components": "^5.1.36",
     "c8": "^11.0.0",
-    "eslint": "^9",
+    "eslint": "^10",
     "eslint-config-next": "16.2.2",
     "jscpd": "^4.0.8",
     "tailwindcss": "^4",
