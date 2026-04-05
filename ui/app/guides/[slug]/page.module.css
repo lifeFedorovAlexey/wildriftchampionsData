@@ -767,8 +767,9 @@
 .riftBuildItems {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(82px, 88px));
   align-items: start;
+  justify-content: start;
 }
 
 .riftBuildItem {
@@ -791,6 +792,20 @@
   border: 2px solid rgba(125, 211, 252, 0.42);
   background: rgba(11, 16, 36, 0.96);
   box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.08);
+}
+
+.riftBuildItemFallback {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  border: 2px solid rgba(125, 211, 252, 0.28);
+  background: rgba(17, 24, 39, 0.92);
+  color: var(--accent-blue);
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.06);
 }
 
 .riftBuildItemName {
@@ -1005,6 +1020,7 @@
   .riftBuildItems {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
+    justify-content: stretch;
   }
 
   .riftBuildCard {

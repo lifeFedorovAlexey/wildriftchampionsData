@@ -599,6 +599,16 @@ function SituationalPanel({
   );
 }
 
+function getEntityInitials(value?: string | null) {
+  return String(value || "")
+    .split(/[\s:-]+/)
+    .map((part) => part.trim().charAt(0))
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
+
 function RiftBuildPanel({
   title,
   blocks,
@@ -647,7 +657,11 @@ function RiftBuildPanel({
                             src={ensureLocalAssetSrc("GuideClient.riftBuild", entity.imageUrl) || ""}
                             alt={entity.name}
                           />
-                        ) : null}
+                        ) : (
+                          <div className={styles.riftBuildItemFallback} aria-hidden="true">
+                            {getEntityInitials(entity.name)}
+                          </div>
+                        )}
                       </div>
                     </TooltipTrigger>
                     <div className={styles.riftBuildItemName}>{entity.name}</div>
