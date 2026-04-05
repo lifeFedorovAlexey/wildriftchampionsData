@@ -184,6 +184,7 @@ test("fetchGuideSummariesFromApi normalizes legacy guide slugs", async () => {
 test("toLaneKey understands lane labels", () => {
   assert.equal(toLaneKey("Support Lane"), "support");
   assert.equal(toLaneKey("Барон"), "top");
+  assert.equal(toLaneKey("Solo"), "top");
   assert.equal(toLaneKey("ADC"), "adc");
   assert.equal(toLaneKey("лес"), "jungle");
   assert.equal(toLaneKey("unknown"), null);

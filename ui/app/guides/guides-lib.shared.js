@@ -193,6 +193,7 @@ export function toLaneKey(value) {
   }
 
   if (
+    normalized.includes("solo") ||
     normalized.includes("baron") ||
     normalized.includes("барон") ||
     normalized.includes("топ")
