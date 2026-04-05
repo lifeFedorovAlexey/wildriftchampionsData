@@ -30,6 +30,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: #f6f6f6;
   text-decoration: none;
   transition:
     opacity 140ms ease,
@@ -42,7 +45,7 @@
 }
 
 .supportLogo {
-  width: 126px;
+  width: 122px;
   height: auto;
   display: block;
 }
@@ -176,7 +179,7 @@
   }
 
   .supportLogo {
-    width: 112px;
+    width: 108px;
   }
 
   .supportQr {
