@@ -724,10 +724,9 @@ function RiftMatchupsPanel({
 }) {
   const availableSlugSet = new Set(availableGuideSlugs);
   const [isExpanded, setIsExpanded] = useState(false);
-  const visibleCount = isExpanded
-    ? Math.max(bestItems.length, worstItems.length)
-    : INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT;
-  const rowIndexes = Array.from({ length: visibleCount }, (_, index) => index);
+  const orderedItems = bestItems;
+  const topItems = orderedItems.slice(0, INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT);
+  const bottomItems = orderedItems.slice(-INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT);
 
   useEffect(() => {
     setIsExpanded(false);
@@ -737,41 +736,47 @@ function RiftMatchupsPanel({
     <section className={styles.panel}>
       <h2 className={styles.panelTitle}>Матчапы</h2>
 
-      <div className={styles.riftMatchupsTableHeader}>
-        <div className={styles.sectionEyebrow}>Лучшие</div>
-        <div className={styles.sectionEyebrow}>Худшие</div>
-      </div>
-
-      <div className={styles.riftMatchupsTable}>
-        {rowIndexes.map((index) => (
-          <div key={`matchup-row-${index}`} className={styles.riftMatchupsTableRow}>
-            <div className={styles.riftMatchupsTableCell}>
-              {bestItems[index] ? (
-                <RiftMatchupCompactCard
-                  key={`best-${bestItems[index].opponentSlug}`}
-                  item={bestItems[index]}
-                  availableSlugSet={availableSlugSet}
-                />
-              ) : (
-                <div className={styles.riftMatchupsTableSpacer} />
-              )}
-            </div>
-            <div className={styles.riftMatchupsTableCell}>
-              {worstItems[index] ? (
-                <RiftMatchupCompactCard
-                  key={`worst-${worstItems[index].opponentSlug}`}
-                  item={worstItems[index]}
-                  availableSlugSet={availableSlugSet}
-                />
-              ) : (
-                <div className={styles.riftMatchupsTableSpacer} />
-              )}
-            </div>
+      {isExpanded ? (
+        <>
+          <div className={styles.sectionEyebrow}>Лучшие</div>
+          <div className={styles.riftMatchupsSingleList}>
+            {orderedItems.map((item) => (
+              <RiftMatchupCompactCard
+                key={`all-${item.opponentSlug}`}
+                item={item}
+                availableSlugSet={availableSlugSet}
+              />
+            ))}
           </div>
-        ))}
-      </div>
+          <div className={styles.riftMatchupsBottomLabel}>Худшие</div>
+        </>
+      ) : (
+        <>
+          <div className={styles.sectionEyebrow}>Лучшие</div>
+          <div className={styles.riftMatchupsSingleList}>
+            {topItems.map((item) => (
+              <RiftMatchupCompactCard
+                key={`top-${item.opponentSlug}`}
+                item={item}
+                availableSlugSet={availableSlugSet}
+              />
+            ))}
+          </div>
+          <div className={styles.riftMatchupsDivider}>...</div>
+          <div className={styles.sectionEyebrow}>Худшие</div>
+          <div className={styles.riftMatchupsSingleList}>
+            {bottomItems.map((item) => (
+              <RiftMatchupCompactCard
+                key={`bottom-${item.opponentSlug}`}
+                item={item}
+                availableSlugSet={availableSlugSet}
+              />
+            ))}
+          </div>
+        </>
+      )}
 
-      {Math.max(bestItems.length, worstItems.length) > INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT ? (
+      {orderedItems.length > INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT ? (
         <div className={styles.riftPanelFooter}>
           <button
             type="button"
