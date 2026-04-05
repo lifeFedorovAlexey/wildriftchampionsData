@@ -1,10 +1,16 @@
 name: Deploy UI To Timeweb
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  workflow_call:
+    secrets:
+      S3_PUBLIC_BASE_URL:
+        required: false
+      TIMEWEB_HOST:
+        required: true
+      TIMEWEB_USER:
+        required: true
+      TIMEWEB_PASSWORD:
+        required: true
 
 concurrency:
   group: deploy-ui-timeweb
