@@ -687,37 +687,34 @@ function RiftMatchupCompactCard({
   const hasGuide = availableSlugSet.has(slug);
   const content = (
     <article className={styles.riftMatchupCard}>
+      <div className={styles.riftMatchupMetaRow}>
+        {item.winRateRank ? (
+          <div className={styles.riftCompactRankCircle}>#{item.winRateRank}</div>
+        ) : null}
+        <div className={styles.riftBuildStat}>
+          <div className={styles.riftStatLabel}>Процент побед</div>
+          <div className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>
+            {formatPercent(item.winRate)}
+          </div>
+        </div>
+        <div className={styles.riftBuildStat}>
+          <div className={styles.riftStatLabel}>Коэффициент выбора</div>
+          <div className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</div>
+        </div>
+      </div>
       <div className={styles.riftMatchupHead}>
         <ChampionAvatar
           name={name}
           src={item.opponent?.iconUrl || null}
           shape="circle"
-          mobileSize={52}
-          desktopSize={52}
+          mobileSize={48}
+          desktopSize={48}
         />
         <div>
           <div className={styles.riftMatchupName}>{name}</div>
           {item.opponent?.roles?.length ? (
             <div className={styles.riftMatchupLane}>{localizeGuideLane(item.opponent.roles[0])}</div>
           ) : null}
-        </div>
-      </div>
-      <div className={styles.riftMatchupStats}>
-        {item.winRateRank ? (
-          <div className={styles.riftBuildStat}>
-            <div className={styles.riftStatLabel}>Ранг</div>
-            <div className={styles.riftCompactRank}>#{item.winRateRank}</div>
-          </div>
-        ) : null}
-        <div className={styles.riftBuildStat}>
-          <div className={styles.riftStatLabel}>Винрейт</div>
-          <div className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>
-            {formatPercent(item.winRate)}
-          </div>
-        </div>
-        <div className={styles.riftBuildStat}>
-          <div className={styles.riftStatLabel}>Пикрейт</div>
-          <div className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</div>
         </div>
       </div>
     </article>

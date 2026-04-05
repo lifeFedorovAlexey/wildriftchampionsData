@@ -643,29 +643,51 @@
 
 .riftMatchupCard {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   min-height: 100%;
-  padding: 16px;
+  padding: 12px;
   border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.78);
   border: 1px solid var(--border-soft);
 }
 
+.riftMatchupMetaRow {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto repeat(2, minmax(0, max-content));
+  align-items: center;
+  justify-content: start;
+}
+
+.riftCompactRankCircle {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.18);
+  color: #7fe084;
+  font-weight: 800;
+  font-size: 11px;
+}
+
 .riftMatchupHead {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
 }
 
 .riftMatchupName {
   color: var(--text-strong);
   font-weight: 800;
+  font-size: 14px;
+  line-height: 1.1;
 }
 
 .riftMatchupLane {
-  margin-top: 4px;
+  margin-top: 2px;
   color: var(--text-soft);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .riftMatchupStats {
@@ -1046,16 +1068,21 @@
   }
 
   .riftMatchupCard {
-    gap: 10px;
-    padding: 12px;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .riftMatchupMetaRow {
+    gap: 8px;
+    grid-template-columns: auto repeat(2, minmax(0, 1fr));
   }
 
   .riftMatchupHead {
-    gap: 10px;
+    gap: 8px;
   }
 
   .riftMatchupName {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.05;
   }
 
@@ -1080,6 +1107,12 @@
     min-width: 34px;
     min-height: 20px;
     padding: 0 6px;
+    font-size: 10px;
+  }
+
+  .riftCompactRankCircle {
+    width: 30px;
+    height: 30px;
     font-size: 10px;
   }
 
