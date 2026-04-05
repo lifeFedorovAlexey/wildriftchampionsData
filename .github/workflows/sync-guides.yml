@@ -37,6 +37,8 @@ jobs:
           GUIDES_SYNC_IMPORT_URL: ${{ secrets.GUIDES_SYNC_IMPORT_URL }}
           GUIDES_SYNC_TOKEN: ${{ secrets.GUIDES_SYNC_TOKEN }}
           GUIDES_SYNC_SECRET: ${{ secrets.GUIDES_SYNC_SECRET }}
+          CHAMPIONS_SYNC_TOKEN: ${{ secrets.CHAMPIONS_SYNC_TOKEN }}
+          CHAMPIONS_SYNC_SECRET: ${{ secrets.CHAMPIONS_SYNC_SECRET }}
           API_PROXY_TARGET: ${{ secrets.GUIDES_SYNC_API_ORIGIN }}
           STATS_API_ORIGIN: ${{ secrets.GUIDES_SYNC_API_ORIGIN }}
         run: npm run sync:guides:all -- --no-write-local
