@@ -230,10 +230,10 @@ export default function GuidesIndexClient({
                 <ChampionAvatar
                   name={item.name}
                   src={item.iconUrl}
-                  mobileSize={56}
-                  desktopSize={56}
-                  mobileRadius={14}
-                  desktopRadius={14}
+                  mobileSize={48}
+                  desktopSize={48}
+                  mobileRadius={12}
+                  desktopRadius={12}
                   className={styles.icon}
                   fallbackClassName={styles.iconFallback}
                 />
