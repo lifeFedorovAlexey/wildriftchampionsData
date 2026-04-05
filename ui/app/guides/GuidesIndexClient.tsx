@@ -10,9 +10,9 @@ import styles from "./index.module.css";
 
 const {
   normalizeGuideText,
-  localizeGuideRole,
   toGuideLaneKey,
   inferGuideLaneKeysFromRole,
+  localizeGuideLane,
 } = guideShared;
 
 type GuideListItem = {
@@ -62,27 +62,6 @@ const TIER_SORT_ORDER: Record<string, number> = {
   d: 9,
 };
 
-function splitRecommendedRoles(value?: string | null) {
-  return String(value || "")
-    .split("/")
-    .map((item) => localizeGuideRole(item))
-    .filter(Boolean);
-}
-
-function getDisplayRoles(item: GuideListItem) {
-  const normalizedRoles = item.roles.map((role) => localizeGuideRole(role)).filter(Boolean);
-  if (normalizedRoles.length) {
-    return Array.from(new Set(normalizedRoles));
-  }
-
-  const fallbackRoles = splitRecommendedRoles(item.recommendedRole);
-  if (fallbackRoles.length) {
-    return Array.from(new Set(fallbackRoles));
-  }
-
-  return [];
-}
-
 function getLaneKeys(item: GuideListItem): LaneKey[] {
   if (Array.isArray(item.laneKeys) && item.laneKeys.length) {
     return Array.from(new Set(item.laneKeys));
@@ -107,6 +86,19 @@ function getLaneKeys(item: GuideListItem): LaneKey[] {
 
 function getPrimaryLaneKey(item: GuideListItem): LaneKey | null {
   return getLaneKeys(item)[0] || null;
+}
+
+function getDisplayLanes(item: GuideListItem) {
+  const laneLabels = getLaneKeys(item)
+    .map((laneKey) => localizeGuideLane(laneKey))
+    .filter(Boolean);
+
+  if (laneLabels.length) {
+    return Array.from(new Set(laneLabels));
+  }
+
+  const fallbackLane = localizeGuideLane(item.recommendedRole || "");
+  return fallbackLane ? [fallbackLane] : [];
 }
 
 function getTierSortValue(tier?: string | null) {
@@ -136,7 +128,7 @@ export default function GuidesIndexClient({
           return true;
         }
 
-        const roles = getDisplayRoles(item);
+        const roles = getDisplayLanes(item);
         const haystack = [
           item.name,
           item.localizedName || "",
@@ -200,8 +192,8 @@ export default function GuidesIndexClient({
 
       <div className={styles.grid}>
         {filteredItems.map((item) => {
-          const roles = getDisplayRoles(item).slice(0, 2);
-          const cardClassName = `${styles.card} ${item.hasGuide === false ? styles.cardDisabled : ""}`;
+        const lanes = getDisplayLanes(item).slice(0, 2);
+        const cardClassName = `${styles.card} ${item.hasGuide === false ? styles.cardDisabled : ""}`;
 
           const content = (
             <>
@@ -223,14 +215,14 @@ export default function GuidesIndexClient({
                 </div>
               </div>
 
-              <div className={styles.cardBottom}>
-                <div className={styles.roleRow}>
-                  {roles.map((role) => (
-                    <span key={`${item.slug}-${role}`} className={styles.roleChip}>
-                      {role}
+                <div className={styles.cardBottom}>
+                  <div className={styles.roleRow}>
+                  {lanes.map((lane) => (
+                    <span key={`${item.slug}-${lane}`} className={styles.roleChip}>
+                      {lane}
                     </span>
                   ))}
-                </div>
+                  </div>
 
                 <div className={styles.stats}>
                   {item.patch ? (
