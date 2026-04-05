@@ -200,7 +200,7 @@ function localizeRiftLane(value?: string | null) {
   if (normalized === "mid") return "Мид";
   if (normalized === "adc") return "Дракон";
   if (normalized === "support") return "Поддержка";
-  return localizeGuideLane(value);
+  return localizeGuideLane(value || "");
 }
 
 function formatPercent(value?: number | null) {
@@ -223,7 +223,7 @@ function isGenericVariantTitle(value?: string | null) {
 }
 
 function localizeVariantTitle(variant: GuideVariant) {
-  const lane = localizeGuideLane(variant.lane);
+  const lane = localizeGuideLane(variant.lane || "");
   if (lane) return lane;
 
   if (isGenericVariantTitle(variant.title)) {
@@ -242,7 +242,7 @@ function localizeVariantTitle(variant: GuideVariant) {
 function getVariantRoleLabel(variant?: GuideVariant) {
   if (!variant) return "";
 
-  const lane = localizeGuideLane(variant.lane);
+  const lane = localizeGuideLane(variant.lane || "");
   if (lane) return lane;
 
   if (isGenericVariantTitle(variant.title)) {
@@ -256,7 +256,7 @@ function buildOfficialSummary(guide: GuideData, variant?: GuideVariant) {
   const title = guide.champion.title || guide.official?.champion?.title || "";
   const role =
     getVariantRoleLabel(variant) ||
-    localizeGuideLane(guide.metadata.recommendedRole) ||
+    localizeGuideLane(guide.metadata.recommendedRole || "") ||
     guide.metadata.recommendedRole ||
     guide.official?.roles?.join(" / ") ||
     "";
@@ -1046,7 +1046,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
               <span className={styles.metaPillLabel}>Роль</span>
               <span className={styles.metaPillValue}>
                 {getVariantRoleLabel(variant) ||
-                  localizeGuideLane(guide.metadata.recommendedRole) ||
+                  localizeGuideLane(guide.metadata.recommendedRole || "") ||
                   guide.metadata.recommendedRole ||
                   "-"}
               </span>

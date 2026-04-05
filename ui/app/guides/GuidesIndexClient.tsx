@@ -85,7 +85,7 @@ function getDisplayRoles(item: GuideListItem) {
 function getLaneKeys(item: GuideListItem): LaneKey[] {
   const directKeys = [
     ...item.roles.map((role) => toGuideLaneKey(role) as LaneKey | null),
-    toGuideLaneKey(item.recommendedRole) as LaneKey | null,
+    toGuideLaneKey(item.recommendedRole || "") as LaneKey | null,
   ].filter(Boolean) as LaneKey[];
 
   if (directKeys.length) {
@@ -95,7 +95,7 @@ function getLaneKeys(item: GuideListItem): LaneKey[] {
   return Array.from(
     new Set([
       ...item.roles.flatMap((role) => inferGuideLaneKeysFromRole(role) as LaneKey[]),
-      ...(inferGuideLaneKeysFromRole(item.recommendedRole) as LaneKey[]),
+      ...(inferGuideLaneKeysFromRole(item.recommendedRole || "") as LaneKey[]),
     ]),
   );
 }
