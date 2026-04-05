@@ -7,6 +7,12 @@ const cheerio = require("cheerio");
 
 const SITE_ORIGIN = "https://www.wildriftfire.com";
 const RIOT_ORIGIN = "https://wildrift.leagueoflegends.com";
+const WILDRIFTFIRE_GUIDE_SLUG_ALIASES = {
+  nunu: "nunu-amp-willump",
+};
+const RIOT_CHAMPION_SLUG_ALIASES = {
+  nunu: ["nunu", "nunu-and-willump", "nunu-willump"],
+};
 const OUTPUT_ROOT = path.join(
   __dirname,
   "..",
@@ -108,6 +114,24 @@ function fetchRiotChampionPage(slug) {
   });
 }
 
+async function fetchRiotChampionPageWithFallbacks(slug) {
+  const candidates = Array.from(
+    new Set([slug, ...(RIOT_CHAMPION_SLUG_ALIASES[slug] || [])].filter(Boolean)),
+  );
+
+  let lastError = null;
+  for (const candidate of candidates) {
+    try {
+      const html = await fetchRiotChampionPage(candidate);
+      return { html, resolvedSlug: candidate };
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError;
+}
+
 function sha1(value) {
   return crypto.createHash("sha1").update(value).digest("hex");
 }
@@ -130,6 +154,11 @@ function toAbsoluteUrl(value = "") {
   if (value.startsWith("//")) return `https:${value}`;
   if (value.startsWith("/")) return `${SITE_ORIGIN}${value}`;
   return `${SITE_ORIGIN}/${value.replace(/^\/+/, "")}`;
+}
+
+function resolveWildRiftFireGuideUrl(slug) {
+  const guideSlug = WILDRIFTFIRE_GUIDE_SLUG_ALIASES[slug] || slug;
+  return `${SITE_ORIGIN}/guide/${guideSlug}`;
 }
 
 function parseTooltipMeta(value = "") {
@@ -876,11 +905,11 @@ async function writeGuideFile(slug, data) {
   return outputPath;
 }
 
-async function scrapeGuide(slug, url = `${SITE_ORIGIN}/guide/${slug}`) {
+async function scrapeGuide(slug, url = resolveWildRiftFireGuideUrl(slug)) {
   const html = await fetchHtml(url);
   const guide = parseGuide(html, url, slug);
-  const riotHtml = await fetchRiotChampionPage(slug);
-  const officialData = parseRiotChampionData(riotHtml, slug);
+  const { html: riotHtml, resolvedSlug } = await fetchRiotChampionPageWithFallbacks(slug);
+  const officialData = parseRiotChampionData(riotHtml, resolvedSlug);
 
   mergeOfficialDataIntoGuide(guide, officialData);
 
@@ -898,7 +927,7 @@ async function scrapeGuide(slug, url = `${SITE_ORIGIN}/guide/${slug}`) {
 
 async function main() {
   const slug = process.argv[2] || "braum";
-  const url = process.argv[3] || `${SITE_ORIGIN}/guide/${slug}`;
+  const url = process.argv[3] || resolveWildRiftFireGuideUrl(slug);
   const guide = await scrapeGuide(slug, url);
   const outputPath = await writeGuideFile(slug, guide);
 

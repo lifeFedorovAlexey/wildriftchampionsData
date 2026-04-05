@@ -2,8 +2,11 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  fetchChampionIndexFromApi,
   fetchChampionNamesFromApi,
+  fetchGuideFromApi,
   fetchGuideSlugsFromApi,
+  fetchGuideSummariesFromApi,
   findTierLabelForChampion,
   getStatsApiBaseUrl,
   toLaneKey,
@@ -51,14 +54,50 @@ test("fetchGuideSlugsFromApi supports object payload and trims empty slugs", asy
   global.fetch = async () =>
     new Response(
       JSON.stringify({
-        items: [{ slug: "ahri" }, { slug: " lux " }, { slug: "" }, {}],
+        items: [{ slug: "ahri" }, { slug: " lux " }, { slug: "wukong" }, { slug: "" }, {}],
       }),
       { status: 200 },
     );
 
   try {
     const result = await fetchGuideSlugsFromApi();
-    assert.deepEqual(result, ["ahri", "lux"]);
+    assert.deepEqual(result, ["ahri", "lux", "monkeyking"]);
+  } finally {
+    global.fetch = previousFetch;
+  }
+});
+
+test("fetchGuideFromApi falls back to alias guide slugs and normalizes champion slug", async () => {
+  const previousFetch = global.fetch;
+  const requestedUrls = [];
+
+  global.fetch = async (url) => {
+    requestedUrls.push(String(url));
+
+    if (String(url).includes("/api/guides/monkeyking?lang=ru_ru")) {
+      return new Response("not found", { status: 404 });
+    }
+
+    if (String(url).includes("/api/guides/wukong?lang=ru_ru")) {
+      return new Response(
+        JSON.stringify({
+          champion: {
+            slug: "wukong",
+            name: "Wukong",
+          },
+        }),
+        { status: 200 },
+      );
+    }
+
+    return new Response("not found", { status: 404 });
+  };
+
+  try {
+    const result = await fetchGuideFromApi("monkeyking");
+    assert.equal(requestedUrls[0]?.includes("/api/guides/monkeyking?lang=ru_ru"), true);
+    assert.equal(requestedUrls[1]?.includes("/api/guides/wukong?lang=ru_ru"), true);
+    assert.equal(result?.champion?.slug, "monkeyking");
   } finally {
     global.fetch = previousFetch;
   }
@@ -87,6 +126,56 @@ test("fetchChampionNamesFromApi builds a slug-name map", async () => {
       lux: "Люкс",
       ahri: "Ари",
     });
+  } finally {
+    global.fetch = previousFetch;
+  }
+});
+
+test("fetchChampionIndexFromApi requests the lightweight index payload", async () => {
+  const previousFetch = global.fetch;
+  let requestedUrl = null;
+
+  global.fetch = async (url) => {
+    requestedUrl = String(url);
+    return new Response(
+      JSON.stringify([
+        { slug: "nunu", name: "Нуну и Виллумп", roles: ["tank"], iconUrl: "/wr-api/icons/nunu" },
+      ]),
+      { status: 200 },
+    );
+  };
+
+  try {
+    const result = await fetchChampionIndexFromApi();
+    assert.equal(requestedUrl?.includes("/api/champions?lang=ru_ru&fields=index"), true);
+    assert.deepEqual(result, [
+      { slug: "nunu", name: "Нуну и Виллумп", roles: ["tank"], iconUrl: "/wr-api/icons/nunu" },
+    ]);
+  } finally {
+    global.fetch = previousFetch;
+  }
+});
+
+test("fetchGuideSummariesFromApi normalizes legacy guide slugs", async () => {
+  const previousFetch = global.fetch;
+
+  global.fetch = async () =>
+    new Response(
+      JSON.stringify({
+        items: [
+          { slug: "wukong", name: "Wukong", roles: [] },
+          { slug: "ahri", name: "Ahri", roles: [] },
+        ],
+      }),
+      { status: 200 },
+    );
+
+  try {
+    const result = await fetchGuideSummariesFromApi();
+    assert.deepEqual(
+      result.map((item) => item.slug),
+      ["monkeyking", "ahri"],
+    );
   } finally {
     global.fetch = previousFetch;
   }

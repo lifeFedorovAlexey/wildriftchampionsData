@@ -3,19 +3,97 @@ import { fetchApiJson } from "../../lib/server-api.js";
 
 export { getStatsApiBaseUrl };
 
-export async function fetchGuideFromApi(slug) {
-  try {
-    return await fetchApiJson(`/api/guides/${encodeURIComponent(slug)}?lang=ru_ru`, {
-      fetchOptions: {
-        cache: "no-store",
-      },
-      allowNotFound: true,
-      fallback: null,
+const SLUG_RIOT_REMAP = {
+  nunu: "nunu-willump",
+  monkeyking: "wukong",
+  xinzhao: "xin-zhao",
+  aurelionsol: "aurelion-sol",
+  jarvaniv: "jarvan-iv",
+  leesin: "lee-sin",
+  drmundo: "dr-mundo",
+  missfortune: "miss-fortune",
+  twistedfate: "twisted-fate",
+  masteryi: "master-yi",
+};
+
+const SLUG_LOCAL_REMAP = Object.fromEntries(
+  Object.entries(SLUG_RIOT_REMAP).map(([localSlug, riotSlug]) => [riotSlug, localSlug]),
+);
+
+function mapToRiotSlug(slug) {
+  return SLUG_RIOT_REMAP[slug] ?? slug;
+}
+
+function mapToLocalSlug(slug) {
+  return SLUG_LOCAL_REMAP[slug] ?? slug;
+}
+
+function getSlugAliases(slug) {
+  const normalized = String(slug || "").trim();
+  if (!normalized) return [];
+
+  return Array.from(
+    new Set([
+      normalized,
+      mapToRiotSlug(normalized),
+      mapToLocalSlug(normalized),
+    ].filter(Boolean)),
+  );
+}
+
+function normalizeGuidePayloadSlug(guide, requestedSlug) {
+  if (!guide || typeof guide !== "object") return guide;
+
+  const normalizedSlug = mapToLocalSlug(
+    String(guide?.champion?.slug || requestedSlug || "").trim(),
+  );
+
+  return {
+    ...guide,
+    champion: guide.champion
+      ? {
+          ...guide.champion,
+          slug: normalizedSlug || guide.champion.slug,
+        }
+      : guide.champion,
+  };
+}
+
+function normalizeGuideSummaryItems(items = []) {
+  const bySlug = new Map();
+
+  for (const item of Array.isArray(items) ? items : []) {
+    const normalizedSlug = mapToLocalSlug(String(item?.slug || "").trim());
+    if (!normalizedSlug || bySlug.has(normalizedSlug)) continue;
+    bySlug.set(normalizedSlug, {
+      ...item,
+      slug: normalizedSlug,
     });
-  } catch (error) {
-    console.error("guide api fetch error", error);
-    return null;
   }
+
+  return Array.from(bySlug.values());
+}
+
+export async function fetchGuideFromApi(slug) {
+  for (const alias of getSlugAliases(slug)) {
+    try {
+      const payload = await fetchApiJson(`/api/guides/${encodeURIComponent(alias)}?lang=ru_ru`, {
+        fetchOptions: {
+          cache: "no-store",
+        },
+        allowNotFound: true,
+        fallback: null,
+      });
+
+      if (payload) {
+        return normalizeGuidePayloadSlug(payload, slug);
+      }
+    } catch (error) {
+      console.error("guide api fetch error", error);
+    }
+  }
+
+  return null;
 }
 
 export async function fetchGuideSlugsFromApi() {
@@ -28,12 +106,16 @@ export async function fetchGuideSlugsFromApi() {
     });
 
     if (Array.isArray(payload)) {
-      return payload.filter(Boolean);
+      return Array.from(new Set(payload.map((item) => mapToLocalSlug(String(item || "").trim())).filter(Boolean)));
     }
 
-    return (payload.items || [])
-      .map((item) => String(item?.slug || "").trim())
-      .filter(Boolean);
+    return Array.from(
+      new Set(
+        (payload.items || [])
+          .map((item) => mapToLocalSlug(String(item?.slug || "").trim()))
+          .filter(Boolean),
+      ),
+    );
   } catch (error) {
     console.error("guide slugs api fetch error", error);
     return [];
@@ -64,6 +146,22 @@ export async function fetchChampionNamesFromApi() {
   }
 }
 
+export async function fetchChampionIndexFromApi() {
+  try {
+    const payload = await fetchApiJson("/api/champions?lang=ru_ru&fields=index", {
+      fetchOptions: {
+        next: { revalidate: 3600 * 24 * 7 },
+      },
+      fallback: [],
+    });
+
+    return Array.isArray(payload) ? payload : [];
+  } catch (error) {
+    console.error("champion index api fetch error", error);
+    return [];
+  }
+}
+
 export async function fetchGuideSummariesFromApi() {
   try {
     const payload = await fetchApiJson("/api/guides", {
@@ -72,7 +170,7 @@ export async function fetchGuideSummariesFromApi() {
       },
       fallback: { items: [] },
     });
-    return Array.isArray(payload?.items) ? payload.items : [];
+    return normalizeGuideSummaryItems(Array.isArray(payload?.items) ? payload.items : []);
   } catch (error) {
     console.error("guide summaries api fetch error", error);
     return [];

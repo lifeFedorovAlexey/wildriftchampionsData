@@ -10,6 +10,7 @@ type GuideListItem = {
   slug: string;
   name: string;
   localizedName?: string | null;
+  hasGuide?: boolean;
   title?: string | null;
   iconUrl?: string | null;
   patch?: string | null;
@@ -118,9 +119,10 @@ export default function GuidesIndexClient({
       <div className={styles.grid}>
         {filteredItems.map((item) => {
           const roles = getDisplayRoles(item);
+          const cardClassName = `${styles.card} ${item.hasGuide === false ? styles.cardDisabled : ""}`;
 
-          return (
-            <a key={item.slug} className={styles.card} href={`/guides/${item.slug}`}>
+          const content = (
+            <>
               <div className={styles.cardTop}>
                 <ChampionAvatar
                   name={item.name}
@@ -163,10 +165,24 @@ export default function GuidesIndexClient({
                 ) : null}
 
                 <div className={styles.stat}>
-                  <span className={styles.statLabel}>Билды</span>
-                  <strong className={styles.statValue}>{item.buildCount}</strong>
+                  <span className={styles.statLabel}>{item.hasGuide === false ? "Статус" : "Билды"}</span>
+                  <strong className={styles.statValue}>{item.hasGuide === false ? "Скоро" : item.buildCount}</strong>
                 </div>
               </div>
+            </>
+          );
+
+          if (item.hasGuide === false) {
+            return (
+              <div key={item.slug} className={cardClassName} aria-disabled="true">
+                {content}
+              </div>
+            );
+          }
+
+          return (
+            <a key={item.slug} className={cardClassName} href={`/guides/${item.slug}`}>
+              {content}
             </a>
           );
         })}

@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import PageWrapper from "@/components/PageWrapper";
 import { GuidesContentSkeleton } from "@/components/ui/LazySkeletons";
 import {
-  fetchChampionNamesFromApi,
+  fetchChampionIndexFromApi,
   fetchGuideSummariesFromApi,
 } from "./guides-lib";
 
@@ -11,15 +11,40 @@ const GuidesIndexClient = dynamic(() => import("./GuidesIndexClient"), {
 });
 
 export default async function GuidesPage() {
-  const [items, localizedNames] = await Promise.all([
+  const [guideItems, championIndex] = await Promise.all([
     fetchGuideSummariesFromApi(),
-    fetchChampionNamesFromApi(),
+    fetchChampionIndexFromApi(),
   ]);
 
-  const hydratedItems = items.map((item) => ({
-    ...item,
-    localizedName: localizedNames[item.slug] || null,
-  }));
+  const guideItemsBySlug = new Map(guideItems.map((item) => [item.slug, item]));
+  const hydratedItems = championIndex.map((champion) => {
+    const guide = guideItemsBySlug.get(champion.slug);
+
+    if (guide) {
+      return {
+        ...guide,
+        localizedName: champion.name || guide.name || null,
+        iconUrl: guide.iconUrl || champion.iconUrl || null,
+        roles: guide.roles?.length ? guide.roles : champion.roles || [],
+        hasGuide: true,
+      };
+    }
+
+    return {
+      slug: champion.slug,
+      name: champion.name || champion.slug,
+      localizedName: champion.name || null,
+      hasGuide: false,
+      title: "Гайд скоро",
+      iconUrl: champion.iconUrl || null,
+      patch: null,
+      tier: null,
+      recommendedRole: null,
+      roles: champion.roles || [],
+      buildCount: 0,
+      updatedAt: null,
+    };
+  });
 
   return (
     <PageWrapper

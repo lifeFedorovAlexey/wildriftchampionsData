@@ -57,6 +57,16 @@
   border-color: rgba(125, 211, 252, 0.45);
 }
 
+.cardDisabled {
+  opacity: 0.84;
+  cursor: default;
+}
+
+.cardDisabled:hover {
+  transform: none;
+  border-color: var(--border-soft);
+}
+
 .cardTop {
   display: flex;
   gap: 12px;

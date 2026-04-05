@@ -1,4 +1,5 @@
 import {
+  fetchChampionIndexFromApi as fetchChampionIndexFromApiShared,
   fetchChampionNamesFromApi as fetchChampionNamesFromApiShared,
   fetchGuideFromApi as fetchGuideFromApiShared,
   fetchGuideSlugsFromApi as fetchGuideSlugsFromApiShared,
@@ -15,6 +16,7 @@ export type GuideSummary = {
   slug: string;
   name: string;
   localizedName?: string | null;
+  hasGuide?: boolean;
   title?: string | null;
   iconUrl?: string | null;
   patch?: string | null;
@@ -23,6 +25,13 @@ export type GuideSummary = {
   roles: string[];
   buildCount: number;
   updatedAt?: string | null;
+};
+
+export type ChampionIndexItem = {
+  slug: string;
+  name: string | null;
+  roles: string[];
+  iconUrl?: string | null;
 };
 
 export type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
@@ -52,6 +61,10 @@ export async function fetchGuideSlugsFromApi(): Promise<string[]> {
 
 export async function fetchChampionNamesFromApi(): Promise<Record<string, string>> {
   return (await fetchChampionNamesFromApiShared()) as Record<string, string>;
+}
+
+export async function fetchChampionIndexFromApi(): Promise<ChampionIndexItem[]> {
+  return (await fetchChampionIndexFromApiShared()) as ChampionIndexItem[];
 }
 
 export async function fetchGuideSummariesFromApi(): Promise<GuideSummary[]> {
