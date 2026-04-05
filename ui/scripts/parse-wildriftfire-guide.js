@@ -9,9 +9,11 @@ const SITE_ORIGIN = "https://www.wildriftfire.com";
 const RIOT_ORIGIN = "https://wildrift.leagueoflegends.com";
 const WILDRIFTFIRE_GUIDE_SLUG_ALIASES = {
   nunu: "nunu-amp-willump",
+  drmundo: "dr-mundo",
 };
 const RIOT_CHAMPION_SLUG_ALIASES = {
   nunu: ["nunu", "nunu-and-willump", "nunu-willump"],
+  drmundo: ["dr-mundo", "doctor-mundo"],
 };
 const OUTPUT_ROOT = path.join(
   __dirname,
