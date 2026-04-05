@@ -1,16 +1,16 @@
 .page {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .searchWrap {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .search {
   width: 100%;
-  padding: 13px 15px;
+  padding: 12px 14px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-soft);
   background: rgba(15, 23, 42, 0.88);
@@ -23,6 +23,13 @@
   color: var(--text-soft);
 }
 
+.filtersRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
 .meta {
   color: var(--text-soft);
   font-size: 13px;
@@ -30,18 +37,18 @@
 
 .grid {
   display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
 }
 
 .card {
   display: grid;
-  gap: 14px;
-  padding: 16px;
-  border-radius: var(--radius-lg);
+  gap: 10px;
+  padding: 14px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border-soft);
   background:
-    radial-gradient(circle at top right, rgba(125, 211, 252, 0.1), transparent 24%),
+    radial-gradient(circle at top right, rgba(125, 211, 252, 0.09), transparent 22%),
     linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(10, 15, 27, 0.98));
   color: inherit;
   text-decoration: none;
@@ -53,7 +60,7 @@
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: rgba(125, 211, 252, 0.45);
 }
 
@@ -69,14 +76,14 @@
 
 .cardTop {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
 }
 
 .icon,
 .iconFallback {
-  width: 68px;
-  height: 68px;
+  width: 56px;
+  height: 56px;
   flex: 0 0 auto;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-soft);
@@ -88,7 +95,7 @@
   display: grid;
   place-items: center;
   color: var(--text-strong);
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 900;
 }
 
@@ -99,32 +106,37 @@
 .name {
   margin: 0;
   color: var(--text-strong);
-  font-size: 24px;
-  line-height: 1;
+  font-size: 18px;
+  line-height: 1.05;
 }
 
 .title {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   color: var(--text-soft);
-  line-height: 1.35;
+  font-size: 12px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .roleRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .roleChip {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
-  padding: 4px 10px;
+  min-height: 24px;
+  padding: 3px 9px;
   border-radius: var(--radius-pill);
   background: rgba(20, 29, 49, 0.9);
   border: 1px solid rgba(125, 211, 252, 0.18);
   color: var(--accent-blue);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -133,15 +145,15 @@
 .stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .stat {
   display: inline-flex;
-  gap: 7px;
+  gap: 6px;
   align-items: center;
-  min-height: 34px;
-  padding: 6px 10px;
+  min-height: 30px;
+  padding: 5px 9px;
   border-radius: var(--radius-pill);
   background: rgba(12, 18, 33, 0.86);
   border: 1px solid var(--border-soft);
@@ -149,14 +161,14 @@
 
 .statLabel {
   color: var(--text-soft);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .statValue {
   color: var(--text-strong);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -166,6 +178,6 @@
   }
 
   .name {
-    font-size: 22px;
+    font-size: 17px;
   }
 }
