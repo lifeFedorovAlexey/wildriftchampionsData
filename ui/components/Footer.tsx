@@ -23,38 +23,41 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.shell}>
         <div className={styles.topRow}>
-          <div className={styles.brandBlock}>
-            <span className={styles.brand}>wildrift all stats.ru</span>
+          <div className={styles.topMain}>
+            <div className={styles.brandBlock}>
+              <span className={styles.brand}>wildrift all stats.ru</span>
+            </div>
+
+            <nav className={styles.nav} aria-label="Разделы сайта">
+              {navLinks.map((item) => (
+                <Link key={item.href} href={item.href} className={styles.textLink}>
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className={styles.supportRow}>
+              <a
+                href={SUPPORT_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.supportLogoLink}
+                aria-label="Boosty"
+              >
+                <img
+                  src="/boosty-logo.svg"
+                  alt="Boosty"
+                  className={styles.supportLogo}
+                />
+              </a>
+            </div>
           </div>
 
-          <nav className={styles.nav} aria-label="Разделы сайта">
-            {navLinks.map((item) => (
-              <Link key={item.href} href={item.href} className={styles.textLink}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-
-        <div className={styles.supportRow}>
           <a
             href={SUPPORT_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.supportLogoLink}
-            aria-label="Boosty"
-          >
-            <img
-              src="/boosty-logo.svg"
-              alt="Boosty"
-              className={styles.supportLogo}
-            />
-          </a>
-          <a
-            href={SUPPORT_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.supportQrLink}
+            className={styles.supportQrPanel}
             aria-label="QR-код для поддержки проекта"
           >
             <img

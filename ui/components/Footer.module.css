@@ -13,25 +13,25 @@
 
 .topRow {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.topMain {
+  display: grid;
   gap: 14px;
   justify-items: center;
 }
 
 .supportRow {
-  width: min(420px, 100%);
-  margin: 18px auto 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
+  margin-top: 4px;
 }
 
 .supportLogoLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  justify-self: end;
   padding: 8px 12px;
   border-radius: 14px;
   background: #f6f6f6;
@@ -52,13 +52,12 @@
   display: block;
 }
 
-.supportQrLink {
+.supportQrPanel {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  justify-self: start;
-  padding: 6px;
-  border-radius: 14px;
+  padding: 10px;
+  border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(11, 16, 36, 0.58);
   text-decoration: none;
@@ -68,17 +67,17 @@
     background 140ms ease;
 }
 
-.supportQrLink:hover {
+.supportQrPanel:hover {
   background: rgba(17, 24, 39, 0.92);
   border-color: rgba(125, 211, 252, 0.32);
   transform: translateY(-1px);
 }
 
 .supportQr {
-  width: 72px;
-  height: 72px;
+  width: 132px;
+  height: 132px;
   display: block;
-  border-radius: 8px;
+  border-radius: 12px;
   background: #fff;
 }
 
@@ -173,29 +172,27 @@
     padding: 0 var(--space-3) var(--space-4);
   }
 
+  .topRow {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    justify-items: center;
+  }
+
   .nav {
     gap: 8px 14px;
   }
 
   .supportRow {
-    width: auto;
     margin-top: 16px;
-    grid-template-columns: 1fr;
-    justify-items: center;
   }
 
   .supportLogo {
     width: 108px;
   }
 
-  .supportLogoLink,
-  .supportQrLink {
-    justify-self: center;
-  }
-
   .supportQr {
-    width: 64px;
-    height: 64px;
+    width: 104px;
+    height: 104px;
   }
 
   .disclaimer {
