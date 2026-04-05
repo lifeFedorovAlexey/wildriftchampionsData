@@ -125,6 +125,11 @@
   overflow: hidden;
 }
 
+.cardBottom {
+  display: grid;
+  gap: 6px;
+}
+
 .roleRow {
   display: flex;
   flex-wrap: wrap;
@@ -181,7 +186,80 @@
     grid-template-columns: 1fr;
   }
 
+  .card {
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .cardTop {
+    gap: 10px;
+  }
+
+  .icon,
+  .iconFallback {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+  }
+
   .name {
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 1.05;
+  }
+
+  .title {
+    font-size: 10px;
+    -webkit-line-clamp: 1;
+  }
+
+  .cardBottom {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .roleRow {
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .roleChip {
+    min-height: 20px;
+    padding: 1px 7px;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+
+  .stats {
+    justify-content: flex-end;
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+
+  .stat {
+    min-height: 22px;
+    padding: 3px 7px;
+    gap: 4px;
+  }
+
+  .statLabel {
+    font-size: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  .statValue {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .cardBottom {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .stats {
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 }

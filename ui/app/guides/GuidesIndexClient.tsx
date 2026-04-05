@@ -218,28 +218,30 @@ export default function GuidesIndexClient({
                 </div>
               </div>
 
-              <div className={styles.roleRow}>
-                {roles.map((role) => (
-                  <span key={`${item.slug}-${role}`} className={styles.roleChip}>
-                    {role}
-                  </span>
-                ))}
-              </div>
+              <div className={styles.cardBottom}>
+                <div className={styles.roleRow}>
+                  {roles.map((role) => (
+                    <span key={`${item.slug}-${role}`} className={styles.roleChip}>
+                      {role}
+                    </span>
+                  ))}
+                </div>
 
-              <div className={styles.stats}>
-                {item.patch ? (
-                  <div className={styles.stat}>
-                    <span className={styles.statLabel}>Патч</span>
-                    <strong className={styles.statValue}>{item.patch}</strong>
-                  </div>
-                ) : null}
+                <div className={styles.stats}>
+                  {item.patch ? (
+                    <div className={styles.stat}>
+                      <span className={styles.statLabel}>Патч</span>
+                      <strong className={styles.statValue}>{item.patch}</strong>
+                    </div>
+                  ) : null}
 
-                {item.tier ? (
-                  <div className={styles.stat}>
-                    <span className={styles.statLabel}>Тир</span>
-                    <strong className={styles.statValue}>{item.tier}</strong>
-                  </div>
-                ) : null}
+                  {item.tier ? (
+                    <div className={styles.stat}>
+                      <span className={styles.statLabel}>Тир</span>
+                      <strong className={styles.statValue}>{item.tier}</strong>
+                    </div>
+                  ) : null}
+                </div>
               </div>
             </>
           );
