@@ -778,7 +778,7 @@ function RiftMatchupsPanel({
         </>
       )}
 
-      {orderedItems.length > INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT ? (
+      {isExpanded && orderedItems.length > INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT ? (
         <div className={styles.riftPanelFooter}>
           <button
             type="button"

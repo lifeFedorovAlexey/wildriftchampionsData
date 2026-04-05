@@ -986,16 +986,35 @@
 
   .riftRankBadge {
     justify-self: start;
+    min-width: 34px;
+    height: 34px;
+    font-size: 11px;
   }
 
   .riftBuildMeta {
-    display: grid;
-    gap: 10px;
-    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .riftBuildStat {
+    min-width: 82px;
   }
 
   .riftBuildItems {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .riftBuildCard {
+    padding: 10px 12px;
+  }
+
+  .riftBuildItemName {
+    font-size: 10px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
   }
 
   .variantTab,
