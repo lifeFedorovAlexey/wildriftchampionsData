@@ -124,13 +124,64 @@ function toLaneKey(value?: string | null): LaneKey | null {
   return null;
 }
 
+function inferLaneKeysFromRole(value?: string | null): LaneKey[] {
+  const normalized = normalize(String(value || ""));
+  if (!normalized) return [];
+
+  const lanes = new Set<LaneKey>();
+
+  if (normalized.includes("marksman") || normalized.includes("стрелок")) {
+    lanes.add("adc");
+  }
+
+  if (
+    normalized.includes("support") ||
+    normalized.includes("саппорт") ||
+    normalized.includes("поддерж") ||
+    normalized.includes("enchanter")
+  ) {
+    lanes.add("support");
+  }
+
+  if (normalized.includes("mage") || normalized.includes("маг")) {
+    lanes.add("mid");
+  }
+
+  if (normalized.includes("assassin") || normalized.includes("убийца")) {
+    lanes.add("mid");
+    lanes.add("jungle");
+  }
+
+  if (normalized.includes("fighter") || normalized.includes("warrior") || normalized.includes("воин")) {
+    lanes.add("top");
+    lanes.add("jungle");
+  }
+
+  if (normalized.includes("tank") || normalized.includes("танк")) {
+    lanes.add("top");
+    lanes.add("jungle");
+    lanes.add("support");
+  }
+
+  return Array.from(lanes);
+}
+
 function getLaneKeys(item: GuideListItem): LaneKey[] {
-  const keys = [
+  const directKeys = [
     ...item.roles.map((role) => toLaneKey(role)),
     toLaneKey(item.recommendedRole),
   ].filter(Boolean) as LaneKey[];
 
-  return Array.from(new Set(keys));
+  if (directKeys.length) {
+    return Array.from(new Set(directKeys));
+  }
+
+  return Array.from(
+    new Set([
+      ...item.roles.flatMap((role) => inferLaneKeysFromRole(role)),
+      ...inferLaneKeysFromRole(item.recommendedRole),
+    ]),
+  );
 }
 
 function getPrimaryLaneKey(item: GuideListItem): LaneKey | null {
