@@ -240,11 +240,6 @@ export default function GuidesIndexClient({
                     <strong className={styles.statValue}>{item.tier}</strong>
                   </div>
                 ) : null}
-
-                <div className={styles.stat}>
-                  <span className={styles.statLabel}>{item.hasGuide === false ? "Статус" : "Билды"}</span>
-                  <strong className={styles.statValue}>{item.hasGuide === false ? "Скоро" : item.buildCount}</strong>
-                </div>
               </div>
             </>
           );
