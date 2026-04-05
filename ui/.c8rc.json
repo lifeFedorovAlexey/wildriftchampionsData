@@ -1,0 +1,30 @@
+{
+  "all": true,
+  "reporter": [
+    "text",
+    "lcov"
+  ],
+  "include": [
+    "lib/stats-api-origin.js",
+    "lib/server-api.js",
+    "app/winrates/load-winrates-page.js",
+    "app/winrates/winrates-lib.js",
+    "app/picks-bans/picks-bans-lib.js",
+    "app/tier-inq/tier-inq-lib.js",
+    "app/trends/trends-lib.js",
+    "app/tierlist/tierlist-lib.js",
+    "app/guides/guides-lib.shared.js",
+    "shared/guides-shared.js"
+  ],
+  "exclude": [
+    "coverage/**",
+    "node_modules/**",
+    ".next/**",
+    "**/*.test.js"
+  ],
+  "check-coverage": true,
+  "lines": 85,
+  "functions": 85,
+  "branches": 70,
+  "statements": 85
+}

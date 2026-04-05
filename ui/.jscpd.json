@@ -1,0 +1,23 @@
+{
+  "absolute": true,
+  "threshold": 3,
+  "minLines": 8,
+  "minTokens": 70,
+  "reporters": [
+    "consoleFull"
+  ],
+  "ignore": [
+    "**/.next/**",
+    "**/node_modules/**",
+    "**/coverage/**",
+    "**/*.test.js",
+    "**/*.module.css",
+    "**/public/**"
+  ],
+  "path": [
+    "app",
+    "components",
+    "lib",
+    "shared"
+  ]
+}

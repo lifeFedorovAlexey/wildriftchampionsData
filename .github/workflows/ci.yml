@@ -31,5 +31,11 @@ jobs:
       - name: Run tests
         run: npm run test
 
+      - name: Check coverage
+        run: npm run test:coverage
+
+      - name: Check duplicate code
+        run: npm run dup:check
+
       - name: Run production build
         run: npm run build
