@@ -50,22 +50,21 @@ export default function Footer() {
                   className={styles.supportLogo}
                 />
               </a>
+              <a
+                href={SUPPORT_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.supportQrPanel}
+                aria-label="QR-код для поддержки проекта"
+              >
+                <img
+                  src="/boosty-donate-qr.png"
+                  alt="QR-код для поддержки проекта"
+                  className={styles.supportQr}
+                />
+              </a>
             </div>
           </div>
-
-          <a
-            href={SUPPORT_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.supportQrPanel}
-            aria-label="QR-код для поддержки проекта"
-          >
-            <img
-              src="/boosty-donate-qr.png"
-              alt="QR-код для поддержки проекта"
-              className={styles.supportQr}
-            />
-          </a>
         </div>
 
         <div className={styles.bottomRow}>

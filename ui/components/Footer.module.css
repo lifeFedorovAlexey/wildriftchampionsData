@@ -11,25 +11,27 @@
 }
 
 .topRow {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px;
-  align-items: start;
+  display: block;
   width: 100%;
 }
 
 .topMain {
-  display: grid;
-  gap: 12px;
-  justify-items: start;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
   text-align: left;
-  align-content: start;
-  padding-top: 10px;
+  padding-top: 6px;
 }
 
 .supportRow {
-  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 0;
   justify-self: start;
+  flex-shrink: 0;
 }
 
 .supportLogoLink {
@@ -60,8 +62,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  align-self: center;
+  padding: 8px;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(11, 16, 36, 0.58);
@@ -79,8 +80,8 @@
 }
 
 .supportQr {
-  width: 132px;
-  height: 132px;
+  width: 116px;
+  height: 116px;
   display: block;
   border-radius: 12px;
   background: #fff;
@@ -91,6 +92,7 @@
   gap: 0;
   max-width: 520px;
   justify-items: start;
+  min-width: 0;
 }
 
 .brand {
@@ -108,6 +110,7 @@
   justify-content: flex-start;
   gap: 8px 18px;
   max-width: 640px;
+  min-width: 0;
 }
 
 .textLink {
@@ -178,15 +181,15 @@
   }
 
   .topRow {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    justify-items: center;
+    display: block;
   }
 
   .topMain {
-    padding-top: 0;
+    display: grid;
+    gap: 14px;
     justify-items: center;
     text-align: center;
+    padding-top: 0;
   }
 
   .nav {
@@ -195,8 +198,8 @@
   }
 
   .supportRow {
-    margin-top: 16px;
     justify-self: center;
+    gap: 12px;
   }
 
   .supportLogo {
@@ -204,8 +207,8 @@
   }
 
   .supportQr {
-    width: 104px;
-    height: 104px;
+    width: 112px;
+    height: 112px;
   }
 
   .disclaimer {
