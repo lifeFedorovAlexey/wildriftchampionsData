@@ -13,11 +13,19 @@ export default function ModelViewerComponent({
   modelSrc: string;
   skinName: string;
 }) {
+  type ModelViewerElement = HTMLElement & {
+    availableAnimations?: string[];
+    animationName?: string;
+    currentTime?: number;
+    pause?: () => void;
+    play?: () => void;
+  };
+
   const [isLoading, setIsLoading] = useState(true);
   const [isViewerReady, setIsViewerReady] = useState(false);
   const [animationNames, setAnimationNames] = useState<string[]>([]);
   const [currentAnimIndex, setCurrentAnimIndex] = useState(0);
-  const modelViewerRef = useRef<any>(null);
+  const modelViewerRef = useRef<ModelViewerElement | null>(null);
 
   useEffect(() => {
     if (isViewerReady) {

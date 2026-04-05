@@ -19,12 +19,28 @@ type ChampionRecord = {
   icon?: string | null;
 };
 
+type LaneStats = {
+  pick?: number;
+  ban?: number;
+  pickRanks?: Record<string, number>;
+  banRanks?: Record<string, number>;
+};
+
+type LatestSnapshotItem = {
+  slug: string;
+  rank: string;
+  lane: string;
+  date: string;
+  pickRate?: number | null;
+  banRate?: number | null;
+};
+
 type AggregatedChampion = {
   slug: string;
   name: string;
   totalPickRate: number;
   totalBanRate: number;
-  lanes: Record<string, any>;
+  lanes: Record<string, LaneStats>;
 };
 
 type TrendInfo = {
@@ -310,7 +326,7 @@ export default function PicksBansPage() {
   const [champImages, setChampImages] = useState<Record<string, string | null>>(
     {},
   );
-  const [historyItems, setHistoryItems] = useState<any[]>([]);
+  const [historyItems, setHistoryItems] = useState<LatestSnapshotItem[]>([]);
   const [monthlyByRange, setMonthlyByRange] = useState<MonthlyByRange>({
     low: {},
     high: {},

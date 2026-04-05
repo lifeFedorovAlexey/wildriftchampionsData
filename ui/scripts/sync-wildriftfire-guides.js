@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-const { scrapeGuide, writeGuideFile } = require("./parse-wildriftfire-guide.js");
 
 const DEFAULT_STATS_API_ORIGIN = "http://127.0.0.1:3001";
 
@@ -111,6 +109,7 @@ async function pushGuideToApi(guide) {
 }
 
 async function syncOneGuide(slug, options) {
+  const { scrapeGuide, writeGuideFile } = await import("./parse-wildriftfire-guide.js");
   const guide = await scrapeGuide(slug);
 
   if (options.writeLocal) {

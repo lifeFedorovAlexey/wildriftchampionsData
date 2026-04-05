@@ -108,6 +108,22 @@ type TierChamp = {
   computedTier: string;
 };
 
+type ChampionRecord = {
+  slug: string;
+  name?: string | null;
+  icon?: string | null;
+};
+
+type LatestStatsItem = {
+  slug: string;
+  rank: string;
+  lane: string;
+  date: string;
+  winRate?: number | null;
+  pickRate?: number | null;
+  banRate?: number | null;
+};
+
 function TierChampionIcon({
   champ,
   onClick,
@@ -215,8 +231,8 @@ export default function TierlistInqPage() {
     []
   );
 
-  const [champions, setChampions] = useState<any[]>([]);
-  const [latestStats, setLatestStats] = useState<Record<string, any> | null>(
+  const [champions, setChampions] = useState<ChampionRecord[]>([]);
+  const [latestStats, setLatestStats] = useState<Record<string, LatestStatsItem> | null>(
     null
   );
   const [date, setDate] = useState<string | null>(null);
@@ -248,10 +264,10 @@ export default function TierlistInqPage() {
         const histJson = await histRes.json();
         if (cancelled) return;
 
-        setChampions(Array.isArray(champsJson) ? champsJson : []);
+        setChampions(Array.isArray(champsJson) ? (champsJson as ChampionRecord[]) : []);
 
-        const items = Array.isArray(histJson.items) ? histJson.items : [];
-        setLatestStats(buildLatestStatsMap(items));
+        const items = Array.isArray(histJson.items) ? (histJson.items as LatestStatsItem[]) : [];
+        setLatestStats(buildLatestStatsMap(items) as Record<string, LatestStatsItem>);
       } catch (e) {
         console.error("Ошибка загрузки данных для TierlistInqPage", e);
         if (!cancelled) setError("Не удалось загрузить тир-лист.");

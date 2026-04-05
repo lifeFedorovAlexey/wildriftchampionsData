@@ -115,16 +115,14 @@ function BrandMark({ size }: { size: number }) {
 
 export default function AppHeader() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpenPath, setMenuOpenPath] = useState<string | null>(null);
   const [mobileTiersOpen, setMobileTiersOpen] = useState(true);
-  const [desktopTiersOpen, setDesktopTiersOpen] = useState(false);
+  const [desktopTiersOpenPath, setDesktopTiersOpenPath] = useState<string | null>(null);
   const [isTelegramWebApp, setIsTelegramWebApp] = useState(false);
   const desktopGroupRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    setMenuOpen(false);
-    setDesktopTiersOpen(false);
-  }, [pathname]);
+  const menuOpen = menuOpenPath === pathname;
+  const desktopTiersOpen = desktopTiersOpenPath === pathname;
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -159,13 +157,13 @@ export default function AppHeader() {
     function handlePointerDown(event: MouseEvent) {
       if (!desktopGroupRef.current) return;
       if (!desktopGroupRef.current.contains(event.target as Node)) {
-        setDesktopTiersOpen(false);
+        setDesktopTiersOpenPath(null);
       }
     }
 
     function handleEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setDesktopTiersOpen(false);
+        setDesktopTiersOpenPath(null);
       }
     }
 
@@ -208,7 +206,11 @@ export default function AppHeader() {
                     className={styles.desktopGroupButton}
                     aria-expanded={desktopTiersOpen}
                     aria-haspopup="menu"
-                    onClick={() => setDesktopTiersOpen((value) => !value)}
+                    onClick={() =>
+                      setDesktopTiersOpenPath((value) =>
+                        value === pathname ? null : pathname,
+                      )
+                    }
                   >
                     <span>{item.label}</span>
                     <ChevronIcon />
@@ -262,7 +264,9 @@ export default function AppHeader() {
               aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
               aria-expanded={menuOpen}
               aria-controls="site-menu"
-              onClick={() => setMenuOpen((value) => !value)}
+              onClick={() =>
+                setMenuOpenPath((value) => (value === pathname ? null : pathname))
+              }
             >
               {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
@@ -274,7 +278,7 @@ export default function AppHeader() {
         className={`${styles.overlay} ${menuOpen ? styles.overlayOpen : ""}`}
         aria-hidden={!menuOpen}
       >
-        <div className={styles.overlayBackdrop} onClick={() => setMenuOpen(false)} />
+        <div className={styles.overlayBackdrop} onClick={() => setMenuOpenPath(null)} />
         <nav id="site-menu" className={styles.menuPanel} aria-label="Меню сайта">
           <div className={styles.menuHeader}>
             <span className={styles.menuLogo}>
@@ -284,7 +288,7 @@ export default function AppHeader() {
               type="button"
               className={styles.utilityButton}
               aria-label="Закрыть меню"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => setMenuOpenPath(null)}
             >
               <CloseIcon />
             </button>

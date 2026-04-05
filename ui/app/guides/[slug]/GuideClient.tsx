@@ -765,15 +765,15 @@ function RiftMatchupsPanel({
   availableGuideSlugs?: string[];
 }) {
   const availableSlugSet = new Set(availableGuideSlugs);
-  const [isExpanded, setIsExpanded] = useState(false);
   const orderedItems = bestItems;
   const preview = splitRiftMatchupPreview(orderedItems);
   const topItems = preview.best;
   const bottomItems = preview.worst;
-
-  useEffect(() => {
-    setIsExpanded(false);
-  }, [bestItems, worstItems]);
+  const previewKey = `${bestItems.map((item) => item.opponentSlug).join(",")}::${worstItems
+    .map((item) => item.opponentSlug)
+    .join(",")}`;
+  const [expandedPreviewKey, setExpandedPreviewKey] = useState<string | null>(null);
+  const isExpanded = expandedPreviewKey === previewKey;
 
   if (!bestItems.length) {
     return (
@@ -819,13 +819,13 @@ function RiftMatchupsPanel({
           </div>
           {orderedItems.length > INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT ? (
             <div className={styles.riftMatchupsDivider}>
-              <button
-                type="button"
-                className={styles.riftMoreButton}
-                onClick={() => setIsExpanded(true)}
-              >
-                {`Весь список (${Math.max(bestItems.length, worstItems.length)})`}
-              </button>
+                <button
+                  type="button"
+                  className={styles.riftMoreButton}
+                  onClick={() => setExpandedPreviewKey(previewKey)}
+                >
+                  {`Весь список (${Math.max(bestItems.length, worstItems.length)})`}
+                </button>
             </div>
           ) : null}
           <div className={styles.sectionEyebrow}>Худшие</div>
@@ -846,7 +846,11 @@ function RiftMatchupsPanel({
           <button
             type="button"
             className={styles.riftMoreButton}
-            onClick={() => setIsExpanded((value) => !value)}
+            onClick={() =>
+              setExpandedPreviewKey((value) =>
+                value === previewKey ? null : previewKey,
+              )
+            }
           >
             {isExpanded ? "Скрыть список" : `Весь список (${Math.max(bestItems.length, worstItems.length)})`}
           </button>

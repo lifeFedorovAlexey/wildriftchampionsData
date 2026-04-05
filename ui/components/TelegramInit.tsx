@@ -10,11 +10,7 @@ import {
 
 export default function TelegramInit() {
   const [loaded, setLoaded] = useState(false);
-  const [shouldLoadScript, setShouldLoadScript] = useState(false);
-
-  useEffect(() => {
-    setShouldLoadScript(isLikelyTelegramWebAppEnvironment());
-  }, []);
+  const [shouldLoadScript] = useState(() => isLikelyTelegramWebAppEnvironment());
 
   useEffect(() => {
     if (!loaded && !initTelegramWebAppAppearance()) return;

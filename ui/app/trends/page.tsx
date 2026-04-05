@@ -69,6 +69,13 @@ type ChampionEvent = {
   summary: string | null;
 };
 
+type RawHistoryItem = {
+  date: string;
+  winRate?: number | null;
+  pickRate?: number | null;
+  banRate?: number | null;
+};
+
 function TrendTable({ days }: { days: TrendDay[] }) {
   if (!days.length) return null;
 
@@ -171,11 +178,54 @@ export default function Page() {
   const [laneKey, setLaneKey] = useState("top");
   const [range, setRange] = useState<"week" | "month" | "all">("week");
 
-  const [rawHistory, setRawHistory] = useState<any[]>([]);
+  const [rawHistory, setRawHistory] = useState<RawHistoryItem[]>([]);
   const [championEvents, setChampionEvents] = useState<ChampionEvent[]>([]);
   const [loading, setLoading] = useState(false);
   const [eventsLoading, setEventsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const resetHistoryState = () => {
+    setLoading(true);
+    setError(null);
+    setRawHistory([]);
+    setChampionEvents([]);
+    setEventsLoading(false);
+  };
+
+  const handleChampionSelect = (champion: ChampionOption | null) => {
+    setSelectedChampion(champion);
+
+    if (!champion) {
+      setLoading(false);
+      setError(null);
+      setRawHistory([]);
+      setChampionEvents([]);
+      setEventsLoading(false);
+      return;
+    }
+
+    resetHistoryState();
+  };
+
+  const handleRankChange = (key: string) => {
+    setRankKey(key);
+    if (selectedChampion) {
+      resetHistoryState();
+    }
+  };
+
+  const handleLaneChange = (key: string) => {
+    setLaneKey(key);
+    if (selectedChampion) {
+      resetHistoryState();
+    }
+  };
+
+  const handleRangeChange = (value: "week" | "month" | "all") => {
+    setRange(value);
+    setChampionEvents([]);
+    setEventsLoading(Boolean(selectedChampion));
+  };
 
   useEffect(() => {
     fetch(`${API_BASE}/api/champions?lang=ru_ru`)
@@ -187,9 +237,6 @@ export default function Page() {
   useEffect(() => {
     if (!selectedChampion) return;
 
-    setLoading(true);
-    setError(null);
-
     const params = new URLSearchParams({
       slug: selectedChampion.slug,
       rank: rankKey,
@@ -198,7 +245,11 @@ export default function Page() {
 
     fetch(`${API_BASE}/api/champion-history?${params}`)
       .then((response) => response.json())
-      .then((payload) => setRawHistory(payload.items || []))
+      .then((payload) => {
+        const items = Array.isArray(payload.items) ? payload.items : [];
+        setRawHistory(items);
+        setEventsLoading(items.length > 0);
+      })
       .catch(() => setError("Не удалось загрузить историю"))
       .finally(() => setLoading(false));
   }, [selectedChampion, rankKey, laneKey]);
@@ -214,12 +265,7 @@ export default function Page() {
   }, [days]);
 
   useEffect(() => {
-    if (!selectedChampion || !dateWindow?.from || !dateWindow?.to) {
-      setChampionEvents([]);
-      return;
-    }
-
-    setEventsLoading(true);
+    if (!selectedChampion || !dateWindow?.from || !dateWindow?.to) return;
 
     const params = new URLSearchParams({
       slug: selectedChampion.slug,
@@ -268,16 +314,16 @@ export default function Page() {
           champions={champions}
           value={search}
           onChange={setSearch}
-          onSelect={setSelectedChampion}
+          onSelect={handleChampionSelect}
         />
 
         {!loading ? (
           <StatsFilters
             rankValue={rankKey}
-            onRankChange={setRankKey}
+            onRankChange={handleRankChange}
             laneValue={laneKey}
-            onLaneChange={setLaneKey}
-            extraControls={<RangeFilter value={range} onChange={setRange} />}
+            onLaneChange={handleLaneChange}
+            extraControls={<RangeFilter value={range} onChange={handleRangeChange} />}
           />
         ) : null}
 
