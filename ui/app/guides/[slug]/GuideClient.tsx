@@ -740,6 +740,18 @@ function RiftMatchupsPanel({
     setIsExpanded(false);
   }, [bestItems, worstItems]);
 
+  if (!bestItems.length) {
+    return (
+      <section className={styles.panel}>
+        <h2 className={styles.panelTitle}>Матчапы</h2>
+        <div className={styles.sectionEyebrow}>Лучшие</div>
+        <p className={styles.riftEmptyState}>Статистика отсутствует для данной позиции.</p>
+        <div className={styles.sectionEyebrow}>Худшие</div>
+        <p className={styles.riftEmptyState}>Статистика отсутствует для данной позиции.</p>
+      </section>
+    );
+  }
+
   return (
     <section className={styles.panel}>
       <h2 className={styles.panelTitle}>Матчапы</h2>
