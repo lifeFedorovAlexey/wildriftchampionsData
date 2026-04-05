@@ -923,6 +923,46 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             </div>
           ) : null}
 
+          {riftgg ? (
+            <div className={styles.riftFilters}>
+              {(riftgg.availableRanks || []).length ? (
+                <div className={styles.riftFilterGroup}>
+                  <div className={styles.sectionEyebrow}>Ранг</div>
+                  <div className={styles.variantTabs}>
+                    {(riftgg.availableRanks || []).map((rank) => (
+                      <button
+                        key={rank}
+                        type="button"
+                        onClick={() => setSelectedRiftRank(rank)}
+                        className={selectedRiftRank === rank ? styles.variantTabActive : styles.variantTab}
+                      >
+                        <span>{localizeRiftRank(rank)}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {(riftgg.availableLanes || []).length ? (
+                <div className={styles.riftFilterGroup}>
+                  <div className={styles.sectionEyebrow}>Положение</div>
+                  <div className={styles.variantTabs}>
+                    {(riftgg.availableLanes || []).map((lane) => (
+                      <button
+                        key={lane}
+                        type="button"
+                        onClick={() => setSelectedRiftLane(lane)}
+                        className={selectedRiftLane === lane ? styles.variantTabActive : styles.variantTab}
+                      >
+                        <span>{localizeRiftLane(lane)}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
           <div className={styles.heroMeta}>
             <div className={styles.metaPill}>
               <span className={styles.metaPillLabel}>Патч</span>
@@ -957,42 +997,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
 
       {riftgg ? (
         <>
-          <section className={styles.panel}>
-            <h2 className={styles.panelTitle}>Китайская статистика RiftGG</h2>
-            <div className={styles.riftFilters}>
-              <div className={styles.riftFilterGroup}>
-                <div className={styles.sectionEyebrow}>Ранг</div>
-                <div className={styles.variantTabs}>
-                  {(riftgg.availableRanks || []).map((rank) => (
-                    <button
-                      key={rank}
-                      type="button"
-                      onClick={() => setSelectedRiftRank(rank)}
-                      className={selectedRiftRank === rank ? styles.variantTabActive : styles.variantTab}
-                    >
-                      <span>{localizeRiftRank(rank)}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className={styles.riftFilterGroup}>
-                <div className={styles.sectionEyebrow}>Положение</div>
-                <div className={styles.variantTabs}>
-                  {(riftgg.availableLanes || []).map((lane) => (
-                    <button
-                      key={lane}
-                      type="button"
-                      onClick={() => setSelectedRiftLane(lane)}
-                      className={selectedRiftLane === lane ? styles.variantTabActive : styles.variantTab}
-                    >
-                      <span>{localizeRiftLane(lane)}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
           <div className={styles.topGrid}>
             <RiftMatchupsPanel
               title="Лучшие матчапы"
