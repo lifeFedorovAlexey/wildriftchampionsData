@@ -712,6 +712,12 @@
   grid-template-columns: 1fr;
 }
 
+.riftBuildRowsCompact {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .riftPanelFooter {
   display: flex;
   justify-content: center;
@@ -769,6 +775,14 @@
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(82px, 88px));
+  align-items: start;
+  justify-content: start;
+}
+
+.riftBuildItemsCompact {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, 88px);
   align-items: start;
   justify-content: start;
 }
@@ -996,6 +1010,10 @@
     grid-template-columns: 1fr;
   }
 
+  .riftBuildRowsCompact {
+    grid-template-columns: 1fr;
+  }
+
   .riftMatchupStats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1021,6 +1039,12 @@
 
   .riftBuildItems {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    justify-content: stretch;
+  }
+
+  .riftBuildItemsCompact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
     justify-content: stretch;
   }

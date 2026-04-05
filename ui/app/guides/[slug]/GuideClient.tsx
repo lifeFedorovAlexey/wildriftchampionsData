@@ -619,11 +619,12 @@ function RiftBuildPanel({
   dictionary?: Record<string, RiftGgDictionaryItem>;
 }) {
   if (!blocks.length) return null;
+  const isSpellsPanel = title === "Заклинания";
 
   return (
     <section className={styles.panel}>
       <h2 className={styles.panelTitle}>{title}</h2>
-      <div className={styles.riftBuildRows}>
+      <div className={isSpellsPanel ? styles.riftBuildRowsCompact : styles.riftBuildRows}>
         {blocks[0].entries?.slice(0, 7).map((entry, index) => (
           <article key={`${title}-${index}`} className={styles.riftBuildCard}>
             <div className={styles.riftBuildMeta}>
@@ -637,7 +638,7 @@ function RiftBuildPanel({
               </div>
               {entry.winRateRank ? <div className={styles.riftRankBadge}>#{entry.winRateRank}</div> : null}
             </div>
-            <div className={styles.riftBuildItems}>
+            <div className={isSpellsPanel ? styles.riftBuildItemsCompact : styles.riftBuildItems}>
               {entry.entrySlugs.map((slug) => {
                 const dictItem = dictionary?.[slug];
                 const entity: GuideEntity = {
