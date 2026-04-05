@@ -14,38 +14,37 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      S3_ENDPOINT: ${{ vars.S3_ENDPOINT }}
-      S3_BUCKET: ${{ vars.S3_BUCKET }}
-      S3_PUBLIC_BASE_URL: ${{ vars.S3_PUBLIC_BASE_URL }}
-      S3_FORCE_PATH_STYLE: ${{ vars.S3_FORCE_PATH_STYLE }}
-      ASSET_PUBLIC_MODE: ${{ vars.ASSET_PUBLIC_MODE }}
+      S3_PUBLIC_BASE_URL: ${{ secrets.S3_PUBLIC_BASE_URL }}
 
     steps:
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.2.2
         env:
-          S3_ENDPOINT: ${{ vars.S3_ENDPOINT }}
-          S3_BUCKET: ${{ vars.S3_BUCKET }}
-          S3_PUBLIC_BASE_URL: ${{ vars.S3_PUBLIC_BASE_URL }}
-          S3_FORCE_PATH_STYLE: ${{ vars.S3_FORCE_PATH_STYLE }}
-          ASSET_PUBLIC_MODE: ${{ vars.ASSET_PUBLIC_MODE }}
-          S3_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
-          S3_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          S3_PUBLIC_BASE_URL: ${{ secrets.S3_PUBLIC_BASE_URL }}
         with:
           host: ${{ secrets.TIMEWEB_HOST }}
           username: ${{ secrets.TIMEWEB_USER }}
           password: ${{ secrets.TIMEWEB_PASSWORD }}
-          debug: true
+          envs: S3_PUBLIC_BASE_URL
           script: |
             set -e
-            upsert_env_if_present() {
+            APP_ROOT="/var/www/wildriftchampionsData/ui"
+            RELEASES_DIR="${APP_ROOT}/releases"
+            SHARED_DIR="${APP_ROOT}/shared"
+            CURRENT_LINK="${APP_ROOT}/current"
+            REPO_DIR="${APP_ROOT}/repo"
+            RELEASE_ID="$(date +%Y%m%d%H%M%S)"
+            RELEASE_DIR="${RELEASES_DIR}/${RELEASE_ID}"
+            CANARY_NAME="wildrift-ui-canary-${RELEASE_ID}"
+            PM2_APP_NAME="wildrift-ui"
+            APP_PORT="3000"
+            CANARY_PORT="3100"
+            PREVIOUS_TARGET=""
+
+            upsert_env() {
               key="$1"
               value="$2"
               file="$3"
-              if [ -z "$value" ]; then
-                echo "skip empty env: $key"
-                return 0
-              fi
               touch "$file"
               if grep -q "^${key}=" "$file"; then
                 sed -i "s|^${key}=.*|${key}=${value}|" "$file"
@@ -53,52 +52,95 @@ jobs:
                 printf '%s\n' "${key}=${value}" >> "$file"
               fi
             }
-            restore_env_from_pm2() {
-              key="$1"
-              file="$2"
-              value="$(node -e 'const key = process.argv[1]; const { execSync } = require("child_process"); try { const list = JSON.parse(execSync("pm2 jlist", { encoding: "utf8" })); const proc = list.find((entry) => entry.name === "wr-api"); const env = proc?.pm2_env?.env || proc?.pm2_env || {}; const value = env[key]; if (value) process.stdout.write(String(value)); } catch {}' "$key")"
-              upsert_env_if_present "$key" "$value" "$file"
+
+            wait_for_health() {
+              port="$1"
+              attempts="${2:-45}"
+              i=1
+              while [ "$i" -le "$attempts" ]; do
+                if curl -fsS "http://127.0.0.1:${port}/api/health" >/dev/null 2>&1; then
+                  return 0
+                fi
+                sleep 2
+                i=$((i + 1))
+              done
+              return 1
             }
-            cd /var/www/wr-api
-            git stash push --include-untracked -m "deploy-api-from-ui-$(date +%s)" || true
-            git fetch origin
-            git checkout main
-            git pull --ff-only origin main
-            upsert_env_if_present S3_ENDPOINT "${S3_ENDPOINT}" .env
-            upsert_env_if_present S3_BUCKET "${S3_BUCKET}" .env
-            upsert_env_if_present S3_ACCESS_KEY_ID "${S3_ACCESS_KEY_ID}" .env
-            upsert_env_if_present S3_SECRET_ACCESS_KEY "${S3_SECRET_ACCESS_KEY}" .env
-            upsert_env_if_present S3_PUBLIC_BASE_URL "${S3_PUBLIC_BASE_URL}" .env
-            upsert_env_if_present S3_FORCE_PATH_STYLE "${S3_FORCE_PATH_STYLE}" .env
-            upsert_env_if_present ASSET_PUBLIC_MODE "${ASSET_PUBLIC_MODE}" .env
-            restore_env_from_pm2 DATABASE_URL .env
-            restore_env_from_pm2 S3_ENDPOINT .env
-            restore_env_from_pm2 S3_BUCKET .env
-            restore_env_from_pm2 S3_ACCESS_KEY_ID .env
-            restore_env_from_pm2 S3_SECRET_ACCESS_KEY .env
-            restore_env_from_pm2 S3_PUBLIC_BASE_URL .env
-            restore_env_from_pm2 S3_FORCE_PATH_STYLE .env
-            restore_env_from_pm2 ASSET_PUBLIC_MODE .env
-            npm ci
-            pm2 delete wr-api || true
-            pm2 start npm --name wr-api --cwd /var/www/wr-api -- start
-            pm2 save
-            cd /var/www/wildriftchampionsData
-            git stash push --include-untracked -m "deploy-ui-$(date +%s)" || true
-            git fetch origin
-            git checkout main
-            git pull --ff-only origin main
-            cd /var/www/wildriftchampionsData/ui
-            touch .env.production.local
-            if grep -q '^S3_PUBLIC_BASE_URL=' .env.production.local; then
-              sed -i "s|^S3_PUBLIC_BASE_URL=.*|S3_PUBLIC_BASE_URL=${S3_PUBLIC_BASE_URL}|" .env.production.local
-            else
-              printf '%s\n' "S3_PUBLIC_BASE_URL=${S3_PUBLIC_BASE_URL}" >> .env.production.local
+
+            cleanup_canary() {
+              pm2 delete "${CANARY_NAME}" >/dev/null 2>&1 || true
+            }
+
+            mkdir -p "${RELEASES_DIR}" "${SHARED_DIR}" "${REPO_DIR}"
+            cd "${REPO_DIR}"
+            if [ ! -d .git ]; then
+              git init
+              git remote add origin https://github.com/lifeFedorovAlexey/wildriftchampionsData.git
+              git fetch origin
+              git checkout -b main origin/main
             fi
-            rm -rf node_modules .next
+
+            git stash push --include-untracked -m "deploy-ui-${RELEASE_ID}" || true
+            git fetch origin
+            git checkout main
+            git pull --ff-only origin main
+
+            mkdir -p "${RELEASE_DIR}"
+            git archive --format=tar HEAD ui | tar -xf - -C "${RELEASE_DIR}" --strip-components=1
+
+            upsert_env S3_PUBLIC_BASE_URL "${S3_PUBLIC_BASE_URL}" "${RELEASE_DIR}/.env.production.local"
+
+            cd "${RELEASE_DIR}"
             npm ci
             npm run build
-            pm2 delete wildrift-ui || true
-            pm2 start npm --name wildrift-ui --cwd /var/www/wildriftchampionsData/ui -- start
+
+            cleanup_canary
+            pm2 start npm --name "${CANARY_NAME}" --cwd "${RELEASE_DIR}" -- start -- --hostname 127.0.0.1 --port "${CANARY_PORT}"
+            if ! wait_for_health "${CANARY_PORT}" 45; then
+              pm2 logs "${CANARY_NAME}" --lines 120 --nostream || true
+              cleanup_canary
+              echo "ui canary failed health-check"
+              exit 1
+            fi
+            cleanup_canary
+
+            cat > "${SHARED_DIR}/ecosystem.config.cjs" <<EOF
+            module.exports = {
+              apps: [
+                {
+                  name: "${PM2_APP_NAME}",
+                  script: "npm",
+                  args: "start -- --hostname 127.0.0.1 --port ${APP_PORT}",
+                  cwd: "${CURRENT_LINK}",
+                  instances: 2,
+                  exec_mode: "cluster",
+                  listen_timeout: 15000,
+                  kill_timeout: 15000
+                }
+              ]
+            };
+            EOF
+
+            if [ -L "${CURRENT_LINK}" ]; then
+              PREVIOUS_TARGET="$(readlink -f "${CURRENT_LINK}")"
+            fi
+            ln -sfn "${RELEASE_DIR}" "${CURRENT_LINK}"
+
+            if pm2 describe "${PM2_APP_NAME}" >/dev/null 2>&1; then
+              pm2 reload "${SHARED_DIR}/ecosystem.config.cjs" --only "${PM2_APP_NAME}" --update-env
+            else
+              pm2 start "${SHARED_DIR}/ecosystem.config.cjs" --only "${PM2_APP_NAME}" --update-env
+            fi
+
+            if ! wait_for_health "${APP_PORT}" 45; then
+              pm2 logs "${PM2_APP_NAME}" --lines 120 --nostream || true
+              if [ -n "${PREVIOUS_TARGET}" ] && [ -d "${PREVIOUS_TARGET}" ]; then
+                ln -sfn "${PREVIOUS_TARGET}" "${CURRENT_LINK}"
+                pm2 reload "${SHARED_DIR}/ecosystem.config.cjs" --only "${PM2_APP_NAME}" --update-env || true
+              fi
+              echo "ui production failed health-check after reload"
+              exit 1
+            fi
+
+            ls -1dt "${RELEASES_DIR}"/* 2>/dev/null | tail -n +6 | xargs -r rm -rf
             pm2 save
-          envs: S3_ENDPOINT,S3_BUCKET,S3_PUBLIC_BASE_URL,S3_FORCE_PATH_STYLE,ASSET_PUBLIC_MODE,S3_ACCESS_KEY_ID,S3_SECRET_ACCESS_KEY
