@@ -628,6 +628,7 @@ function RiftBuildPanel({
         {blocks[0].entries?.slice(0, 7).map((entry, index) => (
           <article key={`${title}-${index}`} className={styles.riftBuildCard}>
             <div className={styles.riftBuildMeta}>
+              {entry.winRateRank ? <div className={styles.riftRankBadge}>#{entry.winRateRank}</div> : null}
               <div className={styles.riftBuildStat}>
                 <div className={styles.riftStatLabel}>Процент побед</div>
                 <div className={`${styles.riftStatValue} ${getRiftWinRateClass(entry.winRate)}`}>{formatPercent(entry.winRate)}</div>
@@ -636,7 +637,6 @@ function RiftBuildPanel({
                 <div className={styles.riftStatLabel}>Коэффициент выбора</div>
                 <div className={styles.riftStatMuted}>{formatPercent(entry.pickRate)}</div>
               </div>
-              {entry.winRateRank ? <div className={styles.riftRankBadge}>#{entry.winRateRank}</div> : null}
             </div>
             <div className={isSpellsPanel ? styles.riftBuildItemsCompact : styles.riftBuildItems}>
               {entry.entrySlugs.map((slug) => {
@@ -700,6 +700,7 @@ function RiftMatchupCompactCard({
         <div className={styles.riftMatchupCompactHeading}>
           <div className={styles.riftMatchupCompactName}>{name}</div>
           <div className={styles.riftMatchupCompactMeta}>
+            {item.winRateRank ? <span className={styles.riftCompactRank}>#{item.winRateRank}</span> : null}
             <span className={`${styles.riftStatValue} ${getRiftWinRateClass(item.winRate)}`}>
               {formatPercent(item.winRate)}
             </span>
@@ -707,7 +708,6 @@ function RiftMatchupCompactCard({
               <span className={styles.riftStatInlineLabel}>PR</span>
               <span className={styles.riftStatMuted}>{formatPercent(item.pickRate)}</span>
             </span>
-            {item.winRateRank ? <span className={styles.riftCompactRank}>#{item.winRateRank}</span> : null}
           </div>
         </div>
       </div>
