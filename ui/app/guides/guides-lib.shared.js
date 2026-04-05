@@ -42,7 +42,7 @@ export async function fetchGuideSlugsFromApi() {
 
 export async function fetchChampionNamesFromApi() {
   try {
-    const payload = await fetchApiJson("/api/champions?lang=ru_ru", {
+    const payload = await fetchApiJson("/api/champions?lang=ru_ru&fields=names", {
       fetchOptions: {
         next: { revalidate: 3600 * 24 * 7 },
       },

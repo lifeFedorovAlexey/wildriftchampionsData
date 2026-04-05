@@ -66,9 +66,11 @@ test("fetchGuideSlugsFromApi supports object payload and trims empty slugs", asy
 
 test("fetchChampionNamesFromApi builds a slug-name map", async () => {
   const previousFetch = global.fetch;
+  let requestedUrl = null;
 
-  global.fetch = async () =>
-    new Response(
+  global.fetch = async (url) => {
+    requestedUrl = String(url);
+    return new Response(
       JSON.stringify([
         { slug: "lux", name: "Люкс" },
         { slug: "ahri", name: "Ари" },
@@ -76,9 +78,11 @@ test("fetchChampionNamesFromApi builds a slug-name map", async () => {
       ]),
       { status: 200 },
     );
+  };
 
   try {
     const result = await fetchChampionNamesFromApi();
+    assert.equal(requestedUrl?.includes("/api/champions?lang=ru_ru&fields=names"), true);
     assert.deepEqual(result, {
       lux: "Люкс",
       ahri: "Ари",
