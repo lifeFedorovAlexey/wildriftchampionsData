@@ -187,8 +187,8 @@ function formatAbilityHotkey(subtitle?: string | null) {
 
 function localizeRiftRank(value?: string | null) {
   const normalized = String(value || "").trim().toLowerCase();
-  if (normalized === "diamond_plus") return "Алмаз+";
-  if (normalized === "master_plus") return "Мастер+";
+  if (normalized === "diamond_plus") return "Алмаз";
+  if (normalized === "master_plus") return "Мастер";
   if (normalized === "challenger") return "ГМ";
   if (normalized === "super_server") return "Претендент";
   return value || "";
