@@ -520,46 +520,36 @@
   text-decoration: none;
 }
 
-.riftMatchupsPreview {
+.riftMatchupsTableHeader {
   display: grid;
-  gap: 14px;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: start;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 10px;
 }
 
-.riftMatchupsPreviewColumn {
+.riftMatchupsTable {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
-.riftMatchupsPreviewCenter {
+.riftMatchupsTableRow {
   display: grid;
-  place-items: center;
-  align-self: center;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.riftMatchupsCompactList,
-.riftMatchupsCompactListExpanded {
-  display: grid;
-  gap: 8px;
+.riftMatchupsTableCell {
+  min-width: 0;
 }
 
-.riftMatchupsCompactListExpanded {
-  margin-top: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.riftMatchupsTabs {
-  display: flex;
-  gap: 8px;
-  margin-top: 14px;
-  justify-content: center;
+.riftMatchupsTableSpacer {
+  min-height: 62px;
 }
 
 .riftMatchupCompactCard {
   display: grid;
-  gap: 8px;
-  padding: 10px 12px;
+  gap: 6px;
+  padding: 8px 10px;
   border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.62);
   border: 1px solid var(--border-soft);
@@ -567,7 +557,7 @@
 
 .riftMatchupCompactHead {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 
@@ -580,14 +570,14 @@
 .riftMatchupCompactName {
   color: var(--text-strong);
   font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.1;
 }
 
 .riftMatchupCompactMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
   align-items: center;
 }
 
@@ -596,13 +586,13 @@
   align-items: center;
   justify-content: center;
   min-width: 38px;
-  min-height: 24px;
-  padding: 0 8px;
+  min-height: 22px;
+  padding: 0 7px;
   border-radius: 999px;
   background: rgba(74, 222, 128, 0.14);
   color: #7fe084;
   font-weight: 800;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .riftMatchupsGrid {
@@ -737,12 +727,9 @@
 }
 
 @media (max-width: 900px) {
-  .riftMatchupsPreview {
+  .riftMatchupsTableHeader,
+  .riftMatchupsTableRow {
     grid-template-columns: 1fr;
-  }
-
-  .riftMatchupsPreviewCenter {
-    order: 3;
   }
 }
 

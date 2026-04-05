@@ -104,7 +104,7 @@ type RiftGgLaneBlock<TEntry> = {
 };
 
 const INITIAL_RIFT_MATCHUPS_COUNT = 8;
-const INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT = 4;
+const INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT = 5;
 
 export type GuideData = {
   champion: {
@@ -724,95 +724,63 @@ function RiftMatchupsPanel({
 }) {
   const availableSlugSet = new Set(availableGuideSlugs);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [selectedGroup, setSelectedGroup] = useState<"best" | "worst">("best");
-  const activeItems = selectedGroup === "best" ? bestItems : worstItems;
-  const visibleItems = isExpanded ? activeItems : activeItems.slice(0, INITIAL_RIFT_MATCHUPS_COUNT);
+  const visibleCount = isExpanded
+    ? Math.max(bestItems.length, worstItems.length)
+    : INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT;
+  const rowIndexes = Array.from({ length: visibleCount }, (_, index) => index);
 
   useEffect(() => {
     setIsExpanded(false);
-    setSelectedGroup("best");
   }, [bestItems, worstItems]);
 
   return (
     <section className={styles.panel}>
       <h2 className={styles.panelTitle}>Матчапы</h2>
 
-      <div className={styles.riftMatchupsPreview}>
-        <div className={styles.riftMatchupsPreviewColumn}>
-          <div className={styles.sectionEyebrow}>Лучшие</div>
-          <div className={styles.riftMatchupsCompactList}>
-            {bestItems.slice(0, INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT).map((item) => (
-              <RiftMatchupCompactCard
-                key={`best-${item.opponentSlug}`}
-                item={item}
-                availableSlugSet={availableSlugSet}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.riftMatchupsPreviewCenter}>
-          <button
-            type="button"
-            className={styles.riftMoreButton}
-            onClick={() => setIsExpanded((value) => !value)}
-          >
-            {isExpanded ? "Скрыть список" : `Весь список (${Math.max(bestItems.length, worstItems.length)})`}
-          </button>
-        </div>
-
-        <div className={styles.riftMatchupsPreviewColumn}>
-          <div className={styles.sectionEyebrow}>Худшие</div>
-          <div className={styles.riftMatchupsCompactList}>
-            {worstItems.slice(0, INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT).map((item) => (
-              <RiftMatchupCompactCard
-                key={`worst-${item.opponentSlug}`}
-                item={item}
-                availableSlugSet={availableSlugSet}
-              />
-            ))}
-          </div>
-        </div>
+      <div className={styles.riftMatchupsTableHeader}>
+        <div className={styles.sectionEyebrow}>Лучшие</div>
+        <div className={styles.sectionEyebrow}>Худшие</div>
       </div>
 
-      {isExpanded ? (
-        <>
-          <div className={styles.riftMatchupsTabs}>
-            <button
-              type="button"
-              className={selectedGroup === "best" ? styles.variantTabActive : styles.variantTab}
-              onClick={() => setSelectedGroup("best")}
-            >
-              <span>Лучшие</span>
-            </button>
-            <button
-              type="button"
-              className={selectedGroup === "worst" ? styles.variantTabActive : styles.variantTab}
-              onClick={() => setSelectedGroup("worst")}
-            >
-              <span>Худшие</span>
-            </button>
+      <div className={styles.riftMatchupsTable}>
+        {rowIndexes.map((index) => (
+          <div key={`matchup-row-${index}`} className={styles.riftMatchupsTableRow}>
+            <div className={styles.riftMatchupsTableCell}>
+              {bestItems[index] ? (
+                <RiftMatchupCompactCard
+                  key={`best-${bestItems[index].opponentSlug}`}
+                  item={bestItems[index]}
+                  availableSlugSet={availableSlugSet}
+                />
+              ) : (
+                <div className={styles.riftMatchupsTableSpacer} />
+              )}
+            </div>
+            <div className={styles.riftMatchupsTableCell}>
+              {worstItems[index] ? (
+                <RiftMatchupCompactCard
+                  key={`worst-${worstItems[index].opponentSlug}`}
+                  item={worstItems[index]}
+                  availableSlugSet={availableSlugSet}
+                />
+              ) : (
+                <div className={styles.riftMatchupsTableSpacer} />
+              )}
+            </div>
           </div>
-          <div className={styles.riftMatchupsCompactListExpanded}>
-            {visibleItems.map((item) => (
-              <RiftMatchupCompactCard
-                key={`${selectedGroup}-${item.opponentSlug}`}
-                item={item}
-                availableSlugSet={availableSlugSet}
-              />
-            ))}
-          </div>
-        </>
-      ) : null}
+        ))}
+      </div>
 
-      {isExpanded && activeItems.length > INITIAL_RIFT_MATCHUPS_COUNT ? (
+      {Math.max(bestItems.length, worstItems.length) > INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT ? (
         <div className={styles.riftPanelFooter}>
           <button
             type="button"
             className={styles.riftMoreButton}
             onClick={() => setIsExpanded((value) => !value)}
           >
-            Свернуть
+            {isExpanded
+              ? "Скрыть список"
+              : `Весь список (${Math.max(bestItems.length, worstItems.length)})`}
           </button>
         </div>
       ) : null}
