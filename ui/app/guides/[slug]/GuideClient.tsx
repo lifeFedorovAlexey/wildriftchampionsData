@@ -198,7 +198,7 @@ function localizeRiftLane(value?: string | null) {
   if (normalized === "jungle") return "Лес";
   if (normalized === "mid") return "Мид";
   if (normalized === "adc") return "Дракон";
-  if (normalized === "support") return "Поддержка";
+  if (normalized === "support") return "Саппорт";
   return localizeGuideLane(value || "");
 }
 
@@ -235,7 +235,7 @@ function localizeVariantTitle(variant: GuideVariant) {
     .replace(/^Mid$/i, "Мид")
     .replace(/^Jungle$/i, "Лес")
     .replace(/^Baron$/i, "Барон")
-    .replace(/^Duo$/i, "Дуо");
+    .replace(/^Duo$/i, "Дракон");
 }
 
 function getVariantRoleLabel(variant?: GuideVariant) {
@@ -912,7 +912,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
       seen.add(key);
       tabs.push({
         key,
-        label: riftLane ? localizeRiftLane(riftLane) : localizeVariantTitle(item),
+        label: riftLane ? localizeGuideLane(riftLane) : localizeVariantTitle(item),
         ownTier: item.ownTier,
         variantIndex: index,
         riftLane,
@@ -925,7 +925,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         seen.add(lane);
         tabs.push({
           key: lane,
-          label: localizeRiftLane(lane),
+          label: localizeGuideLane(lane),
           ownTier: null,
           variantIndex: defaultIndex,
           riftLane: lane,
