@@ -738,7 +738,17 @@ function RiftMatchupsPanel({
               />
             ))}
           </div>
-          <div className={styles.riftMatchupsDivider}>...</div>
+          {orderedItems.length > INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT ? (
+            <div className={styles.riftMatchupsDivider}>
+              <button
+                type="button"
+                className={styles.riftMoreButton}
+                onClick={() => setIsExpanded(true)}
+              >
+                {`Весь список (${Math.max(bestItems.length, worstItems.length)})`}
+              </button>
+            </div>
+          ) : null}
           <div className={styles.sectionEyebrow}>Худшие</div>
           <div className={styles.riftMatchupsSingleList}>
             {bottomItems.map((item) => (
@@ -759,9 +769,7 @@ function RiftMatchupsPanel({
             className={styles.riftMoreButton}
             onClick={() => setIsExpanded((value) => !value)}
           >
-            {isExpanded
-              ? "Скрыть список"
-              : `Весь список (${Math.max(bestItems.length, worstItems.length)})`}
+            {isExpanded ? "Скрыть список" : `Весь список (${Math.max(bestItems.length, worstItems.length)})`}
           </button>
         </div>
       ) : null}
