@@ -26,6 +26,7 @@ type GuideListItem = {
   tier?: string | null;
   recommendedRole?: string | null;
   roles: string[];
+  laneKeys?: LaneKey[];
   buildCount: number;
 };
 
@@ -83,6 +84,10 @@ function getDisplayRoles(item: GuideListItem) {
 }
 
 function getLaneKeys(item: GuideListItem): LaneKey[] {
+  if (Array.isArray(item.laneKeys) && item.laneKeys.length) {
+    return Array.from(new Set(item.laneKeys));
+  }
+
   const directKeys = [
     ...item.roles.map((role) => toGuideLaneKey(role) as LaneKey | null),
     toGuideLaneKey(item.recommendedRole || "") as LaneKey | null,
