@@ -4,8 +4,9 @@ Next.js frontend for `wildriftallstats.ru`.
 
 ## Version
 
-- Current version: `1.1.0`
+- Current version: `1.2.0`
 - Release branch format: `release/x.y.z`
+- Stable tag format: `v1.2.0`
 
 ## Commands
 
@@ -27,6 +28,7 @@ npm run sync:guides:all
 - `GUIDES_SYNC_API_ORIGIN` - WR API origin used by the guide sync job
 - `GUIDES_SYNC_IMPORT_URL` - optional full import endpoint override
 - `GUIDES_SYNC_SECRET` - shared secret header for guide import requests
+- `S3_PUBLIC_BASE_URL` - public base used for mirrored assets in production
 
 Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_TARGET`.
 
@@ -41,6 +43,8 @@ Expected WR API endpoints:
 - `POST /api/guides/import`
 - `GET /api/guides/:slug?lang=ru_ru`
 - `GET /api/guides?fields=slug`
+- `GET /api/champions?lang=ru_ru&fields=names`
+- `GET /api/guides?fields=index`
 
 ## Release checklist
 
@@ -50,7 +54,13 @@ Expected WR API endpoints:
 4. Run `npm run build`
 5. Verify the guide sync secrets point to `https://wildriftallstats.ru/wr-api`
 6. Push the release branch as `release/x.y.z`
+7. Push the stable tag as `vx.y.z`
 
 ## Production
 
 Production deploys run to the Timeweb server via GitHub Actions.
+
+- `.github/workflows/deploy-timeweb.yml` builds a fresh UI release
+- the workflow checks a canary instance on `127.0.0.1:3100`
+- after a healthy canary it replaces the live PM2 process on `127.0.0.1:3000`
+- guide sync runs separately from `.github/workflows/sync-guides.yml`
