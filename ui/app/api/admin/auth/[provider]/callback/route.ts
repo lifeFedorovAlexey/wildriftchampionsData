@@ -3,8 +3,8 @@ import {
   ADMIN_SESSION_COOKIE,
   ADMIN_SESSION_TTL_SECONDS,
   ADMIN_STATE_COOKIE,
+  buildAdminUrl,
   getAdminCookieOptions,
-  getAdminOrigin,
   getAdminProvider,
   exchangeOAuthCode,
   fetchOAuthProfile,
@@ -14,11 +14,6 @@ import {
   verifyTelegramLogin,
 } from "@/lib/admin-auth.js";
 import { exchangeAdminSession } from "@/lib/admin-api.js";
-
-function buildAdminUrl(request: NextRequest, path: string) {
-  const origin = getAdminOrigin(request, process.env) || new URL(request.url).origin;
-  return new URL(path, `${origin}/`);
-}
 
 function redirectToLogin(request: NextRequest, code: string) {
   const response = NextResponse.redirect(

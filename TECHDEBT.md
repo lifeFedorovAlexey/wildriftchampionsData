@@ -31,3 +31,9 @@
 
 - API contract tests that assert `GET /api/champions`, `GET /api/guides`, `GET /api/tierlist*`, and `GET /api/winrates*` never emit `src=` in champion icon URLs when `ASSET_PUBLIC_MODE=s3`.
 - More end-to-end coverage around guide detail payloads so opponent and hero media assets follow the intended public URL policy.
+
+## Admin auth follow-up
+
+- Add end-to-end coverage for admin OAuth start/callback routes behind a reverse proxy so production never regresses to `localhost` or `http` redirect URIs.
+- Consider stronger environment separation for admin OAuth testing:
+  local development on `localhost:3000` and production `wildriftallstats.ru` can still confuse a browser session if both flows are tested in parallel with stale provider/session cookies.

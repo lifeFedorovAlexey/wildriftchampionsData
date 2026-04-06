@@ -2,18 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   ADMIN_STATE_COOKIE,
   ADMIN_STATE_TTL_SECONDS,
+  buildAdminUrl,
   buildAdminAuthorizeUrl,
   getAdminCookieOptions,
-  getAdminOrigin,
   getAdminProvider,
   issueAdminState,
   sanitizeAdminReturnTo,
 } from "@/lib/admin-auth.js";
-
-function buildAdminUrl(request: NextRequest, path: string) {
-  const origin = getAdminOrigin(request, process.env) || new URL(request.url).origin;
-  return new URL(path, `${origin}/`);
-}
 
 export async function GET(
   request: NextRequest,

@@ -29,6 +29,7 @@ npm run sync:guides:all
 - `GUIDES_SYNC_IMPORT_URL` - optional full import endpoint override
 - `GUIDES_SYNC_SECRET` - shared secret header for guide import requests
 - `S3_PUBLIC_BASE_URL` - public base used for mirrored assets in production
+- `ADMIN_PUBLIC_ORIGIN` - canonical public admin origin for server-side OAuth redirects in production
 - `ADMIN_SESSION_SECRET` - shared admin exchange secret, must match `wr-api`
 - `ADMIN_GOOGLE_CLIENT_ID` / `ADMIN_GOOGLE_CLIENT_SECRET` - Google OAuth web app credentials
 - `ADMIN_YANDEX_CLIENT_ID` / `ADMIN_YANDEX_CLIENT_SECRET` - Yandex OAuth app credentials
@@ -36,6 +37,11 @@ npm run sync:guides:all
 - `ADMIN_VK_CLIENT_ID` / `ADMIN_VK_CLIENT_SECRET` - VK OAuth app credentials when VK login is enabled
 
 Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_TARGET`.
+
+Admin OAuth notes:
+
+- production should set `ADMIN_PUBLIC_ORIGIN=https://wildriftallstats.ru`
+- local and production admin flows should not be tested in the same browser session when possible; prefer an incognito window for production checks after local OAuth testing
 
 ## Admin Login
 

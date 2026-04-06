@@ -69,13 +69,16 @@ export function sanitizeAdminReturnTo(value) {
   return candidate.startsWith("/admin") ? candidate : DEFAULT_ADMIN_PATH;
 }
 
-export function getAdminOrigin(request, env = process.env) {
-  const configuredOrigin = String(
-    env.NEXT_PUBLIC_SITE_URL || env.NEXT_PUBLIC_APP_URL || "",
-  ).trim();
+function normalizeOrigin(value) {
+  return String(value || "").trim().replace(/\/$/, "");
+}
 
-  if (configuredOrigin && !/^(https?:\/\/)?localhost(?::\d+)?$/i.test(configuredOrigin)) {
-    return configuredOrigin.replace(/\/$/, "");
+export function getAdminOrigin(request, env = process.env) {
+  const explicitOrigin = normalizeOrigin(
+    env.ADMIN_PUBLIC_ORIGIN || env.NEXT_PUBLIC_SITE_URL || env.NEXT_PUBLIC_APP_URL,
+  );
+  if (explicitOrigin) {
+    return explicitOrigin;
   }
 
   const forwardedProto = String(
@@ -105,11 +108,12 @@ export function getAdminOrigin(request, env = process.env) {
     return `${protocol}//${requestUrl.host}`;
   }
 
-  if (configuredOrigin) {
-    return configuredOrigin.replace(/\/$/, "");
-  }
-
   return "";
+}
+
+export function buildAdminUrl(request, path, env = process.env) {
+  const origin = getAdminOrigin(request, env) || new URL(request.url).origin;
+  return new URL(path, `${origin}/`);
 }
 
 function createCodeVerifier() {
@@ -507,6 +511,7 @@ export function getAdminErrorMessage(code) {
 
 export function getAdminEnvHints() {
   return [
+    "ADMIN_PUBLIC_ORIGIN for production admin OAuth origin",
     "ADMIN_SESSION_SECRET",
     "ADMIN_BOOTSTRAP_EMAILS или ADMIN_BOOTSTRAP_TELEGRAM_IDS только для первого owner",
     "ADMIN_TELEGRAM_BOT_USERNAME + ADMIN_TELEGRAM_BOT_TOKEN",
