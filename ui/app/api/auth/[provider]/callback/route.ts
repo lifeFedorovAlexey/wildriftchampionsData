@@ -72,7 +72,7 @@ export async function GET(
   const expectedState = readUserState(stateToken, process.env);
   const returnedState = String(request.nextUrl.searchParams.get("state") || "");
 
-  if (!expectedState || returnedState !== stateToken || expectedState.provider !== providerId) {
+  if (!expectedState || returnedState !== expectedState.nonce || expectedState.provider !== providerId) {
     return redirectToMe(request, "oauth_state_invalid");
   }
 

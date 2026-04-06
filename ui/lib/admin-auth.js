@@ -290,7 +290,7 @@ export function buildAdminAuthorizeUrl(provider, stateToken) {
     redirect_uri: provider.redirectUri,
     response_type: "code",
     scope: provider.scope,
-    state: stateToken,
+    state: state.nonce,
     code_challenge: createCodeChallenge(state.codeVerifier),
     code_challenge_method: "S256",
   });
@@ -329,7 +329,7 @@ export async function exchangeOAuthCode(
     }
 
     body.set("device_id", deviceId);
-    body.set("state", stateToken);
+    body.set("state", state.nonce);
   }
 
   const response = await fetch(provider.tokenUrl, {
