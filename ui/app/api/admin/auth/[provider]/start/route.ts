@@ -4,10 +4,16 @@ import {
   ADMIN_STATE_TTL_SECONDS,
   buildAdminAuthorizeUrl,
   getAdminCookieOptions,
+  getAdminOrigin,
   getAdminProvider,
   issueAdminState,
   sanitizeAdminReturnTo,
 } from "@/lib/admin-auth.js";
+
+function buildAdminUrl(request: NextRequest, path: string) {
+  const origin = getAdminOrigin(request, process.env) || new URL(request.url).origin;
+  return new URL(path, `${origin}/`);
+}
 
 export async function GET(
   request: NextRequest,
@@ -18,7 +24,7 @@ export async function GET(
 
   if (!provider || provider.type !== "oauth" || !provider.enabled) {
     return NextResponse.redirect(
-      new URL("/admin/login?error=provider_not_available", request.url),
+      buildAdminUrl(request, "/admin/login?error=provider_not_available"),
     );
   }
 
@@ -29,7 +35,7 @@ export async function GET(
 
   if (!stateToken) {
     return NextResponse.redirect(
-      new URL("/admin/login?error=session_secret_missing", request.url),
+      buildAdminUrl(request, "/admin/login?error=session_secret_missing"),
     );
   }
 

@@ -4,6 +4,7 @@ import {
   ADMIN_SESSION_TTL_SECONDS,
   ADMIN_STATE_COOKIE,
   getAdminCookieOptions,
+  getAdminOrigin,
   getAdminProvider,
   exchangeOAuthCode,
   fetchOAuthProfile,
@@ -14,9 +15,17 @@ import {
 } from "@/lib/admin-auth.js";
 import { exchangeAdminSession } from "@/lib/admin-api.js";
 
+function buildAdminUrl(request: NextRequest, path: string) {
+  const origin = getAdminOrigin(request, process.env) || new URL(request.url).origin;
+  return new URL(path, `${origin}/`);
+}
+
 function redirectToLogin(request: NextRequest, code: string) {
   const response = NextResponse.redirect(
-    new URL(`/admin/login?error=${encodeURIComponent(code)}`, request.url),
+    buildAdminUrl(
+      request,
+      `/admin/login?error=${encodeURIComponent(code)}`,
+    ),
   );
   response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
   response.headers.set("Pragma", "no-cache");
@@ -49,7 +58,7 @@ export async function GET(
         process.env,
         currentSessionToken,
       );
-      const response = NextResponse.redirect(new URL("/admin", request.url));
+      const response = NextResponse.redirect(buildAdminUrl(request, "/admin"));
       response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
       response.headers.set("Pragma", "no-cache");
       response.cookies.set(
@@ -100,7 +109,7 @@ export async function GET(
     );
 
     const response = NextResponse.redirect(
-      new URL(sanitizeAdminReturnTo(expectedState.returnTo), request.url),
+      buildAdminUrl(request, sanitizeAdminReturnTo(expectedState.returnTo)),
     );
     response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
     response.headers.set("Pragma", "no-cache");
