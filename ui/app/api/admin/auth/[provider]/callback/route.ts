@@ -88,7 +88,9 @@ export async function GET(
   }
 
   try {
-    const tokenPayload = await exchangeOAuthCode(provider, code, stateToken);
+    const tokenPayload = await exchangeOAuthCode(provider, code, stateToken, {
+      deviceId: request.nextUrl.searchParams.get("device_id") || "",
+    });
     const accessToken = String(tokenPayload.access_token || "");
     const profilePayload = await fetchOAuthProfile(provider, accessToken, tokenPayload);
     const profile = mapOAuthProfile(providerId, profilePayload, tokenPayload);

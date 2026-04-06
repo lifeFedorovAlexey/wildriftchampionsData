@@ -218,7 +218,7 @@ export default async function AdminPage() {
                     ))}
 
                   {!linkedProviderIds.has("telegram") ? (
-                    <article className={styles.providerRow}>
+                    <article className={`${styles.providerRow} ${styles.providerRowStacked}`.trim()}>
                       <div>
                         <h4 className={styles.providerLabel}>Telegram</h4>
                         <p className={styles.providerHint}>
@@ -230,6 +230,7 @@ export default async function AdminPage() {
                           <TelegramLoginButton
                             botUsername={telegramProvider.botUsername}
                             authUrl={telegramProvider.authUrl}
+                            size="medium"
                           />
                         ) : (
                           <span className={styles.inlineMuted}>Telegram не настроен</span>

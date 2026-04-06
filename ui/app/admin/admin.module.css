@@ -313,6 +313,11 @@
   background: rgba(255, 255, 255, 0.03);
 }
 
+.providerRowStacked {
+  display: grid;
+  justify-content: stretch;
+}
+
 .identityCard {
   display: grid;
   gap: 10px;
@@ -456,13 +461,20 @@
   min-height: 46px;
 }
 
+.telegramAction {
+  width: 100%;
+  max-width: 260px;
+}
+
 :global(.telegramWidgetHost) {
   min-height: 46px;
+  width: 100%;
 }
 
 :global(.telegramWidgetHost iframe) {
   max-width: 100%;
   border-radius: 12px;
+  display: block;
 }
 
 @media (min-width: 900px) {

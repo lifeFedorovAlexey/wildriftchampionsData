@@ -302,7 +302,12 @@ export function buildAdminAuthorizeUrl(provider, stateToken) {
   return `${provider.authUrl}?${params.toString()}`;
 }
 
-export async function exchangeOAuthCode(provider, code, stateToken) {
+export async function exchangeOAuthCode(
+  provider,
+  code,
+  stateToken,
+  extraParams = {},
+) {
   const state = readAdminState(stateToken);
   if (!provider || !state?.codeVerifier || !code) {
     throw new Error("invalid_oauth_state");
@@ -316,6 +321,16 @@ export async function exchangeOAuthCode(provider, code, stateToken) {
     code,
     code_verifier: state.codeVerifier,
   });
+
+  if (provider.id === "vk") {
+    const deviceId = String(extraParams.deviceId || "").trim();
+    if (!deviceId) {
+      throw new Error("oauth_access_denied");
+    }
+
+    body.set("device_id", deviceId);
+    body.set("state", stateToken);
+  }
 
   const response = await fetch(provider.tokenUrl, {
     method: "POST",

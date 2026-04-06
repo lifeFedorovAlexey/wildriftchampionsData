@@ -6,11 +6,13 @@ import TextHint from "@/components/TextHint";
 type TelegramLoginButtonProps = {
   botUsername: string;
   authUrl: string;
+  size?: "large" | "medium" | "small";
 };
 
 export default function TelegramLoginButton({
   botUsername,
   authUrl,
+  size = "large",
 }: TelegramLoginButtonProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isLocalHost =
@@ -37,7 +39,7 @@ export default function TelegramLoginButton({
     script.async = true;
     script.src = "https://telegram.org/js/telegram-widget.js?22";
     script.setAttribute("data-telegram-login", botUsername);
-    script.setAttribute("data-size", "large");
+    script.setAttribute("data-size", size);
     script.setAttribute("data-radius", "10");
     script.setAttribute("data-userpic", "false");
     script.setAttribute("data-auth-url", authUrl);
@@ -62,7 +64,7 @@ export default function TelegramLoginButton({
       window.clearTimeout(timer);
       container.innerHTML = "";
     };
-  }, [authUrl, botUsername, isLocalHost]);
+  }, [authUrl, botUsername, isLocalHost, size]);
 
   if (visibleError) {
     return <TextHint>{visibleError}</TextHint>;
