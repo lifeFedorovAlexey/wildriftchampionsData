@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 - 2026-04-06
+
+- fixed production champion icon delivery so guide index cards use the public S3 asset contract after setting `ASSET_PUBLIC_MODE=s3`
+- reduced `/guides` data cache duration so fresh API icon URLs and lane metadata reach the UI quickly after deploys
+- aligned docs and release notes around the S3-first asset policy and captured remaining cleanup work for legacy proxy fallbacks
+
 ## 1.2.0 - 2026-04-06
 
 - added zero-downtime UI deploys with release directories, canary health checks, and rollback support
