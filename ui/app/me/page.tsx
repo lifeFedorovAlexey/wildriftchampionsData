@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cookies, headers } from "next/headers";
 import TelegramLoginButton from "@/components/admin/TelegramLoginButton";
+import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
 import { fetchSiteUserSession } from "@/lib/site-user-api.js";
 import {
   getUserErrorMessage,
@@ -9,21 +10,6 @@ import {
   getUserSessionTokenFromCookie,
 } from "@/lib/site-user-auth.js";
 import styles from "./profile.module.css";
-
-function getProviderIcon(providerId: string) {
-  switch (providerId) {
-    case "google":
-      return "G";
-    case "yandex":
-      return "Я";
-    case "vk":
-      return "VK";
-    case "telegram":
-      return "TG";
-    default:
-      return "?";
-  }
-}
 
 function getProviderLabel(providerId: string) {
   switch (providerId) {
@@ -163,7 +149,10 @@ export default async function MePage({
                     <div key={identity.id} className={styles.identityRow}>
                       <div className={styles.identityMain}>
                         <span className={styles.providerIcon}>
-                          {getProviderIcon(identity.provider || "user")}
+                          <AuthProviderIcon
+                            providerId={identity.provider || "user"}
+                            className={styles.providerIconGraphic}
+                          />
                         </span>
                         <div className={styles.identityCopy}>
                           <strong className={styles.identityTitle}>
@@ -192,7 +181,12 @@ export default async function MePage({
                       href={`${provider.startHref}?returnTo=/me`}
                       className={`${styles.providerLink} ${provider.enabled ? "" : styles.providerLinkDisabled}`.trim()}
                     >
-                      <span className={styles.providerIcon}>{getProviderIcon(provider.id)}</span>
+                      <span className={styles.providerIcon}>
+                        <AuthProviderIcon
+                          providerId={provider.id}
+                          className={styles.providerIconGraphic}
+                        />
+                      </span>
                       <span>{provider.label}</span>
                     </Link>
                   ))}
@@ -223,7 +217,12 @@ export default async function MePage({
                     href={`${provider.startHref}?returnTo=/me`}
                     className={`${styles.providerLink} ${provider.enabled ? "" : styles.providerLinkDisabled}`.trim()}
                   >
-                    <span className={styles.providerIcon}>{getProviderIcon(provider.id)}</span>
+                    <span className={styles.providerIcon}>
+                      <AuthProviderIcon
+                        providerId={provider.id}
+                        className={styles.providerIconGraphic}
+                      />
+                    </span>
                     <span>{provider.label}</span>
                   </Link>
                 ))}

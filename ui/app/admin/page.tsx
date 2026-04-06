@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import TelegramLoginButton from "@/components/admin/TelegramLoginButton";
+import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
 import styles from "./admin.module.css";
 import {
   getAdminProviderCards,
@@ -15,21 +16,6 @@ const SECTION_ITEMS = [
   { id: "access", label: "Доступы", state: "soon" },
   { id: "team", label: "Команда", state: "soon" },
 ];
-
-function getProviderIcon(providerId: string) {
-  switch (providerId) {
-    case "google":
-      return "G";
-    case "yandex":
-      return "Я";
-    case "vk":
-      return "VK";
-    case "telegram":
-      return "TG";
-    default:
-      return "?";
-  }
-}
 
 function prettifyProvider(providerId: string) {
   switch (providerId) {
@@ -186,7 +172,10 @@ export default async function AdminPage() {
                         <article key={`${identity.provider}-${identity.subject}`} className={styles.identityRow}>
                           <div className={styles.identityMain}>
                             <span className={styles.providerIcon} aria-hidden="true">
-                              {getProviderIcon(identity.provider || "linked")}
+                              <AuthProviderIcon
+                                providerId={identity.provider || "linked"}
+                                className={styles.providerIconGraphic}
+                              />
                             </span>
                             <div className={styles.identityCopy}>
                               <span className={styles.identityProvider}>

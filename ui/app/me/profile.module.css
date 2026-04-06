@@ -210,8 +210,12 @@
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.92);
-  font-size: 12px;
-  font-weight: 800;
+}
+
+.providerIconGraphic {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .identityCopy {
