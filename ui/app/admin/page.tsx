@@ -16,6 +16,21 @@ const SECTION_ITEMS = [
   { id: "team", label: "Команда", state: "soon" },
 ];
 
+function getProviderIcon(providerId: string) {
+  switch (providerId) {
+    case "google":
+      return "G";
+    case "yandex":
+      return "Я";
+    case "vk":
+      return "VK";
+    case "telegram":
+      return "TG";
+    default:
+      return "?";
+  }
+}
+
 function prettifyProvider(providerId: string) {
   switch (providerId) {
     case "google":
@@ -168,16 +183,21 @@ export default async function AdminPage() {
                         username?: string;
                         subject?: string;
                       }) => (
-                        <article key={`${identity.provider}-${identity.subject}`} className={styles.identityCard}>
-                          <div className={styles.identityCardHead}>
-                            <span className={styles.identityProvider}>
-                              {prettifyProvider(identity.provider || "linked")}
+                        <article key={`${identity.provider}-${identity.subject}`} className={styles.identityRow}>
+                          <div className={styles.identityMain}>
+                            <span className={styles.providerIcon} aria-hidden="true">
+                              {getProviderIcon(identity.provider || "linked")}
                             </span>
-                            <span className={styles.badge}>Подключен</span>
+                            <div className={styles.identityCopy}>
+                              <span className={styles.identityProvider}>
+                                {prettifyProvider(identity.provider || "linked")}
+                              </span>
+                              <p className={styles.identityValue}>
+                                {identity.email || identity.username || identity.subject || "без публичных данных"}
+                              </p>
+                            </div>
                           </div>
-                          <p className={styles.identityValue}>
-                            {identity.email || identity.username || identity.subject || "без публичных данных"}
-                          </p>
+                          <span className={styles.badge}>Подключен</span>
                         </article>
                       ),
                     )
