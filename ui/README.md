@@ -29,8 +29,38 @@ npm run sync:guides:all
 - `GUIDES_SYNC_IMPORT_URL` - optional full import endpoint override
 - `GUIDES_SYNC_SECRET` - shared secret header for guide import requests
 - `S3_PUBLIC_BASE_URL` - public base used for mirrored assets in production
+- `ADMIN_SESSION_SECRET` - shared admin exchange secret, must match `wr-api`
+- `ADMIN_GOOGLE_CLIENT_ID` / `ADMIN_GOOGLE_CLIENT_SECRET` - Google OAuth web app credentials
+- `ADMIN_YANDEX_CLIENT_ID` / `ADMIN_YANDEX_CLIENT_SECRET` - Yandex OAuth app credentials
+- `ADMIN_TELEGRAM_BOT_USERNAME` / `ADMIN_TELEGRAM_BOT_TOKEN` - Telegram login widget bot settings
+- `ADMIN_VK_CLIENT_ID` / `ADMIN_VK_CLIENT_SECRET` - VK OAuth app credentials when VK login is enabled
 
 Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_TARGET`.
+
+## Admin Login
+
+Local setup:
+
+1. Copy [ui/.env.local.example](/d:/wildRiftChampions/ui/.env.local.example) to `.env.local`
+2. Set the same `ADMIN_SESSION_SECRET` that you use in `wr-api`
+3. Fill only the provider you want to test first
+4. Open `/admin/login`
+
+Recommended first test:
+
+- Google plus `ADMIN_BOOTSTRAP_EMAILS` in `wr-api`
+
+Where to get values:
+
+- `ADMIN_SESSION_SECRET`: same long random value as in `wr-api`
+- `ADMIN_GOOGLE_CLIENT_ID` and `ADMIN_GOOGLE_CLIENT_SECRET`: create a Google OAuth web application in Google Cloud Console
+  callback url: `http://localhost:3000/api/admin/auth/google/callback`
+- `ADMIN_YANDEX_CLIENT_ID` and `ADMIN_YANDEX_CLIENT_SECRET`: create an OAuth app in Yandex OAuth
+  callback url: `http://localhost:3000/api/admin/auth/yandex/callback`
+- `ADMIN_TELEGRAM_BOT_USERNAME` and `ADMIN_TELEGRAM_BOT_TOKEN`: create a bot via BotFather in Telegram
+  auth url: `http://localhost:3000/api/admin/auth/telegram/callback`
+- `ADMIN_VK_*`: create a VK ID app
+  callback url: `http://localhost:3000/api/admin/auth/vk/callback`
 
 ## Guides flow
 

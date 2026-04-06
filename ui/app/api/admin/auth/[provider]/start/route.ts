@@ -1,0 +1,46 @@
+import { NextRequest, NextResponse } from "next/server";
+import {
+  ADMIN_STATE_COOKIE,
+  ADMIN_STATE_TTL_SECONDS,
+  buildAdminAuthorizeUrl,
+  getAdminCookieOptions,
+  getAdminProvider,
+  issueAdminState,
+  sanitizeAdminReturnTo,
+} from "@/lib/admin-auth.js";
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ provider: string }> },
+) {
+  const { provider: providerId } = await params;
+  const provider = getAdminProvider(request, providerId, process.env);
+
+  if (!provider || provider.type !== "oauth" || !provider.enabled) {
+    return NextResponse.redirect(
+      new URL("/admin/login?error=provider_not_available", request.url),
+    );
+  }
+
+  const returnTo = sanitizeAdminReturnTo(
+    request.nextUrl.searchParams.get("returnTo"),
+  );
+  const stateToken = issueAdminState(provider.id, returnTo, process.env);
+
+  if (!stateToken) {
+    return NextResponse.redirect(
+      new URL("/admin/login?error=session_secret_missing", request.url),
+    );
+  }
+
+  const authorizeUrl = buildAdminAuthorizeUrl(provider, stateToken);
+  const response = NextResponse.redirect(authorizeUrl);
+
+  response.cookies.set(
+    ADMIN_STATE_COOKIE,
+    stateToken,
+    getAdminCookieOptions(request, ADMIN_STATE_TTL_SECONDS),
+  );
+
+  return response;
+}
