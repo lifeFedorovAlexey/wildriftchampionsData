@@ -140,6 +140,7 @@ jobs:
             git archive --format=tar HEAD ui | tar -xf - -C "${RELEASE_DIR}" --strip-components=1
 
             upsert_env S3_PUBLIC_BASE_URL "${S3_PUBLIC_BASE_URL}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env NEXT_PUBLIC_SITE_URL "https://wildriftallstats.ru" "${RELEASE_DIR}/.env.production.local"
             upsert_env ADMIN_SESSION_SECRET "${ADMIN_SESSION_SECRET}" "${RELEASE_DIR}/.env.production.local"
             upsert_env ADMIN_GOOGLE_CLIENT_ID "${ADMIN_GOOGLE_CLIENT_ID}" "${RELEASE_DIR}/.env.production.local"
             upsert_env ADMIN_GOOGLE_CLIENT_SECRET "${ADMIN_GOOGLE_CLIENT_SECRET}" "${RELEASE_DIR}/.env.production.local"

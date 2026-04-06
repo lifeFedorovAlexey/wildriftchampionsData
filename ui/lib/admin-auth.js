@@ -70,6 +70,14 @@ export function sanitizeAdminReturnTo(value) {
 }
 
 export function getAdminOrigin(request, env = process.env) {
+  const configuredOrigin = String(
+    env.NEXT_PUBLIC_SITE_URL || env.NEXT_PUBLIC_APP_URL || "",
+  ).trim();
+
+  if (configuredOrigin && !/^(https?:\/\/)?localhost(?::\d+)?$/i.test(configuredOrigin)) {
+    return configuredOrigin.replace(/\/$/, "");
+  }
+
   const forwardedProto = String(
     request?.headers?.get?.("x-forwarded-proto") || "",
   )
@@ -96,10 +104,6 @@ export function getAdminOrigin(request, env = process.env) {
         : requestUrl.protocol;
     return `${protocol}//${requestUrl.host}`;
   }
-
-  const configuredOrigin = String(
-    env.NEXT_PUBLIC_SITE_URL || env.NEXT_PUBLIC_APP_URL || "",
-  ).trim();
 
   if (configuredOrigin) {
     return configuredOrigin.replace(/\/$/, "");
