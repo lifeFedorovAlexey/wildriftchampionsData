@@ -1,0 +1,237 @@
+import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+
+export function normalizeSecret(env = process.env) {
+  return String(env.ADMIN_SESSION_SECRET || "").trim();
+}
+
+function normalizeOrigin(value) {
+  return String(value || "").trim().replace(/\/$/, "");
+}
+
+export function getConfiguredOrigin(env = process.env) {
+  return normalizeOrigin(
+    env.ADMIN_PUBLIC_ORIGIN || env.NEXT_PUBLIC_SITE_URL || env.NEXT_PUBLIC_APP_URL,
+  );
+}
+
+export function toBase64Url(value) {
+  const base64 = Buffer.from(value).toString("base64");
+  let normalized = base64.split("+").join("-").split("/").join("_");
+
+  while (normalized.endsWith("=")) {
+    normalized = normalized.slice(0, -1);
+  }
+
+  return normalized;
+}
+
+export function fromBase64Url(value) {
+  const normalized = String(value).replace(/-/g, "+").replace(/_/g, "/");
+  const padded =
+    normalized + "=".repeat((4 - (normalized.length % 4 || 4)) % 4);
+  return Buffer.from(padded, "base64");
+}
+
+export function createCodeVerifier() {
+  return toBase64Url(randomBytes(48));
+}
+
+export function createCodeChallenge(codeVerifier) {
+  return createHash("sha256").update(codeVerifier).digest("base64url");
+}
+
+export function signPayload(payload, secret) {
+  const serialized = JSON.stringify(payload);
+  const encoded = toBase64Url(serialized);
+  const signature = createHmac("sha256", secret).update(encoded).digest("base64url");
+  return `${encoded}.${signature}`;
+}
+
+function verifySignature(encoded, signature, secret) {
+  const expected = createHmac("sha256", secret).update(encoded).digest();
+  const actual = Buffer.from(String(signature || ""), "base64url");
+
+  if (!actual.length || actual.length !== expected.length) {
+    return false;
+  }
+
+  return timingSafeEqual(actual, expected);
+}
+
+export function readSignedPayload(token, secret) {
+  if (!token || !secret) return null;
+
+  const [encoded, signature] = String(token).split(".");
+  if (!encoded || !signature) return null;
+  if (!verifySignature(encoded, signature, secret)) return null;
+
+  try {
+    const payload = JSON.parse(fromBase64Url(encoded).toString("utf8"));
+    if (typeof payload?.exp !== "number" || payload.exp <= Date.now()) {
+      return null;
+    }
+
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+export function buildOAuthProviders(origin, env = process.env, routeBase = "/api/admin/auth") {
+  const googleClientId = String(env.ADMIN_GOOGLE_CLIENT_ID || "").trim();
+  const googleClientSecret = String(env.ADMIN_GOOGLE_CLIENT_SECRET || "").trim();
+  const yandexClientId = String(env.ADMIN_YANDEX_CLIENT_ID || "").trim();
+  const yandexClientSecret = String(env.ADMIN_YANDEX_CLIENT_SECRET || "").trim();
+  const vkClientId = String(env.ADMIN_VK_CLIENT_ID || "").trim();
+  const vkClientSecret = String(env.ADMIN_VK_CLIENT_SECRET || "").trim();
+  const vkAuthUrl = String(
+    env.ADMIN_VK_AUTH_URL || "https://id.vk.com/authorize",
+  ).trim();
+  const vkTokenUrl = String(
+    env.ADMIN_VK_TOKEN_URL || "https://id.vk.com/oauth2/auth",
+  ).trim();
+  const vkUserInfoUrl = String(env.ADMIN_VK_USERINFO_URL || "").trim();
+  const vkScope = String(env.ADMIN_VK_SCOPE || "email").trim();
+  const botUsername = String(env.ADMIN_TELEGRAM_BOT_USERNAME || "").trim();
+  const botToken = String(env.ADMIN_TELEGRAM_BOT_TOKEN || "").trim();
+  const secret = normalizeSecret(env);
+
+  return {
+    google: {
+      id: "google",
+      label: "Google",
+      type: "oauth",
+      enabled: Boolean(googleClientId && googleClientSecret && secret),
+      authUrl: "https://accounts.google.com/o/oauth2/v2/auth",
+      tokenUrl: "https://oauth2.googleapis.com/token",
+      userInfoUrl: "https://openidconnect.googleapis.com/v1/userinfo",
+      scope: "openid email profile",
+      clientId: googleClientId,
+      clientSecret: googleClientSecret,
+      redirectUri: `${origin}${routeBase}/google/callback`,
+    },
+    yandex: {
+      id: "yandex",
+      label: "Yandex",
+      type: "oauth",
+      enabled: Boolean(yandexClientId && yandexClientSecret && secret),
+      authUrl: "https://oauth.yandex.ru/authorize",
+      tokenUrl: "https://oauth.yandex.ru/token",
+      userInfoUrl: "https://login.yandex.ru/info?format=json",
+      scope: "login:email login:info",
+      clientId: yandexClientId,
+      clientSecret: yandexClientSecret,
+      redirectUri: `${origin}${routeBase}/yandex/callback`,
+    },
+    vk: {
+      id: "vk",
+      label: "VK",
+      type: "oauth",
+      enabled: Boolean(vkClientId && vkClientSecret && vkAuthUrl && vkTokenUrl && secret),
+      authUrl: vkAuthUrl,
+      tokenUrl: vkTokenUrl,
+      userInfoUrl: vkUserInfoUrl,
+      scope: vkScope,
+      clientId: vkClientId,
+      clientSecret: vkClientSecret,
+      redirectUri: `${origin}${routeBase}/vk/callback`,
+    },
+    telegram: {
+      id: "telegram",
+      label: "Telegram",
+      type: "telegram",
+      enabled: Boolean(botUsername && botToken && secret),
+      botUsername,
+      botToken,
+      authUrl: `${origin}${routeBase}/telegram/callback`,
+    },
+  };
+}
+
+export function buildAuthorizeUrl(provider, state) {
+  if (!provider || !state) return "";
+
+  const params = new URLSearchParams({
+    client_id: provider.clientId,
+    redirect_uri: provider.redirectUri,
+    response_type: "code",
+    scope: provider.scope,
+    state: state.nonce,
+    code_challenge: createCodeChallenge(state.codeVerifier),
+    code_challenge_method: "S256",
+  });
+
+  if (provider.id === "google") {
+    params.set("prompt", "select_account");
+  }
+
+  return `${provider.authUrl}?${params.toString()}`;
+}
+
+export async function exchangeOAuthCodeForTokens(
+  provider,
+  code,
+  state,
+  extraParams = {},
+) {
+  if (!provider || !state?.codeVerifier || !code) {
+    throw new Error("invalid_oauth_state");
+  }
+
+  const body = new URLSearchParams({
+    grant_type: "authorization_code",
+    client_id: provider.clientId,
+    client_secret: provider.clientSecret,
+    redirect_uri: provider.redirectUri,
+    code,
+    code_verifier: state.codeVerifier,
+  });
+
+  if (provider.id === "vk") {
+    const deviceId = String(extraParams.deviceId || "").trim();
+    if (!deviceId) {
+      throw new Error("oauth_access_denied");
+    }
+
+    body.set("device_id", deviceId);
+    body.set("state", state.nonce);
+  }
+
+  const response = await fetch(provider.tokenUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Accept: "application/json",
+    },
+    body,
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(`oauth_token_${response.status}`);
+  }
+
+  return await response.json();
+}
+
+export function createSignedExchangeEnvelope(profile, env = process.env) {
+  const secret = normalizeSecret(env);
+  if (!secret) {
+    throw new Error("missing_admin_session_secret");
+  }
+
+  const payload = Buffer.from(
+    JSON.stringify({
+      profile,
+      ts: Date.now(),
+      nonce: randomBytes(16).toString("hex"),
+    }),
+  ).toString("base64url");
+
+  const signature = createHmac("sha256", secret).update(payload).digest("base64url");
+  return { payload, signature };
+}
+
+export function getSessionTokenFromCookie(cookieStore, cookieName) {
+  return cookieStore.get(cookieName)?.value || "";
+}
