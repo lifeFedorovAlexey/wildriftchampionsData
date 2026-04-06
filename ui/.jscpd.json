@@ -15,8 +15,12 @@
     "**/public/**"
   ],
   "path": [
-    "app",
-    "components",
+    "app/guides/guides-lib.shared.js",
+    "app/picks-bans/picks-bans-lib.js",
+    "app/tier-inq/tier-inq-lib.js",
+    "app/tierlist/tierlist-lib.js",
+    "app/trends/trends-lib.js",
+    "app/winrates/load-winrates-page.js",
     "lib",
     "shared"
   ]
