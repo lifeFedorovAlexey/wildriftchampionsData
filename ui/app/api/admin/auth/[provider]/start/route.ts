@@ -35,6 +35,8 @@ export async function GET(
 
   const authorizeUrl = buildAdminAuthorizeUrl(provider, stateToken);
   const response = NextResponse.redirect(authorizeUrl);
+  response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
+  response.headers.set("Pragma", "no-cache");
 
   response.cookies.set(
     ADMIN_STATE_COOKIE,

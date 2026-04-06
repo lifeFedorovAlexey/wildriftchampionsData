@@ -15,9 +15,12 @@ import {
 import { exchangeAdminSession } from "@/lib/admin-api.js";
 
 function redirectToLogin(request: NextRequest, code: string) {
-  return NextResponse.redirect(
+  const response = NextResponse.redirect(
     new URL(`/admin/login?error=${encodeURIComponent(code)}`, request.url),
   );
+  response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
+  response.headers.set("Pragma", "no-cache");
+  return response;
 }
 
 export async function GET(
@@ -47,6 +50,8 @@ export async function GET(
         currentSessionToken,
       );
       const response = NextResponse.redirect(new URL("/admin", request.url));
+      response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
+      response.headers.set("Pragma", "no-cache");
       response.cookies.set(
         ADMIN_SESSION_COOKIE,
         result.sessionToken,
@@ -97,6 +102,8 @@ export async function GET(
     const response = NextResponse.redirect(
       new URL(sanitizeAdminReturnTo(expectedState.returnTo), request.url),
     );
+    response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
+    response.headers.set("Pragma", "no-cache");
 
     response.cookies.set(
       ADMIN_SESSION_COOKIE,
