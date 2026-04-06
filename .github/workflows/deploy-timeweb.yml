@@ -3,6 +3,24 @@ name: Deploy UI To Timeweb
 on:
   workflow_call:
     secrets:
+      ADMIN_SESSION_SECRET:
+        required: false
+      ADMIN_GOOGLE_CLIENT_ID:
+        required: false
+      ADMIN_GOOGLE_CLIENT_SECRET:
+        required: false
+      ADMIN_YANDEX_CLIENT_ID:
+        required: false
+      ADMIN_YANDEX_CLIENT_SECRET:
+        required: false
+      ADMIN_TELEGRAM_BOT_USERNAME:
+        required: false
+      ADMIN_TELEGRAM_BOT_TOKEN:
+        required: false
+      ADMIN_VK_CLIENT_ID:
+        required: false
+      ADMIN_VK_CLIENT_SECRET:
+        required: false
       S3_PUBLIC_BASE_URL:
         required: false
       TIMEWEB_HOST:
@@ -20,18 +38,36 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
+      ADMIN_SESSION_SECRET: ${{ secrets.ADMIN_SESSION_SECRET }}
+      ADMIN_GOOGLE_CLIENT_ID: ${{ secrets.ADMIN_GOOGLE_CLIENT_ID }}
+      ADMIN_GOOGLE_CLIENT_SECRET: ${{ secrets.ADMIN_GOOGLE_CLIENT_SECRET }}
+      ADMIN_YANDEX_CLIENT_ID: ${{ secrets.ADMIN_YANDEX_CLIENT_ID }}
+      ADMIN_YANDEX_CLIENT_SECRET: ${{ secrets.ADMIN_YANDEX_CLIENT_SECRET }}
+      ADMIN_TELEGRAM_BOT_USERNAME: ${{ secrets.ADMIN_TELEGRAM_BOT_USERNAME }}
+      ADMIN_TELEGRAM_BOT_TOKEN: ${{ secrets.ADMIN_TELEGRAM_BOT_TOKEN }}
+      ADMIN_VK_CLIENT_ID: ${{ secrets.ADMIN_VK_CLIENT_ID }}
+      ADMIN_VK_CLIENT_SECRET: ${{ secrets.ADMIN_VK_CLIENT_SECRET }}
       S3_PUBLIC_BASE_URL: ${{ secrets.S3_PUBLIC_BASE_URL }}
 
     steps:
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.2.5
         env:
+          ADMIN_SESSION_SECRET: ${{ secrets.ADMIN_SESSION_SECRET }}
+          ADMIN_GOOGLE_CLIENT_ID: ${{ secrets.ADMIN_GOOGLE_CLIENT_ID }}
+          ADMIN_GOOGLE_CLIENT_SECRET: ${{ secrets.ADMIN_GOOGLE_CLIENT_SECRET }}
+          ADMIN_YANDEX_CLIENT_ID: ${{ secrets.ADMIN_YANDEX_CLIENT_ID }}
+          ADMIN_YANDEX_CLIENT_SECRET: ${{ secrets.ADMIN_YANDEX_CLIENT_SECRET }}
+          ADMIN_TELEGRAM_BOT_USERNAME: ${{ secrets.ADMIN_TELEGRAM_BOT_USERNAME }}
+          ADMIN_TELEGRAM_BOT_TOKEN: ${{ secrets.ADMIN_TELEGRAM_BOT_TOKEN }}
+          ADMIN_VK_CLIENT_ID: ${{ secrets.ADMIN_VK_CLIENT_ID }}
+          ADMIN_VK_CLIENT_SECRET: ${{ secrets.ADMIN_VK_CLIENT_SECRET }}
           S3_PUBLIC_BASE_URL: ${{ secrets.S3_PUBLIC_BASE_URL }}
         with:
           host: ${{ secrets.TIMEWEB_HOST }}
           username: ${{ secrets.TIMEWEB_USER }}
           password: ${{ secrets.TIMEWEB_PASSWORD }}
-          envs: S3_PUBLIC_BASE_URL
+          envs: ADMIN_SESSION_SECRET,ADMIN_GOOGLE_CLIENT_ID,ADMIN_GOOGLE_CLIENT_SECRET,ADMIN_YANDEX_CLIENT_ID,ADMIN_YANDEX_CLIENT_SECRET,ADMIN_TELEGRAM_BOT_USERNAME,ADMIN_TELEGRAM_BOT_TOKEN,ADMIN_VK_CLIENT_ID,ADMIN_VK_CLIENT_SECRET,S3_PUBLIC_BASE_URL
           script: |
             set -e
             APP_ROOT="/var/www/wildriftchampionsData/ui"
@@ -104,6 +140,15 @@ jobs:
             git archive --format=tar HEAD ui | tar -xf - -C "${RELEASE_DIR}" --strip-components=1
 
             upsert_env S3_PUBLIC_BASE_URL "${S3_PUBLIC_BASE_URL}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_SESSION_SECRET "${ADMIN_SESSION_SECRET}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_GOOGLE_CLIENT_ID "${ADMIN_GOOGLE_CLIENT_ID}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_GOOGLE_CLIENT_SECRET "${ADMIN_GOOGLE_CLIENT_SECRET}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_YANDEX_CLIENT_ID "${ADMIN_YANDEX_CLIENT_ID}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_YANDEX_CLIENT_SECRET "${ADMIN_YANDEX_CLIENT_SECRET}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_TELEGRAM_BOT_USERNAME "${ADMIN_TELEGRAM_BOT_USERNAME}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_TELEGRAM_BOT_TOKEN "${ADMIN_TELEGRAM_BOT_TOKEN}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_VK_CLIENT_ID "${ADMIN_VK_CLIENT_ID}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env ADMIN_VK_CLIENT_SECRET "${ADMIN_VK_CLIENT_SECRET}" "${RELEASE_DIR}/.env.production.local"
 
             log_step "install dependencies and build"
             cd "${RELEASE_DIR}"
