@@ -24,6 +24,7 @@ import {
 export const USER_SESSION_COOKIE = "wr_user_session";
 export const USER_STATE_COOKIE = "wr_user_oauth_state";
 export const USER_SESSION_TTL_SECONDS = 60 * 60 * 24 * 14;
+const PUBLIC_USER_AUTH_ENABLED = false;
 
 export function sanitizeUserReturnTo(value) {
   const candidate = String(value || "").trim();
@@ -31,6 +32,10 @@ export function sanitizeUserReturnTo(value) {
 }
 
 export function getUserProviders(request, env = process.env) {
+  if (!PUBLIC_USER_AUTH_ENABLED) {
+    return {};
+  }
+
   const origin = getAdminOrigin(request, env);
   const providers = buildOAuthProviders(origin, env, "/api/auth");
   const { telegram: _telegram, ...userProviders } = providers;
@@ -122,6 +127,8 @@ export function getUserErrorMessage(code) {
       return "Не удалось обновить профиль.";
     case "oauth_start_failed":
       return "Не удалось начать вход. Проверь настройки OAuth и попробуй ещё раз.";
+    case "registration_disabled":
+      return "Регистрация временно отключена.";
     default:
       return normalized ? "Не удалось выполнить вход." : "";
   }

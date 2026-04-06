@@ -184,14 +184,9 @@ export default async function MePage({
         ) : (
           <section className={styles.card}>
             <h2 className={styles.cardTitle}>Зайти или зарегистрироваться</h2>
-            <AuthProvidersList
-              providers={providerCards}
-              returnTo="/me"
-              mode="login"
-              layout="stack"
-              compact
-              iconOnly
-            />
+            <div className={styles.noticeError}>
+              Регистрация временно отключена.
+            </div>
           </section>
         )}
       </section>
