@@ -72,20 +72,29 @@ export function sanitizeAdminReturnTo(value) {
 export function getAdminOrigin(request, env = process.env) {
   const forwardedProto = String(
     request?.headers?.get?.("x-forwarded-proto") || "",
-  ).trim();
+  )
+    .split(",")[0]
+    .trim();
   const forwardedHost = String(
     request?.headers?.get?.("x-forwarded-host") ||
       request?.headers?.get?.("host") ||
       "",
   ).trim();
+  const isLocalHost = /^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(forwardedHost);
 
-  if (forwardedProto && forwardedHost) {
-    return `${forwardedProto}://${forwardedHost}`.replace(/\/$/, "");
+  if (forwardedHost) {
+    const protocol = forwardedProto || (isLocalHost ? "http" : "https");
+    return `${protocol}://${forwardedHost}`.replace(/\/$/, "");
   }
 
   const requestUrl = request?.url ? new URL(request.url) : null;
   if (requestUrl?.origin && !/^(https?:\/\/)?localhost(?::\d+)?$/i.test(requestUrl.origin)) {
-    return requestUrl.origin;
+    const protocol =
+      requestUrl.protocol === "http:" &&
+      !/^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(requestUrl.host)
+        ? "https:"
+        : requestUrl.protocol;
+    return `${protocol}//${requestUrl.host}`;
   }
 
   const configuredOrigin = String(
