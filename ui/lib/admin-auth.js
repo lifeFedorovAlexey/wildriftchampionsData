@@ -70,8 +70,21 @@ export function sanitizeAdminReturnTo(value) {
 }
 
 export function getAdminOrigin(request, env = process.env) {
+  const forwardedProto = String(
+    request?.headers?.get?.("x-forwarded-proto") || "",
+  ).trim();
+  const forwardedHost = String(
+    request?.headers?.get?.("x-forwarded-host") ||
+      request?.headers?.get?.("host") ||
+      "",
+  ).trim();
+
+  if (forwardedProto && forwardedHost) {
+    return `${forwardedProto}://${forwardedHost}`.replace(/\/$/, "");
+  }
+
   const requestUrl = request?.url ? new URL(request.url) : null;
-  if (requestUrl?.origin) {
+  if (requestUrl?.origin && !/^(https?:\/\/)?localhost(?::\d+)?$/i.test(requestUrl.origin)) {
     return requestUrl.origin;
   }
 
