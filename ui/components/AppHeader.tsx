@@ -70,6 +70,17 @@ function TelegramIcon() {
   );
 }
 
+function UserIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.utilityIcon}>
+      <path
+        d="M12 12.1a3.85 3.85 0 1 0 0-7.7 3.85 3.85 0 0 0 0 7.7Zm0 1.8c-3.29 0-5.96 1.82-5.96 4.06V19.6h11.92v-1.64c0-2.24-2.67-4.06-5.96-4.06Zm0 8.6a10.5 10.5 0 1 1 0-21 10.5 10.5 0 0 1 0 21Zm0-19.5a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 function MenuIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.utilityIcon}>
@@ -246,6 +257,10 @@ export default function AppHeader() {
           </nav>
 
           <div className={styles.actions}>
+            <Link href="/me" className={styles.utilityButton} aria-label="Профиль пользователя">
+              <UserIcon />
+            </Link>
+
             {!isTelegramWebApp ? (
               <a
                 href="https://t.me/life_wr_bot"

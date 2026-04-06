@@ -1,0 +1,272 @@
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) var(--space-7);
+}
+
+.shell {
+  display: grid;
+  gap: 18px;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  color: #fff;
+  font-size: 34px;
+  letter-spacing: -0.05em;
+}
+
+.lead {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.backLink {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+}
+
+.noticeError,
+.noticeOk,
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background: rgba(10, 15, 26, 0.9);
+}
+
+.noticeError,
+.noticeOk {
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.noticeError {
+  color: #ffb7b7;
+  background: rgba(110, 28, 36, 0.28);
+}
+
+.noticeOk {
+  color: #b8f0be;
+  background: rgba(30, 82, 45, 0.3);
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+}
+
+.card {
+  padding: 20px;
+}
+
+.cardTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.avatarWrap {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+}
+
+.avatar,
+.avatarFallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+}
+
+.avatar {
+  object-fit: cover;
+  display: block;
+}
+
+.avatarFallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.profileMeta {
+  display: grid;
+  gap: 6px;
+}
+
+.profileName {
+  color: #fff;
+  font-size: 20px;
+}
+
+.profileRole {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.fieldLabel {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.input {
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f5d36c, #ff9b57);
+  color: #10151f;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.buttonGhost {
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.identityList,
+.providerList {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.identityRow,
+.providerLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.identityMain {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.providerIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.identityCopy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.identityTitle {
+  color: #fff;
+  font-size: 14px;
+}
+
+.identitySubtitle {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(96, 181, 107, 0.15);
+  color: #9fe3a6;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.providerLink {
+  justify-content: flex-start;
+  color: #fff;
+  text-decoration: none;
+}
+
+.providerLinkDisabled {
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.telegramInline {
+  max-width: 260px;
+}
+
+@media (min-width: 900px) {
+  .page {
+    padding: var(--space-5) var(--space-4) var(--space-7);
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
