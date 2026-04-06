@@ -115,7 +115,7 @@ export async function fetchChampionIndexFromApi() {
   try {
     const payload = await fetchApiJson("/api/champions?lang=ru_ru&fields=index", {
       fetchOptions: {
-        next: { revalidate: 3600 * 24 * 7 },
+        next: { revalidate: 60 },
       },
       fallback: [],
     });
@@ -131,7 +131,7 @@ export async function fetchGuideSummariesFromApi() {
   try {
     const payload = await fetchApiJson("/api/guides", {
       fetchOptions: {
-        next: { revalidate: 3600 * 24 * 7 },
+        next: { revalidate: 60 },
       },
       fallback: { items: [] },
     });
