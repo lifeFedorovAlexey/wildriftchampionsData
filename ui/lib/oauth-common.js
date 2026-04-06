@@ -86,7 +86,11 @@ export function readSignedPayload(token, secret) {
   }
 }
 
-export function buildOAuthProviders(origin, env = process.env, routeBase = "/api/admin/auth") {
+export function buildOAuthProviders(
+  origin,
+  env = process.env,
+  routeBase = "/api/admin/auth",
+) {
   const normalizedOrigin = normalizeOrigin(origin);
   const hasValidOrigin = isValidHttpUrl(normalizedOrigin);
   const googleClientId = String(env.ADMIN_GOOGLE_CLIENT_ID || "").trim();

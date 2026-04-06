@@ -23,6 +23,7 @@ type AuthProvidersListProps = {
   mode?: "login" | "connect";
   layout?: "grid" | "stack";
   compact?: boolean;
+  iconOnly?: boolean;
   showStatus?: boolean;
   emptyText?: string;
 };
@@ -66,6 +67,7 @@ function renderItem(
   mode: "login" | "connect",
   returnTo: string | undefined,
   compact: boolean,
+  iconOnly: boolean,
   showStatus: boolean,
 ) {
   const itemClassName = compact
@@ -73,6 +75,7 @@ function renderItem(
     : mode === "login"
       ? styles.card
       : styles.row;
+  const actionClassName = compact ? styles.actionCompact : styles.action;
 
   const actionHref = buildHref(provider.startHref, returnTo);
   const telegramEnabled = Boolean(
@@ -85,15 +88,18 @@ function renderItem(
     <article key={provider.id} className={itemClassName}>
       <div className={compact ? styles.head : styles.meta}>
         <div className={styles.titleWrap}>
-          <span className={styles.iconBox} aria-hidden="true">
+          <span
+            className={`${styles.iconBox} ${compact ? styles.iconBoxCompactOnly : ""}`.trim()}
+            aria-hidden="true"
+          >
             <AuthProviderIcon providerId={provider.id} className={styles.iconGraphic} />
           </span>
-          <div className={styles.copy}>
-            <h3 className={styles.title}>{provider.label}</h3>
-            {!compact ? (
+          {!compact && !iconOnly ? (
+            <div className={styles.copy}>
+              <h3 className={styles.title}>{provider.label}</h3>
               <p className={styles.hint}>{getHint(provider.id, provider.enabled, mode)}</p>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </div>
         {showStatus ? (
           <span
@@ -106,20 +112,20 @@ function renderItem(
 
       {provider.id === "telegram" ? (
         telegramEnabled ? (
-          <div className={compact ? styles.widgetWrapCompact : styles.widgetWrap}>
+          <div className={`${compact ? styles.widgetWrapCompact : styles.widgetWrap} ${actionClassName}`.trim()}>
             <TelegramLoginButton
               botUsername={telegramProvider?.botUsername || ""}
               authUrl={telegramProvider?.authUrl || ""}
-              size={compact ? "medium" : "large"}
+              size={compact ? "large" : "large"}
             />
           </div>
         ) : (
-          <div className={styles.mutedAction}>Нужен Telegram bot</div>
+          <div className={`${styles.mutedAction} ${actionClassName}`.trim()}>Нужен Telegram bot</div>
         )
       ) : (
         <Link
           href={actionHref}
-          className={`${styles.button} ${provider.enabled ? "" : styles.buttonDisabled}`.trim()}
+          className={`${styles.button} ${actionClassName} ${provider.enabled ? "" : styles.buttonDisabled}`.trim()}
         >
           {getActionLabel(mode, provider.label)}
         </Link>
@@ -135,6 +141,7 @@ export default function AuthProvidersList({
   mode = "login",
   layout = "stack",
   compact = false,
+  iconOnly = false,
   showStatus = false,
   emptyText = "",
 }: AuthProvidersListProps) {
@@ -162,6 +169,7 @@ export default function AuthProvidersList({
           mode,
           returnTo,
           compact,
+          iconOnly,
           showStatus,
         ),
       )}

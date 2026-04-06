@@ -63,15 +63,19 @@
 }
 
 .rowCompact .iconBox {
-  width: 34px;
-  height: 34px;
-  flex-basis: 34px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  flex-basis: 40px;
+  border-radius: 12px;
+}
+
+.iconBoxCompactOnly {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .iconGraphic {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   display: block;
 }
 
@@ -129,6 +133,22 @@
   text-decoration: none;
 }
 
+.action {
+  justify-self: start;
+}
+
+.actionCompact {
+  justify-self: end;
+  width: 224px;
+  max-width: 100%;
+}
+
+.actionCompact.button {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+}
+
 .buttonDisabled {
   pointer-events: none;
   opacity: 0.55;
@@ -140,12 +160,13 @@
 }
 
 .widgetWrapCompact {
-  max-width: 260px;
+  min-height: 40px;
 }
 
 .mutedAction {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 46px;
   color: rgba(255, 255, 255, 0.76);
   font-size: 14px;
@@ -158,6 +179,7 @@
 }
 
 :global(.telegramWidgetHost iframe) {
+  width: 100%;
   max-width: 100%;
   display: block;
   border-radius: 12px;

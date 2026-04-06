@@ -62,6 +62,7 @@ export default async function AdminLoginPage({
             telegramProvider={telegramProvider}
             mode="login"
             layout="grid"
+            iconOnly
             showStatus
           />
         </section>
