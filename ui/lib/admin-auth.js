@@ -9,11 +9,14 @@ const DEFAULT_LOGIN_PATH = "/admin/login";
 const DEFAULT_ADMIN_PATH = "/admin";
 
 function toBase64Url(value) {
-  return Buffer.from(value)
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/g, "");
+  const base64 = Buffer.from(value).toString("base64");
+  let normalized = base64.split("+").join("-").split("/").join("_");
+
+  while (normalized.endsWith("=")) {
+    normalized = normalized.slice(0, -1);
+  }
+
+  return normalized;
 }
 
 function fromBase64Url(value) {
