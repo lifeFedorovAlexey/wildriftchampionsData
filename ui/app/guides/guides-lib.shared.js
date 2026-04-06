@@ -146,6 +146,8 @@ export function toLaneKey(value) {
   return toGuideLaneKey(value);
 }
 
+const DEFAULT_GUIDE_LANE_KEYS = ["top", "jungle", "mid", "adc", "support"];
+
 export async function fetchTierlistBulk() {
   try {
     return await fetchApiJson("/api/tierlist-bulk?lang=ru_ru", {
@@ -178,4 +180,69 @@ export function findTierLabelForChampion(
   }
 
   return null;
+}
+
+export function buildChampionLaneMap(tierlistBulk, laneKeys = DEFAULT_GUIDE_LANE_KEYS) {
+  const laneMap = new Map();
+
+  for (const laneKey of laneKeys) {
+    const buckets = Object.entries(tierlistBulk?.tiersByRankLane || {})
+      .filter(([sliceKey]) => sliceKey.endsWith(`|${laneKey}`))
+      .map(([, bucket]) => bucket);
+
+    for (const bucket of buckets) {
+      for (const champions of Object.values(bucket?.tiers || {})) {
+        for (const champion of Array.isArray(champions) ? champions : []) {
+          const slug = String(champion?.slug || "").trim();
+          if (!slug) continue;
+
+          const current = laneMap.get(slug) || new Set();
+          current.add(laneKey);
+          laneMap.set(slug, current);
+        }
+      }
+    }
+  }
+
+  return laneMap;
+}
+
+export function hydrateGuideIndexItems(guideItems = [], championIndex = [], tierlistBulk = null) {
+  const guideItemsBySlug = new Map(guideItems.map((item) => [item.slug, item]));
+  const championLaneMap = buildChampionLaneMap(tierlistBulk);
+
+  return championIndex.map((champion) => {
+    const guide = guideItemsBySlug.get(champion.slug);
+    const laneKeys =
+      Array.isArray(guide?.availableLanes) && guide.availableLanes.length
+        ? Array.from(new Set(guide.availableLanes))
+        : Array.from(championLaneMap.get(champion.slug) || []);
+
+    if (guide) {
+      return {
+        ...guide,
+        localizedName: champion.name || guide.name || null,
+        iconUrl: champion.iconUrl || guide.iconUrl || null,
+        roles: guide.roles?.length ? guide.roles : champion.roles || [],
+        laneKeys,
+        hasGuide: true,
+      };
+    }
+
+    return {
+      slug: champion.slug,
+      name: champion.name || champion.slug,
+      localizedName: champion.name || null,
+      hasGuide: false,
+      title: "Гайд скоро",
+      iconUrl: champion.iconUrl || null,
+      patch: null,
+      tier: null,
+      recommendedRole: null,
+      roles: champion.roles || [],
+      laneKeys,
+      buildCount: 0,
+      updatedAt: null,
+    };
+  });
 }

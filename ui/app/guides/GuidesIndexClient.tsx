@@ -26,6 +26,7 @@ type GuideListItem = {
   tier?: string | null;
   recommendedRole?: string | null;
   roles: string[];
+  availableLanes?: LaneKey[];
   laneKeys?: LaneKey[];
   buildCount: number;
 };
@@ -63,6 +64,10 @@ const TIER_SORT_ORDER: Record<string, number> = {
 };
 
 function getLaneKeys(item: GuideListItem): LaneKey[] {
+  if (Array.isArray(item.availableLanes) && item.availableLanes.length) {
+    return Array.from(new Set(item.availableLanes));
+  }
+
   if (Array.isArray(item.laneKeys) && item.laneKeys.length) {
     return Array.from(new Set(item.laneKeys));
   }

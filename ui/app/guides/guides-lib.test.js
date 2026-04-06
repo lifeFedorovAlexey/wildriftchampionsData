@@ -3,11 +3,13 @@ import assert from "node:assert/strict";
 import guideShared from "../../shared/guides-shared.js";
 
 import {
+  buildChampionLaneMap,
   fetchChampionIndexFromApi,
   fetchChampionNamesFromApi,
   fetchGuideFromApi,
   fetchGuideSlugsFromApi,
   fetchGuideSummariesFromApi,
+  hydrateGuideIndexItems,
   findTierLabelForChampion,
   getStatsApiBaseUrl,
   toLaneKey,
@@ -166,7 +168,7 @@ test("fetchGuideSummariesFromApi normalizes legacy guide slugs", async () => {
     new Response(
       JSON.stringify({
         items: [
-          { slug: "wukong", name: "Wukong", roles: [] },
+          { slug: "wukong", name: "Wukong", roles: [], availableLanes: ["adc", "mid"] },
           { slug: "ahri", name: "Ahri", roles: [] },
         ],
       }),
@@ -179,6 +181,7 @@ test("fetchGuideSummariesFromApi normalizes legacy guide slugs", async () => {
       result.map((item) => item.slug),
       ["monkeyking", "ahri"],
     );
+    assert.deepEqual(result[0].availableLanes, ["adc", "mid"]);
   } finally {
     global.fetch = previousFetch;
   }
@@ -220,4 +223,89 @@ test("findTierLabelForChampion finds a champion tier by lane slice", () => {
   assert.equal(findTierLabelForChampion(bulk, "lux", "mid"), "A");
   assert.equal(findTierLabelForChampion(bulk, "teemo", "mid"), null);
   assert.equal(findTierLabelForChampion(bulk, "ahri", null), null);
+});
+
+test("buildChampionLaneMap collects normalized lane buckets from bulk stats", () => {
+  const laneMap = buildChampionLaneMap({
+    tiersByRankLane: {
+      "diamondPlus|top": {
+        tiers: {
+          S: [{ slug: "aatrox" }],
+        },
+      },
+      "masterPlus|jungle": {
+        tiers: {
+          A: [{ slug: "aatrox" }, { slug: "leesin" }],
+        },
+      },
+    },
+  });
+
+  assert.deepEqual(Array.from(laneMap.get("aatrox") || []), ["top", "jungle"]);
+  assert.deepEqual(Array.from(laneMap.get("leesin") || []), ["jungle"]);
+});
+
+test("hydrateGuideIndexItems prefers our champion icon over donor guide icon", () => {
+  const items = hydrateGuideIndexItems(
+    [
+      {
+        slug: "aatrox",
+        name: "Aatrox",
+        iconUrl: "https://www.mobafire.com/images/champion/square/aatrox.png",
+        roles: ["Барон"],
+        availableLanes: ["adc", "mid"],
+        patch: "7.0g",
+        tier: "S+",
+        buildCount: 1,
+      },
+    ],
+    [
+      {
+        slug: "aatrox",
+        name: "Аатрокс",
+        roles: ["fighter"],
+        iconUrl: "https://cdn.example.com/s3/icons/aatrox.png",
+      },
+    ],
+    {
+      tiersByRankLane: {
+        "diamondPlus|top": {
+          tiers: {
+            S: [{ slug: "aatrox" }],
+          },
+        },
+      },
+    },
+  );
+
+  assert.equal(items[0].iconUrl, "https://cdn.example.com/s3/icons/aatrox.png");
+  assert.deepEqual(items[0].laneKeys, ["adc", "mid"]);
+  assert.equal(items[0].localizedName, "Аатрокс");
+});
+
+test("hydrateGuideIndexItems keeps local champion icons for guide placeholders too", () => {
+  const items = hydrateGuideIndexItems(
+    [],
+    [
+      {
+        slug: "smolder",
+        name: "Смолдер",
+        roles: ["marksman"],
+        iconUrl: "https://cdn.example.com/s3/icons/smolder.png",
+      },
+    ],
+    {
+      tiersByRankLane: {
+        "diamondPlus|adc": {
+          tiers: {
+            S: [{ slug: "smolder" }],
+          },
+        },
+      },
+    },
+  );
+
+  assert.equal(items[0].iconUrl, "https://cdn.example.com/s3/icons/smolder.png");
+  assert.deepEqual(items[0].laneKeys, ["adc"]);
+  assert.equal(items[0].hasGuide, false);
 });

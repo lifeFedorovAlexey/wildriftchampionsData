@@ -1,4 +1,5 @@
 import {
+  buildChampionLaneMap as buildChampionLaneMapShared,
   fetchChampionIndexFromApi as fetchChampionIndexFromApiShared,
   fetchChampionNamesFromApi as fetchChampionNamesFromApiShared,
   fetchGuideFromApi as fetchGuideFromApiShared,
@@ -7,6 +8,7 @@ import {
   fetchTierlistBulk as fetchTierlistBulkShared,
   findTierLabelForChampion as findTierLabelForChampionShared,
   getStatsApiBaseUrl,
+  hydrateGuideIndexItems as hydrateGuideIndexItemsShared,
   toLaneKey as toLaneKeyShared,
 } from "./guides-lib.shared.js";
 
@@ -23,6 +25,7 @@ export type GuideSummary = {
   tier?: string | null;
   recommendedRole?: string | null;
   roles: string[];
+  availableLanes?: LaneKey[];
   buildCount: number;
   updatedAt?: string | null;
 };
@@ -77,6 +80,32 @@ export function toLaneKey(value?: string | null): LaneKey | null {
 
 export async function fetchTierlistBulk(): Promise<BulkResponse | null> {
   return (await fetchTierlistBulkShared()) as BulkResponse | null;
+}
+
+export function buildChampionLaneMap(bulk: BulkResponse | null) {
+  return (
+    buildChampionLaneMapShared as (bulk: BulkResponse | null) => Map<string, Set<LaneKey>>
+  )(bulk);
+}
+
+export function hydrateGuideIndexItems(
+  guideItems: GuideSummary[],
+  championIndex: ChampionIndexItem[],
+  tierlistBulk: BulkResponse | null,
+) {
+  return (
+    hydrateGuideIndexItemsShared as (
+      guideItems: GuideSummary[],
+      championIndex: ChampionIndexItem[],
+      tierlistBulk: BulkResponse | null,
+    ) => Array<
+      GuideSummary & {
+        laneKeys: LaneKey[];
+        hasGuide: boolean;
+        localizedName: string | null;
+      }
+    >
+  )(guideItems, championIndex, tierlistBulk);
 }
 
 export function findTierLabelForChampion(
