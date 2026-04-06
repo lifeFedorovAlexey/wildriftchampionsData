@@ -70,17 +70,17 @@ export function sanitizeAdminReturnTo(value) {
 }
 
 export function getAdminOrigin(request, env = process.env) {
+  const requestUrl = request?.url ? new URL(request.url) : null;
+  if (requestUrl?.origin) {
+    return requestUrl.origin;
+  }
+
   const configuredOrigin = String(
     env.NEXT_PUBLIC_SITE_URL || env.NEXT_PUBLIC_APP_URL || "",
   ).trim();
 
   if (configuredOrigin) {
     return configuredOrigin.replace(/\/$/, "");
-  }
-
-  const requestUrl = request?.url ? new URL(request.url) : null;
-  if (requestUrl) {
-    return requestUrl.origin;
   }
 
   return "";
