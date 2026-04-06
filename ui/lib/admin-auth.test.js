@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { buildOAuthProviders } from "./oauth-common.js";
 import {
   ADMIN_SESSION_COOKIE,
   createAdminExchangeEnvelope,
@@ -71,4 +72,31 @@ test("verifyTelegramLogin rejects stale auth payloads", () => {
 
   const verified = verifyTelegramLogin(params, env);
   assert.equal(verified.ok, false);
+});
+
+test("buildOAuthProviders disables oauth providers without a valid public origin", () => {
+  const providers = buildOAuthProviders("", {
+    ADMIN_SESSION_SECRET: "super-secret",
+    ADMIN_GOOGLE_CLIENT_ID: "client-id",
+    ADMIN_GOOGLE_CLIENT_SECRET: "client-secret",
+    ADMIN_TELEGRAM_BOT_USERNAME: "bot",
+    ADMIN_TELEGRAM_BOT_TOKEN: "123456:ABCDEF",
+  });
+
+  assert.equal(providers.google.enabled, false);
+  assert.equal(providers.telegram.enabled, false);
+});
+
+test("buildOAuthProviders keeps oauth providers enabled with a valid public origin", () => {
+  const providers = buildOAuthProviders("https://wildriftallstats.ru", {
+    ADMIN_SESSION_SECRET: "super-secret",
+    ADMIN_GOOGLE_CLIENT_ID: "client-id",
+    ADMIN_GOOGLE_CLIENT_SECRET: "client-secret",
+  }, "/api/auth");
+
+  assert.equal(providers.google.enabled, true);
+  assert.equal(
+    providers.google.redirectUri,
+    "https://wildriftallstats.ru/api/auth/google/callback",
+  );
 });

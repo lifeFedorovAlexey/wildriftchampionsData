@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
-import TelegramLoginButton from "@/components/admin/TelegramLoginButton";
+import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import styles from "../admin.module.css";
 import {
   getAdminEnvHints,
@@ -57,53 +57,13 @@ export default async function AdminLoginPage({
             после заполнения его env-параметров.
           </p>
 
-          <div className={styles.providerGrid}>
-            {providerCards
-              .filter((provider) => provider.id !== "telegram")
-              .map((provider) => (
-                <article key={provider.id} className={styles.providerCard}>
-                  <div className={styles.providerMeta}>
-                    <h3 className={styles.providerLabel}>{provider.label}</h3>
-                    <span
-                      className={`${styles.badge} ${provider.enabled ? "" : styles.badgeMuted}`.trim()}
-                    >
-                      {provider.enabled ? "Готов" : "Не настроен"}
-                    </span>
-                  </div>
-                  <Link
-                    href={provider.startHref}
-                    className={`${styles.button} ${provider.enabled ? "" : styles.buttonDisabled}`.trim()}
-                  >
-                    Войти через {provider.label}
-                  </Link>
-                </article>
-              ))}
-
-            <article className={styles.providerCard}>
-              <div className={styles.providerMeta}>
-                <h3 className={styles.providerLabel}>Telegram</h3>
-                <span
-                  className={`${styles.badge} ${telegramProvider.enabled ? "" : styles.badgeMuted}`.trim()}
-                >
-                  {telegramProvider.enabled ? "Готов" : "Не настроен"}
-                </span>
-              </div>
-              {telegramProvider.enabled ? (
-                <div className={styles.telegramWidgetWrap}>
-                  <TelegramLoginButton
-                    botUsername={telegramProvider.botUsername}
-                    authUrl={telegramProvider.authUrl}
-                  />
-                </div>
-              ) : (
-                <div
-                  className={`${styles.button} ${styles.buttonSecondary} ${styles.buttonDisabled}`.trim()}
-                >
-                  Нужен Telegram bot
-                </div>
-              )}
-            </article>
-          </div>
+          <AuthProvidersList
+            providers={providerCards.filter((provider) => provider.id !== "telegram")}
+            telegramProvider={telegramProvider}
+            mode="login"
+            layout="grid"
+            showStatus
+          />
         </section>
 
         <aside className={styles.card}>

@@ -117,6 +117,8 @@ export function getUserErrorMessage(code) {
       return "Telegram не подтвердил подпись входа.";
     case "profile_update_failed":
       return "Не удалось обновить профиль.";
+    case "oauth_start_failed":
+      return "Не удалось начать вход. Проверь настройки OAuth и попробуй ещё раз.";
     default:
       return normalized ? "Не удалось выполнить вход." : "";
   }

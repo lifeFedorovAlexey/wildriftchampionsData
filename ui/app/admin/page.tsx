@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
-import TelegramLoginButton from "@/components/admin/TelegramLoginButton";
+import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
 import styles from "./admin.module.css";
 import {
@@ -204,54 +204,14 @@ export default async function AdminPage() {
                   </p>
                 </div>
 
-                <div className={styles.providerStack}>
-                  {connectableProviders
-                    .filter((provider) => provider.id !== "telegram")
-                    .map((provider) => (
-                      <article key={provider.id} className={styles.providerRow}>
-                        <div>
-                          <h4 className={styles.providerLabel}>{provider.label}</h4>
-                          <p className={styles.providerHint}>
-                            {provider.enabled
-                              ? "Можно подвязать прямо сейчас."
-                              : "Этот провайдер пока не настроен."}
-                          </p>
-                        </div>
-                        <Link
-                          href={`${provider.startHref}?returnTo=/admin`}
-                          className={`${styles.button} ${provider.enabled ? "" : styles.buttonDisabled}`.trim()}
-                        >
-                          Подключить
-                        </Link>
-                      </article>
-                    ))}
-
-                  {!linkedProviderIds.has("telegram") ? (
-                    <article className={`${styles.providerRow} ${styles.providerRowStacked}`.trim()}>
-                      <div>
-                        <h4 className={styles.providerLabel}>Telegram</h4>
-                        <p className={styles.providerHint}>
-                          Для Telegram можно привязать аккаунт через официальный widget.
-                        </p>
-                      </div>
-                      <div className={styles.telegramAction}>
-                        {telegramProvider.enabled ? (
-                          <TelegramLoginButton
-                            botUsername={telegramProvider.botUsername}
-                            authUrl={telegramProvider.authUrl}
-                            size="medium"
-                          />
-                        ) : (
-                          <span className={styles.inlineMuted}>Telegram не настроен</span>
-                        )}
-                      </div>
-                    </article>
-                  ) : null}
-
-                  {!connectableProviders.length && linkedProviderIds.has("telegram") ? (
-                    <p className={styles.emptyText}>Все доступные способы входа уже привязаны.</p>
-                  ) : null}
-                </div>
+                <AuthProvidersList
+                  providers={connectableProviders.filter((provider) => provider.id !== "telegram")}
+                  telegramProvider={!linkedProviderIds.has("telegram") ? telegramProvider : null}
+                  returnTo="/admin"
+                  mode="connect"
+                  layout="stack"
+                  emptyText="Все доступные способы входа уже привязаны."
+                />
               </section>
             </div>
           </section>

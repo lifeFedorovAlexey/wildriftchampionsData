@@ -8,6 +8,15 @@ function normalizeOrigin(value) {
   return String(value || "").trim().replace(/\/$/, "");
 }
 
+function isValidHttpUrl(value) {
+  try {
+    const url = new URL(String(value || ""));
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 export function getConfiguredOrigin(env = process.env) {
   return normalizeOrigin(
     env.ADMIN_PUBLIC_ORIGIN || env.NEXT_PUBLIC_SITE_URL || env.NEXT_PUBLIC_APP_URL,
@@ -78,6 +87,8 @@ export function readSignedPayload(token, secret) {
 }
 
 export function buildOAuthProviders(origin, env = process.env, routeBase = "/api/admin/auth") {
+  const normalizedOrigin = normalizeOrigin(origin);
+  const hasValidOrigin = isValidHttpUrl(normalizedOrigin);
   const googleClientId = String(env.ADMIN_GOOGLE_CLIENT_ID || "").trim();
   const googleClientSecret = String(env.ADMIN_GOOGLE_CLIENT_SECRET || "").trim();
   const yandexClientId = String(env.ADMIN_YANDEX_CLIENT_ID || "").trim();
@@ -101,49 +112,56 @@ export function buildOAuthProviders(origin, env = process.env, routeBase = "/api
       id: "google",
       label: "Google",
       type: "oauth",
-      enabled: Boolean(googleClientId && googleClientSecret && secret),
+      enabled: Boolean(googleClientId && googleClientSecret && secret && hasValidOrigin),
       authUrl: "https://accounts.google.com/o/oauth2/v2/auth",
       tokenUrl: "https://oauth2.googleapis.com/token",
       userInfoUrl: "https://openidconnect.googleapis.com/v1/userinfo",
       scope: "openid email profile",
       clientId: googleClientId,
       clientSecret: googleClientSecret,
-      redirectUri: `${origin}${routeBase}/google/callback`,
+      redirectUri: `${normalizedOrigin}${routeBase}/google/callback`,
     },
     yandex: {
       id: "yandex",
       label: "Yandex",
       type: "oauth",
-      enabled: Boolean(yandexClientId && yandexClientSecret && secret),
+      enabled: Boolean(yandexClientId && yandexClientSecret && secret && hasValidOrigin),
       authUrl: "https://oauth.yandex.ru/authorize",
       tokenUrl: "https://oauth.yandex.ru/token",
       userInfoUrl: "https://login.yandex.ru/info?format=json",
       scope: "login:email login:info",
       clientId: yandexClientId,
       clientSecret: yandexClientSecret,
-      redirectUri: `${origin}${routeBase}/yandex/callback`,
+      redirectUri: `${normalizedOrigin}${routeBase}/yandex/callback`,
     },
     vk: {
       id: "vk",
       label: "VK",
       type: "oauth",
-      enabled: Boolean(vkClientId && vkClientSecret && vkAuthUrl && vkTokenUrl && secret),
+      enabled: Boolean(
+        vkClientId &&
+          vkClientSecret &&
+          vkAuthUrl &&
+          vkTokenUrl &&
+          secret &&
+          hasValidOrigin,
+      ),
       authUrl: vkAuthUrl,
       tokenUrl: vkTokenUrl,
       userInfoUrl: vkUserInfoUrl,
       scope: vkScope,
       clientId: vkClientId,
       clientSecret: vkClientSecret,
-      redirectUri: `${origin}${routeBase}/vk/callback`,
+      redirectUri: `${normalizedOrigin}${routeBase}/vk/callback`,
     },
     telegram: {
       id: "telegram",
       label: "Telegram",
       type: "telegram",
-      enabled: Boolean(botUsername && botToken && secret),
+      enabled: Boolean(botUsername && botToken && secret && hasValidOrigin),
       botUsername,
       botToken,
-      authUrl: `${origin}${routeBase}/telegram/callback`,
+      authUrl: `${normalizedOrigin}${routeBase}/telegram/callback`,
     },
   };
 }

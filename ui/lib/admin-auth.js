@@ -305,6 +305,8 @@ export function getAdminErrorMessage(code) {
       return "Для этого аккаунта ещё не выдана роль в БД.";
     case "session_secret_missing":
       return "Для админки не задан ADMIN_SESSION_SECRET.";
+    case "oauth_start_failed":
+      return "Не удалось начать вход. Проверь настройки OAuth и попробуй ещё раз.";
     case "telegram_bad_hash":
       return "Telegram не подтвердил подпись входа.";
     case "bootstrap_required":

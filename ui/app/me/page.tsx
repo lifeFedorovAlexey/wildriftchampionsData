@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { cookies, headers } from "next/headers";
-import TelegramLoginButton from "@/components/admin/TelegramLoginButton";
+import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
 import { fetchSiteUserSession } from "@/lib/site-user-api.js";
 import {
@@ -172,71 +172,28 @@ export default async function MePage({
 
             <section className={styles.card}>
               <h2 className={styles.cardTitle}>Подключить ещё сервис</h2>
-              <div className={styles.providerList}>
-                {connectableProviders
-                  .filter((provider) => provider.id !== "telegram")
-                  .map((provider) => (
-                    <Link
-                      key={provider.id}
-                      href={`${provider.startHref}?returnTo=/me`}
-                      className={`${styles.providerLink} ${provider.enabled ? "" : styles.providerLinkDisabled}`.trim()}
-                    >
-                      <span className={styles.providerIcon}>
-                        <AuthProviderIcon
-                          providerId={provider.id}
-                          className={styles.providerIconGraphic}
-                        />
-                      </span>
-                      <span>{provider.label}</span>
-                    </Link>
-                  ))}
-
-                {!linkedProviderIds.has("telegram") ? (
-                  telegramProvider?.enabled ? (
-                    <div className={styles.telegramInline}>
-                      <TelegramLoginButton
-                        botUsername={telegramProvider.botUsername}
-                        authUrl={telegramProvider.authUrl}
-                        size="medium"
-                      />
-                    </div>
-                  ) : null
-                ) : null}
-              </div>
+              <AuthProvidersList
+                providers={connectableProviders.filter((provider) => provider.id !== "telegram")}
+                telegramProvider={!linkedProviderIds.has("telegram") ? telegramProvider : null}
+                returnTo="/me"
+                mode="connect"
+                layout="stack"
+                compact
+                emptyText="Все доступные способы входа уже привязаны."
+              />
             </section>
           </div>
         ) : (
           <section className={styles.card}>
             <h2 className={styles.cardTitle}>Зайти или зарегистрироваться</h2>
-            <div className={styles.providerList}>
-              {providerCards
-                .filter((provider) => provider.id !== "telegram")
-                .map((provider) => (
-                  <Link
-                    key={provider.id}
-                    href={`${provider.startHref}?returnTo=/me`}
-                    className={`${styles.providerLink} ${provider.enabled ? "" : styles.providerLinkDisabled}`.trim()}
-                  >
-                    <span className={styles.providerIcon}>
-                      <AuthProviderIcon
-                        providerId={provider.id}
-                        className={styles.providerIconGraphic}
-                      />
-                    </span>
-                    <span>{provider.label}</span>
-                  </Link>
-                ))}
-
-              {telegramProvider?.enabled ? (
-                <div className={styles.telegramInline}>
-                  <TelegramLoginButton
-                    botUsername={telegramProvider.botUsername}
-                    authUrl={telegramProvider.authUrl}
-                    size="medium"
-                  />
-                </div>
-              ) : null}
-            </div>
+            <AuthProvidersList
+              providers={providerCards.filter((provider) => provider.id !== "telegram")}
+              telegramProvider={telegramProvider?.enabled ? telegramProvider : null}
+              returnTo="/me"
+              mode="login"
+              layout="stack"
+              compact
+            />
           </section>
         )}
       </section>
