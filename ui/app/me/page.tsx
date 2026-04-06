@@ -5,7 +5,6 @@ import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
 import { fetchSiteUserSession } from "@/lib/site-user-api.js";
 import {
   getUserErrorMessage,
-  getUserProvider,
   getUserProviderCards,
   getUserSessionTokenFromCookie,
 } from "@/lib/site-user-auth.js";
@@ -40,7 +39,6 @@ export default async function MePage({
   const origin = `${requestHeaders.get("x-forwarded-proto") || "https"}://${requestHeaders.get("x-forwarded-host") || requestHeaders.get("host") || ""}`;
   const requestLike = { url: `${origin}/me` };
   const providerCards = getUserProviderCards(requestLike, process.env);
-  const telegramProvider = getUserProvider(requestLike, "telegram", process.env);
   const errorValue = Array.isArray(params.error) ? params.error[0] : params.error;
   const errorText = getUserErrorMessage(errorValue);
   const updated = (Array.isArray(params.updated) ? params.updated[0] : params.updated) === "1";
@@ -173,12 +171,12 @@ export default async function MePage({
             <section className={styles.card}>
               <h2 className={styles.cardTitle}>Подключить ещё сервис</h2>
               <AuthProvidersList
-                providers={connectableProviders.filter((provider) => provider.id !== "telegram")}
-                telegramProvider={!linkedProviderIds.has("telegram") ? telegramProvider : null}
+                providers={connectableProviders}
                 returnTo="/me"
                 mode="connect"
                 layout="stack"
                 compact
+                iconOnly
                 emptyText="Все доступные способы входа уже привязаны."
               />
             </section>
@@ -187,12 +185,12 @@ export default async function MePage({
           <section className={styles.card}>
             <h2 className={styles.cardTitle}>Зайти или зарегистрироваться</h2>
             <AuthProvidersList
-              providers={providerCards.filter((provider) => provider.id !== "telegram")}
-              telegramProvider={telegramProvider?.enabled ? telegramProvider : null}
+              providers={providerCards}
               returnTo="/me"
               mode="login"
               layout="stack"
               compact
+              iconOnly
             />
           </section>
         )}

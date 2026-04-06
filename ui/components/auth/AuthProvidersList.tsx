@@ -70,6 +70,24 @@ function renderItem(
   iconOnly: boolean,
   showStatus: boolean,
 ) {
+  if (compact && iconOnly && provider.id !== "telegram") {
+    const actionHref = buildHref(provider.startHref, returnTo);
+
+    return (
+      <Link
+        key={provider.id}
+        href={actionHref}
+        className={`${styles.iconOnlyLink} ${provider.enabled ? "" : styles.buttonDisabled}`.trim()}
+        aria-label={provider.label}
+        title={provider.label}
+      >
+        <span className={`${styles.iconBox} ${styles.iconOnlyBox}`.trim()} aria-hidden="true">
+          <AuthProviderIcon providerId={provider.id} className={styles.iconOnlyGraphic} />
+        </span>
+      </Link>
+    );
+  }
+
   const itemClassName = compact
     ? `${styles.row} ${styles.rowCompact}`.trim()
     : mode === "login"
@@ -160,8 +178,11 @@ export default function AuthProvidersList({
     return emptyText ? <p className={styles.hint}>{emptyText}</p> : null;
   }
 
+  const listClassName =
+    compact && iconOnly ? styles.iconOnlyList : layout === "grid" ? styles.grid : styles.stack;
+
   return (
-    <div className={layout === "grid" ? styles.grid : styles.stack}>
+    <div className={listClassName}>
       {allProviders.map((provider) =>
         renderItem(
           provider,

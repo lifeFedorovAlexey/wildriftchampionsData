@@ -4,6 +4,13 @@
   gap: 14px;
 }
 
+.iconOnlyList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
 .card,
 .row {
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -71,6 +78,42 @@
 
 .iconBoxCompactOnly {
   background: rgba(255, 255, 255, 0.06);
+}
+
+.iconOnlyLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.iconOnlyBox {
+  width: 52px;
+  height: 52px;
+  flex-basis: 52px;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03)),
+    rgba(24, 29, 43, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+.iconOnlyLink:hover .iconOnlyBox {
+  transform: translateY(-1px);
+  border-color: rgba(255, 211, 108, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)),
+    rgba(24, 29, 43, 0.98);
+}
+
+.iconOnlyGraphic {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 .iconGraphic {

@@ -1,3 +1,4 @@
+import { randomBytes } from "node:crypto";
 import {
   ADMIN_STATE_TTL_SECONDS,
   buildAdminUrl,
@@ -31,7 +32,9 @@ export function sanitizeUserReturnTo(value) {
 
 export function getUserProviders(request, env = process.env) {
   const origin = getAdminOrigin(request, env);
-  return buildOAuthProviders(origin, env, "/api/auth");
+  const providers = buildOAuthProviders(origin, env, "/api/auth");
+  const { telegram: _telegram, ...userProviders } = providers;
+  return userProviders;
 }
 
 export function getUserProviderCards(request, env = process.env) {
