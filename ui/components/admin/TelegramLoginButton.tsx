@@ -17,11 +17,10 @@ export default function TelegramLoginButton({
     typeof window !== "undefined" &&
     (window.location.hostname === "localhost" ||
       window.location.hostname === "127.0.0.1");
-  const [loadError, setLoadError] = useState(() =>
-    isLocalHost
-      ? "Telegram login локально не рендерится: проверь его на домене бота."
-      : "",
-  );
+  const [loadError, setLoadError] = useState("");
+  const visibleError = isLocalHost
+    ? "Telegram login локально не рендерится: проверь его на домене бота."
+    : loadError;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -32,7 +31,6 @@ export default function TelegramLoginButton({
       return undefined;
     }
 
-    setLoadError("");
     container.innerHTML = "";
 
     const script = document.createElement("script");
@@ -66,8 +64,8 @@ export default function TelegramLoginButton({
     };
   }, [authUrl, botUsername, isLocalHost]);
 
-  if (loadError) {
-    return <TextHint>{loadError}</TextHint>;
+  if (visibleError) {
+    return <TextHint>{visibleError}</TextHint>;
   }
 
   return <div ref={containerRef} className="telegramWidgetHost" />;
