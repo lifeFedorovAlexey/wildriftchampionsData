@@ -57,7 +57,7 @@ export default async function GuidesPage() {
       return {
         ...guide,
         localizedName: champion.name || guide.name || null,
-        iconUrl: guide.iconUrl || champion.iconUrl || null,
+        iconUrl: champion.iconUrl || guide.iconUrl || null,
         roles: guide.roles?.length ? guide.roles : champion.roles || [],
         laneKeys,
         hasGuide: true,
