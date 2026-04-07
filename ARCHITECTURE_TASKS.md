@@ -14,7 +14,7 @@
 
 - [x] Шаг 1. Зафиксировать текущий набор секретов и env-контрактов в `ui` и `wr-api`, убрать из примеров и README неактуальные или недоведённые ключи (`USER_*`, лишние invented secrets), не меняя runtime-код.
 - [x] Шаг 2. Удалить legacy `skins` ingestion path, завязанный на `ui/public/merged`, и убрать связанный API/domain-рудимент после проверки, что клиентская страница и маршрут больше не используются.
-- [ ] Шаг 3. Спроектировать guide-domain contract: canonical slug namespace, source alias map, merge policy между источниками, правила fallback по отсутствующим данным.
+- [x] Шаг 3. Спроектировать guide-domain contract: canonical slug namespace, source alias map, merge policy между источниками, правила fallback по отсутствующим данным.
 - [ ] Шаг 4. Реализовать guide slug normalization layer внутри `wr-api` и покрыть её тестами на консистентные преобразования между внешними source slugs и внутренним canonical slug.
 - [ ] Шаг 5. Ввести `skip-on-same-hash` для guide import, чтобы при неизменившемся контенте не делать rewrite дочерних таблиц.
 - [ ] Шаг 6. После стабилизации guide import решить судьбу legacy `champion_guides`: либо удалить таблицу и кодовый хвост, либо явно оставить как временный cache/compatibility слой с документированной ролью.
@@ -33,3 +33,10 @@
 - проверить, что `GET /api/health` работает как раньше
 - убедиться, что старые `GET /api/skins*` больше не считаются частью активного контракта
 - проверить страницы `news`, `guides`, `tierlist`, `winrates`, `admin`
+
+## Точка контроля после шага 3
+
+- согласовать, что canonical guide slug = official Wild Rift slug
+- согласовать, что index работает по union-модели от `champions`
+- согласовать, что detail для известного чемпиона может быть partial, если один из источников пуст
+- использовать [GUIDE_DOMAIN_CONTRACT.md](/d:/wildRiftChampions/GUIDE_DOMAIN_CONTRACT.md) как source of truth для шага 4
