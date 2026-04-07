@@ -82,6 +82,26 @@ function parseCliArgs(argv) {
   return options;
 }
 
+function warnSlugLookup({ service, requestedSlug, candidateSlug = "", source = "", status = "" }) {
+  const parts = [
+    "[slug-warn]",
+    `service=${service}`,
+    `requested=${String(requestedSlug || "").trim() || "-"}`,
+  ];
+
+  if (candidateSlug) {
+    parts.push(`candidate=${String(candidateSlug).trim()}`);
+  }
+  if (source) {
+    parts.push(`source=${source}`);
+  }
+  if (status) {
+    parts.push(`status=${status}`);
+  }
+
+  console.warn(parts.join(" "));
+}
+
 async function pushGuideToApi(guide) {
   const baseUrl = getStatsApiBaseUrl();
   const importUrl =
@@ -152,7 +172,12 @@ async function main() {
       const message = error instanceof Error ? error.message : String(error);
 
       if (message.includes("HTTP 404")) {
-        console.warn(`No guide page for ${slug}, skipping`);
+        warnSlugLookup({
+          service: "ui/sync-wildriftfire-guides",
+          requestedSlug: slug,
+          source: "wildriftfire",
+          status: "404",
+        });
         skippedNoGuide.push(slug);
         continue;
       }

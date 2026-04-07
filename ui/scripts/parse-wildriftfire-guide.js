@@ -19,7 +19,27 @@ const OUTPUT_ROOT = path.join(
   "guides",
 );
 
-function fetchHtml(url) {
+function warnSlugLookup({ service, requestedSlug, candidateSlug = "", source = "", status = "" }) {
+  const parts = [
+    "[slug-warn]",
+    `service=${service}`,
+    `requested=${String(requestedSlug || "").trim() || "-"}`,
+  ];
+
+  if (candidateSlug) {
+    parts.push(`candidate=${String(candidateSlug).trim()}`);
+  }
+  if (source) {
+    parts.push(`source=${source}`);
+  }
+  if (status) {
+    parts.push(`status=${status}`);
+  }
+
+  console.warn(parts.join(" "));
+}
+
+function fetchHtml(url, context = {}) {
   const headers = {
     "user-agent":
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
@@ -35,6 +55,15 @@ function fetchHtml(url) {
         let data = "";
 
         if (res.statusCode !== 200) {
+          if (res.statusCode === 404) {
+            warnSlugLookup({
+              service: "ui/parse-wildriftfire-guide",
+              requestedSlug: context.requestedSlug,
+              candidateSlug: context.candidateSlug,
+              source: context.source || "wildriftfire",
+              status: "404",
+            });
+          }
           reject(new Error(`HTTP ${res.statusCode} for ${url}`));
           res.resume();
           return;
@@ -80,7 +109,7 @@ function fetchTooltipHtml(relationType, relationId) {
   });
 }
 
-function fetchRiotChampionPage(slug) {
+function fetchRiotChampionPage(slug, requestedSlug = slug) {
   const url = `${RIOT_ORIGIN}/ru-ru/champions/${slug}/`;
   const headers = {
     "user-agent":
@@ -97,6 +126,15 @@ function fetchRiotChampionPage(slug) {
         let data = "";
 
         if (res.statusCode !== 200) {
+          if (res.statusCode === 404) {
+            warnSlugLookup({
+              service: "ui/parse-wildriftfire-guide",
+              requestedSlug,
+              candidateSlug: slug,
+              source: "riot",
+              status: "404",
+            });
+          }
           reject(new Error(`HTTP ${res.statusCode} for ${url}`));
           res.resume();
           return;
@@ -120,7 +158,7 @@ async function fetchRiotChampionPageWithFallbacks(slug) {
   let lastError = null;
   for (const candidate of candidates) {
     try {
-      const html = await fetchRiotChampionPage(candidate);
+      const html = await fetchRiotChampionPage(candidate, slug);
       return { html, resolvedSlug: candidate };
     } catch (error) {
       lastError = error;
@@ -904,7 +942,11 @@ async function writeGuideFile(slug, data) {
 }
 
 async function scrapeGuide(slug, url = resolveWildRiftFireGuideUrl(slug)) {
-  const html = await fetchHtml(url);
+  const html = await fetchHtml(url, {
+    requestedSlug: slug,
+    candidateSlug: WILDRIFTFIRE_GUIDE_SLUG_ALIASES[slug] || slug,
+    source: "wildriftfire",
+  });
   const guide = parseGuide(html, url, slug);
   const { html: riotHtml, resolvedSlug } = await fetchRiotChampionPageWithFallbacks(slug);
   const officialData = parseRiotChampionData(riotHtml, resolvedSlug);

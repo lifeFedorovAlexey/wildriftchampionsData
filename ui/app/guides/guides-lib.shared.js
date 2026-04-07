@@ -1,10 +1,30 @@
 import { getStatsApiBaseUrl } from "../../lib/stats-api-origin.js";
-import { fetchApiJson } from "../../lib/server-api.js";
+import { buildApiUrl, fetchApiJson } from "../../lib/server-api.js";
 import guideShared from "../../shared/guides-shared.js";
 
 export { getStatsApiBaseUrl };
 
 const { mapToLocalSlug, getGuideSlugAliases, toGuideLaneKey } = guideShared;
+
+function warnSlugLookup({ service, requestedSlug, candidateSlug = "", source = "", status = "" }) {
+  const parts = [
+    "[slug-warn]",
+    `service=${service}`,
+    `requested=${String(requestedSlug || "").trim() || "-"}`,
+  ];
+
+  if (candidateSlug) {
+    parts.push(`candidate=${String(candidateSlug).trim()}`);
+  }
+  if (source) {
+    parts.push(`source=${source}`);
+  }
+  if (status) {
+    parts.push(`status=${status}`);
+  }
+
+  console.warn(parts.join(" "));
+}
 
 function normalizeGuidePayloadSlug(guide, requestedSlug) {
   if (!guide || typeof guide !== "object") return guide;
@@ -42,13 +62,25 @@ function normalizeGuideSummaryItems(items = []) {
 export async function fetchGuideFromApi(slug) {
   for (const alias of getGuideSlugAliases(slug)) {
     try {
-      const payload = await fetchApiJson(`/api/guides/${encodeURIComponent(alias)}?lang=ru_ru`, {
-        fetchOptions: {
-          cache: "no-store",
-        },
-        allowNotFound: true,
-        fallback: null,
-      });
+      const pathname = `/api/guides/${encodeURIComponent(alias)}?lang=ru_ru`;
+      const response = await fetch(buildApiUrl(pathname), { cache: "no-store" });
+
+      if (response.status === 404) {
+        warnSlugLookup({
+          service: "ui/guides-lib",
+          requestedSlug: slug,
+          candidateSlug: alias,
+          source: "wr-api",
+          status: "404",
+        });
+        continue;
+      }
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status} for ${pathname}`);
+      }
+
+      const payload = await response.json();
 
       if (payload) {
         return normalizeGuidePayloadSlug(payload, slug);
