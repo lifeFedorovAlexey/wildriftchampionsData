@@ -26,7 +26,7 @@ export async function GET(
     const returnTo = sanitizeUserReturnTo(
       request.nextUrl.searchParams.get("returnTo"),
     );
-    const stateToken = issueUserState(provider.id, returnTo, process.env);
+    const stateToken = await issueUserState(provider.id, returnTo, process.env);
 
     if (!stateToken) {
       return NextResponse.redirect(
@@ -34,7 +34,7 @@ export async function GET(
       );
     }
 
-    const authorizeUrl = getUserAuthorizeUrl(provider, stateToken);
+    const authorizeUrl = await getUserAuthorizeUrl(provider, stateToken);
     if (!authorizeUrl) {
       return NextResponse.redirect(
         getUserRedirectUrl(request, "/me?error=oauth_start_failed"),

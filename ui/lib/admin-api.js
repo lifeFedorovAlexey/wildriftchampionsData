@@ -6,7 +6,7 @@ export async function exchangeAdminSession(
   env = process.env,
   currentSessionToken = "",
 ) {
-  const envelope = createAdminExchangeEnvelope(profile, env);
+  const envelope = await createAdminExchangeEnvelope(profile, env);
   const headers = {
     "Content-Type": "application/json",
     Accept: "application/json",

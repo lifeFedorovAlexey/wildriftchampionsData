@@ -16,8 +16,8 @@ const env = {
   ADMIN_TELEGRAM_BOT_TOKEN: "123456:ABCDEF",
 };
 
-test("createAdminExchangeEnvelope builds a signed payload for the api handoff", () => {
-  const envelope = createAdminExchangeEnvelope(
+test("createAdminExchangeEnvelope builds a signed payload for the api handoff", async () => {
+  const envelope = await createAdminExchangeEnvelope(
     {
       provider: "google",
       subject: "abc",
@@ -35,9 +35,9 @@ test("createAdminExchangeEnvelope builds a signed payload for the api handoff", 
   assert.ok(envelope.signature.length > 10);
 });
 
-test("issueAdminState preserves provider and safe return path", () => {
-  const state = issueAdminState("google", "https://evil.test", env);
-  const payload = readAdminState(state, env);
+test("issueAdminState preserves provider and safe return path", async () => {
+  const state = await issueAdminState("google", "https://evil.test", env);
+  const payload = await readAdminState(state, env);
 
   assert.equal(payload?.provider, "google");
   assert.equal(payload?.returnTo, "/admin");
@@ -61,7 +61,7 @@ test("getAdminSessionTokenFromCookie reads the raw cookie value", () => {
   assert.equal(sessionToken, "session-token");
 });
 
-test("verifyTelegramLogin rejects stale auth payloads", () => {
+test("verifyTelegramLogin rejects stale auth payloads", async () => {
   const params = new URLSearchParams({
     id: "42",
     first_name: "Life",
@@ -70,7 +70,7 @@ test("verifyTelegramLogin rejects stale auth payloads", () => {
     hash: "deadbeef",
   });
 
-  const verified = verifyTelegramLogin(params, env);
+  const verified = await verifyTelegramLogin(params, env);
   assert.equal(verified.ok, false);
 });
 

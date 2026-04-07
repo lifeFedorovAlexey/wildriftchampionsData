@@ -27,7 +27,7 @@ export async function GET(
     const returnTo = sanitizeAdminReturnTo(
       request.nextUrl.searchParams.get("returnTo"),
     );
-    const stateToken = issueAdminState(provider.id, returnTo, process.env);
+    const stateToken = await issueAdminState(provider.id, returnTo, process.env);
 
     if (!stateToken) {
       return NextResponse.redirect(
@@ -35,7 +35,7 @@ export async function GET(
       );
     }
 
-    const authorizeUrl = buildAdminAuthorizeUrl(provider, stateToken);
+    const authorizeUrl = await buildAdminAuthorizeUrl(provider, stateToken);
     if (!authorizeUrl) {
       return NextResponse.redirect(
         buildAdminUrl(request, "/admin/login?error=oauth_start_failed"),

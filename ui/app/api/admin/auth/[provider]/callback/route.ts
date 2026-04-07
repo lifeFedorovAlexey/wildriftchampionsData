@@ -39,7 +39,7 @@ export async function GET(
   }
 
   if (provider.type === "telegram") {
-    const verified = verifyTelegramLogin(request.nextUrl.searchParams, process.env);
+    const verified = await verifyTelegramLogin(request.nextUrl.searchParams, process.env);
     const currentSessionToken =
       request.cookies.get(ADMIN_SESSION_COOKIE)?.value || "";
 
@@ -71,7 +71,7 @@ export async function GET(
   const stateToken = request.cookies.get(ADMIN_STATE_COOKIE)?.value || "";
   const currentSessionToken =
     request.cookies.get(ADMIN_SESSION_COOKIE)?.value || "";
-  const expectedState = readAdminState(stateToken, process.env);
+  const expectedState = await readAdminState(stateToken, process.env);
   const returnedState = String(request.nextUrl.searchParams.get("state") || "");
 
   if (!expectedState || returnedState !== expectedState.nonce || expectedState.provider !== providerId) {

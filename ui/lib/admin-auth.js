@@ -1,4 +1,4 @@
-import { createHash, randomBytes } from "node:crypto";
+import { randomBytes, webcrypto } from "node:crypto";
 import {
   buildAuthorizeUrl,
   buildOAuthProviders,
@@ -90,13 +90,15 @@ export function getAdminProviderCards(request, env = process.env) {
   }));
 }
 
-export function issueAdminState(providerId, returnTo, env = process.env) {
+const encoder = new TextEncoder();
+
+export async function issueAdminState(providerId, returnTo, env = process.env) {
   const secret = normalizeSecret(env);
   if (!secret) return null;
 
   const codeVerifier = createCodeVerifier();
 
-  return signPayload(
+  return await signPayload(
     {
       kind: "admin-oauth-state",
       provider: providerId,
@@ -109,8 +111,8 @@ export function issueAdminState(providerId, returnTo, env = process.env) {
   );
 }
 
-export function readAdminState(token, env = process.env) {
-  const payload = readSignedPayload(token, normalizeSecret(env));
+export async function readAdminState(token, env = process.env) {
+  const payload = await readSignedPayload(token, normalizeSecret(env));
   if (!payload || payload.kind !== "admin-oauth-state") return null;
   return payload;
 }
@@ -135,9 +137,9 @@ export function getAdminCookieOptions(request, maxAge) {
   };
 }
 
-export function buildAdminAuthorizeUrl(provider, stateToken) {
-  const state = readAdminState(stateToken);
-  return buildAuthorizeUrl(provider, state);
+export async function buildAdminAuthorizeUrl(provider, stateToken) {
+  const state = await readAdminState(stateToken);
+  return await buildAuthorizeUrl(provider, state);
 }
 
 export async function exchangeOAuthCode(
@@ -146,8 +148,8 @@ export async function exchangeOAuthCode(
   stateToken,
   extraParams = {},
 ) {
-  const state = readAdminState(stateToken);
-  return exchangeOAuthCodeForTokens(provider, code, state, extraParams);
+  const state = await readAdminState(stateToken);
+  return await exchangeOAuthCodeForTokens(provider, code, state, extraParams);
 }
 
 export async function fetchOAuthProfile(provider, accessToken, tokenPayload = {}) {
@@ -227,7 +229,7 @@ export function mapOAuthProfile(providerId, profile, tokenPayload = {}) {
   return null;
 }
 
-export function verifyTelegramLogin(searchParams, env = process.env) {
+export async function verifyTelegramLogin(searchParams, env = process.env) {
   const botToken = String(env.ADMIN_TELEGRAM_BOT_TOKEN || "").trim();
   if (!botToken) {
     return { ok: false, reason: "telegram_not_configured" };
@@ -259,10 +261,23 @@ export function verifyTelegramLogin(searchParams, env = process.env) {
     .map(([key, value]) => `${key}=${value}`)
     .join("\n");
 
-  const secretKey = createHash("sha256").update(botToken).digest();
-  const expectedHash = createHmac("sha256", secretKey)
-    .update(dataCheckString)
-    .digest("hex");
+  const secretKey = await webcrypto.subtle.digest(
+    "SHA-256",
+    encoder.encode(botToken),
+  );
+  const hmacKey = await webcrypto.subtle.importKey(
+    "raw",
+    secretKey,
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const signature = await webcrypto.subtle.sign(
+    "HMAC",
+    hmacKey,
+    encoder.encode(dataCheckString),
+  );
+  const expectedHash = Buffer.from(signature).toString("hex");
 
   if (expectedHash !== hash) {
     return { ok: false, reason: "telegram_bad_hash" };
@@ -283,8 +298,8 @@ export function verifyTelegramLogin(searchParams, env = process.env) {
   };
 }
 
-export function createAdminExchangeEnvelope(profile, env = process.env) {
-  return createSignedExchangeEnvelope(profile, env);
+export async function createAdminExchangeEnvelope(profile, env = process.env) {
+  return await createSignedExchangeEnvelope(profile, env);
 }
 
 export function getAdminSessionTokenFromCookie(cookieStore) {

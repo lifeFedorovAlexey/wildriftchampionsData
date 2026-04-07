@@ -1,4 +1,6 @@
-import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { randomBytes, webcrypto } from "node:crypto";
+
+const encoder = new TextEncoder();
 
 export function normalizeSecret(env = process.env) {
   return String(env.ADMIN_SESSION_SECRET || "").trim();
@@ -45,34 +47,62 @@ export function createCodeVerifier() {
   return toBase64Url(randomBytes(48));
 }
 
-export function createCodeChallenge(codeVerifier) {
-  return createHash("sha256").update(codeVerifier).digest("base64url");
+function encodeUtf8(value) {
+  return encoder.encode(String(value || ""));
 }
 
-export function signPayload(payload, secret) {
+async function digestSha256(value) {
+  return await webcrypto.subtle.digest("SHA-256", encodeUtf8(value));
+}
+
+async function importHmacKey(secret) {
+  return await webcrypto.subtle.importKey(
+    "raw",
+    encodeUtf8(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign", "verify"],
+  );
+}
+
+export async function createCodeChallenge(codeVerifier) {
+  const digest = await digestSha256(codeVerifier);
+  return Buffer.from(digest).toString("base64url");
+}
+
+async function signEncodedValue(encoded, secret) {
+  const key = await importHmacKey(secret);
+  const signature = await webcrypto.subtle.sign("HMAC", key, encodeUtf8(encoded));
+  return Buffer.from(signature).toString("base64url");
+}
+
+export async function signPayload(payload, secret) {
   const serialized = JSON.stringify(payload);
   const encoded = toBase64Url(serialized);
-  const signature = createHmac("sha256", secret).update(encoded).digest("base64url");
+  const signature = await signEncodedValue(encoded, secret);
   return `${encoded}.${signature}`;
 }
 
-function verifySignature(encoded, signature, secret) {
-  const expected = createHmac("sha256", secret).update(encoded).digest();
-  const actual = Buffer.from(String(signature || ""), "base64url");
-
-  if (!actual.length || actual.length !== expected.length) {
+async function verifySignature(encoded, signature, secret) {
+  const actual = fromBase64Url(String(signature || ""));
+  if (!actual.length) {
     return false;
   }
 
-  return timingSafeEqual(actual, expected);
+  try {
+    const key = await importHmacKey(secret);
+    return await webcrypto.subtle.verify("HMAC", key, actual, encodeUtf8(encoded));
+  } catch {
+    return false;
+  }
 }
 
-export function readSignedPayload(token, secret) {
+export async function readSignedPayload(token, secret) {
   if (!token || !secret) return null;
 
   const [encoded, signature] = String(token).split(".");
   if (!encoded || !signature) return null;
-  if (!verifySignature(encoded, signature, secret)) return null;
+  if (!(await verifySignature(encoded, signature, secret))) return null;
 
   try {
     const payload = JSON.parse(fromBase64Url(encoded).toString("utf8"));
@@ -170,7 +200,7 @@ export function buildOAuthProviders(
   };
 }
 
-export function buildAuthorizeUrl(provider, state) {
+export async function buildAuthorizeUrl(provider, state) {
   if (!provider || !state) return "";
 
   const params = new URLSearchParams({
@@ -179,7 +209,7 @@ export function buildAuthorizeUrl(provider, state) {
     response_type: "code",
     scope: provider.scope,
     state: state.nonce,
-    code_challenge: createCodeChallenge(state.codeVerifier),
+    code_challenge: await createCodeChallenge(state.codeVerifier),
     code_challenge_method: "S256",
   });
 
@@ -236,7 +266,7 @@ export async function exchangeOAuthCodeForTokens(
   return await response.json();
 }
 
-export function createSignedExchangeEnvelope(profile, env = process.env) {
+export async function createSignedExchangeEnvelope(profile, env = process.env) {
   const secret = normalizeSecret(env);
   if (!secret) {
     throw new Error("missing_admin_session_secret");
@@ -250,7 +280,7 @@ export function createSignedExchangeEnvelope(profile, env = process.env) {
     }),
   ).toString("base64url");
 
-  const signature = createHmac("sha256", secret).update(payload).digest("base64url");
+  const signature = await signEncodedValue(payload, secret);
   return { payload, signature };
 }
 

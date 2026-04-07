@@ -42,7 +42,7 @@ export async function GET(
   const currentSessionToken = getUserSessionTokenFromCookie(cookieStore);
 
   if (provider.type === "telegram") {
-    const verified = verifyTelegramLogin(request.nextUrl.searchParams, process.env);
+    const verified = await verifyTelegramLogin(request.nextUrl.searchParams, process.env);
 
     if (!verified.ok || !verified.profile) {
       return redirectToMe(request, verified.reason || "telegram_bad_hash");
@@ -69,7 +69,7 @@ export async function GET(
   }
 
   const stateToken = request.cookies.get(USER_STATE_COOKIE)?.value || "";
-  const expectedState = readUserState(stateToken, process.env);
+  const expectedState = await readUserState(stateToken, process.env);
   const returnedState = String(request.nextUrl.searchParams.get("state") || "");
 
   if (!expectedState || returnedState !== expectedState.nonce || expectedState.provider !== providerId) {

@@ -60,11 +60,11 @@ export function getUserProvider(request, providerId, env = process.env) {
   return getUserProviders(request, env)[providerId] || null;
 }
 
-export function issueUserState(providerId, returnTo, env = process.env) {
+export async function issueUserState(providerId, returnTo, env = process.env) {
   const secret = normalizeSecret(env);
   if (!secret) return null;
 
-  return signPayload(
+  return await signPayload(
     {
       kind: "site-user-oauth-state",
       provider: providerId,
@@ -77,14 +77,14 @@ export function issueUserState(providerId, returnTo, env = process.env) {
   );
 }
 
-export function readUserState(token, env = process.env) {
-  const payload = readSignedPayload(token, normalizeSecret(env));
+export async function readUserState(token, env = process.env) {
+  const payload = await readSignedPayload(token, normalizeSecret(env));
   if (!payload || payload.kind !== "site-user-oauth-state") return null;
   return payload;
 }
 
-export function createUserExchangeEnvelope(profile, env = process.env) {
-  return createSignedExchangeEnvelope(profile, env);
+export async function createUserExchangeEnvelope(profile, env = process.env) {
+  return await createSignedExchangeEnvelope(profile, env);
 }
 
 export function getUserSessionTokenFromCookie(cookieStore) {
@@ -95,9 +95,9 @@ export function getUserCookieOptions(request, maxAge) {
   return getAdminCookieOptions(request, maxAge);
 }
 
-export function getUserAuthorizeUrl(provider, stateToken) {
-  const state = readUserState(stateToken);
-  return buildAuthorizeUrl(provider, state);
+export async function getUserAuthorizeUrl(provider, stateToken) {
+  const state = await readUserState(stateToken);
+  return await buildAuthorizeUrl(provider, state);
 }
 
 export function getUserRedirectUrl(request, path, env = process.env) {
@@ -105,8 +105,8 @@ export function getUserRedirectUrl(request, path, env = process.env) {
 }
 
 export async function exchangeUserOAuthCode(provider, code, stateToken, extraParams = {}) {
-  const state = readUserState(stateToken);
-  return exchangeOAuthCodeForTokens(provider, code, state, extraParams);
+  const state = await readUserState(stateToken);
+  return await exchangeOAuthCodeForTokens(provider, code, state, extraParams);
 }
 
 export { fetchOAuthProfile, mapOAuthProfile, verifyTelegramLogin };

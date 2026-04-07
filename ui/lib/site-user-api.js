@@ -6,7 +6,7 @@ export async function exchangeSiteUserSession(
   env = process.env,
   currentSessionToken = "",
 ) {
-  const envelope = createUserExchangeEnvelope(profile, env);
+  const envelope = await createUserExchangeEnvelope(profile, env);
   const headers = {
     "Content-Type": "application/json",
     Accept: "application/json",
