@@ -19,6 +19,13 @@
   still rely on runtime fallback/proxy behavior.
   These paths should eventually move to the same explicit S3-first contract used for champion icons.
 
+- [wr-api/lib/guideAssets.mjs](/d:/wildRiftChampions/wr-api/lib/guideAssets.mjs)
+  currently mixes two concerns in one store:
+  persistent runtime cache on the server and temporary staging for import/CI mirrors before S3 upload.
+  This should be split later into:
+  a runtime-facing asset cache policy and a separate temp/workspace upload flow for pipelines,
+  so import jobs do not depend on server-style cache directories and the production host does not accumulate unnecessary local mirrored assets.
+
 - [wr-api/scripts/sync-assets-to-s3.mjs](/d:/wildRiftChampions/wr-api/scripts/sync-assets-to-s3.mjs)
   exists, but champion icon prewarming is not wired into the regular champion update workflow.
   This is currently acceptable because new champions are rare, but the policy should remain explicit: no hourly S3 thrashing, only targeted backfill when new assets appear.

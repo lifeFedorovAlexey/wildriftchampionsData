@@ -202,6 +202,23 @@ function localizeRiftLane(value?: string | null) {
   return localizeGuideLane(value || "");
 }
 
+function formatRiftDataDate(value?: string | null) {
+  const normalized = String(value || "").trim();
+  if (!normalized) return null;
+
+  const parsed = new Date(`${normalized}T00:00:00Z`);
+  if (Number.isNaN(parsed.getTime())) {
+    return normalized;
+  }
+
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(parsed);
+}
+
 function formatPercent(value?: number | null) {
   return typeof value === "number" && Number.isFinite(value) ? `${value.toFixed(1)}%` : "—";
 }
@@ -943,6 +960,13 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
   const selectedRunes = pickRiftBlock(riftgg?.runes);
   const selectedSpells = pickRiftBlock(riftgg?.spells);
+  const selectedRiftDataDate =
+    selectedMatchups[0]?.dataDate ||
+    selectedCoreItems[0]?.dataDate ||
+    selectedRunes[0]?.dataDate ||
+    selectedSpells[0]?.dataDate ||
+    null;
+  const selectedRiftDataDateLabel = formatRiftDataDate(selectedRiftDataDate);
   const selectedMatchupEntries = selectedMatchups[0]?.entries || [];
   const bestMatchups = selectedMatchupEntries
     .slice()
@@ -1099,6 +1123,12 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                       </button>
                     ))}
                   </div>
+                </div>
+              ) : null}
+
+              {selectedRiftDataDateLabel ? (
+                <div className={styles.riftSnapshotNote}>
+                  {`Данные RiftGG на ${selectedRiftDataDateLabel}`}
                 </div>
               ) : null}
 
