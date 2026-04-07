@@ -36,6 +36,27 @@ npm run sync:guides:all
 - `ADMIN_TELEGRAM_BOT_USERNAME` / `ADMIN_TELEGRAM_BOT_TOKEN` - Telegram login widget bot settings
 - `ADMIN_VK_CLIENT_ID` / `ADMIN_VK_CLIENT_SECRET` - VK OAuth app credentials when VK login is enabled
 
+Current frontend repo secret inventory:
+
+- `ADMIN_GOOGLE_CLIENT_ID`
+- `ADMIN_GOOGLE_CLIENT_SECRET`
+- `ADMIN_SESSION_SECRET`
+- `ADMIN_TELEGRAM_BOT_TOKEN`
+- `ADMIN_TELEGRAM_BOT_USERNAME`
+- `ADMIN_VK_CLIENT_ID`
+- `ADMIN_VK_CLIENT_SECRET`
+- `ADMIN_YANDEX_CLIENT_ID`
+- `ADMIN_YANDEX_CLIENT_SECRET`
+- `GUIDES_SYNC_API_ORIGIN`
+- `GUIDES_SYNC_IMPORT_URL`
+- `GUIDES_SYNC_SECRET`
+- `S3_PUBLIC_BASE_URL`
+- `TIMEWEB_HOST`
+- `TIMEWEB_PASSWORD`
+- `TIMEWEB_USER`
+
+The `USER_*` env model is not part of the current approved frontend secret set and should be treated as unfinished work, not as the active production contract.
+
 Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_TARGET`.
 
 Admin OAuth notes:
