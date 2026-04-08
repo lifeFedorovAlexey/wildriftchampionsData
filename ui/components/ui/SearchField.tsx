@@ -11,6 +11,7 @@ type SearchFieldProps = {
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   className?: string;
   autoComplete?: string;
+  disabled?: boolean;
 };
 
 export default function SearchField({
@@ -22,6 +23,7 @@ export default function SearchField({
   onFocus,
   className = "",
   autoComplete = "off",
+  disabled = false,
 }: SearchFieldProps) {
   const composedClassName = [styles.field, className].filter(Boolean).join(" ");
 
@@ -35,6 +37,7 @@ export default function SearchField({
       aria-label={ariaLabel}
       onFocus={onFocus}
       autoComplete={autoComplete}
+      disabled={disabled}
     />
   );
 }

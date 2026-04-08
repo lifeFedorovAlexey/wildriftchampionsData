@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import {
   Bar,
   CartesianGrid,
@@ -11,6 +11,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import SearchField from "@/components/ui/SearchField";
 import styles from "@/app/admin/admin.module.css";
 
 type ChampionOption = {
@@ -102,6 +103,8 @@ type AuditPayload = {
   selectedRunId?: string | null;
 };
 
+const AUDIT_DISPLAY_TIME_ZONE = "Europe/Moscow";
+
 function formatDateTime(value?: string | null) {
   if (!value) return "n/a";
 
@@ -113,6 +116,8 @@ function formatDateTime(value?: string | null) {
     month: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
+    timeZone: AUDIT_DISPLAY_TIME_ZONE,
   }).format(parsed);
 }
 
@@ -171,6 +176,8 @@ export default function AdminGuidesAuditClient({
   const [payload, setPayload] = useState<AuditPayload>(initialPayload || {});
   const [mode, setMode] = useState<"all" | "single">("all");
   const [slug, setSlug] = useState<string>(champions[0]?.slug || "");
+  const [championSearch, setChampionSearch] = useState("");
+  const [isChampionPickerOpen, setIsChampionPickerOpen] = useState(false);
   const [selectedRunId, setSelectedRunId] = useState<string>(
     initialPayload?.selectedRunId ||
       initialPayload?.activeRun?.id ||
@@ -181,10 +188,15 @@ export default function AdminGuidesAuditClient({
   const [errorText, setErrorText] = useState("");
   const [noticeText, setNoticeText] = useState("");
   const [isPending, startTransition] = useTransition();
+  const championPickerRef = useRef<HTMLDivElement | null>(null);
 
   const runs = payload.runs || [];
   const report = payload.report || null;
   const activeRun = payload.activeRun || null;
+  const selectedChampion = useMemo(
+    () => champions.find((item) => item.slug === slug) || null,
+    [champions, slug],
+  );
   const selectedRun =
     runs.find((item) => item.id === selectedRunId) ||
     (activeRun?.id === selectedRunId ? activeRun : null) ||
@@ -202,6 +214,23 @@ export default function AdminGuidesAuditClient({
       ),
     [report],
   );
+  const selectedRunError =
+    !payload.running && selectedRun?.status === "failed"
+      ? String(selectedRun?.errorMessage || "").trim()
+      : "";
+  const filteredChampions = useMemo(() => {
+    const normalizedSearch = championSearch.trim().toLowerCase();
+
+    return champions
+      .filter((item) => {
+        if (!normalizedSearch) return true;
+        return (
+          item.name.toLowerCase().includes(normalizedSearch) ||
+          item.slug.toLowerCase().includes(normalizedSearch)
+        );
+      })
+      .slice(0, 10);
+  }, [championSearch, champions]);
 
   useEffect(() => {
     if (!payload.running) {
@@ -226,6 +255,22 @@ export default function AdminGuidesAuditClient({
 
     return () => window.clearInterval(timer);
   }, [activeRun?.id, payload.running, selectedRunId]);
+
+  useEffect(() => {
+    if (!selectedChampion) return;
+    setChampionSearch(`${selectedChampion.name} (${selectedChampion.slug})`);
+  }, [selectedChampion]);
+
+  useEffect(() => {
+    function handlePointerDown(event: MouseEvent) {
+      if (!championPickerRef.current?.contains(event.target as Node)) {
+        setIsChampionPickerOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, []);
 
   async function refresh(runId = selectedRunId) {
     setErrorText("");
@@ -270,6 +315,15 @@ export default function AdminGuidesAuditClient({
     await refresh(nextPayload?.run?.id || "");
   }
 
+  function pickChampion(nextSlug: string) {
+    const nextChampion = champions.find((item) => item.slug === nextSlug) || null;
+    setSlug(nextSlug);
+    setChampionSearch(
+      nextChampion ? `${nextChampion.name} (${nextChampion.slug})` : nextSlug,
+    );
+    setIsChampionPickerOpen(false);
+  }
+
   const totals = report?.totals || {};
   const progressTotal = selectedRun?.targetCount || totals.champions || 0;
   const progressValue = payload.running
@@ -297,6 +351,11 @@ export default function AdminGuidesAuditClient({
         </div>
 
         {errorText ? <div className={styles.error}>{errorText}</div> : null}
+        {!errorText && selectedRunError ? (
+          <div className={styles.error}>
+            {`Выбранный прогон завершился с ошибкой: ${selectedRunError}`}
+          </div>
+        ) : null}
         {noticeText ? <div className={styles.notice}>{noticeText}</div> : null}
 
         <div className={styles.auditControls}>
@@ -324,18 +383,48 @@ export default function AdminGuidesAuditClient({
 
           <label className={styles.auditSelectWrap}>
             <span className={styles.statLabel}>Slug чемпиона</span>
-            <select
-              className={styles.auditSelect}
-              value={slug}
-              onChange={(event) => setSlug(event.target.value)}
-              disabled={mode !== "single" || isPending || payload.running}
+            <div
+              ref={championPickerRef}
+              className={styles.auditPicker}
             >
-              {champions.map((item) => (
-                <option key={item.slug} value={item.slug}>
-                  {item.name} ({item.slug})
-                </option>
-              ))}
-            </select>
+              <SearchField
+                value={championSearch}
+                onChange={(value) => {
+                  setChampionSearch(value);
+                  setIsChampionPickerOpen(true);
+                }}
+                placeholder={mode === "single" ? "Начни вводить имя или slug" : "Выбери режим конкретного чемпиона"}
+                ariaLabel="Поиск чемпиона для точечного аудита"
+                className={styles.auditSearch}
+                autoComplete="off"
+                disabled={mode !== "single" || isPending || payload.running}
+                onFocus={() => {
+                  if (mode === "single") {
+                    setIsChampionPickerOpen(true);
+                  }
+                }}
+              />
+              {mode === "single" && isChampionPickerOpen ? (
+                <div className={styles.auditPickerResults}>
+                  {filteredChampions.length ? (
+                    filteredChampions.map((item) => (
+                      <button
+                        key={item.slug}
+                        type="button"
+                        className={`${styles.auditPickerOption} ${item.slug === slug ? styles.auditPickerOptionActive : ""}`.trim()}
+                        onClick={() => pickChampion(item.slug)}
+                        disabled={isPending || payload.running}
+                      >
+                        <span className={styles.auditPickerOptionName}>{item.name}</span>
+                        <span className={styles.auditPickerOptionSlug}>{item.slug}</span>
+                      </button>
+                    ))
+                  ) : (
+                    <div className={styles.auditPickerEmpty}>Ничего не найдено.</div>
+                  )}
+                </div>
+              ) : null}
+            </div>
           </label>
 
           <div className={styles.auditActionRow}>

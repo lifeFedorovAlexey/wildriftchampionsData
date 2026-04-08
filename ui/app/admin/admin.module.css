@@ -513,6 +513,10 @@
   gap: 8px;
 }
 
+.auditPicker {
+  position: relative;
+}
+
 .auditSelect {
   min-height: 48px;
   padding: 0 14px;
@@ -520,6 +524,80 @@
   border-radius: 14px;
   background: rgba(12, 18, 30, 0.92);
   color: #fff;
+  font-size: 14px;
+}
+
+.auditSearch {
+  min-height: 48px;
+}
+
+.auditPickerResults {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  display: grid;
+  gap: 6px;
+  max-height: 320px;
+  padding: 10px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(18, 23, 36, 0.98), rgba(10, 14, 24, 0.98));
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.32);
+}
+
+.auditPickerOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  text-align: left;
+  transition:
+    border-color 140ms ease,
+    background 140ms ease,
+    transform 140ms ease;
+}
+
+.auditPickerOption:hover {
+  transform: translateY(-1px);
+  border-color: rgba(245, 211, 108, 0.24);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.auditPickerOptionActive {
+  border-color: rgba(245, 211, 108, 0.3);
+  background: linear-gradient(135deg, rgba(245, 211, 108, 0.14), rgba(116, 211, 255, 0.1));
+}
+
+.auditPickerOptionName {
+  overflow: hidden;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auditPickerOptionSlug {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.auditPickerEmpty {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.64);
   font-size: 14px;
 }
 
