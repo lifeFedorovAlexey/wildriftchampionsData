@@ -44,3 +44,20 @@
 - Add end-to-end coverage for admin OAuth start/callback routes behind a reverse proxy so production never regresses to `localhost` or `http` redirect URIs.
 - Consider stronger environment separation for admin OAuth testing:
   local development on `localhost:3000` and production `wildriftallstats.ru` can still confuse a browser session if both flows are tested in parallel with stale provider/session cookies.
+
+## CI / lint follow-up
+
+- Update [codeql.yml](/d:/wildRiftChampions/.github/workflows/codeql.yml)
+  from `github/codeql-action/*@v3` to `v4`.
+  Current workflow still works, but GitHub already warns about:
+  `v3` deprecation and Node 20 action runtime deprecation before the forced switch to Node 24.
+
+- Decide and document a stable image policy for `ui`:
+  where we really want `next/image`,
+  and where plain `<img>` is intentionally acceptable.
+  Right now CI warns on dynamic guide/media surfaces such as
+  [GuideClient.tsx](/d:/wildRiftChampions/ui/app/guides/[slug]/GuideClient.tsx),
+  [page.tsx](/d:/wildRiftChampions/ui/app/me/page.tsx),
+  and the `noscript` beacon in [layout.tsx](/d:/wildRiftChampions/ui/app/layout.tsx).
+  Some of these should migrate to `next/image`,
+  while others are valid exceptions and should be silenced explicitly instead of leaving noisy warnings in CI.

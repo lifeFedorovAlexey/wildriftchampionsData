@@ -16,7 +16,7 @@
 - [x] Шаг 2. Удалить legacy `skins` ingestion path, завязанный на `ui/public/merged`, и убрать связанный API/domain-рудимент после проверки, что клиентская страница и маршрут больше не используются.
 - [x] Шаг 3. Спроектировать guide-domain contract: canonical slug namespace, source alias map, merge policy между источниками, правила fallback по отсутствующим данным.
 - [x] Шаг 4. Реализовать guide slug normalization layer внутри `wr-api` и покрыть её тестами на консистентные преобразования между внешними source slugs и внутренним canonical slug.
-- [ ] Шаг 5. Ввести `skip-on-same-hash` для guide import, чтобы при неизменившемся контенте не делать rewrite дочерних таблиц.
+- [x] Шаг 5. Ввести `skip-on-same-hash` для guide import, чтобы при неизменившемся контенте не делать rewrite дочерних таблиц.
 - [ ] Шаг 6. После стабилизации guide import решить судьбу legacy `champion_guides`: либо удалить таблицу и кодовый хвост, либо явно оставить как временный cache/compatibility слой с документированной ролью.
 - [ ] Шаг 7. Подготовить вариант разделения `wr-api` на процессы: public API, auth/session, workers/imports. Отдельно описать, как меняются PM2 и deploy pipeline.
 - [ ] Шаг 8. Отдельно вернуться к недоделанному `site user` flow: либо довести до отдельной security boundary с `USER_SESSION_SECRET`, либо убрать из активной продовой поверхности.
@@ -49,3 +49,9 @@
 - согласовать, что index работает по union-модели от `champions`
 - согласовать, что detail для известного чемпиона может быть partial, если один из источников пуст
 - использовать [GUIDE_DOMAIN_CONTRACT.md](/d:/wildRiftChampions/GUIDE_DOMAIN_CONTRACT.md) как source of truth для шага 4
+
+## Точка контроля после шага 5
+
+- прогнать `sync-guides` или точечный импорт одного и того же гайда дважды подряд
+- убедиться, что второй импорт возвращает `skipped: true` и `reason: same-content-hash`
+- проверить, что guide detail на стенде не меняется, а лишний rewrite дочерних таблиц не происходит
