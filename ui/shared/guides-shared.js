@@ -41,8 +41,61 @@ const SLUG_LOCAL_REMAP = Object.fromEntries(
   Object.entries(SLUG_RIOT_REMAP).map(([localSlug, riotSlug]) => [riotSlug, localSlug]),
 );
 
+const CP1251_EXTENDED_CHARS = [
+  "Ђ", "Ѓ", "‚", "ѓ", "„", "…", "†", "‡", "€", "‰", "Љ", "‹", "Њ", "Ќ", "Ћ", "Џ",
+  "ђ", "‘", "’", "“", "”", "•", "–", "—", "", "™", "љ", "›", "њ", "ќ", "ћ", "џ",
+  " ", "Ў", "ў", "Ј", "¤", "Ґ", "¦", "§", "Ё", "©", "Є", "«", "¬", "­", "®", "Ї",
+  "°", "±", "І", "і", "ґ", "µ", "¶", "·", "ё", "№", "є", "»", "ј", "Ѕ", "ѕ", "ї",
+];
+
+const CP1251_REVERSE_MAP = (() => {
+  const map = new Map();
+
+  for (let index = 0; index < 128; index += 1) {
+    map.set(String.fromCharCode(index), index);
+  }
+
+  CP1251_EXTENDED_CHARS.forEach((char, index) => {
+    if (char) {
+      map.set(char, 0x80 + index);
+    }
+  });
+
+  for (let index = 0; index < 32; index += 1) {
+    map.set(String.fromCharCode(0x0410 + index), 0xc0 + index);
+    map.set(String.fromCharCode(0x0430 + index), 0xe0 + index);
+  }
+
+  return map;
+})();
+
+function repairGuideText(value = "") {
+  const source = String(value || "");
+
+  if (!/[РСЁёЃѓ„…†‡€‰Љ‹ЊЌЋЏђ‘’“”•–—™љ›њќћџЎўЈҐЁЄЇІіґ№єјЅѕї]/.test(source)) {
+    return source;
+  }
+
+  const bytes = [];
+
+  for (const char of source) {
+    const byte = CP1251_REVERSE_MAP.get(char);
+    if (typeof byte !== "number") {
+      return source;
+    }
+    bytes.push(byte);
+  }
+
+  try {
+    const decoded = new TextDecoder("utf-8", { fatal: true }).decode(Uint8Array.from(bytes));
+    return decoded || source;
+  } catch {
+    return source;
+  }
+}
+
 function normalizeGuideText(value = "") {
-  return String(value || "").trim().toLowerCase();
+  return repairGuideText(value).trim().toLowerCase();
 }
 
 function containsGuideArchetypeTerm(value = "") {
@@ -115,7 +168,7 @@ function localizeGuideRole(value = "") {
   if (normalized.includes("tank") || normalized.includes("танк")) return "Танк";
   if (normalized.includes("fighter") || normalized.includes("warrior") || normalized.includes("воин")) return "Воин";
 
-  return String(value || "").trim();
+  return repairGuideText(value).trim();
 }
 
 function localizeGuideLane(value = "") {
@@ -164,6 +217,7 @@ module.exports = {
   mapToRiotSlug,
   mapToLocalSlug,
   getGuideSlugAliases,
+  repairGuideText,
   normalizeGuideText,
   localizeGuideRole,
   localizeGuideLane,

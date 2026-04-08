@@ -7,6 +7,7 @@ const cheerio = require("cheerio");
 const {
   WILDRIFTFIRE_GUIDE_SLUG_ALIASES,
   RIOT_CHAMPION_SLUG_ALIASES,
+  repairGuideText,
 } = require("../shared/guides-shared.js");
 
 const SITE_ORIGIN = "https://www.wildriftfire.com";
@@ -173,7 +174,7 @@ function sha1(value) {
 }
 
 function cleanText(value = "") {
-  return String(value).replace(/\s+/g, " ").trim();
+  return repairGuideText(String(value || "")).replace(/\s+/g, " ").trim();
 }
 
 function slugify(value = "") {

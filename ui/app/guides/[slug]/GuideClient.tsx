@@ -104,7 +104,7 @@ type RiftGgLaneBlock<TEntry> = {
 };
 
 const INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT = 5;
-const { localizeGuideLane, toGuideLaneKey } = guideShared;
+const { localizeGuideLane, repairGuideText, toGuideLaneKey } = guideShared;
 
 export type GuideData = {
   champion: {
@@ -279,9 +279,11 @@ function buildOfficialSummary(
   const title = guide.champion.title || guide.official?.champion?.title || "";
   const role = getDisplayedRoleLabel(guide, variant, selectedRiftLane);
   const difficulty = guide.official?.difficulty || "";
+  const championName = repairGuideText(guide.champion.name);
+  const championTitle = repairGuideText(title);
 
   return [
-    title ? `${guide.champion.name} — ${title}.` : "",
+    championTitle ? `${championName} — ${championTitle}.` : "",
     role ? `Роль: ${role}.` : "",
     difficulty ? `Сложность освоения: ${difficulty.toLowerCase()}.` : "",
   ]
@@ -290,7 +292,8 @@ function buildOfficialSummary(
 }
 
 function localizeSituationalLabel(label: string) {
-  const normalized = String(label || "").trim().toLowerCase();
+  const repaired = repairGuideText(label || "");
+  const normalized = String(repaired || "").trim().toLowerCase();
 
   if (normalized === "vs healing") return "Против лечения";
   if (normalized === "vs critical strike damage") return "Против критического урона";
@@ -300,7 +303,7 @@ function localizeSituationalLabel(label: string) {
   if (normalized === "vs crowd control") return "Против контроля";
   if (normalized === "vs burst damage") return "Против взрывного урона";
 
-  return label;
+  return repaired;
 }
 
 function toRiftTooltip(item?: RiftGgDictionaryItem | null): EntityTooltip | null {
@@ -318,10 +321,10 @@ function toRiftTooltip(item?: RiftGgDictionaryItem | null): EntityTooltip | null
   }
 
   return {
-    title: item.name,
+    title: repairGuideText(item.name),
     imageUrl: item.tooltipImageUrl || item.imageUrl || null,
     stats,
-    lines,
+    lines: lines.map((line) => repairGuideText(line)),
   };
 }
 
@@ -345,13 +348,13 @@ function HoverTooltip({
           <img
             className={styles.tooltipImage}
             src={ensureLocalAssetSrc("GuideClient.tooltip", tooltip.imageUrl) || ""}
-            alt={tooltip.title || fallbackName}
+            alt={repairGuideText(tooltip.title || fallbackName)}
           />
         ) : null}
 
         <div className={styles.tooltipHead}>
-          <div className={styles.tooltipTitle}>{tooltip.title || fallbackName}</div>
-          {tooltip.cost ? <div className={styles.tooltipCost}>{tooltip.cost}</div> : null}
+          <div className={styles.tooltipTitle}>{repairGuideText(tooltip.title || fallbackName)}</div>
+          {tooltip.cost ? <div className={styles.tooltipCost}>{repairGuideText(tooltip.cost)}</div> : null}
         </div>
       </div>
 
@@ -359,7 +362,7 @@ function HoverTooltip({
         <div className={styles.tooltipStats}>
           {tooltip.stats.map((stat) => (
             <div key={stat} className={styles.tooltipStat}>
-              {stat}
+              {repairGuideText(stat)}
             </div>
           ))}
         </div>
@@ -369,7 +372,7 @@ function HoverTooltip({
         <div className={styles.tooltipBody}>
           {tooltip.lines.map((line) => (
             <p key={line} className={styles.tooltipLine}>
-              {line}
+              {repairGuideText(line)}
             </p>
           ))}
         </div>
@@ -434,13 +437,13 @@ function OrbCard({
             <img
               className={styles.orbMedia}
               src={ensureLocalAssetSrc("GuideClient.orb", item.imageUrl) || ""}
-              alt={item.name}
+              alt={repairGuideText(item.name)}
             />
           ) : null}
         </div>
       </TooltipTrigger>
-      <div className={styles.orbName}>{item.name}</div>
-      {item.lane ? <div className={styles.orbMeta}>{item.lane}</div> : null}
+      <div className={styles.orbName}>{repairGuideText(item.name)}</div>
+      {item.lane ? <div className={styles.orbMeta}>{repairGuideText(item.lane)}</div> : null}
     </article>
   );
 }
@@ -454,7 +457,7 @@ function BuildPanel({
 }) {
   return (
     <section className={styles.panel}>
-      <h2 className={styles.panelTitle}>{title}</h2>
+      <h2 className={styles.panelTitle}>{repairGuideText(title)}</h2>
       <div className={styles.buildGrid}>
         {sections.map((section) => (
           <div
@@ -463,7 +466,7 @@ function BuildPanel({
               section.items.length > 4 ? styles.buildSectionWide : styles.buildSection
             }
           >
-            <div className={styles.sectionEyebrow}>{section.label}</div>
+            <div className={styles.sectionEyebrow}>{repairGuideText(section.label)}</div>
             <div className={styles.orbRow}>
               {section.items.map((item) => (
                 <OrbCard key={`${section.label}-${item.slug}`} item={item} />
@@ -514,8 +517,8 @@ function SkillOrderPanel({
 
       <div className={styles.skillRows}>
         {rows.map((row) => (
-          <div key={row.slug} className={styles.skillRow}>
-            <div className={styles.skillName}>{row.name}</div>
+            <div key={row.slug} className={styles.skillRow}>
+            <div className={styles.skillName}>{repairGuideText(row.name)}</div>
             <div className={styles.skillLevels}>
               {Array.from({ length: 15 }, (_, index) => {
                 const level = index + 1;
@@ -551,22 +554,22 @@ function MatchupPanel({
 
   return (
     <section className={styles.panel}>
-      <h2 className={styles.panelTitle}>{title}</h2>
+      <h2 className={styles.panelTitle}>{repairGuideText(title)}</h2>
       <div className={styles.matchupGrid}>
         {items.map((item) => {
           const hasGuide = availableSlugSet.has(item.slug);
           const content = (
             <>
               <ChampionAvatar
-                name={item.name}
+                name={repairGuideText(item.name)}
                 src={item.imageUrl}
                 shape="circle"
                 mobileSize={68}
                 desktopSize={84}
                 className={styles.matchupImage}
               />
-              <div className={styles.matchupName}>{item.name}</div>
-              {item.lane ? <div className={styles.matchupMeta}>{item.lane}</div> : null}
+              <div className={styles.matchupName}>{repairGuideText(item.name)}</div>
+              {item.lane ? <div className={styles.matchupMeta}>{repairGuideText(item.lane)}</div> : null}
             </>
           );
 
@@ -594,7 +597,7 @@ function SituationalPanel({
 }) {
   return (
     <section className={styles.panel}>
-      <h2 className={styles.panelTitle}>{title}</h2>
+      <h2 className={styles.panelTitle}>{repairGuideText(title)}</h2>
       <div className={styles.situationalRows}>
         {rows.map((row) => (
           <div key={row.label} className={styles.situationalRow}>
@@ -1208,7 +1211,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         <section key={bundle.key} className={styles.variantGuideBlock}>
           <div className={styles.variantGuideHeader}>
             <div className={styles.sectionEyebrow}>Вариант билда</div>
-            <h2 className={styles.variantGuideTitle}>{bundle.label}</h2>
+            <h2 className={styles.variantGuideTitle}>{repairGuideText(bundle.label)}</h2>
           </div>
 
           {bundle.hasBuilds || bundle.hasSpells ? (
