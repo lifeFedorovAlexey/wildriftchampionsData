@@ -198,7 +198,7 @@ export default async function MePage({
           </div>
         ) : (
           <section className={styles.card}>
-            <h2 className={styles.cardTitle}>Зайти или зарегистрироваться</h2>
+            <h2 className={styles.cardTitle}>Войти или зарегистрироваться</h2>
             <p className={styles.cardCopy}>
               Первый вход через провайдера создаёт обычный user-профиль. Публичные страницы
               сайта по-прежнему доступны без входа, а аутентификация нужна только для
