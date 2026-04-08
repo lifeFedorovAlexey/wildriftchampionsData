@@ -650,6 +650,25 @@ function splitRiftMatchupPreview(items: RiftGgMatchupEntry[]) {
   };
 }
 
+function collectAvailableRiftLanesForRank(guide: GuideData["riftgg"], rank: string) {
+  const lanes = new Set<string>();
+
+  for (const blocks of [
+    guide?.matchups,
+    guide?.coreItems,
+    guide?.runes,
+    guide?.spells,
+  ]) {
+    for (const block of blocks || []) {
+      if (block?.rank === rank && block?.lane) {
+        lanes.add(block.lane);
+      }
+    }
+  }
+
+  return Array.from(lanes);
+}
+
 function RiftBuildPanel({
   title,
   blocks,
@@ -955,6 +974,17 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
 
   const pickRiftBlock = <TEntry,>(blocks?: RiftGgLaneBlock<TEntry>[]) =>
     blocks?.filter((block) => block.rank === selectedRiftRank && block.lane === selectedRiftLane) || [];
+
+  const availableRiftLanesForSelectedRank =
+    collectAvailableRiftLanesForRank(riftgg, selectedRiftRank);
+
+  useEffect(() => {
+    if (!riftgg) return;
+    if (!availableRiftLanesForSelectedRank.length) return;
+    if (availableRiftLanesForSelectedRank.includes(selectedRiftLane)) return;
+
+    setSelectedRiftLane(availableRiftLanesForSelectedRank[0]);
+  }, [availableRiftLanesForSelectedRank, riftgg, selectedRiftLane]);
 
   const selectedMatchups = pickRiftBlock(riftgg?.matchups);
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
