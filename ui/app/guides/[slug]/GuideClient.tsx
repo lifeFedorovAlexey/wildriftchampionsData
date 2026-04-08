@@ -309,10 +309,6 @@ function toRiftTooltip(item?: RiftGgDictionaryItem | null): EntityTooltip | null
   };
 }
 
-function isTranslatedBuildParagraph(value?: string | null) {
-  return /[А-Яа-яЁё]/.test(String(value || ""));
-}
-
 function HoverTooltip({
   tooltip,
   fallbackName,
@@ -726,9 +722,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const itemDict = guide.dictionaries?.items;
   const abilityDict = guide.dictionaries?.abilities;
   const abilities = guide.abilitiesRu ?? [];
-  const buildBreakdown = guide.buildBreakdown;
-  const buildBreakdownParagraphs =
-    buildBreakdown?.paragraphs?.filter((paragraph) => isTranslatedBuildParagraph(paragraph)) ?? [];
   const heroVideoSrc = guide.official?.heroMedia?.localVideoPath || null;
   const riftgg = guide.riftgg || null;
 
@@ -1004,31 +997,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                 </div>
               ))}
           </div>
-        </section>
-      ) : null}
-
-      {buildBreakdown ? (
-        <section className={styles.panel}>
-          <h2 className={styles.panelTitle}>Разбор билда</h2>
-          <div className={styles.buildGrid}>
-            <div className={styles.buildSectionWide}>
-              <div className={styles.sectionEyebrow}>Ключевые предметы</div>
-              <div className={styles.orbRow}>
-                {withTooltip(buildBreakdown.featuredItems, itemDict).map((item) => (
-                  <OrbCard key={item.slug} item={item} />
-                ))}
-              </div>
-            </div>
-          </div>
-          {buildBreakdownParagraphs.length ? (
-            <div className={styles.copyStack}>
-              {buildBreakdownParagraphs.map((paragraph, index) => (
-                <p key={index} className={styles.copyText}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          ) : null}
         </section>
       ) : null}
 
