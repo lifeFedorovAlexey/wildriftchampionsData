@@ -202,35 +202,32 @@
     grid-template-columns: 1fr;
     justify-self: center;
     justify-items: center;
-    align-items: stretch;
-    gap: 12px;
+    align-items: center;
+    gap: 14px;
   }
 
-  .supportLogoLink,
+  .supportLogoLink {
+    padding: 8px 12px;
+    border-radius: 14px;
+    background: #f6f6f6;
+    border: 0;
+    min-height: 0;
+  }
+
+  .supportLogo {
+    width: 108px;
+  }
+
   .supportQrPanel {
-    width: 112px;
+    width: auto;
+    height: auto;
     padding: 8px;
     border-radius: 18px;
   }
 
-  .supportLogoLink {
-    background: rgba(11, 16, 36, 0.58);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    min-height: 56px;
-  }
-
-  .supportLogo {
-    width: 86px;
-  }
-
-  .supportQrPanel {
+  .supportQr {
     width: 112px;
     height: 112px;
-  }
-
-  .supportQr {
-    width: 96px;
-    height: 96px;
   }
 
   .disclaimer {
