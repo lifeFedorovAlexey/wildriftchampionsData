@@ -164,11 +164,7 @@ export default async function MePage({
             </section>
           </div>
         ) : (
-          <section className={styles.card}>
-            <h2 className={styles.cardTitle}>Войти или зарегистрироваться</h2>
-            <p className={styles.cardCopy}>
-              Выбери удобный сервис для входа. Если профиля ещё нет, он создастся автоматически.
-            </p>
+          <section className={`${styles.card} ${styles.authCard}`.trim()}>
             {publicUserAuthEnabled ? (
               <AuthProvidersList
                 providers={providerCards.filter((provider) => provider.id !== "telegram")}

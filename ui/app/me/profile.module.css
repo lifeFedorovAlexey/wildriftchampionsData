@@ -69,6 +69,10 @@
   padding: 20px;
 }
 
+.authCard {
+  padding: 18px 20px;
+}
+
 .cardTitle {
   margin: 0;
   color: #fff;
