@@ -257,6 +257,23 @@
   box-shadow: var(--panel-shadow);
 }
 
+.variantGuideBlock {
+  display: grid;
+  gap: 18px;
+}
+
+.variantGuideHeader {
+  display: grid;
+  gap: 6px;
+}
+
+.variantGuideTitle {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: clamp(20px, 2.8vw, 28px);
+  line-height: 1.1;
+}
+
 .panelTitle {
   margin: 0 0 14px;
   color: var(--text-strong);

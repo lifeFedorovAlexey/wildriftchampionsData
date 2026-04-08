@@ -616,6 +616,10 @@ function SituationalPanel({
   );
 }
 
+function hasItemsInSections(sections: Array<{ label: string; items: GuideEntity[] }>) {
+  return sections.some((section) => section.items.length > 0);
+}
+
 function getEntityInitials(value?: string | null) {
   return String(value || "")
     .split(/[\s:-]+/)
@@ -904,8 +908,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     0,
     variants.findIndex((variant) => variant.isDefault),
   );
-  const [selectedVariantIndex, setSelectedVariantIndex] = useState(defaultIndex);
-  const variant = variants[selectedVariantIndex] || variants[0];
+  const defaultVariant = variants[defaultIndex] || variants[0];
 
   const itemDict = guide.dictionaries?.items;
   const runeDict = guide.dictionaries?.runes;
@@ -928,54 +931,14 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     "diamond_plus";
   const defaultRiftLane =
     (toGuideLaneKey(
-      variant?.lane || (isGenericVariantTitle(variant?.title) ? "" : variant?.title || ""),
+      defaultVariant?.lane ||
+        (isGenericVariantTitle(defaultVariant?.title) ? "" : defaultVariant?.title || ""),
     ) || "") ||
     (toGuideLaneKey(guide.metadata.recommendedRole || "") || "") ||
     riftgg?.availableLanes?.[0] ||
     "mid";
   const [selectedRiftRank, setSelectedRiftRank] = useState(defaultRiftRank);
   const [preferredRiftLane, setPreferredRiftLane] = useState(defaultRiftLane);
-  const laneTabs = (() => {
-    const tabs: Array<{
-      key: string;
-      label: string;
-      ownTier?: string | null;
-      variantIndex: number;
-      riftLane?: string | null;
-    }> = [];
-    const seen = new Set<string>();
-
-    variants.forEach((item, index) => {
-      const riftLane = toGuideLaneKey(item.lane || item.title || "") || "";
-      const key = riftLane || `variant:${item.guideId}`;
-      if (seen.has(key)) return;
-      seen.add(key);
-      tabs.push({
-        key,
-        label: riftLane ? localizeGuideLane(riftLane) : localizeVariantTitle(item),
-        ownTier: item.ownTier,
-        variantIndex: index,
-        riftLane,
-      });
-    });
-
-    if (!tabs.length) {
-      (riftgg?.availableLanes || []).forEach((lane) => {
-        if (seen.has(lane)) return;
-        seen.add(lane);
-        tabs.push({
-          key: lane,
-          label: localizeGuideLane(lane),
-          ownTier: null,
-          variantIndex: defaultIndex,
-          riftLane: lane,
-        });
-      });
-    }
-
-    return tabs;
-  })();
-
   const pickRiftBlock = <TEntry,>(blocks?: RiftGgLaneBlock<TEntry>[]) =>
     blocks?.filter((block) => block.rank === selectedRiftRank && block.lane === selectedRiftLane) || [];
 
@@ -985,8 +948,16 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     availableRiftLanesForSelectedRank.find((lane) => lane === preferredRiftLane) ||
     availableRiftLanesForSelectedRank[0] ||
     preferredRiftLane;
-  const displayedRoleLabel = getDisplayedRoleLabel(guide, variant, selectedRiftLane);
-  const heroSummary = buildOfficialSummary(guide, variant, selectedRiftLane);
+  const riftLaneTabs = availableRiftLanesForSelectedRank.map((lane) => ({
+    key: lane,
+    label: localizeGuideLane(lane),
+    lane,
+  }));
+  const displayVariant =
+    variants.find((item) => toGuideLaneKey(item.lane || item.title || "") === selectedRiftLane) ||
+    defaultVariant;
+  const displayedRoleLabel = getDisplayedRoleLabel(guide, displayVariant, selectedRiftLane);
+  const heroSummary = buildOfficialSummary(guide, displayVariant, selectedRiftLane);
 
   const selectedMatchups = pickRiftBlock(riftgg?.matchups);
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
@@ -1015,58 +986,72 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
       return (right.pickRate ?? -Infinity) - (left.pickRate ?? -Infinity);
     });
 
-  const buildSections = variant
-    ? [
-        {
-          label: "Стартовый предмет",
-          items: withTooltip(variant.itemBuild.starting, itemDict),
-        },
-        {
-          label: "Основные предметы",
-          items: withTooltip(variant.itemBuild.core, itemDict),
-        },
-        {
-          label: "Ботинки",
-          items: withTooltip(variant.itemBuild.boots, itemDict),
-        },
-        {
-          label: "Финальный билд",
-          items: withTooltip(variant.itemBuild.finalBuild, itemDict),
-        },
-      ]
-    : [];
+  const guideVariantBundles = variants.map((item, index) => {
+    const buildSections = [
+      {
+        label: "Стартовый предмет",
+        items: withTooltip(item.itemBuild.starting, itemDict),
+      },
+      {
+        label: "Основные предметы",
+        items: withTooltip(item.itemBuild.core, itemDict),
+      },
+      {
+        label: "Ботинки",
+        items: withTooltip(item.itemBuild.boots, itemDict),
+      },
+      {
+        label: "Финальный билд",
+        items: withTooltip(item.itemBuild.finalBuild, itemDict),
+      },
+    ];
 
-  const spellSections = variant
-    ? [
-        {
-          label: "Заклинания призывателя",
-          items: withTooltip(variant.spellsAndRunes.summonerSpells, spellDict),
-        },
-        {
-          label: "Руны",
-          items: withTooltip(variant.spellsAndRunes.runes, runeDict),
-        },
-      ]
-    : [];
+    const spellSections = [
+      {
+        label: "Заклинания призывателя",
+        items: withTooltip(item.spellsAndRunes.summonerSpells, spellDict),
+      },
+      {
+        label: "Руны",
+        items: withTooltip(item.spellsAndRunes.runes, runeDict),
+      },
+    ];
 
-  const situationalItems =
-    variant?.situationalItems.map((row) => ({
+    const situationalItems = item.situationalItems.map((row) => ({
       ...row,
       options: withTooltip(row.options, itemDict),
-    })) ?? [];
+    }));
 
-  const situationalRunes =
-    variant?.situationalRunes.map((row) => ({
+    const situationalRunes = item.situationalRunes.map((row) => ({
       ...row,
       options: withTooltip(row.options, runeDict),
-    })) ?? [];
+    }));
 
-  const quickOrder = variant ? withTooltip(variant.skillOrder.quickOrder, abilityDict) : [];
-  const skillRows =
-    variant?.skillOrder.rows.map((row) => ({
+    const quickOrder = withTooltip(item.skillOrder.quickOrder, abilityDict);
+    const skillRows = item.skillOrder.rows.map((row) => ({
       ...row,
       name: abilityNameBySlug.get(normalizeAbilitySlug(row.slug)) || row.name,
-    })) ?? [];
+    }));
+
+    return {
+      key: item.guideId || `variant-${index}`,
+      label: localizeVariantTitle(item) || `Вариант ${index + 1}`,
+      buildSections,
+      spellSections,
+      situationalItems,
+      situationalRunes,
+      quickOrder,
+      skillRows,
+      counters: item.counters ?? [],
+      synergies: item.synergies ?? [],
+      hasBuilds: hasItemsInSections(buildSections),
+      hasSpells: hasItemsInSections(spellSections),
+      hasSituationalItems: situationalItems.some((row) => row.options.length > 0),
+      hasSituationalRunes: situationalRunes.some((row) => row.options.length > 0),
+      hasSkillOrder: quickOrder.length > 0 || skillRows.length > 0,
+      hasMatchups: (item.counters?.length || 0) > 0 || (item.synergies?.length || 0) > 0,
+    };
+  });
 
   return (
     <div className={styles.page}>
@@ -1111,27 +1096,19 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             </div>
           </div>
 
-          {laneTabs.length > 1 ? (
+          {riftLaneTabs.length > 1 ? (
             <div className={styles.variantTabs}>
-              {laneTabs.map((item) => {
-                const active = item.riftLane
-                  ? selectedRiftLane === item.riftLane
-                  : item.variantIndex === selectedVariantIndex;
+              {riftLaneTabs.map((item) => {
+                const active = selectedRiftLane === item.lane;
 
                 return (
                   <button
                     key={item.key}
                     type="button"
-                    onClick={() => {
-                      setSelectedVariantIndex(item.variantIndex);
-                      if (item.riftLane) {
-                        setPreferredRiftLane(item.riftLane);
-                      }
-                    }}
+                    onClick={() => setPreferredRiftLane(item.lane)}
                     className={active ? styles.variantTabActive : styles.variantTab}
                   >
                     <span>{item.label}</span>
-                    {item.ownTier ? <strong>{item.ownTier}</strong> : null}
                   </button>
                 );
               })}
@@ -1187,7 +1164,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             <div className={styles.metaPill}>
               <span className={styles.metaPillLabel}>Тир</span>
               <span className={styles.metaPillValue}>
-                {variant?.ownTier || guide.metadata.tier || "-"}
+                {displayVariant?.ownTier || guide.metadata.tier || "-"}
               </span>
             </div>
           </div>
@@ -1225,38 +1202,65 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             dictionary={riftgg.dictionaries?.spells}
           />
         </>
-      ) : (
-        <>
-          <div className={styles.topGrid}>
-            <BuildPanel title="Сборка предметов" sections={buildSections} />
-            <BuildPanel title="Заклинания и руны" sections={spellSections} />
+      ) : null}
+
+      {guideVariantBundles.map((bundle) => (
+        <section key={bundle.key} className={styles.variantGuideBlock}>
+          <div className={styles.variantGuideHeader}>
+            <div className={styles.sectionEyebrow}>Вариант билда</div>
+            <h2 className={styles.variantGuideTitle}>{bundle.label}</h2>
           </div>
 
-          <div className={styles.middleGrid}>
-            <div className={styles.sideStack}>
-              <MatchupPanel
-                title="Контрпики"
-                items={variant?.counters ?? []}
-                availableGuideSlugs={guide.availableGuideSlugs}
-              />
-              <MatchupPanel
-                title="Сочетается"
-                items={variant?.synergies ?? []}
-                availableGuideSlugs={guide.availableGuideSlugs}
-              />
+          {bundle.hasBuilds || bundle.hasSpells ? (
+            <div className={styles.topGrid}>
+              {bundle.hasBuilds ? (
+                <BuildPanel title="Сборка предметов" sections={bundle.buildSections} />
+              ) : null}
+              {bundle.hasSpells ? (
+                <BuildPanel title="Заклинания и руны" sections={bundle.spellSections} />
+              ) : null}
             </div>
-          </div>
+          ) : null}
 
-          <div className={styles.topGrid}>
-            <SituationalPanel title="Ситуативные предметы" rows={situationalItems} />
-            <SituationalPanel title="Ситуативные руны" rows={situationalRunes} />
-          </div>
-        </>
-      )}
+          {bundle.hasSituationalItems || bundle.hasSituationalRunes ? (
+            <div className={styles.topGrid}>
+              {bundle.hasSituationalItems ? (
+                <SituationalPanel title="Ситуативные предметы" rows={bundle.situationalItems} />
+              ) : null}
+              {bundle.hasSituationalRunes ? (
+                <SituationalPanel title="Ситуативные руны" rows={bundle.situationalRunes} />
+              ) : null}
+            </div>
+          ) : null}
 
-      <div className={styles.middleGrid}>
-        <SkillOrderPanel quickOrder={quickOrder} rows={skillRows} />
-      </div>
+          {bundle.hasSkillOrder ? (
+            <div className={styles.middleGrid}>
+              <SkillOrderPanel quickOrder={bundle.quickOrder} rows={bundle.skillRows} />
+            </div>
+          ) : null}
+
+          {bundle.hasMatchups ? (
+            <div className={styles.middleGrid}>
+              <div className={styles.sideStack}>
+                {bundle.counters.length ? (
+                  <MatchupPanel
+                    title="Контрпики"
+                    items={bundle.counters}
+                    availableGuideSlugs={guide.availableGuideSlugs}
+                  />
+                ) : null}
+                {bundle.synergies.length ? (
+                  <MatchupPanel
+                    title="Сочетается"
+                    items={bundle.synergies}
+                    availableGuideSlugs={guide.availableGuideSlugs}
+                  />
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+        </section>
+      ))}
 
       {buildBreakdown ? (
         <section className={styles.panel}>
