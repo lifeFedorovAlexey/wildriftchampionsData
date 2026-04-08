@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import styles from "../admin.module.css";
 import {
-  getAdminEnvHints,
   getAdminErrorMessage,
   getAdminProviderCards,
   getAdminProviders,
@@ -37,52 +36,29 @@ export default async function AdminLoginPage({
 
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <p className={styles.eyebrow}>Admin Access</p>
-        <h1 className={styles.title}>Вход в админку</h1>
-        <p className={styles.lead}>
-          Вход подтверждает личность через провайдера, а право доступа хранится
-          в базе. Для самого первого owner можно оставить один bootstrap-аккаунт
-          в env, а дальше роли уже живут в таблицах `wr-api`.
-        </p>
+      <section className={styles.panel}>
+        <div className={styles.panelHead}>
+          <div>
+            <h1 className={styles.panelTitle}>Вход в админку</h1>
+            <p className={styles.cardText}>
+              Войди удобным способом. Если у аккаунта есть доступ, откроется админка.
+            </p>
+          </div>
+          <Link href="/" className={styles.buttonSecondary}>
+            На главную
+          </Link>
+        </div>
         {errorText ? <div className={styles.error}>{errorText}</div> : null}
+
+        <AuthProvidersList
+          providers={providerCards.filter((provider) => provider.id !== "telegram")}
+          telegramProvider={telegramProvider}
+          mode="login"
+          layout="stack"
+          compact
+          iconOnly
+        />
       </section>
-
-      <div className={styles.grid}>
-        <section className={styles.card}>
-          <h2 className={styles.cardTitle}>Провайдеры входа</h2>
-          <p className={styles.cardText}>
-            Google и Yandex используют обычный OAuth login. Telegram работает
-            через официальный widget. VK тоже поддержан, но включается только
-            после заполнения его env-параметров.
-          </p>
-
-          <AuthProvidersList
-            providers={providerCards.filter((provider) => provider.id !== "telegram")}
-            telegramProvider={telegramProvider}
-            mode="login"
-            layout="grid"
-            iconOnly
-            showStatus
-          />
-        </section>
-
-        <aside className={styles.card}>
-          <h2 className={styles.cardTitle}>Что надо настроить</h2>
-          <p className={styles.cardText}>
-            Минимум нужен общий секрет сессии и один bootstrap-owner на первое
-            создание администратора. После этого список людей живёт уже в БД,
-            а не в env.
-          </p>
-          <ul className={styles.list}>
-            {getAdminEnvHints().map((hint) => (
-              <li key={hint} className={styles.listItem}>
-                {hint}
-              </li>
-            ))}
-          </ul>
-        </aside>
-      </div>
     </div>
   );
 }
