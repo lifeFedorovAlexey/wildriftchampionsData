@@ -971,42 +971,43 @@
 .copyText {
   margin: 0;
   color: var(--text-main);
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 .abilityCards {
   display: grid;
-  gap: 14px;
-  grid-template-columns: 1fr;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
 }
 
 .abilityCard {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   align-content: start;
   min-height: 100%;
-  padding: 16px;
+  padding: 14px;
   border-radius: var(--radius-md);
   background: rgba(17, 24, 39, 0.78);
 }
 
 .abilityHead {
   display: flex;
-  gap: 12px;
-  align-items: center;
+  gap: 10px;
+  align-items: flex-start;
 }
 
 .abilityHeading {
   display: grid;
-  gap: 8px;
+  gap: 6px;
   min-width: 0;
 }
 
 .abilityIcon,
 .patchIcon {
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-sm);
   object-fit: cover;
 }
@@ -1014,21 +1015,64 @@
 .abilityTitle {
   color: var(--text-strong);
   font-weight: 700;
+  font-size: 17px;
+  line-height: 1.15;
 }
 
 .abilityBadge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 32px;
-  padding: 0 10px;
+  min-width: 44px;
+  width: fit-content;
+  height: 26px;
+  padding: 0 12px;
   border-radius: var(--radius-sm);
   background: rgba(125, 211, 252, 0.14);
   border: 1px solid rgba(125, 211, 252, 0.36);
   color: var(--accent-blue);
   font-weight: 800;
+  font-size: 13px;
   line-height: 1;
+}
+
+@media (max-width: 860px) {
+  .abilityCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .copyText {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .abilityCard {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .abilityHead {
+    gap: 9px;
+  }
+
+  .abilityIcon,
+  .patchIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .abilityTitle {
+    font-size: 16px;
+  }
+
+  .abilityBadge {
+    min-width: 40px;
+    height: 24px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
 }
 
 .patchCards {
