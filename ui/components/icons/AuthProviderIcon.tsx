@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 type AuthProviderIconProps = {
   providerId: string;
   className?: string;
@@ -30,12 +28,10 @@ function GoogleIcon({ className = "" }: { className?: string }) {
 
 function YandexIcon({ className = "" }: { className?: string }) {
   return (
-    <Image
+    <img
       src="/provider-icons/yandex-16.png"
       alt=""
       aria-hidden="true"
-      width={16}
-      height={16}
       className={className}
     />
   );
