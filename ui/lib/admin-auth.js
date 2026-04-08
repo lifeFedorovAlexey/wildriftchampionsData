@@ -1,4 +1,4 @@
-import { randomBytes, webcrypto } from "node:crypto";
+import { randomBytes, timingSafeEqual, webcrypto } from "node:crypto";
 import {
   buildAuthorizeUrl,
   buildOAuthProviders,
@@ -20,6 +20,28 @@ export const ADMIN_STATE_TTL_SECONDS = 60 * 10;
 
 const DEFAULT_LOGIN_PATH = "/admin/login";
 const DEFAULT_ADMIN_PATH = "/admin";
+
+function safeEqualHex(left, right) {
+  const normalizedLeft = String(left || "").trim().toLowerCase();
+  const normalizedRight = String(right || "").trim().toLowerCase();
+  const hexPattern = /^[0-9a-f]+$/;
+
+  if (
+    !normalizedLeft ||
+    !normalizedRight ||
+    normalizedLeft.length !== normalizedRight.length ||
+    normalizedLeft.length % 2 !== 0 ||
+    !hexPattern.test(normalizedLeft) ||
+    !hexPattern.test(normalizedRight)
+  ) {
+    return false;
+  }
+
+  return timingSafeEqual(
+    Buffer.from(normalizedLeft, "hex"),
+    Buffer.from(normalizedRight, "hex"),
+  );
+}
 
 export function sanitizeAdminReturnTo(value) {
   const candidate = String(value || "").trim();
@@ -279,7 +301,7 @@ export async function verifyTelegramLogin(searchParams, env = process.env) {
   );
   const expectedHash = Buffer.from(signature).toString("hex");
 
-  if (expectedHash !== hash) {
+  if (!safeEqualHex(expectedHash, hash)) {
     return { ok: false, reason: "telegram_bad_hash" };
   }
 

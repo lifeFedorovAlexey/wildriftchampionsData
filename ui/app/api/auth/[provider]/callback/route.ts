@@ -24,6 +24,7 @@ function redirectToMe(request: NextRequest, code: string) {
   );
   response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
   response.headers.set("Pragma", "no-cache");
+  response.cookies.set(USER_STATE_COOKIE, "", getUserCookieOptions(request, 0));
   return response;
 }
 
