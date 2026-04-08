@@ -44,6 +44,9 @@
 - Add end-to-end coverage for admin OAuth start/callback routes behind a reverse proxy so production never regresses to `localhost` or `http` redirect URIs.
 - Consider stronger environment separation for admin OAuth testing:
   local development on `localhost:3000` and production `wildriftallstats.ru` can still confuse a browser session if both flows are tested in parallel with stale provider/session cookies.
+- Capability-based authorization for admin/private zones is intentionally deferred into a separate feature plan:
+  [ADMIN_CAPABILITY_AUTHZ_PLAN.md](/d:/wildRiftChampions/ADMIN_CAPABILITY_AUTHZ_PLAN.md).
+  Current admin roles are acceptable for the stabilized phase, but future private surfaces should not expand on raw page/role checks alone.
 
 ## CI / lint follow-up
 
