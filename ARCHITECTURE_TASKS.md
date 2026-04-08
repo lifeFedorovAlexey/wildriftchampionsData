@@ -22,6 +22,13 @@
 - [ ] Шаг 8. Отдельно вернуться к недоделанному `site user` flow: либо довести до отдельной security boundary с `USER_SESSION_SECRET`, либо убрать из активной продовой поверхности.
 - [ ] Шаг 9. Отдельно вернуться к `news` domain: либо довести импорт и публикацию до рабочего состояния, либо скрыть недоделанную поверхность из основного контракта.
 
+## Внеплановые закрытые фиксы
+
+- [x] Hotfix A. Убрать дубли `RiftGG` на guide detail: сайт отдаёт только последний `dataDate` на каждый `rank + lane`, но история по дням в БД сохраняется.
+- [x] Hotfix B. Добавить `slug-warn` наблюдаемость на `404`/alias-miss в guide pipelines и API.
+- [x] Hotfix C. Починить item asset pipeline для `RiftGG`: не отдавать donor URL в runtime payload, передавать `S3_*` env в `update-riftgg-cn-stats`, проверять фактическое существование объекта перед `skip`.
+- [x] Hotfix D. Починить special item icons (`staff-of-flowing-waters`, `control-ward`, `sweeping-lens`, `warding-totem`, `*-enchant`): добавить fallback с `WildRiftFire` на `RiftGG assets`, дозаливку в S3 и компактный summary-лог по источникам.
+
 ## Точка контроля после шага 1
 
 - проверить, что стенд поднимается как раньше
