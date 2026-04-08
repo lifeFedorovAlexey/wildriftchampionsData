@@ -167,6 +167,22 @@ async function fetchAuditPayload(runId = ""): Promise<AuditPayload> {
   return payload || {};
 }
 
+async function clearAuditPayload(): Promise<AuditPayload> {
+  const response = await fetch("/api/admin/guides-audit", {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+  const payload = await response.json().catch(() => null);
+
+  if (!response.ok) {
+    throw new Error(payload?.error || "guides_audit_clear_failed");
+  }
+
+  return payload || {};
+}
+
 export default function AdminGuidesAuditClient({
   champions,
   initialPayload,
@@ -313,6 +329,29 @@ export default function AdminGuidesAuditClient({
     await refresh(nextPayload?.run?.id || "");
   }
 
+  async function handleClearReports() {
+    if (!runs.length && !activeRun && !report) {
+      setNoticeText("История прогонов уже пустая.");
+      return;
+    }
+
+    const isConfirmed = window.confirm(
+      "Очистить всю историю прогонов и отчётов guides audit?",
+    );
+
+    if (!isConfirmed) {
+      return;
+    }
+
+    setErrorText("");
+    setNoticeText("");
+
+    const nextPayload = await clearAuditPayload();
+    setPayload(nextPayload);
+    setSelectedRunId("");
+    setNoticeText("История прогонов очищена.");
+  }
+
   function pickChampion(nextSlug: string) {
     const nextChampion = champions.find((item) => item.slug === nextSlug) || null;
     setSlug(nextSlug);
@@ -453,6 +492,20 @@ export default function AdminGuidesAuditClient({
               disabled={isPending}
             >
               Обновить
+            </button>
+            <button
+              type="button"
+              className={`${styles.button} ${styles.buttonDanger}`}
+              onClick={() => {
+                startTransition(() => {
+                  void handleClearReports().catch((error: Error) => {
+                    setErrorText(error.message || "guides_audit_clear_failed");
+                  });
+                });
+              }}
+              disabled={isPending || payload.running || (!runs.length && !report)}
+            >
+              Очистить отчёты
             </button>
           </div>
         </div>

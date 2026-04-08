@@ -203,3 +203,25 @@ export async function startAdminGuidesAudit(sessionToken, input = {}, env = proc
 
   return payload;
 }
+
+export async function clearAdminGuidesAudit(sessionToken, env = process.env) {
+  if (!sessionToken) {
+    throw new Error("unauthorized");
+  }
+
+  const response = await fetch(buildApiUrl("/api/admin/guides-audit", env), {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${sessionToken}`,
+      Accept: "application/json",
+    },
+    cache: "no-store",
+  });
+
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) {
+    throw new Error(payload?.error || "guides_audit_clear_failed");
+  }
+
+  return payload;
+}

@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import {
+  clearAdminGuidesAudit,
   fetchAdminGuidesAudit,
   startAdminGuidesAudit,
 } from "@/lib/admin-api.js";
@@ -39,6 +40,24 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     const code = error instanceof Error ? error.message : "guides_audit_start_failed";
     const status = code === "audit_already_running" ? 409 : code === "slug_required" ? 400 : 502;
+    return NextResponse.json({ error: code }, { status });
+  }
+}
+
+export async function DELETE() {
+  const cookieStore = await cookies();
+  const sessionToken = getAdminSessionTokenFromCookie(cookieStore);
+
+  if (!sessionToken) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const payload = await clearAdminGuidesAudit(sessionToken, process.env);
+    return NextResponse.json(payload);
+  } catch (error) {
+    const code = error instanceof Error ? error.message : "guides_audit_clear_failed";
+    const status = code === "audit_already_running" ? 409 : 502;
     return NextResponse.json({ error: code }, { status });
   }
 }

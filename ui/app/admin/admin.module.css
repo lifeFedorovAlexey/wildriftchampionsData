@@ -373,6 +373,11 @@
   color: #fff;
 }
 
+.buttonDanger {
+  background: rgba(110, 28, 36, 0.82);
+  color: #ffd6d6;
+}
+
 .buttonDisabled {
   pointer-events: none;
   opacity: 0.55;
