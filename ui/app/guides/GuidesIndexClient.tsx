@@ -63,12 +63,12 @@ const TIER_SORT_ORDER: Record<string, number> = {
 };
 
 function getLaneKeys(item: GuideListItem): LaneKey[] {
-  if (Array.isArray(item.availableLanes) && item.availableLanes.length) {
-    return Array.from(new Set(item.availableLanes));
-  }
-
   if (Array.isArray(item.laneKeys) && item.laneKeys.length) {
     return Array.from(new Set(item.laneKeys));
+  }
+
+  if (Array.isArray(item.availableLanes) && item.availableLanes.length) {
+    return Array.from(new Set(item.availableLanes));
   }
 
   const directKeys = [

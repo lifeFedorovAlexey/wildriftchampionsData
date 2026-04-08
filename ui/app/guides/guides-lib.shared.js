@@ -180,6 +180,15 @@ export function toLaneKey(value) {
 
 const DEFAULT_GUIDE_LANE_KEYS = ["top", "jungle", "mid", "adc", "support"];
 
+function getGuideLaneKeys(guide) {
+  const directKeys = [
+    ...((Array.isArray(guide?.roles) ? guide.roles : []).map((role) => toGuideLaneKey(role))),
+    toGuideLaneKey(guide?.recommendedRole || ""),
+  ].filter(Boolean);
+
+  return Array.from(new Set(directKeys));
+}
+
 export async function fetchTierlistBulk() {
   try {
     return await fetchApiJson("/api/tierlist-bulk?lang=ru_ru", {
@@ -245,21 +254,21 @@ export function hydrateGuideIndexItems(guideItems = [], championIndex = [], tier
 
   return championIndex.map((champion) => {
     const guide = guideItemsBySlug.get(champion.slug);
-    const laneKeys =
-      Array.isArray(guide?.availableLanes) && guide.availableLanes.length
-        ? Array.from(new Set(guide.availableLanes))
-        : Array.from(championLaneMap.get(champion.slug) || []);
 
     if (guide) {
+      const guideLaneKeys = getGuideLaneKeys(guide);
+
       return {
         ...guide,
         localizedName: champion.name || guide.name || null,
         iconUrl: champion.iconUrl || guide.iconUrl || null,
         roles: guide.roles?.length ? guide.roles : champion.roles || [],
-        laneKeys,
+        laneKeys: guideLaneKeys,
         hasGuide: true,
       };
     }
+
+    const placeholderLaneKeys = Array.from(championLaneMap.get(champion.slug) || []);
 
     return {
       slug: champion.slug,
@@ -272,7 +281,7 @@ export function hydrateGuideIndexItems(guideItems = [], championIndex = [], tier
       tier: null,
       recommendedRole: null,
       roles: champion.roles || [],
-      laneKeys,
+      laneKeys: placeholderLaneKeys,
       buildCount: 0,
       updatedAt: null,
     };

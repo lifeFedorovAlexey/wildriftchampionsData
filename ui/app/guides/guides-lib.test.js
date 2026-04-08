@@ -280,7 +280,7 @@ test("hydrateGuideIndexItems prefers our champion icon over donor guide icon", (
   );
 
   assert.equal(items[0].iconUrl, "https://cdn.example.com/s3/icons/aatrox.png");
-  assert.deepEqual(items[0].laneKeys, ["adc", "mid"]);
+  assert.deepEqual(items[0].laneKeys, ["top"]);
   assert.equal(items[0].localizedName, "Аатрокс");
 });
 
