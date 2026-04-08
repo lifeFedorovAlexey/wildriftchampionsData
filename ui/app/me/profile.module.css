@@ -307,29 +307,6 @@
   line-height: 1.45;
 }
 
-.rankPreview {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 48px;
-  padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.rankPreviewIcon {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-}
-
-.rankPreviewText {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-}
-
 .championPicker {
   display: grid;
   gap: 12px;

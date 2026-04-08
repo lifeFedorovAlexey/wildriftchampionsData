@@ -147,7 +147,7 @@ export default function PrivateProfilePage({
                         className={styles.profileRankIcon}
                       />
                     ) : null}
-                    <span>Пик: {peakRankLabel}</span>
+                    <span>Максимальный ранг: {peakRankLabel}</span>
                   </span>
                 ) : null}
               </div>

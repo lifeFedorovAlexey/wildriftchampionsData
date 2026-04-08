@@ -3,8 +3,6 @@
 import { useMemo, useState } from "react";
 import styles from "@/app/me/profile.module.css";
 import {
-  buildPeakRankIconUrl,
-  getPeakRankLabel,
   getPeakRankOptions,
 } from "@/lib/profile-ranks.js";
 
@@ -57,8 +55,6 @@ export default function ProfileEditorForm({
   const [peakRankValue, setPeakRankValue] = useState(
     String(profile.peakRank || "").trim().toLowerCase(),
   );
-  const peakRankIconUrl = buildPeakRankIconUrl(peakRankValue);
-  const peakRankLabel = getPeakRankLabel(peakRankValue);
 
   const avatarOptions = useMemo(() => {
     const byUrl = new Map<string, { key: string; label: string; avatarUrl: string }>();
@@ -180,20 +176,6 @@ export default function ProfileEditorForm({
             </option>
           ))}
         </select>
-        {peakRankLabel ? (
-          <div className={styles.rankPreview}>
-            {peakRankIconUrl ? (
-              <img
-                src={peakRankIconUrl}
-                alt=""
-                width={42}
-                height={42}
-                className={styles.rankPreviewIcon}
-              />
-            ) : null}
-            <span className={styles.rankPreviewText}>{peakRankLabel}</span>
-          </div>
-        ) : null}
       </label>
 
       <div className={styles.field}>
