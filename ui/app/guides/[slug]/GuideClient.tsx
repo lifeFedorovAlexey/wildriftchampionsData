@@ -167,10 +167,6 @@ function withTooltip(
   return items.map((item) => dictionary?.[item.slug] || item);
 }
 
-function normalizeAbilitySlug(value: string) {
-  return value.replace(/-(passive|ultimate|\d+)$/i, "");
-}
-
 function formatAbilityHotkey(subtitle?: string | null) {
   const normalized = String(subtitle || "").trim().toUpperCase();
 
@@ -289,21 +285,6 @@ function buildOfficialSummary(
   ]
     .filter(Boolean)
     .join(" ");
-}
-
-function localizeSituationalLabel(label: string) {
-  const repaired = repairGuideText(label || "");
-  const normalized = String(repaired || "").trim().toLowerCase();
-
-  if (normalized === "vs healing") return "Против лечения";
-  if (normalized === "vs critical strike damage") return "Против критического урона";
-  if (normalized === "vs attack speed") return "Против скорости атаки";
-  if (normalized === "vs ability power") return "Против магического урона";
-  if (normalized === "vs poke") return "Против поке";
-  if (normalized === "vs crowd control") return "Против контроля";
-  if (normalized === "vs burst damage") return "Против взрывного урона";
-
-  return repaired;
 }
 
 function toRiftTooltip(item?: RiftGgDictionaryItem | null): EntityTooltip | null {
@@ -445,177 +426,6 @@ function OrbCard({
       <div className={styles.orbName}>{repairGuideText(item.name)}</div>
       {item.lane ? <div className={styles.orbMeta}>{repairGuideText(item.lane)}</div> : null}
     </article>
-  );
-}
-
-function BuildPanel({
-  title,
-  sections,
-}: {
-  title: string;
-  sections: Array<{ label: string; items: GuideEntity[] }>;
-}) {
-  return (
-    <section className={styles.panel}>
-      <h2 className={styles.panelTitle}>{repairGuideText(title)}</h2>
-      <div className={styles.buildGrid}>
-        {sections.map((section) => (
-          <div
-            key={section.label}
-            className={
-              section.items.length > 4 ? styles.buildSectionWide : styles.buildSection
-            }
-          >
-            <div className={styles.sectionEyebrow}>{repairGuideText(section.label)}</div>
-            <div className={styles.orbRow}>
-              {section.items.map((item) => (
-                <OrbCard key={`${section.label}-${item.slug}`} item={item} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function SkillOrderPanel({
-  quickOrder,
-  rows,
-}: {
-  quickOrder: GuideEntity[];
-  rows: Array<{ name: string; slug: string; levels: number[] }>;
-}) {
-  return (
-    <section className={styles.panel}>
-      <div className={styles.skillTop}>
-        <h2 className={styles.panelTitle}>Порядок прокачки</h2>
-        <div className={styles.quickOrderRow}>
-          <div className={styles.quickLabel}>Быстрый порядок прокачки</div>
-          <div className={styles.quickIcons}>
-            {quickOrder.map((item, index) => (
-              <div key={`${item.slug}-${index}`} className={styles.quickItem}>
-                <TooltipTrigger tooltip={item.tooltip} fallbackName={item.name}>
-                  <div className={styles.quickOrbWrap}>
-                    {item.imageUrl ? (
-                      <img
-                        className={styles.quickOrb}
-                        src={ensureLocalAssetSrc("GuideClient.quickOrb", item.imageUrl) || ""}
-                        alt={item.name}
-                      />
-                    ) : null}
-                  </div>
-                </TooltipTrigger>
-                {index < quickOrder.length - 1 ? (
-                  <span className={styles.quickArrow}>{">"}</span>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.skillRows}>
-        {rows.map((row) => (
-            <div key={row.slug} className={styles.skillRow}>
-            <div className={styles.skillName}>{repairGuideText(row.name)}</div>
-            <div className={styles.skillLevels}>
-              {Array.from({ length: 15 }, (_, index) => {
-                const level = index + 1;
-                const active = row.levels.includes(level);
-
-                return (
-                  <span
-                    key={`${row.slug}-${level}`}
-                    className={active ? styles.skillLevelActive : styles.skillLevel}
-                  >
-                    {active ? level : ""}
-                  </span>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function MatchupPanel({
-  title,
-  items,
-  availableGuideSlugs = [],
-}: {
-  title: string;
-  items: GuideEntity[];
-  availableGuideSlugs?: string[];
-}) {
-  const availableSlugSet = new Set(availableGuideSlugs);
-
-  return (
-    <section className={styles.panel}>
-      <h2 className={styles.panelTitle}>{repairGuideText(title)}</h2>
-      <div className={styles.matchupGrid}>
-        {items.map((item) => {
-          const hasGuide = availableSlugSet.has(item.slug);
-          const content = (
-            <>
-              <ChampionAvatar
-                name={repairGuideText(item.name)}
-                src={item.imageUrl}
-                shape="circle"
-                mobileSize={68}
-                desktopSize={84}
-                className={styles.matchupImage}
-              />
-              <div className={styles.matchupName}>{repairGuideText(item.name)}</div>
-              {item.lane ? <div className={styles.matchupMeta}>{repairGuideText(item.lane)}</div> : null}
-            </>
-          );
-
-          return hasGuide ? (
-            <a key={item.slug} className={styles.matchupCardLink} href={`/guides/${item.slug}`}>
-              <article className={styles.matchupCard}>{content}</article>
-            </a>
-          ) : (
-            <article key={item.slug} className={styles.matchupCard}>
-              {content}
-            </article>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function SituationalPanel({
-  title,
-  rows,
-}: {
-  title: string;
-  rows: Array<{ label: string; options: GuideEntity[] }>;
-}) {
-  return (
-    <section className={styles.panel}>
-      <h2 className={styles.panelTitle}>{repairGuideText(title)}</h2>
-      <div className={styles.situationalRows}>
-        {rows.map((row) => (
-          <div key={row.label} className={styles.situationalRow}>
-            <div className={styles.situationalLabel}>{localizeSituationalLabel(row.label)}</div>
-            <div className={styles.situationalItems}>
-              {row.options.map((item, index) => (
-                <div key={`${row.label}-${item.slug}`} className={styles.situationalItemWrap}>
-                  <OrbCard item={item} compact />
-                  {index < row.options.length - 1 ? (
-                    <span className={styles.situationalArrow}>{">"}</span>
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
   );
 }
 
@@ -914,8 +724,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const defaultVariant = variants[defaultIndex] || variants[0];
 
   const itemDict = guide.dictionaries?.items;
-  const runeDict = guide.dictionaries?.runes;
-  const spellDict = guide.dictionaries?.summonerSpells;
   const abilityDict = guide.dictionaries?.abilities;
   const abilities = guide.abilitiesRu ?? [];
   const buildBreakdown = guide.buildBreakdown;
@@ -923,10 +731,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     buildBreakdown?.paragraphs?.filter((paragraph) => isTranslatedBuildParagraph(paragraph)) ?? [];
   const heroVideoSrc = guide.official?.heroMedia?.localVideoPath || null;
   const riftgg = guide.riftgg || null;
-
-  const abilityNameBySlug = new Map(
-    abilities.map((ability) => [normalizeAbilitySlug(ability.slug), ability.name]),
-  );
 
   const defaultRiftRank =
     riftgg?.availableRanks?.[0] ||
@@ -1009,50 +813,11 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
       },
     ];
 
-    const spellSections = [
-      {
-        label: "Заклинания призывателя",
-        items: withTooltip(item.spellsAndRunes.summonerSpells, spellDict),
-      },
-      {
-        label: "Руны",
-        items: withTooltip(item.spellsAndRunes.runes, runeDict),
-      },
-    ];
-
-    const situationalItems = item.situationalItems.map((row) => ({
-      ...row,
-      options: withTooltip(row.options, itemDict),
-    }));
-
-    const situationalRunes = item.situationalRunes.map((row) => ({
-      ...row,
-      options: withTooltip(row.options, runeDict),
-    }));
-
-    const quickOrder = withTooltip(item.skillOrder.quickOrder, abilityDict);
-    const skillRows = item.skillOrder.rows.map((row) => ({
-      ...row,
-      name: abilityNameBySlug.get(normalizeAbilitySlug(row.slug)) || row.name,
-    }));
-
     return {
       key: item.guideId || `variant-${index}`,
       label: localizeVariantTitle(item) || `Вариант ${index + 1}`,
       buildSections,
-      spellSections,
-      situationalItems,
-      situationalRunes,
-      quickOrder,
-      skillRows,
-      counters: item.counters ?? [],
-      synergies: item.synergies ?? [],
       hasBuilds: hasItemsInSections(buildSections),
-      hasSpells: hasItemsInSections(spellSections),
-      hasSituationalItems: situationalItems.some((row) => row.options.length > 0),
-      hasSituationalRunes: situationalRunes.some((row) => row.options.length > 0),
-      hasSkillOrder: quickOrder.length > 0 || skillRows.length > 0,
-      hasMatchups: (item.counters?.length || 0) > 0 || (item.synergies?.length || 0) > 0,
     };
   });
 
@@ -1207,63 +972,40 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         </>
       ) : null}
 
-      {guideVariantBundles.map((bundle) => (
-        <section key={bundle.key} className={styles.variantGuideBlock}>
-          <div className={styles.variantGuideHeader}>
-            <div className={styles.sectionEyebrow}>Вариант билда</div>
-            <h2 className={styles.variantGuideTitle}>{repairGuideText(bundle.label)}</h2>
+      {guideVariantBundles.some((bundle) => bundle.hasBuilds) ? (
+        <section className={styles.panel}>
+          <h2 className={styles.panelTitle}>Сборки WildRiftFire</h2>
+          <div className={styles.variantBuildList}>
+            {guideVariantBundles
+              .filter((bundle) => bundle.hasBuilds)
+              .map((bundle) => (
+                <div key={bundle.key} className={styles.variantBuildBlock}>
+                  <div className={styles.sectionEyebrow}>Вариант</div>
+                  <h3 className={styles.variantBuildTitle}>{repairGuideText(bundle.label)}</h3>
+                  <div className={styles.buildGrid}>
+                    {bundle.buildSections.map((section) => (
+                      <div
+                        key={`${bundle.key}-${section.label}`}
+                        className={
+                          section.items.length > 4 ? styles.buildSectionWide : styles.buildSection
+                        }
+                      >
+                        <div className={styles.sectionEyebrow}>
+                          {repairGuideText(section.label)}
+                        </div>
+                        <div className={styles.orbRow}>
+                          {section.items.map((item) => (
+                            <OrbCard key={`${bundle.key}-${section.label}-${item.slug}`} item={item} />
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
           </div>
-
-          {bundle.hasBuilds || bundle.hasSpells ? (
-            <div className={styles.topGrid}>
-              {bundle.hasBuilds ? (
-                <BuildPanel title="Сборка предметов" sections={bundle.buildSections} />
-              ) : null}
-              {bundle.hasSpells ? (
-                <BuildPanel title="Заклинания и руны" sections={bundle.spellSections} />
-              ) : null}
-            </div>
-          ) : null}
-
-          {bundle.hasSituationalItems || bundle.hasSituationalRunes ? (
-            <div className={styles.topGrid}>
-              {bundle.hasSituationalItems ? (
-                <SituationalPanel title="Ситуативные предметы" rows={bundle.situationalItems} />
-              ) : null}
-              {bundle.hasSituationalRunes ? (
-                <SituationalPanel title="Ситуативные руны" rows={bundle.situationalRunes} />
-              ) : null}
-            </div>
-          ) : null}
-
-          {bundle.hasSkillOrder ? (
-            <div className={styles.middleGrid}>
-              <SkillOrderPanel quickOrder={bundle.quickOrder} rows={bundle.skillRows} />
-            </div>
-          ) : null}
-
-          {bundle.hasMatchups ? (
-            <div className={styles.middleGrid}>
-              <div className={styles.sideStack}>
-                {bundle.counters.length ? (
-                  <MatchupPanel
-                    title="Контрпики"
-                    items={bundle.counters}
-                    availableGuideSlugs={guide.availableGuideSlugs}
-                  />
-                ) : null}
-                {bundle.synergies.length ? (
-                  <MatchupPanel
-                    title="Сочетается"
-                    items={bundle.synergies}
-                    availableGuideSlugs={guide.availableGuideSlugs}
-                  />
-                ) : null}
-              </div>
-            </div>
-          ) : null}
         </section>
-      ))}
+      ) : null}
 
       {buildBreakdown ? (
         <section className={styles.panel}>
