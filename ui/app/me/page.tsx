@@ -183,7 +183,10 @@ export default async function MePage({
             <section className={styles.card}>
               <h2 className={styles.cardTitle}>Подключить ещё сервис</h2>
               <AuthProvidersList
-                providers={connectableProviders}
+                providers={connectableProviders.filter((provider) => provider.id !== "telegram")}
+                telegramProvider={
+                  linkedProviderIds.has("telegram") ? null : telegramProvider
+                }
                 returnTo="/me"
                 mode="connect"
                 layout="stack"
