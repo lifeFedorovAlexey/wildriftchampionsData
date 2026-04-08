@@ -29,6 +29,7 @@
 - [x] Hotfix C. Починить item asset pipeline для `RiftGG`: не отдавать donor URL в runtime payload, передавать `S3_*` env в `update-riftgg-cn-stats`, проверять фактическое существование объекта перед `skip`.
 - [x] Hotfix D. Починить special item icons (`staff-of-flowing-waters`, `control-ward`, `sweeping-lens`, `warding-totem`, `*-enchant`): добавить fallback с `WildRiftFire` на `RiftGG assets`, дозаливку в S3 и компактный summary-лог по источникам.
 - [x] Hotfix E. Убрать браузерный warning по неиспользуемому preload CSS для error boundary: перевести `app/error.tsx` с отдельного `error.module.css` на inline-стили, чтобы Next не генерировал отдельный preload chunk для `_not-found` / `errorStyles`.
+- [x] Hotfix F. Убрать accessibility warning `Blocked aria-hidden on an element because its descendant retained focus` в мобильном меню: заменить скрытие overlay через `aria-hidden` на `inert` и возвращать фокус на кнопку меню при закрытии.
 
 ## Точка контроля после шага 1
 

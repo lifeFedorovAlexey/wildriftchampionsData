@@ -120,9 +120,20 @@ export default function AppHeader() {
   const [desktopTiersOpenPath, setDesktopTiersOpenPath] = useState<string | null>(null);
   const [isTelegramWebApp, setIsTelegramWebApp] = useState(false);
   const desktopGroupRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
 
   const menuOpen = menuOpenPath === pathname;
   const desktopTiersOpen = desktopTiersOpenPath === pathname;
+
+  function closeMenu({ restoreFocus = false } = {}) {
+    setMenuOpenPath(null);
+    if (restoreFocus) {
+      requestAnimationFrame(() => {
+        mobileMenuButtonRef.current?.focus();
+      });
+    }
+  }
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -134,6 +145,21 @@ export default function AppHeader() {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+
+    if (menuOpen) {
+      overlay.removeAttribute("inert");
+      return;
+    }
+
+    if (overlay.contains(document.activeElement)) {
+      mobileMenuButtonRef.current?.focus();
+    }
+    overlay.setAttribute("inert", "");
   }, [menuOpen]);
 
   useEffect(() => {
@@ -260,6 +286,7 @@ export default function AppHeader() {
 
             <button
               type="button"
+              ref={mobileMenuButtonRef}
               className={styles.utilityButton}
               aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
               aria-expanded={menuOpen}
@@ -275,10 +302,10 @@ export default function AppHeader() {
       </div>
 
       <div
+        ref={overlayRef}
         className={`${styles.overlay} ${menuOpen ? styles.overlayOpen : ""}`}
-        aria-hidden={!menuOpen}
       >
-        <div className={styles.overlayBackdrop} onClick={() => setMenuOpenPath(null)} />
+        <div className={styles.overlayBackdrop} onClick={() => closeMenu({ restoreFocus: true })} />
         <nav id="site-menu" className={styles.menuPanel} aria-label="Меню сайта">
           <div className={styles.menuHeader}>
             <span className={styles.menuLogo}>
@@ -288,7 +315,7 @@ export default function AppHeader() {
               type="button"
               className={styles.utilityButton}
               aria-label="Закрыть меню"
-              onClick={() => setMenuOpenPath(null)}
+              onClick={() => closeMenu({ restoreFocus: true })}
             >
               <CloseIcon />
             </button>
@@ -331,6 +358,7 @@ export default function AppHeader() {
                           className={`${styles.mobileSubmenuLink} ${
                             isActive(pathname, child.href) ? styles.mobileSubmenuLinkActive : ""
                           }`}
+                          onClick={() => closeMenu()}
                         >
                           <span className={styles.menuLinkLead}>
                             <span className={styles.menuLinkIcon}>{child.icon}</span>
@@ -348,6 +376,7 @@ export default function AppHeader() {
                   className={`${styles.menuLink} ${
                     isActive(pathname, item.href) ? styles.menuLinkActive : ""
                   }`}
+                  onClick={() => closeMenu()}
                 >
                   <span className={styles.menuLinkLead}>
                     <span className={styles.menuLinkIcon}>{item.icon}</span>
