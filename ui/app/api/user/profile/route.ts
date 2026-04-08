@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { getUserSessionTokenFromCookie } from "@/lib/site-user-auth.js";
+import {
+  getUserRedirectUrl,
+  getUserSessionTokenFromCookie,
+} from "@/lib/site-user-auth.js";
 import { updateSiteUserProfile } from "@/lib/site-user-api.js";
 
 export async function POST(request: NextRequest) {
@@ -8,7 +11,7 @@ export async function POST(request: NextRequest) {
   const sessionToken = getUserSessionTokenFromCookie(cookieStore);
 
   if (!sessionToken) {
-    return NextResponse.redirect(new URL("/me?error=unauthorized", request.url));
+    return NextResponse.redirect(getUserRedirectUrl(request, "/me?error=unauthorized"));
   }
 
   const formData = await request.formData();
@@ -24,8 +27,10 @@ export async function POST(request: NextRequest) {
       },
       process.env,
     );
-    return NextResponse.redirect(new URL("/me?updated=1", request.url));
+    return NextResponse.redirect(getUserRedirectUrl(request, "/me?updated=1"));
   } catch {
-    return NextResponse.redirect(new URL("/me?error=profile_update_failed", request.url));
+    return NextResponse.redirect(
+      getUserRedirectUrl(request, "/me?error=profile_update_failed"),
+    );
   }
 }
