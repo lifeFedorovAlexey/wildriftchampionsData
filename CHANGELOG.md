@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.2 - 2026-04-08
+
+- stabilized the guides domain around the normalized `guide_summaries` plus `guide_*` model and removed the dead `champion_guides` schema remnant
+- added `contentHash`-based skip logic for guide imports so unchanged WildRiftFire payloads no longer rewrite child guide tables
+- fixed guide detail delivery around latest RiftGG snapshots, special item asset fallback, snapshot date display, and follow-up browser/accessibility warnings
+
 ## 1.2.1 - 2026-04-06
 
 - fixed production champion icon delivery so guide index cards use the public S3 asset contract after setting `ASSET_PUBLIC_MODE=s3`

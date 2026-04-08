@@ -4,9 +4,9 @@ Main frontend repository for `wildriftallstats.ru`.
 
 ## Release
 
-- Current UI release: `1.2.1`
+- Current UI release: `1.2.2`
 - Release branch format: `release/x.y.z`
-- Stable tag format: `v1.2.1`
+- Stable tag format: `v1.2.2`
 - UI package version lives in [ui/package.json](/d:/wildRiftChampions/ui/package.json)
 
 Release docs:

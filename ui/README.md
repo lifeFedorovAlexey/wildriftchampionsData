@@ -4,9 +4,9 @@ Next.js frontend for `wildriftallstats.ru`.
 
 ## Version
 
-- Current version: `1.2.0`
+- Current version: `1.2.2`
 - Release branch format: `release/x.y.z`
-- Stable tag format: `v1.2.0`
+- Stable tag format: `v1.2.2`
 
 ## Commands
 
