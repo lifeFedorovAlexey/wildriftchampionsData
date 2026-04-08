@@ -194,6 +194,7 @@ test("toLaneKey understands lane labels", () => {
   assert.equal(toLaneKey("ADC"), "adc");
   assert.equal(toLaneKey("Дуо"), "adc");
   assert.equal(toLaneKey("лес"), "jungle");
+  assert.equal(toLaneKey("marksman"), null);
   assert.equal(toLaneKey("unknown"), null);
 });
 
@@ -201,7 +202,7 @@ test("shared guide helpers normalize slug aliases and lane labels", () => {
   assert.deepEqual(getGuideSlugAliases("monkeyking"), ["monkeyking", "wukong"]);
   assert.deepEqual(getGuideSlugAliases("wukong"), ["wukong", "monkeyking"]);
   assert.equal(localizeGuideLane("Solo"), "Барон");
-  assert.equal(guideShared.localizeGuideRole("Дуо"), "АДК");
+  assert.equal(guideShared.localizeGuideRole("Дуо"), "Дракон");
   assert.equal(localizeGuideLane("adc"), "Дракон");
 });
 

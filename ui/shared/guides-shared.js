@@ -45,6 +45,24 @@ function normalizeGuideText(value = "") {
   return String(value || "").trim().toLowerCase();
 }
 
+function containsGuideArchetypeTerm(value = "") {
+  const normalized = normalizeGuideText(value);
+
+  return (
+    normalized.includes("marksman") ||
+    normalized.includes("стрелок") ||
+    normalized.includes("mage") ||
+    normalized.includes("маг") ||
+    normalized.includes("assassin") ||
+    normalized.includes("убийца") ||
+    normalized.includes("tank") ||
+    normalized.includes("танк") ||
+    normalized.includes("fighter") ||
+    normalized.includes("warrior") ||
+    normalized.includes("воин")
+  );
+}
+
 function mapToRiotSlug(value = "") {
   const normalized = String(value || "").trim();
   return SLUG_RIOT_REMAP[normalized] ?? normalized;
@@ -76,13 +94,21 @@ function localizeGuideRole(value = "") {
   if (normalized.includes("support") || normalized.includes("саппорт") || normalized.includes("поддерж")) return "Саппорт";
   if (normalized.includes("mid") || normalized.includes("мид")) return "Мид";
   if (normalized.includes("jungle") || normalized.includes("лес")) return "Лес";
-  if (normalized.includes("solo") || normalized.includes("baron") || normalized.includes("барон") || normalized.includes("топ")) return "Барон";
+  if (
+    normalized.includes("top") ||
+    normalized.includes("solo") ||
+    normalized.includes("baron") ||
+    normalized.includes("барон") ||
+    normalized.includes("топ")
+  ) return "Барон";
   if (
     normalized.includes("duo") ||
     normalized.includes("дуо") ||
+    normalized.includes("dragon") ||
+    normalized.includes("дракон") ||
     normalized.includes("adc") ||
     normalized.includes("адк")
-  ) return "АДК";
+  ) return "Дракон";
   if (normalized.includes("marksman") || normalized.includes("стрелок")) return "Стрелок";
   if (normalized.includes("mage") || normalized.includes("маг")) return "Маг";
   if (normalized.includes("assassin") || normalized.includes("убийца")) return "Убийца";
@@ -101,53 +127,34 @@ function localizeGuideLane(value = "") {
   if (laneKey === "top") return "Барон";
   if (laneKey === "adc") return "Дракон";
 
-  return String(value || "").trim();
+  return "";
 }
 
 function toGuideLaneKey(value = "") {
   const normalized = normalizeGuideText(value);
 
   if (!normalized) return null;
+  if (containsGuideArchetypeTerm(normalized)) return null;
   if (normalized.includes("support") || normalized.includes("саппорт") || normalized.includes("поддерж")) return "support";
   if (normalized.includes("mid") || normalized.includes("мид")) return "mid";
   if (normalized.includes("jungle") || normalized.includes("лес")) return "jungle";
-  if (normalized.includes("solo") || normalized.includes("baron") || normalized.includes("барон") || normalized.includes("топ")) return "top";
+  if (
+    normalized.includes("top") ||
+    normalized.includes("solo") ||
+    normalized.includes("baron") ||
+    normalized.includes("барон") ||
+    normalized.includes("топ")
+  ) return "top";
   if (
     normalized.includes("duo") ||
     normalized.includes("дуо") ||
-    normalized.includes("adc") ||
+    normalized.includes("dragon") ||
     normalized.includes("дракон") ||
-    normalized.includes("адк") ||
-    normalized.includes("marksman") ||
-    normalized.includes("стрелок")
+    normalized.includes("adc") ||
+    normalized.includes("адк")
   ) return "adc";
 
   return null;
-}
-
-function inferGuideLaneKeysFromRole(value = "") {
-  const normalized = normalizeGuideText(value);
-  if (!normalized) return [];
-
-  const lanes = new Set();
-  if (normalized.includes("marksman") || normalized.includes("стрелок")) lanes.add("adc");
-  if (normalized.includes("support") || normalized.includes("саппорт") || normalized.includes("поддерж") || normalized.includes("enchanter")) lanes.add("support");
-  if (normalized.includes("mage") || normalized.includes("маг")) lanes.add("mid");
-  if (normalized.includes("assassin") || normalized.includes("убийца")) {
-    lanes.add("mid");
-    lanes.add("jungle");
-  }
-  if (normalized.includes("fighter") || normalized.includes("warrior") || normalized.includes("воин")) {
-    lanes.add("top");
-    lanes.add("jungle");
-  }
-  if (normalized.includes("tank") || normalized.includes("танк")) {
-    lanes.add("top");
-    lanes.add("jungle");
-    lanes.add("support");
-  }
-
-  return Array.from(lanes);
 }
 
 module.exports = {
@@ -161,5 +168,4 @@ module.exports = {
   localizeGuideRole,
   localizeGuideLane,
   toGuideLaneKey,
-  inferGuideLaneKeysFromRole,
 };

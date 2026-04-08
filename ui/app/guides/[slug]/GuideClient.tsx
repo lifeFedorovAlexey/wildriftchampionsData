@@ -258,14 +258,26 @@ function getVariantRoleLabel(variant?: GuideVariant) {
   return localizeVariantTitle(variant);
 }
 
-function buildOfficialSummary(guide: GuideData, variant?: GuideVariant) {
-  const title = guide.champion.title || guide.official?.champion?.title || "";
-  const role =
+function getDisplayedRoleLabel(
+  guide: GuideData,
+  variant?: GuideVariant,
+  selectedRiftLane?: string | null,
+) {
+  return (
+    localizeGuideLane(selectedRiftLane || "") ||
     getVariantRoleLabel(variant) ||
     localizeGuideLane(guide.metadata.recommendedRole || "") ||
-    guide.metadata.recommendedRole ||
-    guide.official?.roles?.join(" / ") ||
-    "";
+    ""
+  );
+}
+
+function buildOfficialSummary(
+  guide: GuideData,
+  variant?: GuideVariant,
+  selectedRiftLane?: string | null,
+) {
+  const title = guide.champion.title || guide.official?.champion?.title || "";
+  const role = getDisplayedRoleLabel(guide, variant, selectedRiftLane);
   const difficulty = guide.official?.difficulty || "";
 
   return [
@@ -903,7 +915,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const buildBreakdown = guide.buildBreakdown;
   const buildBreakdownParagraphs =
     buildBreakdown?.paragraphs?.filter((paragraph) => isTranslatedBuildParagraph(paragraph)) ?? [];
-  const heroSummary = buildOfficialSummary(guide, variant);
   const heroVideoSrc = guide.official?.heroMedia?.localVideoPath || null;
   const riftgg = guide.riftgg || null;
 
@@ -916,7 +927,10 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     riftgg?.matchups?.[0]?.rank ||
     "diamond_plus";
   const defaultRiftLane =
-    (toGuideLaneKey(variant?.lane || guide.metadata.recommendedRole || "") || "") ||
+    (toGuideLaneKey(
+      variant?.lane || (isGenericVariantTitle(variant?.title) ? "" : variant?.title || ""),
+    ) || "") ||
+    (toGuideLaneKey(guide.metadata.recommendedRole || "") || "") ||
     riftgg?.availableLanes?.[0] ||
     "mid";
   const [selectedRiftRank, setSelectedRiftRank] = useState(defaultRiftRank);
@@ -971,6 +985,8 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     availableRiftLanesForSelectedRank.find((lane) => lane === preferredRiftLane) ||
     availableRiftLanesForSelectedRank[0] ||
     preferredRiftLane;
+  const displayedRoleLabel = getDisplayedRoleLabel(guide, variant, selectedRiftLane);
+  const heroSummary = buildOfficialSummary(guide, variant, selectedRiftLane);
 
   const selectedMatchups = pickRiftBlock(riftgg?.matchups);
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
@@ -1159,10 +1175,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             <div className={styles.metaPill}>
               <span className={styles.metaPillLabel}>Роль</span>
               <span className={styles.metaPillValue}>
-                {getVariantRoleLabel(variant) ||
-                  localizeGuideLane(guide.metadata.recommendedRole || "") ||
-                  guide.metadata.recommendedRole ||
-                  "-"}
+                {displayedRoleLabel || "-"}
               </span>
             </div>
             {guide.official?.difficulty ? (

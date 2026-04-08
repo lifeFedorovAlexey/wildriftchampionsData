@@ -14,15 +14,33 @@ import {
 } from "../guides-lib";
 
 function buildGuideRoleText(guide: GuideData) {
-  const roles = Array.isArray(guide.official?.roles)
-    ? guide.official.roles.filter(Boolean)
+  const roles = Array.isArray(guide.variants)
+    ? guide.variants
+        .map((variant) => {
+          const fallbackRole = isGenericVariantTitle(variant.title) ? "" : variant.title || "";
+          const laneKey = toLaneKey(variant.lane || fallbackRole);
+          if (laneKey === "top") return "Барон";
+          if (laneKey === "jungle") return "Лес";
+          if (laneKey === "mid") return "Мид";
+          if (laneKey === "adc") return "Дракон";
+          if (laneKey === "support") return "Саппорт";
+          return "";
+        })
+        .filter(Boolean)
     : [];
 
   if (roles.length) {
-    return roles.join(" / ");
+    return Array.from(new Set(roles)).join(" / ");
   }
 
-  return guide.metadata.recommendedRole || "";
+  const fallbackLaneKey = toLaneKey(guide.metadata.recommendedRole || "");
+  if (fallbackLaneKey === "top") return "Барон";
+  if (fallbackLaneKey === "jungle") return "Лес";
+  if (fallbackLaneKey === "mid") return "Мид";
+  if (fallbackLaneKey === "adc") return "Дракон";
+  if (fallbackLaneKey === "support") return "Саппорт";
+
+  return "";
 }
 
 function isGenericVariantTitle(value?: string | null) {

@@ -628,10 +628,6 @@ function mergeOfficialDataIntoGuide(guide, officialData) {
     guide.champion.title = officialData.champion.title;
   }
 
-  if (officialData.roles?.length) {
-    guide.metadata.recommendedRole = officialData.roles.join(" / ");
-  }
-
   if (officialData.abilities?.length) {
     const variantSkillRows = guide.variants?.[0]?.skillOrder?.rows || [];
     const fallbackSlugs = [

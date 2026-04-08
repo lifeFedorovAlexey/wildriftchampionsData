@@ -11,7 +11,6 @@ import styles from "./index.module.css";
 const {
   normalizeGuideText,
   toGuideLaneKey,
-  inferGuideLaneKeysFromRole,
   localizeGuideLane,
 } = guideShared;
 
@@ -81,12 +80,7 @@ function getLaneKeys(item: GuideListItem): LaneKey[] {
     return Array.from(new Set(directKeys));
   }
 
-  return Array.from(
-    new Set([
-      ...item.roles.flatMap((role) => inferGuideLaneKeysFromRole(role) as LaneKey[]),
-      ...(inferGuideLaneKeysFromRole(item.recommendedRole || "") as LaneKey[]),
-    ]),
-  );
+  return [];
 }
 
 function getPrimaryLaneKey(item: GuideListItem): LaneKey | null {
