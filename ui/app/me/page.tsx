@@ -18,6 +18,15 @@ type UserTelegramProvider = {
   authUrl?: string;
 };
 
+function formatUserRoles(roles: string[] | undefined) {
+  const normalized = Array.isArray(roles)
+    ? roles.map((role) => String(role || "").trim()).filter(Boolean)
+    : [];
+
+  if (!normalized.length) return "user";
+  return normalized.join(", ");
+}
+
 export default async function MePage({
   searchParams,
 }: {
@@ -96,7 +105,9 @@ export default async function MePage({
                   <strong className={styles.profileName}>
                     {session.displayName || "User"}
                   </strong>
-                  <span className={styles.profileRole}>Роль: user</span>
+                  <span className={styles.profileRole}>
+                    Роли: {formatUserRoles(session.roles)}
+                  </span>
                 </div>
               </div>
 
