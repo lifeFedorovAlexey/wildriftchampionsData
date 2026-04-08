@@ -1,6 +1,7 @@
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import LinkedProviderIcons from "@/components/auth/LinkedProviderIcons";
 import TopPillLink from "@/components/TopPillLink";
+import { buildPeakRankIconUrl, getPeakRankLabel } from "@/lib/profile-ranks.js";
 import ProfileEditorForm from "./ProfileEditorForm";
 import styles from "@/app/me/profile.module.css";
 
@@ -49,27 +50,6 @@ function formatRoles(roles: string[] | undefined) {
   return normalized.length ? normalized : ["user"];
 }
 
-function formatPeakRank(value: string | undefined) {
-  const normalized = String(value || "").trim().toLowerCase();
-  if (!normalized) return "";
-
-  return (
-    {
-      iron: "Железо",
-      bronze: "Бронза",
-      silver: "Серебро",
-      gold: "Золото",
-      platinum: "Платина",
-      emerald: "Изумруд",
-      diamond: "Алмаз",
-      master: "Мастер",
-      grandmaster: "Грандмастер",
-      challenger: "Претендент",
-      sovereign: "Сюзерен",
-    }[normalized] || ""
-  );
-}
-
 export default function PrivateProfilePage({
   profile,
   providerCards,
@@ -106,7 +86,8 @@ export default function PrivateProfilePage({
   );
 
   const roleList = formatRoles(profile.roles);
-  const peakRankLabel = formatPeakRank(profile.peakRank);
+  const peakRankLabel = getPeakRankLabel(profile.peakRank);
+  const peakRankIconUrl = buildPeakRankIconUrl(profile.peakRank);
 
   return (
     <div className={styles.page}>
@@ -156,7 +137,18 @@ export default function PrivateProfilePage({
                   <span className={styles.profileHandle}>{profile.wildRiftHandle}</span>
                 ) : null}
                 {peakRankLabel ? (
-                  <span className={styles.profileRank}>Пик: {peakRankLabel}</span>
+                  <span className={styles.profileRank}>
+                    {peakRankIconUrl ? (
+                      <img
+                        src={peakRankIconUrl}
+                        alt=""
+                        width={26}
+                        height={26}
+                        className={styles.profileRankIcon}
+                      />
+                    ) : null}
+                    <span>Пик: {peakRankLabel}</span>
+                  </span>
                 ) : null}
               </div>
             </div>

@@ -140,11 +140,20 @@
 }
 
 .profileRank {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: rgba(245, 211, 108, 0.88);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.profileRankIcon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }
 
 .form {
@@ -290,6 +299,29 @@
   color: rgba(255, 255, 255, 0.56);
   font-size: 12px;
   line-height: 1.45;
+}
+
+.rankPreview {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.rankPreviewIcon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.rankPreviewText {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .championPicker {

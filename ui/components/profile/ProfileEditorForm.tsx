@@ -2,6 +2,11 @@
 
 import { useMemo, useState } from "react";
 import styles from "@/app/me/profile.module.css";
+import {
+  buildPeakRankIconUrl,
+  getPeakRankLabel,
+  getPeakRankOptions,
+} from "@/lib/profile-ranks.js";
 
 type Identity = {
   id?: number;
@@ -26,21 +31,6 @@ type ProfileValue = {
   identities?: Identity[];
 };
 
-const PEAK_RANK_OPTIONS = [
-  { value: "", label: "Не выбран" },
-  { value: "iron", label: "Железо" },
-  { value: "bronze", label: "Бронза" },
-  { value: "silver", label: "Серебро" },
-  { value: "gold", label: "Золото" },
-  { value: "platinum", label: "Платина" },
-  { value: "emerald", label: "Изумруд" },
-  { value: "diamond", label: "Алмаз" },
-  { value: "master", label: "Мастер" },
-  { value: "grandmaster", label: "Грандмастер" },
-  { value: "challenger", label: "Претендент" },
-  { value: "sovereign", label: "Сюзерен" },
-];
-
 function getAvatarLabel(identity: Identity, index: number) {
   const provider = String(identity.provider || "").trim();
   if (provider) return provider;
@@ -64,6 +54,11 @@ export default function ProfileEditorForm({
   const [avatarUrl, setAvatarUrl] = useState(initialAvatarUrl);
   const [search, setSearch] = useState("");
   const [mainChampionSlugs, setMainChampionSlugs] = useState(initialMainChampionSlugs);
+  const [peakRankValue, setPeakRankValue] = useState(
+    String(profile.peakRank || "").trim().toLowerCase(),
+  );
+  const peakRankIconUrl = buildPeakRankIconUrl(peakRankValue);
+  const peakRankLabel = getPeakRankLabel(peakRankValue);
 
   const avatarOptions = useMemo(() => {
     const byUrl = new Map<string, { key: string; label: string; avatarUrl: string }>();
@@ -173,15 +168,30 @@ export default function ProfileEditorForm({
         <span className={styles.fieldLabel}>Максимальный ранг</span>
         <select
           name="peakRank"
-          defaultValue={profile.peakRank || ""}
+          value={peakRankValue}
+          onChange={(event) => setPeakRankValue(event.target.value)}
           className={`${styles.input} ${styles.select}`.trim()}
         >
-          {PEAK_RANK_OPTIONS.map((option) => (
+          {getPeakRankOptions().map((option) => (
             <option key={option.value || "none"} value={option.value}>
               {option.label}
             </option>
           ))}
         </select>
+        {peakRankLabel ? (
+          <div className={styles.rankPreview}>
+            {peakRankIconUrl ? (
+              <img
+                src={peakRankIconUrl}
+                alt=""
+                width={42}
+                height={42}
+                className={styles.rankPreviewIcon}
+              />
+            ) : null}
+            <span className={styles.rankPreviewText}>{peakRankLabel}</span>
+          </div>
+        ) : null}
       </label>
 
       <div className={styles.field}>
