@@ -389,6 +389,17 @@
   line-height: 1.5;
 }
 
+.notice {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(104, 221, 158, 0.24);
+  border-radius: 14px;
+  background: rgba(29, 88, 55, 0.28);
+  color: #b7ffd9;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .profileRow {
   display: flex;
   flex-wrap: wrap;
@@ -433,6 +444,179 @@
   max-width: 260px;
 }
 
+.auditStack {
+  display: grid;
+  gap: 18px;
+}
+
+.auditStatusWrap {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+
+.auditStatusPill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.auditStatusRunning {
+  background: rgba(116, 211, 255, 0.14);
+  color: #9de7ff;
+}
+
+.auditStatusOk {
+  background: rgba(104, 221, 158, 0.16);
+  color: #b7ffd9;
+}
+
+.auditStatusFail {
+  background: rgba(255, 141, 107, 0.16);
+  color: #ffc5b2;
+}
+
+.auditMetaText {
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.auditControls {
+  display: grid;
+  gap: 14px;
+}
+
+.auditModeCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  font-size: 14px;
+}
+
+.auditModeCard input {
+  accent-color: #f5d36c;
+}
+
+.auditSelectWrap {
+  display: grid;
+  gap: 8px;
+}
+
+.auditSelect {
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(12, 18, 30, 0.92);
+  color: #fff;
+  font-size: 14px;
+}
+
+.auditActionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.auditStatsGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.auditProgressCard {
+  display: grid;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(245, 211, 108, 0.08), transparent 32%),
+    rgba(8, 12, 22, 0.82);
+}
+
+.auditProgressMeta,
+.auditMetaRow,
+.auditFailureHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.auditProgressTrack {
+  position: relative;
+  overflow: hidden;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.auditProgressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #f5d36c, #74d3ff);
+}
+
+.auditChartWrap {
+  height: 280px;
+  padding: 12px 8px 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02)),
+    rgba(9, 13, 24, 0.82);
+}
+
+.auditSectionPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.auditFailureGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.auditFailureCard {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02)),
+    rgba(9, 13, 24, 0.82);
+}
+
+.auditDetailList {
+  display: grid;
+  gap: 10px;
+}
+
+.auditDetailRow {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 :global(.telegramWidgetHost) {
   min-height: 46px;
   width: 100%;
@@ -466,6 +650,23 @@
   }
 
   .contentGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .auditControls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+  }
+
+  .auditActionRow {
+    justify-content: flex-start;
+  }
+
+  .auditStatsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .auditFailureGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
