@@ -102,6 +102,24 @@ function renderItem(
       telegramProvider.authUrl,
   );
 
+  if (compact && iconOnly && provider.id === "telegram") {
+    return (
+      <div key={provider.id} className={styles.iconOnlyTelegram}>
+        {telegramEnabled ? (
+          <TelegramLoginButton
+            botUsername={telegramProvider?.botUsername || ""}
+            authUrl={telegramProvider?.authUrl || ""}
+            size="medium"
+          />
+        ) : (
+          <div className={`${styles.iconOnlyBox} ${styles.buttonDisabled}`.trim()} title="Telegram">
+            <AuthProviderIcon providerId="telegram" className={styles.iconOnlyGraphic} />
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <article key={provider.id} className={itemClassName}>
       <div className={compact ? styles.head : styles.meta}>

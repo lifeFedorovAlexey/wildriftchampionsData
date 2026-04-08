@@ -210,9 +210,9 @@ export default async function MePage({
                 telegramProvider={telegramProvider}
                 returnTo="/me"
                 mode="login"
-                layout="grid"
+                layout="stack"
+                compact
                 iconOnly
-                showStatus
               />
             ) : (
               <div className={styles.noticeError}>
