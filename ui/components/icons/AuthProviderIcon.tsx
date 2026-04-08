@@ -29,10 +29,10 @@ function GoogleIcon({ className = "" }: { className?: string }) {
 function YandexIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
-      <circle cx="12" cy="12" r="12" fill="#FC3F1D" />
+      <rect x="2" y="2" width="20" height="20" rx="5" fill="#111" />
       <path
         fill="#fff"
-        d="M13.66 18h-2.5V6h1.74c2.9 0 4.84 1.42 4.84 3.89 0 1.68-.92 2.96-2.47 3.53L18 18h-2.79l-2.29-4.14H13.66V18Zm-.31-6.13c1.18 0 1.92-.67 1.92-1.79 0-1.14-.74-1.8-1.92-1.8h-.19v3.59h.19Z"
+        d="M8 6h3.31c3.06 0 4.94 1.62 4.94 4.18 0 1.76-.92 3.05-2.51 3.68L17 18h-3.11l-2.61-3.93V18H8V6Zm3.08 5.6c1.28 0 1.98-.51 1.98-1.46 0-.94-.7-1.44-1.98-1.44h-.77v2.9h.77Z"
       />
     </svg>
   );
