@@ -7,6 +7,23 @@ import {
 } from "@/lib/admin-api.js";
 import { getAdminSessionTokenFromCookie } from "@/lib/admin-auth.js";
 
+function resolvePublicAuditOrigins(request: NextRequest) {
+  const requestOrigin = request.nextUrl.origin.replace(/\/+$/, "");
+  const uiOrigin = String(
+    process.env.GUIDES_AUDIT_UI_ORIGIN ||
+    process.env.ADMIN_PUBLIC_ORIGIN ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    requestOrigin,
+  ).replace(/\/+$/, "");
+  const apiOrigin = String(
+    process.env.GUIDES_AUDIT_API_ORIGIN ||
+    process.env.API_PUBLIC_ORIGIN ||
+    `${uiOrigin}/wr-api`,
+  ).replace(/\/+$/, "");
+
+  return { uiOrigin, apiOrigin };
+}
+
 export async function GET(request: NextRequest) {
   const cookieStore = await cookies();
   const sessionToken = getAdminSessionTokenFromCookie(cookieStore);
@@ -35,7 +52,14 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json().catch(() => ({}));
-    const payload = await startAdminGuidesAudit(sessionToken, body, process.env);
+    const payload = await startAdminGuidesAudit(
+      sessionToken,
+      {
+        ...body,
+        ...resolvePublicAuditOrigins(request),
+      },
+      process.env,
+    );
     return NextResponse.json(payload, { status: 202 });
   } catch (error) {
     const code = error instanceof Error ? error.message : "guides_audit_start_failed";
