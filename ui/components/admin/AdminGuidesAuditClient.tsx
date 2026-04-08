@@ -216,12 +216,22 @@ export default function AdminGuidesAuditClient({
   const runs = useMemo(() => payload.runs ?? EMPTY_RUNS, [payload.runs]);
   const report = payload.report || null;
   const activeRun = payload.activeRun || null;
-  const selectedRun =
-    runs.find((item) => item.id === selectedRunId) ||
-    (activeRun?.id === selectedRunId ? activeRun : null) ||
-    runs[0] ||
-    activeRun ||
-    null;
+  const selectedRun = useMemo(() => {
+    if (selectedRunId) {
+      const matchedRun = runs.find((item) => item.id === selectedRunId);
+      if (matchedRun) {
+        return matchedRun;
+      }
+
+      if (activeRun?.id === selectedRunId) {
+        return activeRun;
+      }
+
+      return null;
+    }
+
+    return runs[0] || activeRun || null;
+  }, [activeRun, runs, selectedRunId]);
   const chartData = useMemo(() => buildChartData(runs), [runs]);
   const failureRows = useMemo(
     () =>
@@ -314,6 +324,24 @@ export default function AdminGuidesAuditClient({
 
     if (!response.ok) {
       throw new Error(nextPayload?.error || "guides_audit_start_failed");
+    }
+
+    const nextRun = nextPayload?.run || null;
+    if (nextRun?.id) {
+      setPayload((currentPayload) => {
+        const currentRuns = currentPayload.runs ?? EMPTY_RUNS;
+        return {
+          ...currentPayload,
+          running: true,
+          activeRun: nextRun,
+          report: null,
+          selectedRunId: nextRun.id,
+          runs: [
+            nextRun,
+            ...currentRuns.filter((item) => item.id !== nextRun.id),
+          ],
+        };
+      });
     }
 
     setNoticeText(
