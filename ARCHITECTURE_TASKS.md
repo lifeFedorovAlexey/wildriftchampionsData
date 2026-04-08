@@ -18,7 +18,7 @@
 - [x] Шаг 4. Реализовать guide slug normalization layer внутри `wr-api` и покрыть её тестами на консистентные преобразования между внешними source slugs и внутренним canonical slug.
 - [x] Шаг 5. Ввести `skip-on-same-hash` для guide import, чтобы при неизменившемся контенте не делать rewrite дочерних таблиц.
 - [x] Шаг 6. После стабилизации guide import решить судьбу legacy `champion_guides`: либо удалить таблицу и кодовый хвост, либо явно оставить как временный cache/compatibility слой с документированной ролью.
-- [ ] Шаг 7. Подготовить вариант разделения `wr-api` на процессы: public API, auth/session, workers/imports. Отдельно описать, как меняются PM2 и deploy pipeline.
+- [x] Шаг 7. Подготовить вариант разделения `wr-api` на процессы: public API, auth/session, workers/imports. Отдельно описать, как меняются PM2 и deploy pipeline.
 - [ ] Шаг 8. Отдельно вернуться к недоделанному `site user` flow: либо довести до отдельной security boundary с `USER_SESSION_SECRET`, либо убрать из активной продовой поверхности.
 - [ ] Шаг 9. Отдельно вернуться к `news` domain: либо довести импорт и публикацию до рабочего состояния, либо скрыть недоделанную поверхность из основного контракта.
 
@@ -61,3 +61,9 @@
 - убедиться, что в коде больше нет runtime-упоминаний `champion_guides`
 - убедиться, что список и detail гайдов продолжают работать через `guide_summaries` + `guide_*`
 - помнить, что отдельный `DROP TABLE champion_guides` нужен только в тех БД, где она ещё физически существует
+
+## Точка контроля после шага 7
+
+- использовать [PROCESS_SPLIT_PLAN.md](/d:/wildRiftChampions/wr-api/PROCESS_SPLIT_PLAN.md) как source of truth для разрезания `wr-api`
+- не менять рантайм до отдельного атомарного switch-over шага
+- держать workers/imports вне постоянного PM2 runtime по умолчанию
