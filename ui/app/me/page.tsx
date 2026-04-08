@@ -71,10 +71,12 @@ export default async function MePage({
         <div className={styles.head}>
           <div>
             <h1 className={styles.title}>
-              {session ? "Твой профиль" : "Вход для обычного пользователя"}
+              {session ? "Твой профиль" : "Вход в профиль"}
             </h1>
             <p className={styles.lead}>
-              Вход через те же сервисы, но без админских прав и без email-логики. Просто обычный user-профиль.
+              {session
+                ? "Управляй своим профилем и привязанными способами входа."
+                : "Войди удобным способом или создай профиль за пару секунд."}
             </p>
           </div>
           <Link href="/" className={styles.backLink}>
@@ -200,9 +202,7 @@ export default async function MePage({
           <section className={styles.card}>
             <h2 className={styles.cardTitle}>Войти или зарегистрироваться</h2>
             <p className={styles.cardCopy}>
-              Первый вход через провайдера создаёт обычный user-профиль. Публичные страницы
-              сайта по-прежнему доступны без входа, а аутентификация нужна только для
-              `/me` и будущих приватных разделов.
+              Выбери удобный сервис для входа. Если профиля ещё нет, он создастся автоматически.
             </p>
             {publicUserAuthEnabled ? (
               <AuthProvidersList
