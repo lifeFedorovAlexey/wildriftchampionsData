@@ -488,13 +488,30 @@ function RiftBuildPanel({
   title,
   blocks,
   dictionary,
+  selectedRankLabel,
+  selectedLaneLabel,
 }: {
   title: string;
   blocks: RiftGgLaneBlock<RiftGgBuildEntry>[];
   dictionary?: Record<string, RiftGgDictionaryItem>;
+  selectedRankLabel: string;
+  selectedLaneLabel: string;
 }) {
-  if (!blocks.length) return null;
   const isSpellsPanel = title === "Заклинания";
+  const emptyScope = [selectedRankLabel, selectedLaneLabel].filter(Boolean).join(" / ");
+
+  if (!blocks.length) {
+    return (
+      <section className={styles.panel}>
+        <h2 className={styles.panelTitle}>{title}</h2>
+        <p className={styles.riftEmptyState}>
+          {emptyScope
+            ? `Для среза ${emptyScope} RiftGG пока не отдаёт этот блок.`
+            : "RiftGG пока не отдаёт этот блок для выбранного среза."}
+        </p>
+      </section>
+    );
+  }
 
   return (
     <section className={styles.panel}>
@@ -769,6 +786,8 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     selectedRunes[0]?.dataDate ||
     selectedSpells[0]?.dataDate ||
     null;
+  const selectedRiftRankLabel = localizeRiftRank(selectedRiftRank);
+  const selectedRiftLaneLabel = localizeGuideLane(selectedRiftLane) || selectedRiftLane;
   const selectedRiftDataDateLabel = formatRiftDataDate(selectedRiftDataDate);
   const selectedMatchupEntries = selectedMatchups[0]?.entries || [];
   const bestMatchups = selectedMatchupEntries
@@ -949,11 +968,15 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
               title="Основные предметы"
               blocks={selectedCoreItems}
               dictionary={riftgg.dictionaries?.items}
+              selectedRankLabel={selectedRiftRankLabel}
+              selectedLaneLabel={selectedRiftLaneLabel}
             />
             <RiftBuildPanel
               title="Руны"
               blocks={selectedRunes}
               dictionary={riftgg.dictionaries?.runes}
+              selectedRankLabel={selectedRiftRankLabel}
+              selectedLaneLabel={selectedRiftLaneLabel}
             />
           </div>
 
@@ -961,6 +984,8 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             title="Заклинания"
             blocks={selectedSpells}
             dictionary={riftgg.dictionaries?.spells}
+            selectedRankLabel={selectedRiftRankLabel}
+            selectedLaneLabel={selectedRiftLaneLabel}
           />
         </>
       ) : null}
