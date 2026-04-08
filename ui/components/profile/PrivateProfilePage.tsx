@@ -35,6 +35,7 @@ type Profile = {
   displayName?: string;
   avatarUrl?: string;
   wildRiftHandle?: string;
+  peakRank?: string;
   mainChampionSlugs?: string[];
   roles?: string[];
   identities?: Identity[];
@@ -46,6 +47,27 @@ function formatRoles(roles: string[] | undefined) {
     : [];
 
   return normalized.length ? normalized : ["user"];
+}
+
+function formatPeakRank(value: string | undefined) {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (!normalized) return "";
+
+  return (
+    {
+      iron: "Железо",
+      bronze: "Бронза",
+      silver: "Серебро",
+      gold: "Золото",
+      platinum: "Платина",
+      emerald: "Изумруд",
+      diamond: "Алмаз",
+      master: "Мастер",
+      grandmaster: "Грандмастер",
+      challenger: "Претендент",
+      sovereign: "Сюзерен",
+    }[normalized] || ""
+  );
 }
 
 export default function PrivateProfilePage({
@@ -84,6 +106,7 @@ export default function PrivateProfilePage({
   );
 
   const roleList = formatRoles(profile.roles);
+  const peakRankLabel = formatPeakRank(profile.peakRank);
 
   return (
     <div className={styles.page}>
@@ -131,6 +154,9 @@ export default function PrivateProfilePage({
                 </div>
                 {profile.wildRiftHandle ? (
                   <span className={styles.profileHandle}>{profile.wildRiftHandle}</span>
+                ) : null}
+                {peakRankLabel ? (
+                  <span className={styles.profileRank}>Пик: {peakRankLabel}</span>
                 ) : null}
               </div>
             </div>

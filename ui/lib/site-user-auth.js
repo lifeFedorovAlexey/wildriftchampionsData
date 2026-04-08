@@ -137,6 +137,8 @@ export function getUserErrorMessage(code) {
       return "Не удалось обновить профиль.";
     case "invalid_wild_rift_handle":
       return "Ник в Wild Rift должен быть в формате Имя#1234.";
+    case "invalid_peak_rank":
+      return "Выбери корректный максимальный ранг.";
     case "oauth_start_failed":
       return "Не удалось начать вход. Проверь настройки OAuth и попробуй ещё раз.";
     case "session_secret_missing":

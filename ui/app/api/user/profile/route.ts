@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
   const displayName = String(formData.get("displayName") || "");
   const avatarUrl = String(formData.get("avatarUrl") || "");
   const wildRiftHandle = String(formData.get("wildRiftHandle") || "");
+  const peakRank = String(formData.get("peakRank") || "");
   const mainChampionSlugs = formData
     .getAll("mainChampionSlugs")
     .map((value) => String(value || "").trim())
@@ -30,6 +31,7 @@ export async function POST(request: NextRequest) {
         displayName,
         avatarUrl,
         wildRiftHandle,
+        peakRank,
         mainChampionSlugs,
       },
       process.env,

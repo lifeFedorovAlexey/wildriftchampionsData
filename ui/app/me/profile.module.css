@@ -139,6 +139,14 @@
   letter-spacing: 0.04em;
 }
 
+.profileRank {
+  color: rgba(245, 211, 108, 0.88);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .form {
   display: grid;
   gap: 14px;
@@ -162,6 +170,19 @@
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.04);
   color: #fff;
+}
+
+.select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.68) 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.68) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(50% - 3px),
+    calc(100% - 14px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
 }
 
 .button {

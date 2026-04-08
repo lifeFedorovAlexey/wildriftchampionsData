@@ -348,6 +348,8 @@ export function getAdminErrorMessage(code) {
       return "Telegram не подтвердил подпись входа.";
     case "invalid_wild_rift_handle":
       return "Ник в Wild Rift должен быть в формате Имя#1234.";
+    case "invalid_peak_rank":
+      return "Выбери корректный максимальный ранг.";
     case "bootstrap_required":
       return "Сначала зайди аккаунтом, который указан для первого owner-bootstrap.";
     default:

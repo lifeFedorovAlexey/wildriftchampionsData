@@ -21,9 +21,25 @@ type ProfileValue = {
   displayName?: string;
   avatarUrl?: string;
   wildRiftHandle?: string;
+  peakRank?: string;
   mainChampionSlugs?: string[];
   identities?: Identity[];
 };
+
+const PEAK_RANK_OPTIONS = [
+  { value: "", label: "Не выбран" },
+  { value: "iron", label: "Железо" },
+  { value: "bronze", label: "Бронза" },
+  { value: "silver", label: "Серебро" },
+  { value: "gold", label: "Золото" },
+  { value: "platinum", label: "Платина" },
+  { value: "emerald", label: "Изумруд" },
+  { value: "diamond", label: "Алмаз" },
+  { value: "master", label: "Мастер" },
+  { value: "grandmaster", label: "Грандмастер" },
+  { value: "challenger", label: "Претендент" },
+  { value: "sovereign", label: "Сюзерен" },
+];
 
 function getAvatarLabel(identity: Identity, index: number) {
   const provider = String(identity.provider || "").trim();
@@ -151,6 +167,21 @@ export default function ProfileEditorForm({
           maxLength={29}
         />
         <span className={styles.helperText}>Формат: буквы и цифры, затем `#` и 4 цифры.</span>
+      </label>
+
+      <label className={styles.field}>
+        <span className={styles.fieldLabel}>Максимальный ранг</span>
+        <select
+          name="peakRank"
+          defaultValue={profile.peakRank || ""}
+          className={`${styles.input} ${styles.select}`.trim()}
+        >
+          {PEAK_RANK_OPTIONS.map((option) => (
+            <option key={option.value || "none"} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
       </label>
 
       <div className={styles.field}>
