@@ -346,6 +346,12 @@ export function getAdminErrorMessage(code) {
       return "Не удалось начать вход. Проверь настройки OAuth и попробуй ещё раз.";
     case "telegram_bad_hash":
       return "Telegram не подтвердил подпись входа.";
+    case "telegram_missing_init_data":
+      return "Открой вход через кнопку бота внутри Telegram.";
+    case "telegram_invalid_user":
+      return "Telegram не передал данные пользователя.";
+    case "telegram_not_configured":
+      return "Telegram login пока не настроен.";
     case "invalid_wild_rift_handle":
       return "Ник в Wild Rift должен быть в формате name#tag, например life on fire#7595.";
     case "invalid_peak_rank":

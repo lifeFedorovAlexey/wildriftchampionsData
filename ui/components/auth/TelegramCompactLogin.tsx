@@ -8,12 +8,16 @@ import styles from "./AuthProvidersList.module.css";
 type TelegramCompactLoginProps = {
   botUsername: string;
   authUrl: string;
+  webAppActionUrl?: string;
+  returnTo?: string;
   label?: string;
 };
 
 export default function TelegramCompactLogin({
   botUsername,
   authUrl,
+  webAppActionUrl = "",
+  returnTo = "",
   label = "Telegram",
 }: TelegramCompactLoginProps) {
   const [open, setOpen] = useState(false);
@@ -67,7 +71,7 @@ export default function TelegramCompactLogin({
                 </span>
                 <div className={styles.copy}>
                   <h3 className={styles.title}>Telegram</h3>
-                  <p className={styles.hint}>Вход через официальный Telegram widget.</p>
+                  <p className={styles.hint}>Вход через Telegram.</p>
                 </div>
               </div>
               <button
@@ -83,6 +87,8 @@ export default function TelegramCompactLogin({
               <TelegramLoginButton
                 botUsername={botUsername}
                 authUrl={authUrl}
+                webAppActionUrl={webAppActionUrl}
+                returnTo={returnTo}
                 size="large"
               />
             </div>

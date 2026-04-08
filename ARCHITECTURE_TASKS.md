@@ -31,6 +31,7 @@
 - [x] Hotfix E. Убрать браузерный warning по неиспользуемому preload CSS для error boundary: перевести `app/error.tsx` с отдельного `error.module.css` на inline-стили, чтобы Next не генерировал отдельный preload chunk для `_not-found` / `errorStyles`.
 - [x] Hotfix F. Убрать accessibility warning `Blocked aria-hidden on an element because its descendant retained focus` в мобильном меню: заменить скрытие overlay через `aria-hidden` на `inert` и возвращать фокус на кнопку меню при закрытии.
 - [x] Hotfix G. Довести `Шаг 7` до реальной runtime-реализации: поднять `wr-api-public`, `wr-api-auth` и совместимый `wr-api` gateway как отдельные процессы с обновлённым deploy pipeline.
+- [x] Hotfix H. Фильтровать публичный champion pool по Riot-backed списку: CN-источник может узнать чемпиона раньше, но сайт показывает его только после появления на официальном `wildrift.leagueoflegends.com` и подтягивания нормальных `ru_ru/en_us` локализаций.
 
 ## Точка контроля после шага 1
 

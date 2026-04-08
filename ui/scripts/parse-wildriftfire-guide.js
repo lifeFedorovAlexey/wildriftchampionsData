@@ -524,48 +524,6 @@ function parseChapters($) {
   return chapters;
 }
 
-function parsePatchHistory($) {
-  return $(".wf-patch-history__patch")
-    .toArray()
-    .map((patch) => {
-      const $patch = $(patch);
-      const patchLink = $patch.find(".wf-patch-history__patch-name a").first();
-      const patchName = cleanText($patch.find(".wf-patch-history__patch-name").first().text());
-      const entries = $patch
-        .find(".wf-patch-ability")
-        .toArray()
-        .map((entry) => {
-          const $entry = $(entry);
-          const name = cleanText($entry.find(".wf-patch-ability__name").first().text());
-          const icon = $entry.find(".wf-patch-ability__icon").first().attr("src");
-          const changes = $entry
-            .find(".wf-patch-ability__list li")
-            .toArray()
-            .map((item) => cleanText($(item).text()))
-            .filter(Boolean);
-
-          if (!name || !changes.length) return null;
-
-          return {
-            name,
-            slug: slugify(name),
-            iconUrl: toAbsoluteUrl(icon || ""),
-            changes,
-          };
-        })
-        .filter(Boolean);
-
-      if (!patchName) return null;
-
-      return {
-        patch: patchName,
-        url: toAbsoluteUrl(patchLink.attr("href") || ""),
-        entries,
-      };
-    })
-    .filter(Boolean);
-}
-
 function parseTooltipPayload(html) {
   if (!html) return null;
 

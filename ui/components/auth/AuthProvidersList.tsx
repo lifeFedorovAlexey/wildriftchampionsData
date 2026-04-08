@@ -17,6 +17,13 @@ type TelegramProvider = {
   authUrl?: string;
 };
 
+function buildTelegramWebAppActionUrl(authUrl = "") {
+  const normalized = String(authUrl || "").trim();
+  if (!normalized) return "";
+
+  return normalized.replace(/\/callback$/, "/webapp");
+}
+
 type AuthProvidersListProps = {
   providers: ProviderCard[];
   telegramProvider?: TelegramProvider | null;
@@ -110,6 +117,8 @@ function renderItem(
           <TelegramCompactLogin
             botUsername={telegramProvider?.botUsername || ""}
             authUrl={telegramProvider?.authUrl || ""}
+            webAppActionUrl={buildTelegramWebAppActionUrl(telegramProvider?.authUrl || "")}
+            returnTo={returnTo}
           />
         ) : (
           <div className={`${styles.iconOnlyBox} ${styles.buttonDisabled}`.trim()} title="Telegram">
@@ -152,7 +161,10 @@ function renderItem(
             <TelegramLoginButton
               botUsername={telegramProvider?.botUsername || ""}
               authUrl={telegramProvider?.authUrl || ""}
+              webAppActionUrl={buildTelegramWebAppActionUrl(telegramProvider?.authUrl || "")}
+              returnTo={returnTo}
               size={compact ? "large" : "large"}
+              actionLabel={getActionLabel(mode, provider.label)}
             />
           </div>
         ) : (

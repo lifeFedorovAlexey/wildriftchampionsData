@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import PageWrapper from "@/components/PageWrapper";
 import { GuidesContentSkeleton } from "@/components/ui/LazySkeletons";
 import {
-  type BulkResponse,
   hydrateGuideIndexItems,
   fetchChampionIndexFromApi,
   fetchGuideSummariesFromApi,

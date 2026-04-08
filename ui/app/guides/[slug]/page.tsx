@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import PageWrapper from "@/components/PageWrapper";
 import TopPillLink from "@/components/TopPillLink";
 import GuideClient, { type GuideData } from "./GuideClient";
-import styles from "./page.module.css";
 import {
   type BulkResponse,
   fetchGuideFromApi,

@@ -192,16 +192,6 @@ function localizeRiftRank(value?: string | null) {
   return value || "";
 }
 
-function localizeRiftLane(value?: string | null) {
-  const normalized = String(value || "").trim().toLowerCase();
-  if (normalized === "top") return "Барон";
-  if (normalized === "jungle") return "Лес";
-  if (normalized === "mid") return "Мид";
-  if (normalized === "adc") return "Дракон";
-  if (normalized === "support") return "Саппорт";
-  return localizeGuideLane(value || "");
-}
-
 function formatRiftDataDate(value?: string | null) {
   const normalized = String(value || "").trim();
   if (!normalized) return null;
@@ -930,7 +920,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     riftgg?.availableLanes?.[0] ||
     "mid";
   const [selectedRiftRank, setSelectedRiftRank] = useState(defaultRiftRank);
-  const [selectedRiftLane, setSelectedRiftLane] = useState(defaultRiftLane);
+  const [preferredRiftLane, setPreferredRiftLane] = useState(defaultRiftLane);
   const laneTabs = (() => {
     const tabs: Array<{
       key: string;
@@ -977,14 +967,10 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
 
   const availableRiftLanesForSelectedRank =
     collectAvailableRiftLanesForRank(riftgg, selectedRiftRank);
-
-  useEffect(() => {
-    if (!riftgg) return;
-    if (!availableRiftLanesForSelectedRank.length) return;
-    if (availableRiftLanesForSelectedRank.includes(selectedRiftLane)) return;
-
-    setSelectedRiftLane(availableRiftLanesForSelectedRank[0]);
-  }, [availableRiftLanesForSelectedRank, riftgg, selectedRiftLane]);
+  const selectedRiftLane =
+    availableRiftLanesForSelectedRank.find((lane) => lane === preferredRiftLane) ||
+    availableRiftLanesForSelectedRank[0] ||
+    preferredRiftLane;
 
   const selectedMatchups = pickRiftBlock(riftgg?.matchups);
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
@@ -1123,7 +1109,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                     onClick={() => {
                       setSelectedVariantIndex(item.variantIndex);
                       if (item.riftLane) {
-                        setSelectedRiftLane(item.riftLane);
+                        setPreferredRiftLane(item.riftLane);
                       }
                     }}
                     className={active ? styles.variantTabActive : styles.variantTab}
