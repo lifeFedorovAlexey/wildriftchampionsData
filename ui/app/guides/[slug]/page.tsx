@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import PageWrapper from "@/components/PageWrapper";
+import TopPillLink from "@/components/TopPillLink";
 import GuideClient, { type GuideData } from "./GuideClient";
 import styles from "./page.module.css";
 import {
@@ -158,9 +158,9 @@ export default async function GuidePage({
       title={`Гайд: ${guideWithOwnTiers.champion.name}`}
       paragraphs={[guideLeadParagraph]}
       topContent={
-        <Link href="/guides" className={styles.guidesBackLink}>
+        <TopPillLink href="/guides">
           ← К гайдам
-        </Link>
+        </TopPillLink>
       }
     >
       <GuideClient guide={guideWithOwnTiers} />

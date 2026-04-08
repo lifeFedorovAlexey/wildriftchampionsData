@@ -1,14 +1,15 @@
-import Link from "next/link";
 import { cookies, headers } from "next/headers";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
-import LinkedProviderIcons from "@/components/auth/LinkedProviderIcons";
+import PrivateProfilePage from "@/components/profile/PrivateProfilePage";
+import TopPillLink from "@/components/TopPillLink";
+import { fetchProfileChampionOptions } from "@/lib/profile-api.js";
 import { fetchSiteUserSession } from "@/lib/site-user-api.js";
 import {
   getUserErrorMessage,
   getUserProviderCards,
   getUserProviders,
-  isPublicUserAuthEnabled,
   getUserSessionTokenFromCookie,
+  isPublicUserAuthEnabled,
 } from "@/lib/site-user-auth.js";
 import styles from "./profile.module.css";
 
@@ -17,15 +18,6 @@ type UserTelegramProvider = {
   botUsername?: string;
   authUrl?: string;
 };
-
-function formatUserRoles(roles: string[] | undefined) {
-  const normalized = Array.isArray(roles)
-    ? roles.map((role) => String(role || "").trim()).filter(Boolean)
-    : [];
-
-  if (!normalized.length) return "user";
-  return normalized.join(", ");
-}
 
 export default async function MePage({
   searchParams,
@@ -49,143 +41,56 @@ export default async function MePage({
   const errorText = getUserErrorMessage(errorValue);
   const updated = (Array.isArray(params.updated) ? params.updated[0] : params.updated) === "1";
 
-  const linkedProviderIds = new Set(
-    Array.isArray(session?.identities)
-      ? session.identities.map((identity: { provider?: string }) => identity.provider).filter(Boolean)
-      : [],
-  );
+  if (session) {
+    const champions = await fetchProfileChampionOptions(process.env);
 
-  const connectableProviders = providerCards.filter(
-    (provider) => !linkedProviderIds.has(provider.id),
-  );
+    return (
+      <PrivateProfilePage
+        profile={session}
+        providerCards={providerCards}
+        telegramProvider={telegramProvider}
+        champions={champions}
+        saveAction="/api/user/profile"
+        logoutAction="/api/auth/logout"
+        homeHref="/"
+        title="Твой профиль"
+        lead="Управляй своим профилем, игровым ником и мейн-чемпионами."
+        errorText={errorText}
+        updated={updated}
+      />
+    );
+  }
 
   return (
     <div className={styles.page}>
       <section className={styles.shell}>
         <div className={styles.head}>
           <div>
-            <h1 className={styles.title}>
-              {session ? "Твой профиль" : "Вход в профиль"}
-            </h1>
-            <p className={styles.lead}>
-              {session
-                ? "Управляй своим профилем и привязанными способами входа."
-                : "Войди удобным способом или создай профиль за пару секунд."}
-            </p>
+            <h1 className={styles.title}>Вход в профиль</h1>
+            <p className={styles.lead}>Войди удобным способом или создай профиль за пару секунд.</p>
           </div>
-          <Link href="/" className={`${styles.button} ${styles.buttonSecondary}`.trim()}>
-            На главную
-          </Link>
+          <TopPillLink href="/">← На главную</TopPillLink>
         </div>
 
         {errorText ? <div className={styles.noticeError}>{errorText}</div> : null}
-        {updated ? <div className={styles.noticeOk}>Профиль обновлён.</div> : null}
 
-        {session ? (
-          <div className={styles.grid}>
-            <section className={styles.card}>
-              <h2 className={styles.cardTitle}>Профиль</h2>
-              <div className={styles.profileHeader}>
-                <div className={styles.avatarWrap}>
-                  {session.avatarUrl ? (
-                    <img
-                      src={session.avatarUrl}
-                      alt=""
-                      width={72}
-                      height={72}
-                      className={styles.avatar}
-                    />
-                  ) : (
-                    <span className={styles.avatarFallback}>
-                      {(session.displayName || "U").slice(0, 1).toUpperCase()}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.profileMeta}>
-                  <strong className={styles.profileName}>
-                    {session.displayName || "User"}
-                  </strong>
-                  <span className={styles.profileRole}>
-                    Роли: {formatUserRoles(session.roles)}
-                  </span>
-                </div>
-              </div>
-
-              <form action="/api/user/profile" method="post" className={styles.form}>
-                <label className={styles.field}>
-                  <span className={styles.fieldLabel}>Имя</span>
-                  <input
-                    name="displayName"
-                    defaultValue={session.displayName || ""}
-                    placeholder="Как тебя показывать на сайте"
-                    className={styles.input}
-                  />
-                </label>
-                <label className={styles.field}>
-                  <span className={styles.fieldLabel}>Иконка</span>
-                  <input
-                    name="avatarUrl"
-                    defaultValue={session.avatarUrl || ""}
-                    placeholder="https://..."
-                    className={styles.input}
-                  />
-                </label>
-                <button type="submit" className={styles.button}>
-                  Сохранить
-                </button>
-              </form>
-
-              <form action="/api/auth/logout" method="post">
-                <button type="submit" className={`${styles.button} ${styles.buttonGhost}`.trim()}>
-                  Выйти
-                </button>
-              </form>
-            </section>
-
-            <section className={styles.card}>
-              <h2 className={styles.cardTitle}>Привязанные входы</h2>
-              <LinkedProviderIcons identities={session.identities} />
-            </section>
-
-            {connectableProviders.filter((provider) => provider.id !== "telegram").length ||
-            (!linkedProviderIds.has("telegram") && telegramProvider) ? (
-              <section className={styles.card}>
-                <h2 className={styles.cardTitle}>Подключить ещё сервис</h2>
-                <AuthProvidersList
-                  providers={connectableProviders.filter((provider) => provider.id !== "telegram")}
-                  telegramProvider={
-                    linkedProviderIds.has("telegram") ? null : telegramProvider
-                  }
-                  returnTo="/me"
-                  mode="connect"
-                  layout="stack"
-                  compact
-                  iconOnly
-                  emptyText="Все доступные способы входа уже привязаны."
-                />
-              </section>
-            ) : null}
-          </div>
-        ) : (
-          <section className={`${styles.card} ${styles.authCard}`.trim()}>
-            {publicUserAuthEnabled ? (
-              <AuthProvidersList
-                providers={providerCards.filter((provider) => provider.id !== "telegram")}
-                telegramProvider={telegramProvider}
-                returnTo="/me"
-                mode="login"
-                layout="stack"
-                compact
-                iconOnly
-              />
-            ) : (
-              <div className={styles.noticeError}>
-                User auth пока не включён. Для запуска нужны `USER_AUTH_ENABLED=true` и
-                отдельный `USER_SESSION_SECRET` в `ui` и `wr-api`.
-              </div>
-            )}
-          </section>
-        )}
+        <section className={`${styles.card} ${styles.authCard}`.trim()}>
+          {publicUserAuthEnabled ? (
+            <AuthProvidersList
+              providers={providerCards.filter((provider) => provider.id !== "telegram")}
+              telegramProvider={telegramProvider}
+              returnTo="/me"
+              mode="login"
+              layout="stack"
+              compact
+              iconOnly
+            />
+          ) : (
+            <div className={styles.noticeError}>
+              User auth пока не включён. Для запуска нужны `USER_AUTH_ENABLED=true` и отдельный `USER_SESSION_SECRET` в `ui` и `wr-api`.
+            </div>
+          )}
+        </section>
       </section>
     </div>
   );

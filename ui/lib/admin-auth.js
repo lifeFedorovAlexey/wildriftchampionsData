@@ -346,6 +346,8 @@ export function getAdminErrorMessage(code) {
       return "Не удалось начать вход. Проверь настройки OAuth и попробуй ещё раз.";
     case "telegram_bad_hash":
       return "Telegram не подтвердил подпись входа.";
+    case "invalid_wild_rift_handle":
+      return "Ник в Wild Rift должен быть в формате Имя#1234.";
     case "bootstrap_required":
       return "Сначала зайди аккаунтом, который указан для первого owner-bootstrap.";
     default:

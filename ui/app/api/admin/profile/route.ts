@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers";
 import {
-  getUserRedirectUrl,
-  getUserSessionTokenFromCookie,
-} from "@/lib/site-user-auth.js";
-import { updateSiteUserProfile } from "@/lib/site-user-api.js";
+  buildAdminUrl,
+  getAdminSessionTokenFromCookie,
+} from "@/lib/admin-auth.js";
+import { cookies } from "next/headers";
+import { updateAdminProfile } from "@/lib/admin-api.js";
 
 export async function POST(request: NextRequest) {
   const cookieStore = await cookies();
-  const sessionToken = getUserSessionTokenFromCookie(cookieStore);
+  const sessionToken = getAdminSessionTokenFromCookie(cookieStore);
 
   if (!sessionToken) {
-    return NextResponse.redirect(getUserRedirectUrl(request, "/me?error=unauthorized"));
+    return NextResponse.redirect(buildAdminUrl(request, "/admin/login?error=unauthorized"));
   }
 
   const formData = await request.formData();
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     .filter(Boolean);
 
   try {
-    await updateSiteUserProfile(
+    await updateAdminProfile(
       sessionToken,
       {
         displayName,
@@ -34,12 +34,12 @@ export async function POST(request: NextRequest) {
       },
       process.env,
     );
-    return NextResponse.redirect(getUserRedirectUrl(request, "/me?updated=1"));
+    return NextResponse.redirect(buildAdminUrl(request, "/admin?updated=1"));
   } catch (error) {
     return NextResponse.redirect(
-      getUserRedirectUrl(
+      buildAdminUrl(
         request,
-        `/me?error=${encodeURIComponent(error instanceof Error ? error.message : "profile_update_failed")}`,
+        `/admin?error=${encodeURIComponent(error instanceof Error ? error.message : "profile_update_failed")}`,
       ),
     );
   }

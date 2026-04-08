@@ -133,6 +133,12 @@
   letter-spacing: 0.08em;
 }
 
+.profileHandle {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
 .form {
   display: grid;
   gap: 14px;
@@ -184,6 +190,179 @@
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
   white-space: nowrap;
+}
+
+.rolePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rolePill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.avatarChooser {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.avatarOption {
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+.avatarOption:hover {
+  transform: translateY(-1px);
+  border-color: rgba(245, 211, 108, 0.42);
+}
+
+.avatarOptionActive {
+  border-color: rgba(245, 211, 108, 0.62);
+  background: rgba(245, 211, 108, 0.12);
+}
+
+.avatarChoiceImage,
+.avatarChoiceFallback {
+  width: 56px;
+  height: 56px;
+  margin: 3px;
+  border-radius: 16px;
+}
+
+.avatarChoiceImage {
+  display: block;
+  object-fit: cover;
+}
+
+.avatarChoiceFallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.helperText {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.championPicker {
+  display: grid;
+  gap: 12px;
+}
+
+.championResults {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.championOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.championOptionIcon,
+.championOptionFallback {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  flex: 0 0 28px;
+}
+
+.championOptionIcon {
+  object-fit: cover;
+  display: block;
+}
+
+.championOptionFallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.selectedChampions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.championPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.championPillRemove {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.formSectionTitle {
+  margin: 18px 0 12px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.connectSection {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 @media (min-width: 900px) {

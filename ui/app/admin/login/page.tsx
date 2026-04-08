@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
+import TopPillLink from "@/components/TopPillLink";
 import styles from "../admin.module.css";
 import {
   getAdminErrorMessage,
@@ -44,9 +44,7 @@ export default async function AdminLoginPage({
               Войди удобным способом. Если у аккаунта есть доступ, откроется админка.
             </p>
           </div>
-          <Link href="/" className={styles.buttonSecondary}>
-            На главную
-          </Link>
+          <TopPillLink href="/">← На главную</TopPillLink>
         </div>
         {errorText ? <div className={styles.error}>{errorText}</div> : null}
 
