@@ -15,7 +15,6 @@ const STATIC_ROUTES: Array<{
   { path: "/tier-inq", changeFrequency: "daily", priority: 0.8 },
   { path: "/picks-bans", changeFrequency: "daily", priority: 0.8 },
   { path: "/trends", changeFrequency: "daily", priority: 0.8 },
-  { path: "/news", changeFrequency: "daily", priority: 0.8 },
   { path: "/guides", changeFrequency: "weekly", priority: 0.8 },
 ];
 
