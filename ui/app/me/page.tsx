@@ -158,25 +158,19 @@ export default async function MePage({
                     subject?: string;
                     avatarUrl?: string;
                   }) => (
-                    <div key={identity.id} className={styles.identityRow}>
-                      <div className={styles.identityMain}>
-                        <span className={styles.providerIcon}>
-                          <AuthProviderIcon
-                            providerId={identity.provider || "user"}
-                            className={styles.providerIconGraphic}
-                          />
-                        </span>
-                        <div className={styles.identityCopy}>
-                          <strong className={styles.identityTitle}>
-                            {getProviderLabel(identity.provider || "user")}
-                          </strong>
-                          <span className={styles.identitySubtitle}>
-                            {identity.name || identity.username || identity.subject || "подключен"}
-                          </span>
-                        </div>
-                      </div>
-                      <span className={styles.badge}>Есть</span>
-                    </div>
+                    <span
+                      key={identity.id}
+                      className={styles.identityRow}
+                      title={`${getProviderLabel(identity.provider || "user")}${identity.name || identity.username || identity.subject ? `: ${identity.name || identity.username || identity.subject}` : ""}`}
+                      aria-label={`${getProviderLabel(identity.provider || "user")} подключен`}
+                    >
+                      <span className={styles.providerIcon}>
+                        <AuthProviderIcon
+                          providerId={identity.provider || "user"}
+                          className={styles.providerIconGraphic}
+                        />
+                      </span>
+                    </span>
                   ))
                 ) : null}
               </div>
