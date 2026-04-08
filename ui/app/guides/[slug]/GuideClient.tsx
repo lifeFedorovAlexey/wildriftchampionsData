@@ -876,7 +876,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             </div>
           </div>
 
-          {riftLaneTabs.length > 1 ? (
+          {riftLaneTabs.length ? (
             <div className={styles.variantTabs}>
               {riftLaneTabs.map((item) => {
                 const active = selectedRiftLane === item.lane;
