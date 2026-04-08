@@ -28,13 +28,14 @@ function GoogleIcon({ className = "" }: { className?: string }) {
 
 function YandexIcon({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
-      <rect x="2" y="2" width="20" height="20" rx="5" fill="#111" />
-      <path
-        d="M7.2 6.2h3.1c2.55 0 4.12 1.35 4.12 3.55 0 1.64-.86 2.83-2.39 3.34L15.4 18h-2.76l-3.01-4.75h1.82c1.1 0 1.76-.52 1.76-1.46 0-.91-.66-1.43-1.76-1.43H10v7.64H7.2V6.2Z"
-        fill="#fff"
-      />
-    </svg>
+    <img
+      src="/provider-icons/yandex-16.png"
+      alt=""
+      aria-hidden="true"
+      className={className}
+      width={16}
+      height={16}
+    />
   );
 }
 

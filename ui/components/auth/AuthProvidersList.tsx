@@ -1,6 +1,7 @@
 import Link from "next/link";
 import TelegramLoginButton from "@/components/admin/TelegramLoginButton";
 import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
+import TelegramCompactLogin from "./TelegramCompactLogin";
 import styles from "./AuthProvidersList.module.css";
 
 type ProviderCard = {
@@ -106,10 +107,9 @@ function renderItem(
     return (
       <div key={provider.id} className={styles.iconOnlyTelegram}>
         {telegramEnabled ? (
-          <TelegramLoginButton
+          <TelegramCompactLogin
             botUsername={telegramProvider?.botUsername || ""}
             authUrl={telegramProvider?.authUrl || ""}
-            size="medium"
           />
         ) : (
           <div className={`${styles.iconOnlyBox} ${styles.buttonDisabled}`.trim()} title="Telegram">
