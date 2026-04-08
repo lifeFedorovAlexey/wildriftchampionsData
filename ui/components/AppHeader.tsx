@@ -100,6 +100,17 @@ function ChevronIcon() {
   );
 }
 
+function ProfileIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.utilityIcon}>
+      <path
+        d="M12 4.75a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5Zm0 9.5c-3.77 0-6.75 1.86-6.75 4.25v.75h13.5v-.75c0-2.39-2.98-4.25-6.75-4.25Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 function BrandMark({ size }: { size: number }) {
   return (
     <img
@@ -272,6 +283,10 @@ export default function AppHeader() {
           </nav>
 
           <div className={styles.actions}>
+            <Link href="/me" className={styles.profileLink} aria-label="Профиль">
+              <ProfileIcon />
+            </Link>
+
             {!isTelegramWebApp ? (
               <a
                 href="https://t.me/life_wr_bot"

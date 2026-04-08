@@ -188,6 +188,27 @@
   gap: var(--space-2);
 }
 
+.profileLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  transition:
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.profileLink:hover {
+  color: #ffffff;
+}
+
+.profileLink:active {
+  transform: translateY(1px);
+}
+
 .utilityButton {
   width: 44px;
   height: 44px;
@@ -476,5 +497,10 @@
   .mobileGroup,
   .actions > .utilityButton:last-child {
     display: none;
+  }
+
+  .profileLink {
+    width: 36px;
+    height: 36px;
   }
 }
