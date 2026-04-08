@@ -157,11 +157,13 @@ export default function ProfileEditorForm({
         <input
           name="wildRiftHandle"
           defaultValue={profile.wildRiftHandle || ""}
-          placeholder="Player123#1234"
+          placeholder="life on fire#7595"
           className={styles.input}
-          maxLength={29}
+          maxLength={30}
         />
-        <span className={styles.helperText}>Формат: буквы и цифры, затем `#` и 4 цифры.</span>
+        <span className={styles.helperText}>
+          Формат Riot ID: name#tag, например `life on fire#7595`.
+        </span>
       </label>
 
       <label className={styles.field}>

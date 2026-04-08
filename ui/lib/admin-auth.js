@@ -347,7 +347,7 @@ export function getAdminErrorMessage(code) {
     case "telegram_bad_hash":
       return "Telegram не подтвердил подпись входа.";
     case "invalid_wild_rift_handle":
-      return "Ник в Wild Rift должен быть в формате Имя#1234.";
+      return "Ник в Wild Rift должен быть в формате name#tag, например life on fire#7595.";
     case "invalid_peak_rank":
       return "Выбери корректный максимальный ранг.";
     case "bootstrap_required":
