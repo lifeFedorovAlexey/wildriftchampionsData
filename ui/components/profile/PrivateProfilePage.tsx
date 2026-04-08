@@ -62,6 +62,9 @@ export default function PrivateProfilePage({
   lead = "Управляй своим профилем и привязанными способами входа.",
   errorText = "",
   updated = false,
+  embedded = false,
+  showHomeLink = true,
+  showLogoutButton = true,
 }: {
   profile: Profile;
   providerCards: ProviderCard[];
@@ -74,6 +77,9 @@ export default function PrivateProfilePage({
   lead?: string;
   errorText?: string;
   updated?: boolean;
+  embedded?: boolean;
+  showHomeLink?: boolean;
+  showLogoutButton?: boolean;
 }) {
   const linkedProviderIds = new Set(
     Array.isArray(profile.identities)
@@ -90,14 +96,14 @@ export default function PrivateProfilePage({
   const peakRankIconUrl = buildPeakRankIconUrl(profile.peakRank);
 
   return (
-    <div className={styles.page}>
-      <section className={styles.shell}>
-        <div className={styles.head}>
+    <div className={embedded ? styles.pageEmbedded : styles.page}>
+      <section className={embedded ? styles.shellEmbedded : styles.shell}>
+        <div className={embedded ? styles.headEmbedded : styles.head}>
           <div>
             <h1 className={styles.title}>{title}</h1>
             <p className={styles.lead}>{lead}</p>
           </div>
-          <TopPillLink href={homeHref}>← На главную</TopPillLink>
+          {showHomeLink ? <TopPillLink href={homeHref}>← На главную</TopPillLink> : null}
         </div>
 
         {errorText ? <div className={styles.noticeError}>{errorText}</div> : null}
@@ -155,11 +161,13 @@ export default function PrivateProfilePage({
 
             <ProfileEditorForm action={saveAction} profile={profile} champions={champions} />
 
-            <form action={logoutAction} method="post">
-              <button type="submit" className={`${styles.button} ${styles.buttonGhost}`.trim()}>
-                Выйти
-              </button>
-            </form>
+            {showLogoutButton ? (
+              <form action={logoutAction} method="post">
+                <button type="submit" className={`${styles.button} ${styles.buttonGhost}`.trim()}>
+                  Выйти
+                </button>
+              </form>
+            ) : null}
           </section>
 
           <section className={styles.card}>

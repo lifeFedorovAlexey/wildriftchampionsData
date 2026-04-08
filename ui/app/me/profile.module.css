@@ -4,12 +4,28 @@
   padding: var(--space-4) var(--space-3) var(--space-7);
 }
 
+.pageEmbedded {
+  width: 100%;
+}
+
 .shell {
   display: grid;
   gap: 18px;
 }
 
+.shellEmbedded {
+  display: grid;
+  gap: 18px;
+}
+
 .head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.headEmbedded {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -408,5 +424,12 @@
 
   .grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .headEmbedded {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
