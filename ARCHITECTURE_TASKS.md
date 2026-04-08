@@ -19,7 +19,7 @@
 - [x] Шаг 5. Ввести `skip-on-same-hash` для guide import, чтобы при неизменившемся контенте не делать rewrite дочерних таблиц.
 - [x] Шаг 6. После стабилизации guide import решить судьбу legacy `champion_guides`: либо удалить таблицу и кодовый хвост, либо явно оставить как временный cache/compatibility слой с документированной ролью.
 - [x] Шаг 7. Подготовить вариант разделения `wr-api` на процессы: public API, auth/session, workers/imports. Отдельно описать, как меняются PM2 и deploy pipeline.
-- [ ] Шаг 8. Отдельно вернуться к недоделанному `site user` flow: либо довести до отдельной security boundary с `USER_SESSION_SECRET`, либо убрать из активной продовой поверхности.
+- [ ] Шаг 8. Довести `site user` flow до provider-based auth без email/password: отдельный `USER_SESSION_SECRET`, отдельная user-session boundary, те же OAuth/Telegram провайдеры, что и у admin, и будущая user/private зона без влияния на публичные страницы.
 - [x] Шаг 9. Отдельно вернуться к `news` domain: либо довести импорт и публикацию до рабочего состояния, либо скрыть недоделанную поверхность из основного контракта.
 
 ## Внеплановые закрытые фиксы
@@ -70,8 +70,22 @@
 - держать workers/imports вне постоянного PM2 runtime по умолчанию
 - после реализации split-а держать внешний контракт на одном порту через gateway, пока внешний reverse proxy не будет переведён на прямой path routing
 
+## Подшаги шага 8
+
+- [x] 8.1. Развести `ADMIN_SESSION_SECRET` и `USER_SESSION_SECRET`, не включая user auth автоматически.
+- [x] 8.2. Включить на фронте provider-based user login через те же сервисы, что и у admin, без email/password.
+- [ ] 8.3. Проверить, что первый вход через провайдера создаёт `site_user`, а повторный вход через тот же `provider + subject` возвращает в тот же профиль.
+- [ ] 8.4. Оставить все текущие public страницы доступными без входа; auth распространяется только на `/me` и будущие private user/admin зоны.
+- [ ] 8.5. Зафиксировать дальнейшую admin authorization model как capability-based, а не page-based.
+
 ## Точка контроля после шага 9
 
 - убедиться, что `/news` больше не входит в sitemap и не считается публичной частью UI
 - убедиться, что `GET /api/news`, `GET /api/news/:id` и `POST /api/news/import` больше не входят в активный wr-api контракт
 - помнить, что schema/setup/news import groundwork оставлен как dormant domain до отдельного product-ready возврата
+
+## Следующее действие от тебя для шага 8
+
+- задать `USER_SESSION_SECRET` в secrets/env для `ui` и `wr-api`
+- включить `USER_AUTH_ENABLED=true` в `ui`, когда будем тестировать user login на стенде
+- после этого можно проверять реальный первый вход и повторный вход через один и тот же provider

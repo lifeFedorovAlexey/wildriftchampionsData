@@ -6,6 +6,10 @@ export function normalizeSecret(env = process.env) {
   return String(env.ADMIN_SESSION_SECRET || "").trim();
 }
 
+export function normalizeNamedSecret(env = process.env, key = "ADMIN_SESSION_SECRET") {
+  return String(env?.[key] || "").trim();
+}
+
 function normalizeOrigin(value) {
   return String(value || "").trim().replace(/\/$/, "");
 }
@@ -120,7 +124,9 @@ export function buildOAuthProviders(
   origin,
   env = process.env,
   routeBase = "/api/admin/auth",
+  options = {},
 ) {
+  const secretKey = String(options.secretKey || "ADMIN_SESSION_SECRET").trim() || "ADMIN_SESSION_SECRET";
   const normalizedOrigin = normalizeOrigin(origin);
   const hasValidOrigin = isValidHttpUrl(normalizedOrigin);
   const googleClientId = String(env.ADMIN_GOOGLE_CLIENT_ID || "").trim();
@@ -139,7 +145,7 @@ export function buildOAuthProviders(
   const vkScope = String(env.ADMIN_VK_SCOPE || "email").trim();
   const botUsername = String(env.ADMIN_TELEGRAM_BOT_USERNAME || "").trim();
   const botToken = String(env.ADMIN_TELEGRAM_BOT_TOKEN || "").trim();
-  const secret = normalizeSecret(env);
+  const secret = normalizeNamedSecret(env, secretKey);
 
   return {
     google: {
@@ -270,6 +276,31 @@ export async function createSignedExchangeEnvelope(profile, env = process.env) {
   const secret = normalizeSecret(env);
   if (!secret) {
     throw new Error("missing_admin_session_secret");
+  }
+
+  const payload = Buffer.from(
+    JSON.stringify({
+      profile,
+      ts: Date.now(),
+      nonce: randomBytes(16).toString("hex"),
+    }),
+  ).toString("base64url");
+
+  const signature = await signEncodedValue(payload, secret);
+  return { payload, signature };
+}
+
+export async function createSignedExchangeEnvelopeWithSecret(
+  profile,
+  env = process.env,
+  {
+    secretKey = "ADMIN_SESSION_SECRET",
+    missingSecretError = "missing_admin_session_secret",
+  } = {},
+) {
+  const secret = normalizeNamedSecret(env, secretKey);
+  if (!secret) {
+    throw new Error(missingSecretError);
   }
 
   const payload = Buffer.from(

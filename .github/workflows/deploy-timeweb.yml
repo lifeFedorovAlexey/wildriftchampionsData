@@ -5,6 +5,10 @@ on:
     secrets:
       ADMIN_SESSION_SECRET:
         required: false
+      USER_SESSION_SECRET:
+        required: false
+      USER_AUTH_ENABLED:
+        required: false
       ADMIN_GOOGLE_CLIENT_ID:
         required: false
       ADMIN_GOOGLE_CLIENT_SECRET:
@@ -39,6 +43,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ADMIN_SESSION_SECRET: ${{ secrets.ADMIN_SESSION_SECRET }}
+      USER_SESSION_SECRET: ${{ secrets.USER_SESSION_SECRET }}
+      USER_AUTH_ENABLED: ${{ secrets.USER_AUTH_ENABLED }}
       ADMIN_GOOGLE_CLIENT_ID: ${{ secrets.ADMIN_GOOGLE_CLIENT_ID }}
       ADMIN_GOOGLE_CLIENT_SECRET: ${{ secrets.ADMIN_GOOGLE_CLIENT_SECRET }}
       ADMIN_YANDEX_CLIENT_ID: ${{ secrets.ADMIN_YANDEX_CLIENT_ID }}
@@ -54,6 +60,8 @@ jobs:
         uses: appleboy/ssh-action@v1.2.5
         env:
           ADMIN_SESSION_SECRET: ${{ secrets.ADMIN_SESSION_SECRET }}
+          USER_SESSION_SECRET: ${{ secrets.USER_SESSION_SECRET }}
+          USER_AUTH_ENABLED: ${{ secrets.USER_AUTH_ENABLED }}
           ADMIN_GOOGLE_CLIENT_ID: ${{ secrets.ADMIN_GOOGLE_CLIENT_ID }}
           ADMIN_GOOGLE_CLIENT_SECRET: ${{ secrets.ADMIN_GOOGLE_CLIENT_SECRET }}
           ADMIN_YANDEX_CLIENT_ID: ${{ secrets.ADMIN_YANDEX_CLIENT_ID }}
@@ -67,7 +75,7 @@ jobs:
           host: ${{ secrets.TIMEWEB_HOST }}
           username: ${{ secrets.TIMEWEB_USER }}
           password: ${{ secrets.TIMEWEB_PASSWORD }}
-          envs: ADMIN_SESSION_SECRET,ADMIN_GOOGLE_CLIENT_ID,ADMIN_GOOGLE_CLIENT_SECRET,ADMIN_YANDEX_CLIENT_ID,ADMIN_YANDEX_CLIENT_SECRET,ADMIN_TELEGRAM_BOT_USERNAME,ADMIN_TELEGRAM_BOT_TOKEN,ADMIN_VK_CLIENT_ID,ADMIN_VK_CLIENT_SECRET,S3_PUBLIC_BASE_URL
+          envs: ADMIN_SESSION_SECRET,USER_SESSION_SECRET,USER_AUTH_ENABLED,ADMIN_GOOGLE_CLIENT_ID,ADMIN_GOOGLE_CLIENT_SECRET,ADMIN_YANDEX_CLIENT_ID,ADMIN_YANDEX_CLIENT_SECRET,ADMIN_TELEGRAM_BOT_USERNAME,ADMIN_TELEGRAM_BOT_TOKEN,ADMIN_VK_CLIENT_ID,ADMIN_VK_CLIENT_SECRET,S3_PUBLIC_BASE_URL
           script: |
             set -e
             APP_ROOT="/var/www/wildriftchampionsData/ui"
@@ -142,6 +150,8 @@ jobs:
             upsert_env S3_PUBLIC_BASE_URL "${S3_PUBLIC_BASE_URL}" "${RELEASE_DIR}/.env.production.local"
             upsert_env ADMIN_PUBLIC_ORIGIN "https://wildriftallstats.ru" "${RELEASE_DIR}/.env.production.local"
             upsert_env ADMIN_SESSION_SECRET "${ADMIN_SESSION_SECRET}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env USER_SESSION_SECRET "${USER_SESSION_SECRET}" "${RELEASE_DIR}/.env.production.local"
+            upsert_env USER_AUTH_ENABLED "${USER_AUTH_ENABLED}" "${RELEASE_DIR}/.env.production.local"
             upsert_env ADMIN_GOOGLE_CLIENT_ID "${ADMIN_GOOGLE_CLIENT_ID}" "${RELEASE_DIR}/.env.production.local"
             upsert_env ADMIN_GOOGLE_CLIENT_SECRET "${ADMIN_GOOGLE_CLIENT_SECRET}" "${RELEASE_DIR}/.env.production.local"
             upsert_env ADMIN_YANDEX_CLIENT_ID "${ADMIN_YANDEX_CLIENT_ID}" "${RELEASE_DIR}/.env.production.local"

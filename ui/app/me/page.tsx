@@ -6,9 +6,17 @@ import { fetchSiteUserSession } from "@/lib/site-user-api.js";
 import {
   getUserErrorMessage,
   getUserProviderCards,
+  getUserProviders,
+  isPublicUserAuthEnabled,
   getUserSessionTokenFromCookie,
 } from "@/lib/site-user-auth.js";
 import styles from "./profile.module.css";
+
+type UserTelegramProvider = {
+  enabled: boolean;
+  botUsername?: string;
+  authUrl?: string;
+};
 
 function getProviderLabel(providerId: string) {
   switch (providerId) {
@@ -39,6 +47,10 @@ export default async function MePage({
   const origin = `${requestHeaders.get("x-forwarded-proto") || "https"}://${requestHeaders.get("x-forwarded-host") || requestHeaders.get("host") || ""}`;
   const requestLike = { url: `${origin}/me` };
   const providerCards = getUserProviderCards(requestLike, process.env);
+  const providers = getUserProviders(requestLike, process.env);
+  const publicUserAuthEnabled = isPublicUserAuthEnabled(process.env);
+  const telegramProvider =
+    (providers as Record<string, UserTelegramProvider | undefined>).telegram || null;
   const errorValue = Array.isArray(params.error) ? params.error[0] : params.error;
   const errorText = getUserErrorMessage(errorValue);
   const updated = (Array.isArray(params.updated) ? params.updated[0] : params.updated) === "1";
@@ -184,9 +196,27 @@ export default async function MePage({
         ) : (
           <section className={styles.card}>
             <h2 className={styles.cardTitle}>Зайти или зарегистрироваться</h2>
-            <div className={styles.noticeError}>
-              Регистрация временно отключена.
-            </div>
+            <p className={styles.cardCopy}>
+              Первый вход через провайдера создаёт обычный user-профиль. Публичные страницы
+              сайта по-прежнему доступны без входа, а аутентификация нужна только для
+              `/me` и будущих приватных разделов.
+            </p>
+            {publicUserAuthEnabled ? (
+              <AuthProvidersList
+                providers={providerCards.filter((provider) => provider.id !== "telegram")}
+                telegramProvider={telegramProvider}
+                returnTo="/me"
+                mode="login"
+                layout="grid"
+                iconOnly
+                showStatus
+              />
+            ) : (
+              <div className={styles.noticeError}>
+                User auth пока не включён. Для запуска нужны `USER_AUTH_ENABLED=true` и
+                отдельный `USER_SESSION_SECRET` в `ui` и `wr-api`.
+              </div>
+            )}
           </section>
         )}
       </section>

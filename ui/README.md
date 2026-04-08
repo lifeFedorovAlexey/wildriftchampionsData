@@ -31,6 +31,8 @@ npm run sync:guides:all
 - `S3_PUBLIC_BASE_URL` - public base used for mirrored assets in production
 - `ADMIN_PUBLIC_ORIGIN` - canonical public admin origin for server-side OAuth redirects in production
 - `ADMIN_SESSION_SECRET` - shared admin exchange secret, must match `wr-api`
+- `USER_AUTH_ENABLED` - explicit feature flag for public user auth
+- `USER_SESSION_SECRET` - shared user exchange secret, must match `wr-api` when public user auth is enabled
 - `ADMIN_GOOGLE_CLIENT_ID` / `ADMIN_GOOGLE_CLIENT_SECRET` - Google OAuth web app credentials
 - `ADMIN_YANDEX_CLIENT_ID` / `ADMIN_YANDEX_CLIENT_SECRET` - Yandex OAuth app credentials
 - `ADMIN_TELEGRAM_BOT_USERNAME` / `ADMIN_TELEGRAM_BOT_TOKEN` - Telegram login widget bot settings
@@ -55,7 +57,12 @@ Current frontend repo secret inventory:
 - `TIMEWEB_PASSWORD`
 - `TIMEWEB_USER`
 
-The `USER_*` env model is not part of the current approved frontend secret set and should be treated as unfinished work, not as the active production contract.
+`USER_*` remains opt-in unfinished work until you explicitly enable public user auth.
+Current implementation status:
+
+- `USER_AUTH_ENABLED=false` keeps `/me` and user OAuth entrypoints effectively disabled
+- enabling user auth requires a dedicated `USER_SESSION_SECRET`, separate from `ADMIN_SESSION_SECRET`
+- user auth uses the same provider family as admin auth and does not introduce email/password login
 
 Server-rendered pages such as `winrates` and `tierlist` also respect `API_PROXY_TARGET`.
 

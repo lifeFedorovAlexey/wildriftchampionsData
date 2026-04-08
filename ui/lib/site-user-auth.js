@@ -12,10 +12,10 @@ import {
   buildAuthorizeUrl,
   buildOAuthProviders,
   createCodeVerifier,
-  createSignedExchangeEnvelope,
+  createSignedExchangeEnvelopeWithSecret,
   exchangeOAuthCodeForTokens,
   getSessionTokenFromCookie,
-  normalizeSecret,
+  normalizeNamedSecret,
   readSignedPayload,
   signPayload,
   toBase64Url,
@@ -24,7 +24,14 @@ import {
 export const USER_SESSION_COOKIE = "wr_user_session";
 export const USER_STATE_COOKIE = "wr_user_oauth_state";
 export const USER_SESSION_TTL_SECONDS = 60 * 60 * 24 * 14;
-const PUBLIC_USER_AUTH_ENABLED = false;
+
+export function isPublicUserAuthEnabled(env = process.env) {
+  return String(env.USER_AUTH_ENABLED || "").trim().toLowerCase() === "true";
+}
+
+export function normalizeUserSessionSecret(env = process.env) {
+  return normalizeNamedSecret(env, "USER_SESSION_SECRET");
+}
 
 export function sanitizeUserReturnTo(value) {
   const candidate = String(value || "").trim();
@@ -32,14 +39,14 @@ export function sanitizeUserReturnTo(value) {
 }
 
 export function getUserProviders(request, env = process.env) {
-  if (!PUBLIC_USER_AUTH_ENABLED) {
+  if (!isPublicUserAuthEnabled(env)) {
     return {};
   }
 
   const origin = getAdminOrigin(request, env);
-  const providers = buildOAuthProviders(origin, env, "/api/auth");
-  const { telegram: _telegram, ...userProviders } = providers;
-  return userProviders;
+  return buildOAuthProviders(origin, env, "/api/auth", {
+    secretKey: "USER_SESSION_SECRET",
+  });
 }
 
 export function getUserProviderCards(request, env = process.env) {
@@ -61,7 +68,7 @@ export function getUserProvider(request, providerId, env = process.env) {
 }
 
 export async function issueUserState(providerId, returnTo, env = process.env) {
-  const secret = normalizeSecret(env);
+  const secret = normalizeUserSessionSecret(env);
   if (!secret) return null;
 
   return await signPayload(
@@ -78,13 +85,16 @@ export async function issueUserState(providerId, returnTo, env = process.env) {
 }
 
 export async function readUserState(token, env = process.env) {
-  const payload = await readSignedPayload(token, normalizeSecret(env));
+  const payload = await readSignedPayload(token, normalizeUserSessionSecret(env));
   if (!payload || payload.kind !== "site-user-oauth-state") return null;
   return payload;
 }
 
 export async function createUserExchangeEnvelope(profile, env = process.env) {
-  return await createSignedExchangeEnvelope(profile, env);
+  return await createSignedExchangeEnvelopeWithSecret(profile, env, {
+    secretKey: "USER_SESSION_SECRET",
+    missingSecretError: "missing_user_session_secret",
+  });
 }
 
 export function getUserSessionTokenFromCookie(cookieStore) {
@@ -127,6 +137,8 @@ export function getUserErrorMessage(code) {
       return "Не удалось обновить профиль.";
     case "oauth_start_failed":
       return "Не удалось начать вход. Проверь настройки OAuth и попробуй ещё раз.";
+    case "session_secret_missing":
+      return "Для user auth не задан USER_SESSION_SECRET.";
     case "registration_disabled":
       return "Регистрация временно отключена.";
     default:
