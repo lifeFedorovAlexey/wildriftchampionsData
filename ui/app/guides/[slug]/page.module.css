@@ -131,7 +131,8 @@
 }
 
 .variantTab,
-.variantTabActive {
+.variantTabActive,
+.variantTabDisabled {
   display: inline-flex;
   gap: 10px;
   align-items: center;
@@ -153,7 +154,8 @@
 }
 
 .variantTab strong,
-.variantTabActive strong {
+.variantTabActive strong,
+.variantTabDisabled strong {
   display: inline-grid;
   place-items: center;
   width: 22px;
@@ -177,6 +179,12 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.07),
     0 14px 28px rgba(2, 6, 23, 0.24);
+}
+
+.variantTabDisabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 8px 16px rgba(2, 6, 23, 0.12);
 }
 
 .metaPill {

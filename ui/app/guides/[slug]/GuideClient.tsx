@@ -765,10 +765,11 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     availableRiftLanesForSelectedRank.find((lane) => lane === preferredRiftLane) ||
     availableRiftLanesForSelectedRank[0] ||
     preferredRiftLane;
-  const riftLaneTabs = availableRiftLanesForSelectedRank.map((lane) => ({
+  const riftLaneTabs = (riftgg?.availableLanes || availableRiftLanesForSelectedRank).map((lane) => ({
     key: lane,
     label: localizeGuideLane(lane),
     lane,
+    disabled: !availableRiftLanesForSelectedRank.includes(lane),
   }));
   const displayVariant =
     variants.find((item) => toGuideLaneKey(item.lane || item.title || "") === selectedRiftLane) ||
@@ -885,8 +886,20 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                   <button
                     key={item.key}
                     type="button"
-                    onClick={() => setPreferredRiftLane(item.lane)}
-                    className={active ? styles.variantTabActive : styles.variantTab}
+                    onClick={() => {
+                      if (!item.disabled) {
+                        setPreferredRiftLane(item.lane);
+                      }
+                    }}
+                    className={
+                      item.disabled
+                        ? styles.variantTabDisabled
+                        : active
+                          ? styles.variantTabActive
+                          : styles.variantTab
+                    }
+                    aria-disabled={item.disabled ? "true" : undefined}
+                    title={item.disabled ? "Для выбранного ранга данных по этой линии нет" : undefined}
                   >
                     <span>{item.label}</span>
                   </button>
