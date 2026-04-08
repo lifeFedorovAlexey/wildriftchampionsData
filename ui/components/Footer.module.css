@@ -198,17 +198,39 @@
   }
 
   .supportRow {
+    display: grid;
+    grid-template-columns: 1fr;
     justify-self: center;
+    justify-items: center;
+    align-items: stretch;
     gap: 12px;
   }
 
+  .supportLogoLink,
+  .supportQrPanel {
+    width: 112px;
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .supportLogoLink {
+    background: rgba(11, 16, 36, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    min-height: 56px;
+  }
+
   .supportLogo {
-    width: 108px;
+    width: 86px;
+  }
+
+  .supportQrPanel {
+    width: 112px;
+    height: 112px;
   }
 
   .supportQr {
-    width: 112px;
-    height: 112px;
+    width: 96px;
+    height: 96px;
   }
 
   .disclaimer {

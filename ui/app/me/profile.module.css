@@ -30,11 +30,6 @@
   line-height: 1.7;
 }
 
-.backLink {
-  color: rgba(255, 255, 255, 0.78);
-  text-decoration: none;
-}
-
 .noticeError,
 .noticeOk,
 .card {
@@ -183,6 +178,12 @@
   margin-top: 12px;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
+}
+
+.buttonSecondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  white-space: nowrap;
 }
 
 @media (min-width: 900px) {

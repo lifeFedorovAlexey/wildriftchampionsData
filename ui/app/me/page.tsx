@@ -73,7 +73,7 @@ export default async function MePage({
                 : "Войди удобным способом или создай профиль за пару секунд."}
             </p>
           </div>
-          <Link href="/" className={styles.backLink}>
+          <Link href="/" className={`${styles.button} ${styles.buttonSecondary}`.trim()}>
             На главную
           </Link>
         </div>
@@ -147,21 +147,24 @@ export default async function MePage({
               <LinkedProviderIcons identities={session.identities} />
             </section>
 
-            <section className={styles.card}>
-              <h2 className={styles.cardTitle}>Подключить ещё сервис</h2>
-              <AuthProvidersList
-                providers={connectableProviders.filter((provider) => provider.id !== "telegram")}
-                telegramProvider={
-                  linkedProviderIds.has("telegram") ? null : telegramProvider
-                }
-                returnTo="/me"
-                mode="connect"
-                layout="stack"
-                compact
-                iconOnly
-                emptyText="Все доступные способы входа уже привязаны."
-              />
-            </section>
+            {connectableProviders.filter((provider) => provider.id !== "telegram").length ||
+            (!linkedProviderIds.has("telegram") && telegramProvider) ? (
+              <section className={styles.card}>
+                <h2 className={styles.cardTitle}>Подключить ещё сервис</h2>
+                <AuthProvidersList
+                  providers={connectableProviders.filter((provider) => provider.id !== "telegram")}
+                  telegramProvider={
+                    linkedProviderIds.has("telegram") ? null : telegramProvider
+                  }
+                  returnTo="/me"
+                  mode="connect"
+                  layout="stack"
+                  compact
+                  iconOnly
+                  emptyText="Все доступные способы входа уже привязаны."
+                />
+              </section>
+            ) : null}
           </div>
         ) : (
           <section className={`${styles.card} ${styles.authCard}`.trim()}>

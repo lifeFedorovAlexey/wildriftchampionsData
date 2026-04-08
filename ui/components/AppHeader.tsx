@@ -283,7 +283,11 @@ export default function AppHeader() {
           </nav>
 
           <div className={styles.actions}>
-            <Link href="/me" className={styles.profileLink} aria-label="Профиль">
+            <Link
+              href="/me"
+              className={`${styles.utilityButton} ${styles.profileButton}`.trim()}
+              aria-label="Профиль"
+            >
               <ProfileIcon />
             </Link>
 
