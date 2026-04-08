@@ -104,6 +104,7 @@ type AuditPayload = {
 };
 
 const AUDIT_DISPLAY_TIME_ZONE = "Europe/Moscow";
+const EMPTY_RUNS: RunSummary[] = [];
 
 function formatDateTime(value?: string | null) {
   if (!value) return "n/a";
@@ -173,10 +174,16 @@ export default function AdminGuidesAuditClient({
   champions: ChampionOption[];
   initialPayload: AuditPayload | null;
 }) {
+  const initialSlug =
+    champions[0]?.slug || "";
+  const initialChampion =
+    champions.find((item) => item.slug === initialSlug) || null;
   const [payload, setPayload] = useState<AuditPayload>(initialPayload || {});
   const [mode, setMode] = useState<"all" | "single">("all");
-  const [slug, setSlug] = useState<string>(champions[0]?.slug || "");
-  const [championSearch, setChampionSearch] = useState("");
+  const [slug, setSlug] = useState<string>(initialSlug);
+  const [championSearch, setChampionSearch] = useState(
+    initialChampion ? `${initialChampion.name} (${initialChampion.slug})` : initialSlug,
+  );
   const [isChampionPickerOpen, setIsChampionPickerOpen] = useState(false);
   const [selectedRunId, setSelectedRunId] = useState<string>(
     initialPayload?.selectedRunId ||
@@ -190,13 +197,9 @@ export default function AdminGuidesAuditClient({
   const [isPending, startTransition] = useTransition();
   const championPickerRef = useRef<HTMLDivElement | null>(null);
 
-  const runs = payload.runs || [];
+  const runs = useMemo(() => payload.runs ?? EMPTY_RUNS, [payload.runs]);
   const report = payload.report || null;
   const activeRun = payload.activeRun || null;
-  const selectedChampion = useMemo(
-    () => champions.find((item) => item.slug === slug) || null,
-    [champions, slug],
-  );
   const selectedRun =
     runs.find((item) => item.id === selectedRunId) ||
     (activeRun?.id === selectedRunId ? activeRun : null) ||
@@ -255,11 +258,6 @@ export default function AdminGuidesAuditClient({
 
     return () => window.clearInterval(timer);
   }, [activeRun?.id, payload.running, selectedRunId]);
-
-  useEffect(() => {
-    if (!selectedChampion) return;
-    setChampionSearch(`${selectedChampion.name} (${selectedChampion.slug})`);
-  }, [selectedChampion]);
 
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
