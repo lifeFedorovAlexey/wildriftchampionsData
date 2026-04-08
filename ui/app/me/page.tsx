@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cookies, headers } from "next/headers";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
-import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
+import LinkedProviderIcons from "@/components/auth/LinkedProviderIcons";
 import { fetchSiteUserSession } from "@/lib/site-user-api.js";
 import {
   getUserErrorMessage,
@@ -17,21 +17,6 @@ type UserTelegramProvider = {
   botUsername?: string;
   authUrl?: string;
 };
-
-function getProviderLabel(providerId: string) {
-  switch (providerId) {
-    case "google":
-      return "Google";
-    case "yandex":
-      return "Yandex";
-    case "vk":
-      return "VK";
-    case "telegram":
-      return "Telegram";
-    default:
-      return providerId;
-  }
-}
 
 export default async function MePage({
   searchParams,
@@ -148,32 +133,7 @@ export default async function MePage({
 
             <section className={styles.card}>
               <h2 className={styles.cardTitle}>Привязанные входы</h2>
-              <div className={styles.identityList}>
-                {Array.isArray(session.identities) && session.identities.length ? (
-                  session.identities.map((identity: {
-                    id: number;
-                    provider?: string;
-                    username?: string;
-                    name?: string;
-                    subject?: string;
-                    avatarUrl?: string;
-                  }) => (
-                    <span
-                      key={identity.id}
-                      className={styles.identityRow}
-                      title={`${getProviderLabel(identity.provider || "user")}${identity.name || identity.username || identity.subject ? `: ${identity.name || identity.username || identity.subject}` : ""}`}
-                      aria-label={`${getProviderLabel(identity.provider || "user")} подключен`}
-                    >
-                      <span className={styles.providerIcon}>
-                        <AuthProviderIcon
-                          providerId={identity.provider || "user"}
-                          className={styles.providerIconGraphic}
-                        />
-                      </span>
-                    </span>
-                  ))
-                ) : null}
-              </div>
+              <LinkedProviderIcons identities={session.identities} />
             </section>
 
             <section className={styles.card}>

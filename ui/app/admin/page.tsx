@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
-import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
+import LinkedProviderIcons from "@/components/auth/LinkedProviderIcons";
 import styles from "./admin.module.css";
 import {
   getAdminProviderCards,
@@ -16,21 +16,6 @@ const SECTION_ITEMS = [
   { id: "access", label: "Доступы", state: "soon" },
   { id: "team", label: "Команда", state: "soon" },
 ];
-
-function prettifyProvider(providerId: string) {
-  switch (providerId) {
-    case "google":
-      return "Google";
-    case "yandex":
-      return "Yandex";
-    case "vk":
-      return "VK";
-    case "telegram":
-      return "Telegram";
-    default:
-      return providerId;
-  }
-}
 
 export default async function AdminPage() {
   const cookieStore = await cookies();
@@ -159,41 +144,10 @@ export default async function AdminPage() {
                     Все эти входы ведут в один и тот же профиль и используют одни и те же роли.
                   </p>
                 </div>
-
-                <div className={styles.identityList}>
-                  {linkedProviders.length ? (
-                    linkedProviders.map(
-                      (identity: {
-                        provider?: string;
-                        email?: string;
-                        username?: string;
-                        subject?: string;
-                      }) => (
-                        <article key={`${identity.provider}-${identity.subject}`} className={styles.identityRow}>
-                          <div className={styles.identityMain}>
-                            <span className={styles.providerIcon} aria-hidden="true">
-                              <AuthProviderIcon
-                                providerId={identity.provider || "linked"}
-                                className={styles.providerIconGraphic}
-                              />
-                            </span>
-                            <div className={styles.identityCopy}>
-                              <span className={styles.identityProvider}>
-                                {prettifyProvider(identity.provider || "linked")}
-                              </span>
-                              <p className={styles.identityValue}>
-                                {identity.email || identity.username || identity.subject || "без публичных данных"}
-                              </p>
-                            </div>
-                          </div>
-                          <span className={styles.badge}>Подключен</span>
-                        </article>
-                      ),
-                    )
-                  ) : (
-                    <p className={styles.emptyText}>Пока виден только текущий способ входа.</p>
-                  )}
-                </div>
+                <LinkedProviderIcons
+                  identities={linkedProviders}
+                  emptyText="Пока виден только текущий способ входа."
+                />
               </section>
 
               <section className={styles.subcard}>

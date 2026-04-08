@@ -295,7 +295,6 @@
 }
 
 .providerStack,
-.identityList,
 .teamList,
 .list {
   display: grid;
@@ -316,64 +315,6 @@
 .providerRowStacked {
   display: grid;
   justify-content: stretch;
-}
-
-.identityRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.identityMain {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-
-.providerIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.providerIconGraphic {
-  width: 18px;
-  height: 18px;
-  display: block;
-}
-
-.identityCopy {
-  display: grid;
-  gap: 4px;
-  min-width: 0;
-}
-
-.identityProvider {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.identityValue {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 13px;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .teamCard {
@@ -405,20 +346,6 @@
 
 .emptyText {
   margin: 0;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 24px;
-  padding: 0 9px;
-  border-radius: 999px;
-  background: rgba(96, 181, 107, 0.15);
-  color: #9fe3a6;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
 }
 
 .badgeMuted {

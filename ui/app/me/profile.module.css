@@ -181,44 +181,6 @@
   color: #fff;
 }
 
-.identityList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.identityRow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  width: 52px;
-  height: 52px;
-  flex: 0 0 52px;
-}
-
-.providerIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.providerIconGraphic {
-  width: 18px;
-  height: 18px;
-  display: block;
-}
-
 @media (min-width: 900px) {
   .page {
     padding: var(--space-5) var(--space-4) var(--space-7);
