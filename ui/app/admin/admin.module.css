@@ -607,14 +607,26 @@
 }
 
 .auditActionRow {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  align-items: stretch;
+}
+
+.auditActionButton {
+  width: 100%;
 }
 
 .auditStatsGrid {
   display: grid;
   gap: 14px;
+}
+
+.auditSummaryText {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .auditProgressCard {
@@ -652,20 +664,96 @@
   background: linear-gradient(135deg, #f5d36c, #74d3ff);
 }
 
-.auditChartWrap {
-  height: 280px;
-  padding: 12px 8px 0;
+.auditSectionPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.auditAccordionList {
+  display: grid;
+  gap: 16px;
+}
+
+.auditAccordionItem {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
+  border-radius: 20px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02)),
     rgba(9, 13, 24, 0.82);
 }
 
-.auditSectionPills {
+.auditAccordionSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.auditAccordionSummary::-webkit-details-marker {
+  display: none;
+}
+
+.auditAccordionMeta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
   gap: 10px;
+}
+
+.auditAccordionCount {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.auditProblemList {
+  display: grid;
+  gap: 12px;
+}
+
+.auditProblemCard {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.auditProblemGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.auditProblemLabel {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.auditProblemValue {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.auditProblemReason {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .auditFailureGrid {
@@ -742,16 +830,17 @@
   }
 
   .auditActionRow {
-    justify-content: flex-start;
+    grid-template-columns: repeat(2, minmax(180px, 220px));
   }
 
   .auditStatsGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .auditFailureGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .auditProblemGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
 }
 
 @media (min-width: 1024px) {

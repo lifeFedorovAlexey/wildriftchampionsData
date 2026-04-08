@@ -1,16 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
-import {
-  Bar,
-  CartesianGrid,
-  ComposedChart,
-  Line,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import SearchField from "@/components/ui/SearchField";
 import styles from "@/app/admin/admin.module.css";
 
@@ -74,6 +64,16 @@ type ChampionAuditRow = {
   issues: IssueRow[];
 };
 
+type ChampionProblemEntry = {
+  kind: "mismatch" | "issue";
+  key: string;
+  source: string;
+  block: string;
+  combo: string;
+  error: string;
+  reason: string;
+};
+
 type AuditReport = {
   id: string;
   scope: "all" | "single";
@@ -105,6 +105,19 @@ type AuditPayload = {
 
 const AUDIT_DISPLAY_TIME_ZONE = "Europe/Moscow";
 const EMPTY_RUNS: RunSummary[] = [];
+const RANK_LABELS: Record<string, string> = {
+  diamond_plus: "Алмаз",
+  master: "Мастер",
+  grandmaster: "ГМ",
+  challenger: "Претендент",
+};
+const LANE_LABELS: Record<string, string> = {
+  top: "Барон",
+  jungle: "Лес",
+  mid: "Мид",
+  adc: "Дракон",
+  support: "Саппорт",
+};
 
 function formatDateTime(value?: string | null) {
   if (!value) return "n/a";
@@ -139,18 +152,104 @@ function formatStatusLabel(run?: RunSummary | null, report?: AuditReport | null)
   return "Ожидание";
 }
 
-function buildChartData(runs: RunSummary[] = []) {
-  return [...runs]
-    .reverse()
-    .map((run, index) => ({
-      id: run.id,
-      name: run.scope === "single" && run.slug ? run.slug : `#${index + 1}`,
-      label: formatDateTime(run.startedAt),
-      passed: Number(run.passedCount || 0),
-      failed: Number(run.failedCount || 0),
-      mismatches: Number(run.mismatchCount || 0),
-      issues: Number(run.issueCount || 0),
-    }));
+function formatRankLabel(value = "") {
+  return RANK_LABELS[String(value || "").trim()] || value || "n/a";
+}
+
+function formatLaneLabel(value = "") {
+  return LANE_LABELS[String(value || "").trim()] || value || "n/a";
+}
+
+function formatMismatchStatus(status = "") {
+  if (status === "source-drift") return "Источник отстаёт";
+  if (status === "same-date-mismatch") return "Данные не совпали";
+  if (status === "missing-source-data") return "В источнике нет данных";
+  return status || "Проблема сравнения";
+}
+
+function formatIssueSection(section = "") {
+  if (!section) return "Общий блок";
+  if (section === "compare") return "Сравнение";
+  if (section === "riftgg") return "RiftGG";
+  if (section === "wildriftfire") return "WildRiftFire";
+  if (section === "ui") return "UI";
+  return section;
+}
+
+function formatIssueDetails(details?: Record<string, unknown>) {
+  const entries = Object.entries(details || {}).filter(([, value]) => {
+    if (value == null) return false;
+    if (typeof value === "string") return value.trim().length > 0;
+    if (Array.isArray(value)) return value.length > 0;
+    return true;
+  });
+
+  if (!entries.length) return "";
+
+  return entries
+    .map(([key, value]) => {
+      const label = key
+        .replace(/([A-Z])/g, " $1")
+        .replace(/[_-]+/g, " ")
+        .trim()
+        .toLowerCase();
+      const rendered = Array.isArray(value) ? value.join(", ") : String(value);
+      return `${label}: ${rendered}`;
+    })
+    .join(" • ");
+}
+
+function formatMismatchReason(row: MismatchRow) {
+  const siteDate = row.siteDataDate || "n/a";
+  const sourceDate = row.sourceDataDate || "n/a";
+
+  if (row.status === "source-drift") {
+    return `На сайте стоит другой или более свежий срез: сайт ${siteDate}, RiftGG ${sourceDate}.`;
+  }
+
+  if (!row.sourceVisibleCount && !row.sourceTotalCount) {
+    return `В RiftGG для этого блока сейчас нет строк: сайт показывает ${row.siteVisibleCount || 0}, источник ${row.sourceVisibleCount || 0}.`;
+  }
+
+  if (row.status === "same-date-mismatch") {
+    return `Дата одинаковая (${siteDate}), но содержимое блока отличается: сайт ${row.siteVisibleCount || 0}/${row.siteTotalCount || 0}, RiftGG ${row.sourceVisibleCount || 0}/${row.sourceTotalCount || 0}.`;
+  }
+
+  return `Сайт ${row.siteVisibleCount || 0}/${row.siteTotalCount || 0}, RiftGG ${row.sourceVisibleCount || 0}/${row.sourceTotalCount || 0}, даты ${siteDate} vs ${sourceDate}.`;
+}
+
+function buildChampionProblemEntries(champion: ChampionAuditRow): ChampionProblemEntry[] {
+  const mismatchEntries = champion.mismatches.map((row, index) => ({
+    kind: "mismatch" as const,
+    key: `${champion.slug}-mismatch-${index}`,
+    source: "RiftGG",
+    block: row.sectionLabel || "Сравнение",
+    combo: `${formatRankLabel(row.rank)} / ${formatLaneLabel(row.lane)}`,
+    error: formatMismatchStatus(row.status),
+    reason: formatMismatchReason(row),
+  }));
+
+  const issueEntries = champion.issues.map((issue, index) => ({
+    kind: "issue" as const,
+    key: `${champion.slug}-issue-${index}`,
+    source: formatIssueSection(issue.section),
+    block: formatIssueSection(issue.section),
+    combo: "Общий прогон",
+    error: issue.message || "Issue",
+    reason: formatIssueDetails(issue.details) || "Подробная причина не была сохранена в отчёте.",
+  }));
+
+  return [...mismatchEntries, ...issueEntries];
+}
+
+function pluralizeGuideWord(count: number) {
+  const value = Math.abs(Number(count || 0)) % 100;
+  const mod10 = value % 10;
+
+  if (value > 10 && value < 20) return "гайдов";
+  if (mod10 === 1) return "гайд";
+  if (mod10 >= 2 && mod10 <= 4) return "гайда";
+  return "гайдов";
 }
 
 async function fetchAuditPayload(runId = ""): Promise<AuditPayload> {
@@ -232,7 +331,6 @@ export default function AdminGuidesAuditClient({
 
     return runs[0] || activeRun || null;
   }, [activeRun, runs, selectedRunId]);
-  const chartData = useMemo(() => buildChartData(runs), [runs]);
   const failureRows = useMemo(
     () =>
       [...(report?.failedChampions || [])].sort(
@@ -390,10 +488,19 @@ export default function AdminGuidesAuditClient({
   }
 
   const totals = report?.totals || {};
-  const progressTotal = selectedRun?.targetCount || totals.champions || 0;
-  const progressValue = payload.running
+  const queueTotal = selectedRun?.targetCount || totals.champions || 0;
+  const processedCount = payload.running
     ? selectedRun?.processedCount || 0
     : totals.champions || selectedRun?.processedCount || 0;
+  const passedCount = totals.passed || selectedRun?.passedCount || 0;
+  const failedCount = totals.failed || selectedRun?.failedCount || 0;
+  const mismatchCount = totals.mismatches || selectedRun?.mismatchCount || 0;
+  const issueCount = totals.issues || selectedRun?.issueCount || 0;
+  const checkedCombosCount = totals.checkedCombos || selectedRun?.checkedCombos || 0;
+  const remainingCount = Math.max(0, queueTotal - processedCount);
+  const progressSummary = payload.running
+    ? `Сейчас обработано ${processedCount} из ${queueTotal || "?"} ${pluralizeGuideWord(queueTotal)}. Из них ${passedCount} успешно, ${failedCount} с проблемами, осталось ${remainingCount}.`
+    : `В этом прогоне было ${queueTotal} ${pluralizeGuideWord(queueTotal)}: ${passedCount} успешно, ${failedCount} с проблемами, mismatch-ов ${mismatchCount}, issues ${issueCount}.`;
 
   return (
     <div className={styles.auditStack}>
@@ -495,7 +602,7 @@ export default function AdminGuidesAuditClient({
           <div className={styles.auditActionRow}>
             <button
               type="button"
-              className={styles.button}
+              className={`${styles.button} ${styles.auditActionButton}`}
               onClick={() => {
                 startTransition(() => {
                   void handleRunStart().catch((error: Error) => {
@@ -509,21 +616,7 @@ export default function AdminGuidesAuditClient({
             </button>
             <button
               type="button"
-              className={`${styles.button} ${styles.buttonSecondary}`}
-              onClick={() => {
-                startTransition(() => {
-                  void refresh().catch((error: Error) => {
-                    setErrorText(error.message || "guides_audit_unavailable");
-                  });
-                });
-              }}
-              disabled={isPending}
-            >
-              Обновить
-            </button>
-            <button
-              type="button"
-              className={`${styles.button} ${styles.buttonDanger}`}
+              className={`${styles.button} ${styles.buttonDanger} ${styles.auditActionButton}`}
               onClick={() => {
                 startTransition(() => {
                   void handleClearReports().catch((error: Error) => {
@@ -573,37 +666,39 @@ export default function AdminGuidesAuditClient({
 
         <div className={styles.auditStatsGrid}>
           <article className={styles.statCard}>
-            <span className={styles.statLabel}>Чемпионы</span>
-            <strong className={styles.statValue}>{totals.champions || selectedRun?.targetCount || 0}</strong>
+            <span className={styles.statLabel}>Всего в очереди</span>
+            <strong className={styles.statValue}>{queueTotal}</strong>
+          </article>
+          <article className={styles.statCard}>
+            <span className={styles.statLabel}>Обработано</span>
+            <strong className={styles.statValue}>{processedCount}</strong>
           </article>
           <article className={styles.statCard}>
             <span className={styles.statLabel}>Успешно</span>
-            <strong className={styles.statValue}>{totals.passed || selectedRun?.passedCount || 0}</strong>
+            <strong className={styles.statValue}>{passedCount}</strong>
           </article>
           <article className={styles.statCard}>
-            <span className={styles.statLabel}>Проблемные</span>
-            <strong className={styles.statValue}>{totals.failed || selectedRun?.failedCount || 0}</strong>
+            <span className={styles.statLabel}>С проблемами</span>
+            <strong className={styles.statValue}>{failedCount}</strong>
           </article>
           <article className={styles.statCard}>
             <span className={styles.statLabel}>Mismatch-и</span>
-            <strong className={styles.statValue}>{totals.mismatches || selectedRun?.mismatchCount || 0}</strong>
+            <strong className={styles.statValue}>{mismatchCount}</strong>
           </article>
           <article className={styles.statCard}>
             <span className={styles.statLabel}>Issues</span>
-            <strong className={styles.statValue}>{totals.issues || selectedRun?.issueCount || 0}</strong>
-          </article>
-          <article className={styles.statCard}>
-            <span className={styles.statLabel}>Комбо проверено</span>
-            <strong className={styles.statValue}>{totals.checkedCombos || selectedRun?.checkedCombos || 0}</strong>
+            <strong className={styles.statValue}>{issueCount}</strong>
           </article>
         </div>
+
+        <p className={styles.auditSummaryText}>{progressSummary}</p>
 
         <div className={styles.auditProgressCard}>
           <div className={styles.auditProgressMeta}>
             <span className={styles.statLabel}>Прогресс</span>
             <span className={styles.auditMetaText}>
               {payload.running
-                ? `${progressValue} / ${progressTotal || "?"}`
+                ? `${processedCount} / ${queueTotal || "?"}`
                 : `Старт ${formatDateTime(report?.startedAt || selectedRun?.startedAt)}`}
             </span>
           </div>
@@ -611,13 +706,16 @@ export default function AdminGuidesAuditClient({
             <div
               className={styles.auditProgressFill}
               style={{
-                width: `${progressTotal ? Math.max(6, Math.min(100, (progressValue / progressTotal) * 100)) : 8}%`,
+                width: `${queueTotal ? Math.max(6, Math.min(100, (processedCount / queueTotal) * 100)) : 8}%`,
               }}
             />
           </div>
           <div className={styles.auditMetaRow}>
             <span className={styles.auditMetaText}>
               Начало: {formatDateTime(report?.startedAt || selectedRun?.startedAt)}
+            </span>
+            <span className={styles.auditMetaText}>
+              Комбо: {checkedCombosCount}
             </span>
             <span className={styles.auditMetaText}>
               Конец: {formatDateTime(report?.finishedAt || selectedRun?.finishedAt)}
@@ -632,46 +730,9 @@ export default function AdminGuidesAuditClient({
       <section className={styles.panel}>
         <div className={styles.panelHead}>
           <div>
-            <h2 className={styles.panelTitle}>График прогонов</h2>
+            <h2 className={styles.panelTitle}>Список ошибок</h2>
             <p className={styles.cardText}>
-              По истории видно, где растёт число проблемных чемпионов и сколько mismatch-ов приносит каждый запуск.
-            </p>
-          </div>
-        </div>
-
-        {chartData.length ? (
-          <div className={styles.auditChartWrap}>
-            <ResponsiveContainer width="100%" height={280}>
-              <ComposedChart data={chartData} margin={{ top: 12, right: 12, left: 0, bottom: 0 }}>
-                <CartesianGrid stroke="rgba(255,255,255,0.08)" vertical={false} />
-                <XAxis dataKey="name" stroke="rgba(255,255,255,0.56)" tickLine={false} axisLine={false} />
-                <YAxis stroke="rgba(255,255,255,0.56)" tickLine={false} axisLine={false} allowDecimals={false} />
-                <Tooltip
-                  contentStyle={{
-                    borderRadius: 16,
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    background: "rgba(12,18,30,0.94)",
-                    color: "#fff",
-                  }}
-                  labelFormatter={(value) => `Прогон: ${String(value || "")}`}
-                />
-                <Bar dataKey="failed" fill="#ff8d6b" radius={[8, 8, 0, 0]} name="Проблемные чемпионы" />
-                <Line type="monotone" dataKey="mismatches" stroke="#f5d36c" strokeWidth={3} dot={false} name="Mismatch-и" />
-                <Line type="monotone" dataKey="issues" stroke="#74d3ff" strokeWidth={2} dot={false} name="Issues" />
-              </ComposedChart>
-            </ResponsiveContainer>
-          </div>
-        ) : (
-          <p className={styles.emptyText}>История запусков пока пустая.</p>
-        )}
-      </section>
-
-      <section className={styles.panel}>
-        <div className={styles.panelHead}>
-          <div>
-            <h2 className={styles.panelTitle}>Падения и mismatch-и</h2>
-            <p className={styles.cardText}>
-              Сначала идут чемпионы с самым тяжёлым отклонением, ниже можно быстро увидеть, где именно расходятся блоки.
+              Аккордеон по чемпионам: внутри строки в формате источник, блок, комбинация, ошибка и причина.
             </p>
           </div>
         </div>
@@ -687,18 +748,23 @@ export default function AdminGuidesAuditClient({
         ) : null}
 
         {failureRows.length ? (
-          <div className={styles.auditFailureGrid}>
+          <div className={styles.auditAccordionList}>
             {failureRows.map((champion) => (
-              <article key={champion.slug} className={styles.auditFailureCard}>
-                <div className={styles.auditFailureHead}>
+              <details key={champion.slug} className={styles.auditAccordionItem} open>
+                <summary className={styles.auditAccordionSummary}>
                   <div>
                     <h3 className={styles.cardTitle}>{champion.slug}</h3>
                     <p className={styles.auditMetaText}>
                       mismatch-и: {champion.mismatchCount} • issues: {champion.issuesCount} • комбо: {champion.checkedCombos}
                     </p>
                   </div>
-                  <span className={`${styles.auditStatusPill} ${styles.auditStatusFail}`}>Проблема</span>
-                </div>
+                  <div className={styles.auditAccordionMeta}>
+                    <span className={`${styles.auditStatusPill} ${styles.auditStatusFail}`}>Проблема</span>
+                    <span className={styles.auditAccordionCount}>
+                      {champion.mismatchCount + champion.issuesCount} записей
+                    </span>
+                  </div>
+                </summary>
 
                 {champion.failedSections.length ? (
                   <div className={styles.auditSectionPills}>
@@ -708,30 +774,32 @@ export default function AdminGuidesAuditClient({
                   </div>
                 ) : null}
 
-                {champion.mismatches.length ? (
-                  <div className={styles.auditDetailList}>
-                    {champion.mismatches.slice(0, 8).map((row, index) => (
-                      <div key={`${champion.slug}-mismatch-${index}`} className={styles.auditDetailRow}>
-                        <strong>{row.sectionLabel}</strong>
-                        <span>
-                          {row.rank} / {row.lane} • {row.status} • site {row.siteDataDate || "n/a"} vs source {row.sourceDataDate || "n/a"}
-                        </span>
+                <div className={styles.auditProblemList}>
+                  {buildChampionProblemEntries(champion).map((entry) => (
+                    <article key={entry.key} className={styles.auditProblemCard}>
+                      <div className={styles.auditProblemGrid}>
+                        <div>
+                          <span className={styles.auditProblemLabel}>Выгрузка</span>
+                          <strong className={styles.auditProblemValue}>{entry.source}</strong>
+                        </div>
+                        <div>
+                          <span className={styles.auditProblemLabel}>Блок</span>
+                          <strong className={styles.auditProblemValue}>{entry.block}</strong>
+                        </div>
+                        <div>
+                          <span className={styles.auditProblemLabel}>Комбинация</span>
+                          <strong className={styles.auditProblemValue}>{entry.combo}</strong>
+                        </div>
+                        <div>
+                          <span className={styles.auditProblemLabel}>Ошибка</span>
+                          <strong className={styles.auditProblemValue}>{entry.error}</strong>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                ) : null}
-
-                {champion.issues.length ? (
-                  <div className={styles.auditDetailList}>
-                    {champion.issues.slice(0, 6).map((issue, index) => (
-                      <div key={`${champion.slug}-issue-${index}`} className={styles.auditDetailRow}>
-                        <strong>{issue.section || "issue"}</strong>
-                        <span>{issue.message}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
-              </article>
+                      <p className={styles.auditProblemReason}>{entry.reason}</p>
+                    </article>
+                  ))}
+                </div>
+              </details>
             ))}
           </div>
         ) : (
