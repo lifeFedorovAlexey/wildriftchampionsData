@@ -1,6 +1,8 @@
+import Image from "next/image";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import LinkedProviderIcons from "@/components/auth/LinkedProviderIcons";
 import TopPillLink from "@/components/TopPillLink";
+import NativeImage from "@/components/ui/NativeImage";
 import { buildPeakRankIconUrl, getPeakRankLabel } from "@/lib/profile-ranks.js";
 import ProfileEditorForm from "./ProfileEditorForm";
 import styles from "@/app/me/profile.module.css";
@@ -115,7 +117,7 @@ export default function PrivateProfilePage({
             <div className={styles.profileHeader}>
               <div className={styles.avatarWrap}>
                 {profile.avatarUrl ? (
-                  <img
+                  <NativeImage
                     src={profile.avatarUrl}
                     alt=""
                     width={72}
@@ -145,11 +147,12 @@ export default function PrivateProfilePage({
                 {peakRankLabel ? (
                   <span className={styles.profileRank}>
                     {peakRankIconUrl ? (
-                      <img
+                      <Image
                         src={peakRankIconUrl}
                         alt=""
                         width={26}
                         height={26}
+                        sizes="26px"
                         className={styles.profileRankIcon}
                       />
                     ) : null}

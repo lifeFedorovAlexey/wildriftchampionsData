@@ -1,6 +1,7 @@
 "use client";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import { ensureLocalAssetSrc } from "@/lib/asset-safety";
 import guideShared from "@/shared/guides-shared.js";
@@ -309,6 +310,37 @@ function toRiftTooltip(item?: RiftGgDictionaryItem | null): EntityTooltip | null
   };
 }
 
+function GuideAssetImage({
+  alt,
+  className,
+  height,
+  scope,
+  src,
+  width,
+}: {
+  alt: string;
+  className: string;
+  height: number;
+  scope: string;
+  src?: string | null;
+  width: number;
+}) {
+  const safeSrc = ensureLocalAssetSrc(scope, src);
+  if (!safeSrc) return null;
+
+  return (
+    <Image
+      src={safeSrc}
+      alt={repairGuideText(alt)}
+      width={width}
+      height={height}
+      sizes={`${width}px`}
+      unoptimized={safeSrc.startsWith("/wr-api/")}
+      className={className}
+    />
+  );
+}
+
 function HoverTooltip({
   tooltip,
   fallbackName,
@@ -322,10 +354,13 @@ function HoverTooltip({
     <div className={styles.tooltip}>
       <div className={styles.tooltipTop}>
         {tooltip.imageUrl ? (
-          <img
+          <GuideAssetImage
+            alt={tooltip.title || fallbackName}
             className={styles.tooltipImage}
-            src={ensureLocalAssetSrc("GuideClient.tooltip", tooltip.imageUrl) || ""}
-            alt={repairGuideText(tooltip.title || fallbackName)}
+            height={52}
+            scope="GuideClient.tooltip"
+            src={tooltip.imageUrl}
+            width={52}
           />
         ) : null}
 
@@ -411,10 +446,13 @@ function OrbCard({
       <TooltipTrigger tooltip={item.tooltip} fallbackName={item.name}>
         <div className={styles.orbMediaWrap}>
           {item.imageUrl ? (
-            <img
+            <GuideAssetImage
+              alt={item.name}
               className={styles.orbMedia}
-              src={ensureLocalAssetSrc("GuideClient.orb", item.imageUrl) || ""}
-              alt={repairGuideText(item.name)}
+              height={56}
+              scope="GuideClient.orb"
+              src={item.imageUrl}
+              width={56}
             />
           ) : null}
         </div>
@@ -545,10 +583,13 @@ function RiftBuildPanel({
                     <TooltipTrigger tooltip={entity.tooltip} fallbackName={entity.name}>
                       <div className={styles.riftBuildItemMedia}>
                         {entity.imageUrl ? (
-                          <img
-                            className={styles.riftBuildItemIcon}
-                            src={ensureLocalAssetSrc("GuideClient.riftBuild", entity.imageUrl) || ""}
+                          <GuideAssetImage
                             alt={entity.name}
+                            className={styles.riftBuildItemIcon}
+                            height={44}
+                            scope="GuideClient.riftBuild"
+                            src={entity.imageUrl}
+                            width={44}
                           />
                         ) : (
                           <div className={styles.riftBuildItemFallback} aria-hidden="true">
@@ -1059,10 +1100,13 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                     >
                       <div className={styles.quickOrbWrap}>
                         {abilityImageSrc ? (
-                          <img
-                            className={styles.abilityIcon}
-                            src={ensureLocalAssetSrc("GuideClient.ability", abilityImageSrc) || ""}
+                          <GuideAssetImage
                             alt={ability.name}
+                            className={styles.abilityIcon}
+                            height={44}
+                            scope="GuideClient.ability"
+                            src={abilityImageSrc}
+                            width={44}
                           />
                         ) : null}
                       </div>

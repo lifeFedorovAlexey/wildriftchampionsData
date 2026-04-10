@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.css";
 
@@ -44,9 +45,13 @@ export default function Footer() {
                 className={styles.supportLogoLink}
                 aria-label="Boosty"
               >
-                <img
+                <Image
                   src="/boosty-logo.svg"
                   alt="Boosty"
+                  width={897}
+                  height={317}
+                  sizes="122px"
+                  unoptimized
                   className={styles.supportLogo}
                 />
               </a>
@@ -57,9 +62,12 @@ export default function Footer() {
                 className={styles.supportQrPanel}
                 aria-label="QR-код для поддержки проекта"
               >
-                <img
+                <Image
                   src="/boosty-donate-qr.png"
                   alt="QR-код для поддержки проекта"
+                  width={116}
+                  height={116}
+                  sizes="116px"
                   className={styles.supportQr}
                 />
               </a>

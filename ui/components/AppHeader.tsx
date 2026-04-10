@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -111,15 +112,17 @@ function ProfileIcon() {
   );
 }
 
-function BrandMark({ size }: { size: number }) {
+function BrandMark({ priority = false, size }: { priority?: boolean; size: number }) {
   return (
-    <img
+    <Image
       src="/favicon.ico"
       alt=""
       width={size}
       height={size}
+      sizes={`${size}px`}
+      priority={priority}
+      unoptimized
       className={styles.markImage}
-      loading="eager"
     />
   );
 }
@@ -219,7 +222,7 @@ export default function AppHeader() {
         <div className={styles.inner}>
           <Link href="/" className={styles.brand} aria-label="wildrift all stats.ru">
             <span className={styles.mark}>
-              <BrandMark size={28} />
+              <BrandMark size={28} priority />
             </span>
             <span className={styles.brandText}>
               <span className={styles.brandWord}>wildrift</span>

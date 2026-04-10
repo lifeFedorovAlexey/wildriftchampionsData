@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import styles from "@/app/me/profile.module.css";
+import NativeImage from "@/components/ui/NativeImage";
 import {
   getPeakRankOptions,
 } from "@/lib/profile-ranks.js";
@@ -120,7 +122,7 @@ export default function ProfileEditorForm({
                 title={option.label}
               >
                 {option.avatarUrl ? (
-                  <img
+                  <NativeImage
                     src={option.avatarUrl}
                     alt={option.label}
                     width={56}
@@ -199,11 +201,13 @@ export default function ProfileEditorForm({
                   className={styles.championOption}
                 >
                   {champion.iconUrl ? (
-                    <img
+                    <Image
                       src={champion.iconUrl}
                       alt=""
                       width={28}
                       height={28}
+                      sizes="28px"
+                      unoptimized={champion.iconUrl.startsWith("/wr-api/")}
                       className={styles.championOptionIcon}
                     />
                   ) : (
@@ -226,11 +230,13 @@ export default function ProfileEditorForm({
                 <div key={slug} className={styles.championPill}>
                   <input type="hidden" name="mainChampionSlugs" value={slug} />
                   {champion.iconUrl ? (
-                    <img
+                    <Image
                       src={champion.iconUrl}
                       alt=""
                       width={28}
                       height={28}
+                      sizes="28px"
+                      unoptimized={champion.iconUrl.startsWith("/wr-api/")}
                       className={styles.championOptionIcon}
                     />
                   ) : (
