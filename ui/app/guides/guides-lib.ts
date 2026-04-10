@@ -2,6 +2,7 @@ import {
   buildChampionLaneMap as buildChampionLaneMapShared,
   fetchChampionIndexFromApi as fetchChampionIndexFromApiShared,
   fetchChampionNamesFromApi as fetchChampionNamesFromApiShared,
+  GuideApiRequestError,
   fetchGuideFromApi as fetchGuideFromApiShared,
   fetchGuideSlugsFromApi as fetchGuideSlugsFromApiShared,
   fetchGuideSummariesFromApi as fetchGuideSummariesFromApiShared,
@@ -13,6 +14,7 @@ import {
 } from "./guides-lib.shared.js";
 
 export { getStatsApiBaseUrl };
+export { GuideApiRequestError };
 
 export type GuideSummary = {
   slug: string;

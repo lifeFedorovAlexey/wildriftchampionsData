@@ -4,7 +4,19 @@ import guideShared from "../../shared/guides-shared.js";
 
 export { getStatsApiBaseUrl };
 
-const { mapToLocalSlug, getGuideSlugAliases, toGuideLaneKey } = guideShared;
+const { mapToRiotSlug, getGuideSlugAliases, toGuideLaneKey } = guideShared;
+
+export class GuideApiRequestError extends Error {
+  constructor(message, details = {}) {
+    super(message, details?.cause ? { cause: details.cause } : undefined);
+    this.name = "GuideApiRequestError";
+    this.requestedSlug = String(details?.requestedSlug || "").trim() || null;
+    this.candidateSlug = String(details?.candidateSlug || "").trim() || null;
+    this.pathname = String(details?.pathname || "").trim() || null;
+    this.status =
+      Number.isFinite(details?.status) && details.status > 0 ? Number(details.status) : null;
+  }
+}
 
 function warnSlugLookup({ service, requestedSlug, candidateSlug = "", source = "", status = "" }) {
   const parts = [
@@ -29,7 +41,7 @@ function warnSlugLookup({ service, requestedSlug, candidateSlug = "", source = "
 function normalizeGuidePayloadSlug(guide, requestedSlug) {
   if (!guide || typeof guide !== "object") return guide;
 
-  const normalizedSlug = mapToLocalSlug(
+  const normalizedSlug = mapToRiotSlug(
     String(guide?.champion?.slug || requestedSlug || "").trim(),
   );
 
@@ -48,7 +60,7 @@ function normalizeGuideSummaryItems(items = []) {
   const bySlug = new Map();
 
   for (const item of Array.isArray(items) ? items : []) {
-    const normalizedSlug = mapToLocalSlug(String(item?.slug || "").trim());
+    const normalizedSlug = mapToRiotSlug(String(item?.slug || "").trim());
     if (!normalizedSlug || bySlug.has(normalizedSlug)) continue;
     bySlug.set(normalizedSlug, {
       ...item,
@@ -60,9 +72,12 @@ function normalizeGuideSummaryItems(items = []) {
 }
 
 export async function fetchGuideFromApi(slug) {
+  let lastError = null;
+
   for (const alias of getGuideSlugAliases(slug)) {
+    const pathname = `/api/guides/${encodeURIComponent(alias)}?lang=ru_ru`;
+
     try {
-      const pathname = `/api/guides/${encodeURIComponent(alias)}?lang=ru_ru`;
       const response = await fetch(buildApiUrl(pathname), { cache: "no-store" });
 
       if (response.status === 404) {
@@ -77,7 +92,12 @@ export async function fetchGuideFromApi(slug) {
       }
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status} for ${pathname}`);
+        throw new GuideApiRequestError(`Guide API returned HTTP ${response.status} for ${pathname}`, {
+          requestedSlug: slug,
+          candidateSlug: alias,
+          pathname,
+          status: response.status,
+        });
       }
 
       const payload = await response.json();
@@ -86,8 +106,23 @@ export async function fetchGuideFromApi(slug) {
         return normalizeGuidePayloadSlug(payload, slug);
       }
     } catch (error) {
-      console.error("guide api fetch error", error);
+      const normalizedError =
+        error instanceof GuideApiRequestError
+          ? error
+          : new GuideApiRequestError(`Guide API request failed for ${pathname}`, {
+              requestedSlug: slug,
+              candidateSlug: alias,
+              pathname,
+              cause: error,
+            });
+
+      lastError = normalizedError;
+      console.error("guide api fetch error", normalizedError);
     }
+  }
+
+  if (lastError) {
+    throw lastError;
   }
 
   return null;
@@ -103,13 +138,13 @@ export async function fetchGuideSlugsFromApi() {
     });
 
     if (Array.isArray(payload)) {
-      return Array.from(new Set(payload.map((item) => mapToLocalSlug(String(item || "").trim())).filter(Boolean)));
+      return Array.from(new Set(payload.map((item) => mapToRiotSlug(String(item || "").trim())).filter(Boolean)));
     }
 
     return Array.from(
       new Set(
         (payload.items || [])
-          .map((item) => mapToLocalSlug(String(item?.slug || "").trim()))
+          .map((item) => mapToRiotSlug(String(item?.slug || "").trim()))
           .filter(Boolean),
       ),
     );

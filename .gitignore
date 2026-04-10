@@ -1,5 +1,10 @@
 /node_modules
 /.env
+/ui/public/merged/
 /ui/public/riot/
+/ui/data/
 /.codex-logs/
 /wr-api/
+.runtime/
+.runtime-local-server.log
+.runtime-local-server.err.log

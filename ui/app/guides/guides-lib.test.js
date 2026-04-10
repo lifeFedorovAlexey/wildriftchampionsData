@@ -6,6 +6,7 @@ import {
   buildChampionLaneMap,
   fetchChampionIndexFromApi,
   fetchChampionNamesFromApi,
+  GuideApiRequestError,
   fetchGuideFromApi,
   fetchGuideSlugsFromApi,
   fetchGuideSummariesFromApi,
@@ -66,7 +67,7 @@ test("fetchGuideSlugsFromApi supports object payload and trims empty slugs", asy
 
   try {
     const result = await fetchGuideSlugsFromApi();
-    assert.deepEqual(result, ["ahri", "lux", "monkeyking"]);
+    assert.deepEqual(result, ["ahri", "lux", "wukong"]);
   } finally {
     global.fetch = previousFetch;
   }
@@ -102,7 +103,27 @@ test("fetchGuideFromApi falls back to alias guide slugs and normalizes champion 
     const result = await fetchGuideFromApi("monkeyking");
     assert.equal(requestedUrls[0]?.includes("/api/guides/monkeyking?lang=ru_ru"), true);
     assert.equal(requestedUrls[1]?.includes("/api/guides/wukong?lang=ru_ru"), true);
-    assert.equal(result?.champion?.slug, "monkeyking");
+    assert.equal(result?.champion?.slug, "wukong");
+  } finally {
+    global.fetch = previousFetch;
+  }
+});
+
+test("fetchGuideFromApi throws GuideApiRequestError for api failures instead of masking them as 404", async () => {
+  const previousFetch = global.fetch;
+
+  global.fetch = async () => {
+    throw new TypeError("fetch failed");
+  };
+
+  try {
+    await assert.rejects(
+      () => fetchGuideFromApi("aatrox"),
+      (error) =>
+        error instanceof GuideApiRequestError &&
+        error.message.includes("Guide API request failed") &&
+        error.requestedSlug === "aatrox",
+    );
   } finally {
     global.fetch = previousFetch;
   }
@@ -179,7 +200,7 @@ test("fetchGuideSummariesFromApi normalizes legacy guide slugs", async () => {
     const result = await fetchGuideSummariesFromApi();
     assert.deepEqual(
       result.map((item) => item.slug),
-      ["monkeyking", "ahri"],
+      ["wukong", "ahri"],
     );
     assert.deepEqual(result[0].availableLanes, ["adc", "mid"]);
   } finally {

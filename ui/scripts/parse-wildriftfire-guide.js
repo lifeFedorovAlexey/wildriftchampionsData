@@ -6,12 +6,14 @@ const https = require("node:https");
 const cheerio = require("cheerio");
 const {
   WILDRIFTFIRE_GUIDE_SLUG_ALIASES,
-  RIOT_CHAMPION_SLUG_ALIASES,
   repairGuideText,
 } = require("../shared/guides-shared.js");
+const {
+  fetchRiotChampionPageWithFallbacks,
+  parseRiotChampionData,
+} = require("./lib/riot-champion-page.js");
 
 const SITE_ORIGIN = "https://www.wildriftfire.com";
-const RIOT_ORIGIN = "https://wildrift.leagueoflegends.com";
 const OUTPUT_ROOT = path.join(
   __dirname,
   "..",
@@ -40,6 +42,14 @@ function warnSlugLookup({ service, requestedSlug, candidateSlug = "", source = "
   console.warn(parts.join(" "));
 }
 
+function createHttpError({ source, statusCode, url, message }) {
+  const error = new Error(message);
+  error.source = source;
+  error.statusCode = statusCode;
+  error.url = url;
+  return error;
+}
+
 function fetchHtml(url, context = {}) {
   const headers = {
     "user-agent":
@@ -65,7 +75,14 @@ function fetchHtml(url, context = {}) {
               status: "404",
             });
           }
-          reject(new Error(`HTTP ${res.statusCode} for ${url}`));
+          reject(
+            createHttpError({
+              source: context.source || "wildriftfire",
+              statusCode: res.statusCode,
+              url,
+              message: `HTTP ${res.statusCode} for ${url}`,
+            }),
+          );
           res.resume();
           return;
         }
@@ -108,65 +125,6 @@ function fetchTooltipHtml(relationType, relationId) {
       })
       .on("error", reject);
   });
-}
-
-function fetchRiotChampionPage(slug, requestedSlug = slug) {
-  const url = `${RIOT_ORIGIN}/ru-ru/champions/${slug}/`;
-  const headers = {
-    "user-agent":
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-    accept:
-      "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-    "accept-language": "ru-RU,ru;q=0.9,en;q=0.8",
-    "cache-control": "no-cache",
-  };
-
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, { headers }, (res) => {
-        let data = "";
-
-        if (res.statusCode !== 200) {
-          if (res.statusCode === 404) {
-            warnSlugLookup({
-              service: "ui/parse-wildriftfire-guide",
-              requestedSlug,
-              candidateSlug: slug,
-              source: "riot",
-              status: "404",
-            });
-          }
-          reject(new Error(`HTTP ${res.statusCode} for ${url}`));
-          res.resume();
-          return;
-        }
-
-        res.setEncoding("utf8");
-        res.on("data", (chunk) => {
-          data += chunk;
-        });
-        res.on("end", () => resolve(data));
-      })
-      .on("error", reject);
-  });
-}
-
-async function fetchRiotChampionPageWithFallbacks(slug) {
-  const candidates = Array.from(
-    new Set([slug, ...(RIOT_CHAMPION_SLUG_ALIASES[slug] || [])].filter(Boolean)),
-  );
-
-  let lastError = null;
-  for (const candidate of candidates) {
-    try {
-      const html = await fetchRiotChampionPage(candidate, slug);
-      return { html, resolvedSlug: candidate };
-    } catch (error) {
-      lastError = error;
-    }
-  }
-
-  throw lastError;
 }
 
 function sha1(value) {
@@ -556,70 +514,6 @@ function parseTooltipPayload(html) {
   };
 }
 
-function htmlToText(value = "") {
-  return cleanText(
-    String(value)
-      .replace(/<br\s*\/?>/gi, "\n")
-      .replace(/<[^>]+>/g, " "),
-  );
-}
-
-function parseRiotChampionData(html, slug) {
-  const match = html.match(
-    /<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/,
-  );
-  if (!match) {
-    return null;
-  }
-
-  const payload = JSON.parse(match[1]);
-  const page = payload?.props?.pageProps?.page;
-  const blades = page?.blades || [];
-  const masthead = blades.find((blade) => blade.type === "characterMasthead");
-  const abilitiesBlade = blades.find((blade) => blade.type === "iconTab");
-  const skinsBlade = blades.find((blade) => blade.type === "landingMediaCarousel");
-
-  const roles = masthead?.role?.roles?.map((role) => role.name).filter(Boolean) || [];
-  const abilities =
-    abilitiesBlade?.groups?.map((group) => ({
-      name: cleanText(group?.content?.title || group?.label || ""),
-      slug: slugify(group?.content?.title || group?.label || ""),
-      subtitle: cleanText(group?.content?.subtitle || ""),
-      description: htmlToText(group?.content?.description?.body || ""),
-      iconUrl: group?.thumbnail?.url || null,
-      videoUrl: group?.content?.media?.sources?.[0]?.src || null,
-    }))?.filter((ability) => ability.name) || [];
-  const skins =
-    skinsBlade?.groups?.map((group) => ({
-      name: cleanText(group?.label || ""),
-      slug: slugify(group?.label || ""),
-      imageUrl: group?.thumbnail?.url || group?.content?.media?.url || null,
-    }))?.filter((skin) => skin.name) || [];
-
-  return {
-    source: {
-      site: "riot",
-      url: `${RIOT_ORIGIN}/ru-ru/champions/${slug}/`,
-    },
-    champion: {
-      name: cleanText(masthead?.title || page?.title || slug),
-      title: cleanText(masthead?.subtitle || ""),
-    },
-    roleLabel: cleanText(masthead?.role?.label || ""),
-    roles,
-    difficultyLabel: cleanText(masthead?.difficulty?.label || ""),
-    difficulty: cleanText(masthead?.difficulty?.name || ""),
-    heroMedia: {
-      remoteVideoUrl: masthead?.backdrop?.background?.sources?.[0]?.src || null,
-      localVideoPath: null,
-    },
-    abilitiesLabel: cleanText(abilitiesBlade?.header?.title || ""),
-    abilities,
-    skinsLabel: cleanText(skinsBlade?.header?.title || ""),
-    skins,
-  };
-}
-
 function mergeOfficialDataIntoGuide(guide, officialData) {
   if (!officialData) return guide;
 
@@ -688,10 +582,21 @@ function mergeOfficialDataIntoGuide(guide, officialData) {
 
 async function enrichDictionaryWithTooltips(dictionary, relationType) {
   const entries = Object.values(dictionary);
+  const report = {
+    relationType,
+    total: entries.length,
+    enriched: 0,
+    skipped: 0,
+    failed: 0,
+    failedEntries: [],
+  };
 
   await Promise.all(
     entries.map(async (entry) => {
-      if (!entry?.id) return;
+      if (!entry?.id) {
+        report.skipped += 1;
+        return;
+      }
 
       try {
         const html = await fetchTooltipHtml(relationType, entry.id);
@@ -709,11 +614,25 @@ async function enrichDictionaryWithTooltips(dictionary, relationType) {
         if (!entry.imageUrl && entry.tooltip?.imageUrl) {
           entry.imageUrl = entry.tooltip.imageUrl;
         }
-      } catch {
+        report.enriched += 1;
+      } catch (error) {
+        report.failed += 1;
+        if (report.failedEntries.length < 10) {
+          report.failedEntries.push({
+            slug: entry.slug || null,
+            id: entry.id || null,
+            error: error?.message || String(error),
+          });
+        }
+        console.warn(
+          `[wildriftfire-guide] tooltip enrich failed relation=${relationType} slug=${entry.slug || "-"} id=${entry.id || "-"} error=${error?.message || error}`,
+        );
         entry.tooltip = null;
       }
     }),
   );
+
+  return report;
 }
 
 function applyOfficialAbilityTooltips(guide) {
@@ -896,58 +815,181 @@ async function writeGuideFile(slug, data) {
   return outputPath;
 }
 
-async function scrapeGuide(slug, url = resolveWildRiftFireGuideUrl(slug)) {
+async function fetchGuideSources(slug, url = resolveWildRiftFireGuideUrl(slug)) {
   const html = await fetchHtml(url, {
     requestedSlug: slug,
     candidateSlug: WILDRIFTFIRE_GUIDE_SLUG_ALIASES[slug] || slug,
     source: "wildriftfire",
   });
-  const guide = parseGuide(html, url, slug);
-  const { html: riotHtml, resolvedSlug } = await fetchRiotChampionPageWithFallbacks(slug);
-  const officialData = parseRiotChampionData(riotHtml, resolvedSlug);
+  let riotHtml = null;
+  let resolvedSlug = null;
+  let resolvedLocale = null;
+  let riotFetchError = null;
+
+  try {
+    const riotPage = await fetchRiotChampionPageWithFallbacks(slug);
+    riotHtml = riotPage.html;
+    resolvedSlug = riotPage.resolvedSlug;
+    resolvedLocale = riotPage.resolvedLocale;
+  } catch (error) {
+    riotFetchError = {
+      message: error instanceof Error ? error.message : String(error),
+      source: error?.source || "riot",
+      statusCode: Number(error?.statusCode) || null,
+      url: error?.url || null,
+    };
+    console.warn(
+      `[wildriftfire-guide] riot detail unavailable slug=${slug} source=${riotFetchError.source} status=${riotFetchError.statusCode || "n/a"} url=${riotFetchError.url || "n/a"} message=${riotFetchError.message}`,
+    );
+  }
+
+  return {
+    guideHtml: html,
+    guideUrl: url,
+    riotHtml,
+    riotResolvedSlug: resolvedSlug,
+    riotResolvedLocale: resolvedLocale,
+    riotFetchError,
+  };
+}
+
+function parseGuideSources({
+  slug,
+  guideHtml,
+  guideUrl,
+  riotHtml,
+  riotResolvedSlug,
+  riotResolvedLocale,
+}) {
+  const guide = parseGuide(guideHtml, guideUrl, slug);
+  const officialData =
+    riotHtml && riotResolvedSlug
+      ? parseRiotChampionData(riotHtml, riotResolvedSlug, riotResolvedLocale)
+      : null;
 
   mergeOfficialDataIntoGuide(guide, officialData);
 
-  await enrichDictionaryWithTooltips(guide.dictionaries.items, "Item");
-  await enrichDictionaryWithTooltips(guide.dictionaries.runes, "Rune");
-  await enrichDictionaryWithTooltips(
+  return {
+    guide, 
+    officialData,
+  };
+}
+
+async function enrichGuideArtifacts(guide) {
+  const tooltipReports = [];
+
+  tooltipReports.push(await enrichDictionaryWithTooltips(guide.dictionaries.items, "Item"));
+  tooltipReports.push(await enrichDictionaryWithTooltips(guide.dictionaries.runes, "Rune"));
+  tooltipReports.push(await enrichDictionaryWithTooltips(
     guide.dictionaries.summonerSpells,
     "SummonerSpell",
-  );
-  await enrichDictionaryWithTooltips(guide.dictionaries.abilities, "Ability");
+  ));
+  tooltipReports.push(await enrichDictionaryWithTooltips(guide.dictionaries.abilities, "Ability"));
   applyOfficialAbilityTooltips(guide);
 
-  return guide;
+  return {
+    tooltipReports,
+  };
+}
+
+function buildGuideImportReport({ slug, sources, guide, officialData, enrichment }) {
+  return {
+    slug,
+    steps: {
+        fetch: {
+          guideUrl: sources.guideUrl,
+          riotResolvedSlug: sources.riotResolvedSlug,
+          riotResolvedLocale: sources.riotResolvedLocale,
+          riotFetchError: sources.riotFetchError,
+          guideContentHash: guide?.source?.contentHash || null,
+        },
+      parse: {
+        variants: Array.isArray(guide?.variants) ? guide.variants.length : 0,
+        counters: Array.isArray(guide?.counters) ? guide.counters.length : 0,
+        synergies: Array.isArray(guide?.synergies) ? guide.synergies.length : 0,
+        guideAbilities: Array.isArray(guide?.guideAbilities) ? guide.guideAbilities.length : 0,
+      },
+      official: {
+        resolved: Boolean(officialData),
+        roles: Array.isArray(officialData?.roles) ? officialData.roles.length : 0,
+        abilities: Array.isArray(officialData?.abilities) ? officialData.abilities.length : 0,
+        skins: Array.isArray(officialData?.skins) ? officialData.skins.length : 0,
+      },
+      enrich: {
+        tooltipReports: enrichment.tooltipReports,
+      },
+    },
+    summary: {
+      champion: guide?.champion?.name || slug,
+      patch: guide?.metadata?.patch || null,
+      tier: guide?.metadata?.tier || null,
+      items: Object.keys(guide?.dictionaries?.items || {}).length,
+      runes: Object.keys(guide?.dictionaries?.runes || {}).length,
+      abilities: Object.keys(guide?.dictionaries?.abilities || {}).length,
+      officialAbilities: guide?.abilitiesRu?.length || 0,
+    },
+  };
+}
+
+async function runGuideScrapePipeline(slug, url = resolveWildRiftFireGuideUrl(slug)) {
+  const sources = await fetchGuideSources(slug, url);
+  const parsed = parseGuideSources({
+    slug,
+      guideHtml: sources.guideHtml,
+      guideUrl: sources.guideUrl,
+      riotHtml: sources.riotHtml,
+      riotResolvedSlug: sources.riotResolvedSlug,
+      riotResolvedLocale: sources.riotResolvedLocale,
+    });
+  const enrichment = await enrichGuideArtifacts(parsed.guide);
+  const report = buildGuideImportReport({
+    slug,
+    sources,
+    guide: parsed.guide,
+    officialData: parsed.officialData,
+    enrichment,
+  });
+
+  console.log(
+    `[wildriftfire-guide] done slug=${slug} variants=${report.steps.parse.variants} counters=${report.steps.parse.counters} synergies=${report.steps.parse.synergies} officialAbilities=${report.summary.officialAbilities}`,
+  );
+
+  return {
+    guide: parsed.guide,
+    report,
+  };
+}
+
+async function scrapeGuide(slug, url = resolveWildRiftFireGuideUrl(slug)) {
+  const result = await runGuideScrapePipeline(slug, url);
+
+  return result.guide;
 }
 
 async function main() {
-  const slug = process.argv[2] || "braum";
-  const url = process.argv[3] || resolveWildRiftFireGuideUrl(slug);
-  const guide = await scrapeGuide(slug, url);
-  const outputPath = await writeGuideFile(slug, guide);
+  const args = process.argv.slice(2);
+  const writeLocal = args.includes("--write-local");
+  const positional = args.filter((arg) => arg !== "--write-local");
+  const slug = positional[0] || "braum";
+  const url = positional[1] || resolveWildRiftFireGuideUrl(slug);
+  const { guide, report } = await runGuideScrapePipeline(slug, url);
 
-  console.log(`Saved guide JSON to ${outputPath}`);
-  console.log(
-    JSON.stringify(
-      {
-        champion: guide.champion.name,
-        patch: guide.metadata.patch,
-        tier: guide.metadata.tier,
-        items: Object.keys(guide.dictionaries.items).length,
-        runes: Object.keys(guide.dictionaries.runes).length,
-        abilities: Object.keys(guide.dictionaries.abilities).length,
-        counters: guide.counters.length,
-        synergies: guide.synergies.length,
-        officialAbilities: guide.abilitiesRu?.length || 0,
-      },
-      null,
-      2,
-    ),
-  );
+  if (writeLocal) {
+    const outputPath = await writeGuideFile(slug, guide);
+    console.log(`Saved guide JSON to ${outputPath}`);
+  } else {
+    console.log(JSON.stringify(guide, null, 2));
+  }
+
+  console.log(JSON.stringify(report, null, 2));
 }
 
 module.exports = {
   OUTPUT_ROOT,
+  fetchGuideSources,
+  parseGuideSources,
+  enrichGuideArtifacts,
+  runGuideScrapePipeline,
   scrapeGuide,
   writeGuideFile,
 };

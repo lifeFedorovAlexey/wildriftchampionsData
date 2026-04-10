@@ -1,3 +1,6 @@
+import { loadScriptEnv } from "./lib/script-env.js";
+
+loadScriptEnv();
 
 const DEFAULT_STATS_API_ORIGIN = "http://127.0.0.1:3001";
 
@@ -25,6 +28,22 @@ function getSyncHeaders() {
   }
 
   return headers;
+}
+
+function getGuidesSyncSecret() {
+  return String(process.env.GUIDES_SYNC_SECRET || "").trim();
+}
+
+function assertSyncConfig(options = {}) {
+  if (options.dryRun) {
+    return;
+  }
+
+  if (!getGuidesSyncSecret()) {
+    throw new Error(
+      "GUIDES_SYNC_SECRET is missing for guide sync. Configure it in ui/.env.local, ui/.env, or the process environment before running sync:guides.",
+    );
+  }
 }
 
 async function listChampionSlugs() {
@@ -102,6 +121,10 @@ function warnSlugLookup({ service, requestedSlug, candidateSlug = "", source = "
   console.warn(parts.join(" "));
 }
 
+function isWildRiftFireNoGuideError(error) {
+  return error?.source === "wildriftfire" && Number(error?.statusCode) === 404;
+}
+
 async function pushGuideToApi(guide) {
   const baseUrl = getStatsApiBaseUrl();
   const importUrl =
@@ -151,6 +174,7 @@ async function syncOneGuide(slug, options) {
 
 async function main() {
   const options = parseCliArgs(process.argv);
+  assertSyncConfig(options);
   const slugs =
     options.all || !options.slugs.length
       ? await listChampionSlugs()
@@ -171,7 +195,7 @@ async function main() {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
 
-      if (message.includes("HTTP 404")) {
+      if (isWildRiftFireNoGuideError(error)) {
         warnSlugLookup({
           service: "ui/sync-wildriftfire-guides",
           requestedSlug: slug,

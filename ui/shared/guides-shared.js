@@ -1,5 +1,5 @@
 const SLUG_RIOT_REMAP = {
-  nunu: "nunu-willump",
+  nunu: "nunu-and-willump",
   monkeyking: "wukong",
   xinzhao: "xin-zhao",
   aurelionsol: "aurelion-sol",
@@ -13,6 +13,8 @@ const SLUG_RIOT_REMAP = {
 
 const WILDRIFTFIRE_GUIDE_SLUG_ALIASES = {
   nunu: "nunu-amp-willump",
+  "nunu-and-willump": "nunu-amp-willump",
+  "nunu-willump": "nunu-amp-willump",
   monkeyking: "wukong",
   xinzhao: "xin-zhao",
   aurelionsol: "aurelion-sol",

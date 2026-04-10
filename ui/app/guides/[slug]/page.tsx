@@ -6,6 +6,7 @@ import TopPillLink from "@/components/TopPillLink";
 import GuideClient, { type GuideData } from "./GuideClient";
 import {
   type BulkResponse,
+  GuideApiRequestError,
   fetchGuideFromApi,
   fetchGuideSlugsFromApi,
   fetchTierlistBulk,
@@ -87,7 +88,24 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const guide = await fetchGuideFromApi<GuideData>(slug);
+  let guide = null;
+
+  try {
+    guide = await fetchGuideFromApi<GuideData>(slug);
+  } catch (error) {
+    if (!(error instanceof GuideApiRequestError)) {
+      throw error;
+    }
+
+    return {
+      title: "Ошибка загрузки гайда",
+      description: "Локальный API не смог отдать данные гайда.",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
 
   if (!guide) {
     return {

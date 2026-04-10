@@ -4,7 +4,8 @@
   "description": "Wild Rift Champions data",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync:data": "node ./scripts/sync-all-data.mjs"
   },
   "dependencies": {
     "cheerio": "^1.1.2",

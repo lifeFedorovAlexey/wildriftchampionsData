@@ -42,7 +42,7 @@
 
 - `wukong` — canonical
 - `monkeyking` — legacy/local alias
-- `nunu-willump` — canonical
+- `nunu-and-willump` — canonical
 - `nunu` — legacy/local alias
 - `master-yi` — canonical
 - `masteryi` — legacy/local alias
