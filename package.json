@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync:data": "node ./scripts/sync-all-data.mjs"
   },
+  "overrides": {
+    "basic-ftp": "^5.2.1",
+    "undici": "^7.24.0"
+  },
   "dependencies": {
     "cheerio": "^1.1.2",
     "dotenv": "^17.2.3",
