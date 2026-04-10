@@ -39,9 +39,12 @@ export default async function AdminPage({
   const errorText = getAdminErrorMessage(errorValue);
   const updated = (Array.isArray(params.updated) ? params.updated[0] : params.updated) === "1";
   const champions = await fetchProfileChampionOptions(process.env);
+  const canManageAccess = Array.isArray(session.roles)
+    ? session.roles.includes("owner")
+    : false;
 
   return (
-    <AdminShell activeSection="profile">
+    <AdminShell activeSection="profile" canManageAccess={canManageAccess}>
       <PrivateProfilePage
         profile={profile}
         providerCards={providerCards}

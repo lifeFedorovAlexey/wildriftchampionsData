@@ -80,6 +80,10 @@
   padding: 20px;
 }
 
+.fullCard {
+  grid-column: 1 / -1;
+}
+
 .authCard {
   padding: 18px 20px;
 }
@@ -417,6 +421,57 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.accessList {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.accessCard {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(245, 211, 108, 0.08), transparent 34%),
+    rgba(255, 255, 255, 0.03);
+}
+
+.accessCardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.accessTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 17px;
+}
+
+.accessDescription {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.accessBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(184, 240, 190, 0.12);
+  color: #b8f0be;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 @media (min-width: 900px) {
   .page {
     padding: var(--space-5) var(--space-4) var(--space-7);
@@ -424,6 +479,10 @@
 
   .grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .accessList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

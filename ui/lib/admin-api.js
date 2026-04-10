@@ -144,6 +144,54 @@ export async function fetchAdminUsers(sessionToken, env = process.env) {
   return Array.isArray(payload?.users) ? payload.users : [];
 }
 
+export async function fetchAdminAccessUsers(sessionToken, env = process.env) {
+  if (!sessionToken) return [];
+
+  const response = await fetch(buildApiUrl("/api/admin/access-users", env), {
+    headers: {
+      Authorization: `Bearer ${sessionToken}`,
+      Accept: "application/json",
+    },
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    return [];
+  }
+
+  const payload = await response.json();
+  return Array.isArray(payload?.users) ? payload.users : [];
+}
+
+export async function updateAdminAccessRoles(
+  sessionToken,
+  siteUserId,
+  roleKeys,
+  env = process.env,
+) {
+  if (!sessionToken) {
+    throw new Error("unauthorized");
+  }
+
+  const response = await fetch(buildApiUrl("/api/admin/access-users", env), {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${sessionToken}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ siteUserId, roleKeys }),
+    cache: "no-store",
+  });
+
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) {
+    throw new Error(payload?.error || "access_update_failed");
+  }
+
+  return payload?.user || null;
+}
+
 export async function revokeAdminSession(sessionToken, env = process.env) {
   if (!sessionToken) return false;
 

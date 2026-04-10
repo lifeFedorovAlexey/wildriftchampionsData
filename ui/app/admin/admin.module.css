@@ -460,6 +460,158 @@
   display: block;
 }
 
+.accessGrid,
+.accessMetaGrid,
+.roleCardGrid,
+.permissionMatrix {
+  display: grid;
+  gap: 16px;
+}
+
+.accessListStack {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.accessUserCard {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02)),
+    rgba(9, 13, 24, 0.82);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+.accessUserCard:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 203, 101, 0.2);
+}
+
+.accessUserCardActive {
+  border-color: rgba(255, 203, 101, 0.32);
+  background:
+    linear-gradient(135deg, rgba(245, 211, 108, 0.08), rgba(255, 155, 87, 0.08)),
+    rgba(9, 13, 24, 0.88);
+}
+
+.accessUserHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.searchForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.input {
+  flex: 1 1 240px;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 14px;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.roleMatrixPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.roleChip,
+.roleChipBase {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.roleChip {
+  background: rgba(245, 211, 108, 0.16);
+  color: #ffe2a0;
+}
+
+.roleChipBase {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.roleChipMuted {
+  background: rgba(110, 137, 177, 0.18);
+  color: rgba(204, 222, 255, 0.78);
+}
+
+.roleForm {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.roleToggleCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+}
+
+.roleCheckbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.roleToggleBody {
+  display: grid;
+  gap: 6px;
+}
+
+.roleToggleTitle {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.permissionRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
 @media (min-width: 900px) {
   .page {
     padding: var(--space-5) var(--space-4) var(--space-7);
@@ -482,6 +634,18 @@
   }
 
   .contentGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .accessGrid {
+    grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.08fr);
+  }
+
+  .accessMetaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .roleCardGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

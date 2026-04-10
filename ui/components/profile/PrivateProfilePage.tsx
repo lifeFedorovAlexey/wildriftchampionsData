@@ -33,6 +33,14 @@ type ChampionOption = {
   iconUrl?: string;
 };
 
+type AccessSection = {
+  key: string;
+  title: string;
+  description: string;
+  href: string;
+  actionLabel?: string;
+};
+
 type Profile = {
   id: number;
   displayName?: string;
@@ -67,6 +75,7 @@ export default function PrivateProfilePage({
   embedded = false,
   showHomeLink = true,
   showLogoutButton = true,
+  accessSections = [],
 }: {
   profile: Profile;
   providerCards: ProviderCard[];
@@ -82,6 +91,7 @@ export default function PrivateProfilePage({
   embedded?: boolean;
   showHomeLink?: boolean;
   showLogoutButton?: boolean;
+  accessSections?: AccessSection[];
 }) {
   const linkedProviderIds = new Set(
     Array.isArray(profile.identities)
@@ -195,6 +205,30 @@ export default function PrivateProfilePage({
               </div>
             ) : null}
           </section>
+
+          {accessSections.length ? (
+            <section className={`${styles.card} ${styles.fullCard}`.trim()}>
+              <h2 className={styles.cardTitle}>Вам доступны следующие разделы</h2>
+              <p className={styles.cardCopy}>
+                Эти разделы открыты для твоего аккаунта уже сейчас. Часть из них пока в
+                формате аккуратных заглушек, но вход и маршрутизация уже готовы.
+              </p>
+              <div className={styles.accessList}>
+                {accessSections.map((section) => (
+                  <article key={section.key} className={styles.accessCard}>
+                    <div className={styles.accessCardHead}>
+                      <h3 className={styles.accessTitle}>{section.title}</h3>
+                      <span className={styles.accessBadge}>Открыт</span>
+                    </div>
+                    <p className={styles.accessDescription}>{section.description}</p>
+                    <a href={section.href} className={styles.button}>
+                      {section.actionLabel || "Открыть раздел"}
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </div>
       </section>
     </div>

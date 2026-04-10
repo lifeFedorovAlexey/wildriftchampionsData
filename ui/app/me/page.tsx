@@ -19,6 +19,61 @@ type UserTelegramProvider = {
   authUrl?: string;
 };
 
+function buildAvailableSections(roles: string[] | undefined) {
+  const roleSet = new Set(
+    Array.isArray(roles)
+      ? roles.map((role) => String(role || "").trim().toLowerCase()).filter(Boolean)
+      : [],
+  );
+  const sections = [];
+
+  if (roleSet.has("owner") || roleSet.has("admin")) {
+    sections.push({
+      key: "admin",
+      title: "Админка",
+      description:
+        "Управление админским контуром, профилем и служебными разделами. Страница уже рабочая.",
+      href: "/admin",
+      actionLabel: "Открыть админку",
+    });
+  }
+
+  if (roleSet.has("owner")) {
+    sections.push({
+      key: "access",
+      title: "Управление доступами",
+      description:
+        "Owner-only раздел со всеми зарегистрированными пользователями и назначением ролей.",
+      href: "/admin/access",
+      actionLabel: "Открыть доступы",
+    });
+  }
+
+  if (roleSet.has("streamer")) {
+    sections.push({
+      key: "streamer",
+      title: "Раздел стримера",
+      description:
+        "Отдельный кабинет для стримерских функций. Пока это аккуратная заглушка, но маршрут уже закреплён.",
+      href: "/me/streamer",
+      actionLabel: "Открыть раздел стримера",
+    });
+  }
+
+  if (roleSet.has("patron")) {
+    sections.push({
+      key: "patron",
+      title: "Раздел мецената",
+      description:
+        "Персональный раздел для меценатов. Пока это заглушка, чтобы доступы и навигация уже были на месте.",
+      href: "/me/patron",
+      actionLabel: "Открыть раздел мецената",
+    });
+  }
+
+  return sections;
+}
+
 export default async function MePage({
   searchParams,
 }: {
@@ -43,6 +98,7 @@ export default async function MePage({
 
   if (session) {
     const champions = await fetchProfileChampionOptions(process.env);
+    const accessSections = buildAvailableSections(session.roles);
 
     return (
       <PrivateProfilePage
@@ -57,6 +113,7 @@ export default async function MePage({
         lead="Управляй своим профилем, игровым ником и мейн-чемпионами."
         errorText={errorText}
         updated={updated}
+        accessSections={accessSections}
       />
     );
   }

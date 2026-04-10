@@ -3,7 +3,8 @@ import Link from "next/link";
 import styles from "@/app/admin/admin.module.css";
 
 type AdminShellProps = {
-  activeSection: "profile";
+  activeSection: "profile" | "access";
+  canManageAccess?: boolean;
   children: ReactNode;
 };
 
@@ -11,7 +12,11 @@ function getLinkClass(isActive: boolean) {
   return `${styles.sidebarLink} ${isActive ? styles.sidebarLinkActive : styles.sidebarLinkMuted}`.trim();
 }
 
-export default function AdminShell({ activeSection, children }: AdminShellProps) {
+export default function AdminShell({
+  activeSection,
+  canManageAccess = false,
+  children,
+}: AdminShellProps) {
   return (
     <div className={styles.page}>
       <div className={styles.adminShell}>
@@ -31,10 +36,19 @@ export default function AdminShell({ activeSection, children }: AdminShellProps)
                 {activeSection === "profile" ? "Сейчас" : "Основное"}
               </span>
             </Link>
-            <div className={`${styles.sidebarLink} ${styles.sidebarLinkMuted}`}>
-              <span>Доступы</span>
-              <span className={styles.sidebarLinkMeta}>Скоро</span>
-            </div>
+            {canManageAccess ? (
+              <Link href="/admin/access" className={getLinkClass(activeSection === "access")}>
+                <span>Доступы</span>
+                <span className={styles.sidebarLinkMeta}>
+                  {activeSection === "access" ? "Сейчас" : "Owner"}
+                </span>
+              </Link>
+            ) : (
+              <div className={`${styles.sidebarLink} ${styles.sidebarLinkMuted}`}>
+                <span>Доступы</span>
+                <span className={styles.sidebarLinkMeta}>Owner only</span>
+              </div>
+            )}
           </nav>
 
           <div className={styles.sidebarFooter}>
