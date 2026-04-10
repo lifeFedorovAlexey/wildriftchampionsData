@@ -17,6 +17,8 @@ const [
   dbModule,
   schemaModule,
   publicPoolModule,
+  championIconsModule,
+  objectStorageModule,
   cnHistoryImportModule,
   riftGgImportModule,
   guideImportModule,
@@ -26,6 +28,8 @@ const [
     import(pathToFileURL(path.join(rootDir, "wr-api", "db", "client.js")).href),
     import(pathToFileURL(path.join(rootDir, "wr-api", "db", "schema.js")).href),
     import(pathToFileURL(path.join(rootDir, "wr-api", "lib", "championPublicPool.mjs")).href),
+    import(pathToFileURL(path.join(rootDir, "wr-api", "lib", "championIcons.mjs")).href),
+    import(pathToFileURL(path.join(rootDir, "wr-api", "lib", "objectStorage.mjs")).href),
     import(pathToFileURL(path.join(rootDir, "wr-api", "scripts", "import-cn-history.mjs")).href),
     import(pathToFileURL(path.join(rootDir, "wr-api", "scripts", "import-riftgg-cn-stats.mjs")).href),
     import(pathToFileURL(path.join(rootDir, "wr-api", "lib", "guideImport.mjs")).href),
@@ -39,6 +43,8 @@ const parseGuideModule = await import(
 
 const { champions } = schemaModule;
 const { filterChampionsForPublicPool, summarizeChampionPublicPool } = publicPoolModule;
+const { createChampionIconStore, buildIconStorageKey } = championIconsModule;
+const { createObjectStorageClient, shouldUseS3PublicUrls } = objectStorageModule;
 const { runCnHistoryImport } = cnHistoryImportModule;
 const { runRiftGgCnStatsImport } = riftGgImportModule;
 const { importGuidePayload } = guideImportModule;
@@ -89,6 +95,7 @@ async function loadChampionRows() {
     .select({
       slug: champions.slug,
       nameLocalizations: champions.nameLocalizations,
+      icon: champions.icon,
     })
     .from(champions);
 }
@@ -106,6 +113,81 @@ function buildChampionSyncPlan(championRows, requestedSlugs = []) {
       : publicSlugs,
     poolSummary: summarizeChampionPublicPool(championRows),
   };
+}
+
+async function runChampionIconSync({ championRows, requestedSlugs = [] }) {
+  const requestedSlugSet = new Set(requestedSlugs);
+  const publicChampionRows = filterChampionsForPublicPool(championRows);
+  const sourceRows = requestedSlugs.length
+    ? publicChampionRows.filter((row) => requestedSlugSet.has(String(row?.slug || "").trim()))
+    : publicChampionRows;
+  const iconRows = sourceRows.filter((row) => String(row?.icon || "").trim());
+
+  const report = {
+    total: iconRows.length,
+    synced: 0,
+    failed: 0,
+    failedEntries: [],
+    skipped: 0,
+    mode: shouldUseS3PublicUrls(process.env) ? "s3" : "local",
+  };
+
+  console.log(`[champion-icons] start: champions=${iconRows.length} mode=${report.mode}`);
+
+  const iconStore = await createChampionIconStore(process.env);
+  const objectStorage = createObjectStorageClient(process.env);
+  const verifyS3 = shouldUseS3PublicUrls(process.env) && objectStorage;
+
+  if (!iconRows.length) {
+    console.log("[champion-icons] done -> total=0 synced=0 failed=0 skipped=0");
+    return report;
+  }
+
+  for (let index = 0; index < iconRows.length; index += 1) {
+    const row = iconRows[index];
+    const slug = String(row?.slug || "").trim();
+    const sourceUrl = String(row?.icon || "").trim();
+
+    if (!slug || !sourceUrl) {
+      report.skipped += 1;
+      continue;
+    }
+
+    try {
+      await iconStore.mirror(slug, sourceUrl);
+
+      if (verifyS3) {
+        const storageKey = buildIconStorageKey(slug, sourceUrl);
+        const exists = await objectStorage.objectExists(storageKey);
+        if (!exists) {
+          throw new Error(`S3 object missing after mirror: ${storageKey}`);
+        }
+      }
+
+      report.synced += 1;
+
+      if ((index + 1) % 25 === 0 || index + 1 === iconRows.length) {
+        console.log(
+          `[champion-icons] progress -> champions=${index + 1}/${iconRows.length} synced=${report.synced} failed=${report.failed}`,
+        );
+      }
+    } catch (error) {
+      report.failed += 1;
+      report.failedEntries.push({
+        slug,
+        error: error instanceof Error ? error.message : String(error),
+      });
+      console.error(
+        `[champion-icons] ${index + 1}/${iconRows.length} ${slug} -> failed | ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+  }
+
+  console.log(
+    `[champion-icons] done -> total=${report.total} synced=${report.synced} failed=${report.failed} skipped=${report.skipped}`,
+  );
+
+  return report;
 }
 
 async function runGuideSync({ slugs, concurrency }) {
@@ -201,10 +283,17 @@ async function main() {
   const report = {
     startedAt: new Date().toISOString(),
     championCatalog,
+    championIcons: null,
     cnHistory: null,
     riftgg: null,
     guides: null,
   };
+
+  console.log("[full-sync] step=champion-icons start");
+  report.championIcons = await runChampionIconSync({
+    championRows,
+    requestedSlugs: options.slugs.length ? syncPlan.slugs : [],
+  });
 
   if (!options.skipCnHistory) {
     console.log("[full-sync] step=cn-history start");
@@ -233,6 +322,7 @@ async function main() {
   console.log(JSON.stringify(report, null, 2));
 
   if (
+    (report.championIcons?.failed || 0) > 0 ||
     (report.riftgg?.failed || 0) > 0 ||
     (report.guides?.failed || 0) > 0 ||
     (report.cnHistory?.skippedNoStats || 0) > 0
