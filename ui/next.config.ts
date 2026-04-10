@@ -27,6 +27,18 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     localPatterns: [
       {
+        pathname: "/boosty-donate-qr.png",
+      },
+      {
+        pathname: "/boosty-logo.svg",
+      },
+      {
+        pathname: "/favicon.ico",
+      },
+      {
+        pathname: "/provider-icons/**",
+      },
+      {
         pathname: "/wr-api/icons/**",
       },
       {

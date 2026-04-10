@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "@/app/admin/admin.module.css";
 
 type AdminShellProps = {
-  activeSection: "profile" | "imports";
+  activeSection: "profile";
   children: ReactNode;
 };
 
@@ -20,7 +20,7 @@ export default function AdminShell({ activeSection, children }: AdminShellProps)
             <div className={styles.eyebrow}>Private Area</div>
             <h1 className={styles.sidebarTitle}>Админка</h1>
             <p className={styles.sidebarLead}>
-              Профиль, ручные импорты и технические проверки живут в одной приватной оболочке.
+              Приватная зона для управления профилем и доступом в админский контур.
             </p>
           </div>
 
@@ -29,12 +29,6 @@ export default function AdminShell({ activeSection, children }: AdminShellProps)
               <span>Профиль</span>
               <span className={styles.sidebarLinkMeta}>
                 {activeSection === "profile" ? "Сейчас" : "Основное"}
-              </span>
-            </Link>
-            <Link href="/admin/imports" className={getLinkClass(activeSection === "imports")}>
-              <span>Импорты</span>
-              <span className={styles.sidebarLinkMeta}>
-                {activeSection === "imports" ? "Сейчас" : "Аудит"}
               </span>
             </Link>
             <div className={`${styles.sidebarLink} ${styles.sidebarLinkMuted}`}>
