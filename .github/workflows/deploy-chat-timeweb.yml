@@ -1,0 +1,173 @@
+name: Deploy wr-chat To Timeweb
+
+on:
+  workflow_call:
+    secrets:
+      TIMEWEB_CHAT_HOST:
+        required: true
+      TIMEWEB_CHAT_USER:
+        required: true
+      TIMEWEB_CHAT_PASSWORD:
+        required: true
+      WR_CHAT_PUBLIC_ORIGIN:
+        required: false
+      WR_API_ORIGIN:
+        required: false
+      WR_CHAT_SHARED_SECRET:
+        required: false
+      WR_CHAT_ALLOWED_ORIGINS:
+        required: false
+
+concurrency:
+  group: deploy-wr-chat-timeweb
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.5
+        env:
+          WR_CHAT_PUBLIC_ORIGIN: ${{ secrets.WR_CHAT_PUBLIC_ORIGIN }}
+          WR_API_ORIGIN: ${{ secrets.WR_API_ORIGIN }}
+          WR_CHAT_SHARED_SECRET: ${{ secrets.WR_CHAT_SHARED_SECRET }}
+          WR_CHAT_ALLOWED_ORIGINS: ${{ secrets.WR_CHAT_ALLOWED_ORIGINS }}
+        with:
+          host: ${{ secrets.TIMEWEB_CHAT_HOST }}
+          username: ${{ secrets.TIMEWEB_CHAT_USER }}
+          password: ${{ secrets.TIMEWEB_CHAT_PASSWORD }}
+          envs: WR_CHAT_PUBLIC_ORIGIN,WR_API_ORIGIN,WR_CHAT_SHARED_SECRET,WR_CHAT_ALLOWED_ORIGINS
+          script: |
+            set -e
+            APP_ROOT="/var/www/wr-chat"
+            RELEASES_DIR="${APP_ROOT}/releases"
+            SHARED_DIR="${APP_ROOT}/shared"
+            CURRENT_LINK="${APP_ROOT}/current"
+            REPO_DIR="${APP_ROOT}/repo"
+            RELEASE_ID="$(date +%Y%m%d%H%M%S)"
+            RELEASE_DIR="${RELEASES_DIR}/${RELEASE_ID}"
+            CANARY_NAME="wr-chat-canary-${RELEASE_ID}"
+            PM2_APP_NAME="wr-chat"
+            APP_PORT="3010"
+            CANARY_PORT="3110"
+            PREVIOUS_TARGET=""
+
+            upsert_env() {
+              key="$1"
+              value="$2"
+              file="$3"
+              touch "$file"
+              if grep -q "^${key}=" "$file"; then
+                sed -i "s|^${key}=.*|${key}=${value}|" "$file"
+              else
+                printf '%s\n' "${key}=${value}" >> "$file"
+              fi
+            }
+
+            wait_for_health() {
+              port="$1"
+              attempts="${2:-45}"
+              i=1
+              while [ "$i" -le "$attempts" ]; do
+                if curl -fsS "http://127.0.0.1:${port}/health" >/dev/null 2>&1; then
+                  printf '[deploy-chat] health ok on %s (attempt %s/%s)\n' "${port}" "${i}" "${attempts}"
+                  return 0
+                fi
+                printf '[deploy-chat] waiting for health on %s (attempt %s/%s)\n' "${port}" "${i}" "${attempts}"
+                sleep 2
+                i=$((i + 1))
+              done
+              return 1
+            }
+
+            cleanup_canary() {
+              pm2 delete "${CANARY_NAME}" >/dev/null 2>&1 || true
+            }
+
+            mkdir -p "${RELEASES_DIR}" "${SHARED_DIR}" "${REPO_DIR}"
+            cd "${REPO_DIR}"
+            if [ ! -d .git ]; then
+              git init
+              git remote add origin https://github.com/lifeFedorovAlexey/wildriftchampionsData.git
+              git fetch origin
+              git checkout -b main origin/main
+            fi
+
+            git stash push --include-untracked -m "deploy-wr-chat-${RELEASE_ID}" || true
+            git fetch origin
+            git checkout main
+            git pull --ff-only origin main
+
+            mkdir -p "${RELEASE_DIR}"
+            git archive --format=tar HEAD wr-chat .github/workflows/deploy-chat-timeweb.yml | tar -xf - -C "${RELEASE_DIR}" --strip-components=1
+
+            upsert_env PORT "${APP_PORT}" "${RELEASE_DIR}/.env"
+            upsert_env HOST "127.0.0.1" "${RELEASE_DIR}/.env"
+            upsert_env NODE_ENV "production" "${RELEASE_DIR}/.env"
+            upsert_env WR_CHAT_PUBLIC_ORIGIN "${WR_CHAT_PUBLIC_ORIGIN}" "${RELEASE_DIR}/.env"
+            upsert_env WR_API_ORIGIN "${WR_API_ORIGIN}" "${RELEASE_DIR}/.env"
+            upsert_env WR_CHAT_SHARED_SECRET "${WR_CHAT_SHARED_SECRET}" "${RELEASE_DIR}/.env"
+            upsert_env WR_CHAT_ALLOWED_ORIGINS "${WR_CHAT_ALLOWED_ORIGINS}" "${RELEASE_DIR}/.env"
+
+            cd "${RELEASE_DIR}"
+            if [ -d "./wr-chat" ]; then
+              mv ./wr-chat/* .
+              rmdir ./wr-chat
+            fi
+
+            npm ci
+
+            cleanup_canary
+            PORT="${CANARY_PORT}" HOST="127.0.0.1" pm2 start "${RELEASE_DIR}/server.mjs" --interpreter node --name "${CANARY_NAME}" --cwd "${RELEASE_DIR}"
+            if ! wait_for_health "${CANARY_PORT}" 45; then
+              pm2 logs "${CANARY_NAME}" --lines 120 --nostream || true
+              cleanup_canary
+              echo "wr-chat canary failed health-check"
+              exit 1
+            fi
+            cleanup_canary
+
+            cat > "${SHARED_DIR}/ecosystem.config.cjs" <<EOF
+            module.exports = {
+              apps: [
+                {
+                  name: "${PM2_APP_NAME}",
+                  script: "./server.mjs",
+                  cwd: "${CURRENT_LINK}",
+                  interpreter: "node",
+                  instances: 1,
+                  exec_mode: "fork",
+                  listen_timeout: 10000,
+                  kill_timeout: 10000,
+                  env: {
+                    PORT: "${APP_PORT}",
+                    HOST: "127.0.0.1",
+                    NODE_ENV: "production"
+                  }
+                }
+              ]
+            };
+            EOF
+
+            if [ -L "${CURRENT_LINK}" ]; then
+              PREVIOUS_TARGET="$(readlink -f "${CURRENT_LINK}")"
+            fi
+            ln -sfn "${RELEASE_DIR}" "${CURRENT_LINK}"
+
+            pm2 delete "${PM2_APP_NAME}" >/dev/null 2>&1 || true
+            pm2 start "${SHARED_DIR}/ecosystem.config.cjs" --only "${PM2_APP_NAME}" --update-env
+
+            if ! wait_for_health "${APP_PORT}" 45; then
+              pm2 logs "${PM2_APP_NAME}" --lines 120 --nostream || true
+              if [ -n "${PREVIOUS_TARGET}" ] && [ -d "${PREVIOUS_TARGET}" ]; then
+                ln -sfn "${PREVIOUS_TARGET}" "${CURRENT_LINK}"
+                pm2 delete "${PM2_APP_NAME}" >/dev/null 2>&1 || true
+                pm2 start "${SHARED_DIR}/ecosystem.config.cjs" --only "${PM2_APP_NAME}" --update-env || true
+              fi
+              echo "wr-chat production failed health-check"
+              exit 1
+            fi
+
+            ls -1dt "${RELEASES_DIR}"/* 2>/dev/null | tail -n +6 | xargs -r rm -rf
+            pm2 save

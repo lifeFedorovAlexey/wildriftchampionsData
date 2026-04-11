@@ -1,0 +1,57 @@
+name: wr-chat CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "wr-chat/**"
+      - ".github/workflows/chat-ci.yml"
+      - ".github/workflows/deploy-chat-timeweb.yml"
+  pull_request:
+    paths:
+      - "wr-chat/**"
+      - ".github/workflows/chat-ci.yml"
+      - ".github/workflows/deploy-chat-timeweb.yml"
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Deploy wr-chat after checks
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: wr-chat-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: wr-chat
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: wr-chat/package-lock.json
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+  deploy:
+    name: Deploy wr-chat To Timeweb
+    needs:
+      - ci
+    if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' && inputs.deploy)
+    uses: ./.github/workflows/deploy-chat-timeweb.yml
+    secrets: inherit
