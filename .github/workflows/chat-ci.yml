@@ -1,5 +1,8 @@
 name: wr-chat CI
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 on:
   push:
     branches:
@@ -36,7 +39,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: wr-chat/package-lock.json
 
@@ -51,7 +54,19 @@ jobs:
     needs:
       - ci
     if: >-
-      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
-      (github.event_name == 'workflow_dispatch' && inputs.deploy)
+      (
+        github.event_name == 'push' &&
+        github.ref == 'refs/heads/main' &&
+        secrets.TIMEWEB_CHAT_HOST != '' &&
+        secrets.TIMEWEB_CHAT_USER != '' &&
+        secrets.TIMEWEB_CHAT_PASSWORD != ''
+      ) ||
+      (
+        github.event_name == 'workflow_dispatch' &&
+        inputs.deploy &&
+        secrets.TIMEWEB_CHAT_HOST != '' &&
+        secrets.TIMEWEB_CHAT_USER != '' &&
+        secrets.TIMEWEB_CHAT_PASSWORD != ''
+      )
     uses: ./.github/workflows/deploy-chat-timeweb.yml
     secrets: inherit

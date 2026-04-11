@@ -1,14 +1,17 @@
 name: Deploy wr-chat To Timeweb
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 on:
   workflow_call:
     secrets:
       TIMEWEB_CHAT_HOST:
-        required: true
+        required: false
       TIMEWEB_CHAT_USER:
-        required: true
+        required: false
       TIMEWEB_CHAT_PASSWORD:
-        required: true
+        required: false
       WR_CHAT_PUBLIC_ORIGIN:
         required: false
       WR_API_ORIGIN:
@@ -24,6 +27,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: ${{ secrets.TIMEWEB_CHAT_HOST != '' && secrets.TIMEWEB_CHAT_USER != '' && secrets.TIMEWEB_CHAT_PASSWORD != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Deploy over SSH
