@@ -528,15 +528,18 @@ function RiftBuildPanel({
   dictionary,
   selectedRankLabel,
   selectedLaneLabel,
+  dataDate,
 }: {
   title: string;
   blocks: RiftGgLaneBlock<RiftGgBuildEntry>[];
   dictionary?: Record<string, RiftGgDictionaryItem>;
   selectedRankLabel: string;
   selectedLaneLabel: string;
+  dataDate?: string | null;
 }) {
   const isSpellsPanel = title === "Заклинания";
   const emptyScope = [selectedRankLabel, selectedLaneLabel].filter(Boolean).join(" / ");
+  const dataDateLabel = formatRiftDataDate(dataDate || null);
 
   if (!blocks.length) {
     return (
@@ -554,6 +557,9 @@ function RiftBuildPanel({
   return (
     <section className={styles.panel}>
       <h2 className={styles.panelTitle}>{title}</h2>
+      {dataDateLabel ? (
+        <div className={styles.riftSnapshotNote}>{`Данные RiftGG на ${dataDateLabel}`}</div>
+      ) : null}
       <div className={isSpellsPanel ? styles.riftBuildRowsCompact : styles.riftBuildRows}>
         {blocks[0].entries?.slice(0, 7).map((entry, index) => (
           <article key={`${title}-${index}`} className={styles.riftBuildCard}>
@@ -668,12 +674,15 @@ function RiftMatchupsPanel({
   bestItems,
   worstItems,
   availableGuideSlugs = [],
+  dataDate,
 }: {
   bestItems: RiftGgMatchupEntry[];
   worstItems: RiftGgMatchupEntry[];
   availableGuideSlugs?: string[];
+  dataDate?: string | null;
 }) {
   const availableSlugSet = new Set(availableGuideSlugs);
+  const dataDateLabel = formatRiftDataDate(dataDate || null);
   const orderedItems = bestItems;
   const preview = splitRiftMatchupPreview(orderedItems);
   const topItems = preview.best;
@@ -699,6 +708,9 @@ function RiftMatchupsPanel({
   return (
     <section className={styles.panel}>
       <h2 className={styles.panelTitle}>Матчапы</h2>
+      {dataDateLabel ? (
+        <div className={styles.riftSnapshotNote}>{`Данные RiftGG на ${dataDateLabel}`}</div>
+      ) : null}
 
       {isExpanded ? (
         <>
@@ -822,18 +834,8 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
   const selectedRunes = pickRiftBlock(riftgg?.runes);
   const selectedSpells = pickRiftBlock(riftgg?.spells);
-  const selectedRiftDataDate = [
-    selectedMatchups[0]?.dataDate || null,
-    selectedCoreItems[0]?.dataDate || null,
-    selectedRunes[0]?.dataDate || null,
-    selectedSpells[0]?.dataDate || null,
-  ]
-    .filter(Boolean)
-    .sort()
-    .at(-1) || null;
   const selectedRiftRankLabel = localizeRiftRank(selectedRiftRank);
   const selectedRiftLaneLabel = localizeGuideLane(selectedRiftLane) || selectedRiftLane;
-  const selectedRiftDataDateLabel = formatRiftDataDate(selectedRiftDataDate);
   const selectedMatchupEntries = selectedMatchups[0]?.entries || [];
   const bestMatchups = selectedMatchupEntries
     .slice()
@@ -972,12 +974,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                 </div>
               ) : null}
 
-              {selectedRiftDataDateLabel ? (
-                <div className={styles.riftSnapshotNote}>
-                  {`Данные RiftGG на ${selectedRiftDataDateLabel}`}
-                </div>
-              ) : null}
-
             </div>
           ) : null}
 
@@ -1017,6 +1013,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
               bestItems={bestMatchups}
               worstItems={worstMatchups}
               availableGuideSlugs={guide.availableGuideSlugs}
+              dataDate={selectedMatchups[0]?.dataDate || null}
             />
           </div>
 
@@ -1027,6 +1024,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
               dictionary={riftgg.dictionaries?.items}
               selectedRankLabel={selectedRiftRankLabel}
               selectedLaneLabel={selectedRiftLaneLabel}
+              dataDate={selectedCoreItems[0]?.dataDate || null}
             />
             <RiftBuildPanel
               title="Руны"
@@ -1034,6 +1032,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
               dictionary={riftgg.dictionaries?.runes}
               selectedRankLabel={selectedRiftRankLabel}
               selectedLaneLabel={selectedRiftLaneLabel}
+              dataDate={selectedRunes[0]?.dataDate || null}
             />
           </div>
 
@@ -1043,6 +1042,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             dictionary={riftgg.dictionaries?.spells}
             selectedRankLabel={selectedRiftRankLabel}
             selectedLaneLabel={selectedRiftLaneLabel}
+            dataDate={selectedSpells[0]?.dataDate || null}
           />
         </>
       ) : null}
