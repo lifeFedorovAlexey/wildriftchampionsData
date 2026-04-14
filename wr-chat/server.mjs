@@ -44,7 +44,5 @@ function handleRequest(req, res) {
 const server = http.createServer(handleRequest);
 
 server.listen(config.port, config.host, () => {
-  console.log(
-    `[wr-chat] listening on http://${config.host}:${config.port} env=${config.nodeEnv}`,
-  );
+  console.log("[wr-chat] server started");
 });
