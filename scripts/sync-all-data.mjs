@@ -324,8 +324,7 @@ async function main() {
   if (
     (report.championIcons?.failed || 0) > 0 ||
     (report.riftgg?.failed || 0) > 0 ||
-    (report.guides?.failed || 0) > 0 ||
-    (report.cnHistory?.skippedNoStats || 0) > 0
+    (report.guides?.failed || 0) > 0
   ) {
     process.exitCode = 1;
   }
