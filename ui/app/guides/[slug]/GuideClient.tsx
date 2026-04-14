@@ -822,12 +822,15 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
   const selectedRunes = pickRiftBlock(riftgg?.runes);
   const selectedSpells = pickRiftBlock(riftgg?.spells);
-  const selectedRiftDataDate =
-    selectedMatchups[0]?.dataDate ||
-    selectedCoreItems[0]?.dataDate ||
-    selectedRunes[0]?.dataDate ||
-    selectedSpells[0]?.dataDate ||
-    null;
+  const selectedRiftDataDate = [
+    selectedMatchups[0]?.dataDate || null,
+    selectedCoreItems[0]?.dataDate || null,
+    selectedRunes[0]?.dataDate || null,
+    selectedSpells[0]?.dataDate || null,
+  ]
+    .filter(Boolean)
+    .sort()
+    .at(-1) || null;
   const selectedRiftRankLabel = localizeRiftRank(selectedRiftRank);
   const selectedRiftLaneLabel = localizeGuideLane(selectedRiftLane) || selectedRiftLane;
   const selectedRiftDataDateLabel = formatRiftDataDate(selectedRiftDataDate);
