@@ -1,0 +1,217 @@
+.shell {
+  display: grid;
+  gap: 18px;
+}
+
+.noticeError,
+.noticeOk,
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background: rgba(10, 15, 26, 0.9);
+}
+
+.noticeError,
+.noticeOk {
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.noticeError {
+  color: #ffb7b7;
+  background: rgba(110, 28, 36, 0.28);
+}
+
+.noticeOk {
+  color: #b8f0be;
+  background: rgba(30, 82, 45, 0.3);
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+}
+
+.card {
+  padding: 20px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.cardCopy {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.button,
+.buttonGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.button {
+  background: linear-gradient(135deg, #f5d36c, #ff9b57);
+  color: #10151f;
+}
+
+.buttonGhost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.formRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.input {
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+.textarea {
+  min-height: 92px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.columns {
+  display: grid;
+  gap: 18px;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.listButton {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.listButtonActive {
+  border-color: rgba(245, 211, 108, 0.52);
+  background: rgba(245, 211, 108, 0.1);
+}
+
+.listTitle {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.listMeta {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.messages {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.messageCard {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.messageHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.messageAuthor {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.messageTime {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+}
+
+.messageBody {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.subtle {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+}
+
+.presence {
+  margin-top: 14px;
+  color: rgba(184, 240, 190, 0.82);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.typing {
+  margin-top: 10px;
+  color: rgba(245, 211, 108, 0.9);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media (min-width: 980px) {
+  .grid {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}

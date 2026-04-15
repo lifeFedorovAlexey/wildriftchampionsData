@@ -71,6 +71,15 @@ function buildAvailableSections(roles: string[] | undefined) {
     });
   }
 
+  sections.push({
+    key: "chat",
+    title: "Текстовый чат",
+    description:
+      "Локальный MVP чата: группы, каналы, сообщения и realtime через wr-chat. Пока это preview-контур.",
+    href: "/me/chat",
+    actionLabel: "Открыть чат",
+  });
+
   return sections;
 }
 
