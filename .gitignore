@@ -5,6 +5,7 @@
 /ui/data/
 /.codex-logs/
 /wr-api/
+/wr-chat/
 .runtime/
 .runtime-local-server.log
 .runtime-local-server.err.log
