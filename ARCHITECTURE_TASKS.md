@@ -1,102 +1,85 @@
-# Architecture Fix Tasks
+# Architecture Status
 
-Этот файл ведём как пошаговый чеклист перехода.
-После каждого завершённого атомарного шага задача отмечается галочкой, потом стенд проверяется вручную.
+Этот файл держим отдельно от общего продуктового плана.
+Он показывает текущее архитектурное состояние: что уже завершено и что ещё нужно доделать именно на уровне схемы/границ/контрактов.
 
-## Правила прохода
+## Выполнено
 
-- один завершённый шаг за раз
-- после каждого шага ручная проверка стенда
-- без массовых параллельных рефакторингов
-- сначала безопасные правки и фиксация контракта, потом runtime-изменения
-- идти строго по заранее согласованным шагам; если схема не доведена до конца, не перескакивать на следующие куски
-- пушить только полностью готовую и проверенную схему, а не промежуточный полуразобранный вариант
-- в местах, где напрашивается спорное, костыльное или неочевидное решение, сначала останавливаемся и согласуем его отдельно, а не придумываем workaround самостоятельно
-- при конфликте старых правил, данных или инструкций с новой схемой не изобретать локальные заплатки; сначала поднимать вопрос и согласовывать целевое поведение
-- любые catch/fallback ветки обязаны быть прозрачными: либо с явным логом, либо с отдельным согласованным решением, но не с тихим проглатыванием проблемы
+### Базовые контуры
 
-## Атомарные задачи
+- `root repo` используется как frontend / orchestration-контур.
+- `wr-api` отделён как основной API и source of truth для данных.
+- `wr-chat` вынесен в отдельный repo как отдельный realtime/chat service.
 
-- [x] Шаг 1. Зафиксировать текущий набор секретов и env-контрактов в `ui` и `wr-api`, убрать из примеров и README неактуальные или недоведённые ключи (`USER_*`, лишние invented secrets), не меняя runtime-код.
-- [x] Шаг 2. Удалить legacy `skins` ingestion path, завязанный на `ui/public/merged`, и убрать связанный API/domain-рудимент после проверки, что клиентская страница и маршрут больше не используются.
-- [x] Шаг 3. Спроектировать guide-domain contract: canonical slug namespace, source alias map, merge policy между источниками, правила fallback по отсутствующим данным.
-- [x] Шаг 4. Реализовать guide slug normalization layer внутри `wr-api` и покрыть её тестами на консистентные преобразования между внешними source slugs и внутренним canonical slug.
-- [x] Шаг 5. Ввести `skip-on-same-hash` для guide import, чтобы при неизменившемся контенте не делать rewrite дочерних таблиц.
-- [x] Шаг 6. После стабилизации guide import решить судьбу legacy `champion_guides`: либо удалить таблицу и кодовый хвост, либо явно оставить как временный cache/compatibility слой с документированной ролью.
-- [x] Шаг 7. Подготовить вариант разделения `wr-api` на процессы: public API, auth/session, workers/imports. Отдельно описать, как меняются PM2 и deploy pipeline.
-- [x] Шаг 8. Довести `site user` flow до provider-based auth без email/password: отдельный `USER_SESSION_SECRET`, отдельная user-session boundary, те же OAuth/Telegram провайдеры, что и у admin, и будущая user/private зона без влияния на публичные страницы.
-- [x] Шаг 9. Отдельно вернуться к `news` domain: либо довести импорт и публикацию до рабочего состояния, либо скрыть недоделанную поверхность из основного контракта.
+### Guides / domain / import
 
-## Внеплановые закрытые фиксы
+- Зафиксирован guide-domain contract.
+- Введён canonical guide slug normalization layer.
+- Добавлен `skip-on-same-hash` для guide import.
+- Legacy `news` surface выведен из активного публичного контракта.
+- Champion pool стабилизирован на Riot-backed списке.
 
-- [x] Hotfix A. Убрать дубли `RiftGG` на guide detail: сайт отдаёт только последний `dataDate` на каждый `rank + lane`, но история по дням в БД сохраняется.
-- [x] Hotfix B. Добавить `slug-warn` наблюдаемость на `404`/alias-miss в guide pipelines и API.
-- [x] Hotfix C. Починить item asset pipeline для `RiftGG`: не отдавать donor URL в runtime payload, передавать `S3_*` env в `update-riftgg-cn-stats`, проверять фактическое существование объекта перед `skip`.
-- [x] Hotfix D. Починить special item icons (`staff-of-flowing-waters`, `control-ward`, `sweeping-lens`, `warding-totem`, `*-enchant`): добавить fallback с `WildRiftFire` на `RiftGG assets`, дозаливку в S3 и компактный summary-лог по источникам.
-- [x] Hotfix E. Убрать браузерный warning по неиспользуемому preload CSS для error boundary: перевести `app/error.tsx` с отдельного `error.module.css` на inline-стили, чтобы Next не генерировал отдельный preload chunk для `_not-found` / `errorStyles`.
-- [x] Hotfix F. Убрать accessibility warning `Blocked aria-hidden on an element because its descendant retained focus` в мобильном меню: заменить скрытие overlay через `aria-hidden` на `inert` и возвращать фокус на кнопку меню при закрытии.
-- [x] Hotfix G. Довести `Шаг 7` до реальной runtime-реализации: поднять `wr-api-public`, `wr-api-auth` и совместимый `wr-api` gateway как отдельные процессы с обновлённым deploy pipeline.
-- [x] Hotfix H. Фильтровать публичный champion pool по Riot-backed списку: база берётся с `ru-ru/champions`, а при временном расхождении по количеству добираются missing champion slugs из `en-us/champions`; CN-источник сам не создаёт чемпиона, а `ru_ru` добивается позже, когда Riot обновит RU-каталог.
+### Runtime split / auth
 
-## Точка контроля после шага 1
+- `wr-api` разрезан по runtime-контуру на public/auth/gateway модель.
+- User auth доведён до provider-based flow без email/password.
+- Public pages не зависят от auth.
+- `/me` работает как private user surface.
 
-- проверить, что стенд поднимается как раньше
-- проверить `ui` локально тестами
-- убедиться, что никто не решил, будто docs автоматически поменяли secrets на GitHub или на сервере
+### Hotfix-слой
 
-## Точка контроля после шага 2
+- Убраны дубли `RiftGG` по последнему `dataDate` на `rank + lane`.
+- Добавлена наблюдаемость по `slug-warn`.
+- Доведён item asset pipeline для `RiftGG`.
+- Исправлены special item icons и fallback asset flow.
+- Убран preload-warning вокруг error boundary.
+- Убран mobile menu accessibility warning.
+- Process split доведён до реального runtime/deploy контура.
 
-- проверить, что `GET /api/health` работает как раньше
-- убедиться, что старые `GET /api/skins*` больше не считаются частью активного контракта
-- проверить страницы `news`, `guides`, `tierlist`, `winrates`, `admin`
+## Необходимо выполнить
 
-## Точка контроля после шага 3
+### 1. Capability-based authorization
 
-- согласовать, что canonical guide slug = official Wild Rift slug
-- согласовать, что index работает по union-модели от `champions`
-- согласовать, что detail для известного чемпиона может быть partial, если один из источников пуст
-- использовать [GUIDE_DOMAIN_CONTRACT.md](/d:/wildRiftChampions/GUIDE_DOMAIN_CONTRACT.md) как source of truth для шага 4
+- Уйти от прямых role-checks к capability model для admin/private surfaces.
+- Добавить capability dictionary и server-side helper.
+- Перевести новые private/admin поверхности на capability checks.
 
-## Точка контроля после шага 5
+### 2. `wr-chat` как завершённый архитектурный контур
 
-- прогнать `sync-guides` или точечный импорт одного и того же гайда дважды подряд
-- убедиться, что второй импорт возвращает `skipped: true` и `reason: same-content-hash`
-- проверить, что guide detail на стенде не меняется, а лишний rewrite дочерних таблиц не происходит
+- Довести `wr-chat` до text-chat MVP end-to-end.
+- Зафиксировать контракт, где `wr-chat` не пишет business truth напрямую в БД.
+- Довести отдельный deploy contour, env contract и reverse proxy под отдельный сервер.
 
-## Точка контроля после шага 6
+### 3. Importer architecture cleanup
 
-- убедиться, что в коде больше нет runtime-упоминаний `champion_guides`
-- убедиться, что список и detail гайдов продолжают работать через `guide_summaries` + `guide_*`
-- помнить, что отдельный `DROP TABLE champion_guides` нужен только в тех БД, где она ещё физически существует
+- Разрезать importer-ы на fetch / parse / persist / report слои.
+- Вынести Riot enrich в reusable layer.
+- Ввести единый structured importer report и structured log format.
+- Добавить fixture-based tests на реальные snapshot-ы источников.
 
-## Точка контроля после шага 7
+### 4. Asset contract cleanup
 
-- использовать [PROCESS_SPLIT_PLAN.md](/d:/wildRiftChampions/wr-api/PROCESS_SPLIT_PLAN.md) как source of truth для разрезания `wr-api`
-- не менять рантайм до отдельного атомарного switch-over шага
-- держать workers/imports вне постоянного PM2 runtime по умолчанию
-- после реализации split-а держать внешний контракт на одном порту через gateway, пока внешний reverse proxy не будет переведён на прямой path routing
+- Добить S3-first asset contract как единственный production contract.
+- Разделить runtime asset cache и import staging flow.
+- Убрать legacy proxy/mirror путь из нормального client-facing контракта.
 
-## Подшаги шага 8
+## Направление продвижения
 
-- [x] 8.1. Развести `ADMIN_SESSION_SECRET` и `USER_SESSION_SECRET`, не включая user auth автоматически.
-- [x] 8.2. Включить на фронте provider-based user login через те же сервисы, что и у admin, без email/password.
-- [x] 8.3. Проверить, что первый вход через провайдера создаёт `site_user`, а повторный вход через тот же `provider + subject` возвращает в тот же профиль.
-- [x] 8.4. Оставить все текущие public страницы доступными без входа; auth распространяется только на `/me` и будущие private user/admin зоны.
-- [x] 8.5. Вынести дальнейшую admin authorization model как отдельную будущую capability-based feature, а не держать её хвостом текущего архитектурного плана.
+### Ближайшее
 
-## Точка контроля после шага 8
+- удержать зелёный data sync
+- довести `wr-chat` text MVP локально
+- после этого довести отдельный deploy contour для `wr-chat`
 
-- убедиться, что `/me` работает через `Google`, `Yandex`, `VK`, `Telegram` без email/password
-- убедиться, что повторный вход через тот же provider возвращает в тот же профиль
-- убедиться, что все текущие public страницы по-прежнему открываются без auth
-- считать capability-based admin authz отдельной следующей фичей по [ADMIN_CAPABILITY_AUTHZ_PLAN.md](/d:/wildRiftChampions/ADMIN_CAPABILITY_AUTHZ_PLAN.md)
+### После этого
 
-## Точка контроля после шага 9
+- capability-based admin authz
+- importer refactor
+- asset contract cleanup
 
-- убедиться, что `/news` больше не входит в sitemap и не считается публичной частью UI
-- убедиться, что `GET /api/news`, `GET /api/news/:id` и `POST /api/news/import` больше не входят в активный wr-api контракт
-- помнить, что schema/setup/news import groundwork оставлен как dormant domain до отдельного product-ready возврата
+## Отдельные source-of-truth
 
-## Следующая отдельная фича
-
-- capability-based authorization для админки и будущих private зон вынесена в отдельный план: [ADMIN_CAPABILITY_AUTHZ_PLAN.md](/d:/wildRiftChampions/ADMIN_CAPABILITY_AUTHZ_PLAN.md)
+- [MASTER_PLAN.md](/d:/wildRiftChampions/MASTER_PLAN.md)
+  единый приоритетный продуктовый план
+- [GUIDE_DOMAIN_CONTRACT.md](/d:/wildRiftChampions/GUIDE_DOMAIN_CONTRACT.md)
+  guide-domain contract
