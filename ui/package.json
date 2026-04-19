@@ -16,7 +16,7 @@
     "test:coverage": "c8 npm run test"
   },
   "dependencies": {
-    "@google/model-viewer": "^4.1.0",
+    "@google/model-viewer": "^4.2.0",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.2",
     "cheerio": "^1.2.0",
