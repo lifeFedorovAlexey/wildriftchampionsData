@@ -34,7 +34,7 @@
     "@types/styled-components": "^5.1.36",
     "c8": "^11.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.3",
+    "eslint-config-next": "16.2.4",
     "jscpd": "^4.0.9",
     "tailwindcss": "^4",
     "typescript": "^6.0.2"
