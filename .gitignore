@@ -9,3 +9,5 @@
 .runtime/
 .runtime-local-server.log
 .runtime-local-server.err.log
+ui/.runtime*.log
+ui/.runtime*.err.log

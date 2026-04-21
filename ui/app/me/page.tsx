@@ -19,6 +19,12 @@ type UserTelegramProvider = {
   authUrl?: string;
 };
 
+type ChampionOption = {
+  slug: string;
+  name: string;
+  iconUrl?: string;
+};
+
 function buildAvailableSections(roles: string[] | undefined) {
   const roleSet = new Set(
     Array.isArray(roles)
@@ -102,11 +108,17 @@ export default async function MePage({
   const telegramProvider =
     (providers as Record<string, UserTelegramProvider | undefined>).telegram || null;
   const errorValue = Array.isArray(params.error) ? params.error[0] : params.error;
-  const errorText = getUserErrorMessage(errorValue);
+  let errorText = getUserErrorMessage(errorValue);
   const updated = (Array.isArray(params.updated) ? params.updated[0] : params.updated) === "1";
 
   if (session) {
-    const champions = await fetchProfileChampionOptions(process.env);
+    let champions: ChampionOption[] = [];
+    try {
+      champions = await fetchProfileChampionOptions(process.env);
+    } catch {
+      errorText = "Не удалось загрузить профиль. Попробуй обновить страницу или войти заново.";
+    }
+
     const accessSections = buildAvailableSections(session.roles);
 
     return (

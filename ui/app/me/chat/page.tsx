@@ -21,9 +21,6 @@ export default async function MeChatPage() {
         <div className={profileStyles.head}>
           <div>
             <h1 className={profileStyles.title}>Чат</h1>
-            <p className={profileStyles.lead}>
-              Локальный MVP текстового чата поверх `wr-api` и `wr-chat`.
-            </p>
           </div>
           <TopPillLink href="/me">← В профиль</TopPillLink>
         </div>

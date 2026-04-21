@@ -1,161 +1,198 @@
 .shell {
   display: grid;
-  gap: 18px;
+  gap: 14px;
 }
 
-.noticeError,
-.noticeOk,
-.card {
+.noticeError {
+  padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
-  background: rgba(10, 15, 26, 0.9);
-}
-
-.noticeError,
-.noticeOk {
-  padding: 14px 16px;
+  border-radius: 18px;
+  color: #ffb7b7;
+  background: rgba(110, 28, 36, 0.28);
   font-size: 14px;
   line-height: 1.5;
 }
 
-.noticeError {
-  color: #ffb7b7;
-  background: rgba(110, 28, 36, 0.28);
-}
-
-.noticeOk {
-  color: #b8f0be;
-  background: rgba(30, 82, 45, 0.3);
-}
-
-.grid {
+.chatCard {
   display: grid;
-  gap: 18px;
+  gap: 14px;
+  min-height: 680px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: rgba(10, 15, 26, 0.92);
 }
 
-.card {
-  padding: 20px;
+.chatHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.titleRow {
+.chatMain {
+  display: grid;
+  gap: 8px;
+}
+
+.chatTopline {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #8be28d;
+  box-shadow: 0 0 12px rgba(139, 226, 141, 0.5);
+}
+
+.statusText,
+.chatSubline {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.chatSubline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chatTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr) minmax(190px, 220px);
+  gap: 14px;
+  min-height: 0;
+}
+
+.sidebar,
+.members,
+.chatColumn {
+  min-height: 0;
+}
+
+.sidebar,
+.members {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.chatColumn {
+  display: grid;
   gap: 12px;
 }
 
-.cardTitle {
-  margin: 0;
-  color: #fff;
-  font-size: 20px;
+.sidebarSection {
+  display: grid;
+  gap: 10px;
 }
 
-.cardCopy {
-  margin: 12px 0 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
-  line-height: 1.6;
+.sidebarLabel {
+  color: rgba(245, 211, 108, 0.92);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.button,
-.buttonGhost {
+.sidebarList,
+.memberList {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebarEmpty {
+  padding: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.iconButton,
+.panelClose {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  padding: 0 14px;
-  border: 0;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
-  font-size: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 18px;
   font-weight: 800;
   cursor: pointer;
 }
 
-.button {
-  background: linear-gradient(135deg, #f5d36c, #ff9b57);
-  color: #10151f;
-}
-
-.buttonGhost {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-.formRow {
+.channelStrip {
   display: flex;
   gap: 10px;
-  margin-top: 16px;
+  overflow-x: auto;
+  padding-bottom: 2px;
 }
 
-.input,
-.textarea {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff;
-}
-
-.input {
-  min-height: 42px;
+.channelChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
   padding: 0 14px;
-}
-
-.textarea {
-  min-height: 92px;
-  padding: 12px 14px;
-  resize: vertical;
-}
-
-.columns {
-  display: grid;
-  gap: 18px;
-}
-
-.list {
-  display: grid;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.listButton {
-  display: grid;
-  gap: 4px;
-  width: 100%;
-  padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  border-radius: 999px;
   background: rgba(255, 255, 255, 0.03);
-  color: #fff;
-  text-align: left;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
 }
 
-.listButtonActive {
-  border-color: rgba(245, 211, 108, 0.52);
-  background: rgba(245, 211, 108, 0.1);
-}
-
-.listTitle {
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.listMeta {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 12px;
+.channelChipActive {
+  border-color: rgba(245, 211, 108, 0.45);
+  background: rgba(245, 211, 108, 0.12);
+  color: #fff;
 }
 
 .messages {
   display: grid;
   gap: 10px;
-  margin-top: 16px;
+  align-content: start;
+  min-height: 380px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .messageCard {
   padding: 12px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.03);
 }
 
@@ -173,7 +210,7 @@
 }
 
 .messageTime {
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.48);
   font-size: 12px;
 }
 
@@ -185,33 +222,185 @@
   white-space: pre-wrap;
 }
 
-.subtle {
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 13px;
-}
-
-.presence {
-  margin-top: 14px;
-  color: rgba(184, 240, 190, 0.82);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.emptyState {
+  padding: 22px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 14px;
+  text-align: center;
 }
 
 .typing {
-  margin-top: 10px;
-  color: rgba(245, 211, 108, 0.9);
+  color: rgba(245, 211, 108, 0.92);
   font-size: 12px;
   font-weight: 700;
 }
 
-@media (min-width: 980px) {
-  .grid {
-    grid-template-columns: 320px minmax(0, 1fr);
-  }
+.memberCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
 
-  .columns {
-    grid-template-columns: 1fr 1fr;
+.memberDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #8be28d;
+  flex: 0 0 auto;
+}
+
+.memberName {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.composer {
+  display: grid;
+  gap: 10px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.input {
+  min-height: 44px;
+  padding: 0 14px;
+}
+
+.textarea {
+  min-height: 94px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.sendButton,
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.sendButton {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #f5d36c, #ff9b57);
+  color: #11151f;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: flex-end;
+  padding: 18px;
+  background: rgba(3, 6, 12, 0.56);
+  backdrop-filter: blur(8px);
+}
+
+.panel,
+.modal {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  width: min(360px, 100%);
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: rgba(10, 15, 26, 0.98);
+}
+
+.modal {
+  margin: auto;
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.panelTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.panelSection,
+.formStack {
+  display: grid;
+  gap: 12px;
+}
+
+.panelLabel {
+  color: rgba(245, 211, 108, 0.92);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.panelList {
+  display: grid;
+  gap: 10px;
+}
+
+.listButton {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.listButtonActive {
+  border-color: rgba(245, 211, 108, 0.45);
+  background: rgba(245, 211, 108, 0.12);
+}
+
+.listTitle {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.listMeta {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 12px;
+}
+
+@media (max-width: 1120px) {
+  .layout {
+    grid-template-columns: 1fr;
   }
 }
