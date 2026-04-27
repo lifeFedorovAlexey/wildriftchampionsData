@@ -87,6 +87,12 @@ function parseCliArgs(argv) {
   }
 
   options.slugs = options.slugs.filter(Boolean);
+
+  if (options.slugs.length > 0 && !options.skipCnHistory) {
+    options.skipCnHistory = true;
+    options.autoSkippedCnHistory = true;
+  }
+
   return options;
 }
 
@@ -270,6 +276,12 @@ async function runGuideSync({ slugs, concurrency }) {
 async function main() {
   const options = parseCliArgs(process.argv);
   const startedAt = Date.now();
+
+  if (options.autoSkippedCnHistory) {
+    console.log(
+      `[full-sync] auto-skip cn-history for targeted slugs: ${options.slugs.join(", ")}`,
+    );
+  }
 
   console.log("[full-sync] step=champions start");
   const championCatalog = await updateChampions();
