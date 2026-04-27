@@ -26,6 +26,9 @@
     "recharts": "^3.5.0",
     "styled-components": "^6.4.0"
   },
+  "overrides": {
+    "postcss": "^8.5.10"
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^25.6.0",
