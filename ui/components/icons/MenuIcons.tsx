@@ -171,6 +171,22 @@ export function IconSkins() {
   );
 }
 
+export function IconSupport({ size = 22 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+      style={{ display: "block" }}
+    >
+      <path d="M12 21.35 10.55 20C5.4 15.24 2 12.09 2 8.25 2 5.4 4.24 3 7.1 3c1.63 0 3.2.8 4.2 2.04C12.3 3.8 13.87 3 15.5 3 18.36 3 20.6 5.4 20.6 8.25c0 3.84-3.4 6.99-8.55 11.76L12 21.35Z" />
+    </svg>
+  );
+}
+
 export function IconNews({ size = 22 }) {
   return (
     <svg

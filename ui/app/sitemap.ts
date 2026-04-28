@@ -16,6 +16,7 @@ const STATIC_ROUTES: Array<{
   { path: "/picks-bans", changeFrequency: "daily", priority: 0.8 },
   { path: "/trends", changeFrequency: "daily", priority: 0.8 },
   { path: "/guides", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/support", changeFrequency: "monthly", priority: 0.5 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
