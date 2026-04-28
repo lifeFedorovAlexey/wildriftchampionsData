@@ -4,18 +4,6 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "wr-chat/**"
-      - ".github/workflows/chat-ci.yml"
-      - ".github/workflows/deploy-chat-timeweb.yml"
-  pull_request:
-    paths:
-      - "wr-chat/**"
-      - ".github/workflows/chat-ci.yml"
-      - ".github/workflows/deploy-chat-timeweb.yml"
   workflow_dispatch:
     inputs:
       deploy:
@@ -54,19 +42,10 @@ jobs:
     needs:
       - ci
     if: >-
-      (
-        github.event_name == 'push' &&
-        github.ref == 'refs/heads/main' &&
-        secrets.TIMEWEB_CHAT_HOST != '' &&
-        secrets.TIMEWEB_CHAT_USER != '' &&
-        secrets.TIMEWEB_CHAT_PASSWORD != ''
-      ) ||
-      (
-        github.event_name == 'workflow_dispatch' &&
-        inputs.deploy &&
-        secrets.TIMEWEB_CHAT_HOST != '' &&
-        secrets.TIMEWEB_CHAT_USER != '' &&
-        secrets.TIMEWEB_CHAT_PASSWORD != ''
-      )
+      github.event_name == 'workflow_dispatch' &&
+      inputs.deploy &&
+      secrets.TIMEWEB_CHAT_HOST != '' &&
+      secrets.TIMEWEB_CHAT_USER != '' &&
+      secrets.TIMEWEB_CHAT_PASSWORD != ''
     uses: ./.github/workflows/deploy-chat-timeweb.yml
     secrets: inherit
