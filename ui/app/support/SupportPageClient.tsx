@@ -35,29 +35,38 @@ export default function SupportPageClient() {
     <PageWrapper
       title="Поддержать"
       paragraphs={[
-        "Рекламы на сайте не будет. Если хотите помочь проекту, это можно сделать напрямую или через партнёрскую ссылку Яндекса.",
+        "Проект живёт без баннеров. Если хотите помочь, это можно сделать напрямую или через партнёрскую ссылку Яндекса.",
       ]}
     >
       <div className={styles.page}>
-        <section className={styles.heroCard}>
-          <div className={styles.heroCopy}>
+        <section className={styles.hero}>
+          <div className={styles.heroMain}>
             <span className={styles.eyebrow}>Поддержка проекта</span>
-            <h2 className={styles.heroTitle}>wildriftallstats.ru</h2>
+            <h2 className={styles.heroTitle}>
+              wildriftallstats.ru
+              <span className={styles.heroAccent}> без баннеров и мусора</span>
+            </h2>
             <p className={styles.heroText}>
               Если сайт помогает вам следить за метой, собирать билд и быстрее
               находить нужные гайды, можно поддержать проект напрямую на карту
               или через Boosty.
             </p>
+            <div className={styles.heroPills}>
+              <span className={styles.heroPill}>Без рекламных баннеров</span>
+              <span className={styles.heroPill}>Прямая поддержка проекта</span>
+              <span className={styles.heroPill}>Партнёрская ссылка только по желанию</span>
+            </div>
           </div>
 
-          <div className={styles.supportStack}>
-            <div className={styles.cardPanel}>
+          <div className={styles.supportRail}>
+            <div className={styles.supportCard}>
               <div className={styles.cardLabel}>Номер карты</div>
               <div className={styles.cardNumber}>{CARD_NUMBER}</div>
               <CopyCardButton />
             </div>
 
-            <div className={styles.boostyPanel}>
+            <div className={styles.boostyCard}>
+              <div className={styles.cardLabel}>Boosty</div>
               <div className={styles.boostyRow}>
                 <a
                   href={BOOSTY_LINK}
@@ -107,31 +116,34 @@ export default function SupportPageClient() {
           </div>
         </section>
 
-        <YandexPromoBlock
-          title="Скачать Яндекс с Алисой"
-          description="Рекламных блоков на сайте не будет, но если хотите поддержать проект без доната, можно скачать Яндекс с Алисой по этой ссылке. Это тоже вносит вклад в развитие wildriftallstats.ru."
-          ctaLabel="Открыть ссылку"
-        />
-
-        <section className={styles.streamerPanel}>
-          <div className={styles.panelHead}>
-            <span className={styles.eyebrow}>Поддержка стримера</span>
-            <h2 className={styles.panelTitle}>INQ</h2>
+        <div className={styles.lowerGrid}>
+          <div className={styles.promoWrap}>
+            <YandexPromoBlock
+              title="Скачать Яндекс с Алисой"
+              description="Рекламных блоков на сайте не будет, но если хотите поддержать проект без доната, можно скачать Яндекс с Алисой по этой ссылке. Это тоже вносит вклад в развитие wildriftallstats.ru."
+              ctaLabel="Открыть ссылку"
+            />
           </div>
 
-          <p className={styles.panelText}>
-            Здесь собраны актуальные ссылки INQ, которые уже используются на
-            сайте.
-          </p>
+          <section className={styles.streamerPanel}>
+            <div className={styles.panelHead}>
+              <span className={styles.eyebrow}>Поддержка стримера</span>
+              <h2 className={styles.panelTitle}>INQ</h2>
+            </div>
 
-          <div className={styles.streamerActions}>
-            <a href="/tier-inq" className={styles.secondaryLink}>
-              Открыть тир-лист INQ
-            </a>
-          </div>
+            <p className={styles.panelText}>
+              Актуальные ссылки INQ, которые уже используются на сайте.
+            </p>
 
-          <StreamerSocials />
-        </section>
+            <div className={styles.streamerActions}>
+              <a href="/tier-inq" className={styles.secondaryLink}>
+                Открыть тир-лист INQ
+              </a>
+            </div>
+
+            <StreamerSocials />
+          </section>
+        </div>
       </div>
     </PageWrapper>
   );

@@ -27,14 +27,16 @@ export default function YandexPromoBlock({
           <p className={styles.disclaimer}>Рекламодатель: ООО «Яндекс», ИНН 7736207543</p>
         </div>
 
-        <a
-          className={styles.cta}
-          href={YANDEX_PROMO_URL}
-          target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
-        >
-          {ctaLabel}
-        </a>
+        <div className={styles.actions}>
+          <a
+            className={styles.cta}
+            href={YANDEX_PROMO_URL}
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+          >
+            {ctaLabel}
+          </a>
+        </div>
       </div>
     </aside>
   );

@@ -1,15 +1,16 @@
 .card {
   display: grid;
-  gap: 16px;
-  padding: 18px;
+  gap: 18px;
+  padding: 22px;
   border-radius: var(--radius-xl);
   border: 1px solid rgba(248, 204, 39, 0.28);
   background:
-    radial-gradient(circle at top right, rgba(255, 214, 10, 0.18), transparent 34%),
-    linear-gradient(180deg, rgba(24, 30, 46, 0.96), rgba(12, 17, 29, 0.98));
+    radial-gradient(circle at top right, rgba(255, 214, 10, 0.16), transparent 36%),
+    radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(24, 30, 46, 0.98), rgba(12, 17, 29, 0.98));
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 18px 40px rgba(2, 6, 23, 0.2);
+    0 18px 40px rgba(2, 6, 23, 0.22);
 }
 
 .header {
@@ -47,20 +48,21 @@
 
 .body {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 .copy {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .title {
   margin: 0;
   color: #ffffff;
-  font-size: 22px;
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
 }
 
 .description,
@@ -71,7 +73,7 @@
 
 .description {
   color: rgba(241, 245, 249, 0.84);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .disclaimer {
@@ -79,13 +81,18 @@
   font-size: 12px;
 }
 
+.actions {
+  display: grid;
+  align-content: center;
+}
+
 .cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  width: fit-content;
-  padding: 0 18px;
+  min-height: 52px;
+  width: 100%;
+  padding: 0 22px;
   border-radius: 999px;
   background: linear-gradient(180deg, #fde047, #facc15);
   color: #111827;
@@ -107,8 +114,8 @@
 
 @media (min-width: 860px) {
   .body {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 220px);
+    align-items: stretch;
   }
 }
 
@@ -119,9 +126,5 @@
 
   .title {
     font-size: 20px;
-  }
-
-  .cta {
-    width: 100%;
   }
 }
