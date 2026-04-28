@@ -35,7 +35,7 @@ export default function SupportPageClient() {
     <PageWrapper
       title="Поддержать"
       paragraphs={[
-        "Здесь собраны все способы поддержать развитие wildriftallstats.ru и отдельно поддержать автора тир-листа INQ.",
+        "Рекламы на сайте не будет. Если хотите помочь проекту, это можно сделать напрямую или через партнёрскую ссылку Яндекса.",
       ]}
     >
       <div className={styles.page}>
@@ -45,97 +45,71 @@ export default function SupportPageClient() {
             <h2 className={styles.heroTitle}>wildriftallstats.ru</h2>
             <p className={styles.heroText}>
               Если сайт помогает вам следить за метой, собирать билд и быстрее
-              находить нужные гайды, поддержку можно отправить напрямую на карту
+              находить нужные гайды, можно поддержать проект напрямую на карту
               или через Boosty.
             </p>
           </div>
 
-          <div className={styles.cardPanel}>
-            <div className={styles.cardLabel}>Номер карты</div>
-            <div className={styles.cardNumber}>{CARD_NUMBER}</div>
-            <CopyCardButton />
+          <div className={styles.supportStack}>
+            <div className={styles.cardPanel}>
+              <div className={styles.cardLabel}>Номер карты</div>
+              <div className={styles.cardNumber}>{CARD_NUMBER}</div>
+              <CopyCardButton />
+            </div>
+
+            <div className={styles.boostyPanel}>
+              <div className={styles.boostyRow}>
+                <a
+                  href={BOOSTY_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.boostyLogoLink}
+                  aria-label="Открыть Boosty"
+                >
+                  <Image
+                    src="/boosty-logo.svg"
+                    alt="Boosty"
+                    width={897}
+                    height={317}
+                    sizes="140px"
+                    unoptimized
+                    className={styles.boostyLogo}
+                  />
+                </a>
+
+                <a
+                  href={BOOSTY_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.qrPanel}
+                  aria-label="Открыть Boosty по QR"
+                >
+                  <Image
+                    src="/boosty-donate-qr.png"
+                    alt="QR-код для поддержки проекта"
+                    width={116}
+                    height={116}
+                    sizes="116px"
+                    className={styles.qrImage}
+                  />
+                </a>
+              </div>
+
+              <a
+                href={BOOSTY_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.primaryLink}
+              >
+                Перейти на Boosty
+              </a>
+            </div>
           </div>
         </section>
 
-        <div className={styles.grid}>
-          <section className={styles.panel}>
-            <div className={styles.panelHead}>
-              <span className={styles.eyebrow}>Способ 1</span>
-              <h2 className={styles.panelTitle}>Поддержка через Boosty</h2>
-            </div>
-
-            <p className={styles.panelText}>
-              Удобный вариант, если хотите поддержать проект донатом, не вводя
-              реквизиты карты вручную.
-            </p>
-
-            <div className={styles.boostyRow}>
-              <a
-                href={BOOSTY_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.boostyLogoLink}
-                aria-label="Открыть Boosty"
-              >
-                <Image
-                  src="/boosty-logo.svg"
-                  alt="Boosty"
-                  width={897}
-                  height={317}
-                  sizes="140px"
-                  unoptimized
-                  className={styles.boostyLogo}
-                />
-              </a>
-
-              <a
-                href={BOOSTY_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.qrPanel}
-                aria-label="Открыть Boosty по QR"
-              >
-                <Image
-                  src="/boosty-donate-qr.png"
-                  alt="QR-код для поддержки проекта"
-                  width={116}
-                  height={116}
-                  sizes="116px"
-                  className={styles.qrImage}
-                />
-              </a>
-            </div>
-
-            <a
-              href={BOOSTY_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.primaryLink}
-            >
-              Перейти на Boosty
-            </a>
-          </section>
-
-          <section className={styles.panel}>
-            <div className={styles.panelHead}>
-              <span className={styles.eyebrow}>Способ 2</span>
-              <h2 className={styles.panelTitle}>Поддержка через карту</h2>
-            </div>
-
-            <p className={styles.panelText}>
-              Если удобнее поддержать напрямую, используйте номер карты ниже.
-            </p>
-
-            <div className={styles.inlineCardBox}>
-              <div className={styles.inlineCardNumber}>{CARD_NUMBER}</div>
-              <CopyCardButton />
-            </div>
-          </section>
-        </div>
-
         <YandexPromoBlock
           title="Скачать Яндекс с Алисой"
-          description="Партнёрская ссылка Яндекса с маркировкой. Откроет установку приложения Яндекс с Алисой."
+          description="Рекламных блоков на сайте не будет, но если хотите поддержать проект без доната, можно скачать Яндекс с Алисой по этой ссылке. Это тоже вносит вклад в развитие wildriftallstats.ru."
           ctaLabel="Открыть ссылку"
         />
 
@@ -146,9 +120,8 @@ export default function SupportPageClient() {
           </div>
 
           <p className={styles.panelText}>
-            Отдельно можно поддержать автора кастомного тир-листа и следить за
-            его контентом. Ниже собраны актуальные ссылки INQ, которые уже
-            используются на сайте.
+            Здесь собраны актуальные ссылки INQ, которые уже используются на
+            сайте.
           </p>
 
           <div className={styles.streamerActions}>

@@ -4,7 +4,21 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "ui/**"
+      - ".github/workflows/pipeline.yml"
+      - ".github/workflows/ci.yml"
+      - ".github/workflows/security-audit.yml"
+      - ".github/workflows/codeql.yml"
+      - ".github/workflows/deploy-timeweb.yml"
   pull_request:
+    paths:
+      - "ui/**"
+      - ".github/workflows/pipeline.yml"
+      - ".github/workflows/ci.yml"
+      - ".github/workflows/security-audit.yml"
+      - ".github/workflows/codeql.yml"
+      - ".github/workflows/deploy-timeweb.yml"
   workflow_dispatch:
     inputs:
       deploy:
