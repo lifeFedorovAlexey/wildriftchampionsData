@@ -1,11 +1,11 @@
 import styles from "./YandexPromoBlock.module.css";
 
 const YANDEX_PROMO_URL =
-  "https://redirect.appmetrica.yandex.com/serve/678337863170949830?partner_id=831050&appmetrica_js_redirect=0&full=0&clid=14970313&banerid=1314970303";
+  "https://redirect.appmetrica.yandex.com/serve/678337863170949830?partner_id=831050&appmetrica_js_redirect=0&full=0&clid=14970313&banerid=1314970303&erid=5jtCeReNx12oajxVXELBqPM";
 const YANDEX_AD_ERID = "5jtCeReNx12oajxVXELBqPM";
 
 export default function YandexPromoBlock({
-  title = "Скачать Яндекс с Алисой",
+  title = "Скачать Яндекс Браузер",
   description = "Установите приложение Яндекс с Алисой для быстрого доступа к поиску, сервисам и помощнику.",
   ctaLabel = "Открыть ссылку",
 }: {

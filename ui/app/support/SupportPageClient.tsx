@@ -120,8 +120,8 @@ export default function SupportPageClient() {
         <div className={styles.lowerGrid}>
           <div className={styles.promoWrap}>
             <YandexPromoBlock
-              title="Скачать Яндекс с Алисой"
-              description="Рекламных блоков на сайте не будет, кроме этой страницы поддержки. Если хотите помочь проекту без доната, можно скачать Яндекс с Алисой по этой ссылке. Это тоже вносит вклад в развитие wildriftallstats.ru."
+              title="Скачать Яндекс Браузер"
+              description="Рекламных блоков на сайте не будет, кроме этой страницы поддержки. Если хотите помочь проекту без доната, можно скачать Яндекс Браузер по этой ссылке. Это тоже вносит вклад в развитие wildriftallstats.ru."
               ctaLabel="Открыть ссылку"
             />
           </div>
