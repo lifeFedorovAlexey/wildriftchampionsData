@@ -41,13 +41,20 @@ jobs:
     name: Deploy wr-chat To Timeweb
     needs:
       - ci
-    if: >-
-      inputs.deploy &&
-      secrets.TIMEWEB_CHAT_HOST != '' &&
-      secrets.TIMEWEB_CHAT_USER != '' &&
-      secrets.TIMEWEB_CHAT_PASSWORD != ''
+    if: inputs.deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Validate deploy secrets
+        env:
+          TIMEWEB_CHAT_HOST: ${{ secrets.TIMEWEB_CHAT_HOST }}
+          TIMEWEB_CHAT_USER: ${{ secrets.TIMEWEB_CHAT_USER }}
+          TIMEWEB_CHAT_PASSWORD: ${{ secrets.TIMEWEB_CHAT_PASSWORD }}
+        run: |
+          if [ -z "$TIMEWEB_CHAT_HOST" ] || [ -z "$TIMEWEB_CHAT_USER" ] || [ -z "$TIMEWEB_CHAT_PASSWORD" ]; then
+            echo "wr-chat deploy secrets are not configured"
+            exit 1
+          fi
+
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.2.5
         env:
