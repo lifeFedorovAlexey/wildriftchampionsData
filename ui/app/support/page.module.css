@@ -1,110 +1,105 @@
 .page {
   display: grid;
-  gap: 22px;
+  gap: 18px;
 }
 
-.hero,
-.streamerPanel {
+.intro,
+.card {
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-soft);
   box-shadow: var(--panel-shadow);
 }
 
-.hero {
+.intro {
   display: grid;
-  gap: 24px;
-  padding: 26px;
+  gap: 12px;
+  padding: 24px;
   background:
-    radial-gradient(circle at top right, rgba(248, 204, 39, 0.14), transparent 30%),
-    radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.1), transparent 26%),
+    radial-gradient(circle at top right, rgba(248, 204, 39, 0.1), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.08), transparent 24%),
     linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(8, 13, 27, 0.98));
 }
 
-.heroMain,
-.panelHead {
-  display: grid;
-  gap: 10px;
-}
-
-.eyebrow {
-  color: #93c5fd;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.heroTitle,
-.panelTitle {
+.introTitle,
+.cardTitle {
   margin: 0;
   color: var(--text-strong);
 }
 
-.heroTitle {
-  font-size: clamp(34px, 5vw, 48px);
-  line-height: 0.94;
+.introTitle {
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 0.96;
   letter-spacing: -0.04em;
 }
 
-.heroLead {
+.introLead {
   margin: 2px 0 0;
   color: rgba(248, 250, 252, 0.82);
-  font-size: clamp(18px, 2.2vw, 24px);
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 700;
   line-height: 1.2;
 }
 
-.panelTitle {
-  font-size: 24px;
-  line-height: 1.06;
-}
-
-.heroText,
-.panelText {
+.introText,
+.introNote,
+.cardText,
+.collabMeta {
   margin: 0;
   color: var(--text-main);
   font-size: 15px;
-  line-height: 1.68;
-  max-width: 64ch;
+  line-height: 1.62;
 }
 
-.supportRail {
-  display: grid;
-  gap: 14px;
-  align-content: start;
+.introText,
+.introNote {
+  max-width: 74ch;
 }
 
-.supportCard,
-.boostyCard {
+.introNote {
+  color: rgba(226, 232, 240, 0.72);
+}
+
+.cardTitle {
+  font-size: 24px;
+  line-height: 1.08;
+}
+
+.cardsGrid {
   display: grid;
-  gap: 14px;
-  padding: 18px;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 18px;
+  min-height: 280px;
+  padding: 20px;
   border-radius: var(--radius-lg);
   background: linear-gradient(180deg, rgba(17, 24, 39, 0.9), rgba(12, 18, 31, 0.94));
   border: 1px solid rgba(248, 204, 39, 0.18);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.cardLabel {
-  color: rgba(191, 203, 227, 0.76);
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+.cardHead {
+  display: grid;
+  gap: 10px;
 }
 
 .cardNumber {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
+  align-items: stretch;
+  align-content: flex-start;
 }
 
 .cardChunk {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 74px;
+  min-width: 78px;
   min-height: 52px;
   padding: 0 10px;
   border-radius: 14px;
@@ -163,30 +158,12 @@
   transform: translateY(-1px);
 }
 
-.lowerGrid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
-}
-
-.promoWrap,
-.streamerPanel {
-  min-height: 100%;
-}
-
-.streamerPanel {
-  display: grid;
-  gap: 18px;
-  padding: 22px;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(11, 17, 31, 0.96));
-}
-
 .boostyRow {
   display: grid;
   gap: 14px;
   grid-template-columns: minmax(0, 1fr) 96px;
   align-items: center;
+  align-content: flex-start;
 }
 
 .boostyLogoLink,
@@ -226,42 +203,33 @@
   background: #fff;
 }
 
-.streamerActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.collabFoot {
+  display: grid;
+  gap: 14px;
+  align-content: end;
 }
 
-@media (min-width: 860px) {
-  .hero {
-    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 380px);
-    align-items: start;
-  }
+.collabMeta {
+  color: rgba(226, 232, 240, 0.74);
 }
 
 @media (max-width: 980px) {
-  .lowerGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 860px) {
-  .hero {
+  .cardsGrid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
-  .hero,
-  .streamerPanel {
+  .intro,
+  .card {
     padding: 16px;
   }
 
-  .heroTitle {
+  .introTitle {
     font-size: 30px;
   }
 
-  .heroLead {
+  .introLead {
     font-size: 18px;
   }
 

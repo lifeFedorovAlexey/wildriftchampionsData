@@ -6,7 +6,7 @@ const YANDEX_AD_ERID = "5jtCeReNx12oajxVXELBqPM";
 
 export default function YandexPromoBlock({
   title = "Скачать Яндекс Браузер",
-  description = "Установите приложение Яндекс с Алисой для быстрого доступа к поиску, сервисам и помощнику.",
+  description = "Установите Яндекс Браузер по партнёрской ссылке, если хотите поддержать проект без прямого доната.",
   ctaLabel = "Открыть ссылку",
 }: {
   title?: string;
@@ -15,28 +15,22 @@ export default function YandexPromoBlock({
 }) {
   return (
     <aside className={styles.card} aria-label="Рекламный блок Яндекса">
-      <div className={styles.header}>
-        <span className={styles.badge}>Реклама</span>
-        <span className={styles.meta}>erid: {YANDEX_AD_ERID}</span>
+      <div className={styles.copy}>
+        <p className={styles.legal}>Реклама • erid: {YANDEX_AD_ERID}</p>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.disclaimer}>Рекламодатель: ООО «Яндекс», ИНН 7736207543</p>
       </div>
 
-      <div className={styles.body}>
-        <div className={styles.copy}>
-          <h2 className={styles.title}>{title}</h2>
-          <p className={styles.description}>{description}</p>
-          <p className={styles.disclaimer}>Рекламодатель: ООО «Яндекс», ИНН 7736207543</p>
-        </div>
-
-        <div className={styles.actions}>
-          <a
-            className={styles.cta}
-            href={YANDEX_PROMO_URL}
-            target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
-          >
-            {ctaLabel}
-          </a>
-        </div>
+      <div className={styles.actions}>
+        <a
+          className={styles.cta}
+          href={YANDEX_PROMO_URL}
+          target="_blank"
+          rel="nofollow sponsored noopener noreferrer"
+        >
+          {ctaLabel}
+        </a>
       </div>
     </aside>
   );
