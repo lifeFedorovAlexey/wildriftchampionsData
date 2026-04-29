@@ -1,10 +1,10 @@
-name: wr-chat CI
+name: wr-chat Reusable
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       deploy:
         description: Deploy wr-chat after checks
@@ -42,7 +42,6 @@ jobs:
     needs:
       - ci
     if: >-
-      github.event_name == 'workflow_dispatch' &&
       inputs.deploy &&
       secrets.TIMEWEB_CHAT_HOST != '' &&
       secrets.TIMEWEB_CHAT_USER != '' &&

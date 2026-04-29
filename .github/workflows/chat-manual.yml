@@ -1,0 +1,17 @@
+name: wr-chat Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Deploy wr-chat after checks
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  chat:
+    uses: ./.github/workflows/chat-reusable.yml
+    with:
+      deploy: ${{ inputs.deploy }}
+    secrets: inherit
