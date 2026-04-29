@@ -62,6 +62,10 @@ function isItemActive(pathname: string, item: NavItem) {
   return item.children?.some((child) => isActive(pathname, child.href)) ?? false;
 }
 
+function isSupportItem(item: NavItem) {
+  return item.href === "/support";
+}
+
 function TelegramIcon() {
   return (
     <svg viewBox="0 0 50 50" aria-hidden="true" className={styles.utilityIcon}>
@@ -278,6 +282,8 @@ export default function AppHeader() {
                   key={item.href}
                   href={item.href}
                   className={`${styles.desktopLink} ${
+                    isSupportItem(item) ? styles.desktopLinkSupport : ""
+                  } ${
                     isActive(pathname, item.href) ? styles.desktopLinkActive : ""
                   }`}
                 >
@@ -398,6 +404,8 @@ export default function AppHeader() {
                   key={item.href}
                   href={item.href}
                   className={`${styles.menuLink} ${
+                    isSupportItem(item) ? styles.menuLinkSupport : ""
+                  } ${
                     isActive(pathname, item.href) ? styles.menuLinkActive : ""
                   }`}
                   onClick={() => closeMenu()}

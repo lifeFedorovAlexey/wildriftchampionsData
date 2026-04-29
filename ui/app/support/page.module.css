@@ -95,6 +95,27 @@
   align-content: flex-start;
 }
 
+.cardNumberPanel {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(12, 18, 31, 0.96), rgba(8, 13, 24, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+.cardNumberLabel {
+  color: rgba(226, 232, 240, 0.54);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .cardChunk {
   display: inline-flex;
   align-items: center;
@@ -102,15 +123,16 @@
   min-width: 78px;
   min-height: 52px;
   padding: 0 10px;
-  border-radius: 14px;
-  background: rgba(8, 13, 24, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(23, 31, 50, 0.9), rgba(11, 16, 28, 0.94));
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  font-size: clamp(24px, 3.2vw, 30px);
+  font-size: clamp(24px, 3vw, 28px);
   font-weight: 900;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .copyButton,
@@ -158,41 +180,56 @@
   transform: translateY(-1px);
 }
 
-.boostyRow {
+.boostyPanel {
   display: grid;
-  gap: 14px;
-  grid-template-columns: minmax(0, 1fr) 96px;
-  align-items: center;
-  align-content: flex-start;
+  align-content: center;
 }
 
-.boostyLogoLink,
+.boostyRow {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) 104px;
+  align-items: center;
+  align-content: flex-start;
+  text-decoration: none;
+  padding: 18px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top right, rgba(248, 204, 39, 0.08), transparent 38%),
+    linear-gradient(180deg, rgba(14, 20, 35, 0.96), rgba(8, 13, 24, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+.boostyLogoFrame,
 .qrPanel {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
 }
 
-.boostyLogoLink {
+.boostyLogoFrame {
   min-height: 88px;
-  padding: 10px 16px;
-  border-radius: 16px;
-  background: #f6f6f6;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff, #f3f4f6);
   border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .boostyLogo {
-  width: min(152px, 100%);
+  width: min(164px, 100%);
   height: auto;
   display: block;
 }
 
 .qrPanel {
-  padding: 8px;
+  min-height: 104px;
+  padding: 10px;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(11, 16, 36, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(11, 16, 36, 0.78);
 }
 
 .qrImage {
@@ -207,6 +244,16 @@
   display: grid;
   gap: 14px;
   align-content: end;
+}
+
+.inqFoot {
+  display: grid;
+  gap: 12px;
+  align-content: end;
+}
+
+.inqSocials {
+  padding-top: 4px;
 }
 
 .collabMeta {
@@ -241,7 +288,6 @@
 
   .boostyRow {
     grid-template-columns: 1fr auto;
-    justify-items: start;
   }
 
   .copyButton,

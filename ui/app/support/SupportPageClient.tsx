@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import PageWrapper from "@/components/PageWrapper";
+import StreamerSocials from "@/components/StreamerSocials";
 import YandexPromoBlock from "@/components/YandexPromoBlock";
 import styles from "./page.module.css";
 
@@ -63,12 +64,15 @@ export default function SupportPageClient() {
               </p>
             </div>
 
-            <div className={styles.cardNumber} aria-label={CARD_NUMBER}>
-              {CARD_CHUNKS.map((chunk) => (
-                <span key={chunk} className={styles.cardChunk}>
-                  {chunk}
-                </span>
-              ))}
+            <div className={styles.cardNumberPanel}>
+              <span className={styles.cardNumberLabel}>Номер карты</span>
+              <div className={styles.cardNumber} aria-label={CARD_NUMBER}>
+                {CARD_CHUNKS.map((chunk) => (
+                  <span key={chunk} className={styles.cardChunk}>
+                    {chunk}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <CopyCardButton />
@@ -82,51 +86,38 @@ export default function SupportPageClient() {
               </p>
             </div>
 
-            <div className={styles.boostyRow}>
+            <div className={styles.boostyPanel}>
               <a
                 href={BOOSTY_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.boostyLogoLink}
+                className={styles.boostyRow}
                 aria-label="Открыть Boosty"
               >
-                <Image
-                  src="/boosty-logo.svg"
-                  alt="Boosty"
-                  width={897}
-                  height={317}
-                  sizes="140px"
-                  unoptimized
-                  className={styles.boostyLogo}
-                />
-              </a>
+                <span className={styles.boostyLogoFrame}>
+                  <Image
+                    src="/boosty-logo.svg"
+                    alt="Boosty"
+                    width={897}
+                    height={317}
+                    sizes="140px"
+                    unoptimized
+                    className={styles.boostyLogo}
+                  />
+                </span>
 
-              <a
-                href={BOOSTY_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.qrPanel}
-                aria-label="Открыть Boosty по QR"
-              >
-                <Image
-                  src="/boosty-donate-qr.png"
-                  alt="QR-код для поддержки проекта"
-                  width={116}
-                  height={116}
-                  sizes="116px"
-                  className={styles.qrImage}
-                />
+                <span className={styles.qrPanel}>
+                  <Image
+                    src="/boosty-donate-qr.png"
+                    alt="QR-код для поддержки проекта"
+                    width={116}
+                    height={116}
+                    sizes="116px"
+                    className={styles.qrImage}
+                  />
+                </span>
               </a>
             </div>
-
-            <a
-              href={BOOSTY_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.primaryLink}
-            >
-              Перейти на Boosty
-            </a>
           </section>
 
           <YandexPromoBlock
@@ -154,6 +145,25 @@ export default function SupportPageClient() {
               >
                 Написать в Telegram
               </a>
+            </div>
+          </section>
+
+          <section className={styles.card}>
+            <div className={styles.cardHead}>
+              <h3 className={styles.cardTitle}>Спасибо INQ</h3>
+              <p className={styles.cardText}>
+                Отдельное спасибо INQ за помощь проекту. Здесь собраны его
+                актуальные ссылки и соцсети, которые уже используются на сайте.
+              </p>
+            </div>
+
+            <div className={styles.inqFoot}>
+              <a href="/tier-inq" className={styles.secondaryLink}>
+                Открыть тир-лист INQ
+              </a>
+              <div className={styles.inqSocials}>
+                <StreamerSocials />
+              </div>
             </div>
           </section>
         </div>

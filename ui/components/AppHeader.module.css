@@ -349,8 +349,24 @@
   color: #ffffff;
 }
 
+.desktopLinkSupport {
+  color: var(--accent-primary-text);
+}
+
+.desktopLinkSupport:hover {
+  color: var(--accent-primary);
+}
+
 .mobileGroupButton:hover {
   color: #ffffff;
+}
+
+.menuLinkSupport {
+  color: var(--accent-primary-text);
+}
+
+.menuLinkSupport .menuLinkIcon {
+  color: var(--accent-primary);
 }
 
 .menuLinkActive {
@@ -467,8 +483,16 @@
     color: rgba(255, 255, 255, 0.92);
   }
 
+  .desktopLinkSupport:hover {
+    color: var(--accent-primary);
+  }
+
   .desktopLinkActive {
     color: #ffffff;
+  }
+
+  .desktopLinkSupport.desktopLinkActive {
+    color: var(--accent-primary);
   }
 
   .desktopLinkActive::after {
