@@ -1,5 +1,6 @@
 import WinratesClient from "./winrates/WinratesClient";
 import { loadWinratesPageData } from "./winrates/load-winrates-page.js";
+import PromoBanner from "@/components/PromoBanner";
 import styles from "./page.module.css";
 
 export const revalidate = 60;
@@ -19,6 +20,10 @@ export default async function HomePage() {
           быстро понять, что сейчас реально работает в игре.
         </p>
       </section>
+
+      <div className={styles.promoWrap}>
+        <PromoBanner />
+      </div>
 
       <WinratesClient
         rowsBySlice={rowsBySlice}

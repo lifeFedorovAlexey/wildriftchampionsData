@@ -11,3 +11,4 @@
 .runtime-local-server.err.log
 ui/.runtime*.log
 ui/.runtime*.err.log
+ui/preview-3004.log
