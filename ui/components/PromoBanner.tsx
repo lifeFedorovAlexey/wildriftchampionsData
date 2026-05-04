@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./PromoBanner.module.css";
 
 const PROMO_TELEGRAM_URL =
-  "https://t.me/ddseller00?text=%D0%9F%D1%80%D0%B8%D1%88%D0%B5%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20wildriftallstats";
+  "https://t.me/+bnbBsEeNj1xkMDJi";
 
 function DeliveryIcon() {
   return (
