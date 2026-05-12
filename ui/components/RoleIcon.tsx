@@ -12,19 +12,34 @@ export function RoleIcon({
 }) {
   const cfg = ROLE_ICON_SPRITE[laneKey];
   if (!cfg) return null;
+  const spriteSlotSize = 28;
+  const scale = size / spriteSlotSize;
 
   return (
     <div
       style={{
         width: size,
         height: size,
-        backgroundImage: `url(${ROLE_SPRITE_URL})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: `${cfg.x}px ${cfg.y}px`,
-        backgroundSize: "205px 28px",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
         flexShrink: 0,
       }}
-    />
+    >
+      <div
+        style={{
+          width: spriteSlotSize,
+          height: spriteSlotSize,
+          backgroundImage: `url(${ROLE_SPRITE_URL})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: `${cfg.x}px ${cfg.y}px`,
+          backgroundSize: "205px 28px",
+          transform: `scale(${scale})`,
+          transformOrigin: "center",
+          flexShrink: 0,
+        }}
+      />
+    </div>
   );
 }
 

@@ -9,6 +9,7 @@ import { buildStatsPaths } from "./winrates-lib.js";
  * @typedef {{
  *   rowsBySlice: WinratesRowsBySlice;
  *   maxRowCount: number;
+ *   dates: string[];
  *   error: string | null;
  *   updatedAt: string | null;
  * }} WinratesPageData
@@ -47,6 +48,10 @@ export async function loadWinratesPageData(language = "ru_ru", revalidate = 60) 
         histJson && typeof histJson === "object" && typeof histJson.maxRowCount === "number"
           ? histJson.maxRowCount
           : 0,
+      dates:
+        histJson && typeof histJson === "object" && Array.isArray(histJson.dates)
+          ? histJson.dates
+          : [],
       updatedAt,
       error: null,
     };
@@ -55,6 +60,7 @@ export async function loadWinratesPageData(language = "ru_ru", revalidate = 60) 
     return {
       rowsBySlice: {},
       maxRowCount: 0,
+      dates: [],
       updatedAt: null,
       error: "Не удалось загрузить статистику винрейтов.",
     };

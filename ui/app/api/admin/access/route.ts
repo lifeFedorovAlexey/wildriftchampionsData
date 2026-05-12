@@ -32,13 +32,20 @@ export async function POST(request: NextRequest) {
 
   const formData = await request.formData();
   const siteUserId = String(formData.get("siteUserId") || "").trim();
+  const streamerDisplayName = String(formData.get("streamerDisplayName") || "").trim();
   const roleKeys = formData
     .getAll("roleKeys")
     .map((value) => String(value || "").trim())
     .filter(Boolean);
 
   try {
-    await updateAdminAccessRoles(sessionToken, siteUserId, roleKeys, process.env);
+    await updateAdminAccessRoles(
+      sessionToken,
+      siteUserId,
+      roleKeys,
+      streamerDisplayName,
+      process.env,
+    );
     return NextResponse.redirect(
       buildAdminUrl(request, buildReturnPath(formData, { updated: "1" })),
     );

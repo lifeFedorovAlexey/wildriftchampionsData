@@ -38,6 +38,7 @@ const NAV_ITEMS: NavItem[] = [
     children: [
       { label: "Авторский", href: "/tier-inq", icon: <IconTierInq size={18} /> },
       { label: "По статистике", href: "/tierlist", icon: <IconTierlist size={18} /> },
+      { label: "Стримеры", href: "/streamers", icon: <IconTierInq size={18} /> },
     ],
   },
   { label: "Топ пики / баны", href: "/picks-bans", icon: <IconPicksBans size={20} /> },

@@ -1,0 +1,31 @@
+.sparkline {
+  display: block;
+  overflow: visible;
+}
+
+.sparkBase {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+
+.sparkPath {
+  fill: none;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sparkDot {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, currentColor 30%, transparent));
+}
+
+.sparkPlaceholder {
+  display: block;
+  width: 100%;
+  min-width: 32px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+}

@@ -106,6 +106,30 @@ export async function updateSiteUserProfile(sessionToken, input, env = process.e
   return payload?.user || null;
 }
 
+export async function uploadSiteUserAvatar(sessionToken, imageBase64, env = process.env) {
+  if (!sessionToken) {
+    throw new Error("unauthorized");
+  }
+
+  const response = await fetch(buildApiUrl("/api/user/avatar", env), {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${sessionToken}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ imageBase64 }),
+    cache: "no-store",
+  });
+
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) {
+    throw new Error(payload?.error || "avatar_upload_failed");
+  }
+
+  return payload || null;
+}
+
 export async function revokeSiteUserSession(sessionToken, env = process.env) {
   if (!sessionToken) return false;
 

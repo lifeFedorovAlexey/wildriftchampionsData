@@ -274,7 +274,25 @@
   gap: 10px;
 }
 
+.avatarUploadNote {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+.avatarOptionWrap {
+  position: relative;
+}
+
 .avatarOption {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 64px;
   height: 64px;
   padding: 0;
@@ -296,6 +314,19 @@
 .avatarOptionActive {
   border-color: rgba(245, 211, 108, 0.62);
   background: rgba(245, 211, 108, 0.12);
+}
+
+.avatarOptionUpload {
+  background:
+    radial-gradient(circle at top right, rgba(245, 211, 108, 0.22), transparent 48%),
+    rgba(255, 255, 255, 0.04);
+}
+
+.avatarUploadPlus {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 300;
 }
 
 .avatarChoiceImage,
@@ -321,10 +352,141 @@
   font-weight: 800;
 }
 
+.avatarRemoveButton {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(10, 15, 26, 0.96);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
+}
+
+.avatarRemoveButton:hover {
+  background: rgba(120, 26, 37, 0.92);
+  color: #fff;
+  transform: scale(1.04);
+}
+
 .helperText {
   color: rgba(255, 255, 255, 0.56);
   font-size: 12px;
   line-height: 1.45;
+}
+
+.helperTextError {
+  color: #ffb7b7;
+}
+
+.helperTextSuccess {
+  color: #b8f0be;
+}
+
+.cropOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.cropDialog {
+  width: min(720px, 100%);
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(245, 211, 108, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(11, 18, 32, 0.98), rgba(7, 12, 24, 0.98));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.cropHead {
+  display: grid;
+  gap: 6px;
+}
+
+.cropStage {
+  display: flex;
+  justify-content: center;
+}
+
+.cropViewport {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.04) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.04) 75%),
+    rgba(255, 255, 255, 0.03);
+  background-size: 24px 24px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+  touch-action: none;
+  cursor: grab;
+}
+
+.cropViewport:active {
+  cursor: grabbing;
+}
+
+.cropImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.cropFrame {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  box-shadow:
+    inset 0 0 0 2px rgba(245, 211, 108, 0.66),
+    inset 0 0 0 999px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.cropZoomField {
+  display: grid;
+  gap: 10px;
+}
+
+.cropRange {
+  width: 100%;
+  accent-color: #f5d36c;
+}
+
+.cropActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 .championPicker {
@@ -490,5 +652,18 @@
   .headEmbedded {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .cropDialog {
+    padding: 14px;
+  }
+
+  .cropViewport {
+    width: min(100%, 290px);
+    height: min(100vw - 64px, 290px);
+  }
+
+  .cropActions .button {
+    width: 100%;
   }
 }

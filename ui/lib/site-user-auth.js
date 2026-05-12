@@ -145,6 +145,14 @@ export function getUserErrorMessage(code) {
       return "Ник в Wild Rift должен быть в формате name#tag, например life on fire#7595.";
     case "invalid_peak_rank":
       return "Выбери корректный максимальный ранг.";
+    case "invalid_avatar_image":
+      return "Не удалось прочитать картинку. Попробуй PNG, JPG или WebP.";
+    case "avatar_too_large":
+      return "Файл слишком большой. Выбери изображение поменьше.";
+    case "avatar_storage_unavailable":
+      return "Хранилище аватаров сейчас недоступно.";
+    case "invalid_avatar_url":
+      return "Этот аватар нельзя сохранить. Загрузи его через встроенную форму.";
     case "oauth_start_failed":
       return "Не удалось начать вход. Проверь настройки OAuth и попробуй ещё раз.";
     case "session_secret_missing":

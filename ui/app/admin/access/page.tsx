@@ -17,6 +17,7 @@ type AccessIdentity = {
 type AccessUser = {
   siteUserId: number;
   displayName?: string;
+  streamerDisplayName?: string;
   primaryEmail?: string | null;
   status?: string;
   lastLoginAt?: string | null;
@@ -55,9 +56,31 @@ const PERMISSION_ROWS = [
   { title: "Базовый профиль", roles: ["user"], note: "Есть у каждого зарегистрированного пользователя." },
   { title: "Админка", roles: ["owner", "admin"], note: "Текущая приватная зона `/admin`." },
   { title: "Раздача ролей", roles: ["owner"], note: "Страница `/admin/access` и owner-only изменения." },
-  { title: "Кабинет стримера", roles: ["owner", "streamer"], note: "Маршрут уже есть, контент пока заглушка." },
+  { title: "Кабинет стримера", roles: ["owner", "streamer"], note: "Редактор тирлистов по линиям, публикация и история снапшотов." },
   { title: "Кабинет мецената", roles: ["owner", "patron"], note: "Маршрут уже есть, контент пока заглушка." },
 ];
+
+function buildInitialGlyph(value: string | null | undefined, fallback = "U") {
+  const normalized = String(value || "").trim();
+  return (normalized.slice(0, 1) || fallback).toUpperCase();
+}
+
+function buildProviderGlyph(value: string | null | undefined) {
+  const normalized = String(value || "").trim().toLowerCase();
+
+  switch (normalized) {
+    case "google":
+      return "G";
+    case "yandex":
+      return "Y";
+    case "vk":
+      return "VK";
+    case "telegram":
+      return "TG";
+    default:
+      return buildInitialGlyph(normalized, "?");
+  }
+}
 
 function normalizeText(value: string | string[] | undefined) {
   return String(Array.isArray(value) ? value[0] || "" : value || "").trim();
@@ -214,14 +237,21 @@ export default async function AdminAccessPage({
                       href={buildAccessHref(query, user.siteUserId)}
                       className={`${styles.accessUserCard} ${isActive ? styles.accessUserCardActive : ""}`.trim()}
                     >
-                      <div className={styles.accessUserHead}>
-                        <strong className={styles.identityName}>
-                          {user.displayName || user.primaryEmail || `User #${user.siteUserId}`}
-                        </strong>
-                        <span className={styles.sidebarLinkMeta}>#{user.siteUserId}</span>
-                      </div>
-                      <div className={styles.identityMeta}>
-                        {user.primaryEmail || "Без e-mail"} · {formatDateTime(user.lastLoginAt)}
+                      <div className={styles.accessUserIdentity}>
+                        <span className={styles.accessAvatarBadge} aria-hidden="true">
+                          {buildInitialGlyph(user.displayName || user.streamerDisplayName, "U")}
+                        </span>
+                        <div className={styles.accessUserStack}>
+                          <div className={styles.accessUserHead}>
+                            <strong className={styles.identityName}>
+                              {user.displayName || user.streamerDisplayName || `User #${user.siteUserId}`}
+                            </strong>
+                            <span className={styles.sidebarLinkMeta}>#{user.siteUserId}</span>
+                          </div>
+                          <div className={styles.identityMeta}>
+                            Последний вход: {formatDateTime(user.lastLoginAt)}
+                          </div>
+                        </div>
                       </div>
                       <div className={styles.roleMatrixPills}>
                         <span className={styles.roleChipBase}>user</span>
@@ -252,15 +282,23 @@ export default async function AdminAccessPage({
             {selectedUser ? (
               <>
                 <div className={styles.subcardHead}>
-                  <div>
+                  <div className={styles.selectedUserHead}>
+                    <span className={styles.selectedUserBadge} aria-hidden="true">
+                      {buildInitialGlyph(
+                        selectedUser.displayName || selectedUser.streamerDisplayName,
+                        "U",
+                      )}
+                    </span>
+                    <div>
                     <h3 className={styles.cardTitle}>
                       {selectedUser.displayName ||
-                        selectedUser.primaryEmail ||
+                        selectedUser.streamerDisplayName ||
                         `User #${selectedUser.siteUserId}`}
                     </h3>
                     <p className={styles.cardText}>
                       Последний вход: {formatDateTime(selectedUser.lastLoginAt)}
                     </p>
+                    </div>
                   </div>
                   <div className={styles.roleMatrixPills}>
                     <span className={styles.roleChipBase}>user</span>
@@ -278,6 +316,12 @@ export default async function AdminAccessPage({
                     <span className={styles.statValue}>#{selectedUser.siteUserId}</span>
                   </div>
                   <div className={styles.statCard}>
+                    <span className={styles.statLabel}>Публичное имя стримера</span>
+                    <span className={styles.statValue}>
+                      {selectedUser.streamerDisplayName || "Не задано"}
+                    </span>
+                  </div>
+                  <div className={styles.statCard}>
                     <span className={styles.statLabel}>Провайдеры</span>
                     <span className={styles.statValue}>
                       {Array.isArray(selectedUser.identities) && selectedUser.identities.length
@@ -287,10 +331,91 @@ export default async function AdminAccessPage({
                   </div>
                 </div>
 
+                <details className={styles.sensitiveDetails}>
+                  <summary className={styles.sensitiveSummary}>
+                    <span className={styles.sensitiveSummaryLead}>
+                      <span className={styles.sensitiveEyeIcon} aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                          <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" />
+                          <circle cx="12" cy="12" r="3.2" />
+                        </svg>
+                      </span>
+                      <span className={styles.sensitiveSummaryText}>Показать личные данные и привязки</span>
+                    </span>
+                    <span className={styles.sensitiveSummaryMeta}>скрыто по умолчанию</span>
+                  </summary>
+
+                  <div className={styles.sensitiveContent}>
+                    <div className={styles.accessMetaGrid}>
+                      <div className={styles.statCard}>
+                        <span className={styles.statLabel}>Основной e-mail</span>
+                        <span className={styles.statValue}>
+                          {selectedUser.primaryEmail || "Не указан"}
+                        </span>
+                      </div>
+                      <div className={styles.statCard}>
+                        <span className={styles.statLabel}>Статус</span>
+                        <span className={styles.statValue}>
+                          {selectedUser.status || "active"}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={styles.providerGrid}>
+                      {Array.isArray(selectedUser.identities) && selectedUser.identities.length ? (
+                        selectedUser.identities.map((identity) => (
+                          <article key={identity.id} className={styles.providerCard}>
+                            <div className={styles.providerMeta}>
+                              <div className={styles.providerIdentity}>
+                                <span className={styles.providerBadge} aria-hidden="true">
+                                  {buildProviderGlyph(identity.provider)}
+                                </span>
+                                <div className={styles.providerLabelStack}>
+                                  <strong className={styles.providerLabel}>{identity.provider}</strong>
+                                  <span className={styles.sidebarLinkMeta}>#{identity.id}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p className={styles.providerHint}>
+                              {identity.providerUsername || "Username не указан"}
+                            </p>
+                            <p className={styles.providerHint}>
+                              {identity.providerEmail || "E-mail не указан"} ·{" "}
+                              {formatDateTime(identity.lastLoginAt)}
+                            </p>
+                          </article>
+                        ))
+                      ) : (
+                        <p className={styles.emptyText}>У пользователя пока нет привязанных identity.</p>
+                      )}
+                    </div>
+                  </div>
+                </details>
+
                 <form action="/api/admin/access" method="post" className={styles.roleForm}>
                   <input type="hidden" name="siteUserId" value={selectedUser.siteUserId} />
                   <input type="hidden" name="selectedUserId" value={selectedUser.siteUserId} />
                   <input type="hidden" name="q" value={query} />
+
+                  <div className={styles.subcard}>
+                    <div className={styles.subcardHead}>
+                      <h4 className={styles.cardTitle}>Публичная витрина стримера</h4>
+                      <p className={styles.cardText}>
+                        Это имя будет показано на страницах `/streamers`. Личные поля профиля,
+                        включая обычное имя аккаунта и `wildRiftHandle`, в публичный список не
+                        попадут.
+                      </p>
+                    </div>
+
+                    <input
+                      type="text"
+                      name="streamerDisplayName"
+                      defaultValue={selectedUser.streamerDisplayName || ""}
+                      placeholder="Например: life_on_fine"
+                      className={styles.input}
+                      maxLength={48}
+                    />
+                  </div>
 
                   <div className={styles.roleCardGrid}>
                     {ROLE_DEFINITIONS.map((role) => {
@@ -343,26 +468,6 @@ export default async function AdminAccessPage({
                     </Link>
                   </div>
                 </form>
-
-                <div className={styles.providerGrid}>
-                  {Array.isArray(selectedUser.identities) && selectedUser.identities.length ? (
-                    selectedUser.identities.map((identity) => (
-                      <article key={identity.id} className={styles.providerCard}>
-                        <div className={styles.providerMeta}>
-                          <strong className={styles.providerLabel}>{identity.provider}</strong>
-                          <span className={styles.sidebarLinkMeta}>
-                            {identity.providerUsername || identity.providerEmail || "без username"}
-                          </span>
-                        </div>
-                        <p className={styles.providerHint}>
-                          {identity.providerEmail || "E-mail не указан"} · {formatDateTime(identity.lastLoginAt)}
-                        </p>
-                      </article>
-                    ))
-                  ) : (
-                    <p className={styles.emptyText}>У пользователя пока нет привязанных identity.</p>
-                  )}
-                </div>
               </>
             ) : (
               <p className={styles.emptyText}>Выбери пользователя слева, чтобы управлять ролями.</p>

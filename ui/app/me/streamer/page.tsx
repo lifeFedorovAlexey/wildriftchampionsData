@@ -3,7 +3,10 @@ import { redirect } from "next/navigation";
 import TopPillLink from "@/components/TopPillLink";
 import { fetchSiteUserSession } from "@/lib/site-user-api.js";
 import { getUserSessionTokenFromCookie } from "@/lib/site-user-auth.js";
-import styles from "../profile.module.css";
+import { fetchAuthenticatedStreamerTierlistEditor } from "@/lib/streamer-tierlists-api";
+import { loadWinratesPageData } from "@/app/winrates/load-winrates-page.js";
+import StreamerTierlistEditor from "./StreamerTierlistEditor";
+import styles from "./streamer.module.css";
 
 export default async function StreamerPage() {
   const cookieStore = await cookies();
@@ -26,27 +29,54 @@ export default async function StreamerPage() {
     redirect("/me");
   }
 
+  let initialData = null;
+  let winratesSnapshot = { rowsBySlice: {}, dates: [] as string[] };
+  let loadError = "";
+
+  try {
+    const [editorPayload, winratesPayload] = await Promise.all([
+      fetchAuthenticatedStreamerTierlistEditor(sessionToken, process.env),
+      loadWinratesPageData("ru_ru", 60),
+    ]);
+    initialData = editorPayload;
+    winratesSnapshot = {
+      rowsBySlice: winratesPayload.rowsBySlice || {},
+      dates: Array.isArray(winratesPayload.dates) ? winratesPayload.dates : [],
+    };
+  } catch (error) {
+    loadError =
+      error instanceof Error
+        ? `Не удалось загрузить редактор тирлистов: ${error.message}`
+        : "Не удалось загрузить редактор тирлистов.";
+  }
+
   return (
     <div className={styles.page}>
       <section className={styles.shell}>
         <div className={styles.head}>
           <div>
-            <h1 className={styles.title}>Раздел стримера</h1>
+            <h1 className={styles.title}>Кабинет стримера</h1>
             <p className={styles.lead}>
-              Доступ уже открыт. Здесь позже появятся стримерские инструменты, а пока это
-              чистая заглушка с готовым маршрутом и проверкой роли.
+              Здесь ты можешь собрать и опубликовать собственный тирлист по каждой линии.
+              В тот же день публикация обновляется в существующей записи, а новая строка в
+              истории создается только на следующий день.
             </p>
           </div>
-          <TopPillLink href="/me">← В профиль</TopPillLink>
+
+          <div className={styles.headActions}>
+            <TopPillLink href="/streamers">Публичные тирлисты</TopPillLink>
+            <TopPillLink href="/me">← В профиль</TopPillLink>
+          </div>
         </div>
 
-        <section className={`${styles.card} ${styles.fullCard}`.trim()}>
-          <h2 className={styles.cardTitle}>Скоро здесь будет больше</h2>
-          <p className={styles.cardCopy}>
-            Можно спокойно навешивать будущие функции на этот маршрут: блок промо, ссылки,
-            кастомные виджеты, стримерские заявки или настройки профиля.
-          </p>
-        </section>
+        {loadError ? <div className={styles.noticeError}>{loadError}</div> : null}
+
+        {initialData ? (
+          <StreamerTierlistEditor
+            initialData={initialData}
+            winratesSnapshot={winratesSnapshot}
+          />
+        ) : null}
       </section>
     </div>
   );

@@ -167,6 +167,7 @@ export async function updateAdminAccessRoles(
   sessionToken,
   siteUserId,
   roleKeys,
+  streamerDisplayName = "",
   env = process.env,
 ) {
   if (!sessionToken) {
@@ -180,7 +181,7 @@ export async function updateAdminAccessRoles(
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ siteUserId, roleKeys }),
+    body: JSON.stringify({ siteUserId, roleKeys, streamerDisplayName }),
     cache: "no-store",
   });
 
