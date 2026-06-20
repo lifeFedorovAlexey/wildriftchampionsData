@@ -14,12 +14,14 @@ Release docs:
 - [UI README](/d:/wildRiftChampions/ui/README.md)
 - [Release Guide](/d:/wildRiftChampions/RELEASE.md)
 - [Changelog](/d:/wildRiftChampions/CHANGELOG.md)
+- [Secrets Inventory](/d:/wildRiftChampions/SECRETS_INVENTORY.md)
 
 ## Structure
 
 - `ui/` - Next.js frontend, guide sync scripts, styles and app routes
 - `.github/workflows/` - UI deploy and scheduled guide sync jobs
 - `wr-api/` - API, champion import pipeline and storage-backed media delivery
+- `wr-chat/` - dedicated realtime text-chat service
 
 ## Notes
 

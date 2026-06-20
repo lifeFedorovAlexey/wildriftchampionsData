@@ -29,6 +29,7 @@ npm run sync:guides:all
 - `GUIDES_SYNC_IMPORT_URL` - optional full import endpoint override
 - `GUIDES_SYNC_SECRET` - shared secret header for guide import requests
 - `S3_PUBLIC_BASE_URL` - public base used for mirrored assets in production
+- `WR_CHAT_ORIGIN` - public wr-chat origin used by `/api/chat/session`, for example `https://wildriftallstats.ru/wr-chat`
 - `ADMIN_PUBLIC_ORIGIN` - canonical public admin origin for server-side OAuth redirects in production
 - `ADMIN_SESSION_SECRET` - shared admin exchange secret, must match `wr-api`
 - `USER_AUTH_ENABLED` - explicit feature flag for public user auth
@@ -56,6 +57,7 @@ Current frontend repo secret inventory:
 - `TIMEWEB_HOST`
 - `TIMEWEB_PASSWORD`
 - `TIMEWEB_USER`
+- `WR_CHAT_ORIGIN`
 
 `USER_*` remains opt-in unfinished work until you explicitly enable public user auth.
 Current implementation status:
