@@ -81,6 +81,7 @@ export default function ChatMvpClient() {
   const wsRef = useRef<WebSocket | null>(null);
   const typingTimerRef = useRef<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const selectedChannelIdRef = useRef<number>(0);
 
   const [session, setSession] = useState<ChatSessionPayload | null>(null);
   const [groups, setGroups] = useState<ChatGroup[]>([]);
@@ -258,6 +259,10 @@ export default function ChatMvpClient() {
   }, [selectedChannelId]);
 
   useEffect(() => {
+    selectedChannelIdRef.current = selectedChannelId;
+  }, [selectedChannelId]);
+
+  useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ block: "end" });
   }, [messages]);
 
@@ -283,12 +288,18 @@ export default function ChatMvpClient() {
           return;
         }
 
-        if (payload.type === "channel:join:ack" && Number(payload.channelId) === selectedChannelId) {
+        if (
+          payload.type === "channel:join:ack" &&
+          Number(payload.channelId) === selectedChannelIdRef.current
+        ) {
           setJoinedChannelId(Number(payload.channelId));
           return;
         }
 
-        if (payload.type === "message:new" && Number(payload.channelId) === selectedChannelId) {
+        if (
+          payload.type === "message:new" &&
+          Number(payload.channelId) === selectedChannelIdRef.current
+        ) {
           setMessages((current) => {
             if (current.some((message) => message.id === payload.message?.id)) {
               return current;
@@ -298,18 +309,27 @@ export default function ChatMvpClient() {
           return;
         }
 
-        if (payload.type === "presence:update" && Number(payload.channelId) === selectedChannelId) {
+        if (
+          payload.type === "presence:update" &&
+          Number(payload.channelId) === selectedChannelIdRef.current
+        ) {
           setPresenceText(`${payload.membersCount || 0} online`);
           setPresenceMembers(Array.isArray(payload.members) ? payload.members : []);
           return;
         }
 
-        if (payload.type === "typing:start" && Number(payload.channelId) === selectedChannelId) {
+        if (
+          payload.type === "typing:start" &&
+          Number(payload.channelId) === selectedChannelIdRef.current
+        ) {
           setTypingText(`${payload.user?.displayName || "Кто-то"} печатает...`);
           return;
         }
 
-        if (payload.type === "typing:stop" && Number(payload.channelId) === selectedChannelId) {
+        if (
+          payload.type === "typing:stop" &&
+          Number(payload.channelId) === selectedChannelIdRef.current
+        ) {
           setTypingText("");
           return;
         }
@@ -340,15 +360,19 @@ export default function ChatMvpClient() {
       wsRef.current = null;
       setIsSocketReady(false);
     };
-  }, [session?.origin, session?.sessionToken, session?.session.user.displayName, selectedChannelId]);
+  }, [session?.origin, session?.sessionToken, session?.session.user.displayName]);
 
   useEffect(() => {
     const ws = wsRef.current;
-    if (!ws || !isSocketReady || !selectedChannelId) {
+    if (!ws || !isSocketReady || ws.readyState !== WebSocket.OPEN || !selectedChannelId) {
       return undefined;
     }
 
-    ws.send(JSON.stringify({ type: "channel:join", channelId: String(selectedChannelId) }));
+    try {
+      ws.send(JSON.stringify({ type: "channel:join", channelId: String(selectedChannelId) }));
+    } catch {
+      return undefined;
+    }
 
     return () => {
       if (ws.readyState === WebSocket.OPEN) {
