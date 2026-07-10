@@ -225,4 +225,17 @@ jobs:
             log_step "cleanup canary and old releases"
             cleanup_canary
             ls -1dt "${RELEASES_DIR}"/* 2>/dev/null | tail -n +6 | xargs -r rm -rf
+
+            log_step "persist pm2 process list"
             pm2 save
+
+            log_step "verify pm2 starts after reboot"
+            if ! systemctl is-enabled --quiet pm2-root; then
+              echo "pm2-root.service is not enabled; applications will not recover after reboot"
+              exit 1
+            fi
+
+            log_step "verify public production endpoint"
+            curl --fail --silent --show-error \
+              --retry 5 --retry-delay 2 --retry-all-errors \
+              "https://wildriftallstats.ru/api/health" >/dev/null
