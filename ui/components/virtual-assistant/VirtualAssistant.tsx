@@ -369,7 +369,9 @@ export default function VirtualAssistant() {
     <aside className={styles.assistant} aria-label="Виртуальный помощник">
       {message ? (
         <div className={styles.bubble} role="status" aria-live="polite">
-          <button type="button" className={styles.bubbleClose} onClick={() => setMessage(null)} aria-label="Закрыть подсказку">×</button>
+          <button type="button" className={styles.bubbleClose} onClick={() => setMessage(null)} aria-label="Закрыть подсказку">
+            <span className={styles.closeIcon} aria-hidden="true" />
+          </button>
           <span className={styles.name}>Люкс</span>
           <p><TypewriterText key={message} text={message} /></p>
         </div>

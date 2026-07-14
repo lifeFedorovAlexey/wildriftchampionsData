@@ -19,9 +19,9 @@ export const LANE_OPTIONS: { key: string; label: string }[] = [
 export const ROLE_SPRITE_URL = "/place-icons.webp";
 
 export const ROLE_ICON_SPRITE = {
-  top: { x: 3, y: 2 },
-  jungle: { x: -42, y: 2 },
-  mid: { x: -86, y: 2 },
-  adc: { x: -131, y: 2 },
-  support: { x: -176, y: 2 },
+  top: { x: 2, y: 0 },
+  jungle: { x: -43, y: 0 },
+  mid: { x: -88, y: 0 },
+  adc: { x: -132, y: 0 },
+  support: { x: -177, y: 0 },
 };
