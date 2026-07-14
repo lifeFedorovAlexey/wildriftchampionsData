@@ -192,6 +192,8 @@ export default function WinratesClient({
     notifyVirtualAssistant({
       kind: "champion_focused",
       champion,
+      rankKey,
+      laneKey,
       rankLabel: rank?.label || rankKey,
       laneLabel: lane?.label || laneKey,
       position: rows.findIndex((row) => row.slug === slug) + 1,

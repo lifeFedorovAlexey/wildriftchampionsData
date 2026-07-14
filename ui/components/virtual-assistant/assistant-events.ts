@@ -31,6 +31,8 @@ export type VirtualAssistantEventDetail =
   | {
       kind: "champion_focused";
       champion: ChampionRecommendation;
+      rankKey: string;
+      laneKey: string;
       rankLabel: string;
       laneLabel: string;
       position: number;

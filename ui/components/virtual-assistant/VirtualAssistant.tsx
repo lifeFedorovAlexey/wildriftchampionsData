@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { API_BASE } from "@/constants/apiBase";
 import {
   ASSISTANT_ANIMATIONS,
   ASSISTANT_STORAGE,
@@ -20,7 +21,6 @@ import type {
 } from "./recommendation-engine";
 import {
   generateListEndLine,
-  generateChampionAnalysisLine,
   generateMetricLine,
   generateNewChampionLine,
   generateRankLine,
@@ -105,7 +105,7 @@ function buildScenario(detail: VirtualAssistantEventDetail): ScenarioBeat[] {
     case "champion_focused":
       return [{
         animation: detail.champion.score >= 0.67 ? "victory" : "thoughtful",
-        message: generateChampionAnalysisLine(detail),
+        message: "Оценка ещё не подготовлена. Я обновлю её после следующего запуска анализа.",
         hold: 7600,
       }];
     case "empty_results":
@@ -229,10 +229,33 @@ export default function VirtualAssistant() {
   }, [playScenario]);
 
   useEffect(() => {
-    const handleAssistantEvent = (event: Event) => {
+    const handleAssistantEvent = async (event: Event) => {
       if (localStorage.getItem(ASSISTANT_STORAGE.minimized) === "1") return;
       const detail = (event as CustomEvent<VirtualAssistantEventDetail>).detail;
       if (!detail?.kind) return;
+      if (detail.kind === "champion_focused") {
+        try {
+          const params = new URLSearchParams({
+            champion: detail.champion.slug,
+            lane: detail.laneKey,
+            rank: detail.rankKey,
+          });
+          const response = await fetch(`${API_BASE}/api/assistant/responses?${params}`, {
+            cache: "no-store",
+          });
+          if (response.ok) {
+            const payload = await response.json();
+            playScenario([{
+              animation: detail.champion.score >= 0.67 ? "victory" : "thoughtful",
+              message: payload.response,
+              hold: 7600,
+            }]);
+            return;
+          }
+        } catch {
+          // Keep the assistant usable if the daily response is temporarily unavailable.
+        }
+      }
       playScenario(buildScenario(detail));
     };
     window.addEventListener(VIRTUAL_ASSISTANT_EVENT, handleAssistantEvent);
