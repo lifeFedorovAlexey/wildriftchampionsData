@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import TrendSparkline from "@/components/styled/TrendSparkline";
@@ -111,11 +111,46 @@ export default function WinratesTable({
   rows,
   sort,
   onSort,
+  onListEnd,
+  listContextKey,
 }: {
   rows: Row[];
   sort: { column: string | null; dir: "asc" | "desc" | null };
   onSort: (c: "strengthLevel" | "winRate" | "pickRate" | "banRate") => void;
+  onListEnd?: () => void;
+  listContextKey?: string;
 }) {
+  const endSentinelRef = useRef<HTMLDivElement>(null);
+  const userHasScrolled = useRef(false);
+
+  useEffect(() => {
+    const markScrolled = () => {
+      if (window.scrollY > 240) userHasScrolled.current = true;
+    };
+    window.addEventListener("scroll", markScrolled, { passive: true });
+    return () => window.removeEventListener("scroll", markScrolled);
+  }, []);
+
+  useEffect(() => {
+    const sentinel = endSentinelRef.current;
+    if (!sentinel || !onListEnd || !rows.length) return;
+
+    let hasLeftTheEnd = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        if (!entry.isIntersecting) {
+          hasLeftTheEnd = true;
+          return;
+        }
+        if (hasLeftTheEnd && userHasScrolled.current) onListEnd();
+      },
+      { threshold: 0.75 },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [listContextKey, onListEnd, rows.length]);
+
   return (
     <div className={styles.wrap}>
       <div className={`${styles.grid} ${styles.header}`}>
@@ -261,6 +296,7 @@ export default function WinratesTable({
       {!rows.length ? (
         <div className={styles.empty}>Нет данных для выбранных фильтров.</div>
       ) : null}
+      <div ref={endSentinelRef} aria-hidden="true" />
     </div>
   );
 }

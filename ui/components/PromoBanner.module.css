@@ -1,5 +1,6 @@
 .banner {
   position: relative;
+  scroll-margin-top: 96px;
   display: grid;
   width: 100%;
   gap: 16px;

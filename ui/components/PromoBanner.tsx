@@ -73,14 +73,19 @@ const FEATURES = [
 
 export default function PromoBanner() {
   return (
-    <section className={styles.banner} aria-label="Промо магазина Wild Cores">
+    <section
+      id="d-and-d-shop-banner"
+      data-skin-store-banner
+      className={styles.banner}
+      aria-label="Промо магазина D&D Shop"
+    >
       <div className={styles.sheen} aria-hidden="true" />
 
       <div className={styles.logoWrap}>
         <div className={styles.logoGlow} />
         <Image
           src="/promo-d1.jpg"
-          alt="D1D shop"
+          alt="D&D Shop"
           width={640}
           height={640}
           sizes="(max-width: 768px) 140px, 180px"

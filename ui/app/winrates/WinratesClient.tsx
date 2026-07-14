@@ -1,18 +1,24 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
 import StatsFilters from "@/components/StatsFilters";
 import styles from "./WinratesClient.module.css";
 import WinratesTable from "./WinratesTable";
 import type { WinrateRow, WinratesRowsBySlice } from "./types";
+import VirtualAssistant, {
+  analyzeChampionRecommendations,
+  findNewChampionInsights,
+  notifyVirtualAssistant,
+} from "@/components/virtual-assistant";
+import { LANE_OPTIONS, RANK_OPTIONS } from "@/components/screensConstants";
 import {
   nextSortState,
   sortPreparedRows,
 } from "./winrates-lib.js";
 
-type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak";
+type RankKey = "diamondPlus" | "masterPlus" | "king" | "peak" | "overall";
 type LaneKey = "top" | "jungle" | "mid" | "adc" | "support";
 
 type SortState =
@@ -31,6 +37,7 @@ function WinratesContent({
   onRankChange,
   laneKey,
   onLaneChange,
+  onListEnd,
 }: {
   rows: WinrateRow[];
   sort: SortState;
@@ -40,6 +47,7 @@ function WinratesContent({
   onRankChange: (key: string) => void;
   laneKey: LaneKey;
   onLaneChange: (key: string) => void;
+  onListEnd: () => void;
 }) {
   return (
     <div className={styles.shell}>
@@ -65,7 +73,13 @@ function WinratesContent({
           </div>
         </div>
 
-        <WinratesTable rows={rows} sort={sort} onSort={onSort} />
+        <WinratesTable
+          rows={rows}
+          sort={sort}
+          onSort={onSort}
+          onListEnd={onListEnd}
+          listContextKey={`${rankKey}|${laneKey}`}
+        />
       </section>
     </div>
   );
@@ -90,10 +104,16 @@ export default function WinratesClient({
     column: "winRate",
     dir: "desc",
   });
+  const announcedListEnds = useRef(new Set<string>());
+  const userInteractedWithStats = useRef(false);
 
   void maxRowCount;
 
   const sliceKey = `${rankKey}|${laneKey}`;
+  const rawRows = useMemo(
+    () => rowsBySlice[sliceKey] || [],
+    [rowsBySlice, sliceKey],
+  );
   const rows = useMemo(() => {
     return sortPreparedRows(rowsBySlice[sliceKey] || [], sort) as WinrateRow[];
   }, [rowsBySlice, sliceKey, sort]);
@@ -114,16 +134,80 @@ export default function WinratesClient({
     }).format(date);
   }, [updatedAt]);
 
-  const onRankChange = (key: string) => setRankKey(key as RankKey);
-  const onLaneChange = (key: string) => setLaneKey(key as LaneKey);
+  const onRankChange = (key: string) => {
+    userInteractedWithStats.current = true;
+    const rank = RANK_OPTIONS.find((option) => option.key === key);
+    setRankKey(key as RankKey);
+    notifyVirtualAssistant({
+      kind: "rank_changed",
+      rankKey: key,
+      rankLabel: rank?.label || key,
+    });
+  };
+  const onLaneChange = (key: string) => {
+    userInteractedWithStats.current = true;
+    const lane = LANE_OPTIONS.find((option) => option.key === key);
+    const nextRows = rowsBySlice[`${rankKey}|${key}`] || [];
+    const insight = analyzeChampionRecommendations(nextRows);
+    const newcomers = findNewChampionInsights(nextRows).slice(0, 2);
+    setLaneKey(key as LaneKey);
+    notifyVirtualAssistant({
+      kind: "lane_changed",
+      laneKey: key,
+      laneLabel: lane?.label || key,
+      recommended: insight.recommended,
+      newcomers,
+    });
+  };
   const onSort = (
     column: "winRate" | "pickRate" | "banRate" | "strengthLevel",
   ) => {
+    userInteractedWithStats.current = true;
     setSort((prev) => nextSortState(prev, column) as SortState);
+    notifyVirtualAssistant({ kind: "metric_sorted", metric: column });
   };
 
+  const onListEnd = useCallback(() => {
+    if (announcedListEnds.current.has(sliceKey)) return;
+    announcedListEnds.current.add(sliceKey);
+    const lane = LANE_OPTIONS.find((option) => option.key === laneKey);
+    const insight = analyzeChampionRecommendations(rawRows);
+    notifyVirtualAssistant({
+      kind: "list_end",
+      laneLabel: lane?.label || laneKey,
+      avoid: insight.avoid,
+    });
+  }, [laneKey, rawRows, sliceKey]);
+
+  useEffect(() => {
+    if (error) notifyVirtualAssistant({ kind: "load_error", message: error });
+  }, [error]);
+
+  useEffect(() => {
+    if (error || !rawRows.length || userInteractedWithStats.current) return;
+    const timer = window.setTimeout(() => {
+      if (userInteractedWithStats.current) return;
+      const lane = LANE_OPTIONS.find((option) => option.key === laneKey);
+      const insight = analyzeChampionRecommendations(rawRows);
+      notifyVirtualAssistant({
+        kind: "lane_changed",
+        laneKey,
+        laneLabel: lane?.label || laneKey,
+        recommended: insight.recommended,
+        newcomers: findNewChampionInsights(rawRows).slice(0, 2),
+      });
+    }, 4200);
+
+    return () => window.clearTimeout(timer);
+  }, [error, laneKey, rawRows]);
+
   if (error) {
-    return <div className={styles.errorBox}>{error}</div>;
+    return (
+      <>
+        <div className={styles.errorBox}>{error}</div>
+        <VirtualAssistant />
+      </>
+    );
   }
 
   const content = (
@@ -136,21 +220,30 @@ export default function WinratesClient({
       onRankChange={onRankChange}
       laneKey={laneKey}
       onLaneChange={onLaneChange}
+      onListEnd={onListEnd}
     />
   );
 
   if (embedded) {
-    return content;
+    return (
+      <>
+        {content}
+        <VirtualAssistant />
+      </>
+    );
   }
 
   return (
-    <PageWrapper
-      title="Винрейты, пики и баны чемпионов Wild Rift"
-      paragraphs={[
-        "Смотри актуальную силу чемпионов по линиям и рангам: винрейт, пикрейт, банрейт и итоговый тир на одном экране.",
-      ]}
-    >
-      {content}
-    </PageWrapper>
+    <>
+      <PageWrapper
+        title="Винрейты, пики и баны чемпионов Wild Rift"
+        paragraphs={[
+          "Смотри актуальную силу чемпионов по линиям и рангам: винрейт, пикрейт, банрейт и итоговый тир на одном экране.",
+        ]}
+      >
+        {content}
+      </PageWrapper>
+      <VirtualAssistant />
+    </>
   );
 }
