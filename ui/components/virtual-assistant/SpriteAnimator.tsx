@@ -5,7 +5,7 @@ import {
 } from "./assistant-config";
 import styles from "./VirtualAssistant.module.css";
 
-const SPRITE_ASSET_VERSION = "4";
+const SPRITE_ASSET_VERSION = "5";
 
 function getSpriteUrl(animation: AssistantAnimation) {
   return `/virtual-assistant/lux/${animation}.webp?v=${SPRITE_ASSET_VERSION}`;

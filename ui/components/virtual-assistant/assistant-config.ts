@@ -7,6 +7,9 @@ export const ASSISTANT_ANIMATIONS = {
   flash_entrance: { frames: 13, duration: 812, loop: false },
   wave: { frames: 13, duration: 812, loop: false },
   idle_smile: { frames: 13, duration: 1450, loop: true },
+  // The source sheet has 80 unique frames; the MP4's 81st frame repeats
+  // the loop boundary.
+  dance: { frames: 80, duration: 5000, loop: false },
   smile: { frames: 13, duration: 812, loop: false },
   thoughtful: { frames: 13, duration: 812, loop: false },
   frown: { frames: 13, duration: 812, loop: false },
@@ -32,11 +35,11 @@ export type AssistantAnimation = keyof typeof ASSISTANT_ANIMATIONS;
 export const IDLE_REACTION_SEQUENCES: ReadonlyArray<
   ReadonlyArray<AssistantAnimation>
 > = [
-  ["smile"],
-  ["thoughtful"],
-  ["wave"],
-  ["laugh"],
-  ["air_kiss"],
+  ["dance", "smile"],
+  ["dance", "thoughtful"],
+  ["dance", "wave"],
+  ["dance", "laugh"],
+  ["dance", "air_kiss"],
 ];
 
 export const INTRO_MESSAGE =

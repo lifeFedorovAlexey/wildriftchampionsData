@@ -73,7 +73,7 @@ function laneScenario(
     { animation: "cast_spell", message, hold: 5600 },
     ...(newcomer
       ? [{
-          animation: "flash_entrance" as const,
+          animation: "victory" as const,
           message: generateNewChampionLine(newcomer),
           hold: 6200,
         }]
@@ -286,7 +286,7 @@ export default function VirtualAssistant() {
       return;
     }
 
-    const delay = 2800 + Math.floor(Math.random() * 2200);
+    const delay = ASSISTANT_ANIMATIONS.idle_smile.duration;
     const idleTimer = window.setTimeout(() => {
       const nextIndex =
         (lastIdleReaction.current + 1) % IDLE_REACTION_SEQUENCES.length;
@@ -295,12 +295,7 @@ export default function VirtualAssistant() {
 
       lastIdleReaction.current = nextIndex;
       playScenario(
-        selected.map((idleAnimation) => ({
-          animation: idleAnimation,
-          // Let the gesture finish, then settle into idle before another
-          // autonomous reaction can be scheduled.
-          hold: 450,
-        })),
+        selected.map((idleAnimation) => ({ animation: idleAnimation })),
       );
     }, delay);
 
