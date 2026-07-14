@@ -29,7 +29,6 @@ export type ChampionRecommendation = Omit<
   winPercentile: number;
   pickPercentile: number;
   banPercentile: number;
-  weakSignals: number;
 };
 
 export type NewChampionTrend = "up" | "down" | "flat" | "pending";
@@ -126,10 +125,6 @@ export function analyzeChampionRecommendations(rows: AssistantStatRow[]) {
     const availabilityPenalty =
       Math.min(1, Math.max(0, (row.banRate - 10) / 35)) * 0.15;
     const score = Math.max(0, powerScore - availabilityPenalty);
-    const weakSignals = [winPercentile, pickPercentile, banPercentile].filter(
-      (percentile) => percentile <= 0.25,
-    ).length;
-
     return {
       ...row,
       baseScore: Math.round(baseScore * 1000) / 1000,
@@ -145,21 +140,12 @@ export function analyzeChampionRecommendations(rows: AssistantStatRow[]) {
       winPercentile,
       pickPercentile,
       banPercentile,
-      weakSignals,
     };
   });
 
   const ranked = rated.sort((left, right) => right.score - left.score);
   const recommended = ranked.slice(0, 3);
-  const avoid = [...ranked]
-    .reverse()
-    .filter(
-      (row) =>
-        row.weakSignals >= 2 &&
-        row.winPercentile <= 0.35 &&
-        row.score <= 0.35,
-    )
-    .slice(0, 2);
+  const avoid = ranked.length > 3 ? ranked.slice(-2).reverse() : [];
 
   return { recommended, avoid, rated: ranked };
 }

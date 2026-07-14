@@ -88,7 +88,7 @@ function buildScenario(detail: VirtualAssistantEventDetail): ScenarioBeat[] {
     case "lane_changed":
       return laneScenario(detail.laneLabel, detail.recommended, detail.newcomers);
     case "list_end": {
-      const message = generateListEndLine(detail.avoid.map((champion) => champion.name));
+      const message = generateListEndLine(detail.avoid);
       return [
         { animation: "walk_left", motion: "left", position: "left", message: null },
         {
