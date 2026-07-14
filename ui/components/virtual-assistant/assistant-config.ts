@@ -32,13 +32,11 @@ export type AssistantAnimation = keyof typeof ASSISTANT_ANIMATIONS;
 export const IDLE_REACTION_SEQUENCES: ReadonlyArray<
   ReadonlyArray<AssistantAnimation>
 > = [
+  ["smile"],
+  ["thoughtful"],
   ["wave"],
-  ["air_kiss", "smile"],
-  ["laugh", "smile"],
-  ["thoughtful", "smile"],
-  ["weapon_spin", "victory"],
-  ["cast_spell", "smile"],
-  ["jump_forward", "jump_back"],
+  ["laugh"],
+  ["air_kiss"],
 ];
 
 export const INTRO_MESSAGE =
@@ -63,4 +61,8 @@ export const CLICK_REACTIONS: ReadonlyArray<{
   { animation: "laugh", message: "Вот это настрой!" },
   { animation: "air_kiss", message: "Пусть следующая игра будет яркой!" },
   { animation: "angry", message: "Эй! Даже у света есть предел терпения." },
+  { animation: "cast_spell", message: "Немного магии — и цифры уже понятнее." },
+  { animation: "weapon_spin", message: "Всегда готова к следующему анализу!" },
+  { animation: "attack", message: "Цель вижу. Проверим её показатели?" },
+  { animation: "battle_stance", message: "К серьёзной статистике нужен серьёзный подход." },
 ];

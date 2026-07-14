@@ -20,6 +20,7 @@ import type {
 } from "./recommendation-engine";
 import {
   generateListEndLine,
+  generateChampionAnalysisLine,
   generateMetricLine,
   generateNewChampionLine,
   generateRankLine,
@@ -101,6 +102,12 @@ function buildScenario(detail: VirtualAssistantEventDetail): ScenarioBeat[] {
     case "metric_sorted": {
       return [{ animation: "thoughtful", message: generateMetricLine(detail.metric), hold: 4800 }];
     }
+    case "champion_focused":
+      return [{
+        animation: detail.champion.score >= 0.67 ? "victory" : "thoughtful",
+        message: generateChampionAnalysisLine(detail),
+        hold: 7600,
+      }];
     case "empty_results":
       return [{ animation: "frown", message: detail.message || "Для этих фильтров данных не нашлось." }];
     case "load_error":
@@ -126,9 +133,13 @@ export default function VirtualAssistant() {
   const scenarioTimer = useRef<number | null>(null);
   const closeTimer = useRef<number | null>(null);
   const scenarioVersion = useRef(0);
+  const scenarioQueue = useRef<ScenarioBeat[][]>([]);
+  const scenarioRunning = useRef(false);
 
   const stopScenario = useCallback(() => {
     scenarioVersion.current += 1;
+    scenarioQueue.current = [];
+    scenarioRunning.current = false;
     if (scenarioTimer.current != null) {
       window.clearTimeout(scenarioTimer.current);
       scenarioTimer.current = null;
@@ -137,37 +148,67 @@ export default function VirtualAssistant() {
 
   const playScenario = useCallback(
     (beats: ScenarioBeat[]) => {
-      stopScenario();
-      const version = scenarioVersion.current;
+      if (!beats.length) return;
+      scenarioQueue.current.push(beats);
+      if (scenarioRunning.current) return;
 
-      const playBeat = (index: number) => {
-        if (scenarioVersion.current !== version) return;
-        const beat = beats[index];
-        if (!beat) {
+      const playNextScenario = () => {
+        const nextBeats = scenarioQueue.current.shift();
+        if (!nextBeats) {
+          scenarioRunning.current = false;
           setAnimation("idle_smile");
           setMotion("none");
           setPlaybackKey((current) => current + 1);
           return;
         }
+        scenarioRunning.current = true;
+        const version = scenarioVersion.current;
 
-        setAnimation(beat.animation);
-        setMotion(beat.motion || "none");
-        if (beat.position) setCharacterPosition(beat.position);
-        setPlaybackKey((current) => current + 1);
-        if (Object.prototype.hasOwnProperty.call(beat, "message")) {
-          setMessage(beat.message || null);
-        }
+        const playBeat = (index: number) => {
+          if (scenarioVersion.current !== version) return;
+          const beat = nextBeats[index];
+          if (!beat) {
+            playNextScenario();
+            return;
+          }
 
-        const animationDuration = ASSISTANT_ANIMATIONS[beat.animation].duration;
-        scenarioTimer.current = window.setTimeout(
-          () => playBeat(index + 1),
-          animationDuration + (beat.hold || 120),
-        );
+          setAnimation(beat.animation);
+          setMotion(beat.motion || "none");
+          if (beat.position) setCharacterPosition(beat.position);
+          setPlaybackKey((current) => current + 1);
+          if (Object.prototype.hasOwnProperty.call(beat, "message")) {
+            setMessage(beat.message || null);
+          }
+
+          const animationConfig = ASSISTANT_ANIMATIONS[beat.animation];
+          const holdDuration = beat.hold || 120;
+
+          if (beat.hold && !animationConfig.loop) {
+            scenarioTimer.current = window.setTimeout(() => {
+              if (scenarioVersion.current !== version) return;
+              setAnimation("idle_smile");
+              setMotion("none");
+              setPlaybackKey((current) => current + 1);
+              scenarioTimer.current = window.setTimeout(
+                () => playBeat(index + 1),
+                holdDuration,
+              );
+            }, animationConfig.duration);
+            return;
+          }
+
+          scenarioTimer.current = window.setTimeout(
+            () => playBeat(index + 1),
+            animationConfig.duration + holdDuration,
+          );
+        };
+
+        playBeat(0);
       };
 
-      playBeat(0);
+      playNextScenario();
     },
-    [stopScenario],
+    [],
   );
 
   useEffect(() => {
@@ -222,19 +263,20 @@ export default function VirtualAssistant() {
       return;
     }
 
-    const delay = 6500 + Math.floor(Math.random() * 8500);
+    const delay = 2800 + Math.floor(Math.random() * 2200);
     const idleTimer = window.setTimeout(() => {
-      const available = IDLE_REACTION_SEQUENCES.map((sequence, index) => ({
-        sequence,
-        index,
-      })).filter((item) => item.index !== lastIdleReaction.current);
-      const selected = available[Math.floor(Math.random() * available.length)];
+      const nextIndex =
+        (lastIdleReaction.current + 1) % IDLE_REACTION_SEQUENCES.length;
+      const selected = IDLE_REACTION_SEQUENCES[nextIndex];
       if (!selected) return;
 
-      lastIdleReaction.current = selected.index;
+      lastIdleReaction.current = nextIndex;
       playScenario(
-        selected.sequence.map((idleAnimation) => ({
+        selected.map((idleAnimation) => ({
           animation: idleAnimation,
+          // Let the gesture finish, then settle into idle before another
+          // autonomous reaction can be scheduled.
+          hold: 450,
         })),
       );
     }, delay);
@@ -254,6 +296,7 @@ export default function VirtualAssistant() {
     );
     localStorage.setItem(ASSISTANT_STORAGE.minimized, "1");
     setClosing(true);
+    stopScenario();
     storeBanner?.scrollIntoView({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "auto"

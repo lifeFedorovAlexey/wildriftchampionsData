@@ -309,6 +309,107 @@ export function generateMetricLine(metric: keyof typeof METRIC_LINES) {
   return chooseUnique(METRIC_LINES[metric]);
 }
 
+export function generateChampionAnalysisLine({
+  champion,
+  rankLabel,
+  laneLabel,
+  position,
+  total,
+}: {
+  champion: ChampionRecommendation;
+  rankLabel: string;
+  laneLabel: string;
+  position: number;
+  total: number;
+}) {
+  const metrics = [
+    { label: "винрейт", value: champion.winPercentile },
+    { label: "пикрейт", value: champion.pickPercentile },
+    { label: "банрейт", value: champion.banPercentile },
+  ].sort((left, right) => right.value - left.value);
+  const strongest = metrics[0];
+  const weakest = metrics[metrics.length - 1];
+  const metricSpread = strongest.value - weakest.value;
+  const topBand = (percentile: number) =>
+    percentile >= 0.75
+      ? "верхней четверти"
+      : percentile >= 0.5
+        ? "верхней половине"
+        : percentile >= 0.25
+          ? "нижней половине"
+          : "нижней четверти";
+
+  const openings = [
+    `Так, подсвечу главное по ${champion.name}: лучше всего выглядит ${strongest.label}, слабее — ${weakest.label}.`,
+    `${champion.name} для «${laneLabel}» в ранге «${rankLabel}» выглядит интересно: ${strongest.label} сейчас в ${topBand(strongest.value)} выборки.`,
+    `Вижу ${champion.name} на ${position}-й строке из ${total}. Но важнее другое: главная опора здесь — ${strongest.label}.`,
+    `У ${champion.name} есть светлая сторона — ${strongest.label}. А вот ${weakest.label} я бы не выпускала из виду.`,
+    metricSpread >= 0.25
+      ? `${champion.name} сияет неравномерно: ${strongest.label} заметно сильнее, чем ${weakest.label}.`
+      : `${champion.name} выглядит ровно: метрики близки, явной слабой стороны не видно.`,
+  ];
+  const formatChange = (value: number | null) =>
+    value == null ? "нет данных" : `${value >= 0 ? "+" : ""}${value.toFixed(2)} п.п.`;
+  const trendEvidence =
+    champion.trendDirection === "pending"
+      ? [
+          "По тренду пока темно: точек мало, поэтому рост или падение я не выдумываю.",
+          "Для семидневной динамики данных маловато — оставлю её нейтральной.",
+          "Текущие цифры есть, а направление пока не проявилось. Нужно ещё наблюдение.",
+          "Тренд ещё не сложился, так что здесь без поспешных выводов.",
+          "Пока вижу только текущий срез. Для движения нужно больше точек.",
+        ]
+      : champion.trendDirection === "up"
+        ? [
+            `За семь дней стало светлее: WR ${formatChange(champion.winRateChange)}, PR ${formatChange(champion.pickRateChange)}.`,
+            "И тренд радует — чемпион прибавляет относительно соперников по роли.",
+            "За неделю показатели пошли вверх. Это хороший знак, а не случайная яркая цифра.",
+            "Динамика поддерживает выбор: форма у чемпиона сейчас растёт.",
+            "Семидневный импульс положительный. Я бы следила за этим чемпионом внимательнее.",
+          ]
+        : champion.trendDirection === "down"
+          ? [
+              `За семь дней свет померк: WR ${formatChange(champion.winRateChange)}, PR ${formatChange(champion.pickRateChange)}.`,
+              "Тренд настораживает — чемпион сдаёт относительно соперников по роли.",
+              "За неделю показатели пошли вниз. Одного текущего среза для уверенности мало.",
+              "Динамика спорит с выбором: форма у чемпиона сейчас снижается.",
+              "Семидневный импульс отрицательный. Тут я бы не спешила с первым пиком.",
+            ]
+          : [
+              `За неделю без вспышек: WR ${formatChange(champion.winRateChange)}, PR ${formatChange(champion.pickRateChange)}.`,
+              "Тренд ровный — явного роста или падения пока нет.",
+              "За семь дней метрики разошлись и уравновесили друг друга.",
+              "Динамика спокойная, поэтому решать лучше по текущей силе и матчапу.",
+              "Форма стабильна: неделя не дала повода ни хвалить, ни тревожиться.",
+            ];
+  const verdicts =
+    champion.score >= 0.67
+      ? [
+          "Мой вердикт: сильный выбор. Если подходит под драфт — смело бери.",
+          "Статистика на твоей стороне. Я бы держала этот выбор в приоритете.",
+          "Сияет ярко! Хороший вариант, но про матчап не забывай.",
+          "Мне нравится этот выбор: цифры уверенные, риск оправдан.",
+          champion.availabilityPenalty > 0.1 ? "Выбор сильный, но приготовь замену — банят его часто." : "Выбор сильный и доступный. Можно ставить выше в пуле.",
+        ]
+      : champion.score <= 0.35
+        ? [
+            "Я бы не спешила. Бери только в знакомый матчап или ищи вариант надёжнее.",
+            "Сейчас свет слабый: без уверенного исполнения лучше выбрать другого.",
+            "Риск высоковат. Оставь этот выбор для подходящей композиции.",
+            "Честно? Статистика не убеждает. Нужен хороший матчап и твёрдая рука.",
+            "Пока это ситуативный выбор, а не основа для серии игр.",
+          ]
+        : [
+            "Выбор рабочий, но не бесплатный — многое решат матчап и исполнение.",
+            "Можно брать, если чемпион твой. Сама статистика матч не выиграет.",
+            "Неплохой вариант без явного перевеса. Сначала посмотри на драфт.",
+            "Свет ровный: не лучший и не худший выбор. Тут важнее твой опыт.",
+            "Я бы оставила его в пуле, но не забирала вслепую первым пиком.",
+          ];
+
+  return combine([openings, trendEvidence, verdicts]);
+}
+
 export function generateNewChampionLine(champion: NewChampionInsight) {
   const score = `${Math.round(Math.max(0, Math.min(1, champion.score)) * 100)}/100`;
   const introductions = [

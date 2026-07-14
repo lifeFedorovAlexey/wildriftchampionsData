@@ -112,16 +112,44 @@ export default function WinratesTable({
   sort,
   onSort,
   onListEnd,
+  onChampionInspect,
   listContextKey,
 }: {
   rows: Row[];
   sort: { column: string | null; dir: "asc" | "desc" | null };
   onSort: (c: "strengthLevel" | "winRate" | "pickRate" | "banRate") => void;
   onListEnd?: () => void;
+  onChampionInspect?: (slug: string) => void;
   listContextKey?: string;
 }) {
   const endSentinelRef = useRef<HTMLDivElement>(null);
   const userHasScrolled = useRef(false);
+  const inspectTimer = useRef<number | null>(null);
+  const inspectedSlugs = useRef(new Set<string>());
+
+  const cancelInspection = () => {
+    if (inspectTimer.current != null) {
+      window.clearTimeout(inspectTimer.current);
+      inspectTimer.current = null;
+    }
+  };
+
+  const startInspection = (slug: string) => {
+    cancelInspection();
+    if (!onChampionInspect || inspectedSlugs.current.has(slug)) return;
+    inspectTimer.current = window.setTimeout(() => {
+      inspectedSlugs.current.add(slug);
+      inspectTimer.current = null;
+      onChampionInspect(slug);
+    }, 3000);
+  };
+
+  useEffect(() => {
+    inspectedSlugs.current.clear();
+    cancelInspection();
+  }, [listContextKey]);
+
+  useEffect(() => () => cancelInspection(), []);
 
   useEffect(() => {
     const markScrolled = () => {
@@ -221,7 +249,15 @@ export default function WinratesTable({
         const banRateMovement = formatPercentDelta(row.banRateDelta);
 
         return (
-          <div key={row.slug} className={`${styles.grid} ${styles.row}`}>
+          <div
+            key={row.slug}
+            className={`${styles.grid} ${styles.row}`}
+            tabIndex={0}
+            onMouseEnter={() => startInspection(row.slug)}
+            onMouseLeave={cancelInspection}
+            onFocus={() => startInspection(row.slug)}
+            onBlur={cancelInspection}
+          >
             <div className={styles.index}>{idx + 1}</div>
 
             <div className={styles.heroCell}>

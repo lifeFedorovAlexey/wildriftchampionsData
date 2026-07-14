@@ -27,6 +27,14 @@ export type VirtualAssistantEventDetail =
   | {
       kind: "metric_sorted";
       metric: "strengthLevel" | "winRate" | "pickRate" | "banRate";
+    }
+  | {
+      kind: "champion_focused";
+      champion: ChampionRecommendation;
+      rankLabel: string;
+      laneLabel: string;
+      position: number;
+      total: number;
     };
 
 export type VirtualAssistantEventKind = VirtualAssistantEventDetail["kind"];

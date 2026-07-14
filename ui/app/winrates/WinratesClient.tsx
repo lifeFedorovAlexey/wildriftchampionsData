@@ -38,6 +38,7 @@ function WinratesContent({
   laneKey,
   onLaneChange,
   onListEnd,
+  onChampionInspect,
 }: {
   rows: WinrateRow[];
   sort: SortState;
@@ -48,6 +49,7 @@ function WinratesContent({
   laneKey: LaneKey;
   onLaneChange: (key: string) => void;
   onListEnd: () => void;
+  onChampionInspect: (slug: string) => void;
 }) {
   return (
     <div className={styles.shell}>
@@ -78,6 +80,7 @@ function WinratesContent({
           sort={sort}
           onSort={onSort}
           onListEnd={onListEnd}
+          onChampionInspect={onChampionInspect}
           listContextKey={`${rankKey}|${laneKey}`}
         />
       </section>
@@ -179,6 +182,23 @@ export default function WinratesClient({
     });
   }, [laneKey, rawRows, sliceKey]);
 
+  const onChampionInspect = useCallback((slug: string) => {
+    const champion = analyzeChampionRecommendations(rawRows).rated.find(
+      (candidate) => candidate.slug === slug,
+    );
+    if (!champion) return;
+    const rank = RANK_OPTIONS.find((option) => option.key === rankKey);
+    const lane = LANE_OPTIONS.find((option) => option.key === laneKey);
+    notifyVirtualAssistant({
+      kind: "champion_focused",
+      champion,
+      rankLabel: rank?.label || rankKey,
+      laneLabel: lane?.label || laneKey,
+      position: rows.findIndex((row) => row.slug === slug) + 1,
+      total: rows.length,
+    });
+  }, [laneKey, rankKey, rawRows, rows]);
+
   useEffect(() => {
     if (error) notifyVirtualAssistant({ kind: "load_error", message: error });
   }, [error]);
@@ -221,6 +241,7 @@ export default function WinratesClient({
       laneKey={laneKey}
       onLaneChange={onLaneChange}
       onListEnd={onListEnd}
+      onChampionInspect={onChampionInspect}
     />
   );
 

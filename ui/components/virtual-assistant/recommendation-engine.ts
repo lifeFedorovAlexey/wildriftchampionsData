@@ -4,9 +4,25 @@ export type AssistantStatRow = {
   winRate: number | null;
   pickRate: number | null;
   banRate: number | null;
+  winRateTrend?: Array<number | null>;
+  pickRateTrend?: Array<number | null>;
+  banRateTrend?: Array<number | null>;
 };
 
-export type ChampionRecommendation = AssistantStatRow & {
+export type ChampionRecommendation = Omit<
+  AssistantStatRow,
+  "winRate" | "pickRate" | "banRate"
+> & {
+  winRate: number;
+  pickRate: number;
+  banRate: number;
+  baseScore: number;
+  trendScore: number;
+  trendDirection: NewChampionTrend;
+  observedTrendPoints: number;
+  winRateChange: number | null;
+  pickRateChange: number | null;
+  banRateChange: number | null;
   powerScore: number;
   availabilityPenalty: number;
   score: number;
@@ -30,6 +46,18 @@ function metricPercentile(value: number, values: number[]) {
   return (below + Math.max(0, equal - 1) / 2) / (values.length - 1);
 }
 
+const METRIC_WEIGHTS = { winRate: 2, pickRate: 1, banRate: 1.5 } as const;
+const TOTAL_METRIC_WEIGHT = 4.5;
+
+function numericPoints(values: Array<number | null> | undefined) {
+  return (values || []).filter((value): value is number => Number.isFinite(value));
+}
+
+function trendChange(values: Array<number | null> | undefined) {
+  const points = numericPoints(values).slice(-7);
+  return points.length >= 2 ? points[points.length - 1] - points[0] : null;
+}
+
 /**
  * Rates champions relative to the currently selected rank/lane slice.
  * Position in the rendered table and Riot's strengthLevel are deliberately ignored.
@@ -49,24 +77,68 @@ export function analyzeChampionRecommendations(rows: AssistantStatRow[]) {
   const winRates = completeRows.map((row) => row.winRate);
   const pickRates = completeRows.map((row) => row.pickRate);
   const banRates = completeRows.map((row) => row.banRate);
+  const changes = completeRows.map((row) => ({
+    winRate: trendChange(row.winRateTrend),
+    pickRate: trendChange(row.pickRateTrend),
+    banRate: trendChange(row.banRateTrend),
+  }));
+  const trendValues = {
+    winRate: changes.flatMap((change) => change.winRate == null ? [] : [change.winRate]),
+    pickRate: changes.flatMap((change) => change.pickRate == null ? [] : [change.pickRate]),
+    banRate: changes.flatMap((change) => change.banRate == null ? [] : [change.banRate]),
+  };
 
-  const rated: ChampionRecommendation[] = completeRows.map((row) => {
+  const rated: ChampionRecommendation[] = completeRows.map((row, index) => {
     const winPercentile = metricPercentile(row.winRate, winRates);
     const pickPercentile = metricPercentile(row.pickRate, pickRates);
     const banPercentile = metricPercentile(row.banRate, banRates);
-    // Ban rate is a strength signal, but very high bans make the pick unreliable
-    // in practice: after 10% BR the availability penalty gradually outweighs it.
-    const powerScore =
-      winPercentile * 0.6 + pickPercentile * 0.25 + banPercentile * 0.15;
+    const baseScore =
+      (winPercentile * METRIC_WEIGHTS.winRate +
+        pickPercentile * METRIC_WEIGHTS.pickRate +
+        banPercentile * METRIC_WEIGHTS.banRate) /
+      TOTAL_METRIC_WEIGHT;
+    const change = changes[index];
+    const observedTrendPoints = Math.max(
+      numericPoints(row.winRateTrend).slice(-7).length,
+      numericPoints(row.pickRateTrend).slice(-7).length,
+      numericPoints(row.banRateTrend).slice(-7).length,
+    );
+    const hasTrend = observedTrendPoints >= 2;
+    const trendScore = hasTrend
+      ? ((change.winRate == null ? 0.5 : metricPercentile(change.winRate, trendValues.winRate)) * METRIC_WEIGHTS.winRate +
+          (change.pickRate == null ? 0.5 : metricPercentile(change.pickRate, trendValues.pickRate)) * METRIC_WEIGHTS.pickRate +
+          (change.banRate == null ? 0.5 : metricPercentile(change.banRate, trendValues.banRate)) * METRIC_WEIGHTS.banRate) /
+        TOTAL_METRIC_WEIGHT
+      : 0.5;
+    const trendDirection: NewChampionTrend = !hasTrend
+      ? "pending"
+      : trendScore >= 0.58
+        ? "up"
+        : trendScore <= 0.42
+          ? "down"
+          : "flat";
+    // The seven-day trend can adjust the current weighted strength by up to ±10 points.
+    const powerScore = Math.min(
+      1,
+      Math.max(0, baseScore + (trendScore - 0.5) * 0.2),
+    );
+    // A high ban rate signals strength, but also reduces practical availability.
     const availabilityPenalty =
-      Math.min(1, Math.max(0, (row.banRate - 10) / 35)) * 0.25;
-    const score = powerScore - availabilityPenalty;
+      Math.min(1, Math.max(0, (row.banRate - 10) / 35)) * 0.15;
+    const score = Math.max(0, powerScore - availabilityPenalty);
     const weakSignals = [winPercentile, pickPercentile, banPercentile].filter(
       (percentile) => percentile <= 0.25,
     ).length;
 
     return {
       ...row,
+      baseScore: Math.round(baseScore * 1000) / 1000,
+      trendScore: Math.round(trendScore * 1000) / 1000,
+      trendDirection,
+      observedTrendPoints,
+      winRateChange: change.winRate,
+      pickRateChange: change.pickRate,
+      banRateChange: change.banRate,
       powerScore: Math.round(powerScore * 1000) / 1000,
       availabilityPenalty: Math.round(availabilityPenalty * 1000) / 1000,
       score: Math.round(score * 1000) / 1000,
@@ -98,10 +170,6 @@ type RowWithTrends = AssistantStatRow & {
   pickRateTrend?: Array<number | null>;
   banRateTrend?: Array<number | null>;
 };
-
-function numericPoints(values: Array<number | null> | undefined) {
-  return (values || []).filter((value): value is number => Number.isFinite(value));
-}
 
 export function findNewChampionInsights(rows: RowWithTrends[]) {
   const { rated } = analyzeChampionRecommendations(rows);

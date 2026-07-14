@@ -73,12 +73,34 @@
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: var(--assistant-sheet-width) 100%;
-  animation: assistantFrames var(--assistant-duration)
-    steps(var(--assistant-steps)) 1 forwards;
+  animation-duration: var(--assistant-duration);
+  animation-timing-function: steps(var(--assistant-steps));
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.spritePlaybackEven {
+  animation-name: assistantFramesEven;
+}
+
+.spritePlaybackOdd {
+  animation-name: assistantFramesOdd;
 }
 
 .spriteLoop {
   animation-iteration-count: infinite;
+}
+
+@keyframes assistantFramesEven {
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes assistantFramesOdd {
+  to {
+    background-position: 100% 0;
+  }
 }
 
 .bubble {
@@ -194,12 +216,6 @@
   z-index: -1;
   border-radius: inherit;
   box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
-}
-
-@keyframes assistantFrames {
-  to {
-    background-position: 100% 0;
-  }
 }
 
 @keyframes typeCursorBlink {

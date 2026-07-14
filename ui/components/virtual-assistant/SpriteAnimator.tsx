@@ -38,6 +38,8 @@ export default function SpriteAnimator({
     motion === "none"
       ? ""
       : styles[`motion${motion[0].toUpperCase()}${motion.slice(1)}`];
+  const playbackClass =
+    playbackKey % 2 === 0 ? styles.spritePlaybackEven : styles.spritePlaybackOdd;
 
   return (
     <span
@@ -52,8 +54,7 @@ export default function SpriteAnimator({
         aria-label="Люкс — виртуальный помощник. Нажмите для реакции"
       >
         <span
-          key={`${animation}-${playbackKey}`}
-          className={`${styles.sprite} ${config.loop ? styles.spriteLoop : ""}`}
+          className={`${styles.sprite} ${playbackClass} ${config.loop ? styles.spriteLoop : ""}`}
           style={spriteStyle}
           aria-hidden="true"
         />

@@ -47,6 +47,11 @@ type CropSource = {
 const AVATAR_CROP_FRAME_SIZE = 320;
 const AVATAR_OUTPUT_SIZE = 512;
 const AVATAR_MAX_PICK_SIZE = 10 * 1024 * 1024;
+const ALLOWED_AVATAR_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+
+function getSafeCropSourceUrl(value: string) {
+  return value.startsWith("blob:") ? value : "";
+}
 
 function getAvatarLabel(identity: Identity, index: number) {
   const provider = String(identity.provider || "").trim();
@@ -229,7 +234,7 @@ export default function ProfileEditorForm({
     event.target.value = "";
     if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
+    if (!ALLOWED_AVATAR_TYPES.has(file.type)) {
       setAvatarUploadError("Выбери PNG, JPG или WebP.");
       return;
     }
@@ -587,7 +592,7 @@ export default function ProfileEditorForm({
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   ref={cropImageRef}
-                  src={cropSource.url}
+                  src={getSafeCropSourceUrl(cropSource.url)}
                   alt=""
                   className={styles.cropImage}
                   style={{
