@@ -31,7 +31,12 @@ export default function SpriteAnimator({
   position: "home" | "left";
   onClick: () => void;
 }) {
-  const [displayed, setDisplayed] = useState({ animation, playbackKey });
+  const [displayed, setDisplayed] = useState({
+    animation,
+    playbackKey,
+    motion,
+    position,
+  });
   const config = ASSISTANT_ANIMATIONS[displayed.animation];
   const spriteStyle: SpriteStyle = {
     "--assistant-sprite": `url(${getSpriteUrl(displayed.animation)})`,
@@ -40,9 +45,11 @@ export default function SpriteAnimator({
     "--assistant-duration": `${config.duration}ms`,
   };
   const motionClass =
-    motion === "none"
+    displayed.motion === "none"
       ? ""
-      : styles[`motion${motion[0].toUpperCase()}${motion.slice(1)}`];
+      : styles[
+          `motion${displayed.motion[0].toUpperCase()}${displayed.motion.slice(1)}`
+        ];
   const activePlaybackKey = animation === displayed.animation
     ? playbackKey
     : displayed.playbackKey;
@@ -66,21 +73,21 @@ export default function SpriteAnimator({
     let cancelled = false;
     const image = new window.Image();
     image.src = getSpriteUrl(animation);
-    void image.decode()
-      .catch(() => undefined)
-      .then(() => {
-        if (!cancelled) setDisplayed({ animation, playbackKey });
-      });
+    void image.decode().then(() => {
+      if (!cancelled) {
+        setDisplayed({ animation, playbackKey, motion, position });
+      }
+    }).catch(() => undefined);
 
     return () => {
       cancelled = true;
     };
-  }, [animation, displayed, playbackKey]);
+  }, [animation, displayed, motion, playbackKey, position]);
 
   return (
     <span
       className={`${styles.characterTrack} ${
-        position === "left" ? styles.characterLeft : ""
+        displayed.position === "left" ? styles.characterLeft : ""
       } ${motionClass || ""}`.trim()}
     >
       <button
