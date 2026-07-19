@@ -7,6 +7,7 @@ import {
   type StreamerTierlistDetailPayload,
 } from "@/lib/streamer-tierlists-api";
 import { notFound } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa6";
 import styles from "../streamers.module.css";
 
 const OWNER_TELEGRAM_LINK = "https://t.me/fedorov_alexey_tg";
@@ -75,7 +76,11 @@ export default async function StreamerTierlistDetailPage({
       paragraphs={[
         "Актуальная опубликованная версия стримерского тирлиста по всем линиям.",
       ]}
-      topContent={<TopPillLink href="/streamers">← Все стримеры</TopPillLink>}
+      topContent={
+        <TopPillLink href="/streamers">
+          <FaArrowLeft aria-hidden="true" /> Все стримеры
+        </TopPillLink>
+      }
     >
       <div className={styles.page}>
         <section className={styles.hero}>

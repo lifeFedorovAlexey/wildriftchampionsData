@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { FaXmark } from "react-icons/fa6";
 import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
 import TelegramLoginButton from "@/components/admin/TelegramLoginButton";
 import styles from "./AuthProvidersList.module.css";
@@ -80,7 +81,7 @@ export default function TelegramCompactLogin({
                 aria-label="Закрыть Telegram вход"
                 onClick={() => setOpen(false)}
               >
-                ×
+                <FaXmark aria-hidden="true" />
               </button>
             </div>
             <div className={styles.telegramCompactBody}>

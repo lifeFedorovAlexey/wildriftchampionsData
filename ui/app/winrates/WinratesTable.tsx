@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type CSSProperties } from "react";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
 
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import TrendSparkline from "@/components/styled/TrendSparkline";
@@ -26,6 +27,18 @@ type Row = {
   pickRateDelta: number | null;
   banRateDelta: number | null;
 };
+
+function SortIcon({
+  active,
+  direction,
+}: {
+  active: boolean;
+  direction: "asc" | "desc" | null;
+}) {
+  if (!active) return null;
+  const Icon = direction === "asc" ? FaCaretUp : FaCaretDown;
+  return <Icon aria-hidden="true" />;
+}
 
 function winRateColor(v: number | null) {
   if (v == null) return "inherit";
@@ -194,11 +207,7 @@ export default function WinratesTable({
         >
           Тир
           <span className={styles.sortArrow}>
-            {sort.column === "strengthLevel"
-              ? sort.dir === "asc"
-                ? "▲"
-                : "▼"
-              : ""}
+            <SortIcon active={sort.column === "strengthLevel"} direction={sort.dir} />
           </span>
         </button>
 
@@ -211,7 +220,7 @@ export default function WinratesTable({
           <span className={styles.labelFull}>Винрейт</span>
           <span className={styles.labelShort}>WR</span>
           <span className={styles.sortArrow}>
-            {sort.column === "winRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
+            <SortIcon active={sort.column === "winRate"} direction={sort.dir} />
           </span>
         </button>
 
@@ -224,7 +233,7 @@ export default function WinratesTable({
           <span className={styles.labelFull}>Пики</span>
           <span className={styles.labelShort}>PR</span>
           <span className={styles.sortArrow}>
-            {sort.column === "pickRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
+            <SortIcon active={sort.column === "pickRate"} direction={sort.dir} />
           </span>
         </button>
 
@@ -237,7 +246,7 @@ export default function WinratesTable({
           <span className={styles.labelFull}>Баны</span>
           <span className={styles.labelShort}>BR</span>
           <span className={styles.sortArrow}>
-            {sort.column === "banRate" ? (sort.dir === "asc" ? "▲" : "▼") : ""}
+            <SortIcon active={sort.column === "banRate"} direction={sort.dir} />
           </span>
         </button>
       </div>

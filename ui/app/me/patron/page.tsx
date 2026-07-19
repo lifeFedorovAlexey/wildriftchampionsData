@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa6";
 import TopPillLink from "@/components/TopPillLink";
 import { fetchSiteUserSession } from "@/lib/site-user-api.js";
 import { getUserSessionTokenFromCookie } from "@/lib/site-user-auth.js";
@@ -37,7 +38,9 @@ export default async function PatronPage() {
               защита и точка входа уже готовы.
             </p>
           </div>
-          <TopPillLink href="/me">← В профиль</TopPillLink>
+          <TopPillLink href="/me">
+            <FaArrowLeft aria-hidden="true" /> В профиль
+          </TopPillLink>
         </div>
 
         <section className={`${styles.card} ${styles.fullCard}`.trim()}>

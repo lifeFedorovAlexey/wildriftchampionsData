@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa6";
 import {
   getTelegramWebApp,
   initTelegramWebAppAppearance,
@@ -20,8 +21,11 @@ const VIEWS = {
 function ScreenView({ title, onBack }) {
   return (
     <div style={{ padding: 16 }}>
-      <button onClick={onBack} style={{ marginBottom: 12 }}>
-        ← Назад
+      <button
+        onClick={onBack}
+        style={{ marginBottom: 12, display: "inline-flex", alignItems: "center", gap: 6 }}
+      >
+        <FaArrowLeft aria-hidden="true" /> Назад
       </button>
       <h1 style={{ margin: 0 }}>{title}</h1>
       <p style={{ opacity: 0.8 }}>

@@ -1,6 +1,7 @@
 "use client";
 
 import TopPillLink from "@/components/TopPillLink";
+import { FaArrowLeft } from "react-icons/fa6";
 
 export default function GuideError({
   error,
@@ -32,7 +33,9 @@ export default function GuideError({
         }}
       >
         <div style={{ marginBottom: "18px" }}>
-          <TopPillLink href="/guides">← К гайдам</TopPillLink>
+          <TopPillLink href="/guides">
+            <FaArrowLeft aria-hidden="true" /> К гайдам
+          </TopPillLink>
         </div>
         <p
           style={{

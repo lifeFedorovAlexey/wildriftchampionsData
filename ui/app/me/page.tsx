@@ -1,4 +1,5 @@
 import { cookies, headers } from "next/headers";
+import { FaArrowLeft } from "react-icons/fa6";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import PrivateProfilePage from "@/components/profile/PrivateProfilePage";
 import TopPillLink from "@/components/TopPillLink";
@@ -147,7 +148,9 @@ export default async function MePage({
             <h1 className={styles.title}>Вход в профиль</h1>
             <p className={styles.lead}>Войди удобным способом или создай профиль за пару секунд.</p>
           </div>
-          <TopPillLink href="/">← На главную</TopPillLink>
+          <TopPillLink href="/">
+            <FaArrowLeft aria-hidden="true" /> На главную
+          </TopPillLink>
         </div>
 
         {errorText ? <div className={styles.noticeError}>{errorText}</div> : null}

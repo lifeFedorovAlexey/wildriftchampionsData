@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { FaXmark } from "react-icons/fa6";
 
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import LoadingRing from "@/components/LoadingRing";
@@ -290,8 +291,13 @@ function DetailsModal({
             </div>
           </div>
 
-          <button type="button" className={styles.closeBtn} onClick={onClose}>
-            ×
+          <button
+            type="button"
+            className={styles.closeBtn}
+            onClick={onClose}
+            aria-label="Закрыть"
+          >
+            <FaXmark aria-hidden="true" />
           </button>
         </div>
 

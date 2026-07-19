@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa6";
 
 import PageWrapper from "@/components/PageWrapper";
 import TopPillLink from "@/components/TopPillLink";
@@ -194,7 +195,7 @@ export default async function GuidePage({
       paragraphs={[guideLeadParagraph]}
       topContent={
         <TopPillLink href="/guides">
-          ← К гайдам
+          <FaArrowLeft aria-hidden="true" /> К гайдам
         </TopPillLink>
       }
     >

@@ -1,220 +1,57 @@
-export function IconWinrate({ size = 22 }) {
-  // podium 1-2-3 (winrate / ranking)
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block" }}
-    >
-      {/* left step (2) */}
-      <rect x="3" y="12" width="5" height="7" rx="1.5" />
-      {/* center step (1) */}
-      <rect x="9.5" y="8" width="5" height="11" rx="1.5" />
-      {/* right step (3) */}
-      <rect x="16" y="14" width="5" height="5" rx="1.5" />
-    </svg>
-  );
+import {
+  FaArrowTrendUp,
+  FaChartColumn,
+  FaComments,
+  FaCrosshairs,
+  FaCrown,
+  FaHeart,
+  FaNewspaper,
+  FaRankingStar,
+  FaWandMagicSparkles,
+} from "react-icons/fa6";
+
+type IconProps = {
+  size?: number;
+};
+
+const iconProps = {
+  "aria-hidden": true,
+  focusable: false,
+  style: { display: "block" },
+} as const;
+
+export function IconWinrate({ size = 22 }: IconProps) {
+  return <FaChartColumn size={size} {...iconProps} />;
 }
 
-export function IconTierInq({ size = 22 }) {
-  // crown
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block" }}
-    >
-      <path d="M3 7l4 4 5-6 5 6 4-4v10H3V7zm0 12h18v2H3v-2z" />
-    </svg>
-  );
+export function IconTierInq({ size = 22 }: IconProps) {
+  return <FaCrown size={size} {...iconProps} />;
 }
 
-export function IconTierlist({ size = 22 }) {
-  // Great Wall (CN tierlist)
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block" }}
-    >
-      {/* wall base */}
-      <rect x="2" y="12" width="20" height="5" rx="1.2" />
-
-      {/* battlements */}
-      <rect x="3" y="9" width="4" height="3" rx="0.8" />
-      <rect x="10" y="9" width="4" height="3" rx="0.8" />
-      <rect x="17" y="9" width="4" height="3" rx="0.8" />
-    </svg>
-  );
+export function IconTierlist({ size = 22 }: IconProps) {
+  return <FaRankingStar size={size} {...iconProps} />;
 }
 
-export function IconPicksBans({ size = 22 }) {
-  // sniper crosshair (pick / ban target)
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block" }}
-    >
-      {/* outer ring */}
-      <circle
-        cx="12"
-        cy="12"
-        r="8"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-
-      {/* vertical line */}
-      <line
-        x1="12"
-        y1="3"
-        x2="12"
-        y2="7"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <line
-        x1="12"
-        y1="17"
-        x2="12"
-        y2="21"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      {/* horizontal line */}
-      <line
-        x1="3"
-        y1="12"
-        x2="7"
-        y2="12"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <line
-        x1="17"
-        y1="12"
-        x2="21"
-        y2="12"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      {/* center dot */}
-      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-    </svg>
-  );
+export function IconPicksBans({ size = 22 }: IconProps) {
+  return <FaCrosshairs size={size} {...iconProps} />;
 }
 
-export function IconTrends({ size = 22 }) {
-  // rising chart
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block" }}
-    >
-      <path d="M3 17l6-6 4 4 7-7v4h2V4h-8v2h4l-5 5-4-4-7 7z" />
-    </svg>
-  );
+export function IconTrends({ size = 22 }: IconProps) {
+  return <FaArrowTrendUp size={size} {...iconProps} />;
 }
 
-export function IconSkins() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M4 16L8 12L12 16L20 6L16 2L12 6L8 2L4 16Z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M16 2L20 6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
+export function IconSkins({ size = 24 }: IconProps = {}) {
+  return <FaWandMagicSparkles size={size} {...iconProps} />;
 }
 
-export function IconSupport({ size = 22 }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block" }}
-    >
-      <path d="M12 21.35 10.55 20C5.4 15.24 2 12.09 2 8.25 2 5.4 4.24 3 7.1 3c1.63 0 3.2.8 4.2 2.04C12.3 3.8 13.87 3 15.5 3 18.36 3 20.6 5.4 20.6 8.25c0 3.84-3.4 6.99-8.55 11.76L12 21.35Z" />
-    </svg>
-  );
+export function IconSupport({ size = 22 }: IconProps) {
+  return <FaHeart size={size} {...iconProps} />;
 }
 
-export function IconChat({ size = 22 }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block" }}
-    >
-      <path d="M4.5 3.5h15A2.5 2.5 0 0 1 22 6v9a2.5 2.5 0 0 1-2.5 2.5H10L5 21v-3.5h-.5A2.5 2.5 0 0 1 2 15V6a2.5 2.5 0 0 1 2.5-2.5Zm2.25 5.25v1.5h10.5v-1.5H6.75Zm0 3.5v1.5h7.5v-1.5h-7.5Z" />
-    </svg>
-  );
+export function IconChat({ size = 22 }: IconProps) {
+  return <FaComments size={size} {...iconProps} />;
 }
 
-export function IconNews({ size = 22 }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block" }}
-    >
-      <path d="M5 4.5A2.5 2.5 0 0 0 2.5 7v10A2.5 2.5 0 0 0 5 19.5h14A2.5 2.5 0 0 0 21.5 17V7A2.5 2.5 0 0 0 19 4.5H5Zm0 1.5h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1Zm2 2.25h6v1.5H7v-1.5Zm0 3.5h10v1.5H7v-1.5Zm0 3.5h10v1.5H7v-1.5Z" />
-    </svg>
-  );
+export function IconNews({ size = 22 }: IconProps) {
+  return <FaNewspaper size={size} {...iconProps} />;
 }

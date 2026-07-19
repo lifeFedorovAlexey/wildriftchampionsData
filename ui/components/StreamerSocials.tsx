@@ -1,38 +1,34 @@
 "use client";
 
 import type { IconType } from "react-icons";
-import {
-  FaCirclePlay,
-  FaCommentDots,
-  FaTelegram,
-  FaTwitch,
-  FaVideo,
-  FaVk,
-} from "react-icons/fa6";
+import { FaTelegram, FaTwitch, FaVk } from "react-icons/fa6";
 
 const items: Array<{
   key: string;
   href: string;
-  icon: IconType;
+  icon?: IconType;
+  brandIconSrc?: string;
   label: string;
 }> = [
   { key: "vk", href: "https://vk.com/inqnews", icon: FaVk, label: "VK" },
   {
     key: "vkvideo",
     href: "https://vkvideo.ru/@inqnews",
-    icon: FaVideo,
+    brandIconSrc:
+      "https://vkvideo.ru/images/icons/favicons/fav_vk_video_2x.ico?8",
     label: "VK Видео",
   },
   {
     key: "rutube",
     href: "https://rutube.ru/channel/23486231/",
-    icon: FaCirclePlay,
+    brandIconSrc:
+      "https://static.rtbcdn.ru/static/img/favicon-icons/v3/icon.svg",
     label: "Rutube",
   },
   {
     key: "max",
     href: "https://max.ru/inqnews",
-    icon: FaCommentDots,
+    brandIconSrc: "https://max.ru/favicon.svg",
     label: "MAX",
   },
   {
@@ -112,7 +108,27 @@ export default function StreamerSocials({ color = "rgba(255,255,255,0.92)" }) {
                 textDecoration: "none",
               }}
             >
-              <Icon size={22} aria-hidden="true" focusable="false" />
+              {item.brandIconSrc ? (
+                // The three services are absent from the icon library, so use
+                // their official brand assets instead of generic substitutes.
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={item.brandIconSrc}
+                  alt=""
+                  width={24}
+                  height={24}
+                  loading="lazy"
+                  aria-hidden="true"
+                  style={{
+                    width: 24,
+                    height: 24,
+                    borderRadius: 6,
+                    objectFit: "contain",
+                  }}
+                />
+              ) : Icon ? (
+                <Icon size={22} aria-hidden="true" focusable="false" />
+              ) : null}
             </a>
           );
         })}

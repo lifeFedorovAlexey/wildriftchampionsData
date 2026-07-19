@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { FaXmark } from "react-icons/fa6";
 import { buildChatWsUrl } from "@/lib/chat-api";
 import ChatComposer from "./ChatComposer";
 import ChatMessageList from "./ChatMessageList";
@@ -426,13 +427,17 @@ export default function ChatMvpClient() {
       {errorText ? (
         <div className={styles.noticeError} role="alert">
           <span>{errorText}</span>
-          <button type="button" onClick={() => setErrorText("")} aria-label="Закрыть">×</button>
+          <button type="button" onClick={() => setErrorText("")} aria-label="Закрыть">
+            <FaXmark aria-hidden="true" />
+          </button>
         </div>
       ) : null}
       {privateNotice ? (
         <div className={styles.noticePrivate} role="status">
           <span>{privateNotice}</span>
-          <button type="button" onClick={() => setPrivateNotice("")} aria-label="Закрыть">×</button>
+          <button type="button" onClick={() => setPrivateNotice("")} aria-label="Закрыть">
+            <FaXmark aria-hidden="true" />
+          </button>
         </div>
       ) : null}
 
@@ -560,7 +565,14 @@ export default function ChatMvpClient() {
           <div className={styles.modal} onClick={(event) => event.stopPropagation()}>
             <div className={styles.panelHead}>
               <h3 className={styles.panelTitle}>Новая группа</h3>
-              <button type="button" className={styles.panelClose} onClick={() => setIsCreateGroupOpen(false)}>×</button>
+              <button
+                type="button"
+                className={styles.panelClose}
+                onClick={() => setIsCreateGroupOpen(false)}
+                aria-label="Закрыть"
+              >
+                <FaXmark aria-hidden="true" />
+              </button>
             </div>
             <div className={styles.formStack}>
               <input className={styles.input} value={groupName} onChange={(event) => setGroupName(event.target.value)} placeholder="Название" />

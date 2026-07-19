@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { FaXmark } from "react-icons/fa6";
 import type { ModerationState } from "./chat-types";
 import styles from "./ChatMvpClient.module.css";
 
@@ -57,7 +58,7 @@ export default function ChatModerationDrawer({
             <h3 className={styles.panelTitle}>Модерация</h3>
           </div>
           <button type="button" className={styles.panelClose} onClick={onClose} aria-label="Закрыть">
-            ×
+            <FaXmark aria-hidden="true" />
           </button>
         </div>
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { FaEye } from "react-icons/fa6";
 import AdminShell from "@/components/admin/AdminShell";
 import { fetchAdminAccessUsers, fetchAdminSession } from "@/lib/admin-api.js";
 import { getAdminSessionTokenFromCookie } from "@/lib/admin-auth.js";
@@ -335,10 +336,7 @@ export default async function AdminAccessPage({
                   <summary className={styles.sensitiveSummary}>
                     <span className={styles.sensitiveSummaryLead}>
                       <span className={styles.sensitiveEyeIcon} aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                          <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z" />
-                          <circle cx="12" cy="12" r="3.2" />
-                        </svg>
+                        <FaEye />
                       </span>
                       <span className={styles.sensitiveSummaryText}>Показать личные данные и привязки</span>
                     </span>

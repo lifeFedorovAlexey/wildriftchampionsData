@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { FaPaperclip, FaXmark } from "react-icons/fa6";
 import styles from "./ChatMvpClient.module.css";
 
 type Props = {
@@ -36,7 +37,7 @@ export default function ChatComposer({
                 onClick={() => onFilesChange(files.filter((_, fileIndex) => fileIndex !== index))}
                 aria-label={`Убрать ${file.name}`}
               >
-                ×
+                <FaXmark aria-hidden="true" />
               </button>
             </span>
           ))}
@@ -51,7 +52,7 @@ export default function ChatComposer({
           aria-label="Добавить изображение или видео"
           title="До 15 МБ на файл"
         >
-          +
+          <FaPaperclip aria-hidden="true" />
         </button>
         <input
           ref={fileInputRef}

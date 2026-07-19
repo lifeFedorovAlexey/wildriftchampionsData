@@ -1,5 +1,6 @@
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa6";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import TopPillLink from "@/components/TopPillLink";
 import styles from "../admin.module.css";
@@ -44,7 +45,9 @@ export default async function AdminLoginPage({
               Войди удобным способом. Если у аккаунта есть доступ, откроется админка.
             </p>
           </div>
-          <TopPillLink href="/">← На главную</TopPillLink>
+          <TopPillLink href="/">
+            <FaArrowLeft aria-hidden="true" /> На главную
+          </TopPillLink>
         </div>
         {errorText ? <div className={styles.error}>{errorText}</div> : null}
 

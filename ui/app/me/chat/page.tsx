@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa6";
 import TopPillLink from "@/components/TopPillLink";
 import ChatMvpClient from "@/components/chat/ChatMvpClient";
 import { fetchSiteUserSession } from "@/lib/site-user-api.js";
@@ -22,7 +23,9 @@ export default async function MeChatPage() {
           <div>
             <h1 className={profileStyles.title}>Чат</h1>
           </div>
-          <TopPillLink href="/me">← В профиль</TopPillLink>
+          <TopPillLink href="/me">
+            <FaArrowLeft aria-hidden="true" /> В профиль
+          </TopPillLink>
         </div>
 
         <ChatMvpClient />

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaArrowLeft } from "react-icons/fa6";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import LinkedProviderIcons from "@/components/auth/LinkedProviderIcons";
 import TopPillLink from "@/components/TopPillLink";
@@ -115,7 +116,11 @@ export default function PrivateProfilePage({
             <h1 className={styles.title}>{title}</h1>
             <p className={styles.lead}>{lead}</p>
           </div>
-          {showHomeLink ? <TopPillLink href={homeHref}>← На главную</TopPillLink> : null}
+          {showHomeLink ? (
+            <TopPillLink href={homeHref}>
+              <FaArrowLeft aria-hidden="true" /> На главную
+            </TopPillLink>
+          ) : null}
         </div>
 
         {errorText ? <div className={styles.noticeError}>{errorText}</div> : null}

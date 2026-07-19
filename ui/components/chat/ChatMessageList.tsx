@@ -1,4 +1,5 @@
 import type { ChatMessage } from "./chat-types";
+import { FaTrashCan } from "react-icons/fa6";
 import styles from "./ChatMvpClient.module.css";
 
 type Props = {
@@ -74,7 +75,7 @@ export default function ChatMessageList({
                       aria-label="Удалить сообщение"
                       title="Удалить сообщение"
                     >
-                      ×
+                      <FaTrashCan aria-hidden="true" />
                     </button>
                   ) : null}
                 </div>

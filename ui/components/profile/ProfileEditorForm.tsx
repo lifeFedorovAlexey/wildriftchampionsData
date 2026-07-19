@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
+import { FaPlus, FaXmark } from "react-icons/fa6";
 import styles from "@/app/me/profile.module.css";
 import NativeImage from "@/components/ui/NativeImage";
 import {
@@ -388,7 +389,9 @@ export default function ProfileEditorForm({
             title="Загрузить свой аватар"
             aria-label="Загрузить свой аватар"
           >
-            <span className={styles.avatarUploadPlus}>+</span>
+            <span className={styles.avatarUploadPlus}>
+              <FaPlus aria-hidden="true" />
+            </span>
           </button>
           {avatarOptions.map((option) => {
             const isActive = avatarUrl === option.avatarUrl;
@@ -428,7 +431,7 @@ export default function ProfileEditorForm({
                       setAvatarUploadNotice("");
                     }}
                   >
-                    ×
+                    <FaXmark aria-hidden="true" />
                   </button>
                 ) : null}
               </div>
@@ -563,7 +566,7 @@ export default function ProfileEditorForm({
                     className={styles.championPillRemove}
                     aria-label={`Убрать ${champion.name}`}
                   >
-                    ×
+                    <FaXmark aria-hidden="true" />
                   </button>
                 </div>
               );
