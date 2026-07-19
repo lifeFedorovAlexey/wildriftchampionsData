@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import PageWrapper from "@/components/PageWrapper";
+import PromoBanner from "@/components/PromoBanner";
 import StreamerSocials from "@/components/StreamerSocials";
 import YandexPromoBlock from "@/components/YandexPromoBlock";
 import styles from "./page.module.css";
@@ -31,6 +32,8 @@ export default function SupportPageClient() {
             партнёрская ссылка Яндекса здесь, на странице поддержки.
           </p>
         </section>
+
+        <PromoBanner />
 
         <div className={styles.cardsGrid}>
           <section className={styles.card}>
