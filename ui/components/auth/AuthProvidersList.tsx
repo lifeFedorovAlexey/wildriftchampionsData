@@ -1,4 +1,3 @@
-import Link from "next/link";
 import TelegramLoginButton from "@/components/admin/TelegramLoginButton";
 import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
 import TelegramCompactLogin from "./TelegramCompactLogin";
@@ -82,7 +81,7 @@ function renderItem(
     const actionHref = buildHref(provider.startHref, returnTo);
 
     return (
-      <Link
+      <a
         key={provider.id}
         href={actionHref}
         className={`${styles.iconOnlyLink} ${provider.enabled ? "" : styles.buttonDisabled}`.trim()}
@@ -92,7 +91,7 @@ function renderItem(
         <span className={`${styles.iconBox} ${styles.iconOnlyBox}`.trim()} aria-hidden="true">
           <AuthProviderIcon providerId={provider.id} className={styles.iconOnlyGraphic} />
         </span>
-      </Link>
+      </a>
     );
   }
 
@@ -171,12 +170,12 @@ function renderItem(
           <div className={`${styles.mutedAction} ${actionClassName}`.trim()}>Нужен Telegram bot</div>
         )
       ) : (
-        <Link
+        <a
           href={actionHref}
           className={`${styles.button} ${actionClassName} ${provider.enabled ? "" : styles.buttonDisabled}`.trim()}
         >
           {getActionLabel(mode, provider.label)}
-        </Link>
+        </a>
       )}
     </article>
   );
