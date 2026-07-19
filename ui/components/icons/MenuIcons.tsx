@@ -187,6 +187,22 @@ export function IconSupport({ size = 22 }) {
   );
 }
 
+export function IconChat({ size = 22 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+      style={{ display: "block" }}
+    >
+      <path d="M4.5 3.5h15A2.5 2.5 0 0 1 22 6v9a2.5 2.5 0 0 1-2.5 2.5H10L5 21v-3.5h-.5A2.5 2.5 0 0 1 2 15V6a2.5 2.5 0 0 1 2.5-2.5Zm2.25 5.25v1.5h10.5v-1.5H6.75Zm0 3.5v1.5h7.5v-1.5h-7.5Z" />
+    </svg>
+  );
+}
+
 export function IconNews({ size = 22 }) {
   return (
     <svg

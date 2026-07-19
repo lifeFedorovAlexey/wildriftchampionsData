@@ -9,6 +9,7 @@ import {
   TELEGRAM_WEBAPP_READY_EVENT,
 } from "@/lib/telegram-webapp";
 import {
+  IconChat,
   IconPicksBans,
   IconSupport,
   IconTierInq,
@@ -44,6 +45,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Топ пики / баны", href: "/picks-bans", icon: <IconPicksBans size={20} /> },
   { label: "График трендов", href: "/trends", icon: <IconTrends size={20} /> },
   { label: "Гайды", href: "/guides", icon: <IconTierInq size={20} /> },
+  { label: "Чат", href: "/me/chat", icon: <IconChat size={20} /> },
   { label: "Поддержать", href: "/support", icon: <IconSupport size={20} /> },
 ];
 

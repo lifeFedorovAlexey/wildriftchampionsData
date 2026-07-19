@@ -79,9 +79,9 @@ function buildAvailableSections(roles: string[] | undefined) {
 
   sections.push({
     key: "chat",
-    title: "Текстовый чат",
+    title: "Общий чат",
     description:
-      "Локальный MVP чата: группы, каналы, сообщения и realtime через wr-chat. Пока это preview-контур.",
+      "Общайся в реальном времени, отправляй изображения и видео и управляй своими сообщениями.",
     href: "/me/chat",
     actionLabel: "Открыть чат",
   });
