@@ -50,7 +50,14 @@ const AVATAR_MAX_PICK_SIZE = 10 * 1024 * 1024;
 const ALLOWED_AVATAR_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 
 function getSafeCropSourceUrl(value: string) {
-  return value.startsWith("blob:") ? value : "";
+  try {
+    const parsed = new URL(value, window.location.href);
+    return parsed.protocol === "blob:" && parsed.origin === window.location.origin
+      ? parsed.href
+      : "";
+  } catch {
+    return "";
+  }
 }
 
 function getAvatarLabel(identity: Identity, index: number) {
