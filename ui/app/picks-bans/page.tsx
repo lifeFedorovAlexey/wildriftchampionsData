@@ -478,12 +478,12 @@ export default function PicksBansPage() {
                 { key: "all", label: "Все ранги" },
               ]}
               laneOptions={[
-                { key: "all", label: "Все" },
                 { key: "top", label: "Топ" },
                 { key: "jungle", label: "Лес" },
                 { key: "mid", label: "Мид" },
                 { key: "adc", label: "Стрелок" },
                 { key: "support", label: "Саппорт" },
+                { key: "all", label: "Все" },
               ]}
               compact
               extraControls={
