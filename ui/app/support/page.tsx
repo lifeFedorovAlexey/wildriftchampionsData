@@ -4,7 +4,7 @@ import SupportPageClient from "./SupportPageClient";
 export const metadata: Metadata = {
   title: "Поддержать",
   description:
-    "Способы поддержать wildriftallstats.ru: карта, Boosty, партнёрская ссылка Яндекса и блок поддержки стримера INQ.",
+    "Способы поддержать wildriftallstats.ru: Boosty, партнёрская ссылка Яндекса и блок поддержки стримера INQ.",
   alternates: {
     canonical: "/support",
   },

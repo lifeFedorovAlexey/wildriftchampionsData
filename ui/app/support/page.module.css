@@ -87,55 +87,6 @@
   gap: 10px;
 }
 
-.cardNumber {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: stretch;
-  align-content: flex-start;
-}
-
-.cardNumberPanel {
-  display: grid;
-  gap: 14px;
-  padding: 18px;
-  border-radius: 22px;
-  background:
-    linear-gradient(180deg, rgba(12, 18, 31, 0.96), rgba(8, 13, 24, 0.92));
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 18px 36px rgba(0, 0, 0, 0.18);
-}
-
-.cardNumberLabel {
-  color: rgba(226, 232, 240, 0.54);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.cardChunk {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 78px;
-  min-height: 52px;
-  padding: 0 10px;
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(23, 31, 50, 0.9), rgba(11, 16, 28, 0.94));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  font-size: clamp(24px, 3vw, 28px);
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-.copyButton,
 .primaryLink,
 .secondaryLink {
   display: inline-flex;
@@ -153,13 +104,6 @@
     border-color 0.18s ease;
 }
 
-.copyButton {
-  border: 1px solid rgba(125, 211, 252, 0.26);
-  background: rgba(10, 16, 28, 0.88);
-  color: var(--text-strong);
-  cursor: pointer;
-}
-
 .primaryLink {
   background: linear-gradient(180deg, #fde047, #facc15);
   color: #111827;
@@ -174,7 +118,6 @@
   color: var(--text-strong);
 }
 
-.copyButton:hover,
 .primaryLink:hover,
 .secondaryLink:hover {
   transform: translateY(-1px);
@@ -280,17 +223,10 @@
     font-size: 18px;
   }
 
-  .cardChunk {
-    min-width: 66px;
-    min-height: 46px;
-    font-size: 22px;
-  }
-
   .boostyRow {
     grid-template-columns: 1fr auto;
   }
 
-  .copyButton,
   .primaryLink,
   .secondaryLink {
     width: 100%;
