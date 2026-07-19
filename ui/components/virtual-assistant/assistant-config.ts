@@ -6,7 +6,9 @@ export const ASSISTANT_STORAGE = {
 export const ASSISTANT_ANIMATIONS = {
   flash_entrance: { frames: 13, duration: 812, loop: false },
   wave: { frames: 13, duration: 812, loop: false },
-  idle_smile: { frames: 13, duration: 1450, loop: true },
+  // One calm inhale/exhale half-cycle. CSS plays it in alternate directions,
+  // avoiding a visible snap from the last frame back to the first.
+  idle_smile: { frames: 13, duration: 2400, loop: true },
   // The source sheet has 80 unique frames; the MP4's 81st frame repeats
   // the loop boundary.
   dance: { frames: 80, duration: 5000, loop: false },
