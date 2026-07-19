@@ -8,13 +8,8 @@ import {
   FaBars,
   FaChevronDown,
   FaCircleUser,
-  FaTelegram,
   FaXmark,
 } from "react-icons/fa6";
-import {
-  getTelegramWebApp,
-  TELEGRAM_WEBAPP_READY_EVENT,
-} from "@/lib/telegram-webapp";
 import {
   IconChat,
   IconPicksBans,
@@ -96,7 +91,6 @@ export default function AppHeader() {
   const [menuOpenPath, setMenuOpenPath] = useState<string | null>(null);
   const [mobileTiersOpen, setMobileTiersOpen] = useState(true);
   const [desktopTiersOpenPath, setDesktopTiersOpenPath] = useState<string | null>(null);
-  const [isTelegramWebApp, setIsTelegramWebApp] = useState(false);
   const desktopGroupRef = useRef<HTMLDivElement | null>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
@@ -139,23 +133,6 @@ export default function AppHeader() {
     }
     overlay.setAttribute("inert", "");
   }, [menuOpen]);
-
-  useEffect(() => {
-    const syncTelegramState = () => {
-      const webApp = getTelegramWebApp();
-      const hasInitData =
-        typeof webApp?.initData === "string" && webApp.initData.trim().length > 0;
-      const hasUser = Boolean(webApp?.initDataUnsafe?.user);
-      setIsTelegramWebApp(hasInitData || hasUser);
-    };
-
-    syncTelegramState();
-    window.addEventListener(TELEGRAM_WEBAPP_READY_EVENT, syncTelegramState);
-
-    return () => {
-      window.removeEventListener(TELEGRAM_WEBAPP_READY_EVENT, syncTelegramState);
-    };
-  }, []);
 
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -259,18 +236,6 @@ export default function AppHeader() {
             >
               <FaCircleUser className={styles.utilityIcon} aria-hidden="true" />
             </Link>
-
-            {!isTelegramWebApp ? (
-              <a
-                href="https://t.me/life_wr_bot"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.utilityButton}
-                aria-label="Telegram"
-              >
-                <FaTelegram className={styles.utilityIcon} aria-hidden="true" />
-              </a>
-            ) : null}
 
             <button
               type="button"
