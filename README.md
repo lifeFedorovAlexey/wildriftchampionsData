@@ -4,17 +4,17 @@ Main frontend repository for `wildriftallstats.ru`.
 
 ## Release
 
-- Current UI release: `1.2.2`
+- Current UI release: `1.2.3`
 - Release branch format: `release/x.y.z`
-- Stable tag format: `v1.2.2`
-- UI package version lives in [ui/package.json](/d:/wildRiftChampions/ui/package.json)
+- Stable tag format: `v1.2.3`
+- UI package version lives in [ui/package.json](./ui/package.json)
 
 Release docs:
 
-- [UI README](/d:/wildRiftChampions/ui/README.md)
-- [Release Guide](/d:/wildRiftChampions/RELEASE.md)
-- [Changelog](/d:/wildRiftChampions/CHANGELOG.md)
-- [Secrets Inventory](/d:/wildRiftChampions/SECRETS_INVENTORY.md)
+- [UI README](./ui/README.md)
+- [Release Guide](./RELEASE.md)
+- [Changelog](./CHANGELOG.md)
+- [Secrets Inventory](./SECRETS_INVENTORY.md)
 
 ## Structure
 
@@ -30,4 +30,4 @@ Release docs:
 - UI deploys use release directories, a canary health check on port `3100`, and then replace the live PM2 process on port `3000`
 - The guide sync workflow uses `GUIDES_SYNC_API_ORIGIN`, `GUIDES_SYNC_IMPORT_URL`, and `GUIDES_SYNC_SECRET`
 - Champion icons on client-facing pages are expected to resolve to public S3 URLs in production, not donor-host URLs or `/wr-api/icons?...src=...`
-- Remaining S3 migration remnants and cleanup tasks are tracked in [TECHDEBT.md](/d:/wildRiftChampions/TECHDEBT.md)
+- Remaining S3 migration work is tracked in [Master Plan](./MASTER_PLAN.md) and [Architecture Status](./ARCHITECTURE_TASKS.md)

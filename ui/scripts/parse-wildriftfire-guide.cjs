@@ -11,7 +11,7 @@ const {
 const {
   fetchRiotChampionPageWithFallbacks,
   parseRiotChampionData,
-} = require("./lib/riot-champion-page.js");
+} = require("./lib/riot-champion-page.cjs");
 
 const SITE_ORIGIN = "https://www.wildriftfire.com";
 const OUTPUT_ROOT = path.join(

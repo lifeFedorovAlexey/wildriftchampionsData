@@ -152,7 +152,7 @@ async function pushGuideToApi(guide) {
 }
 
 async function syncOneGuide(slug, options) {
-  const { scrapeGuide, writeGuideFile } = await import("./parse-wildriftfire-guide.js");
+  const { scrapeGuide, writeGuideFile } = await import("./parse-wildriftfire-guide.cjs");
   const guide = await scrapeGuide(slug);
 
   if (options.writeLocal) {

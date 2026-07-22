@@ -79,7 +79,7 @@
 
 ## Отдельные source-of-truth
 
-- [MASTER_PLAN.md](/d:/wildRiftChampions/MASTER_PLAN.md)
+- [MASTER_PLAN.md](./MASTER_PLAN.md)
   единый приоритетный продуктовый план
-- [GUIDE_DOMAIN_CONTRACT.md](/d:/wildRiftChampions/GUIDE_DOMAIN_CONTRACT.md)
+- [GUIDE_DOMAIN_CONTRACT.md](./GUIDE_DOMAIN_CONTRACT.md)
   guide-domain contract

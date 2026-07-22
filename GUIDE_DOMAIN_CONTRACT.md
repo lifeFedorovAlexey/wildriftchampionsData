@@ -23,10 +23,10 @@
 
 При этом slug-логика сейчас размазана:
 
-- [ui/shared/guides-shared.js](/d:/wildRiftChampions/ui/shared/guides-shared.js)
-- [wr-api/utils/slugRemap.mjs](/d:/wildRiftChampions/wr-api/utils/slugRemap.mjs)
-- [ui/scripts/parse-wildriftfire-guide.js](/d:/wildRiftChampions/ui/scripts/parse-wildriftfire-guide.js)
-- [wr-api/api/guides-detail.js](/d:/wildRiftChampions/wr-api/api/guides-detail.js)
+- [ui/shared/guides-shared.js](./ui/shared/guides-shared.js)
+- [wr-api/utils/slugRemap.mjs](https://github.com/lifeFedorovAlexey/wr-api/blob/main/utils/slugRemap.mjs)
+- [ui/scripts/parse-wildriftfire-guide.cjs](./ui/scripts/parse-wildriftfire-guide.cjs)
+- [wr-api/api/guides-detail.js](https://github.com/lifeFedorovAlexey/wr-api/blob/main/api/guides-detail.js)
 
 Из-за этого сейчас нет одного явного source of truth для champion slug contract.
 

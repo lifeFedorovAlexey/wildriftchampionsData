@@ -4,9 +4,9 @@ Next.js frontend for `wildriftallstats.ru`.
 
 ## Version
 
-- Current version: `1.2.2`
+- Current version: `1.2.3`
 - Release branch format: `release/x.y.z`
-- Stable tag format: `v1.2.2`
+- Stable tag format: `v1.2.3`
 
 ## Commands
 
@@ -77,7 +77,7 @@ Admin OAuth notes:
 
 Local setup:
 
-1. Copy [ui/.env.local.example](/d:/wildRiftChampions/ui/.env.local.example) to `.env.local`
+1. Copy [`.env.local.example`](./.env.local.example) to `.env.local`
 2. Set the same `ADMIN_SESSION_SECRET` that you use in `wr-api`
 3. Fill only the provider you want to test first
 4. Open `/admin/login`
@@ -100,7 +100,7 @@ Where to get values:
 
 ## Guides flow
 
-- `ui/scripts/parse-wildriftfire-guide.js` scrapes one champion guide and writes a local JSON cache
+- `ui/scripts/parse-wildriftfire-guide.cjs` scrapes one champion guide and writes a local JSON cache
 - `ui/scripts/sync-wildriftfire-guides.js` gets champion slugs from the WR API, scrapes one or many guides, and upserts them into the WR API
 - the guides page first tries `GET /api/guides/:slug?lang=ru_ru` from the WR API and only falls back to local JSON if the API has no guide yet
 

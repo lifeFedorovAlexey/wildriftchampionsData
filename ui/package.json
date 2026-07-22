@@ -2,6 +2,7 @@
   "name": "wildrift-ssr",
   "version": "1.2.3",
   "private": true,
+  "type": "module",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -12,7 +13,7 @@
     "lint": "eslint",
     "dup:check": "jscpd --config .jscpd.json",
     "audit:prod": "npm audit --omit=dev",
-    "scrape:guide": "node scripts/parse-wildriftfire-guide.js",
+    "scrape:guide": "node scripts/parse-wildriftfire-guide.cjs",
     "sync:guides": "node scripts/sync-wildriftfire-guides.js",
     "sync:guides:all": "node scripts/sync-wildriftfire-guides.js --all",
     "test": "node --test lib/stats-api-origin.test.js lib/server-api.test.js lib/admin-auth.test.js lib/site-user-auth.test.js app/winrates/winrates-lib.test.js app/winrates/load-winrates-page.test.js app/picks-bans/picks-bans-lib.test.js app/tier-inq/tier-inq-lib.test.js app/trends/trends-lib.test.js app/tierlist/tierlist-lib.test.js app/guides/guides-lib.test.js",
@@ -31,7 +32,8 @@
     "styled-components": "^6.4.1"
   },
   "overrides": {
-    "postcss": "^8.5.10"
+    "postcss": "^8.5.10",
+    "sharp": "^0.35.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

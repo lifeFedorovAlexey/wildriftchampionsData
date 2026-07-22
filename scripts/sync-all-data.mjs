@@ -38,7 +38,7 @@ const [
 const { db, client } = dbModule;
 
 const parseGuideModule = await import(
-  pathToFileURL(path.join(rootDir, "ui", "scripts", "parse-wildriftfire-guide.js")).href,
+  pathToFileURL(path.join(rootDir, "ui", "scripts", "parse-wildriftfire-guide.cjs")).href,
 );
 
 const { champions } = schemaModule;

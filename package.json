@@ -4,7 +4,11 @@
   "description": "Wild Rift Champions data",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm --prefix ui run test",
+    "lint": "npm --prefix ui run lint",
+    "build": "npm --prefix ui run build",
+    "audit:prod": "npm --prefix ui run audit:prod",
+    "verify": "npm run lint && npm test && npm run build && npm run audit:prod",
     "sync:data": "node ./scripts/sync-all-data.mjs"
   },
   "overrides": {

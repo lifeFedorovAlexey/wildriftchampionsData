@@ -112,9 +112,9 @@
 
 ## Что оставляем отдельными source-of-truth
 
-- [ARCHITECTURE_TASKS.md](/d:/wildRiftChampions/ARCHITECTURE_TASKS.md)
+- [ARCHITECTURE_TASKS.md](./ARCHITECTURE_TASKS.md)
   архитектурное состояние и направление движения
-- [GUIDE_DOMAIN_CONTRACT.md](/d:/wildRiftChampions/GUIDE_DOMAIN_CONTRACT.md)
+- [GUIDE_DOMAIN_CONTRACT.md](./GUIDE_DOMAIN_CONTRACT.md)
   контракт guide-domain
 
 ## Что уже закрыто на текущем этапе
