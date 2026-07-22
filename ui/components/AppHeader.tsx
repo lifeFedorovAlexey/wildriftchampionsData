@@ -19,6 +19,7 @@ import {
   IconTrends,
   IconWinrate,
 } from "@/components/icons/MenuIcons";
+import { filterSiteNavigation } from "@/lib/site-navigation.js";
 
 import styles from "./AppHeader.module.css";
 
@@ -47,6 +48,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Топ пики / баны", href: "/picks-bans", icon: <IconPicksBans size={20} /> },
   { label: "График трендов", href: "/trends", icon: <IconTrends size={20} /> },
   { label: "Гайды", href: "/guides", icon: <IconTierInq size={20} /> },
+  { label: "Квизы", href: "/quizzes", icon: <IconTierInq size={20} /> },
   { label: "Чат", href: "/me/chat", icon: <IconChat size={20} /> },
   { label: "Поддержать", href: "/support", icon: <IconSupport size={20} /> },
 ];
@@ -88,6 +90,7 @@ function BrandMark({ priority = false, size }: { priority?: boolean; size: numbe
 
 export default function AppHeader() {
   const pathname = usePathname();
+  const [authenticated, setAuthenticated] = useState(false);
   const [menuOpenPath, setMenuOpenPath] = useState<string | null>(null);
   const [mobileTiersOpen, setMobileTiersOpen] = useState(true);
   const [desktopTiersOpenPath, setDesktopTiersOpenPath] = useState<string | null>(null);
@@ -97,6 +100,16 @@ export default function AppHeader() {
 
   const menuOpen = menuOpenPath === pathname;
   const desktopTiersOpen = desktopTiersOpenPath === pathname;
+  const visibleNavItems = filterSiteNavigation(NAV_ITEMS, { authenticated }) as NavItem[];
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/auth/session", { cache: "no-store", signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((payload) => setAuthenticated(payload?.authenticated === true))
+      .catch(() => undefined);
+    return () => controller.abort();
+  }, [pathname]);
 
   function closeMenu({ restoreFocus = false } = {}) {
     setMenuOpenPath(null);
@@ -173,7 +186,7 @@ export default function AppHeader() {
           </Link>
 
           <nav className={styles.desktopNav} aria-label="Разделы сайта">
-            {NAV_ITEMS.map((item) =>
+            {visibleNavItems.map((item) =>
               item.children ? (
                 <div
                   key={item.label}
@@ -279,7 +292,7 @@ export default function AppHeader() {
           </div>
 
           <div className={styles.menuList}>
-            {NAV_ITEMS.map((item) =>
+            {visibleNavItems.map((item) =>
               item.children ? (
                 <div
                   key={item.label}
