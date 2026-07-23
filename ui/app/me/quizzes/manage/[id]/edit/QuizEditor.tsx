@@ -1353,6 +1353,41 @@ function AnswerOption({
       className={`${answerStyles.card} ${isCorrect ? answerStyles.cardCorrect : ""}`}
     >
       <div className={answerStyles.main}>
+        <div className={answerStyles.answerField}>
+          <label htmlFor={`answer-${option.id}`}>Текст ответа</label>
+          <span className={answerStyles.answerControl}>
+            {option.imageUrl && (
+              <span className={answerStyles.thumbnailWrap}>
+                <Image
+                  className={answerStyles.thumbnail}
+                  src={option.imageUrl}
+                  alt=""
+                  width={96}
+                  height={76}
+                  unoptimized
+                />
+                <button
+                  className={answerStyles.thumbnailRemove}
+                  type="button"
+                  aria-label="Удалить изображение ответа"
+                  title="Удалить изображение ответа"
+                  onClick={() => patchOption(option.id, { imageUrl: null })}
+                >
+                  ×
+                </button>
+              </span>
+            )}
+            <input
+              id={`answer-${option.id}`}
+              className={answerStyles.answer}
+              placeholder="Например: Вейн"
+              value={option.text || ""}
+              onChange={(event) =>
+                patchOption(option.id, { text: event.target.value })
+              }
+            />
+          </span>
+        </div>
         <label
           className={`${answerStyles.correctness} ${isCorrect ? answerStyles.correctnessActive : ""}`}
           title={isCorrect ? "Ответ отмечен верным" : "Отметить ответ верным"}
@@ -1365,17 +1400,6 @@ function AnswerOption({
           />
           <span className={answerStyles.mark}>{isCorrect ? "✓" : ""}</span>
           {isCorrect ? "Верный" : "Отметить"}
-        </label>
-        <label className={answerStyles.answerField}>
-          <span>Текст ответа</span>
-          <input
-            className={answerStyles.answer}
-            placeholder="Например: Вейн"
-            value={option.text || ""}
-            onChange={(event) =>
-              patchOption(option.id, { text: event.target.value })
-            }
-          />
         </label>
         <div className={answerStyles.optionActions}>
           <label
@@ -1419,27 +1443,6 @@ function AnswerOption({
             −
           </button>
         </div>
-      </div>
-      <div className={answerStyles.imageRow}>
-        {option.imageUrl && (
-          <>
-            <Image
-              className={answerStyles.thumbnail}
-              src={option.imageUrl}
-              alt=""
-              width={160}
-              height={120}
-              unoptimized
-            />
-            <button
-              className={answerStyles.imageRemove}
-              type="button"
-              onClick={() => patchOption(option.id, { imageUrl: null })}
-            >
-              Убрать картинку
-            </button>
-          </>
-        )}
       </div>
       {isCorrect && editingScore && (
         <div className={answerStyles.scoreRow}>
