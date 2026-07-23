@@ -1,9 +1,11 @@
 import type { ChatMessage } from "./chat-types";
 import { FaTrashCan } from "react-icons/fa6";
+import { sanitizeChatMediaUrl } from "@/lib/chat-media-url.js";
 import styles from "./ChatMvpClient.module.css";
 
 type Props = {
   messages: ChatMessage[];
+  storageOrigin: string;
   currentUserId: number;
   isAdmin: boolean;
   hasChannel: boolean;
@@ -33,6 +35,7 @@ function getDayKey(value: string) {
 
 export default function ChatMessageList({
   messages,
+  storageOrigin,
   currentUserId,
   isAdmin,
   hasChannel,
@@ -46,6 +49,7 @@ export default function ChatMessageList({
         const previousDay = index > 0 ? getDayKey(messages[index - 1].createdAt) : "";
         const showDay = day !== previousDay;
         const canDelete = isAdmin || Number(message.authorUserId) === currentUserId;
+        const avatarUrl = sanitizeChatMediaUrl(message.author?.avatarUrl, { storageOrigin });
 
         return (
           <div key={`${message.id}-${message.createdAt}`}>
@@ -53,9 +57,9 @@ export default function ChatMessageList({
             <article className={styles.messageCard}>
               <div className={styles.messageHead}>
                 <div className={styles.authorLine}>
-                  {message.author?.avatarUrl ? (
+                  {avatarUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img className={styles.avatar} src={message.author.avatarUrl} alt="" />
+                    <img className={styles.avatar} src={avatarUrl} alt="" />
                   ) : (
                     <span className={styles.avatarFallback} />
                   )}
@@ -83,33 +87,36 @@ export default function ChatMessageList({
               {message.body ? <p className={styles.messageBody}>{message.body}</p> : null}
               {message.attachments?.length ? (
                 <div className={styles.attachmentGrid}>
-                  {message.attachments.map((attachment) =>
-                    attachment.mediaKind === "image" && attachment.url ? (
+                  {message.attachments.map((attachment) => {
+                    const mediaUrl = sanitizeChatMediaUrl(attachment.url, { storageOrigin });
+                    if (!mediaUrl) return null;
+
+                    return attachment.mediaKind === "image" ? (
                       <a
                         key={attachment.id}
-                        href={attachment.url}
+                        href={mediaUrl}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className={styles.attachmentLink}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           className={styles.attachmentImage}
-                          src={attachment.url}
+                          src={mediaUrl}
                           alt={attachment.fileName}
                           loading="lazy"
                         />
                       </a>
-                    ) : attachment.url ? (
+                    ) : (
                       <video
                         key={attachment.id}
                         className={styles.attachmentVideo}
-                        src={attachment.url}
+                        src={mediaUrl}
                         controls
                         preload="metadata"
                       />
-                    ) : null,
-                  )}
+                    );
+                  })}
                 </div>
               ) : null}
             </article>
