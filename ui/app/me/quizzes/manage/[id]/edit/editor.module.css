@@ -169,6 +169,9 @@
   grid-template-columns: 2fr 1fr 1fr;
   gap: 12px;
 }
+.fieldWide {
+  grid-column: 1 / -1;
+}
 .canvas {
   position: relative;
   width: 100%;
@@ -352,6 +355,16 @@
   color: #8193aa;
   font-size: 12px;
 }
+.fieldHint {
+  color: #6f849f;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.fieldError {
+  color: #ff9daf;
+  font-size: 11px;
+  line-height: 1.4;
+}
 .input,
 .textarea,
 .select {
@@ -380,10 +393,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   margin-top: 4px;
   color: #e4edf9;
   font-size: 13px;
   font-weight: 850;
+}
+.sectionHead small {
+  color: #7f95ae;
+  font-size: 11px;
+  font-weight: 650;
+  text-align: right;
 }
 .optionList {
   display: grid;
@@ -469,6 +489,80 @@
   background: #101e33;
   color: #a9c6df;
   font-weight: 800;
+}
+.coverUpload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 92px;
+  padding: 14px;
+  border: 1px dashed #426587;
+  border-radius: 11px;
+  color: #b9d5ed;
+  background: #0b192b;
+  cursor: pointer;
+}
+.coverUpload:hover {
+  border-color: #6ecbfa;
+  background: #10243a;
+}
+.coverUpload > span:last-of-type {
+  display: grid;
+  gap: 4px;
+}
+.coverUpload strong {
+  color: #e6f4ff;
+  font-size: 13px;
+}
+.coverUpload small {
+  color: #748ca7;
+  font-size: 10px;
+}
+.coverUploadIcon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  color: #78d0fc;
+  background: #17334f;
+  font-size: 24px;
+  line-height: 1;
+}
+.coverPreview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #293d59;
+  border-radius: 11px;
+  background: #07111f;
+}
+.coverPreview > img {
+  display: block;
+  width: min(100%, 420px);
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #050b14;
+}
+.coverActions {
+  display: grid;
+  gap: 8px;
+  min-width: 150px;
+}
+.coverRemove {
+  height: 40px;
+  border: 1px solid #623148;
+  border-radius: 9px;
+  color: #ef9db2;
+  background: #2d1722;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
 }
 .media {
   display: grid;
@@ -617,6 +711,15 @@ input[type="checkbox"].check:checked {
   }
   .settingsGrid {
     grid-template-columns: 1fr;
+  }
+  .coverPreview {
+    grid-template-columns: 1fr;
+  }
+  .coverPreview > img {
+    width: 100%;
+  }
+  .coverActions {
+    grid-template-columns: 1fr 1fr;
   }
   .canvasNode {
     width: 220px;

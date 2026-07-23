@@ -24,6 +24,14 @@ const typeLabel = (value: string) =>
 const makeId = () => crypto.randomUUID();
 const NODE_WIDTH = 280;
 const NODE_HEIGHT = 90;
+const MIN_ANSWER_SCORE = 0;
+const MAX_ANSWER_SCORE = 100;
+
+function clampAnswerScore(value: unknown) {
+  const score = Math.trunc(Number(value));
+  if (!Number.isFinite(score)) return MIN_ANSWER_SCORE;
+  return Math.min(MAX_ANSWER_SCORE, Math.max(MIN_ANSWER_SCORE, score));
+}
 
 async function uploadQuizImage(file: File) {
   const descriptorResponse = await fetch("/api/quizzes/media", {
@@ -406,7 +414,7 @@ export default function QuizEditor() {
         id: `result:${item.id}`,
         label: `Финал: ${item.title}`,
       })),
-      { id: "complete", label: "Финал по условиям" },
+      { id: "complete", label: "Завершить квиз и подобрать результат" },
     ],
     [quiz],
   );
@@ -644,6 +652,8 @@ export default function QuizEditor() {
   async function save(showMessage = true) {
     const payload = await request(`/api/quizzes/${quizId}`, "PATCH", {
       ...quiz,
+      participantLimit: null,
+      hideAfterParticipantLimit: false,
       version: quiz.version,
     });
     if (payload?.quiz) {
@@ -712,7 +722,7 @@ export default function QuizEditor() {
           </button>
         </div>
         <span className={styles.toolbarHint}>
-          Пустой блок означает незаполненный выход
+          Нажми «Добавить шаг» на пустом выходе, чтобы связать сценарий
         </span>
       </div>
       {panel === "settings" && (
@@ -898,6 +908,24 @@ function Modal({
 }
 
 function SettingsPanel({ quiz, patchQuiz, close }: any) {
+  const [coverUploading, setCoverUploading] = useState(false);
+  const [coverError, setCoverError] = useState("");
+
+  async function uploadCover(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setCoverUploading(true);
+    setCoverError("");
+    try {
+      patchQuiz({ coverUrl: await uploadQuizImage(file) });
+    } catch {
+      setCoverError("Не удалось загрузить обложку. Проверь формат и размер файла.");
+    } finally {
+      setCoverUploading(false);
+      event.target.value = "";
+    }
+  }
+
   return (
     <section className={styles.panel}>
       <div className={styles.panelHead}>
@@ -915,6 +943,70 @@ function SettingsPanel({ quiz, patchQuiz, close }: any) {
             onChange={(event) => patchQuiz({ title: event.target.value })}
           />
         </label>
+        <label className={`${styles.field} ${styles.fieldWide}`}>
+          Описание для страницы квиза
+          <textarea
+            className={styles.textarea}
+            placeholder="Коротко объясни, что проверяет квиз и кому он подойдёт"
+            value={quiz.description || ""}
+            onChange={(event) => patchQuiz({ description: event.target.value })}
+          />
+        </label>
+        <div className={`${styles.field} ${styles.fieldWide}`}>
+          <span>Обложка квиза</span>
+          <small className={styles.fieldHint}>
+            Показывается в каталоге и справа на странице квиза. Лучше использовать
+            горизонтальное изображение 16:9.
+          </small>
+          {quiz.coverUrl ? (
+            <div className={styles.coverPreview}>
+              <Image
+                src={quiz.coverUrl}
+                alt="Текущая обложка квиза"
+                width={1200}
+                height={675}
+                unoptimized
+              />
+              <div className={styles.coverActions}>
+                <label className={styles.mediaButton}>
+                  {coverUploading ? "Загружаем…" : "Заменить обложку"}
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                    hidden
+                    disabled={coverUploading}
+                    onChange={uploadCover}
+                  />
+                </label>
+                <button
+                  type="button"
+                  className={styles.coverRemove}
+                  onClick={() => patchQuiz({ coverUrl: null })}
+                >
+                  Удалить
+                </button>
+              </div>
+            </div>
+          ) : (
+            <label className={styles.coverUpload}>
+              <span className={styles.coverUploadIcon} aria-hidden="true">＋</span>
+              <span>
+                <strong>
+                  {coverUploading ? "Загружаем…" : "Загрузить обложку"}
+                </strong>
+                <small>JPEG, PNG, WebP или GIF</small>
+              </span>
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/gif"
+                hidden
+                disabled={coverUploading}
+                onChange={uploadCover}
+              />
+            </label>
+          )}
+          {coverError && <small className={styles.fieldError}>{coverError}</small>}
+        </div>
         <label className={styles.field}>
           Попытки
           <select
@@ -1063,7 +1155,9 @@ function QuestionEditor({
           <>
             <div className={styles.sectionHead}>
               <span>Ответы</span>
-              <span>{question.options?.length || 0}</span>
+              <small>
+                Введи варианты, отметь верные и настрой продолжение сценария
+              </small>
             </div>
             <div className={styles.optionList}>
               {(question.options || []).map((option: any) => (
@@ -1115,25 +1209,30 @@ function QuestionEditor({
             </button>
           </>
         )}
-        <label className={styles.field}>
-          Переход по умолчанию
-          <select
-            className={styles.select}
-            value={question.defaultNextQuestionId || ""}
-            onChange={(event) =>
-              patchQuestion({
-                defaultNextQuestionId: event.target.value || null,
-              })
-            }
-          >
-            <option value="">Остановиться</option>
-            {targets.map((target: any) => (
-              <option value={target.id} key={target.id}>
-                {target.label}
-              </option>
-            ))}
-          </select>
-        </label>
+        {!optionTypes.has(question.type) && (
+          <label className={styles.field}>
+            После этого шага
+            <select
+              className={styles.select}
+              value={question.defaultNextQuestionId || ""}
+              onChange={(event) =>
+                patchQuestion({
+                  defaultNextQuestionId: event.target.value || null,
+                })
+              }
+            >
+              <option value="">Добавить следующий шаг в сценарии</option>
+              {targets.map((target: any) => (
+                <option value={target.id} key={target.id}>
+                  {target.label}
+                </option>
+              ))}
+            </select>
+            <small className={styles.fieldHint}>
+              Выбери следующий вопрос или заверши квиз.
+            </small>
+          </label>
+        )}
         <div className={styles.deleteZone}>
           <button className={styles.deleteButton} onClick={removeSelected}>
             Удалить вопрос
@@ -1184,24 +1283,36 @@ function AnswerOption({
           <span className={answerStyles.mark}>{isCorrect ? "✓" : ""}</span>
           {isCorrect ? "Верный" : "Отметить"}
         </label>
-        <input
-          className={answerStyles.answer}
-          aria-label="Текст ответа"
-          value={option.text || ""}
-          onChange={(event) =>
-            patchOption(option.id, { text: event.target.value })
-          }
-        />
-        <label className={answerStyles.points} title="Баллы за ответ">
+        <label className={answerStyles.answerField}>
+          <span>Текст ответа</span>
           <input
-            aria-label="Баллы за ответ"
-            type="number"
-            value={option.score ?? 0}
+            className={answerStyles.answer}
+            placeholder="Например: Вейн"
+            value={option.text || ""}
             onChange={(event) =>
-              patchOption(option.id, { score: Number(event.target.value) })
+              patchOption(option.id, { text: event.target.value })
             }
           />
-          <span>б.</span>
+        </label>
+        <label
+          className={`${answerStyles.imageButton} ${option.imageUrl ? answerStyles.imageButtonActive : ""}`}
+          title={option.imageUrl ? "Заменить изображение ответа" : "Добавить изображение к ответу"}
+          aria-label={option.imageUrl ? "Заменить изображение ответа" : "Добавить изображение к ответу"}
+        >
+          {uploading ? (
+            <span className={answerStyles.uploading} aria-hidden="true">•••</span>
+          ) : (
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+              <path d="M4 5.5h16v13H4zM7 15l3-3 2.5 2.5 2-2 2.5 2.5M8.5 9a1.25 1.25 0 1 0 0 .01" />
+            </svg>
+          )}
+          <input
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            hidden
+            disabled={uploading}
+            onChange={uploadImage}
+          />
         </label>
         <button
           className={answerStyles.remove}
@@ -1215,43 +1326,77 @@ function AnswerOption({
       </div>
       <div className={answerStyles.imageRow}>
         {option.imageUrl && (
-          <Image
-            className={answerStyles.thumbnail}
-            src={option.imageUrl}
-            alt=""
-            width={160}
-            height={120}
-            unoptimized
-          />
-        )}
-        <label className={answerStyles.imageButton}>
-          {uploading
-            ? "Загрузка…"
-            : option.imageUrl
-              ? "Заменить изображение"
-              : "＋ Изображение ответа"}
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/webp,image/gif"
-            hidden
-            disabled={uploading}
-            onChange={uploadImage}
-          />
-        </label>
-        {option.imageUrl && (
-          <button
-            className={answerStyles.imageRemove}
-            type="button"
-            onClick={() => patchOption(option.id, { imageUrl: null })}
-          >
-            Убрать
-          </button>
+          <>
+            <Image
+              className={answerStyles.thumbnail}
+              src={option.imageUrl}
+              alt=""
+              width={160}
+              height={120}
+              unoptimized
+            />
+            <button
+              className={answerStyles.imageRemove}
+              type="button"
+              onClick={() => patchOption(option.id, { imageUrl: null })}
+            >
+              Убрать картинку
+            </button>
+          </>
         )}
       </div>
+      <div className={answerStyles.scoreRow}>
+        <div className={answerStyles.scoreCopy}>
+          <strong>Баллы за ответ</strong>
+          <small>
+            Добавятся к результату, если участник выберет этот ответ. Целое число от {MIN_ANSWER_SCORE} до {MAX_ANSWER_SCORE}.
+          </small>
+        </div>
+        <div className={answerStyles.stepper}>
+          <button
+            type="button"
+            aria-label="Уменьшить баллы"
+            disabled={clampAnswerScore(option.score) <= MIN_ANSWER_SCORE}
+            onClick={() =>
+              patchOption(option.id, {
+                score: clampAnswerScore(option.score) - 1,
+              })
+            }
+          >
+            −
+          </button>
+          <input
+            aria-label={`Баллы за ответ, от ${MIN_ANSWER_SCORE} до ${MAX_ANSWER_SCORE}`}
+            type="number"
+            inputMode="numeric"
+            min={MIN_ANSWER_SCORE}
+            max={MAX_ANSWER_SCORE}
+            step="1"
+            value={clampAnswerScore(option.score)}
+            onChange={(event) =>
+              patchOption(option.id, {
+                score: clampAnswerScore(event.target.value),
+              })
+            }
+          />
+          <button
+            type="button"
+            aria-label="Увеличить баллы"
+            disabled={clampAnswerScore(option.score) >= MAX_ANSWER_SCORE}
+            onClick={() =>
+              patchOption(option.id, {
+                score: clampAnswerScore(option.score) + 1,
+              })
+            }
+          >
+            +
+          </button>
+        </div>
+      </div>
       <label className={answerStyles.destination}>
-        <span>Переход</span>
+        <span>После выбора этого ответа</span>
         <select
-          aria-label="Следующий шаг"
+          aria-label="Что произойдёт после выбора ответа"
           value={option.nextQuestionId || ""}
           onChange={(event) =>
             patchOption(option.id, {
@@ -1259,13 +1404,16 @@ function AnswerOption({
             })
           }
         >
-          <option value="">Не выбран</option>
+          <option value="">Добавить следующий шаг в сценарии</option>
           {targets.map((target: any) => (
             <option value={target.id} key={target.id}>
               {target.label}
             </option>
           ))}
         </select>
+        <small>
+          Выбери следующий вопрос или заверши квиз. Так создаются разные ветки сценария.
+        </small>
       </label>
     </div>
   );
