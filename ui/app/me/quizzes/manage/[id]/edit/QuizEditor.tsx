@@ -4,6 +4,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
+import {
+  collapseRedundantAnswerBranches,
+  disableAnswerBranching,
+  enableAnswerBranching,
+  hasAnswerBranching,
+} from "../../../../../../lib/quiz-editor-branching.js";
 import styles from "./editor.module.css";
 import answerStyles from "./answer-options.module.css";
 
@@ -341,15 +347,16 @@ export default function QuizEditor() {
           results: [],
         };
         loaded.version.questions = (loaded.version.questions || []).map(
-          (question: any) => ({
-            ...question,
-            options: (question.options || []).map((option: any) => ({
-              ...option,
-              score: option.isCorrect
-                ? normalizeCorrectScore(option.score)
-                : MIN_ANSWER_SCORE,
-            })),
-          }),
+          (question: any) =>
+            collapseRedundantAnswerBranches({
+              ...question,
+              options: (question.options || []).map((option: any) => ({
+                ...option,
+                score: option.isCorrect
+                  ? normalizeCorrectScore(option.score)
+                  : MIN_ANSWER_SCORE,
+              })),
+            }),
         );
         setQuiz(loaded);
       })
@@ -1091,6 +1098,7 @@ function QuestionEditor({
   close,
 }: any) {
   const [uploading, setUploading] = useState(false);
+  const branching = hasAnswerBranching(question);
   async function upload(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -1166,7 +1174,7 @@ function QuestionEditor({
             <div className={styles.sectionHead}>
               <span>Ответы</span>
               <small>
-                Введи варианты, отметь верные и настрой продолжение сценария
+                Введи варианты и отметь правильные ответы
               </small>
             </div>
             <div className={styles.optionList}>
@@ -1177,6 +1185,7 @@ function QuestionEditor({
                   questionId={question.id}
                   questionType={question.type}
                   targets={targets}
+                  branching={branching}
                   patchOption={patchOption}
                   markCorrect={() =>
                     question.type === "multiple_choice"
@@ -1218,7 +1227,9 @@ function QuestionEditor({
                       text: "Новый ответ",
                       score: 0,
                       isCorrect: false,
-                      nextQuestionId: "complete",
+                      nextQuestionId: branching
+                        ? question.defaultNextQuestionId || null
+                        : null,
                     },
                   ],
                 })
@@ -1226,6 +1237,57 @@ function QuestionEditor({
             >
               ＋ Добавить ответ
             </button>
+            <div className={styles.branchingPanel}>
+              <label className={styles.field}>
+                {branching ? "Общий переход" : "После ответа"}
+                <select
+                  className={styles.select}
+                  value={question.defaultNextQuestionId || ""}
+                  onChange={(event) =>
+                    patchQuestion({
+                      defaultNextQuestionId: event.target.value || null,
+                    })
+                  }
+                >
+                  <option value="">Добавить следующий шаг</option>
+                  {targets.map((target: any) => (
+                    <option value={target.id} key={target.id}>
+                      {target.label}
+                    </option>
+                  ))}
+                </select>
+                <small className={styles.fieldHint}>
+                  {branching
+                    ? "Используется, если для ответа не выбран отдельный путь."
+                    : "Один следующий шаг для всех вариантов ответа."}
+                </small>
+              </label>
+              <button
+                className={`${styles.branchButton} ${branching ? styles.branchButtonActive : ""}`}
+                type="button"
+                onClick={() => {
+                  const updated = branching
+                    ? disableAnswerBranching(question)
+                    : enableAnswerBranching(question);
+                  patchQuestion({
+                    defaultNextQuestionId: updated.defaultNextQuestionId,
+                    options: updated.options,
+                  });
+                }}
+              >
+                <span aria-hidden="true">⑂</span>
+                <span>
+                  <strong>
+                    {branching ? "Отключить ветвление" : "Добавить ветвление"}
+                  </strong>
+                  <small>
+                    {branching
+                      ? "Вернуть один переход для всех ответов"
+                      : "Только если ответы должны вести в разные места"}
+                  </small>
+                </span>
+              </button>
+            </div>
           </>
         )}
         {!optionTypes.has(question.type) && (
@@ -1267,6 +1329,7 @@ function AnswerOption({
   questionId,
   questionType,
   targets,
+  branching,
   patchOption,
   markCorrect,
   remove,
@@ -1399,26 +1462,28 @@ function AnswerOption({
           </div>
         </div>
       )}
-      <label className={answerStyles.destination}>
-        <span>Что дальше</span>
-        <select
-          aria-label="Что произойдёт после выбора ответа"
-          value={option.nextQuestionId || ""}
-          onChange={(event) =>
-            patchOption(option.id, {
-              nextQuestionId: event.target.value || null,
-            })
-          }
-        >
-          <option value="">Добавить следующий шаг</option>
-          {targets.map((target: any) => (
-            <option value={target.id} key={target.id}>
-              {target.label}
-            </option>
-          ))}
-        </select>
-        <small>Следующий вопрос или завершение квиза</small>
-      </label>
+      {branching && (
+        <label className={answerStyles.destination}>
+          <span>Отдельный путь</span>
+          <select
+            aria-label="Куда перейти после выбора этого ответа"
+            value={option.nextQuestionId || ""}
+            onChange={(event) =>
+              patchOption(option.id, {
+                nextQuestionId: event.target.value || null,
+              })
+            }
+          >
+            <option value="">Использовать общий переход</option>
+            {targets.map((target: any) => (
+              <option value={target.id} key={target.id}>
+                {target.label}
+              </option>
+            ))}
+          </select>
+          <small>Только для этого ответа</small>
+        </label>
+      )}
     </div>
   );
 }
