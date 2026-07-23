@@ -2,10 +2,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  buildQuestionTransitions,
   collapseRedundantAnswerBranches,
-  disableAnswerBranching,
-  enableAnswerBranching,
   hasAnswerBranching,
+  setAnswerBranch,
 } from "./quiz-editor-branching.js";
 
 const question = {
@@ -45,16 +45,35 @@ test("different legacy answer routes remain explicit branches", () => {
   assert.equal(hasAnswerBranching(normalized), true);
 });
 
-test("enabling branching seeds answer routes from the common transition", () => {
-  const branched = enableAnswerBranching(question);
-  assert.equal(hasAnswerBranching(branched), true);
-  assert.deepEqual(
-    branched.options.map((option) => option.nextQuestionId),
-    ["q2", "q2"],
-  );
+
+test("question transitions identify the common path and source answer", () => {
+  const transitions = buildQuestionTransitions({
+    id: "q1",
+    defaultNextQuestionId: "q2",
+    options: [
+      { id: "a", text: "Обычный ответ", nextQuestionId: null },
+      { id: "b", text: "Очень длинный отдельный ответ", nextQuestionId: "q3" },
+    ],
+  });
+  assert.deepEqual(transitions, [
+    {
+      kind: "default",
+      sourceQuestionId: "q1",
+      targetId: "q2",
+      label: "По умолчанию",
+    },
+    {
+      kind: "option",
+      sourceQuestionId: "q1",
+      optionId: "b",
+      targetId: "q3",
+      label: "Если: Очень длинный отдел…",
+      answerText: "Очень длинный отдельный ответ",
+    },
+  ]);
 });
 
-test("disabling branching clears answer routes and keeps one common transition", () => {
+test("removing one answer branch preserves the common path and sibling branches", () => {
   const branched = {
     ...question,
     options: [
@@ -62,11 +81,10 @@ test("disabling branching clears answer routes and keeps one common transition",
       { id: "b", nextQuestionId: "result:r1" },
     ],
   };
-  const ordinary = disableAnswerBranching(branched);
-  assert.equal(ordinary.defaultNextQuestionId, "q2");
-  assert.equal(hasAnswerBranching(ordinary), false);
-  assert.deepEqual(
-    ordinary.options.map((option) => option.nextQuestionId),
-    [null, null],
-  );
+  const updated = setAnswerBranch(branched, "a", null);
+  assert.equal(updated.defaultNextQuestionId, "q2");
+  assert.deepEqual(updated.options, [
+    { id: "a", nextQuestionId: null },
+    { id: "b", nextQuestionId: "result:r1" },
+  ]);
 });

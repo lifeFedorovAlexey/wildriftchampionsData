@@ -5,10 +5,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import {
+  buildQuestionTransitions,
   collapseRedundantAnswerBranches,
-  disableAnswerBranching,
-  enableAnswerBranching,
-  hasAnswerBranching,
+  setAnswerBranch,
 } from "../../../../../../lib/quiz-editor-branching.js";
 import styles from "./editor.module.css";
 import answerStyles from "./answer-options.module.css";
@@ -76,7 +75,16 @@ type LinkRoute = {
   optionId?: string;
   previousTarget?: string;
 };
-type GraphEdge = { id: string; from: string; to: string };
+type GraphEdge = {
+  id: string;
+  from: string;
+  to: string;
+  kind: "start" | "default" | "option";
+  optionId?: string;
+  sourceQuestionId?: string;
+  label?: string;
+  answerText?: string;
+};
 
 function defaultPosition(
   kind: GraphNode["kind"],
@@ -128,9 +136,18 @@ function buildGraph(version: any) {
     results.map((result: any) => `result:${result.id}`),
   );
   const edges: GraphEdge[] = [];
-  const addEdge = (from: string, to: string) => {
+  const addEdge = (from: string, to: string, meta: any = {}) => {
     if (!to) return;
-    edges.push({ id: `${from}:${to}:${edges.length}`, from, to });
+    edges.push({
+      id: `${from}:${to}:${meta.optionId || meta.kind || edges.length}`,
+      from,
+      to,
+      kind: meta.kind || "default",
+      optionId: meta.optionId,
+      sourceQuestionId: meta.sourceQuestionId,
+      label: meta.label,
+      answerText: meta.answerText,
+    });
   };
   const startId = version?.startQuestionId || questions[0]?.id;
   const addPlaceholder = (
@@ -159,51 +176,44 @@ function buildGraph(version: any) {
         y: from.point.y + fromHeight + 116,
       },
     });
-    addEdge(fromId, id);
+    addEdge(fromId, id, {
+      kind:
+        route.kind === "start"
+          ? "start"
+          : route.kind === "option"
+            ? "option"
+            : "default",
+      optionId: route.optionId,
+      sourceQuestionId: route.sourceId,
+      label:
+        route.kind === "start"
+          ? undefined
+          : route.kind === "option"
+            ? "Отдельная ветка"
+            : "По умолчанию",
+    });
   };
-  if (startId) addEdge("start", startId);
+  if (startId) addEdge("start", startId, { kind: "start" });
   else addPlaceholder("start", { kind: "start" });
   questions.forEach((question: any) => {
-    const options = question.options || [];
-    let hasComplete = false;
-    let directOptionCount = 0;
-    options.forEach((option: any, index: number) => {
-      const target = option.nextQuestionId;
-      if (target === "complete") {
-        hasComplete = true;
-        return;
-      }
-      if (questionIds.has(target) || resultIds.has(target)) {
-        directOptionCount += 1;
-        addEdge(question.id, target);
-        return;
-      }
-      addPlaceholder(
-        question.id,
-        { kind: "option", sourceId: question.id, optionId: option.id },
-        index,
-        options.length,
-      );
-    });
-    const fallback = question.defaultNextQuestionId;
-    if (!options.length) {
-      if (fallback === "complete") hasComplete = true;
-      else if (
-        fallback &&
-        (questionIds.has(fallback) || resultIds.has(fallback))
-      )
-        addEdge(question.id, fallback);
-      else
-        addPlaceholder(question.id, { kind: "default", sourceId: question.id });
-    } else if (!directOptionCount && !hasComplete && fallback) {
-      if (fallback === "complete") hasComplete = true;
-      else if (questionIds.has(fallback) || resultIds.has(fallback))
-        addEdge(question.id, fallback);
+    const transitions = buildQuestionTransitions(question);
+    if (!question.defaultNextQuestionId) {
+      addPlaceholder(question.id, { kind: "default", sourceId: question.id });
     }
-    if (hasComplete)
-      results.forEach((result: any) =>
-        addEdge(question.id, `result:${result.id}`),
-      );
+    transitions.forEach((transition: any) => {
+      if (transition.targetId === "complete") {
+        results.forEach((result: any) =>
+          addEdge(question.id, `result:${result.id}`, transition),
+        );
+        return;
+      }
+      if (
+        questionIds.has(transition.targetId) ||
+        resultIds.has(transition.targetId)
+      ) {
+        addEdge(question.id, transition.targetId, transition);
+      }
+    });
   });
   const sourcesWithEmptyOutputs = [
     ...new Set(
@@ -323,6 +333,9 @@ export default function QuizEditor() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [highlightedOptionId, setHighlightedOptionId] = useState<string | null>(
+    null,
+  );
   const [pendingLink, setPendingLink] = useState<
     (LinkRoute & { position: Point }) | null
   >(null);
@@ -412,6 +425,9 @@ export default function QuizEditor() {
   const nodeMap = useMemo(
     () => new Map(graph.nodes.map((node) => [node.id, node])),
     [graph.nodes],
+  );
+  const highlightedEdge = graph.edges.find(
+    (edge) => edge.optionId === highlightedOptionId,
   );
   const question = quiz?.version?.questions?.find(
     (item: any) => item.id === selected,
@@ -774,7 +790,8 @@ export default function QuizEditor() {
           className={styles.edges}
           width="100%"
           height={graph.height}
-          aria-hidden="true"
+          role="img"
+          aria-label="Связи между вопросами и результатами"
         >
           <defs>
             <marker
@@ -786,6 +803,16 @@ export default function QuizEditor() {
               orient="auto"
             >
               <path d="M0 0 L7 3.5 L0 7Z" fill="#4d91bd" />
+            </marker>
+            <marker
+              id="branchArrow"
+              markerWidth="7"
+              markerHeight="7"
+              refX="6"
+              refY="3.5"
+              orient="auto"
+            >
+              <path d="M0 0 L7 3.5 L0 7Z" fill="#d3a84f" />
             </marker>
           </defs>
           {graph.edges.map((edge) => {
@@ -800,23 +827,69 @@ export default function QuizEditor() {
             const siblingIndex = siblings.findIndex(
               (item) => item.id === edge.id,
             );
-            const x1 =
-                from.point.x +
-                fromWidth / 2 +
-                (siblingIndex - (siblings.length - 1) / 2) * 64,
+            const sourceInset = siblings.length > 1 ? 22 : fromWidth / 2;
+            const sourceGap =
+              siblings.length > 1
+                ? (fromWidth - sourceInset * 2) / (siblings.length - 1)
+                : 0;
+            const x1 = from.point.x + sourceInset + siblingIndex * sourceGap,
               y1 = from.point.y + fromHeight;
             const toWidth = to.kind === "start" ? 120 : NODE_WIDTH;
             const x2 = to.point.x + toWidth / 2,
               y2 = to.point.y;
             const middle = y1 + (y2 - y1) / 2;
             const path = `M${x1},${y1} C${x1},${middle} ${x2},${middle} ${x2},${y2}`;
+            const isBranch = edge.kind === "option";
+            const isHighlighted =
+              !!edge.optionId && edge.optionId === highlightedOptionId;
+            const maxLabelCharacters =
+              siblings.length <= 2 ? 26 : siblings.length === 3 ? 16 : 10;
+            const displayLabel =
+              (edge.label?.length || 0) > maxLabelCharacters
+                ? `${edge.label?.slice(0, maxLabelCharacters - 1)}…`
+                : edge.label;
+            const labelWidth = Math.min(
+              siblings.length <= 2 ? 176 : siblings.length === 3 ? 112 : 76,
+              Math.max(70, (displayLabel?.length || 0) * 6.2 + 22),
+            );
             return (
-              <path
+              <g
                 key={edge.id}
-                className={styles.edge}
-                markerEnd="url(#flowArrow)"
-                d={path}
-              />
+                className={styles.edgeGroup}
+                onMouseEnter={() =>
+                  edge.optionId && setHighlightedOptionId(edge.optionId)
+                }
+                onMouseLeave={() => setHighlightedOptionId(null)}
+                onClick={() => {
+                  if (!edge.optionId || !edge.sourceQuestionId) return;
+                  setSelected(edge.sourceQuestionId);
+                  setPanel(null);
+                  setHighlightedOptionId(edge.optionId);
+                }}
+              >
+                <path className={styles.edgeHitArea} d={path} />
+                <path
+                  className={`${styles.edge} ${isBranch ? styles.branchEdge : ""} ${isHighlighted ? styles.edgeHighlighted : ""}`}
+                  markerEnd={isBranch ? "url(#branchArrow)" : "url(#flowArrow)"}
+                  d={path}
+                />
+                {edge.label && edge.kind !== "start" && (
+                  <g
+                    className={`${styles.edgeLabel} ${isBranch ? styles.branchEdgeLabel : ""}`}
+                    transform={`translate(${x1 - labelWidth / 2} ${y1 + 13})`}
+                  >
+                    <rect width={labelWidth} height="24" rx="12" />
+                    <text x={labelWidth / 2} y="16" textAnchor="middle">
+                      {displayLabel}
+                    </text>
+                    <title>
+                      {isBranch
+                        ? `Если выбран ответ «${edge.answerText || "Ответ"}»`
+                        : edge.label}
+                    </title>
+                  </g>
+                )}
+              </g>
             );
           })}
         </svg>
@@ -837,7 +910,7 @@ export default function QuizEditor() {
           ) : (
             <button
               key={node.id}
-              className={`${styles.canvasNode} ${node.kind === "start" ? styles.startNode : ""} ${node.kind === "result" ? styles.resultNode : ""} ${selected === node.id ? styles.nodeSelected : ""}`}
+              className={`${styles.canvasNode} ${node.kind === "start" ? styles.startNode : ""} ${node.kind === "result" ? styles.resultNode : ""} ${selected === node.id ? styles.nodeSelected : ""} ${highlightedEdge?.from === node.id ? styles.nodeRouteHighlighted : ""}`}
               style={{ left: node.point.x, top: node.point.y }}
               onPointerDown={(event) => pointerDown(event, node)}
             >
@@ -875,6 +948,8 @@ export default function QuizEditor() {
           <QuestionEditor
             question={question}
             targets={targets.filter((target) => target.id !== question.id)}
+            highlightedOptionId={highlightedOptionId}
+            setHighlightedOptionId={setHighlightedOptionId}
             patchQuestion={patchQuestion}
             patchOption={patchOption}
             removeSelected={removeSelected}
@@ -1092,13 +1167,14 @@ function AddPanel({ addQuestion, addResult, close }: any) {
 function QuestionEditor({
   question,
   targets,
+  highlightedOptionId,
+  setHighlightedOptionId,
   patchQuestion,
   patchOption,
   removeSelected,
   close,
 }: any) {
   const [uploading, setUploading] = useState(false);
-  const branching = hasAnswerBranching(question);
   async function upload(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -1185,7 +1261,12 @@ function QuestionEditor({
                   questionId={question.id}
                   questionType={question.type}
                   targets={targets}
-                  branching={branching}
+                  commonTarget={question.defaultNextQuestionId}
+                  highlighted={highlightedOptionId === option.id}
+                  setHighlightedOptionId={setHighlightedOptionId}
+                  setBranch={(targetId: string | null) =>
+                    patchQuestion(setAnswerBranch(question, option.id, targetId))
+                  }
                   patchOption={patchOption}
                   markCorrect={() =>
                     question.type === "multiple_choice"
@@ -1227,9 +1308,7 @@ function QuestionEditor({
                       text: "Новый ответ",
                       score: 0,
                       isCorrect: false,
-                      nextQuestionId: branching
-                        ? question.defaultNextQuestionId || null
-                        : null,
+                      nextQuestionId: null,
                     },
                   ],
                 })
@@ -1239,7 +1318,7 @@ function QuestionEditor({
             </button>
             <div className={styles.branchingPanel}>
               <label className={styles.field}>
-                {branching ? "Общий переход" : "После ответа"}
+                После ответа
                 <select
                   className={styles.select}
                   value={question.defaultNextQuestionId || ""}
@@ -1257,36 +1336,9 @@ function QuestionEditor({
                   ))}
                 </select>
                 <small className={styles.fieldHint}>
-                  {branching
-                    ? "Используется, если для ответа не выбран отдельный путь."
-                    : "Один следующий шаг для всех вариантов ответа."}
+                  Один общий следующий шаг. Отдельные ветки добавляются у нужного ответа.
                 </small>
               </label>
-              <button
-                className={`${styles.branchButton} ${branching ? styles.branchButtonActive : ""}`}
-                type="button"
-                onClick={() => {
-                  const updated = branching
-                    ? disableAnswerBranching(question)
-                    : enableAnswerBranching(question);
-                  patchQuestion({
-                    defaultNextQuestionId: updated.defaultNextQuestionId,
-                    options: updated.options,
-                  });
-                }}
-              >
-                <span aria-hidden="true">⑂</span>
-                <span>
-                  <strong>
-                    {branching ? "Отключить ветвление" : "Добавить ветвление"}
-                  </strong>
-                  <small>
-                    {branching
-                      ? "Вернуть один переход для всех ответов"
-                      : "Только если ответы должны вести в разные места"}
-                  </small>
-                </span>
-              </button>
             </div>
           </>
         )}
@@ -1329,7 +1381,10 @@ function AnswerOption({
   questionId,
   questionType,
   targets,
-  branching,
+  commonTarget,
+  highlighted,
+  setHighlightedOptionId,
+  setBranch,
   patchOption,
   markCorrect,
   remove,
@@ -1337,6 +1392,9 @@ function AnswerOption({
   const isCorrect = !!option.isCorrect;
   const [uploading, setUploading] = useState(false);
   const [editingScore, setEditingScore] = useState(false);
+  const [editingBranch, setEditingBranch] = useState(
+    Boolean(option.nextQuestionId),
+  );
   async function uploadImage(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -1350,7 +1408,15 @@ function AnswerOption({
   }
   return (
     <div
-      className={`${answerStyles.card} ${isCorrect ? answerStyles.cardCorrect : ""}`}
+      className={`${answerStyles.card} ${isCorrect ? answerStyles.cardCorrect : ""} ${highlighted ? answerStyles.cardHighlighted : ""}`}
+      onMouseEnter={() => option.nextQuestionId && setHighlightedOptionId(option.id)}
+      onMouseLeave={() => setHighlightedOptionId(null)}
+      onFocus={() => option.nextQuestionId && setHighlightedOptionId(option.id)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          setHighlightedOptionId(null);
+        }
+      }}
     >
       <div className={answerStyles.main}>
         <div className={answerStyles.answerField}>
@@ -1434,6 +1500,25 @@ function AnswerOption({
             </button>
           )}
           <button
+            className={`${answerStyles.branchOptionButton} ${option.nextQuestionId || editingBranch ? answerStyles.branchOptionButtonActive : ""}`}
+            type="button"
+            aria-label={
+              option.nextQuestionId
+                ? "Изменить отдельный путь ответа"
+                : "Добавить отдельный путь ответа"
+            }
+            title={
+              option.nextQuestionId
+                ? "Изменить отдельный путь"
+                : "Добавить ветвление от этого ответа"
+            }
+            onClick={() => setEditingBranch(true)}
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+              <path d="M6 4v6c0 2 1 3 3 3h7M13 8l4 5-4 5M6 10V4M3 7l3-3 3 3" />
+            </svg>
+          </button>
+          <button
             className={answerStyles.remove}
             type="button"
             aria-label="Удалить ответ"
@@ -1465,27 +1550,48 @@ function AnswerOption({
           </div>
         </div>
       )}
-      {branching && (
-        <label className={answerStyles.destination}>
-          <span>Отдельный путь</span>
-          <select
-            aria-label="Куда перейти после выбора этого ответа"
-            value={option.nextQuestionId || ""}
-            onChange={(event) =>
-              patchOption(option.id, {
-                nextQuestionId: event.target.value || null,
-              })
-            }
-          >
-            <option value="">Использовать общий переход</option>
-            {targets.map((target: any) => (
-              <option value={target.id} key={target.id}>
-                {target.label}
-              </option>
-            ))}
-          </select>
-          <small>Только для этого ответа</small>
-        </label>
+      {(editingBranch || option.nextQuestionId) && (
+        <div className={answerStyles.branchEditor}>
+          <div className={answerStyles.branchIdentity}>
+            <span aria-hidden="true">⑂</span>
+            <span>
+              <strong>Если выбран «{option.text || "Этот ответ"}»</strong>
+              <small>Только этот ответ пойдёт по отдельному маршруту</small>
+            </span>
+            <button
+              type="button"
+              aria-label="Удалить отдельный путь ответа"
+              title="Удалить отдельный путь"
+              onClick={() => {
+                setBranch(null);
+                setEditingBranch(false);
+                setHighlightedOptionId(null);
+              }}
+            >
+              ×
+            </button>
+          </div>
+          <label className={answerStyles.destination}>
+            <span>Куда перейти</span>
+            <select
+              aria-label="Куда перейти после выбора этого ответа"
+              value={option.nextQuestionId || ""}
+              onChange={(event) => {
+                const target = event.target.value;
+                setBranch(!target || target === commonTarget ? null : target);
+                if (!target || target === commonTarget) setEditingBranch(false);
+              }}
+            >
+              <option value="">Выберите отдельный путь</option>
+              {targets.map((target: any) => (
+                <option value={target.id} key={target.id}>
+                  {target.label}
+                  {target.id === commonTarget ? " — общий путь" : ""}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
       )}
     </div>
   );
