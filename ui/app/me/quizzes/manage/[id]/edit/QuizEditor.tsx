@@ -7,6 +7,7 @@ import { useParams, useRouter } from "next/navigation";
 import {
   buildQuestionTransitions,
   collapseRedundantAnswerBranches,
+  createAnswerBranchLink,
   setAnswerBranch,
 } from "../../../../../../lib/quiz-editor-branching.js";
 import styles from "./editor.module.css";
@@ -950,6 +951,17 @@ export default function QuizEditor() {
             targets={targets.filter((target) => target.id !== question.id)}
             highlightedOptionId={highlightedOptionId}
             setHighlightedOptionId={setHighlightedOptionId}
+            createBranchStep={(optionId: string) => {
+              setPendingLink(
+                createAnswerBranchLink(
+                  question,
+                  optionId,
+                  nodeMap.get(question.id)?.point,
+                ) as LinkRoute & { position: Point },
+              );
+              setSelected(null);
+              setPanel("add");
+            }}
             patchQuestion={patchQuestion}
             patchOption={patchOption}
             removeSelected={removeSelected}
@@ -1169,6 +1181,7 @@ function QuestionEditor({
   targets,
   highlightedOptionId,
   setHighlightedOptionId,
+  createBranchStep,
   patchQuestion,
   patchOption,
   removeSelected,
@@ -1267,6 +1280,7 @@ function QuestionEditor({
                   setBranch={(targetId: string | null) =>
                     patchQuestion(setAnswerBranch(question, option.id, targetId))
                   }
+                  createBranchStep={() => createBranchStep(option.id)}
                   patchOption={patchOption}
                   markCorrect={() =>
                     question.type === "multiple_choice"
@@ -1385,6 +1399,7 @@ function AnswerOption({
   highlighted,
   setHighlightedOptionId,
   setBranch,
+  createBranchStep,
   patchOption,
   markCorrect,
   remove,
@@ -1591,6 +1606,19 @@ function AnswerOption({
               ))}
             </select>
           </label>
+          <button
+            type="button"
+            className={answerStyles.branchCreateButton}
+            onClick={createBranchStep}
+          >
+            <span aria-hidden="true">＋</span>
+            <span>
+              <strong>Создать новый шаг в этой ветке</strong>
+              <small>
+                Добавить вопрос или финал и сразу соединить его с этим ответом
+              </small>
+            </span>
+          </button>
         </div>
       )}
     </div>

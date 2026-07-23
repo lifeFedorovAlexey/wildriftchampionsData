@@ -449,6 +449,57 @@
   color: #d9ebff;
 }
 
+.branchCreateButton {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 46px;
+  padding: 7px 10px;
+  border: 1px dashed #8d6b32;
+  border-radius: 8px;
+  color: #efcc79;
+  background: rgba(49, 39, 20, 0.52);
+  text-align: left;
+  cursor: pointer;
+}
+
+.branchCreateButton:hover,
+.branchCreateButton:focus-visible {
+  border-style: solid;
+  border-color: #dbad4f;
+  color: #ffe6a7;
+  background: #3a2e18;
+}
+
+.branchCreateButton > span:first-child {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #4b3a1c;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.branchCreateButton > span:last-child {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.branchCreateButton strong {
+  font-size: 10px;
+}
+
+.branchCreateButton small {
+  color: #a8946a;
+  font-size: 8px;
+  line-height: 1.35;
+}
+
 @media (max-width: 760px) {
   .main {
     grid-template-columns: minmax(0, 1fr) auto auto;

@@ -42,6 +42,20 @@ export function setAnswerBranch(question, optionId, targetId) {
   };
 }
 
+export function createAnswerBranchLink(question, optionId, sourcePoint) {
+  const option = (question?.options || []).find((item) => item.id === optionId);
+  return {
+    kind: "option",
+    sourceId: question.id,
+    optionId,
+    previousTarget: option?.nextQuestionId || null,
+    position: {
+      x: sourcePoint?.x || 0,
+      y: (sourcePoint?.y || 0) + 206,
+    },
+  };
+}
+
 export function collapseRedundantAnswerBranches(question) {
   const options = question?.options || [];
   const routes = options.map((option) => option?.nextQuestionId).filter(Boolean);
