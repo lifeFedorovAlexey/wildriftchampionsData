@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import {
   buildQuestionTransitions,
   collapseRedundantAnswerBranches,
+  createAnswerBranchLink,
   hasAnswerBranching,
   setAnswerBranch,
 } from "./quiz-editor-branching.js";
@@ -87,4 +88,22 @@ test("removing one answer branch preserves the common path and sibling branches"
     { id: "a", nextQuestionId: null },
     { id: "b", nextQuestionId: "result:r1" },
   ]);
+});
+
+test("new branch step preserves the previous target and opens below the question", () => {
+  const link = createAnswerBranchLink(
+    {
+      id: "q1",
+      options: [{ id: "a", nextQuestionId: "q3" }],
+    },
+    "a",
+    { x: 120, y: 240 },
+  );
+  assert.deepEqual(link, {
+    kind: "option",
+    sourceId: "q1",
+    optionId: "a",
+    previousTarget: "q3",
+    position: { x: 120, y: 446 },
+  });
 });
