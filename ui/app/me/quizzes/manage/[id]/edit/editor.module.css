@@ -196,6 +196,54 @@
   fill: none;
   stroke: #4d91bd;
   stroke-width: 2;
+  transition: stroke 150ms ease, stroke-width 150ms ease;
+}
+.edgeGroup {
+  pointer-events: all;
+}
+.edgeHitArea {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 18;
+}
+.branchEdge {
+  stroke: #b98c3e;
+}
+.edgeHighlighted,
+.edgeGroup:hover .branchEdge {
+  stroke: #f4ce72;
+  stroke-width: 4;
+}
+.edgeLabel rect {
+  fill: #0c1c2e;
+  stroke: #386584;
+  stroke-width: 1;
+}
+.edgeLabel text {
+  fill: #a9c7df;
+  font-size: 9px;
+  font-weight: 800;
+  pointer-events: none;
+}
+.branchEdgeLabel {
+  cursor: pointer;
+}
+.branchEdgeLabel rect {
+  fill: #292216;
+  stroke: #a77d36;
+}
+.branchEdgeLabel text {
+  fill: #f0d38e;
+}
+.edgeGroup:hover .branchEdgeLabel rect {
+  fill: #41331b;
+  stroke: #e5b95b;
+}
+.nodeRouteHighlighted {
+  border-color: #d4a64e;
+  box-shadow:
+    0 0 0 2px rgba(212, 166, 78, 0.16),
+    0 9px 26px rgba(0, 0, 0, 0.28);
 }
 .canvasNode {
   position: absolute;
@@ -481,63 +529,12 @@
 }
 .branchingPanel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.65fr);
   gap: 10px;
   align-items: stretch;
   padding: 10px;
   border: 1px solid #253b55;
   border-radius: 10px;
   background: rgba(7, 17, 30, 0.46);
-}
-.branchButton {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 64px;
-  padding: 10px 12px;
-  border: 1px dashed #3b5877;
-  border-radius: 9px;
-  color: #93b2cf;
-  background: #0d1b2e;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-.branchButton:hover,
-.branchButton:focus-visible {
-  border-color: #66bde8;
-  color: #dff4ff;
-  background: #122841;
-}
-.branchButton > span:first-child {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 auto;
-  border-radius: 8px;
-  color: #70ccf7;
-  background: #17334f;
-  font-size: 20px;
-}
-.branchButton > span:last-child {
-  display: grid;
-  gap: 3px;
-}
-.branchButton strong {
-  color: inherit;
-  font-size: 11px;
-}
-.branchButton small {
-  color: #6f88a3;
-  font-size: 9px;
-  line-height: 1.35;
-}
-.branchButtonActive {
-  border-style: solid;
-  border-color: #7a6636;
-  color: #f3d98e;
-  background: #292319;
 }
 .mediaButton {
   display: flex;
