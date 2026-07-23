@@ -14,7 +14,19 @@ type Quiz = {
   estimatedMinutes?: number;
   attemptLimitType: string;
   attemptLimit?: number;
+  status: string;
+  currentVersionId?: number | null;
 };
+
+function quizErrorMessage(code: string) {
+  if (
+    code === "quiz_not_available" ||
+    code === "quiz_published_version_missing"
+  )
+    return "Этот квиз ещё не опубликован и пока недоступен для прохождения.";
+  if (code === "quiz_not_found") return "Квиз не найден или больше недоступен.";
+  return "Не удалось открыть квиз. Попробуй ещё раз.";
+}
 
 function attemptLimitLabel(quiz: Quiz) {
   if (quiz.attemptLimitType === "one") return "Одна попытка";
@@ -35,7 +47,7 @@ export default function QuizDetail() {
     fetch(`/api/quizzes/${id}`)
       .then(async (response) => {
         const payload = await response.json();
-        if (!response.ok) throw new Error(payload.error);
+        if (!response.ok) throw new Error(quizErrorMessage(payload.error));
         setQuiz(payload.quiz);
       })
       .catch((reason) => setError(reason.message));
@@ -49,7 +61,7 @@ export default function QuizDetail() {
         method: "POST",
       });
       const payload = await response.json();
-      if (!response.ok) throw new Error(payload.error);
+      if (!response.ok) throw new Error(quizErrorMessage(payload.error));
       router.push(`/quizzes/${id}/play?attempt=${payload.attempt.id}`);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "start_failed");
@@ -58,6 +70,9 @@ export default function QuizDetail() {
     }
   }
 
+  const isPlayable =
+    quiz?.status === "published" && Boolean(quiz.currentVersionId);
+
   return (
     <main className={styles.page}>
       {error && <p className={styles.error}>{error}</p>}
@@ -65,7 +80,9 @@ export default function QuizDetail() {
       {quiz && (
         <section className={styles.detailHero}>
           <div className={styles.detailContent}>
-            <span className={styles.kicker}>Квиз Wild Rift</span>
+            <span className={styles.kicker}>
+              {isPlayable ? "Квиз Wild Rift" : "Черновик квиза"}
+            </span>
             <h1>{quiz.title}</h1>
             {(quiz.description || quiz.shortDescription) && (
               <p className={styles.description}>
@@ -79,10 +96,28 @@ export default function QuizDetail() {
                 </span>
               )}
               <span className={styles.metaItem}>{attemptLimitLabel(quiz)}</span>
+              {!isPlayable && (
+                <span className={styles.metaItem}>Не опубликован</span>
+              )}
             </div>
-            <button className={styles.primary} disabled={busy} onClick={start}>
-              {busy ? "Запускаем…" : "Начать квиз"}
-            </button>
+            {isPlayable ? (
+              <button className={styles.primary} disabled={busy} onClick={start}>
+                {busy ? "Запускаем…" : "Начать квиз"}
+              </button>
+            ) : (
+              <>
+                <p className={styles.draftNotice}>
+                  Этот квиз виден тебе как автору, но участники не смогут его
+                  открыть, пока ты не завершишь настройку и не опубликуешь его.
+                </p>
+                <button
+                  className={styles.primary}
+                  onClick={() => router.push(`/me/quizzes/manage/${id}/edit`)}
+                >
+                  Продолжить редактирование
+                </button>
+              </>
+            )}
           </div>
           <div className={styles.heroVisual}>
             {quiz.coverUrl ? (
