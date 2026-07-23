@@ -4,6 +4,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
+import {
+  collapseRedundantAnswerBranches,
+  disableAnswerBranching,
+  enableAnswerBranching,
+  hasAnswerBranching,
+} from "../../../../../../lib/quiz-editor-branching.js";
 import styles from "./editor.module.css";
 import answerStyles from "./answer-options.module.css";
 
@@ -25,12 +31,11 @@ const makeId = () => crypto.randomUUID();
 const NODE_WIDTH = 280;
 const NODE_HEIGHT = 90;
 const MIN_ANSWER_SCORE = 0;
-const MAX_ANSWER_SCORE = 100;
+const ANSWER_SCORE_PRESETS = [1, 3, 5] as const;
 
-function clampAnswerScore(value: unknown) {
+function normalizeCorrectScore(value: unknown) {
   const score = Math.trunc(Number(value));
-  if (!Number.isFinite(score)) return MIN_ANSWER_SCORE;
-  return Math.min(MAX_ANSWER_SCORE, Math.max(MIN_ANSWER_SCORE, score));
+  return ANSWER_SCORE_PRESETS.includes(score as 1 | 3 | 5) ? score : 1;
 }
 
 async function uploadQuizImage(file: File) {
@@ -341,6 +346,18 @@ export default function QuizEditor() {
           questions: [],
           results: [],
         };
+        loaded.version.questions = (loaded.version.questions || []).map(
+          (question: any) =>
+            collapseRedundantAnswerBranches({
+              ...question,
+              options: (question.options || []).map((option: any) => ({
+                ...option,
+                score: option.isCorrect
+                  ? normalizeCorrectScore(option.score)
+                  : MIN_ANSWER_SCORE,
+              })),
+            }),
+        );
         setQuiz(loaded);
       })
       .catch((reason) => setError(reason.message));
@@ -1081,6 +1098,7 @@ function QuestionEditor({
   close,
 }: any) {
   const [uploading, setUploading] = useState(false);
+  const branching = hasAnswerBranching(question);
   async function upload(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -1156,7 +1174,7 @@ function QuestionEditor({
             <div className={styles.sectionHead}>
               <span>Ответы</span>
               <small>
-                Введи варианты, отметь верные и настрой продолжение сценария
+                Введи варианты и отметь правильные ответы
               </small>
             </div>
             <div className={styles.optionList}>
@@ -1167,14 +1185,24 @@ function QuestionEditor({
                   questionId={question.id}
                   questionType={question.type}
                   targets={targets}
+                  branching={branching}
                   patchOption={patchOption}
                   markCorrect={() =>
                     question.type === "multiple_choice"
-                      ? patchOption(option.id, { isCorrect: !option.isCorrect })
+                      ? patchOption(option.id, {
+                          isCorrect: !option.isCorrect,
+                          score: option.isCorrect
+                            ? MIN_ANSWER_SCORE
+                            : normalizeCorrectScore(option.score),
+                        })
                       : patchQuestion({
                           options: question.options.map((item: any) => ({
                             ...item,
                             isCorrect: item.id === option.id,
+                            score:
+                              item.id === option.id
+                                ? normalizeCorrectScore(item.score)
+                                : MIN_ANSWER_SCORE,
                           })),
                         })
                   }
@@ -1199,7 +1227,9 @@ function QuestionEditor({
                       text: "Новый ответ",
                       score: 0,
                       isCorrect: false,
-                      nextQuestionId: "complete",
+                      nextQuestionId: branching
+                        ? question.defaultNextQuestionId || null
+                        : null,
                     },
                   ],
                 })
@@ -1207,6 +1237,57 @@ function QuestionEditor({
             >
               ＋ Добавить ответ
             </button>
+            <div className={styles.branchingPanel}>
+              <label className={styles.field}>
+                {branching ? "Общий переход" : "После ответа"}
+                <select
+                  className={styles.select}
+                  value={question.defaultNextQuestionId || ""}
+                  onChange={(event) =>
+                    patchQuestion({
+                      defaultNextQuestionId: event.target.value || null,
+                    })
+                  }
+                >
+                  <option value="">Добавить следующий шаг</option>
+                  {targets.map((target: any) => (
+                    <option value={target.id} key={target.id}>
+                      {target.label}
+                    </option>
+                  ))}
+                </select>
+                <small className={styles.fieldHint}>
+                  {branching
+                    ? "Используется, если для ответа не выбран отдельный путь."
+                    : "Один следующий шаг для всех вариантов ответа."}
+                </small>
+              </label>
+              <button
+                className={`${styles.branchButton} ${branching ? styles.branchButtonActive : ""}`}
+                type="button"
+                onClick={() => {
+                  const updated = branching
+                    ? disableAnswerBranching(question)
+                    : enableAnswerBranching(question);
+                  patchQuestion({
+                    defaultNextQuestionId: updated.defaultNextQuestionId,
+                    options: updated.options,
+                  });
+                }}
+              >
+                <span aria-hidden="true">⑂</span>
+                <span>
+                  <strong>
+                    {branching ? "Отключить ветвление" : "Добавить ветвление"}
+                  </strong>
+                  <small>
+                    {branching
+                      ? "Вернуть один переход для всех ответов"
+                      : "Только если ответы должны вести в разные места"}
+                  </small>
+                </span>
+              </button>
+            </div>
           </>
         )}
         {!optionTypes.has(question.type) && (
@@ -1248,12 +1329,14 @@ function AnswerOption({
   questionId,
   questionType,
   targets,
+  branching,
   patchOption,
   markCorrect,
   remove,
 }: any) {
   const isCorrect = !!option.isCorrect;
   const [uploading, setUploading] = useState(false);
+  const [editingScore, setEditingScore] = useState(false);
   async function uploadImage(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -1294,35 +1377,48 @@ function AnswerOption({
             }
           />
         </label>
-        <label
-          className={`${answerStyles.imageButton} ${option.imageUrl ? answerStyles.imageButtonActive : ""}`}
-          title={option.imageUrl ? "Заменить изображение ответа" : "Добавить изображение к ответу"}
-          aria-label={option.imageUrl ? "Заменить изображение ответа" : "Добавить изображение к ответу"}
-        >
-          {uploading ? (
-            <span className={answerStyles.uploading} aria-hidden="true">•••</span>
-          ) : (
-            <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
-              <path d="M4 5.5h16v13H4zM7 15l3-3 2.5 2.5 2-2 2.5 2.5M8.5 9a1.25 1.25 0 1 0 0 .01" />
-            </svg>
+        <div className={answerStyles.optionActions}>
+          <label
+            className={`${answerStyles.imageButton} ${option.imageUrl ? answerStyles.imageButtonActive : ""}`}
+            title={option.imageUrl ? "Заменить изображение ответа" : "Добавить изображение к ответу"}
+            aria-label={option.imageUrl ? "Заменить изображение ответа" : "Добавить изображение к ответу"}
+          >
+            {uploading ? (
+              <span className={answerStyles.uploading} aria-hidden="true">•••</span>
+            ) : (
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+                <path d="M4 5.5h16v13H4zM7 15l3-3 2.5 2.5 2-2 2.5 2.5M8.5 9a1.25 1.25 0 1 0 0 .01" />
+              </svg>
+            )}
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+              hidden
+              disabled={uploading}
+              onChange={uploadImage}
+            />
+          </label>
+          {isCorrect && (
+            <button
+              className={`${answerStyles.scoreButton} ${editingScore ? answerStyles.scoreButtonActive : ""}`}
+              type="button"
+              aria-label="Настроить баллы за правильный ответ"
+              title="Настроить баллы за правильный ответ"
+              onClick={() => setEditingScore((value) => !value)}
+            >
+              <span aria-hidden="true">★</span>
+            </button>
           )}
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/webp,image/gif"
-            hidden
-            disabled={uploading}
-            onChange={uploadImage}
-          />
-        </label>
-        <button
-          className={answerStyles.remove}
-          type="button"
-          aria-label="Удалить ответ"
-          title="Удалить ответ"
-          onClick={remove}
-        >
-          −
-        </button>
+          <button
+            className={answerStyles.remove}
+            type="button"
+            aria-label="Удалить ответ"
+            title="Удалить ответ"
+            onClick={remove}
+          >
+            −
+          </button>
+        </div>
       </div>
       <div className={answerStyles.imageRow}>
         {option.imageUrl && (
@@ -1345,76 +1441,49 @@ function AnswerOption({
           </>
         )}
       </div>
-      <div className={answerStyles.scoreRow}>
-        <div className={answerStyles.scoreCopy}>
-          <strong>Баллы за ответ</strong>
-          <small>
-            Добавятся к результату, если участник выберет этот ответ. Целое число от {MIN_ANSWER_SCORE} до {MAX_ANSWER_SCORE}.
-          </small>
+      {isCorrect && editingScore && (
+        <div className={answerStyles.scoreRow}>
+          <div className={answerStyles.scoreCopy}>
+            <strong>Баллы за правильный ответ</strong>
+            <small>По умолчанию — 1. Выбери повышенную ценность при необходимости.</small>
+          </div>
+          <div className={answerStyles.scoreChoices} aria-label="Баллы за правильный ответ">
+            {ANSWER_SCORE_PRESETS.map((score) => (
+              <button
+                className={normalizeCorrectScore(option.score) === score ? answerStyles.scoreChoiceActive : ""}
+                type="button"
+                key={score}
+                aria-pressed={normalizeCorrectScore(option.score) === score}
+                onClick={() => patchOption(option.id, { score })}
+              >
+                {score}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className={answerStyles.stepper}>
-          <button
-            type="button"
-            aria-label="Уменьшить баллы"
-            disabled={clampAnswerScore(option.score) <= MIN_ANSWER_SCORE}
-            onClick={() =>
-              patchOption(option.id, {
-                score: clampAnswerScore(option.score) - 1,
-              })
-            }
-          >
-            −
-          </button>
-          <input
-            aria-label={`Баллы за ответ, от ${MIN_ANSWER_SCORE} до ${MAX_ANSWER_SCORE}`}
-            type="number"
-            inputMode="numeric"
-            min={MIN_ANSWER_SCORE}
-            max={MAX_ANSWER_SCORE}
-            step="1"
-            value={clampAnswerScore(option.score)}
+      )}
+      {branching && (
+        <label className={answerStyles.destination}>
+          <span>Отдельный путь</span>
+          <select
+            aria-label="Куда перейти после выбора этого ответа"
+            value={option.nextQuestionId || ""}
             onChange={(event) =>
               patchOption(option.id, {
-                score: clampAnswerScore(event.target.value),
-              })
-            }
-          />
-          <button
-            type="button"
-            aria-label="Увеличить баллы"
-            disabled={clampAnswerScore(option.score) >= MAX_ANSWER_SCORE}
-            onClick={() =>
-              patchOption(option.id, {
-                score: clampAnswerScore(option.score) + 1,
+                nextQuestionId: event.target.value || null,
               })
             }
           >
-            +
-          </button>
-        </div>
-      </div>
-      <label className={answerStyles.destination}>
-        <span>После выбора этого ответа</span>
-        <select
-          aria-label="Что произойдёт после выбора ответа"
-          value={option.nextQuestionId || ""}
-          onChange={(event) =>
-            patchOption(option.id, {
-              nextQuestionId: event.target.value || null,
-            })
-          }
-        >
-          <option value="">Добавить следующий шаг в сценарии</option>
-          {targets.map((target: any) => (
-            <option value={target.id} key={target.id}>
-              {target.label}
-            </option>
-          ))}
-        </select>
-        <small>
-          Выбери следующий вопрос или заверши квиз. Так создаются разные ветки сценария.
-        </small>
-      </label>
+            <option value="">Использовать общий переход</option>
+            {targets.map((target: any) => (
+              <option value={target.id} key={target.id}>
+                {target.label}
+              </option>
+            ))}
+          </select>
+          <small>Только для этого ответа</small>
+        </label>
+      )}
     </div>
   );
 }

@@ -32,6 +32,7 @@ export default function Manage() {
   const [quizzes, setQuizzes] = useState<any[]>([]);
   const [error, setError] = useState("");
   const [creating, setCreating] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
   const router = useRouter();
 
   const load = useCallback(async () => {
@@ -65,6 +66,25 @@ export default function Manage() {
     }
   }
 
+  async function removeQuiz(quiz: any) {
+    const title = quiz.title || "Без названия";
+    if (!window.confirm(`Удалить квиз «${title}»? Это действие нельзя отменить.`)) return;
+    setDeletingId(quiz.id);
+    setError("");
+    try {
+      const response = await fetch(`/api/quizzes/${quiz.id}`, {
+        method: "DELETE",
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error);
+      setQuizzes((items) => items.filter((item) => item.id !== quiz.id));
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "quiz_delete_failed");
+    } finally {
+      setDeletingId(null);
+    }
+  }
+
   return <main className={styles.page}>
     <section className={styles.hero}>
       <div className={styles.toolbar}>
@@ -86,6 +106,16 @@ export default function Manage() {
         <div className={styles.actions}>
           <Link className={styles.button} href={`/me/quizzes/manage/${quiz.id}/edit`}>Редактировать</Link>
           <Link className={styles.secondary} href={`/me/quizzes/manage/${quiz.id}/statistics`}>Статистика</Link>
+          {quiz.capabilities?.delete && (
+            <button
+              className={styles.danger}
+              type="button"
+              disabled={deletingId === quiz.id}
+              onClick={() => void removeQuiz(quiz)}
+            >
+              {deletingId === quiz.id ? "Удаляем…" : "Удалить"}
+            </button>
+          )}
         </div>
       </article>)}
     </div>
