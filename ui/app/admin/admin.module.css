@@ -262,8 +262,7 @@
 
 .accessUserIdentity,
 .selectedUserHead,
-.providerIdentity,
-.sensitiveSummaryLead {
+.providerIdentity {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -278,8 +277,7 @@
 
 .accessAvatarBadge,
 .selectedUserBadge,
-.providerBadge,
-.sensitiveEyeIcon {
+.providerBadge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -343,17 +341,6 @@
   color: #fff;
   font-size: 14px;
   font-weight: 700;
-}
-
-.sensitiveEyeIcon {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-}
-
-.sensitiveEyeIcon svg {
-  width: 22px;
-  height: 22px;
 }
 
 .sensitiveSummaryMeta {
@@ -682,6 +669,27 @@
   display: grid;
   gap: 18px;
   margin-top: 18px;
+}
+
+.selectedUserTitleLine {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.selectedUserMeta,
+.streamerNameHint {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.streamerNameField {
+  display: grid;
+  gap: 8px;
+  max-width: 480px;
 }
 
 .roleToggleCard {
