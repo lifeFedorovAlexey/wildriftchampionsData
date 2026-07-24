@@ -65,7 +65,6 @@ export default function QuizCatalog() {
             <h2 id="quiz-list-title">Доступные квизы</h2>
             <p>Выбери испытание и начни прохождение.</p>
           </div>
-          {!loading && <span className={styles.count}>{items.length}</span>}
         </header>
 
         <div className={styles.grid}>
