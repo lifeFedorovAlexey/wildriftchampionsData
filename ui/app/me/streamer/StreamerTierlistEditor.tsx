@@ -8,8 +8,8 @@ import { RoleIcon } from "@/components/RoleIcon";
 import { tierBg } from "@/components/styled/tierlist";
 import TrendSparkline from "@/components/styled/TrendSparkline";
 import type {
+  StreamerBoardKey,
   StreamerChampionOption,
-  StreamerLaneKey,
   StreamerPublication,
   StreamerTierChampion,
   StreamerTierKey,
@@ -23,10 +23,16 @@ import {
   STREAMER_LANE_LABELS,
   type StreamerDraftLayout,
 } from "./editor-lib";
-import type { WinrateRow, WinratesRowsBySlice } from "@/app/winrates/types";
+import type { WinratesRowsBySlice } from "@/app/winrates/types";
+import { buildChampionMetaSlices } from "./streamer-stats-lib";
 import styles from "./streamer.module.css";
 
-const STREAMER_STATS_RANK_KEY = "overall";
+const STREAMER_RANK_LABELS: Record<string, string> = {
+  diamondPlus: "Алмаз",
+  masterPlus: "Мастер",
+  king: "ГМ",
+  peak: "Претендент",
+};
 
 function formatDateLabel(value: string | null | undefined) {
   if (!value) return "Еще не опубликовано";
@@ -94,31 +100,8 @@ function normalizeSearch(value: string) {
   return value.trim().toLowerCase();
 }
 
-function formatDayLabel(value: string) {
-  const date = new Date(`${value}T00:00:00Z`);
-  if (Number.isNaN(date.getTime())) return value;
-
-  return new Intl.DateTimeFormat("ru-RU", {
-    day: "2-digit",
-    month: "2-digit",
-  }).format(date);
-}
-
 function formatMetricValue(value: number | null | undefined) {
   return typeof value === "number" && Number.isFinite(value) ? `${value.toFixed(2)}%` : "—";
-}
-
-function buildMetricDelta(current: number | null, previous: number | null) {
-  if (
-    typeof current !== "number" ||
-    !Number.isFinite(current) ||
-    typeof previous !== "number" ||
-    !Number.isFinite(previous)
-  ) {
-    return null;
-  }
-
-  return Number((current - previous).toFixed(2));
 }
 
 function formatMetricDelta(value: number | null) {
@@ -137,52 +120,9 @@ function formatMetricDelta(value: number | null) {
   return { text: value.toFixed(2), className: styles.metricDeltaDown };
 }
 
-function buildChampionTrendDays(row: WinrateRow | null, dates: string[] = []) {
-  if (!row || !Array.isArray(dates) || !dates.length) return [];
-
-  const safeDates = dates.slice(-7);
-  const safeWinRateTrend = Array.isArray(row.winRateTrend) ? row.winRateTrend.slice(-safeDates.length) : [];
-  const safePickRateTrend = Array.isArray(row.pickRateTrend) ? row.pickRateTrend.slice(-safeDates.length) : [];
-  const safeBanRateTrend = Array.isArray(row.banRateTrend) ? row.banRateTrend.slice(-safeDates.length) : [];
-
-  return safeDates.map((date, index) => {
-    const winRate =
-      typeof safeWinRateTrend[index] === "number" ? Number(safeWinRateTrend[index].toFixed(2)) : null;
-    const pickRate =
-      typeof safePickRateTrend[index] === "number" ? Number(safePickRateTrend[index].toFixed(2)) : null;
-    const banRate =
-      typeof safeBanRateTrend[index] === "number" ? Number(safeBanRateTrend[index].toFixed(2)) : null;
-    const rawPreviousWinRate = safeWinRateTrend[index - 1];
-    const rawPreviousPickRate = safePickRateTrend[index - 1];
-    const rawPreviousBanRate = safeBanRateTrend[index - 1];
-    const previousWinRate =
-      index > 0 && typeof rawPreviousWinRate === "number"
-        ? Number(rawPreviousWinRate.toFixed(2))
-        : null;
-    const previousPickRate =
-      index > 0 && typeof rawPreviousPickRate === "number"
-        ? Number(rawPreviousPickRate.toFixed(2))
-        : null;
-    const previousBanRate =
-      index > 0 && typeof rawPreviousBanRate === "number"
-        ? Number(rawPreviousBanRate.toFixed(2))
-        : null;
-
-    return {
-      date,
-      winRate,
-      pickRate,
-      banRate,
-      winRateDelta: buildMetricDelta(winRate, previousWinRate),
-      pickRateDelta: buildMetricDelta(pickRate, previousPickRate),
-      banRateDelta: buildMetricDelta(banRate, previousBanRate),
-    };
-  });
-}
-
 function laneHasItems(
   draft: StreamerDraftLayout,
-  lane: StreamerLaneKey,
+  lane: StreamerBoardKey,
   tiersOrder: StreamerTierKey[],
 ) {
   return tiersOrder.some((tier) => (draft[lane]?.[tier] || []).length > 0);
@@ -262,6 +202,7 @@ function ChampionCard({
 
 type Props = {
   initialData: StreamerTierlistEditorPayload;
+  publishTarget: "public" | "authenticated";
   winratesSnapshot: {
     rowsBySlice: WinratesRowsBySlice;
     dates: string[];
@@ -272,8 +213,24 @@ function buildDropTargetKey(target: "pool" | StreamerTierKey, slug?: string | nu
   return slug ? `${target}:${slug}` : String(target);
 }
 
-export default function StreamerTierlistEditor({ initialData, winratesSnapshot }: Props) {
+export default function StreamerTierlistEditor({
+  initialData,
+  publishTarget,
+  winratesSnapshot,
+}: Props) {
   const [editorData, setEditorData] = useState(initialData);
+  const [mode, setMode] = useState<"overall" | "lanes" | null>(
+    initialData.currentPublication
+      ? initialData.currentPublication.payload?.mode || "lanes"
+      : null,
+  );
+  const [authorName, setAuthorName] = useState(
+    initialData.currentPublication?.authorName ||
+      (publishTarget === "authenticated" ? initialData.streamer.displayName : ""),
+  );
+  const [editToken, setEditToken] = useState<string | null>(null);
+  const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
+  const [publishChoice, setPublishChoice] = useState<"streamer" | "link" | null>(null);
   const [draft, setDraft] = useState(() =>
     buildDraftFromPublication(
       initialData.currentPublication,
@@ -281,7 +238,7 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
       initialData.tiersOrder,
     ),
   );
-  const [selectedLane, setSelectedLane] = useState<StreamerLaneKey>(
+  const [selectedLane, setSelectedLane] = useState<StreamerBoardKey>(
     initialData.laneKeys[0] || "top",
   );
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
@@ -297,6 +254,65 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
     text: "",
   });
   const [isPublishing, setIsPublishing] = useState(false);
+
+  useEffect(() => {
+    if (publishTarget !== "public") return;
+    const publicId = initialData.publicId || initialData.currentPublication?.publicId;
+    if (!publicId) return;
+    setEditToken(window.localStorage.getItem(`tierlist-edit-token:${publicId}`));
+  }, [initialData.currentPublication?.publicId, initialData.publicId, publishTarget]);
+
+  useEffect(() => {
+    if (publishTarget !== "public") return;
+    if (initialData.publicId || initialData.currentPublication) return;
+    const publicId = window.localStorage.getItem("tierlist-last-public-id");
+    if (!publicId) return;
+    const storedToken = window.localStorage.getItem(`tierlist-edit-token:${publicId}`);
+    if (!storedToken) return;
+
+    const controller = new AbortController();
+    fetch(`/api/public-tierlists?editor=1&publicId=${encodeURIComponent(publicId)}`, {
+      headers: { "x-tierlist-edit-token": storedToken },
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        const payload = await response.json().catch(() => null);
+        if (!response.ok) throw new Error(payload?.error || "restore_failed");
+        return payload as StreamerTierlistEditorPayload;
+      })
+      .then((payload) => {
+        const restoredMode = payload.currentPublication?.payload?.mode || "lanes";
+        setEditorData(payload);
+        setMode(restoredMode);
+        setEditToken(storedToken);
+        setAuthorName(payload.currentPublication?.authorName || "");
+        setSelectedLane(payload.laneKeys[0] || "top");
+        setMetaOnly(restoredMode !== "overall");
+        setDraft(
+          buildDraftFromPublication(
+            payload.currentPublication,
+            payload.laneKeys,
+            payload.tiersOrder,
+          ),
+        );
+      })
+      .catch((error) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        window.localStorage.removeItem("tierlist-last-public-id");
+      });
+
+    return () => controller.abort();
+  }, [initialData.currentPublication, initialData.publicId, publishTarget]);
+
+  function chooseMode(nextMode: "overall" | "lanes") {
+    const nextLaneKeys: StreamerBoardKey[] =
+      nextMode === "overall" ? ["overall"] : ["top", "jungle", "mid", "adc", "support"];
+    setMode(nextMode);
+    setSelectedLane(nextLaneKeys[0]);
+    setMetaOnly(nextMode !== "overall");
+    setEditorData((current) => ({ ...current, mode: nextMode, laneKeys: nextLaneKeys }));
+    setDraft(buildDraftFromPublication(null, nextLaneKeys, initialData.tiersOrder));
+  }
 
   const tiersOrder = editorData.tiersOrder;
   const laneKeys = editorData.laneKeys;
@@ -373,18 +389,15 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
           null)
       : null;
   const inspectedChampion = inspectedSlug ? championLookup.get(inspectedSlug) || null : null;
-  const inspectedRow = useMemo(() => {
-    const sliceKey = `${STREAMER_STATS_RANK_KEY}|${selectedLane}`;
-    const rows = Array.isArray(winratesSnapshot.rowsBySlice?.[sliceKey])
-      ? winratesSnapshot.rowsBySlice[sliceKey]
-      : [];
-    return rows.find((row) => row.slug === inspectedSlug) || null;
-  }, [inspectedSlug, selectedLane, winratesSnapshot.rowsBySlice]);
-  const inspectedDays = useMemo(
-    () => buildChampionTrendDays(inspectedRow, winratesSnapshot.dates),
-    [inspectedRow, winratesSnapshot.dates],
+  const inspectedSlices = useMemo(
+    () =>
+      buildChampionMetaSlices({
+        slug: inspectedSlug,
+        rowsBySlice: winratesSnapshot.rowsBySlice,
+        dates: winratesSnapshot.dates,
+      }),
+    [inspectedSlug, winratesSnapshot.dates, winratesSnapshot.rowsBySlice],
   );
-  const latestInspectedDay = inspectedDays[inspectedDays.length - 1] || null;
 
   useEffect(() => {
     if (!inspectedSlug) return;
@@ -451,34 +464,65 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
   }
 
   async function handlePublish() {
+    if (!mode) return;
+    const normalizedAuthorName = authorName.trim();
+    if (!normalizedAuthorName) {
+      setStatus({ type: "error", text: "Укажи имя автора перед публикацией." });
+      return;
+    }
     setIsPublishing(true);
     setStatus({ type: "idle", text: "" });
 
     try {
-      const response = await fetch("/api/me/streamer-tierlists", {
+      const response = await fetch(
+        publishTarget === "authenticated"
+          ? "/api/me/streamer-tierlists"
+          : "/api/public-tierlists",
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          ...(publishTarget === "public" && editToken
+            ? { "x-tierlist-edit-token": editToken }
+            : {}),
         },
-        body: JSON.stringify({ lanes: draft }),
-      });
+        body: JSON.stringify({
+          mode,
+          lanes: draft,
+          authorName: normalizedAuthorName,
+          publicId: editorData.publicId || currentPublication?.publicId || null,
+        }),
+        },
+      );
 
       const payload = await response.json().catch(() => null);
       if (!response.ok) {
         throw new Error(payload?.error || "streamer_tierlist_publish_failed");
       }
 
-      setEditorData(payload);
-      setDraft(buildDraftFromPublication(payload.currentPublication, payload.laneKeys, payload.tiersOrder));
+      const publication = payload?.publication as StreamerPublication;
+      const publicId = publication?.publicId;
+      const nextEditToken = payload?.editToken || editToken;
+      if (!publication || !publicId) throw new Error("invalid_publish_response");
+      if (publishTarget === "public" && payload?.editToken) {
+        window.localStorage.setItem(`tierlist-edit-token:${publicId}`, payload.editToken);
+        window.localStorage.setItem("tierlist-last-public-id", publicId);
+        setEditToken(payload.editToken);
+      }
+      setEditorData((current) => ({
+        ...current,
+        publicId,
+        currentPublication: publication,
+      }));
+      setDraft(buildDraftFromPublication(publication, laneKeys, tiersOrder));
+      setPublishedUrl(`${window.location.origin}/tierlists/${encodeURIComponent(publicId)}`);
+      setPublishChoice(publishTarget === "authenticated" ? "link" : null);
       setStatus({
         type: "ok",
-        text:
-          payload?.publishAction === "unchanged"
-            ? "Изменений для публикации нет. Текущая запись за сегодня оставлена без правок."
-            : payload?.publishAction === "updated"
-            ? "Публикация за сегодня обновлена. В истории отмечено, что запись отредактирована."
-            : "Публикация сохранена. В истории появилась новая запись.",
+        text: nextEditToken
+          ? "Тирлист опубликован. Ссылка доступна всем, у кого она есть."
+          : "Тирлист опубликован.",
       });
     } catch (error) {
       setStatus({
@@ -493,38 +537,63 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
     }
   }
 
+  if (!mode) {
+    return (
+      <section className={styles.modeChooser} aria-labelledby="tierlist-mode-title">
+        <div>
+          <div className={styles.heroEyebrow}>Новый тирлист</div>
+          <h2 id="tierlist-mode-title" className={styles.heroTitle}>
+            Как будем оценивать чемпионов?
+          </h2>
+          <p className={styles.heroText}>
+            Формат выбирается до заполнения, чтобы случайно не потерять расстановку.
+          </p>
+        </div>
+        <div className={styles.modeGrid}>
+          <button type="button" className={styles.modeButton} onClick={() => chooseMode("overall")}>
+            <strong>Общий тирлист</strong>
+            <span>Все чемпионы в одном списке, без разделения по линиям.</span>
+          </button>
+          <button type="button" className={styles.modeButton} onClick={() => chooseMode("lanes")}>
+            <strong>Тирлист по линиям</strong>
+            <span>Отдельная расстановка для топа, леса, мида, АДК и саппорта.</span>
+          </button>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <div className={`${styles.editorShell} ${isDragging ? styles.dragMode : ""}`.trim()}>
       <section className={styles.hero}>
         <div className={styles.heroMain}>
-          <div className={styles.heroEyebrow}>Streamer Meta Board</div>
-          <h2 className={styles.heroTitle}>Собери собственное видение меты по всем линиям</h2>
+          <div className={styles.heroEyebrow}>
+            {mode === "overall" ? "Общий тирлист" : "Тирлист по линиям"}
+          </div>
+          <h2 className={styles.heroTitle}>Расставь чемпионов по тирам</h2>
           <p className={styles.heroText}>
-            Компактный редактор для быстрого раскидывания чемпионов по тирами без длинных
-            карточек и лишнего скролла.
+            Перетащи чемпионов из пула справа. После публикации получишь открытую ссылку.
           </p>
         </div>
 
-        <div className={styles.heroMeta}>
-          <div className={styles.statCard}>
-            <span className={styles.statLabel}>
-              {isEditedPublication(currentPublication) ? "Последнее изменение" : "Последняя публикация"}
-            </span>
-            <strong className={styles.statValue}>
-              {formatDateLabel(getPublicationStateDate(currentPublication))}
-            </strong>
-          </div>
-          <div className={styles.statCard}>
-            <span className={styles.statLabel}>База меты</span>
-            <strong className={styles.statValue}>
-              {editorData.sourceSnapshot?.statsDate || "Снапшот пока не найден"}
-            </strong>
-          </div>
-          <div className={styles.statCard}>
-            <span className={styles.statLabel}>Публичная страница</span>
-            <Link href={`/streamers/${editorData.streamer.id}`} className={styles.statLink}>
-              Открыть текущий тирлист
-            </Link>
+        <div className={styles.heroControls}>
+          <label className={styles.authorField}>
+            <span>Имя автора</span>
+            <input
+              value={authorName}
+              required
+              aria-required="true"
+              maxLength={48}
+              onChange={(event) => setAuthorName(event.target.value)}
+              placeholder="Как подписать тирлист"
+            />
+          </label>
+          <div className={styles.publicationMeta}>
+            {currentPublication
+              ? `${getPublicationStateLabel(currentPublication)} ${formatDateLabel(
+                  getPublicationStateDate(currentPublication),
+                )}`
+              : `База меты: ${editorData.sourceSnapshot?.statsDate || "последний срез"}`}
           </div>
         </div>
       </section>
@@ -536,6 +605,75 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
           }`.trim()}
         >
           {status.text}
+        </div>
+      ) : null}
+
+      {publishedUrl ? (
+        <div className={styles.publishOverlay} role="presentation" onClick={() => setPublishedUrl(null)}>
+          <section
+            className={styles.publishDialog}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tierlist-published-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            {publishChoice === null ? (
+              <>
+                <div>
+                  <div className={styles.heroEyebrow}>Тирлист опубликован</div>
+                  <h2 id="tierlist-published-title" className={styles.publishTitle}>Ты стример?</h2>
+                  <p className={styles.publishText}>
+                    Стримерские тирлисты можно добавить в публичный каталог. Остальные остаются
+                    доступны только по прямой ссылке.
+                  </p>
+                </div>
+                <div className={styles.publishActions}>
+                  <button type="button" onClick={() => setPublishChoice("streamer")}>Да, я стример</button>
+                  <button type="button" onClick={() => setPublishChoice("link")}>Нет, показать ссылку</button>
+                </div>
+              </>
+            ) : publishChoice === "streamer" ? (
+              <>
+                <div>
+                  <div className={styles.heroEyebrow}>Для стримеров</div>
+                  <h2 id="tierlist-published-title" className={styles.publishTitle}>Напиши мне в Telegram</h2>
+                  <p className={styles.publishText}>
+                    Я добавлю тебе роль стримера. После этого тирлист появится в публичном каталоге.
+                  </p>
+                </div>
+                <div className={styles.publishActions}>
+                  <a href="https://t.me/fedorov_alexey_tg" target="_blank" rel="noreferrer">
+                    Написать в Telegram
+                  </a>
+                  <button type="button" onClick={() => setPublishedUrl(null)}>Закрыть</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div>
+                  <div className={styles.heroEyebrow}>Публичная ссылка</div>
+                  <h2 id="tierlist-published-title" className={styles.publishTitle}>Тирлист готов</h2>
+                  <p className={styles.publishText}>Ссылку сможет открыть любой человек без авторизации.</p>
+                </div>
+                <div className={styles.publishLinkRow}>
+                  <input readOnly value={publishedUrl} aria-label="Публичная ссылка на тирлист" />
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      await navigator.clipboard.writeText(publishedUrl);
+                      setStatus({ type: "ok", text: "Ссылка скопирована." });
+                    }}
+                  >
+                    Копировать
+                  </button>
+                </div>
+                <div className={styles.publishActions}>
+                  <Link href={publishedUrl}>Открыть тирлист</Link>
+                  <button type="button" onClick={() => setPublishedUrl(null)}>Закрыть</button>
+                </div>
+              </>
+            )}
+          </section>
         </div>
       ) : null}
 
@@ -555,7 +693,7 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
                 role="tab"
                 aria-selected={active}
               >
-                <RoleIcon laneKey={lane} size={24} />
+                {lane === "overall" ? null : <RoleIcon laneKey={lane} size={24} />}
                 <span>{STREAMER_LANE_LABELS[lane]}</span>
                 <span className={styles.laneCount}>
                   {countAssignedForLane(draft, lane, tiersOrder)}
@@ -582,7 +720,9 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
           <div className={styles.sectionHead}>
             <div>
               <h3 className={styles.sectionTitle}>
-                Тиры для линии {STREAMER_LANE_LABELS[selectedLane]}
+                {mode === "overall"
+                  ? "Общий тирлист"
+                  : `Тиры для линии ${STREAMER_LANE_LABELS[selectedLane]}`}
               </h3>
               <p className={styles.sectionText}>
                 Клик по полоске отправляет выбранного чемпиона в этот тир. Подробности о герое
@@ -678,7 +818,7 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
             <div>
               <h3 className={styles.sectionTitle}>Общий пул чемпионов</h3>
               <p className={styles.sectionText}>
-                Доступно: {poolChampions.length}. В этой линии уже распределено:{" "}
+                Доступно: {poolChampions.length}. Уже распределено:{" "}
                 {countAssignedForLane(draft, selectedLane, tiersOrder)}.
               </p>
             </div>
@@ -692,14 +832,18 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
             className={styles.poolSearch}
           />
 
-          <label className={styles.poolToggle}>
-            <input
-              type="checkbox"
-              checked={metaOnly}
-              onChange={(event) => setMetaOnly(event.target.checked)}
-            />
-            <span>Только мета этой линии за {editorData.sourceSnapshot?.statsDate || "последний срез"}</span>
-          </label>
+          {mode === "lanes" ? (
+            <label className={styles.poolToggle}>
+              <input
+                type="checkbox"
+                checked={metaOnly}
+                onChange={(event) => setMetaOnly(event.target.checked)}
+              />
+              <span>
+                Только мета этой линии за {editorData.sourceSnapshot?.statsDate || "последний срез"}
+              </span>
+            </label>
+          ) : null}
 
           <div
             className={`${styles.poolList} ${
@@ -804,8 +948,8 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
                 <div className={styles.statsModalMeta}>
                   <div className={styles.statsModalName}>{inspectedChampion.name}</div>
                   <div className={styles.statsModalSubline}>
-                    Линия {STREAMER_LANE_LABELS[selectedLane]} · ранг {STREAMER_STATS_RANK_KEY} ·
-                    последние 7 дней
+                    Текущая мета на {editorData.sourceSnapshot?.statsDate || "последний срез"} ·
+                    тренд за 7 дней
                   </div>
                   <div className={styles.statsModalRoles}>
                     {Array.isArray(inspectedChampion.roles) && inspectedChampion.roles.length
@@ -824,78 +968,47 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
               </button>
             </div>
 
-            {!inspectedRow ? (
+            {!inspectedSlices.length ? (
               <div className={styles.statsModalState}>
-                Для этой линии в сводной таблице пока нет данных по чемпиону.
+                Чемпион не представлен в текущей мете ни на одной линии или ранге.
               </div>
             ) : null}
 
-            {inspectedRow && inspectedDays.length ? (
-              <>
-                <div className={styles.statsMetricGrid}>
-                  {[
-                    {
-                      key: "win",
-                      label: "Винрейт",
-                      value: latestInspectedDay?.winRate ?? null,
-                      delta: latestInspectedDay?.winRateDelta ?? null,
-                      values: inspectedDays.map((day) => day.winRate),
-                      color: "#86efac",
-                    },
-                    {
-                      key: "pick",
-                      label: "Пикрейт",
-                      value: latestInspectedDay?.pickRate ?? null,
-                      delta: latestInspectedDay?.pickRateDelta ?? null,
-                      values: inspectedDays.map((day) => day.pickRate),
-                      color: "#93c5fd",
-                    },
-                    {
-                      key: "ban",
-                      label: "Банрейт",
-                      value: latestInspectedDay?.banRate ?? null,
-                      delta: latestInspectedDay?.banRateDelta ?? null,
-                      values: inspectedDays.map((day) => day.banRate),
-                      color: "#fdba74",
-                    },
-                  ].map((metric) => {
-                    const formattedDelta = formatMetricDelta(metric.delta);
+            {inspectedSlices.length ? (
+              <div className={styles.statsSliceList}>
+                {inspectedSlices.map((slice) => {
+                  const latestDay = slice.days[slice.days.length - 1] || null;
+                  const metrics = [
+                    { key: "win", label: "WR", value: latestDay?.winRate ?? null, delta: latestDay?.winRateDelta ?? null, values: slice.days.map((day) => day.winRate), color: "#86efac" },
+                    { key: "pick", label: "PR", value: latestDay?.pickRate ?? null, delta: latestDay?.pickRateDelta ?? null, values: slice.days.map((day) => day.pickRate), color: "#93c5fd" },
+                    { key: "ban", label: "BR", value: latestDay?.banRate ?? null, delta: latestDay?.banRateDelta ?? null, values: slice.days.map((day) => day.banRate), color: "#fdba74" },
+                  ];
 
-                    return (
-                      <article key={metric.key} className={styles.statsMetricCard}>
-                        <div className={styles.statsMetricHead}>
-                          <span className={styles.statsMetricLabel}>{metric.label}</span>
-                          <span className={formattedDelta.className}>{formattedDelta.text}</span>
-                        </div>
-                        <div className={styles.statsMetricValue}>
-                          {formatMetricValue(metric.value)}
-                        </div>
-                        <div className={styles.statsMetricTrend}>
-                          <TrendSparkline values={metric.values} color={metric.color} width={112} height={28} />
-                        </div>
-                      </article>
-                    );
-                  })}
-                </div>
-
-                <div className={styles.statsDaysTable}>
-                  <div className={styles.statsDaysHead}>
-                    <span>Дата</span>
-                    <span>WR</span>
-                    <span>PR</span>
-                    <span>BR</span>
-                  </div>
-
-                  {[...inspectedDays].reverse().map((day) => (
-                    <div key={day.date} className={styles.statsDaysRow}>
-                      <span>{formatDayLabel(day.date)}</span>
-                      <span>{formatMetricValue(day.winRate)}</span>
-                      <span>{formatMetricValue(day.pickRate)}</span>
-                      <span>{formatMetricValue(day.banRate)}</span>
-                    </div>
-                  ))}
-                </div>
-              </>
+                  return (
+                    <article key={`${slice.rankKey}|${slice.laneKey}`} className={styles.statsSliceRow}>
+                      <div className={styles.statsSliceIdentity}>
+                        <strong>{STREAMER_LANE_LABELS[slice.laneKey as StreamerBoardKey]}</strong>
+                        <span>{STREAMER_RANK_LABELS[slice.rankKey] || slice.rankKey}</span>
+                      </div>
+                      <div className={styles.statsSliceMetrics}>
+                        {metrics.map((metric) => {
+                          const formattedDelta = formatMetricDelta(metric.delta);
+                          return (
+                            <div key={metric.key} className={styles.statsSliceMetric}>
+                              <div className={styles.statsSliceMetricHead}>
+                                <span>{metric.label}</span>
+                                <strong>{formatMetricValue(metric.value)}</strong>
+                                <span className={formattedDelta.className}>{formattedDelta.text}</span>
+                              </div>
+                              <TrendSparkline values={metric.values} color={metric.color} width={86} height={22} />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
             ) : null}
           </div>
         </div>

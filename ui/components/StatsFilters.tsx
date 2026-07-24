@@ -23,6 +23,8 @@ type Props<TRank extends string, TLane extends string> = {
   onLaneChange: (key: TLane) => void;
   rankOptions?: ReadonlyArray<Option<TRank>>;
   laneOptions?: ReadonlyArray<LaneOption<TLane>>;
+  disabledRankKeys?: ReadonlyArray<TRank>;
+  disabledLaneKeys?: ReadonlyArray<TLane>;
   extraControls?: ReactNode;
   compact?: boolean;
 };
@@ -34,6 +36,8 @@ export default function StatsFilters<TRank extends string, TLane extends string>
   onLaneChange,
   rankOptions,
   laneOptions,
+  disabledRankKeys,
+  disabledLaneKeys,
   extraControls,
   compact = false,
 }: Props<TRank, TLane>) {
@@ -48,6 +52,7 @@ export default function StatsFilters<TRank extends string, TLane extends string>
           value={rankValue}
           onChange={onRankChange}
           options={rankOptions}
+          disabledKeys={disabledRankKeys}
         />
       </div>
 
@@ -56,6 +61,7 @@ export default function StatsFilters<TRank extends string, TLane extends string>
           value={laneValue}
           onChange={onLaneChange}
           options={laneOptions}
+          disabledKeys={disabledLaneKeys}
         />
       </div>
 

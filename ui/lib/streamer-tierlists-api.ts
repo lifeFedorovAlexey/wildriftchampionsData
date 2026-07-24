@@ -9,14 +9,17 @@ export type StreamerTierChampion = {
 
 export type StreamerTierKey = "S+" | "S" | "A" | "B" | "C" | "D";
 export type StreamerLaneKey = "top" | "jungle" | "mid" | "adc" | "support";
+export type StreamerBoardKey = StreamerLaneKey | "overall";
+export type StreamerTierlistMode = "lanes" | "overall";
 
 export type StreamerPublicationPayload = {
   version: number;
+  mode?: StreamerTierlistMode;
   tiersOrder: StreamerTierKey[];
   lanes: Record<
-    StreamerLaneKey,
+    StreamerBoardKey,
     {
-      lane: StreamerLaneKey;
+      lane: StreamerBoardKey;
       tiers: Record<StreamerTierKey, StreamerTierChampion[]>;
     }
   >;
@@ -24,7 +27,9 @@ export type StreamerPublicationPayload = {
 
 export type StreamerPublication = {
   id: number;
-  siteUserId: number;
+  siteUserId: number | null;
+  publicId?: string | null;
+  authorName?: string | null;
   sourceStatsSnapshotId?: number | null;
   sourceStatsDate?: string | null;
   editedAt: string | null;
@@ -56,15 +61,17 @@ export type StreamerChampionOption = {
 
 export type StreamerTierlistEditorPayload = {
   streamer: StreamerProfile;
+  publicId?: string | null;
+  mode?: StreamerTierlistMode;
   sourceSnapshot?: {
     id: number;
     statsDate?: string | null;
     completedAt?: string | null;
   } | null;
   tiersOrder: StreamerTierKey[];
-  laneKeys: StreamerLaneKey[];
+  laneKeys: StreamerBoardKey[];
   champions: StreamerChampionOption[];
-  metaChampionSlugsByLane: Record<StreamerLaneKey, string[]>;
+  metaChampionSlugsByLane: Record<StreamerBoardKey, string[]>;
   currentPublication?: StreamerPublication | null;
   history: StreamerPublicationHistoryItem[];
 };
@@ -108,6 +115,31 @@ export async function fetchPublicStreamerTierlist(
     allowNotFound: true,
     fallback: null,
   });
+}
+
+export async function fetchPublicTierlist(
+  publicId: string,
+  env = process.env,
+): Promise<StreamerTierlistDetailPayload | null> {
+  const query = new URLSearchParams({ publicId });
+  return await fetchApiJson(`/api/public-tierlists?${query.toString()}`, {
+    env,
+    fetchOptions: { cache: "no-store" },
+    allowNotFound: true,
+    fallback: null,
+  });
+}
+
+export async function fetchPublicTierlistEditor(
+  env = process.env,
+): Promise<StreamerTierlistEditorPayload> {
+  const response = await fetch(buildApiUrl("/api/public-tierlists?editor=1", env), {
+    headers: { Accept: "application/json" },
+    cache: "no-store",
+  });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(payload?.error || "public_tierlist_editor_failed");
+  return payload;
 }
 
 export async function fetchAuthenticatedStreamerTierlistEditor(
