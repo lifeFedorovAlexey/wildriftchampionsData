@@ -51,6 +51,7 @@ export default function LinkedProviderIcons({
           <span
             key={key}
             className={styles.item}
+            role="img"
             title={getIdentityTitle(identity)}
             aria-label={`${getProviderLabel(providerId)} подключен`}
           >
