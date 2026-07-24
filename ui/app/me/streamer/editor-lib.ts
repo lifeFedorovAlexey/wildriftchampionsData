@@ -1,10 +1,13 @@
 import type {
-  StreamerLaneKey,
+  StreamerBoardKey,
   StreamerPublication,
   StreamerTierKey,
 } from "@/lib/streamer-tierlists-api";
 
+type StreamerLaneKey = StreamerBoardKey;
+
 export const STREAMER_LANE_LABELS: Record<StreamerLaneKey, string> = {
+  overall: "Общий",
   top: "Топ",
   jungle: "Лес",
   mid: "Мид",
