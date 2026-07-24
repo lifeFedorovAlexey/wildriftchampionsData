@@ -255,6 +255,7 @@
 
 .form {
   display: grid;
+  align-items: start;
   gap: 14px 16px;
   margin-top: 18px;
 }
