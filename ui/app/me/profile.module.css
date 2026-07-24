@@ -1,7 +1,7 @@
 .page {
-  max-width: 980px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: var(--space-4) var(--space-3) var(--space-7);
+  padding: var(--space-4) var(--space-3) var(--space-6);
 }
 
 .pageEmbedded {
@@ -10,24 +10,24 @@
 
 .shell {
   display: grid;
-  gap: 18px;
+  gap: 14px;
 }
 
 .shellEmbedded {
   display: grid;
-  gap: 18px;
+  gap: 14px;
 }
 
 .head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 
 .headEmbedded {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
@@ -35,23 +35,25 @@
 .title {
   margin: 0;
   color: #fff;
-  font-size: 34px;
-  letter-spacing: -0.05em;
+  font-size: clamp(28px, 4vw, 34px);
+  letter-spacing: -0.04em;
 }
 
 .lead {
-  margin: 14px 0 0;
+  margin: 6px 0 0;
   color: rgba(255, 255, 255, 0.72);
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.5;
 }
 
 .noticeError,
 .noticeOk,
 .card {
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
-  background: rgba(10, 15, 26, 0.9);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 38%),
+    rgba(10, 15, 26, 0.92);
 }
 
 .noticeError,
@@ -73,11 +75,12 @@
 
 .grid {
   display: grid;
-  gap: 18px;
+  align-items: start;
+  gap: 14px;
 }
 
 .card {
-  padding: 20px;
+  padding: 18px;
 }
 
 .fullCard {
@@ -91,7 +94,7 @@
 .cardTitle {
   margin: 0;
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .cardCopy {
@@ -101,11 +104,85 @@
   line-height: 1.7;
 }
 
+.sectionHeading,
+.compactHeading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionHeading p,
+.compactHeading small {
+  display: block;
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.compactHeading strong {
+  color: #fff;
+  font-size: 14px;
+}
+
+.headingIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border: 1px solid rgba(102, 196, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(56, 162, 231, 0.1);
+  color: #78cfff;
+  font-size: 16px;
+}
+
+.profileSummary {
+  display: grid;
+  gap: 18px;
+  overflow: visible;
+}
+
+.providerPanel {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.providerGroups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  margin-top: 14px;
+}
+
+.providerGroup {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.providerGroup > div {
+  margin: 0;
+}
+
+.microLabel {
+  color: rgba(255, 255, 255, 0.43);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .profileHeader {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 18px;
+  margin: 0;
 }
 
 .avatarWrap {
@@ -178,8 +255,8 @@
 
 .form {
   display: grid;
-  gap: 14px;
-  margin-top: 20px;
+  gap: 14px 16px;
+  margin-top: 18px;
 }
 
 .field {
@@ -193,10 +270,10 @@
 }
 
 .input {
-  min-height: 46px;
+  min-height: 42px;
   padding: 0 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
+  border-radius: 11px;
   background: rgba(255, 255, 255, 0.04);
   color: #fff;
 }
@@ -224,10 +301,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
+  gap: 8px;
+  min-height: 42px;
   padding: 0 16px;
   border: 0;
-  border-radius: 14px;
+  border-radius: 11px;
   background: linear-gradient(135deg, #f5d36c, #ff9b57);
   color: #10151f;
   font-size: 14px;
@@ -237,9 +315,25 @@
 }
 
 .buttonGhost {
-  margin-top: 12px;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
+}
+
+.formSubmit {
+  justify-self: end;
+  min-width: 210px;
+}
+
+.logoutForm {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -42px;
+  padding-right: 226px;
+  pointer-events: none;
+}
+
+.logoutForm .button {
+  pointer-events: auto;
 }
 
 .buttonSecondary {
@@ -571,33 +665,65 @@
   cursor: pointer;
 }
 
-.formSectionTitle {
-  margin: 18px 0 12px;
-  color: #fff;
-  font-size: 16px;
-}
-
-.connectSection {
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 .accessList {
   display: grid;
-  gap: 14px;
+  gap: 10px;
   margin-top: 18px;
 }
 
 .accessCard {
-  display: grid;
-  gap: 12px;
-  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  padding: 13px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
+  border-radius: 14px;
   background:
-    radial-gradient(circle at top right, rgba(245, 211, 108, 0.08), transparent 34%),
+    radial-gradient(circle at top left, rgba(65, 180, 255, 0.07), transparent 42%),
     rgba(255, 255, 255, 0.03);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.accessCard:hover {
+  transform: translateY(-1px);
+  border-color: rgba(100, 200, 255, 0.24);
+  background:
+    radial-gradient(circle at top left, rgba(65, 180, 255, 0.11), transparent 46%),
+    rgba(255, 255, 255, 0.045);
+}
+
+.accessCard:focus-visible,
+.button:focus-visible,
+.input:focus-visible,
+.avatarOption:focus-visible,
+.championOption:focus-visible,
+.championPillRemove:focus-visible {
+  outline: 2px solid #75cfff;
+  outline-offset: 3px;
+}
+
+.accessIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 13px;
+  background: rgba(245, 211, 108, 0.1);
+  color: #f5d36c;
+  font-size: 17px;
+}
+
+.accessContent {
+  min-width: 0;
+  flex: 1;
 }
 
 .accessCardHead {
@@ -610,37 +736,67 @@
 .accessTitle {
   margin: 0;
   color: #fff;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .accessDescription {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
-  line-height: 1.6;
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .accessBadge {
   display: inline-flex;
   align-items: center;
-  min-height: 26px;
-  padding: 0 10px;
+  min-height: 22px;
+  padding: 0 8px;
   border-radius: 999px;
   background: rgba(184, 240, 190, 0.12);
   color: #b8f0be;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
+.accessArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.48);
+  transition:
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.accessCard:hover .accessArrow {
+  color: #75cfff;
+  transform: translateX(2px);
+}
+
 @media (min-width: 900px) {
   .page {
-    padding: var(--space-5) var(--space-4) var(--space-7);
+    padding: var(--space-5) var(--space-4) var(--space-6);
   }
 
-  .grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  .profileSummary {
+    grid-template-columns: minmax(0, 1fr) minmax(400px, 0.9fr);
+    align-items: center;
+  }
+
+  .form {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .fieldWide,
+  .formSubmit,
+  .cropOverlay {
+    grid-column: 1 / -1;
   }
 
   .accessList {
@@ -649,9 +805,47 @@
 }
 
 @media (max-width: 640px) {
+  .head,
   .headEmbedded {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .profileSummary,
+  .card {
+    padding: 14px;
+  }
+
+  .providerGroups {
+    gap: 14px;
+  }
+
+  .providerGroup {
+    width: 100%;
+  }
+
+  .formSubmit {
+    width: 100%;
+  }
+
+  .logoutForm {
+    margin-top: 10px;
+    padding-right: 0;
+  }
+
+  .logoutForm .button {
+    width: 100%;
+  }
+
+  .accessDescription {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .accessBadge {
+    display: none;
   }
 
   .cropDialog {

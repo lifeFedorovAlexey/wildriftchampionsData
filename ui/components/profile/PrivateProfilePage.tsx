@@ -1,5 +1,17 @@
 import Image from "next/image";
-import { FaArrowLeft } from "react-icons/fa6";
+import {
+  FaArrowLeft,
+  FaArrowRightLong,
+  FaComments,
+  FaHeart,
+  FaKey,
+  FaLink,
+  FaRightFromBracket,
+  FaShieldHalved,
+  FaSliders,
+  FaUserPen,
+  FaVideo,
+} from "react-icons/fa6";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
 import LinkedProviderIcons from "@/components/auth/LinkedProviderIcons";
 import TopPillLink from "@/components/TopPillLink";
@@ -39,7 +51,6 @@ type AccessSection = {
   title: string;
   description: string;
   href: string;
-  actionLabel?: string;
 };
 
 type Profile = {
@@ -52,6 +63,23 @@ type Profile = {
   roles?: string[];
   identities?: Identity[];
 };
+
+function getAccessIcon(key: string) {
+  switch (key) {
+    case "admin":
+      return <FaShieldHalved aria-hidden="true" />;
+    case "access":
+      return <FaKey aria-hidden="true" />;
+    case "streamer":
+      return <FaVideo aria-hidden="true" />;
+    case "patron":
+      return <FaHeart aria-hidden="true" />;
+    case "chat":
+      return <FaComments aria-hidden="true" />;
+    default:
+      return <FaArrowRightLong aria-hidden="true" />;
+  }
+}
 
 function formatRoles(roles: string[] | undefined) {
   const normalized = Array.isArray(roles)
@@ -127,8 +155,7 @@ export default function PrivateProfilePage({
         {updated ? <div className={styles.noticeOk}>Профиль обновлён.</div> : null}
 
         <div className={styles.grid}>
-          <section className={styles.card}>
-            <h2 className={styles.cardTitle}>Профиль</h2>
+          <section className={`${styles.card} ${styles.profileSummary}`.trim()}>
             <div className={styles.profileHeader}>
               <div className={styles.avatarWrap}>
                 {profile.avatarUrl ? (
@@ -177,59 +204,93 @@ export default function PrivateProfilePage({
               </div>
             </div>
 
+            <div className={styles.providerPanel}>
+              <div className={styles.compactHeading}>
+                <span className={styles.headingIcon}>
+                  <FaLink aria-hidden="true" />
+                </span>
+                <span>
+                  <strong>Способы входа</strong>
+                  <small>Подключённые аккаунты и новые сервисы</small>
+                </span>
+              </div>
+              <div className={styles.providerGroups}>
+                <div className={styles.providerGroup}>
+                  <span className={styles.microLabel}>Подключены</span>
+                  <LinkedProviderIcons identities={profile.identities || []} />
+                </div>
+
+                {connectableProviders.filter((provider) => provider.id !== "telegram").length ||
+                (!linkedProviderIds.has("telegram") && telegramProvider) ? (
+                  <div className={styles.providerGroup}>
+                    <span className={styles.microLabel}>Добавить</span>
+                    <AuthProvidersList
+                      providers={connectableProviders.filter(
+                        (provider) => provider.id !== "telegram",
+                      )}
+                      telegramProvider={
+                        linkedProviderIds.has("telegram") ? null : telegramProvider
+                      }
+                      returnTo={homeHref === "/admin" ? "/admin" : "/me"}
+                      mode="connect"
+                      layout="stack"
+                      compact
+                      iconOnly
+                    />
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </section>
+
+          <section className={`${styles.card} ${styles.editorCard}`.trim()}>
+            <div className={styles.sectionHeading}>
+              <span className={styles.headingIcon}>
+                <FaUserPen aria-hidden="true" />
+              </span>
+              <div>
+                <h2 className={styles.cardTitle}>Настройки игрока</h2>
+                <p>Ник, Riot ID, ранг, аватар и любимые чемпионы.</p>
+              </div>
+            </div>
+
             <ProfileEditorForm action={saveAction} profile={profile} champions={champions} />
 
             {showLogoutButton ? (
-              <form action={logoutAction} method="post">
+              <form action={logoutAction} method="post" className={styles.logoutForm}>
                 <button type="submit" className={`${styles.button} ${styles.buttonGhost}`.trim()}>
-                  Выйти
+                  <FaRightFromBracket aria-hidden="true" /> Выйти из профиля
                 </button>
               </form>
             ) : null}
           </section>
 
-          <section className={styles.card}>
-            <h2 className={styles.cardTitle}>Привязанные входы</h2>
-            <LinkedProviderIcons identities={profile.identities || []} />
-
-            {connectableProviders.filter((provider) => provider.id !== "telegram").length ||
-            (!linkedProviderIds.has("telegram") && telegramProvider) ? (
-              <div className={styles.connectSection}>
-                <h3 className={styles.formSectionTitle}>Подключить ещё сервис</h3>
-                <AuthProvidersList
-                  providers={connectableProviders.filter((provider) => provider.id !== "telegram")}
-                  telegramProvider={
-                    linkedProviderIds.has("telegram") ? null : telegramProvider
-                  }
-                  returnTo={homeHref === "/admin" ? "/admin" : "/me"}
-                  mode="connect"
-                  layout="stack"
-                  compact
-                  iconOnly
-                />
-              </div>
-            ) : null}
-          </section>
-
           {accessSections.length ? (
             <section className={`${styles.card} ${styles.fullCard}`.trim()}>
-              <h2 className={styles.cardTitle}>Вам доступны следующие разделы</h2>
-              <p className={styles.cardCopy}>
-                Эти разделы открыты для твоего аккаунта уже сейчас. Часть из них пока в
-                формате аккуратных заглушек, но вход и маршрутизация уже готовы.
-              </p>
+              <div className={styles.sectionHeading}>
+                <span className={styles.headingIcon}>
+                  <FaSliders aria-hidden="true" />
+                </span>
+                <div>
+                  <h2 className={styles.cardTitle}>Твои возможности</h2>
+                  <p>Разделы, доступные для текущих ролей аккаунта.</p>
+                </div>
+              </div>
               <div className={styles.accessList}>
                 {accessSections.map((section) => (
-                  <article key={section.key} className={styles.accessCard}>
-                    <div className={styles.accessCardHead}>
-                      <h3 className={styles.accessTitle}>{section.title}</h3>
-                      <span className={styles.accessBadge}>Открыт</span>
+                  <a key={section.key} href={section.href} className={styles.accessCard}>
+                    <span className={styles.accessIcon}>{getAccessIcon(section.key)}</span>
+                    <div className={styles.accessContent}>
+                      <div className={styles.accessCardHead}>
+                        <h3 className={styles.accessTitle}>{section.title}</h3>
+                        <span className={styles.accessBadge}>Доступно</span>
+                      </div>
+                      <p className={styles.accessDescription}>{section.description}</p>
                     </div>
-                    <p className={styles.accessDescription}>{section.description}</p>
-                    <a href={section.href} className={styles.button}>
-                      {section.actionLabel || "Открыть раздел"}
-                    </a>
-                  </article>
+                    <span className={styles.accessArrow} aria-hidden="true">
+                      <FaArrowRightLong />
+                    </span>
+                  </a>
                 ))}
               </div>
             </section>

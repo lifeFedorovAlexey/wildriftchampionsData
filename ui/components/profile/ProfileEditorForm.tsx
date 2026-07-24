@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
-import { FaPlus, FaXmark } from "react-icons/fa6";
+import { FaFloppyDisk, FaPlus, FaXmark } from "react-icons/fa6";
 import styles from "@/app/me/profile.module.css";
 import NativeImage from "@/components/ui/NativeImage";
 import {
@@ -372,7 +372,7 @@ export default function ProfileEditorForm({
 
   return (
     <form action={action} method="post" className={styles.form}>
-      <div className={styles.field}>
+      <div className={`${styles.field} ${styles.fieldWide}`.trim()}>
         <span className={styles.fieldLabel}>Аватар</span>
         <input
           ref={fileInputRef}
@@ -439,7 +439,7 @@ export default function ProfileEditorForm({
           })}
         </div>
         <span className={styles.avatarUploadNote}>
-          Квадратный crop 1:1, итоговый размер {AVATAR_OUTPUT_SIZE}x{AVATAR_OUTPUT_SIZE}.
+          PNG, JPG или WebP · квадратная обрезка
         </span>
         {avatarUploadError ? (
           <span className={`${styles.helperText} ${styles.helperTextError}`.trim()}>
@@ -495,7 +495,7 @@ export default function ProfileEditorForm({
         </select>
       </label>
 
-      <div className={styles.field}>
+      <div className={`${styles.field} ${styles.fieldWide}`.trim()}>
         <span className={styles.fieldLabel}>Мейн-чемпионы</span>
         <div className={styles.championPicker}>
           <input
@@ -575,8 +575,8 @@ export default function ProfileEditorForm({
         </div>
       </div>
 
-      <button type="submit" className={styles.button}>
-        Сохранить
+      <button type="submit" className={`${styles.button} ${styles.formSubmit}`.trim()}>
+        <FaFloppyDisk aria-hidden="true" /> Сохранить изменения
       </button>
 
       {cropSource && cropLayout ? (

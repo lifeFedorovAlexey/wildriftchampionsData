@@ -38,10 +38,8 @@ function buildAvailableSections(roles: string[] | undefined) {
     sections.push({
       key: "admin",
       title: "Админка",
-      description:
-        "Управление админским контуром, профилем и служебными разделами. Страница уже рабочая.",
+      description: "Профили, служебные разделы и управление сайтом.",
       href: "/admin",
-      actionLabel: "Открыть админку",
     });
   }
 
@@ -49,10 +47,8 @@ function buildAvailableSections(roles: string[] | undefined) {
     sections.push({
       key: "access",
       title: "Управление доступами",
-      description:
-        "Owner-only раздел со всеми зарегистрированными пользователями и назначением ролей.",
+      description: "Пользователи, роли и права доступа.",
       href: "/admin/access",
-      actionLabel: "Открыть доступы",
     });
   }
 
@@ -60,10 +56,8 @@ function buildAvailableSections(roles: string[] | undefined) {
     sections.push({
       key: "streamer",
       title: "Раздел стримера",
-      description:
-        "Личный кабинет с редактором тирлистов по линиям, публикацией снапшотов меты и историей версий.",
+      description: "Редактор тирлистов, публикация меты и история версий.",
       href: "/me/streamer",
-      actionLabel: "Открыть раздел стримера",
     });
   }
 
@@ -71,20 +65,16 @@ function buildAvailableSections(roles: string[] | undefined) {
     sections.push({
       key: "patron",
       title: "Раздел мецената",
-      description:
-        "Персональный раздел для меценатов. Пока это заглушка, чтобы доступы и навигация уже были на месте.",
+      description: "Материалы и возможности для тех, кто поддерживает проект.",
       href: "/me/patron",
-      actionLabel: "Открыть раздел мецената",
     });
   }
 
   sections.push({
     key: "chat",
     title: "Общий чат",
-    description:
-      "Общайся в реальном времени, отправляй изображения и видео и управляй своими сообщениями.",
+    description: "Общение, изображения, видео и управление сообщениями.",
     href: "/me/chat",
-    actionLabel: "Открыть чат",
   });
 
   return sections;
