@@ -577,14 +577,19 @@
 
 .accessListStack {
   display: grid;
-  gap: 12px;
+  gap: 8px;
   margin-top: 18px;
+}
+
+.accessDirectory,
+.accessEditor {
+  min-width: 0;
 }
 
 .accessUserCard {
   display: grid;
-  gap: 10px;
-  padding: 16px;
+  gap: 8px;
+  padding: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   background:
@@ -734,6 +739,30 @@
 
   .accessGrid {
     grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.08fr);
+    align-items: start;
+  }
+
+  .accessDirectory {
+    position: sticky;
+    top: calc(var(--header-height) + 20px);
+  }
+
+  .accessListStack {
+    max-height: min(680px, calc(100vh - var(--header-height) - 210px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  .accessListStack::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .accessListStack::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .accessMetaGrid {

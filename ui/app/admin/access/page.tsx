@@ -199,7 +199,7 @@ export default async function AdminAccessPage({
         ) : null}
 
         <div className={styles.accessGrid}>
-          <section className={styles.subcard}>
+          <section className={`${styles.subcard} ${styles.accessDirectory}`.trim()}>
             <div className={styles.subcardHead}>
               <h3 className={styles.cardTitle}>Пользователи</h3>
               <p className={styles.cardText}>
@@ -272,7 +272,7 @@ export default async function AdminAccessPage({
             </div>
           </section>
 
-          <section className={styles.subcard}>
+          <section className={`${styles.subcard} ${styles.accessEditor}`.trim()}>
             {selectedUser ? (
               <>
                 <div className={styles.subcardHead}>
