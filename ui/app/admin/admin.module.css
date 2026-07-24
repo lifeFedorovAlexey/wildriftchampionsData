@@ -570,8 +570,7 @@
 
 .accessGrid,
 .accessMetaGrid,
-.roleCardGrid,
-.permissionMatrix {
+.roleCardGrid {
   display: grid;
   gap: 16px;
 }
@@ -706,18 +705,6 @@
   color: #fff;
   font-size: 15px;
   font-weight: 700;
-}
-
-.permissionRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.03);
 }
 
 @media (min-width: 900px) {

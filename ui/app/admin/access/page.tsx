@@ -53,13 +53,6 @@ const ROLE_DEFINITIONS = [
   },
 ];
 
-const PERMISSION_ROWS = [
-  { title: "Базовый профиль", roles: ["user"], note: "Есть у каждого зарегистрированного пользователя." },
-  { title: "Админка", roles: ["owner", "admin"], note: "Текущая приватная зона `/admin`." },
-  { title: "Раздача ролей", roles: ["owner"], note: "Страница `/admin/access` и owner-only изменения." },
-  { title: "Кабинет стримера", roles: ["owner", "streamer"], note: "Редактор тирлистов по линиям, публикация и история снапшотов." },
-  { title: "Кабинет мецената", roles: ["owner", "patron"], note: "Маршрут уже есть, контент пока заглушка." },
-];
 
 function buildInitialGlyph(value: string | null | undefined, fallback = "U") {
   const normalized = String(value || "").trim();
@@ -390,7 +383,12 @@ export default async function AdminAccessPage({
                   </div>
                 </details>
 
-                <form action="/api/admin/access" method="post" className={styles.roleForm}>
+                <form
+                  key={selectedUser.siteUserId}
+                  action="/api/admin/access"
+                  method="post"
+                  className={styles.roleForm}
+                >
                   <input type="hidden" name="siteUserId" value={selectedUser.siteUserId} />
                   <input type="hidden" name="selectedUserId" value={selectedUser.siteUserId} />
                   <input type="hidden" name="q" value={query} />
@@ -474,42 +472,6 @@ export default async function AdminAccessPage({
         </div>
       </section>
 
-      <section className={styles.panel}>
-        <div className={styles.subcardHead}>
-          <div>
-            <div className={styles.sectionEyebrow}>Permission Matrix</div>
-            <h3 className={styles.cardTitle}>Матрица разрешений</h3>
-          </div>
-          <p className={styles.cardText}>
-            Пока это сознательно простая RBAC-модель: базовая роль `user` плюс дополнительные
-            флаги доступа.
-          </p>
-        </div>
-
-        <div className={styles.permissionMatrix}>
-          {PERMISSION_ROWS.map((row) => (
-            <article key={row.title} className={styles.permissionRow}>
-              <div>
-                <strong className={styles.identityName}>{row.title}</strong>
-                <p className={styles.cardText}>{row.note}</p>
-              </div>
-              <div className={styles.roleMatrixPills}>
-                {row.roles.map((role) =>
-                  role === "user" ? (
-                    <span key={`${row.title}-${role}`} className={styles.roleChipBase}>
-                      {role}
-                    </span>
-                  ) : (
-                    <span key={`${row.title}-${role}`} className={styles.roleChip}>
-                      {role}
-                    </span>
-                  ),
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
     </AdminShell>
   );
 }
