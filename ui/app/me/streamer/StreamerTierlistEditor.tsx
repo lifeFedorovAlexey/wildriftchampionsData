@@ -225,7 +225,8 @@ export default function StreamerTierlistEditor({
       : null,
   );
   const [authorName, setAuthorName] = useState(
-    initialData.currentPublication?.authorName || initialData.streamer.displayName || "",
+    initialData.currentPublication?.authorName ||
+      (publishTarget === "authenticated" ? initialData.streamer.displayName : ""),
   );
   const [editToken, setEditToken] = useState<string | null>(null);
   const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
@@ -284,7 +285,7 @@ export default function StreamerTierlistEditor({
         setEditorData(payload);
         setMode(restoredMode);
         setEditToken(storedToken);
-        setAuthorName(payload.currentPublication?.authorName || payload.streamer.displayName || "");
+        setAuthorName(payload.currentPublication?.authorName || "");
         setSelectedLane(payload.laneKeys[0] || "top");
         setMetaOnly(restoredMode !== "overall");
         setDraft(
@@ -464,6 +465,11 @@ export default function StreamerTierlistEditor({
 
   async function handlePublish() {
     if (!mode) return;
+    const normalizedAuthorName = authorName.trim();
+    if (!normalizedAuthorName) {
+      setStatus({ type: "error", text: "Укажи имя автора перед публикацией." });
+      return;
+    }
     setIsPublishing(true);
     setStatus({ type: "idle", text: "" });
 
@@ -484,7 +490,7 @@ export default function StreamerTierlistEditor({
         body: JSON.stringify({
           mode,
           lanes: draft,
-          authorName,
+          authorName: normalizedAuthorName,
           publicId: editorData.publicId || currentPublication?.publicId || null,
         }),
         },
@@ -575,6 +581,8 @@ export default function StreamerTierlistEditor({
             <span>Имя автора</span>
             <input
               value={authorName}
+              required
+              aria-required="true"
               maxLength={48}
               onChange={(event) => setAuthorName(event.target.value)}
               placeholder="Как подписать тирлист"
