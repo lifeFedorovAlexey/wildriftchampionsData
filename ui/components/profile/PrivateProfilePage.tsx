@@ -8,7 +8,6 @@ import {
   FaRightFromBracket,
   FaShieldHalved,
   FaSliders,
-  FaUserPen,
   FaVideo,
 } from "react-icons/fa6";
 import AuthProvidersList from "@/components/auth/AuthProvidersList";
@@ -244,9 +243,6 @@ export default function PrivateProfilePage({
 
           <section className={`${styles.card} ${styles.editorCard}`.trim()}>
             <div className={styles.sectionHeading}>
-              <span className={styles.headingIcon}>
-                <FaUserPen aria-hidden="true" />
-              </span>
               <div>
                 <h2 className={styles.cardTitle}>Настройки игрока</h2>
                 <p>Ник, Riot ID, ранг, аватар и любимые чемпионы.</p>
