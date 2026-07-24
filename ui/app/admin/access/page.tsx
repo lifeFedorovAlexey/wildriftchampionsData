@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { FaEye } from "react-icons/fa6";
 import AdminShell from "@/components/admin/AdminShell";
 import { fetchAdminAccessUsers, fetchAdminSession } from "@/lib/admin-api.js";
 import { getAdminSessionTokenFromCookie } from "@/lib/admin-auth.js";
@@ -284,14 +283,22 @@ export default async function AdminAccessPage({
                       )}
                     </span>
                     <div>
-                    <h3 className={styles.cardTitle}>
-                      {selectedUser.displayName ||
-                        selectedUser.streamerDisplayName ||
-                        `User #${selectedUser.siteUserId}`}
-                    </h3>
-                    <p className={styles.cardText}>
-                      Последний вход: {formatDateTime(selectedUser.lastLoginAt)}
-                    </p>
+                      <div className={styles.selectedUserTitleLine}>
+                        <h3 className={styles.cardTitle}>
+                          {selectedUser.displayName ||
+                            selectedUser.streamerDisplayName ||
+                            `User #${selectedUser.siteUserId}`}
+                        </h3>
+                        <span className={styles.sidebarLinkMeta}>#{selectedUser.siteUserId}</span>
+                      </div>
+                      <p className={styles.cardText}>
+                        Последний вход: {formatDateTime(selectedUser.lastLoginAt)}
+                      </p>
+                      <p className={styles.selectedUserMeta}>
+                        Вход через: {Array.isArray(selectedUser.identities) && selectedUser.identities.length
+                          ? selectedUser.identities.map((identity) => identity.provider).join(" · ")
+                          : "нет привязок"}
+                      </p>
                     </div>
                   </div>
                   <div className={styles.roleMatrixPills}>
@@ -304,36 +311,10 @@ export default async function AdminAccessPage({
                   </div>
                 </div>
 
-                <div className={styles.accessMetaGrid}>
-                  <div className={styles.statCard}>
-                    <span className={styles.statLabel}>Site user id</span>
-                    <span className={styles.statValue}>#{selectedUser.siteUserId}</span>
-                  </div>
-                  <div className={styles.statCard}>
-                    <span className={styles.statLabel}>Публичное имя стримера</span>
-                    <span className={styles.statValue}>
-                      {selectedUser.streamerDisplayName || "Не задано"}
-                    </span>
-                  </div>
-                  <div className={styles.statCard}>
-                    <span className={styles.statLabel}>Провайдеры</span>
-                    <span className={styles.statValue}>
-                      {Array.isArray(selectedUser.identities) && selectedUser.identities.length
-                        ? selectedUser.identities.map((identity) => identity.provider).join(", ")
-                        : "Нет"}
-                    </span>
-                  </div>
-                </div>
-
                 <details className={styles.sensitiveDetails}>
                   <summary className={styles.sensitiveSummary}>
-                    <span className={styles.sensitiveSummaryLead}>
-                      <span className={styles.sensitiveEyeIcon} aria-hidden="true">
-                        <FaEye />
-                      </span>
-                      <span className={styles.sensitiveSummaryText}>Показать личные данные и привязки</span>
-                    </span>
-                    <span className={styles.sensitiveSummaryMeta}>скрыто по умолчанию</span>
+                    <span className={styles.sensitiveSummaryText}>Личные данные и привязки</span>
+                    <span className={styles.sensitiveSummaryMeta}>Показать</span>
                   </summary>
 
                   <div className={styles.sensitiveContent}>
@@ -393,16 +374,8 @@ export default async function AdminAccessPage({
                   <input type="hidden" name="selectedUserId" value={selectedUser.siteUserId} />
                   <input type="hidden" name="q" value={query} />
 
-                  <div className={styles.subcard}>
-                    <div className={styles.subcardHead}>
-                      <h4 className={styles.cardTitle}>Публичная витрина стримера</h4>
-                      <p className={styles.cardText}>
-                        Это имя будет показано на страницах `/streamers`. Личные поля профиля,
-                        включая обычное имя аккаунта и `wildRiftHandle`, в публичный список не
-                        попадут.
-                      </p>
-                    </div>
-
+                  <label className={styles.streamerNameField}>
+                    <span className={styles.roleToggleTitle}>Имя в каталоге стримеров</span>
                     <input
                       type="text"
                       name="streamerDisplayName"
@@ -411,7 +384,10 @@ export default async function AdminAccessPage({
                       className={styles.input}
                       maxLength={48}
                     />
-                  </div>
+                    <span className={styles.streamerNameHint}>
+                      Показывается на /streamers. Остальные данные профиля остаются закрытыми.
+                    </span>
+                  </label>
 
                   <div className={styles.roleCardGrid}>
                     {ROLE_DEFINITIONS.map((role) => {
