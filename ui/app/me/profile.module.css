@@ -393,6 +393,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
   cursor: pointer;
   transition:
     transform 140ms ease,
@@ -406,8 +407,9 @@
 }
 
 .avatarOptionActive {
-  border-color: rgba(245, 211, 108, 0.62);
-  background: rgba(245, 211, 108, 0.12);
+  border-color: rgba(117, 207, 255, 0.72);
+  background: rgba(76, 174, 230, 0.1);
+  box-shadow: 0 0 0 1px rgba(117, 207, 255, 0.16);
 }
 
 .avatarOptionUpload {
@@ -423,8 +425,7 @@
   font-weight: 300;
 }
 
-.avatarChoiceImage,
-.avatarChoiceFallback {
+.avatarChoiceImage {
   width: 56px;
   height: 56px;
   margin: 3px;
@@ -432,18 +433,38 @@
 }
 
 .avatarChoiceImage {
+  position: relative;
+  z-index: 1;
   display: block;
   object-fit: cover;
 }
 
 .avatarChoiceFallback {
-  display: inline-flex;
+  position: absolute;
+  inset: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.78);
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 21px;
+}
+
+.avatarSelectedMark {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #101621;
+  border-radius: 999px;
+  background: #75cfff;
+  color: #07101a;
+  font-size: 9px;
 }
 
 .avatarRemoveButton {
@@ -758,25 +779,6 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-.accessArrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
-  border-radius: 10px;
-  color: rgba(255, 255, 255, 0.48);
-  transition:
-    color 150ms ease,
-    transform 150ms ease;
-}
-
-.accessCard:hover .accessArrow {
-  color: #75cfff;
-  transform: translateX(2px);
 }
 
 @media (min-width: 900px) {

@@ -1,9 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
-import { FaFloppyDisk, FaPlus, FaXmark } from "react-icons/fa6";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ChangeEvent,
+} from "react";
+import { FaCheck, FaFloppyDisk, FaPlus, FaUserSlash, FaXmark } from "react-icons/fa6";
 import styles from "@/app/me/profile.module.css";
+import AuthProviderIcon from "@/components/icons/AuthProviderIcon";
 import NativeImage from "@/components/ui/NativeImage";
 import {
   getPeakRankOptions,
@@ -36,6 +44,7 @@ type AvatarOption = {
   key: string;
   label: string;
   avatarUrl: string;
+  providerId: string;
 };
 
 type CropSource = {
@@ -49,6 +58,9 @@ const AVATAR_CROP_FRAME_SIZE = 320;
 const AVATAR_OUTPUT_SIZE = 512;
 const AVATAR_MAX_PICK_SIZE = 10 * 1024 * 1024;
 const ALLOWED_AVATAR_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+const subscribeToHydration = () => () => {};
+const getHydratedSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 function getSafeCropSourceUrl(value: string) {
   try {
@@ -63,7 +75,13 @@ function getSafeCropSourceUrl(value: string) {
 
 function getAvatarLabel(identity: Identity, index: number) {
   const provider = String(identity.provider || "").trim();
-  if (provider) return provider;
+  const providerLabels: Record<string, string> = {
+    google: "Google",
+    telegram: "Telegram",
+    vk: "VK",
+    yandex: "Яндекс",
+  };
+  if (provider) return `Аватар из ${providerLabels[provider] || provider}`;
   return `avatar-${index + 1}`;
 }
 
@@ -159,6 +177,11 @@ export default function ProfileEditorForm({
   const [avatarUploadError, setAvatarUploadError] = useState("");
   const [avatarUploadNotice, setAvatarUploadNotice] = useState("");
   const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getHydratedSnapshot,
+    getServerSnapshot,
+  );
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const cropImageRef = useRef<HTMLImageElement | null>(null);
 
@@ -172,18 +195,23 @@ export default function ProfileEditorForm({
         key: `${String(identity?.provider || "provider").trim() || "provider"}-${index}`,
         label: getAvatarLabel(identity, index),
         avatarUrl: nextAvatarUrl,
+        providerId: String(identity?.provider || "user").trim() || "user",
       });
     }
 
     if (avatarUrl && !byUrl.has(avatarUrl)) {
       byUrl.set(avatarUrl, {
         key: "uploaded-avatar",
-        label: "загруженный",
+        label: "Загруженный аватар",
         avatarUrl,
+        providerId: "user",
       });
     }
 
-    return [{ key: "none", label: "без аватара", avatarUrl: "" }, ...Array.from(byUrl.values())];
+    return [
+      { key: "none", label: "Без аватара", avatarUrl: "", providerId: "none" },
+      ...Array.from(byUrl.values()),
+    ];
   }, [avatarUrl, profile.identities]);
 
   const championMap = useMemo(
@@ -404,19 +432,33 @@ export default function ProfileEditorForm({
                   onClick={() => setAvatarUrl(option.avatarUrl)}
                   className={`${styles.avatarOption} ${isActive ? styles.avatarOptionActive : ""}`.trim()}
                   aria-pressed={isActive}
+                  aria-label={option.label}
                   title={option.label}
                 >
-                  {option.avatarUrl ? (
+                  <span className={styles.avatarChoiceFallback} aria-hidden="true">
+                    {option.providerId === "none" ? (
+                      <FaUserSlash />
+                    ) : (
+                      <AuthProviderIcon providerId={option.providerId} />
+                    )}
+                  </span>
+                  {isHydrated && option.avatarUrl ? (
                     <NativeImage
                       src={option.avatarUrl}
-                      alt={option.label}
+                      alt=""
                       width={56}
                       height={56}
                       className={styles.avatarChoiceImage}
+                      onError={(event) => {
+                        event.currentTarget.style.display = "none";
+                      }}
                     />
-                  ) : (
-                    <span className={styles.avatarChoiceFallback}>?</span>
-                  )}
+                  ) : null}
+                  {isActive ? (
+                    <span className={styles.avatarSelectedMark} aria-hidden="true">
+                      <FaCheck />
+                    </span>
+                  ) : null}
                 </button>
                 {isUploadedAvatar ? (
                   <button

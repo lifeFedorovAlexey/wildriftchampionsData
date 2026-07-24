@@ -1,7 +1,6 @@
 import Image from "next/image";
 import {
   FaArrowLeft,
-  FaArrowRightLong,
   FaComments,
   FaHeart,
   FaKey,
@@ -77,7 +76,7 @@ function getAccessIcon(key: string) {
     case "chat":
       return <FaComments aria-hidden="true" />;
     default:
-      return <FaArrowRightLong aria-hidden="true" />;
+      return <FaSliders aria-hidden="true" />;
   }
 }
 
@@ -287,9 +286,6 @@ export default function PrivateProfilePage({
                       </div>
                       <p className={styles.accessDescription}>{section.description}</p>
                     </div>
-                    <span className={styles.accessArrow} aria-hidden="true">
-                      <FaArrowRightLong />
-                    </span>
                   </a>
                 ))}
               </div>
