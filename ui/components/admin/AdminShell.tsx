@@ -52,7 +52,6 @@ export default function AdminShell({
           </nav>
 
           <div className={styles.sidebarFooter}>
-            <Link href="/guides" className={styles.button}>Открыть гайды</Link>
             <form action="/api/admin/auth/logout" method="post">
               <button type="submit" className={`${styles.button} ${styles.buttonSecondary}`}>
                 Выйти
