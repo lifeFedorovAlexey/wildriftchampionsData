@@ -37,36 +37,23 @@ export default async function StreamersPage() {
 
   return (
     <PageWrapper
-      title="Личные Тирлисты Стримеров"
+      title="Тирлисты стримеров"
       paragraphs={[
-        "Здесь собраны актуальные публичные тирлисты стримеров, опубликованные прямо через их личный кабинет.",
+        "Подтверждённые стримеры попадают в этот каталог. Любой пользователь может создать свой тирлист — он не появится в списке, но будет доступен по ссылке.",
       ]}
     >
       <div className={styles.page}>
-        <section className={styles.hero}>
-          <h2 className={styles.heroTitle}>Живая мета глазами стримеров</h2>
-          <p className={styles.heroLead}>
-            Не один усредненный список, а отдельные авторские взгляды на каждую линию.
-          </p>
-          <p className={styles.heroText}>
-            Выбирай стримера, открывай его текущий тирлист и смотри, как меняется личное
-            видение меты по мере новых публикаций.
-          </p>
-        </section>
-
-        <section className={styles.ctaCard}>
-          <h3 className={styles.cardTitle}>Хочешь добавить свой тирлист на сайт?</h3>
-          <p className={styles.ctaText}>
-            Если ты стример и хочешь получить свой кабинет с публикацией тирлистов на
-            сайте, напиши мне в Telegram. Подключим твою страницу и историю публикаций.
-          </p>
+        <section className={styles.catalogActions}>
+          <Link href="/tierlists/create" className={styles.primaryAction}>
+            Создать свой тирлист
+          </Link>
           <a
             href={OWNER_TELEGRAM_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.ctaLink}
+            className={styles.secondaryAction}
           >
-            Написать в Telegram
+            Получить доступ стримера
           </a>
         </section>
 
@@ -111,12 +98,9 @@ export default async function StreamersPage() {
             })}
           </div>
         ) : (
-          <section className={styles.card}>
-            <h3 className={styles.cardTitle}>Пока без публикаций</h3>
-            <p className={styles.emptyState}>
-              Как только стримеры начнут публиковать свои тирлисты, они появятся здесь
-              в виде отдельного списка.
-            </p>
+          <section className={`${styles.card} ${styles.emptyCatalog}`.trim()}>
+            <h3 className={styles.cardTitle}>Пока нет тирлистов стримеров</h3>
+            <p className={styles.emptyState}>Создай свой тирлист и поделись прямой ссылкой.</p>
           </section>
         )}
       </div>

@@ -202,6 +202,7 @@ function ChampionCard({
 
 type Props = {
   initialData: StreamerTierlistEditorPayload;
+  publishTarget: "public" | "authenticated";
   winratesSnapshot: {
     rowsBySlice: WinratesRowsBySlice;
     dates: string[];
@@ -212,7 +213,11 @@ function buildDropTargetKey(target: "pool" | StreamerTierKey, slug?: string | nu
   return slug ? `${target}:${slug}` : String(target);
 }
 
-export default function StreamerTierlistEditor({ initialData, winratesSnapshot }: Props) {
+export default function StreamerTierlistEditor({
+  initialData,
+  publishTarget,
+  winratesSnapshot,
+}: Props) {
   const [editorData, setEditorData] = useState(initialData);
   const [mode, setMode] = useState<"overall" | "lanes" | null>(
     initialData.currentPublication
@@ -250,12 +255,14 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
   const [isPublishing, setIsPublishing] = useState(false);
 
   useEffect(() => {
+    if (publishTarget !== "public") return;
     const publicId = initialData.publicId || initialData.currentPublication?.publicId;
     if (!publicId) return;
     setEditToken(window.localStorage.getItem(`tierlist-edit-token:${publicId}`));
-  }, [initialData.currentPublication?.publicId, initialData.publicId]);
+  }, [initialData.currentPublication?.publicId, initialData.publicId, publishTarget]);
 
   useEffect(() => {
+    if (publishTarget !== "public") return;
     if (initialData.publicId || initialData.currentPublication) return;
     const publicId = window.localStorage.getItem("tierlist-last-public-id");
     if (!publicId) return;
@@ -294,7 +301,7 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
       });
 
     return () => controller.abort();
-  }, [initialData.currentPublication, initialData.publicId]);
+  }, [initialData.currentPublication, initialData.publicId, publishTarget]);
 
   function chooseMode(nextMode: "overall" | "lanes") {
     const nextLaneKeys: StreamerBoardKey[] =
@@ -461,12 +468,18 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
     setStatus({ type: "idle", text: "" });
 
     try {
-      const response = await fetch("/api/public-tierlists", {
+      const response = await fetch(
+        publishTarget === "authenticated"
+          ? "/api/me/streamer-tierlists"
+          : "/api/public-tierlists",
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          ...(editToken ? { "x-tierlist-edit-token": editToken } : {}),
+          ...(publishTarget === "public" && editToken
+            ? { "x-tierlist-edit-token": editToken }
+            : {}),
         },
         body: JSON.stringify({
           mode,
@@ -474,7 +487,8 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
           authorName,
           publicId: editorData.publicId || currentPublication?.publicId || null,
         }),
-      });
+        },
+      );
 
       const payload = await response.json().catch(() => null);
       if (!response.ok) {
@@ -485,7 +499,7 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
       const publicId = publication?.publicId;
       const nextEditToken = payload?.editToken || editToken;
       if (!publication || !publicId) throw new Error("invalid_publish_response");
-      if (payload?.editToken) {
+      if (publishTarget === "public" && payload?.editToken) {
         window.localStorage.setItem(`tierlist-edit-token:${publicId}`, payload.editToken);
         window.localStorage.setItem("tierlist-last-public-id", publicId);
         setEditToken(payload.editToken);
@@ -497,7 +511,7 @@ export default function StreamerTierlistEditor({ initialData, winratesSnapshot }
       }));
       setDraft(buildDraftFromPublication(publication, laneKeys, tiersOrder));
       setPublishedUrl(`${window.location.origin}/tierlists/${encodeURIComponent(publicId)}`);
-      setPublishChoice(null);
+      setPublishChoice(publishTarget === "authenticated" ? "link" : null);
       setStatus({
         type: "ok",
         text: nextEditToken
