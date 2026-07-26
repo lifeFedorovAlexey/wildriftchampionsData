@@ -620,15 +620,38 @@
   letter-spacing: 0.04em;
 }
 
+.statsRankTable {
+  display: grid;
+}
+
+.statsRankTableHead,
+.statsRankRow {
+  display: grid;
+  grid-template-columns: 90px repeat(3, minmax(0, 1fr));
+  align-items: center;
+}
+
+.statsRankTableHead {
+  min-height: 28px;
+  padding: 0 10px 0 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+  color: var(--text-soft);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.statsRankTableHead span:not(:first-child) {
+  padding-left: 10px;
+  border-left: 1px solid var(--border-soft);
+}
+
 .statsRankList {
   display: grid;
 }
 
 .statsRankRow {
-  display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
-  gap: 10px;
-  align-items: center;
   min-height: 48px;
   padding: 7px 10px 7px 12px;
 }
@@ -643,12 +666,6 @@
   font-weight: 750;
 }
 
-.statsSliceMetrics {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-
 .statsSliceMetric {
   min-width: 0;
   display: flex;
@@ -659,20 +676,12 @@
   border-left: 1px solid var(--border-soft);
 }
 
-.statsSliceMetricHead {
+.statsSliceMetricValue {
   display: grid;
   gap: 2px;
 }
 
-.statsSliceMetricHead > span:first-child {
-  color: var(--text-soft);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.statsSliceMetricHead strong {
+.statsSliceMetricValue strong {
   color: var(--text-strong);
   font-size: 15px;
   font-weight: 800;
@@ -894,12 +903,13 @@
     width: 100%;
   }
 
-  .statsRankRow {
-    grid-template-columns: 1fr;
-    gap: 6px;
+  .statsRankTable {
+    overflow-x: auto;
   }
 
-  .statsSliceMetrics {
-    grid-template-columns: 1fr;
+  .statsRankTableHead,
+  .statsRankRow {
+    grid-template-columns: 82px repeat(3, minmax(110px, 1fr));
+    min-width: 520px;
   }
 }
