@@ -228,7 +228,6 @@ export default function StreamerTierlistEditor({
     initialData.currentPublication?.authorName ||
       (publishTarget === "authenticated" ? initialData.streamer.displayName : ""),
   );
-  const [editToken, setEditToken] = useState<string | null>(null);
   const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
   const [publishChoice, setPublishChoice] = useState<"streamer" | "link" | null>(null);
   const [draft, setDraft] = useState(() =>
@@ -254,55 +253,7 @@ export default function StreamerTierlistEditor({
     text: "",
   });
   const [isPublishing, setIsPublishing] = useState(false);
-
-  useEffect(() => {
-    if (publishTarget !== "public") return;
-    const publicId = initialData.publicId || initialData.currentPublication?.publicId;
-    if (!publicId) return;
-    setEditToken(window.localStorage.getItem(`tierlist-edit-token:${publicId}`));
-  }, [initialData.currentPublication?.publicId, initialData.publicId, publishTarget]);
-
-  useEffect(() => {
-    if (publishTarget !== "public") return;
-    if (initialData.publicId || initialData.currentPublication) return;
-    const publicId = window.localStorage.getItem("tierlist-last-public-id");
-    if (!publicId) return;
-    const storedToken = window.localStorage.getItem(`tierlist-edit-token:${publicId}`);
-    if (!storedToken) return;
-
-    const controller = new AbortController();
-    fetch(`/api/public-tierlists?editor=1&publicId=${encodeURIComponent(publicId)}`, {
-      headers: { "x-tierlist-edit-token": storedToken },
-      signal: controller.signal,
-    })
-      .then(async (response) => {
-        const payload = await response.json().catch(() => null);
-        if (!response.ok) throw new Error(payload?.error || "restore_failed");
-        return payload as StreamerTierlistEditorPayload;
-      })
-      .then((payload) => {
-        const restoredMode = payload.currentPublication?.payload?.mode || "lanes";
-        setEditorData(payload);
-        setMode(restoredMode);
-        setEditToken(storedToken);
-        setAuthorName(payload.currentPublication?.authorName || "");
-        setSelectedLane(payload.laneKeys[0] || "top");
-        setMetaOnly(restoredMode !== "overall");
-        setDraft(
-          buildDraftFromPublication(
-            payload.currentPublication,
-            payload.laneKeys,
-            payload.tiersOrder,
-          ),
-        );
-      })
-      .catch((error) => {
-        if (error instanceof DOMException && error.name === "AbortError") return;
-        window.localStorage.removeItem("tierlist-last-public-id");
-      });
-
-    return () => controller.abort();
-  }, [initialData.currentPublication, initialData.publicId, publishTarget]);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   function chooseMode(nextMode: "overall" | "lanes") {
     const nextLaneKeys: StreamerBoardKey[] =
@@ -465,6 +416,10 @@ export default function StreamerTierlistEditor({
 
   async function handlePublish() {
     if (!mode) return;
+    if (publishTarget === "public" && currentPublication) {
+      setStatus({ type: "error", text: "Анонимный тирлист уже опубликован. Для изменений создай новый." });
+      return;
+    }
     const normalizedAuthorName = authorName.trim();
     if (!normalizedAuthorName) {
       setStatus({ type: "error", text: "Укажи имя автора перед публикацией." });
@@ -483,15 +438,15 @@ export default function StreamerTierlistEditor({
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          ...(publishTarget === "public" && editToken
-            ? { "x-tierlist-edit-token": editToken }
-            : {}),
         },
         body: JSON.stringify({
           mode,
           lanes: draft,
           authorName: normalizedAuthorName,
-          publicId: editorData.publicId || currentPublication?.publicId || null,
+          publicId:
+            publishTarget === "authenticated"
+              ? editorData.publicId || currentPublication?.publicId || null
+              : null,
         }),
         },
       );
@@ -503,13 +458,7 @@ export default function StreamerTierlistEditor({
 
       const publication = payload?.publication as StreamerPublication;
       const publicId = publication?.publicId;
-      const nextEditToken = payload?.editToken || editToken;
       if (!publication || !publicId) throw new Error("invalid_publish_response");
-      if (publishTarget === "public" && payload?.editToken) {
-        window.localStorage.setItem(`tierlist-edit-token:${publicId}`, payload.editToken);
-        window.localStorage.setItem("tierlist-last-public-id", publicId);
-        setEditToken(payload.editToken);
-      }
       setEditorData((current) => ({
         ...current,
         publicId,
@@ -520,9 +469,7 @@ export default function StreamerTierlistEditor({
       setPublishChoice(publishTarget === "authenticated" ? "link" : null);
       setStatus({
         type: "ok",
-        text: nextEditToken
-          ? "Тирлист опубликован. Ссылка доступна всем, у кого она есть."
-          : "Тирлист опубликован.",
+        text: "Тирлист опубликован.",
       });
     } catch (error) {
       setStatus({
@@ -534,6 +481,47 @@ export default function StreamerTierlistEditor({
       });
     } finally {
       setIsPublishing(false);
+    }
+  }
+
+  async function handleDelete() {
+    if (publishTarget !== "authenticated" || !currentPublication?.publicId) return;
+    const confirmed = window.confirm("Удалить тирлист? Он пропадёт из каталога и по публичной ссылке.");
+    if (!confirmed) return;
+
+    setIsDeleting(true);
+    setStatus({ type: "idle", text: "" });
+
+    try {
+      const response = await fetch("/api/me/streamer-tierlists", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ publicId: currentPublication.publicId }),
+      });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(payload?.error || "streamer_tierlist_delete_failed");
+
+      setEditorData((current) => ({
+        ...current,
+        publicId: null,
+        currentPublication: null,
+        history: [],
+      }));
+      setPublishedUrl(null);
+      setStatus({ type: "ok", text: "Тирлист удалён." });
+    } catch (error) {
+      setStatus({
+        type: "error",
+        text:
+          error instanceof Error
+            ? `Не удалось удалить тирлист: ${error.message}`
+            : "Не удалось удалить тирлист.",
+      });
+    } finally {
+      setIsDeleting(false);
     }
   }
 
@@ -708,10 +696,24 @@ export default function StreamerTierlistEditor({
             type="button"
             className={styles.publishButton}
             onClick={handlePublish}
-            disabled={isPublishing}
+            disabled={isPublishing || (publishTarget === "public" && Boolean(currentPublication))}
           >
-            {isPublishing ? "Публикую..." : "Опубликовать"}
+            {isPublishing
+              ? "Публикую..."
+              : publishTarget === "public" && currentPublication
+                ? "Опубликовано"
+                : "Опубликовать"}
           </button>
+          {publishTarget === "authenticated" && currentPublication?.publicId ? (
+            <button
+              type="button"
+              className={styles.deleteButton}
+              onClick={handleDelete}
+              disabled={isDeleting}
+            >
+              {isDeleting ? "Удаляю..." : "Удалить"}
+            </button>
+          ) : null}
         </div>
       </section>
 
