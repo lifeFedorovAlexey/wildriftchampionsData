@@ -1,6 +1,46 @@
 .page {
   display: grid;
-  gap: 18px;
+  gap: 14px;
+}
+
+.catalogActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primaryAction {
+  color: #07111f;
+  border: 1px solid rgba(125, 211, 252, 0.48);
+  background: linear-gradient(180deg, #8bdcff, #55bde9);
+}
+
+.secondaryAction {
+  color: var(--text-strong);
+  border: 1px solid rgba(125, 211, 252, 0.28);
+  background: rgba(17, 24, 39, 0.82);
+}
+
+.primaryAction:hover,
+.secondaryAction:hover {
+  filter: brightness(1.07);
+}
+
+.emptyCatalog {
+  text-align: center;
 }
 
 .hero,

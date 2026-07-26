@@ -45,8 +45,15 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Стримеры", href: "/streamers", icon: <IconTierInq size={18} /> },
     ],
   },
-  { label: "Топ пики / баны", href: "/picks-bans", icon: <IconPicksBans size={20} /> },
-  { label: "График трендов", href: "/trends", icon: <IconTrends size={20} /> },
+  {
+    label: "Графики",
+    href: "/picks-bans",
+    icon: <IconTrends size={20} />,
+    children: [
+      { label: "Пики и баны", href: "/picks-bans", icon: <IconPicksBans size={18} /> },
+      { label: "Тренды", href: "/trends", icon: <IconTrends size={18} /> },
+    ],
+  },
   { label: "Гайды", href: "/guides", icon: <IconTierInq size={20} /> },
   { label: "Квизы", href: "/quizzes", icon: <IconTierInq size={20} /> },
   { label: "Чат", href: "/me/chat", icon: <IconChat size={20} /> },
@@ -92,14 +99,14 @@ export default function AppHeader() {
   const pathname = usePathname();
   const [authenticated, setAuthenticated] = useState(false);
   const [menuOpenPath, setMenuOpenPath] = useState<string | null>(null);
-  const [mobileTiersOpen, setMobileTiersOpen] = useState(true);
-  const [desktopTiersOpenPath, setDesktopTiersOpenPath] = useState<string | null>(null);
-  const desktopGroupRef = useRef<HTMLDivElement | null>(null);
+  const [mobileOpenGroup, setMobileOpenGroup] = useState<string | null>("/tier-inq");
+  const [desktopOpenGroup, setDesktopOpenGroup] = useState<string | null>(null);
+  const desktopGroupRef = useRef<HTMLElement | null>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
 
   const menuOpen = menuOpenPath === pathname;
-  const desktopTiersOpen = desktopTiersOpenPath === pathname;
+
   const visibleNavItems = filterSiteNavigation(NAV_ITEMS, { authenticated }) as NavItem[];
 
   useEffect(() => {
@@ -151,13 +158,13 @@ export default function AppHeader() {
     function handlePointerDown(event: MouseEvent) {
       if (!desktopGroupRef.current) return;
       if (!desktopGroupRef.current.contains(event.target as Node)) {
-        setDesktopTiersOpenPath(null);
+        setDesktopOpenGroup(null);
       }
     }
 
     function handleEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setDesktopTiersOpenPath(null);
+        setDesktopOpenGroup(null);
       }
     }
 
@@ -185,24 +192,23 @@ export default function AppHeader() {
             </span>
           </Link>
 
-          <nav className={styles.desktopNav} aria-label="Разделы сайта">
+          <nav ref={desktopGroupRef} className={styles.desktopNav} aria-label="Разделы сайта">
             {visibleNavItems.map((item) =>
               item.children ? (
                 <div
                   key={item.label}
-                  ref={desktopGroupRef}
                   className={`${styles.desktopGroup} ${
                     isItemActive(pathname, item) ? styles.desktopGroupActive : ""
-                  } ${desktopTiersOpen ? styles.desktopGroupOpen : ""}`}
+                  } ${desktopOpenGroup === item.href ? styles.desktopGroupOpen : ""}`}
                 >
                   <button
                     type="button"
                     className={styles.desktopGroupButton}
-                    aria-expanded={desktopTiersOpen}
+                    aria-expanded={desktopOpenGroup === item.href}
                     aria-haspopup="menu"
                     onClick={() =>
-                      setDesktopTiersOpenPath((value) =>
-                        value === pathname ? null : pathname,
+                      setDesktopOpenGroup((value) =>
+                        value === item.href ? null : item.href,
                       )
                     }
                   >
@@ -303,8 +309,10 @@ export default function AppHeader() {
                   <button
                     type="button"
                     className={styles.mobileGroupButton}
-                    onClick={() => setMobileTiersOpen((value) => !value)}
-                    aria-expanded={mobileTiersOpen}
+                    onClick={() =>
+                      setMobileOpenGroup((value) => (value === item.href ? null : item.href))
+                    }
+                    aria-expanded={mobileOpenGroup === item.href}
                   >
                     <span className={styles.menuLinkLead}>
                       <span className={styles.menuLinkIcon}>{item.icon}</span>
@@ -312,14 +320,14 @@ export default function AppHeader() {
                     </span>
                     <span
                       className={`${styles.mobileGroupChevron} ${
-                        mobileTiersOpen ? styles.mobileGroupChevronOpen : ""
+                        mobileOpenGroup === item.href ? styles.mobileGroupChevronOpen : ""
                       }`}
                     >
                       <FaChevronDown className={styles.chevronIcon} aria-hidden="true" />
                     </span>
                   </button>
 
-                  {mobileTiersOpen ? (
+                  {mobileOpenGroup === item.href ? (
                     <div className={styles.mobileSubmenu}>
                       {item.children.map((child) => (
                         <Link

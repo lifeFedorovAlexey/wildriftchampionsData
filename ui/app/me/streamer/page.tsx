@@ -14,9 +14,7 @@ export default async function StreamerPage() {
   const sessionToken = getUserSessionTokenFromCookie(cookieStore);
   const session = await fetchSiteUserSession(sessionToken, process.env);
 
-  if (!session) {
-    redirect("/me");
-  }
+  if (!session) redirect("/me");
 
   const roleSet = new Set(
     Array.isArray(session.roles)
@@ -26,9 +24,7 @@ export default async function StreamerPage() {
       : [],
   );
 
-  if (!roleSet.has("streamer") && !roleSet.has("owner")) {
-    redirect("/me");
-  }
+  if (!roleSet.has("streamer") && !roleSet.has("owner")) redirect("/me");
 
   let initialData = null;
   let winratesSnapshot = { rowsBySlice: {}, dates: [] as string[] };
@@ -58,9 +54,7 @@ export default async function StreamerPage() {
           <div>
             <h1 className={styles.title}>Кабинет стримера</h1>
             <p className={styles.lead}>
-              Здесь ты можешь собрать и опубликовать собственный тирлист по каждой линии.
-              В тот же день публикация обновляется в существующей записи, а новая строка в
-              истории создается только на следующий день.
+              Собери и опубликуй тирлист. Он появится в каталоге подтверждённых стримеров.
             </p>
           </div>
 
@@ -77,6 +71,7 @@ export default async function StreamerPage() {
         {initialData ? (
           <StreamerTierlistEditor
             initialData={initialData}
+            publishTarget="authenticated"
             winratesSnapshot={winratesSnapshot}
           />
         ) : null}

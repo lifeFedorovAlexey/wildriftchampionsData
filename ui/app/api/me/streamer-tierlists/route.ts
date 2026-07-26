@@ -92,3 +92,39 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  const cookieStore = await cookies();
+  const sessionToken = getUserSessionTokenFromCookie(cookieStore);
+
+  if (!sessionToken) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const body = await request.json().catch(() => ({}));
+    const payload = await fetchStreamerTierlistsAuth(
+      "/api/user/streamer-tierlists",
+      sessionToken,
+      {
+        method: "DELETE",
+        body: JSON.stringify(body || {}),
+      },
+    );
+
+    revalidatePath("/streamers");
+    if (payload?.siteUserId) revalidatePath(`/streamers/${payload.siteUserId}`);
+    if (payload?.publicId) revalidatePath(`/tierlists/${payload.publicId}`);
+
+    return NextResponse.json(payload, {
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "streamer_tierlist_delete_failed" },
+      { status: 400 },
+    );
+  }
+}

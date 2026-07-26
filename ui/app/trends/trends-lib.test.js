@@ -2,11 +2,29 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  getAvailableLaneKeys,
+  getAvailableRankKeys,
+  resolveAvailableTrendFilters,
   buildLinearTrend,
   buildTrendDays,
   mapChampionOptions,
   toNum,
 } from "./trends-lib.js";
+
+test("trend filter availability keeps only combinations with champion history", () => {
+  const availability = [
+    { rank: "diamondPlus", lane: "jungle" },
+    { rank: "masterPlus", lane: "jungle" },
+    { rank: "masterPlus", lane: "top" },
+  ];
+
+  assert.deepEqual(getAvailableRankKeys(availability, "jungle"), ["diamondPlus", "masterPlus"]);
+  assert.deepEqual(getAvailableLaneKeys(availability, "masterPlus"), ["jungle", "top"]);
+  assert.deepEqual(
+    resolveAvailableTrendFilters(availability, { rank: "diamondPlus", lane: "top" }),
+    { rank: "diamondPlus", lane: "jungle" },
+  );
+});
 
 test("toNum normalizes number-like values safely", () => {
   assert.equal(toNum("12.5"), 12.5);

@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
 import LoadingRing from "@/components/LoadingRing";
@@ -24,7 +24,14 @@ import {
   TrTableRow,
   TrTableWrap,
 } from "@/components/styled/trendScreen";
-import { buildTrendDays, mapChampionOptions } from "./trends-lib";
+import {
+  buildTrendDays,
+  getAvailableLaneKeys,
+  getAvailableRankKeys,
+  mapChampionOptions,
+  resolveAvailableTrendFilters,
+} from "./trends-lib";
+import { LANE_OPTIONS, RANK_OPTIONS } from "@/components/screensConstants";
 import styles from "./page.module.css";
 
 const TrendChartBlock = dynamic(() => import("@/components/TrendCharts"), {
@@ -75,6 +82,8 @@ type RawHistoryItem = {
   pickRate?: number | null;
   banRate?: number | null;
 };
+
+type FilterAvailability = { rank: string; lane: string };
 
 function TrendTable({ days }: { days: TrendDay[] }) {
   if (!days.length) return null;
@@ -179,6 +188,9 @@ export default function Page() {
   const [range, setRange] = useState<"week" | "month" | "all">("week");
 
   const [rawHistory, setRawHistory] = useState<RawHistoryItem[]>([]);
+  const [filterAvailability, setFilterAvailability] = useState<FilterAvailability[]>([]);
+  const [availabilityLoaded, setAvailabilityLoaded] = useState(false);
+  const availabilityChampionRef = useRef<string | null>(null);
   const [championEvents, setChampionEvents] = useState<ChampionEvent[]>([]);
   const [loading, setLoading] = useState(false);
   const [eventsLoading, setEventsLoading] = useState(false);
@@ -194,6 +206,9 @@ export default function Page() {
 
   const handleChampionSelect = (champion: ChampionOption | null) => {
     setSelectedChampion(champion);
+    setFilterAvailability([]);
+    setAvailabilityLoaded(false);
+    availabilityChampionRef.current = null;
 
     if (!champion) {
       setLoading(false);
@@ -208,6 +223,9 @@ export default function Page() {
   };
 
   const handleRankChange = (key: string) => {
+    if (availabilityLoaded && !getAvailableRankKeys(filterAvailability, laneKey).includes(key)) {
+      return;
+    }
     setRankKey(key);
     if (selectedChampion) {
       resetHistoryState();
@@ -215,6 +233,9 @@ export default function Page() {
   };
 
   const handleLaneChange = (key: string) => {
+    if (availabilityLoaded && !getAvailableLaneKeys(filterAvailability, rankKey).includes(key)) {
+      return;
+    }
     setLaneKey(key);
     if (selectedChampion) {
       resetHistoryState();
@@ -237,22 +258,60 @@ export default function Page() {
   useEffect(() => {
     if (!selectedChampion) return;
 
+    const controller = new AbortController();
+
     const params = new URLSearchParams({
       slug: selectedChampion.slug,
       rank: rankKey,
       lane: laneKey,
     });
+    if (availabilityChampionRef.current !== selectedChampion.slug) {
+      params.set("availability", "1");
+    }
 
-    fetch(`${API_BASE}/api/champion-history?${params}`)
+    fetch(`${API_BASE}/api/champion-history?${params}`, { signal: controller.signal })
       .then((response) => response.json())
       .then((payload) => {
+        if (Array.isArray(payload.availability)) {
+          const nextAvailability = payload.availability as FilterAvailability[];
+          availabilityChampionRef.current = selectedChampion.slug;
+          setFilterAvailability(nextAvailability);
+          setAvailabilityLoaded(true);
+          const nextFilters = resolveAvailableTrendFilters(nextAvailability, {
+            rank: rankKey,
+            lane: laneKey,
+          });
+          if (nextFilters.rank !== rankKey || nextFilters.lane !== laneKey) {
+            setRankKey(nextFilters.rank);
+            setLaneKey(nextFilters.lane);
+            resetHistoryState();
+            return;
+          }
+        }
         const items = Array.isArray(payload.items) ? payload.items : [];
         setRawHistory(items);
         setEventsLoading(items.length > 0);
       })
-      .catch(() => setError("Не удалось загрузить историю"))
+      .catch((fetchError) => {
+        if (fetchError instanceof DOMException && fetchError.name === "AbortError") return;
+        setError("Не удалось загрузить историю");
+      })
       .finally(() => setLoading(false));
+
+    return () => controller.abort();
   }, [selectedChampion, rankKey, laneKey]);
+
+  const disabledRankKeys = useMemo(() => {
+    if (!selectedChampion || !availabilityLoaded) return [];
+    const available = new Set(getAvailableRankKeys(filterAvailability, laneKey));
+    return RANK_OPTIONS.map((option) => option.key).filter((key) => !available.has(key));
+  }, [availabilityLoaded, filterAvailability, laneKey, selectedChampion]);
+
+  const disabledLaneKeys = useMemo(() => {
+    if (!selectedChampion || !availabilityLoaded) return [];
+    const available = new Set(getAvailableLaneKeys(filterAvailability, rankKey));
+    return LANE_OPTIONS.map((option) => option.key).filter((key) => !available.has(key));
+  }, [availabilityLoaded, filterAvailability, rankKey, selectedChampion]);
 
   const days = useMemo(() => buildTrendDays(rawHistory, range), [rawHistory, range]);
   const dateWindow = useMemo(() => {
@@ -323,6 +382,8 @@ export default function Page() {
             onRankChange={handleRankChange}
             laneValue={laneKey}
             onLaneChange={handleLaneChange}
+            disabledRankKeys={disabledRankKeys}
+            disabledLaneKeys={disabledLaneKeys}
             extraControls={<RangeFilter value={range} onChange={handleRangeChange} />}
           />
         ) : null}

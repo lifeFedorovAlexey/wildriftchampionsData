@@ -5,12 +5,13 @@ import { RoleIcon } from "@/components/RoleIcon";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import { tierBg } from "@/components/styled/tierlist";
 import type {
-  StreamerLaneKey,
+  StreamerBoardKey,
   StreamerPublicationPayload,
 } from "@/lib/streamer-tierlists-api";
 import styles from "./streamers.module.css";
 
-const LANE_LABELS: Record<StreamerLaneKey, string> = {
+const LANE_LABELS: Record<StreamerBoardKey, string> = {
+  overall: "Общий",
   top: "Топ",
   jungle: "Лес",
   mid: "Мид",
@@ -18,7 +19,7 @@ const LANE_LABELS: Record<StreamerLaneKey, string> = {
   support: "Саппорт",
 };
 
-function countLaneChampions(payload: StreamerPublicationPayload, lane: StreamerLaneKey) {
+function countLaneChampions(payload: StreamerPublicationPayload, lane: StreamerBoardKey) {
   const lanePayload = payload.lanes?.[lane];
   if (!lanePayload?.tiers) return 0;
 
@@ -31,10 +32,10 @@ export default function PublicStreamerTierlistBoard({
   payload: StreamerPublicationPayload;
 }) {
   const laneKeys = useMemo(
-    () => Object.keys(payload.lanes) as StreamerLaneKey[],
+    () => Object.keys(payload.lanes) as StreamerBoardKey[],
     [payload.lanes],
   );
-  const [selectedLane, setSelectedLane] = useState<StreamerLaneKey>(laneKeys[0] || "top");
+  const [selectedLane, setSelectedLane] = useState<StreamerBoardKey>(laneKeys[0] || "top");
   const lanePayload = payload.lanes?.[selectedLane];
 
   return (
@@ -51,7 +52,7 @@ export default function PublicStreamerTierlistBoard({
               className={`${styles.boardTab} ${active ? styles.boardTabActive : ""}`.trim()}
               onClick={() => setSelectedLane(lane)}
             >
-              <RoleIcon laneKey={lane} size={24} />
+              {lane === "overall" ? null : <RoleIcon laneKey={lane} size={24} />}
               <span>{LANE_LABELS[lane]}</span>
               <span className={styles.boardTabCount}>{countLaneChampions(payload, lane)}</span>
             </button>
@@ -63,7 +64,9 @@ export default function PublicStreamerTierlistBoard({
         <div className={styles.laneBoardHead}>
           <h2 className={styles.laneTitle}>{LANE_LABELS[selectedLane]}</h2>
           <p className={styles.cardText}>
-            Показана опубликованная версия по выбранной линии.
+            {selectedLane === "overall"
+              ? "Все чемпионы оценены без разделения по линиям."
+              : "Показана опубликованная версия по выбранной линии."}
           </p>
         </div>
 

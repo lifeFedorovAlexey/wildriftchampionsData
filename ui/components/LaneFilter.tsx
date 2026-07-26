@@ -11,17 +11,20 @@ type LaneFilterProps<T extends string = LaneKey> = {
   value: T;
   onChange: (key: T) => void;
   options?: ReadonlyArray<{ key: T; label: string }>;
+  disabledKeys?: ReadonlyArray<T>;
 };
 
 export function LaneFilter<T extends string = LaneKey>({
   value,
   onChange,
   options = LANE_OPTIONS as unknown as ReadonlyArray<{ key: T; label: string }>,
+  disabledKeys = [],
 }: LaneFilterProps<T>) {
   return (
     <PillGroup>
       {options.map((opt) => {
         const active = opt.key === value;
+        const disabled = disabledKeys.includes(opt.key);
         const isIconLane = ["top", "jungle", "mid", "adc", "support"].includes(
           String(opt.key),
         );
@@ -30,9 +33,10 @@ export function LaneFilter<T extends string = LaneKey>({
           <PillButton
             key={opt.key}
             active={active}
+            disabled={disabled}
             iconOnly={isIconLane}
             onClick={() => onChange(opt.key)}
-            title={opt.label}
+            title={disabled ? "Нет статистики по чемпиону" : opt.label}
             aria-label={opt.label}
           >
             {isIconLane ? (

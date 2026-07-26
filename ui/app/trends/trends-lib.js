@@ -43,6 +43,40 @@ export function mapChampionOptions(items) {
   }));
 }
 
+function uniqueKeys(items) {
+  return [...new Set(items.filter(Boolean))];
+}
+
+export function getAvailableRankKeys(availability, lane) {
+  return uniqueKeys(
+    (availability || [])
+      .filter((entry) => entry?.lane === lane)
+      .map((entry) => entry?.rank),
+  );
+}
+
+export function getAvailableLaneKeys(availability, rank) {
+  return uniqueKeys(
+    (availability || [])
+      .filter((entry) => entry?.rank === rank)
+      .map((entry) => entry?.lane),
+  );
+}
+
+export function resolveAvailableTrendFilters(availability, current) {
+  const entries = (availability || []).filter((entry) => entry?.rank && entry?.lane);
+  if (!entries.length) return current;
+  if (entries.some((entry) => entry.rank === current.rank && entry.lane === current.lane)) {
+    return current;
+  }
+
+  const fallback =
+    entries.find((entry) => entry.rank === current.rank) ||
+    entries.find((entry) => entry.lane === current.lane) ||
+    entries[0];
+  return { rank: fallback.rank, lane: fallback.lane };
+}
+
 export function buildTrendDays(rawHistory, range) {
   const mapped = (rawHistory || [])
     .map((item) => {
