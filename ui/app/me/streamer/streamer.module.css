@@ -586,34 +586,61 @@
 
 .statsSliceList {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   margin-top: 18px;
 }
 
-.statsSliceRow {
-  display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  gap: 14px;
-  align-items: center;
-  padding: 10px 12px;
+.statsLaneGroup {
+  overflow: hidden;
   border: 1px solid var(--border-soft);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.03);
 }
 
-.statsSliceIdentity {
-  display: grid;
-  gap: 3px;
+.statsLaneHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(132, 192, 238, 0.045);
 }
 
-.statsSliceIdentity strong {
+.statsLaneHeader strong {
   color: var(--text-strong);
   font-size: 14px;
 }
 
-.statsSliceIdentity span {
+.statsLaneHeader span {
+  color: var(--text-soft);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.statsRankList {
+  display: grid;
+}
+
+.statsRankRow {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 48px;
+  padding: 7px 10px 7px 12px;
+}
+
+.statsRankRow + .statsRankRow {
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.statsRankName {
   color: var(--text-soft);
   font-size: 12px;
+  font-weight: 750;
 }
 
 .statsSliceMetrics {
@@ -867,8 +894,9 @@
     width: 100%;
   }
 
-  .statsSliceRow {
+  .statsRankRow {
     grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .statsSliceMetrics {

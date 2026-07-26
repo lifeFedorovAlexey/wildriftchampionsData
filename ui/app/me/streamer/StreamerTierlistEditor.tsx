@@ -120,6 +120,27 @@ function formatMetricDelta(value: number | null) {
   return { text: value.toFixed(2), className: styles.metricDeltaDown };
 }
 
+type ChampionMetaSlice = ReturnType<typeof buildChampionMetaSlices>[number];
+
+function groupChampionMetaSlicesByLane(slices: ChampionMetaSlice[]) {
+  const groups: Array<{ laneKey: string; slices: ChampionMetaSlice[] }> = [];
+  const groupByLane = new Map<string, ChampionMetaSlice[]>();
+
+  for (const slice of slices) {
+    const current = groupByLane.get(slice.laneKey);
+    if (current) {
+      current.push(slice);
+      continue;
+    }
+
+    const next = [slice];
+    groupByLane.set(slice.laneKey, next);
+    groups.push({ laneKey: slice.laneKey, slices: next });
+  }
+
+  return groups;
+}
+
 function laneHasItems(
   draft: StreamerDraftLayout,
   lane: StreamerBoardKey,
@@ -348,6 +369,10 @@ export default function StreamerTierlistEditor({
         dates: winratesSnapshot.dates,
       }),
     [inspectedSlug, winratesSnapshot.dates, winratesSnapshot.rowsBySlice],
+  );
+  const inspectedSliceGroups = useMemo(
+    () => groupChampionMetaSlicesByLane(inspectedSlices),
+    [inspectedSlices],
   );
 
   useEffect(() => {
@@ -976,40 +1001,50 @@ export default function StreamerTierlistEditor({
               </div>
             ) : null}
 
-            {inspectedSlices.length ? (
+            {inspectedSliceGroups.length ? (
               <div className={styles.statsSliceList}>
-                {inspectedSlices.map((slice) => {
-                  const latestDay = slice.days[slice.days.length - 1] || null;
-                  const metrics = [
-                    { key: "win", label: "WR", value: latestDay?.winRate ?? null, delta: latestDay?.winRateDelta ?? null, values: slice.days.map((day) => day.winRate), color: "#86efac" },
-                    { key: "pick", label: "PR", value: latestDay?.pickRate ?? null, delta: latestDay?.pickRateDelta ?? null, values: slice.days.map((day) => day.pickRate), color: "#93c5fd" },
-                    { key: "ban", label: "BR", value: latestDay?.banRate ?? null, delta: latestDay?.banRateDelta ?? null, values: slice.days.map((day) => day.banRate), color: "#fdba74" },
-                  ];
+                {inspectedSliceGroups.map((group) => (
+                  <section key={group.laneKey} className={styles.statsLaneGroup}>
+                    <div className={styles.statsLaneHeader}>
+                      <strong>{STREAMER_LANE_LABELS[group.laneKey as StreamerBoardKey]}</strong>
+                      <span>{group.slices.length} ранга</span>
+                    </div>
 
-                  return (
-                    <article key={`${slice.rankKey}|${slice.laneKey}`} className={styles.statsSliceRow}>
-                      <div className={styles.statsSliceIdentity}>
-                        <strong>{STREAMER_LANE_LABELS[slice.laneKey as StreamerBoardKey]}</strong>
-                        <span>{STREAMER_RANK_LABELS[slice.rankKey] || slice.rankKey}</span>
-                      </div>
-                      <div className={styles.statsSliceMetrics}>
-                        {metrics.map((metric) => {
-                          const formattedDelta = formatMetricDelta(metric.delta);
-                          return (
-                            <div key={metric.key} className={styles.statsSliceMetric}>
-                              <div className={styles.statsSliceMetricHead}>
-                                <span>{metric.label}</span>
-                                <strong>{formatMetricValue(metric.value)}</strong>
-                                <span className={formattedDelta.className}>{formattedDelta.text}</span>
-                              </div>
-                              <TrendSparkline values={metric.values} color={metric.color} width={86} height={22} />
+                    <div className={styles.statsRankList}>
+                      {group.slices.map((slice) => {
+                        const latestDay = slice.days[slice.days.length - 1] || null;
+                        const metrics = [
+                          { key: "win", label: "WR", value: latestDay?.winRate ?? null, delta: latestDay?.winRateDelta ?? null, values: slice.days.map((day) => day.winRate), color: "#86efac" },
+                          { key: "pick", label: "PR", value: latestDay?.pickRate ?? null, delta: latestDay?.pickRateDelta ?? null, values: slice.days.map((day) => day.pickRate), color: "#93c5fd" },
+                          { key: "ban", label: "BR", value: latestDay?.banRate ?? null, delta: latestDay?.banRateDelta ?? null, values: slice.days.map((day) => day.banRate), color: "#fdba74" },
+                        ];
+
+                        return (
+                          <article key={`${slice.rankKey}|${slice.laneKey}`} className={styles.statsRankRow}>
+                            <div className={styles.statsRankName}>
+                              {STREAMER_RANK_LABELS[slice.rankKey] || slice.rankKey}
                             </div>
-                          );
-                        })}
-                      </div>
-                    </article>
-                  );
-                })}
+                            <div className={styles.statsSliceMetrics}>
+                              {metrics.map((metric) => {
+                                const formattedDelta = formatMetricDelta(metric.delta);
+                                return (
+                                  <div key={metric.key} className={styles.statsSliceMetric}>
+                                    <div className={styles.statsSliceMetricHead}>
+                                      <span>{metric.label}</span>
+                                      <strong>{formatMetricValue(metric.value)}</strong>
+                                      <span className={formattedDelta.className}>{formattedDelta.text}</span>
+                                    </div>
+                                    <TrendSparkline values={metric.values} color={metric.color} width={78} height={20} />
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  </section>
+                ))}
               </div>
             ) : null}
           </div>
