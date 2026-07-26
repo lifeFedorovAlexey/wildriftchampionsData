@@ -5,7 +5,7 @@ import styles from "./Footer.module.css";
 const navLinks = [
   { href: "/", label: "Статистика чемпионов" },
   { href: "/tier-inq", label: "Тир-лист" },
-  { href: "/trends", label: "Тренды" },
+  { href: "/picks-bans", label: "Графики" },
   { href: "/guides", label: "Гайды" },
   { href: "/support", label: "Поддержать" },
 ];
