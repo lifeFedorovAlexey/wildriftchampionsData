@@ -5,7 +5,7 @@ on:
 
 jobs:
   audit-npm:
-    name: Audit ${{ matrix.project.name }} production dependencies
+    name: Audit ${{ matrix.project.name }} dependencies
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -41,9 +41,9 @@ jobs:
         working-directory: ${{ matrix.project.directory }}
         run: npm ci
 
-      - name: Run production dependency audit
+      - name: Audit all dependencies
         working-directory: ${{ matrix.project.directory }}
-        run: npm audit --omit=dev --audit-level=high
+        run: npm audit --audit-level=high
 
       - name: Generate CycloneDX SBOM
         working-directory: ${{ matrix.project.directory }}
