@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - "ui/**"
-      - "wr-api/**"
-      - "wr-chat/**"
       - "scripts/**"
       - "utils/**"
       - "*.js"
@@ -22,8 +20,6 @@ on:
   pull_request:
     paths:
       - "ui/**"
-      - "wr-api/**"
-      - "wr-chat/**"
       - "scripts/**"
       - "utils/**"
       - "*.js"

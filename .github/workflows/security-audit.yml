@@ -19,12 +19,6 @@ jobs:
           - name: ui
             directory: ui
             lockfile: ui/package-lock.json
-          - name: wr-api
-            directory: wr-api
-            lockfile: wr-api/package-lock.json
-          - name: wr-chat
-            directory: wr-chat
-            lockfile: wr-chat/package-lock.json
 
     steps:
       - name: Checkout repository
@@ -44,6 +38,10 @@ jobs:
       - name: Audit all dependencies
         working-directory: ${{ matrix.project.directory }}
         run: npm audit --audit-level=high
+
+      - name: Install linked root production dependencies for UI SBOM
+        if: matrix.project.name == 'ui'
+        run: npm ci --omit=dev --ignore-scripts
 
       - name: Generate CycloneDX SBOM
         working-directory: ${{ matrix.project.directory }}
