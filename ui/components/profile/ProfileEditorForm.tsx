@@ -240,14 +240,6 @@ export default function ProfileEditorForm({
   );
 
   useEffect(() => {
-    if (!cropSource || !cropLayout) return;
-
-    if (cropLayout.x !== cropOffset.x || cropLayout.y !== cropOffset.y) {
-      setCropOffset({ x: cropLayout.x, y: cropLayout.y });
-    }
-  }, [cropLayout, cropOffset.x, cropOffset.y, cropSource]);
-
-  useEffect(() => {
     return () => {
       if (cropSource?.url) {
         URL.revokeObjectURL(cropSource.url);
@@ -304,8 +296,8 @@ export default function ProfileEditorForm({
     if (!cropSource) return;
     const centeredOffset = buildCenteredCropOffset(cropSource, nextZoom);
     const preservedOffset = {
-      x: cropOffset.x + (cropOffset.x - centeredOffset.x) * 0.08,
-      y: cropOffset.y + (cropOffset.y - centeredOffset.y) * 0.08,
+      x: (cropLayout?.x ?? cropOffset.x) + ((cropLayout?.x ?? cropOffset.x) - centeredOffset.x) * 0.08,
+      y: (cropLayout?.y ?? cropOffset.y) + ((cropLayout?.y ?? cropOffset.y) - centeredOffset.y) * 0.08,
     };
 
     setCropZoom(nextZoom);

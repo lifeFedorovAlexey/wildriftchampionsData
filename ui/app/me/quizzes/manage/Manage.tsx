@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../../quizzes/quiz.module.css";
 
 const EMPTY_DRAFT = {
@@ -35,18 +35,20 @@ export default function Manage() {
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const router = useRouter();
 
-  const load = useCallback(async () => {
-    try {
-      const response = await fetch("/api/quizzes?managed=1", { cache: "no-store" });
-      const payload = await response.json();
-      if (!response.ok) throw new Error(payload.error);
-      setQuizzes(payload.quizzes || []);
-    } catch (reason) {
-      setError(reason instanceof Error ? reason.message : "quiz_list_failed");
-    }
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      try {
+        const response = await fetch("/api/quizzes?managed=1", { cache: "no-store" });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error);
+        if (!cancelled) setQuizzes(payload.quizzes || []);
+      } catch (reason) {
+        if (!cancelled) setError(reason instanceof Error ? reason.message : "quiz_list_failed");
+      }
+    })();
+    return () => { cancelled = true; };
   }, []);
-
-  useEffect(() => { void load(); }, [load]);
 
   async function create() {
     setCreating(true);

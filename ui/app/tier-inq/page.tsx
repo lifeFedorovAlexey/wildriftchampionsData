@@ -235,8 +235,6 @@ export default function TierlistInqPage() {
   const [latestStats, setLatestStats] = useState<Record<string, LatestStatsItem> | null>(
     null
   );
-  const [date, setDate] = useState<string | null>(null);
-
   const [selected, setSelected] = useState<TierChamp | null>(null);
 
   const [loading, setLoading] = useState(true);
@@ -282,7 +280,7 @@ export default function TierlistInqPage() {
     };
   }, [language]);
 
-  const { tiers, date: derivedDate } = useMemo(() => {
+  const { tiers, date } = useMemo(() => {
     return buildTierBuckets({
       champions,
       latestStats: latestStats ?? {},
@@ -291,10 +289,6 @@ export default function TierlistInqPage() {
       weights: { wWin, wPick, wBan },
     });
   }, [champions, latestStats, rankKey, laneKey, wWin, wPick, wBan]);
-
-  useEffect(() => {
-    setDate(derivedDate);
-  }, [derivedDate]);
 
   const hasAny = tiersOrder.some((t) => tiers[t].length > 0);
 

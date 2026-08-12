@@ -137,32 +137,24 @@ export default function ChatMvpClient({ storageOrigin }: { storageOrigin: string
     return nextGroups;
   }
 
-  async function loadChannels(groupId: number) {
-    if (!groupId) {
-      setChannels([]);
-      setSelectedChannelId(0);
-      return;
-    }
+  async function fetchChannels(groupId: number) {
+    if (!groupId) return [];
     const payload = await readJson(
       await fetch(`/api/chat/channels?groupId=${groupId}`, { cache: "no-store" }),
     );
-    const nextChannels = Array.isArray(payload?.channels) ? payload.channels : [];
-    setChannels(nextChannels);
-    setSelectedChannelId((current) => {
-      if (current && nextChannels.some((channel: ChatChannel) => channel.id === current)) return current;
-      return nextChannels.find((channel: ChatChannel) => channel.slug === "general")?.id || nextChannels[0]?.id || 0;
-    });
+    return Array.isArray(payload?.channels) ? payload.channels as ChatChannel[] : [];
   }
 
-  async function loadMessages(channelId: number) {
-    if (!channelId) {
-      setMessages([]);
-      return;
-    }
+  async function fetchMessages(channelId: number) {
+    if (!channelId) return [];
     const payload = await readJson(
       await fetch(`/api/chat/messages?channelId=${channelId}&limit=80`, { cache: "no-store" }),
     );
-    setMessages(Array.isArray(payload?.messages) ? payload.messages : []);
+    return Array.isArray(payload?.messages) ? payload.messages as ChatMessage[] : [];
+  }
+
+  async function refreshMessages(channelId: number) {
+    setMessages(await fetchMessages(channelId));
   }
 
   async function loadModerationState(groupId = selectedGroupId) {
@@ -194,18 +186,39 @@ export default function ChatMvpClient({ storageOrigin }: { storageOrigin: string
 
   useEffect(() => {
     selectedGroupIdRef.current = selectedGroupId;
-    void loadChannels(selectedGroupId).catch((error) => setErrorText(readableError(error)));
+    let cancelled = false;
+    void (async () => {
+      try {
+        const nextChannels = await fetchChannels(selectedGroupId);
+        if (cancelled) return;
+        setChannels(nextChannels);
+        setSelectedChannelId((current) => {
+          if (current && nextChannels.some((channel) => channel.id === current)) return current;
+          return nextChannels.find((channel) => channel.slug === "general")?.id || nextChannels[0]?.id || 0;
+        });
+      } catch (error) {
+        if (!cancelled) setErrorText(readableError(error));
+      }
+    })();
+    return () => { cancelled = true; };
   }, [selectedGroupId]);
 
   useEffect(() => {
-    void loadMessages(selectedChannelId).catch((error) => setErrorText(readableError(error)));
-  }, [selectedChannelId]);
-
-  useEffect(() => {
     selectedChannelIdRef.current = selectedChannelId;
-    setPresenceMembers([]);
-    setTypingText("");
-    setJoinedChannelId(0);
+    let cancelled = false;
+    void (async () => {
+      try {
+        const nextMessages = await fetchMessages(selectedChannelId);
+        if (cancelled) return;
+        setMessages(nextMessages);
+        setPresenceMembers([]);
+        setTypingText("");
+        setJoinedChannelId(0);
+      } catch (error) {
+        if (!cancelled) setErrorText(readableError(error));
+      }
+    })();
+    return () => { cancelled = true; };
   }, [selectedChannelId]);
 
   useEffect(() => {
@@ -344,7 +357,7 @@ export default function ChatMvpClient({ storageOrigin }: { storageOrigin: string
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(input),
         }));
-        await loadMessages(selectedChannelId);
+        await refreshMessages(selectedChannelId);
       }
       setMessageBody("");
       setPendingFiles([]);
