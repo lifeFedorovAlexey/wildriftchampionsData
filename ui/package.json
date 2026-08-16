@@ -29,7 +29,7 @@
     "react-dom": "^19.2.8",
     "react-icons": "^5.7.0",
     "recharts": "^3.10.1",
-    "styled-components": "^6.5.1",
+    "styled-components": "^6.5.2",
     "wildriftchampions": "file:.."
   },
   "overrides": {
