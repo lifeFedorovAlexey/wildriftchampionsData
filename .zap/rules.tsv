@@ -1,0 +1,4 @@
+# Informational ZAP findings kept in the report without failing the security gate.
+10049	INFO	(Cacheability review for public assets and auth redirects)
+10109	INFO	(Modern Web Application fingerprint; no remediation required)
+10112	INFO	(Authentication redirect fingerprint; no vulnerability by itself)

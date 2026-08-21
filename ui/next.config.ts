@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { getStatsApiBaseUrl } from "./lib/stats-api-origin.js";
+import { getSecurityHeaders } from "./lib/security-headers.js";
 
 const apiProxyTarget = getStatsApiBaseUrl(process.env);
 const configDir = path.dirname(fileURLToPath(import.meta.url));
@@ -16,11 +17,29 @@ const storageRemotePatterns = [
 ];
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+  skipTrailingSlashRedirect: true,
+
   compiler: {
     styledComponents: true,
   },
   turbopack: {
     root: configDir,
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/api/",
+        headers: [
+          { key: "Content-Type", value: "application/json; charset=utf-8" },
+        ],
+      },
+      {
+        source: "/(.*)",
+        headers: getSecurityHeaders(),
+      },
+    ];
   },
 
   images: {

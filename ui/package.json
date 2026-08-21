@@ -16,7 +16,7 @@
     "scrape:guide": "node scripts/parse-wildriftfire-guide.cjs",
     "sync:guides": "node scripts/sync-wildriftfire-guides.js",
     "sync:guides:all": "node scripts/sync-wildriftfire-guides.js --all",
-    "test": "node --test lib/stats-api-origin.test.js lib/server-api.test.js lib/admin-auth.test.js lib/site-user-auth.test.js lib/site-navigation.test.js lib/chat-media-url.test.js lib/quiz-editor-branching.test.js app/winrates/winrates-lib.test.js app/winrates/load-winrates-page.test.js app/picks-bans/picks-bans-lib.test.js app/tier-inq/tier-inq-lib.test.js app/trends/trends-lib.test.js app/tierlist/tierlist-lib.test.js app/guides/guides-lib.test.js app/me/streamer/streamer-stats-lib.test.js",
+    "test": "node --test lib/stats-api-origin.test.js lib/server-api.test.js lib/admin-auth.test.js lib/site-user-auth.test.js lib/site-navigation.test.js lib/chat-media-url.test.js lib/quiz-editor-branching.test.js lib/security-headers.test.js app/winrates/winrates-lib.test.js app/winrates/load-winrates-page.test.js app/picks-bans/picks-bans-lib.test.js app/tier-inq/tier-inq-lib.test.js app/trends/trends-lib.test.js app/tierlist/tierlist-lib.test.js app/guides/guides-lib.test.js app/me/streamer/streamer-stats-lib.test.js",
     "test:coverage": "c8 npm run test"
   },
   "dependencies": {
@@ -29,7 +29,7 @@
     "react-dom": "^19.2.8",
     "react-icons": "^5.7.0",
     "recharts": "^3.10.1",
-    "styled-components": "^6.5.1",
+    "styled-components": "^6.5.2",
     "wildriftchampions": "file:.."
   },
   "overrides": {
@@ -47,7 +47,7 @@
     "eslint": "^10.8.1",
     "eslint-config-next": "^16.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "jscpd": "^5.0.14",
+    "jscpd": "^5.0.15",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3"
   }
