@@ -19,9 +19,14 @@ test("security headers cover the production DAST requirements", () => {
   assert.equal(headers["cross-origin-resource-policy"], "same-origin");
 });
 
-test("nonce CSP does not allow unsafe inline scripts or styles", () => {
+test("nonce CSP keeps scripts and style blocks nonce-gated", () => {
   const policy = getContentSecurityPolicy("test-nonce");
 
   assert.match(policy, /'nonce-test-nonce'/);
-  assert.doesNotMatch(policy, /'unsafe-inline'/);
+  assert.match(policy, /style-src 'self' 'nonce-test-nonce'/);
+  assert.match(policy, /style-src-attr 'unsafe-inline'/);
+  assert.doesNotMatch(policy, /script-src[^;]*'unsafe-inline'/);
+  assert.match(policy, /img-src[^;]*https:\/\/mc\.yandex\.com/);
+  assert.match(policy, /connect-src[^;]*https:\/\/mc\.yandex\.com/);
+  assert.match(policy, /connect-src[^;]*wss:\/\/mc\.yandex\.com/);
 });

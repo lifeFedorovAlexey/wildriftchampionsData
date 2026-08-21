@@ -6,6 +6,10 @@ import TelegramInit from "@/components/TelegramInit";
 import YandexMetrikaInit from "@/components/YandexMetrikaInit";
 import StyledComponentsRegistry from "./StyledComponentsRegistry";
 
+// The middleware generates a per-request CSP nonce. The document must not be
+// served from the Full Route Cache with a nonce from an older response.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://wildriftallstats.ru"),
   title: {

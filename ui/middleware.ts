@@ -32,6 +32,13 @@ export function middleware(request: NextRequest) {
     },
   });
   response.headers.set("Content-Security-Policy", contentSecurityPolicy);
+  const isHtmlDocumentRequest =
+    !request.nextUrl.pathname.startsWith("/api") &&
+    request.headers.get("accept")?.includes("text/html");
+
+  if (isHtmlDocumentRequest) {
+    response.headers.set("Cache-Control", "private, no-store, max-age=0");
+  }
 
   return response;
 }
