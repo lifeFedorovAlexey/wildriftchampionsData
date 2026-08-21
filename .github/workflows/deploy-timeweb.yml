@@ -184,6 +184,40 @@ jobs:
             fi
             cleanup_canary
 
+            log_step "disable nginx version disclosure"
+            if [ "$(id -u)" -ne 0 ]; then
+              echo "nginx hardening requires the deploy SSH user to have root privileges"
+              exit 1
+            fi
+            NGINX_SECURITY_CONF="/etc/nginx/conf.d/90-wildriftallstats-security.conf"
+            NGINX_SECURITY_TMP="${NGINX_SECURITY_CONF}.tmp.$$"
+            NGINX_SECURITY_BACKUP="${NGINX_SECURITY_CONF}.bak.$$"
+            if [ -f "${NGINX_SECURITY_CONF}" ]; then
+              cp -p "${NGINX_SECURITY_CONF}" "${NGINX_SECURITY_BACKUP}"
+            fi
+            printf '%s\n' 'server_tokens off;' > "${NGINX_SECURITY_TMP}"
+            mv "${NGINX_SECURITY_TMP}" "${NGINX_SECURITY_CONF}"
+            if ! nginx -t; then
+              if [ -f "${NGINX_SECURITY_BACKUP}" ]; then
+                mv "${NGINX_SECURITY_BACKUP}" "${NGINX_SECURITY_CONF}"
+              else
+                rm -f "${NGINX_SECURITY_CONF}"
+              fi
+              echo "nginx configuration validation failed; application release remains inactive"
+              exit 1
+            fi
+            if ! systemctl reload nginx; then
+              if [ -f "${NGINX_SECURITY_BACKUP}" ]; then
+                mv "${NGINX_SECURITY_BACKUP}" "${NGINX_SECURITY_CONF}"
+              else
+                rm -f "${NGINX_SECURITY_CONF}"
+              fi
+              nginx -t && systemctl reload nginx || true
+              echo "nginx reload failed; previous nginx configuration restored"
+              exit 1
+            fi
+            rm -f "${NGINX_SECURITY_BACKUP}"
+
             cat > "${SHARED_DIR}/ecosystem.config.cjs" <<EOF
             module.exports = {
               apps: [
