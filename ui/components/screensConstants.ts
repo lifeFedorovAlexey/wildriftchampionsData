@@ -1,20 +1,6 @@
 "use client";
 
-export const RANK_OPTIONS = [
-  { key: "diamondPlus", label: "Алмаз" },
-  { key: "masterPlus", label: "Мастер" },
-  { key: "king", label: "ГМ" },
-  { key: "peak", label: "Претендент" },
-  { key: "overall", label: "Все" },
-];
-
-export const LANE_OPTIONS: { key: string; label: string }[] = [
-  { key: "top", label: "Топ" },
-  { key: "jungle", label: "Лес" },
-  { key: "mid", label: "Мид" },
-  { key: "adc", label: "Стрелок" },
-  { key: "support", label: "Поддержка" },
-];
+export { LANE_OPTIONS, RANK_OPTIONS } from "@/lib/workflow-options";
 
 export const ROLE_SPRITE_URL = "/place-icons.webp";
 
