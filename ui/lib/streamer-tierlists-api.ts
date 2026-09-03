@@ -7,7 +7,7 @@ export type StreamerTierChampion = {
   roles?: string[];
 };
 
-export type StreamerTierKey = "S+" | "S" | "A" | "B" | "C" | "D";
+export type StreamerTierKey = string;
 export type StreamerLaneKey = "top" | "jungle" | "mid" | "adc" | "support";
 export type StreamerBoardKey = StreamerLaneKey | "overall";
 export type StreamerTierlistMode = "lanes" | "overall";

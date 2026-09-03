@@ -2,7 +2,7 @@
 
 import { useDeferredValue, useEffect, useMemo, useState, type DragEvent } from "react";
 import Link from "next/link";
-import { FaGear } from "react-icons/fa6";
+import { FaPen, FaPlus } from "react-icons/fa6";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import SearchField from "@/components/ui/SearchField";
 import { RoleIcon } from "@/components/RoleIcon";
@@ -36,11 +36,14 @@ const STREAMER_RANK_LABELS: Record<string, string> = {
   peak: "Претендент",
 };
 
-function buildTierStyles(publication: StreamerPublication | null | undefined) {
+function buildTierStyles(
+  publication: StreamerPublication | null | undefined,
+  tiersOrder: StreamerTierKey[] = publication?.payload?.tiersOrder || ["S+", "S", "A", "B", "C", "D"],
+) {
   return Object.fromEntries(
-    (["S+", "S", "A", "B", "C", "D"] as StreamerTierKey[]).map((tier) => [
+    tiersOrder.map((tier) => [
       tier,
-      publication?.payload?.tierStyles?.[tier] || { label: tier, color: tierBg(tier) },
+      publication?.payload?.tierStyles?.[tier] || { label: tier, color: tierBg(tier) || "#94a3b8" },
     ]),
   ) as Record<StreamerTierKey, StreamerTierStyle>;
 }
@@ -261,7 +264,7 @@ export default function StreamerTierlistEditor({
       (publishTarget === "authenticated" ? initialData.streamer.displayName : ""),
   );
   const [tierStyles, setTierStyles] = useState(() =>
-    buildTierStyles(initialData.currentPublication),
+    buildTierStyles(initialData.currentPublication, initialData.tiersOrder),
   );
   const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
   const [publishChoice, setPublishChoice] = useState<"streamer" | "link" | null>(null);
@@ -298,7 +301,7 @@ export default function StreamerTierlistEditor({
     setSelectedLane(nextLaneKeys[0]);
     setMetaOnly(nextMode !== "overall");
     setEditorData((current) => ({ ...current, mode: nextMode, laneKeys: nextLaneKeys }));
-    setDraft(buildDraftFromPublication(null, nextLaneKeys, initialData.tiersOrder));
+    setDraft(buildDraftFromPublication(null, nextLaneKeys, editorData.tiersOrder));
   }
 
   const tiersOrder = editorData.tiersOrder;
@@ -409,6 +412,65 @@ export default function StreamerTierlistEditor({
     setIsDragging(false);
   }
 
+  function addTierRow() {
+    if (tiersOrder.length >= 12) {
+      setStatus({ type: "error", text: "Можно добавить не больше 12 строк тиров." });
+      return;
+    }
+
+    const tier = `tier_${Date.now().toString(36)}`;
+    setEditorData((current) => ({
+      ...current,
+      tiersOrder: [...current.tiersOrder, tier],
+    }));
+    setTierStyles((current) => ({
+      ...current,
+      [tier]: { label: "Новый тир", color: "#94a3b8" },
+    }));
+    setDraft((current) =>
+      Object.fromEntries(
+        Object.entries(current).map(([lane, tiers]) => [lane, { ...tiers, [tier]: [] }]),
+      ) as StreamerDraftLayout,
+    );
+    setEditingTier(tier);
+    setStatus({ type: "idle", text: "" });
+  }
+
+  function removeTierRow(tier: StreamerTierKey) {
+    if (tiersOrder.length <= 1) return;
+    const assignedCount = laneKeys.reduce(
+      (count, lane) => count + (draft[lane]?.[tier]?.length || 0),
+      0,
+    );
+    if (
+      assignedCount > 0 &&
+      !window.confirm(`Удалить строку и вернуть ${assignedCount} чемпионов в общий пул?`)
+    ) {
+      return;
+    }
+
+    setEditorData((current) => ({
+      ...current,
+      tiersOrder: current.tiersOrder.filter((value) => value !== tier),
+    }));
+    setTierStyles((current) => {
+      const next = { ...current };
+      delete next[tier];
+      return next;
+    });
+    setDraft((current) =>
+      Object.fromEntries(
+        Object.entries(current).map(([lane, tiers]) => {
+          const nextTiers = { ...tiers };
+          delete nextTiers[tier];
+          return [lane, nextTiers];
+        }),
+      ) as StreamerDraftLayout,
+    );
+    setEditingTier(null);
+    setStatus({ type: "idle", text: "" });
+  }
+
   function handleChampionCardClick(slug: string) {
     setSelectedSlug(slug);
     setInspectedSlug(slug);
@@ -482,6 +544,7 @@ export default function StreamerTierlistEditor({
         body: JSON.stringify({
           mode,
           lanes: draft,
+          tiersOrder,
           tierStyles,
           authorName: normalizedAuthorName,
           publicId:
@@ -503,9 +566,10 @@ export default function StreamerTierlistEditor({
       setEditorData((current) => ({
         ...current,
         publicId,
+        tiersOrder: publication.payload.tiersOrder,
         currentPublication: publication,
       }));
-      setDraft(buildDraftFromPublication(publication, laneKeys, tiersOrder));
+      setDraft(buildDraftFromPublication(publication, laneKeys, publication.payload.tiersOrder));
       setTierStyles(buildTierStyles(publication));
       setPublishedUrl(`${window.location.origin}/tierlists/${encodeURIComponent(publicId)}`);
       setPublishChoice(publishTarget === "authenticated" ? "link" : null);
@@ -773,6 +837,15 @@ export default function StreamerTierlistEditor({
                 вынесены в tooltip, чтобы на экране помещалось больше иконок.
               </p>
             </div>
+            <button
+              type="button"
+              className={styles.addTierButton}
+              onClick={addTierRow}
+              disabled={tiersOrder.length >= 12}
+            >
+              <FaPlus aria-hidden="true" />
+              <span>Добавить строку</span>
+            </button>
           </div>
 
           <div className={styles.tierList}>
@@ -808,7 +881,7 @@ export default function StreamerTierlistEditor({
                       title="Настроить тир"
                       onClick={() => setEditingTier(tier)}
                     >
-                      <FaGear aria-hidden="true" />
+                      <FaPen aria-hidden="true" />
                     </button>
                   </div>
 
@@ -1052,6 +1125,15 @@ export default function StreamerTierlistEditor({
                 />
               </label>
             </div>
+
+            <button
+              type="button"
+              className={styles.removeTierButton}
+              onClick={() => removeTierRow(editingTier)}
+              disabled={tiersOrder.length <= 1}
+            >
+              Удалить строку
+            </button>
 
           </section>
         </div>

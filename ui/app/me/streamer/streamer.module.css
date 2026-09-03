@@ -307,6 +307,32 @@
   padding: 10px 8px 32px;
 }
 
+.addTierButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 11px;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.addTierButton:hover {
+  border-color: var(--accent-primary-border);
+  color: var(--text-strong);
+}
+
+.addTierButton:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 .tierRowWide {
   grid-template-columns: 136px 1fr;
 }
@@ -336,18 +362,20 @@
   bottom: 5px;
   display: grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   padding: 0;
   border: 0;
-  border-radius: 7px;
-  background: rgba(16, 21, 31, 0.14);
+  border-radius: 6px;
+  background: transparent;
   color: #10151f;
+  opacity: 0.62;
   cursor: pointer;
 }
 
 .tierEditButton:hover {
-  background: rgba(16, 21, 31, 0.24);
+  background: rgba(16, 21, 31, 0.12);
+  opacity: 1;
 }
 
 .tierEditOverlay {
@@ -398,6 +426,28 @@
   border: 1px solid var(--border-soft);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
+}
+
+.removeTierButton {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 16px;
+  border: 1px solid rgba(248, 113, 113, 0.26);
+  border-radius: 11px;
+  background: rgba(127, 29, 29, 0.16);
+  color: #fca5a5;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.removeTierButton:hover {
+  background: rgba(127, 29, 29, 0.28);
+}
+
+.removeTierButton:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 .tierEditTextInput {
