@@ -1002,7 +1002,7 @@ export default function StreamerTierlistEditor({
             <div className={styles.tierEditHead}>
               <div>
                 <h3 id="tier-edit-title" className={styles.sectionTitle}>Настройка тира</h3>
-                <p className={styles.sectionText}>Короткое название и цвет плашки.</p>
+                <p className={styles.sectionText}>Название до 150 символов и цвет плашки.</p>
               </div>
               <button
                 type="button"
@@ -1016,10 +1016,11 @@ export default function StreamerTierlistEditor({
             <div className={styles.tierEditFields}>
               <label className={styles.tierEditField}>
                 <span>Текст</span>
-                <input
+                <textarea
                   className={styles.tierEditTextInput}
                   value={tierStyles[editingTier].label}
-                  maxLength={12}
+                  maxLength={150}
+                  rows={4}
                   onChange={(event) =>
                     setTierStyles((current) => ({
                       ...current,
