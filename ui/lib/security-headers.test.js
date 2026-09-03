@@ -27,6 +27,7 @@ test("nonce CSP keeps scripts and style blocks nonce-gated", () => {
   assert.match(policy, /style-src-attr 'unsafe-inline'/);
   assert.doesNotMatch(policy, /script-src[^;]*'unsafe-inline'/);
   assert.match(policy, /img-src[^;]*https:\/\/mc\.yandex\.com/);
+  assert.match(policy, /img-src[^;]*https:\/\/vkvideo\.ru/);
   assert.match(policy, /connect-src[^;]*https:\/\/mc\.yandex\.com/);
   assert.match(policy, /connect-src[^;]*wss:\/\/mc\.yandex\.ru/);
   assert.match(policy, /connect-src[^;]*wss:\/\/mc\.yandex\.com/);

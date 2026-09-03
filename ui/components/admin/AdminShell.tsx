@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "@/app/admin/admin.module.css";
 
 type AdminShellProps = {
-  activeSection: "profile" | "access";
+  activeSection: "profile" | "access" | "tierlists";
   canManageAccess?: boolean;
   children: ReactNode;
 };
@@ -34,6 +34,12 @@ export default function AdminShell({
               <span>Профиль</span>
               <span className={styles.sidebarLinkMeta}>
                 {activeSection === "profile" ? "Сейчас" : "Основное"}
+              </span>
+            </Link>
+            <Link href="/admin/tierlists" className={getLinkClass(activeSection === "tierlists")}>
+              <span>Тирлисты</span>
+              <span className={styles.sidebarLinkMeta}>
+                {activeSection === "tierlists" ? "Сейчас" : "Все"}
               </span>
             </Link>
             {canManageAccess ? (

@@ -671,6 +671,26 @@
   margin-top: 18px;
 }
 
+.tierlistAdminGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.tierlistAdminHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tierlistAdminMeta {
+  display: grid;
+  gap: 6px;
+  margin: 14px 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 13px;
+}
+
 .selectedUserTitleLine {
   display: flex;
   align-items: baseline;
@@ -778,6 +798,10 @@
   }
 
   .roleCardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tierlistAdminGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

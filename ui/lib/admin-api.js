@@ -163,6 +163,22 @@ export async function fetchAdminAccessUsers(sessionToken, env = process.env) {
   return Array.isArray(payload?.users) ? payload.users : [];
 }
 
+export async function fetchAdminTierlists(sessionToken, env = process.env) {
+  if (!sessionToken) return [];
+
+  const response = await fetch(buildApiUrl("/api/admin/tierlists", env), {
+    headers: {
+      Authorization: `Bearer ${sessionToken}`,
+      Accept: "application/json",
+    },
+    cache: "no-store",
+  });
+  if (!response.ok) throw new Error("admin_tierlists_failed");
+
+  const payload = await response.json();
+  return Array.isArray(payload?.tierlists) ? payload.tierlists : [];
+}
+
 export async function updateAdminAccessRoles(
   sessionToken,
   siteUserId,
