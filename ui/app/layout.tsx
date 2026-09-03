@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -57,21 +58,24 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const nonce = (await headers()).get("x-nonce") || "";
+
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="dark" />
+        <meta property="csp-nonce" content={nonce} nonce={nonce} />
       </head>
 
       <body>
         <TelegramInit />
         <YandexMetrikaInit />
-        <StyledComponentsRegistry>
+        <StyledComponentsRegistry nonce={nonce}>
           <AppHeader />
           {children}
           <Footer />

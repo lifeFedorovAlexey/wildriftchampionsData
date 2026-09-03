@@ -6,10 +6,12 @@ import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 
 export default function StyledComponentsRegistry({
   children,
+  nonce,
 }: {
   children: React.ReactNode;
+  nonce: string;
 }) {
-  const [sheet] = useState(() => new ServerStyleSheet());
+  const [sheet] = useState(() => new ServerStyleSheet({ nonce }));
 
   useServerInsertedHTML(() => {
     const styles = sheet.getStyleElement();
@@ -17,10 +19,13 @@ export default function StyledComponentsRegistry({
     return <>{styles}</>;
   });
 
-  // На клиенте StyleSheetManager не нужен
-  if (typeof window !== "undefined") return <>{children}</>;
+  if (typeof window !== "undefined") {
+    return <StyleSheetManager nonce={nonce}>{children}</StyleSheetManager>;
+  }
 
   return (
-    <StyleSheetManager sheet={sheet.instance}>{children}</StyleSheetManager>
+    <StyleSheetManager sheet={sheet.instance} nonce={nonce}>
+      {children}
+    </StyleSheetManager>
   );
 }
