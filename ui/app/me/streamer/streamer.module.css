@@ -303,6 +303,35 @@
   font-size: 16px;
   font-weight: 900;
   letter-spacing: 0.04em;
+  flex-direction: column;
+  gap: 7px;
+  padding: 8px 5px;
+}
+
+.tierRowWide {
+  grid-template-columns: 96px 1fr;
+}
+
+.tierLabelInput {
+  width: 100%;
+  min-width: 0;
+  padding: 0 2px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #10151f;
+  font: inherit;
+  text-align: center;
+}
+
+.tierColorInput {
+  width: 26px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid rgba(16, 21, 31, 0.32);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
 }
 
 .tierDropzone,
@@ -866,6 +895,10 @@
 
   .tierRow {
     grid-template-columns: 56px 1fr;
+  }
+
+  .tierRowWide {
+    grid-template-columns: 86px 1fr;
   }
 
   .tierBadge {

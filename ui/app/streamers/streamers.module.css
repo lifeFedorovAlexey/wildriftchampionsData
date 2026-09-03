@@ -325,6 +325,10 @@
   gap: 10px;
 }
 
+.tierRowWide {
+  grid-template-columns: 96px 1fr;
+}
+
 .tierBadge {
   display: flex;
   align-items: center;
@@ -404,6 +408,10 @@
 
   .tierRow {
     grid-template-columns: 52px 1fr;
+  }
+
+  .tierRowWide {
+    grid-template-columns: 86px 1fr;
   }
 
   .championTile {

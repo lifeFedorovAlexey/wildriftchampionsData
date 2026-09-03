@@ -13,6 +13,7 @@ import type {
   StreamerPublication,
   StreamerTierChampion,
   StreamerTierKey,
+  StreamerTierStyle,
   StreamerTierlistEditorPayload,
 } from "@/lib/streamer-tierlists-api";
 import {
@@ -33,6 +34,15 @@ const STREAMER_RANK_LABELS: Record<string, string> = {
   king: "ГМ",
   peak: "Претендент",
 };
+
+function buildTierStyles(publication: StreamerPublication | null | undefined) {
+  return Object.fromEntries(
+    (["S+", "S", "A", "B", "C", "D"] as StreamerTierKey[]).map((tier) => [
+      tier,
+      publication?.payload?.tierStyles?.[tier] || { label: tier, color: tierBg(tier) },
+    ]),
+  ) as Record<StreamerTierKey, StreamerTierStyle>;
+}
 
 function formatDateLabel(value: string | null | undefined) {
   if (!value) return "Еще не опубликовано";
@@ -248,6 +258,9 @@ export default function StreamerTierlistEditor({
   const [authorName, setAuthorName] = useState(
     initialData.currentPublication?.authorName ||
       (publishTarget === "authenticated" ? initialData.streamer.displayName : ""),
+  );
+  const [tierStyles, setTierStyles] = useState(() =>
+    buildTierStyles(initialData.currentPublication),
   );
   const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
   const [publishChoice, setPublishChoice] = useState<"streamer" | "link" | null>(null);
@@ -467,6 +480,7 @@ export default function StreamerTierlistEditor({
         body: JSON.stringify({
           mode,
           lanes: draft,
+          tierStyles,
           authorName: normalizedAuthorName,
           publicId:
             publishTarget === "authenticated"
@@ -490,6 +504,7 @@ export default function StreamerTierlistEditor({
         currentPublication: publication,
       }));
       setDraft(buildDraftFromPublication(publication, laneKeys, tiersOrder));
+      setTierStyles(buildTierStyles(publication));
       setPublishedUrl(`${window.location.origin}/tierlists/${encodeURIComponent(publicId)}`);
       setPublishChoice(publishTarget === "authenticated" ? "link" : null);
       setStatus({
@@ -761,16 +776,44 @@ export default function StreamerTierlistEditor({
           <div className={styles.tierList}>
             {tiersOrder.map((tier) => {
               const slugs = draft[selectedLane]?.[tier] || [];
+              const tierStyle = tierStyles[tier];
+              const hasLongLabel = tierStyle.label.length > 2;
 
               return (
-                <div key={tier} className={styles.tierRow}>
+                <div
+                  key={tier}
+                  className={`${styles.tierRow} ${hasLongLabel ? styles.tierRowWide : ""}`.trim()}
+                >
                   <div
                     className={styles.tierBadge}
                     style={{
-                      background: tierBg(tier),
+                      background: tierStyle.color,
                     }}
                   >
-                    {tier}
+                    <input
+                      className={styles.tierLabelInput}
+                      value={tierStyle.label}
+                      maxLength={12}
+                      aria-label={`Название тира ${tier}`}
+                      onChange={(event) =>
+                        setTierStyles((current) => ({
+                          ...current,
+                          [tier]: { ...current[tier], label: event.target.value },
+                        }))
+                      }
+                    />
+                    <input
+                      className={styles.tierColorInput}
+                      type="color"
+                      value={tierStyle.color}
+                      aria-label={`Цвет тира ${tier}`}
+                      onChange={(event) =>
+                        setTierStyles((current) => ({
+                          ...current,
+                          [tier]: { ...current[tier], color: event.target.value },
+                        }))
+                      }
+                    />
                   </div>
 
                   <div

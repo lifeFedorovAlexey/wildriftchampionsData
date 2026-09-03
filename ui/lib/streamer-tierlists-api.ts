@@ -11,11 +11,13 @@ export type StreamerTierKey = "S+" | "S" | "A" | "B" | "C" | "D";
 export type StreamerLaneKey = "top" | "jungle" | "mid" | "adc" | "support";
 export type StreamerBoardKey = StreamerLaneKey | "overall";
 export type StreamerTierlistMode = "lanes" | "overall";
+export type StreamerTierStyle = { label: string; color: string };
 
 export type StreamerPublicationPayload = {
   version: number;
   mode?: StreamerTierlistMode;
   tiersOrder: StreamerTierKey[];
+  tierStyles?: Partial<Record<StreamerTierKey, StreamerTierStyle>>;
   lanes: Record<
     StreamerBoardKey,
     {

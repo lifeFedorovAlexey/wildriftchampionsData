@@ -73,17 +73,25 @@ export default function PublicStreamerTierlistBoard({
         <div className={styles.tierRows}>
           {payload.tiersOrder.map((tier) => {
             const champions = lanePayload?.tiers?.[tier] || [];
+            const tierStyle = payload.tierStyles?.[tier] || {
+              label: tier,
+              color: tierBg(tier),
+            };
+            const hasLongLabel = tierStyle.label.length > 2;
 
             return (
-              <div key={`${selectedLane}-${tier}`} className={styles.tierRow}>
+              <div
+                key={`${selectedLane}-${tier}`}
+                className={`${styles.tierRow} ${hasLongLabel ? styles.tierRowWide : ""}`.trim()}
+              >
                 <div
                   className={styles.tierBadge}
                   style={{
-                    background: tierBg(tier),
+                    background: tierStyle.color,
                     color: "#10151f",
                   }}
                 >
-                  {tier}
+                  {tierStyle.label}
                 </div>
 
                 <div className={styles.tierChamps}>
