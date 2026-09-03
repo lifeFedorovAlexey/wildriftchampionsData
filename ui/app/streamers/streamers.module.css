@@ -326,7 +326,7 @@
 }
 
 .tierRowWide {
-  grid-template-columns: 96px 1fr;
+  grid-template-columns: 136px 1fr;
 }
 
 .tierBadge {
@@ -335,7 +335,11 @@
   justify-content: center;
   min-height: 100%;
   border-radius: 16px;
-  font-size: 17px;
+  padding: 10px;
+  overflow-wrap: anywhere;
+  text-align: center;
+  font-size: 19px;
+  line-height: 1.08;
   font-weight: 900;
   letter-spacing: 0.04em;
 }
@@ -411,7 +415,7 @@
   }
 
   .tierRowWide {
-    grid-template-columns: 86px 1fr;
+    grid-template-columns: 116px 1fr;
   }
 
   .championTile {
