@@ -2,6 +2,7 @@
 
 import { useDeferredValue, useEffect, useMemo, useState, type DragEvent } from "react";
 import Link from "next/link";
+import { FaGear } from "react-icons/fa6";
 import ChampionAvatar from "@/components/ui/ChampionAvatar";
 import SearchField from "@/components/ui/SearchField";
 import { RoleIcon } from "@/components/RoleIcon";
@@ -282,6 +283,7 @@ export default function StreamerTierlistEditor({
   const [metaOnly, setMetaOnly] = useState(true);
   const deferredSearch = useDeferredValue(search);
   const [inspectedSlug, setInspectedSlug] = useState<string | null>(null);
+  const [editingTier, setEditingTier] = useState<StreamerTierKey | null>(null);
   const [status, setStatus] = useState<{ type: "idle" | "ok" | "error"; text: string }>({
     type: "idle",
     text: "",
@@ -790,30 +792,16 @@ export default function StreamerTierlistEditor({
                       background: tierStyle.color,
                     }}
                   >
-                    <input
-                      className={styles.tierLabelInput}
-                      value={tierStyle.label}
-                      maxLength={12}
-                      aria-label={`Название тира ${tier}`}
-                      onChange={(event) =>
-                        setTierStyles((current) => ({
-                          ...current,
-                          [tier]: { ...current[tier], label: event.target.value },
-                        }))
-                      }
-                    />
-                    <input
-                      className={styles.tierColorInput}
-                      type="color"
-                      value={tierStyle.color}
-                      aria-label={`Цвет тира ${tier}`}
-                      onChange={(event) =>
-                        setTierStyles((current) => ({
-                          ...current,
-                          [tier]: { ...current[tier], color: event.target.value },
-                        }))
-                      }
-                    />
+                    <span className={styles.tierBadgeLabel}>{tierStyle.label || tier}</span>
+                    <button
+                      type="button"
+                      className={styles.tierEditButton}
+                      aria-label={`Настроить тир ${tier}`}
+                      title="Настроить тир"
+                      onClick={() => setEditingTier(tier)}
+                    >
+                      <FaGear aria-hidden="true" />
+                    </button>
                   </div>
 
                   <div
@@ -1001,6 +989,64 @@ export default function StreamerTierlistEditor({
           )}
         </div>
       </section>
+
+      {editingTier ? (
+        <div className={styles.tierEditOverlay} onClick={() => setEditingTier(null)}>
+          <section
+            className={styles.tierEditModal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tier-edit-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className={styles.tierEditHead}>
+              <div>
+                <h3 id="tier-edit-title" className={styles.sectionTitle}>Настройка тира</h3>
+                <p className={styles.sectionText}>Короткое название и цвет плашки.</p>
+              </div>
+              <button
+                type="button"
+                className={styles.statsModalClose}
+                onClick={() => setEditingTier(null)}
+              >
+                Готово
+              </button>
+            </div>
+
+            <div className={styles.tierEditFields}>
+              <label className={styles.tierEditField}>
+                <span>Текст</span>
+                <input
+                  className={styles.tierEditTextInput}
+                  value={tierStyles[editingTier].label}
+                  maxLength={12}
+                  onChange={(event) =>
+                    setTierStyles((current) => ({
+                      ...current,
+                      [editingTier]: { ...current[editingTier], label: event.target.value },
+                    }))
+                  }
+                />
+              </label>
+              <label className={styles.tierEditField}>
+                <span>Цвет</span>
+                <input
+                  className={styles.tierEditColorInput}
+                  type="color"
+                  value={tierStyles[editingTier].color}
+                  onChange={(event) =>
+                    setTierStyles((current) => ({
+                      ...current,
+                      [editingTier]: { ...current[editingTier], color: event.target.value },
+                    }))
+                  }
+                />
+              </label>
+            </div>
+
+          </section>
+        </div>
+      ) : null}
 
       {inspectedChampion ? (
         <div className={styles.statsModalOverlay} onClick={() => setInspectedSlug(null)}>
