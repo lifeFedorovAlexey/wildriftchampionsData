@@ -318,6 +318,18 @@
   text-align: center;
 }
 
+.tierBadgeLabelCompact {
+  font-size: 15px;
+  line-height: 1.14;
+  letter-spacing: 0.015em;
+}
+
+.tierBadgeLabelDense {
+  font-size: 12px;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
 .tierEditButton {
   position: absolute;
   right: 5px;

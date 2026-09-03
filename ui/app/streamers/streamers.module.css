@@ -344,6 +344,18 @@
   letter-spacing: 0.04em;
 }
 
+.tierBadge.tierBadgeCompact {
+  font-size: 15px;
+  line-height: 1.14;
+  letter-spacing: 0.015em;
+}
+
+.tierBadge.tierBadgeDense {
+  font-size: 12px;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
 .tierChamps {
   display: flex;
   flex-wrap: wrap;

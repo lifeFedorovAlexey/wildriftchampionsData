@@ -780,6 +780,12 @@ export default function StreamerTierlistEditor({
               const slugs = draft[selectedLane]?.[tier] || [];
               const tierStyle = tierStyles[tier];
               const hasLongLabel = tierStyle.label.length > 2;
+              const labelSizeClass =
+                tierStyle.label.length > 90
+                  ? styles.tierBadgeLabelDense
+                  : tierStyle.label.length > 32
+                    ? styles.tierBadgeLabelCompact
+                    : "";
 
               return (
                 <div
@@ -792,7 +798,9 @@ export default function StreamerTierlistEditor({
                       background: tierStyle.color,
                     }}
                   >
-                    <span className={styles.tierBadgeLabel}>{tierStyle.label || tier}</span>
+                    <span className={`${styles.tierBadgeLabel} ${labelSizeClass}`.trim()}>
+                      {tierStyle.label || tier}
+                    </span>
                     <button
                       type="button"
                       className={styles.tierEditButton}

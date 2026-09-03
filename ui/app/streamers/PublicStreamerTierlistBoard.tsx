@@ -78,6 +78,12 @@ export default function PublicStreamerTierlistBoard({
               color: tierBg(tier),
             };
             const hasLongLabel = tierStyle.label.length > 2;
+            const labelSizeClass =
+              tierStyle.label.length > 90
+                ? styles.tierBadgeDense
+                : tierStyle.label.length > 32
+                  ? styles.tierBadgeCompact
+                  : "";
 
             return (
               <div
@@ -85,7 +91,7 @@ export default function PublicStreamerTierlistBoard({
                 className={`${styles.tierRow} ${hasLongLabel ? styles.tierRowWide : ""}`.trim()}
               >
                 <div
-                  className={styles.tierBadge}
+                  className={`${styles.tierBadge} ${labelSizeClass}`.trim()}
                   style={{
                     background: tierStyle.color,
                     color: "#10151f",
