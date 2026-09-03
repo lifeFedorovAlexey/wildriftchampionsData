@@ -22,7 +22,7 @@ export function getContentSecurityPolicy(nonce) {
     `script-src 'self' ${nonceSource} 'strict-dynamic' https://mc.yandex.ru https://telegram.org`,
     `style-src 'self' ${nonceSource}`,
     "style-src-attr 'unsafe-inline'",
-    "img-src 'self' data: blob: https://mc.yandex.ru https://mc.yandex.com https://s3.twcstorage.ru https://*.twcstorage.ru https://sun9-1.userapi.com https://lh3.googleusercontent.com https://vkvideo.ru https://static.rtbcdn.ru https://max.ru",
+    "img-src 'self' data: blob: https://mc.yandex.ru https://mc.yandex.com https://s3.twcstorage.ru https://*.twcstorage.ru https://sun9-1.userapi.com https://lh3.googleusercontent.com https://t.me https://vkvideo.ru https://static.rtbcdn.ru https://max.ru",
     "font-src 'self' data:",
     "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru wss://mc.yandex.com https://telegram.org https://oauth.telegram.org https://oauth.yandex.ru https://login.yandex.ru https://www.googleapis.com https://oauth2.googleapis.com https://openidconnect.googleapis.com",
     "frame-src 'self' https://mc.yandex.ru https://oauth.telegram.org https://telegram.org",
