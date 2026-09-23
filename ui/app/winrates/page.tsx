@@ -4,7 +4,7 @@ import { loadWinratesPageData } from "./load-winrates-page.js";
 export const revalidate = 60;
 
 export default async function Page() {
-  const { rowsBySlice, maxRowCount, error, updatedAt } =
+  const { rowsBySlice, maxRowCount, error, updatedAt, sourceStatsDate } =
     await loadWinratesPageData("ru_ru", revalidate);
 
   return (
@@ -13,6 +13,7 @@ export default async function Page() {
       maxRowCount={maxRowCount}
       error={error}
       updatedAt={updatedAt}
+      sourceStatsDate={sourceStatsDate}
     />
   );
 }

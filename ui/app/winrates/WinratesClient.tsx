@@ -33,6 +33,7 @@ function WinratesContent({
   sort,
   onSort,
   formattedUpdatedAt,
+  formattedSourceStatsDate,
   rankKey,
   onRankChange,
   laneKey,
@@ -44,6 +45,7 @@ function WinratesContent({
   sort: SortState;
   onSort: (column: "winRate" | "pickRate" | "banRate" | "strengthLevel") => void;
   formattedUpdatedAt: string | null;
+  formattedSourceStatsDate: string | null;
   rankKey: RankKey;
   onRankChange: (key: string) => void;
   laneKey: LaneKey;
@@ -69,8 +71,12 @@ function WinratesContent({
         <div className={styles.tableTop}>
           <div>
             <strong className={styles.tableTitle}>Сводная таблица</strong>
-            {formattedUpdatedAt ? (
-              <p className={styles.tableMeta}>Дата прогона: {formattedUpdatedAt}</p>
+            {formattedUpdatedAt || formattedSourceStatsDate ? (
+              <p className={styles.tableMeta}>
+                {formattedUpdatedAt ? `Прогон: ${formattedUpdatedAt}` : null}
+                {formattedUpdatedAt && formattedSourceStatsDate ? " · " : null}
+                {formattedSourceStatsDate ? `Источник: ${formattedSourceStatsDate}` : null}
+              </p>
             ) : null}
           </div>
         </div>
@@ -93,12 +99,14 @@ export default function WinratesClient({
   maxRowCount,
   error,
   updatedAt,
+  sourceStatsDate,
   embedded = false,
 }: {
   rowsBySlice: WinratesRowsBySlice;
   maxRowCount: number;
   error: string | null;
   updatedAt: string | null;
+  sourceStatsDate: string | null;
   embedded?: boolean;
 }) {
   const [rankKey, setRankKey] = useState<RankKey>("diamondPlus");
@@ -136,6 +144,12 @@ export default function WinratesClient({
       timeZone: "Europe/Moscow",
     }).format(date);
   }, [updatedAt]);
+
+  const formattedSourceStatsDate = useMemo(() => {
+    if (!sourceStatsDate) return null;
+    const match = sourceStatsDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    return match ? `${match[3]}.${match[2]}.${match[1]}` : sourceStatsDate;
+  }, [sourceStatsDate]);
 
   const onRankChange = (key: string) => {
     userInteractedWithStats.current = true;
@@ -238,6 +252,7 @@ export default function WinratesClient({
       sort={sort}
       onSort={onSort}
       formattedUpdatedAt={formattedUpdatedAt}
+      formattedSourceStatsDate={formattedSourceStatsDate}
       rankKey={rankKey}
       onRankChange={onRankChange}
       laneKey={laneKey}

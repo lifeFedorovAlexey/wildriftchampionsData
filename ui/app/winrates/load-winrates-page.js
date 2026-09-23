@@ -12,6 +12,7 @@ import { buildStatsPaths } from "./winrates-lib.js";
  *   dates: string[];
  *   error: string | null;
  *   updatedAt: string | null;
+ *   sourceStatsDate: string | null;
  * }} WinratesPageData
  */
 
@@ -30,6 +31,8 @@ export async function loadWinratesPageData(language = "ru_ru", revalidate = 60) 
 
     const updatedAt =
       typeof updatedJson?.updatedAt === "string" ? updatedJson.updatedAt : null;
+    const sourceStatsDate =
+      typeof updatedJson?.statsDate === "string" ? updatedJson.statsDate : null;
 
     const snapshotPath = updatedAt
       ? `${historyPath}?updatedAt=${encodeURIComponent(updatedAt)}`
@@ -53,6 +56,7 @@ export async function loadWinratesPageData(language = "ru_ru", revalidate = 60) 
           ? histJson.dates
           : [],
       updatedAt,
+      sourceStatsDate,
       error: null,
     };
   } catch (error) {
@@ -62,6 +66,7 @@ export async function loadWinratesPageData(language = "ru_ru", revalidate = 60) 
       maxRowCount: 0,
       dates: [],
       updatedAt: null,
+      sourceStatsDate: null,
       error: "Не удалось загрузить статистику винрейтов.",
     };
   }

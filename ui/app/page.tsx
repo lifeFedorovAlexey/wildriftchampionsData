@@ -6,7 +6,13 @@ import styles from "./page.module.css";
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const { rowsBySlice, maxRowCount, updatedAt, error: loadError } =
+  const {
+    rowsBySlice,
+    maxRowCount,
+    updatedAt,
+    sourceStatsDate,
+    error: loadError,
+  } =
     await loadWinratesPageData("ru_ru", revalidate);
   const error = loadError ? "Не удалось загрузить статистику чемпионов." : null;
 
@@ -30,6 +36,7 @@ export default async function HomePage() {
         maxRowCount={maxRowCount}
         error={error}
         updatedAt={updatedAt}
+        sourceStatsDate={sourceStatsDate}
         embedded
       />
     </div>
