@@ -19,8 +19,8 @@
     "cheerio": "^1.2.0",
     "dotenv": "^17.4.2",
     "node-fetch": "^3.3.2",
-    "puppeteer": "^25.9.0",
-    "three": "^0.185.1"
+    "puppeteer": "^25.11.0",
+    "three": "^0.186.0"
   },
   "keywords": [
     "WR",
