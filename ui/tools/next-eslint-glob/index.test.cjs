@@ -4,11 +4,16 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
+const nextPluginRoot = path.dirname(require.resolve("@next/eslint-plugin-next"));
 const { getRootDirs } = require(
-  path.join(path.dirname(require.resolve("@next/eslint-plugin-next")), "utils/get-root-dirs.js"),
+  path.join(nextPluginRoot, "utils/get-root-dirs.js"),
 );
 
 test("Next ESLint discovers only requested roots with the safe glob adapter", () => {
+  assert.equal(
+    fs.realpathSync(require.resolve("fast-glob", { paths: [nextPluginRoot] })),
+    fs.realpathSync(require.resolve("./index.cjs")),
+  );
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "next-eslint-glob-"));
   try {
     fs.mkdirSync(path.join(root, "apps", "web", "nested"), { recursive: true });
