@@ -33,6 +33,8 @@ test("Next ESLint discovers only requested roots with the safe glob adapter", ()
     assert.deepEqual(globSync("apps/*", { cwd: root, onlyDirectories: true }).sort(), [
       "apps/admin", "apps/web",
     ]);
+    const filesystemRoot = path.parse(root).root.replace(/\\/g, "/");
+    assert.deepEqual(globSync(filesystemRoot, { onlyDirectories: true }), [filesystemRoot]);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
