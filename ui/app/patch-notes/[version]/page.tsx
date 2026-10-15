@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import PageWrapper from "@/components/PageWrapper";
 import { fetchPatchNote, formatPatchDate } from "../patch-notes-lib";
+import type { PatchNote } from "../patch-notes-lib";
 import styles from "../patch-notes.module.css";
 
 type Props = { params: Promise<{ version: string }> };
