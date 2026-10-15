@@ -25,6 +25,8 @@ const CHANGE_GROUPS = [
   { key: "rune-buffs", entityKind: "rune", types: ["buff"], tone: "buff", title: "Усиления рун", eyebrow: "РУНЫ · БАФФЫ", icon: "+" },
   { key: "rune-changes", entityKind: "rune", types: ["adjustment", "rework"], tone: "adjustment", title: "Изменения рун", eyebrow: "РУНЫ · ИЗМЕНЕНИЯ", icon: "±" },
   { key: "rune-nerfs", entityKind: "rune", types: ["nerf"], tone: "nerf", title: "Ослабления рун", eyebrow: "РУНЫ · НЕРФЫ", icon: "−" },
+  { key: "rune-new", entityKind: "rune", types: ["new"], tone: "new", title: "Новые руны", eyebrow: "РУНЫ · НОВЫЕ", icon: "NEW" },
+  { key: "rune-removed", entityKind: "rune", types: ["removed"], tone: "removed", title: "Удалённые руны", eyebrow: "РУНЫ · УДАЛЕНЫ", icon: "DEL" },
   { key: "system-changes", entityKind: "system", types: ALL_CHANGE_TYPES, tone: "adjustment", title: "Изменения игры и карты", eyebrow: "ИГРА · КАРТА", icon: "⚙" },
   { key: "skin-changes", entityKind: "skin", types: ALL_CHANGE_TYPES, tone: "adjustment", title: "Облики", eyebrow: "СКИНЫ", icon: "✦" },
 ] as const;
