@@ -55,6 +55,7 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   { label: "Гайды", href: "/guides", icon: <IconTierInq size={20} /> },
+  { label: "Патчноуты", href: "/patch-notes", icon: <IconTierInq size={20} /> },
   { label: "Квизы", href: "/quizzes", icon: <IconTierInq size={20} /> },
   { label: "Чат", href: "/me/chat", icon: <IconChat size={20} /> },
   { label: "Поддержать", href: "/support", icon: <IconSupport size={20} /> },
