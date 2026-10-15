@@ -7,6 +7,7 @@ const navLinks = [
   { href: "/tier-inq", label: "Тир-лист" },
   { href: "/picks-bans", label: "Графики" },
   { href: "/guides", label: "Гайды" },
+  { href: "/patch-notes", label: "Патчноуты" },
   { href: "/support", label: "Поддержать" },
 ];
 
