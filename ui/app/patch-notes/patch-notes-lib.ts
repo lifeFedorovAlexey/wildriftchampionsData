@@ -47,7 +47,9 @@ export type PatchNote = PatchNoteSummary & {
 
 export async function fetchPatchNotes(): Promise<PatchNoteSummary[]> {
   const payload = await fetchApiJson("/api/patch-notes", {
-    fetchOptions: process.env.NODE_ENV === "development" ? { cache: "no-store" } : { next: { revalidate: 1800 } },
+    // Patch notes are written by a separate daily workflow. A cached empty
+    // response can otherwise hide newly imported notes for up to 30 minutes.
+    fetchOptions: { cache: "no-store" },
     fallback: { items: [] },
   });
   return Array.isArray(payload?.items) ? payload.items : [];
@@ -55,7 +57,7 @@ export async function fetchPatchNotes(): Promise<PatchNoteSummary[]> {
 
 export async function fetchPatchNote(version: string): Promise<PatchNote | null> {
   return await fetchApiJson(`/api/patch-notes/${encodeURIComponent(version)}`, {
-    fetchOptions: process.env.NODE_ENV === "development" ? { cache: "no-store" } : { next: { revalidate: 1800 } },
+    fetchOptions: { cache: "no-store" },
     allowNotFound: true,
     fallback: null,
   });
