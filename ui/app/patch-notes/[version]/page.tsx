@@ -6,7 +6,7 @@ import { Fragment } from "react";
 import PageWrapper from "@/components/PageWrapper";
 import PatchNoteEntityHeading from "../PatchNoteEntityHeading";
 import PatchNoteSkinGallery from "../PatchNoteSkinGallery";
-import { fetchPatchNote, formatPatchDate, type PatchNote } from "../patch-notes-lib";
+import { fetchPatchNote, formatPatchDate, patchChangeAnchor, type PatchNote } from "../patch-notes-lib";
 import styles from "../patch-notes.module.css";
 
 type Props = { params: Promise<{ version: string }> };
@@ -101,12 +101,19 @@ export default async function PatchNotePage({ params }: Props) {
                 <PatchNoteSkinGallery changes={changes} />
               ) : (
                 <div className={styles.changeList}>
-                  {changes.map((change) => {
+                  {changes.map((change, changeIndex) => {
+                    const anchor = patchChangeAnchor(change, change.changeType);
+                    const firstOccurrence = changes.findIndex((candidate) => patchChangeAnchor(candidate, candidate.changeType) === anchor) === changeIndex;
                     const details = change.details.filter((detail) => !isRedundantPatchStatus(change, detail));
                     const compactSystemText = change.entityKind === "system" && details.length > 2
                       && details.every((detail) => !detail.label && !detail.before && !detail.after);
                     return (
-                      <article key={`${change.entityKind}-${change.entitySlug || change.entityName}-${change.ordinal}`} className={styles.changeCard}>
+                      <article
+                        key={`${change.entityKind}-${change.entitySlug || change.entityName}-${change.ordinal}`}
+                        id={firstOccurrence ? anchor : undefined}
+                        className={styles.changeCard}
+                        tabIndex={-1}
+                      >
                         <PatchNoteEntityHeading change={change} />
                         {details.length ? <ul className={styles.detailList}>
                           {groupDetails(details, compactSystemText).map((detailGroup, groupIndex) => {
