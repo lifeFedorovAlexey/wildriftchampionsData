@@ -5,6 +5,7 @@ import { Fragment } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
 import PatchNoteEntityHeading from "../PatchNoteEntityHeading";
+import PatchNoteSkinGallery from "../PatchNoteSkinGallery";
 import { fetchPatchNote, formatPatchDate, type PatchNote } from "../patch-notes-lib";
 import styles from "../patch-notes.module.css";
 
@@ -94,47 +95,51 @@ export default async function PatchNotePage({ params }: Props) {
                 <h3>{group.title}</h3>
                 <span className={styles.groupCount}>{changes.length}</span>
               </div>
-              <div className={styles.changeList}>
-                {changes.map((change) => (
-                  <article key={`${change.entityKind}-${change.entitySlug || change.entityName}-${change.ordinal}`} className={styles.changeCard}>
-                    <PatchNoteEntityHeading change={change} />
-                    <ul className={styles.detailList}>
-                      {groupDetails(change.details).map((group, groupIndex) => (
-                        <li className={styles.detailGroup} key={`${group.component || "general"}-${groupIndex}`}>
-                          {group.component ? (
-                            <span className={styles.componentName}>
-                              {cleanComponentName(group.component)}
-                              {group.details.length === 1 && group.details[0].label ? (
-                                <> <span className={styles.componentDivider}>—</span> {group.details[0].label}</>
-                              ) : null}
-                            </span>
-                          ) : null}
-                          <ul className={styles.componentDetails}>
-                            {group.details.map((detail, index) => (
-                              <li key={`${detail.label || detail.text}-${index}`}>
-                                {detail.before && detail.after ? (
-                                  <span className={styles.changeValues}>
-                                    {detail.label && !(group.component && group.details.length === 1) ? (
-                                      <span className={styles.changeLabel}>{detail.label}</span>
-                                    ) : null}
-                                    <span className={styles.beforeValue}>{renderPercentValues(detail.before)}</span>
-                                    <span className={styles.afterValue}>
-                                      <span className={styles.arrow} aria-hidden="true">→</span>
-                                      {renderChangedNumbers(detail.after, detail.before)}
+              {group.entityKind === "skin" ? (
+                <PatchNoteSkinGallery changes={changes} />
+              ) : (
+                <div className={styles.changeList}>
+                  {changes.map((change) => (
+                    <article key={`${change.entityKind}-${change.entitySlug || change.entityName}-${change.ordinal}`} className={styles.changeCard}>
+                      <PatchNoteEntityHeading change={change} />
+                      <ul className={styles.detailList}>
+                        {groupDetails(change.details).map((group, groupIndex) => (
+                          <li className={styles.detailGroup} key={`${group.component || "general"}-${groupIndex}`}>
+                            {group.component ? (
+                              <span className={styles.componentName}>
+                                {cleanComponentName(group.component)}
+                                {group.details.length === 1 && group.details[0].label ? (
+                                  <> <span className={styles.componentDivider}>—</span> {group.details[0].label}</>
+                                ) : null}
+                              </span>
+                            ) : null}
+                            <ul className={styles.componentDetails}>
+                              {group.details.map((detail, index) => (
+                                <li key={`${detail.label || detail.text}-${index}`}>
+                                  {detail.before && detail.after ? (
+                                    <span className={styles.changeValues}>
+                                      {detail.label && !(group.component && group.details.length === 1) ? (
+                                        <span className={styles.changeLabel}>{detail.label}</span>
+                                      ) : null}
+                                      <span className={styles.beforeValue}>{renderPercentValues(detail.before)}</span>
+                                      <span className={styles.afterValue}>
+                                        <span className={styles.arrow} aria-hidden="true">→</span>
+                                        {renderChangedNumbers(detail.after, detail.before)}
+                                      </span>
                                     </span>
-                                  </span>
-                                ) : detail.label ? (
-                                  <><span className={styles.changeLabel}>{detail.label}:</span> {detail.text}</>
-                                ) : <span>{detail.text}</span>}
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
-              </div>
+                                  ) : detail.label ? (
+                                    <><span className={styles.changeLabel}>{detail.label}:</span> {detail.text}</>
+                                  ) : <span>{detail.text}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </li>
+                        ))}
+                      </ul>
+                    </article>
+                  ))}
+                </div>
+              )}
             </section>
           );
         }) : (
