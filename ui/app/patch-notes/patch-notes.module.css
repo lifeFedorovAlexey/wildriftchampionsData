@@ -485,6 +485,176 @@
   background: rgba(5, 11, 21, .46);
 }
 
+.skinGallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.skinCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(151, 174, 205, .24);
+  border-radius: 12px;
+  background: linear-gradient(150deg, rgba(20, 31, 49, .96), rgba(7, 12, 22, .98));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  transform-origin: center bottom;
+}
+
+.skinArtwork {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 70% 35%, rgba(74, 117, 163, .3), transparent 48%),
+    linear-gradient(135deg, #1a2840, #090e19 72%);
+}
+
+.skinArtwork > img {
+  object-fit: cover;
+  object-position: center 34%;
+  transition: transform 360ms ease, filter 360ms ease;
+}
+
+.skinArtworkFallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(183, 207, 234, .5);
+  font-size: 40px;
+}
+
+.skinArtworkShade {
+  position: absolute;
+  inset: 25% 0 0;
+  background: linear-gradient(180deg, transparent, rgba(5, 9, 17, .9));
+  pointer-events: none;
+}
+
+.skinArtworkCaption {
+  position: absolute;
+  right: 15px;
+  bottom: 13px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  pointer-events: none;
+}
+
+.skinKind,
+.skinNew {
+  padding: 3px 6px;
+  border: 1px solid rgba(222, 232, 247, .24);
+  border-radius: 5px;
+  background: rgba(10, 17, 29, .78);
+  color: #dce7f6;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.15;
+}
+
+.skinNew {
+  border-color: rgba(99, 218, 235, .45);
+  color: #7ee4f1;
+}
+
+.skinArtworkCaption h4 {
+  flex: 1 0 100%;
+  margin: 1px 0 0;
+  color: #fff;
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 800;
+  line-height: 1.2;
+  text-shadow: 0 2px 9px rgba(0, 0, 0, .65);
+}
+
+.skinCardBody {
+  display: grid;
+  min-height: 52px;
+  gap: 9px;
+  align-content: center;
+  padding: 11px 14px 13px;
+}
+
+.skinAvailability {
+  margin: 0;
+  color: #d5dbea;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.skinVariantPreview {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.skinVariantChip,
+.skinVariantMore {
+  display: inline-flex;
+  min-height: 23px;
+  align-items: center;
+  padding: 3px 8px;
+  border: 1px solid rgba(145, 176, 211, .25);
+  border-radius: 999px;
+  background: rgba(126, 162, 203, .1);
+  color: #dbe8f8;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.skinVariantMore {
+  border-color: rgba(99, 218, 235, .3);
+  color: #81deed;
+}
+
+.skinVariantDetails {
+  color: #c7d3e4;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.skinVariantDetails summary {
+  width: fit-content;
+  color: #8fd7e7;
+  cursor: pointer;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.skinVariantDetails summary:hover {
+  color: #c4f4fb;
+}
+
+.skinVariantDetails ul {
+  display: grid;
+  gap: 5px;
+  margin: 9px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skinVariantDetails li {
+  display: grid;
+  gap: 2px;
+  padding: 7px 9px;
+  border-left: 2px solid rgba(99, 218, 235, .38);
+  border-radius: 0 5px 5px 0;
+  background: rgba(255, 255, 255, .035);
+}
+
+.skinVariantDetails li strong {
+  color: #eef5ff;
+}
+
 .entityHead {
   display: flex;
   align-items: center;
@@ -687,8 +857,32 @@
     grid-template-columns: 1fr;
   }
 
+  .skinGallery {
+    grid-template-columns: 1fr;
+  }
+
   .beforeValue,
   .afterValue { min-width: 0; }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .skinCard:hover {
+    transform: perspective(1000px) translateY(-4px) rotateX(2.2deg) rotateY(-1.8deg);
+    border-color: rgba(130, 194, 223, .52);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .28), 0 0 20px rgba(84, 170, 215, .09);
+  }
+
+  .skinCard:hover .skinArtwork > img {
+    transform: scale(1.025);
+    filter: saturate(1.04) brightness(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skinCard,
+  .skinArtwork > img {
+    transition: none;
+  }
 }
 
 
