@@ -228,6 +228,39 @@
   background: #080d17;
 }
 
+.videoPlaceholder {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 9px;
+  padding: 16px;
+  color: #c4ccda;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, rgba(52, 79, 112, .34), transparent 72%),
+    linear-gradient(145deg, #111b2b, #080d17 75%);
+}
+
+.missingVideoIcon {
+  display: block;
+  width: 34px;
+  height: 30px;
+  fill: none;
+  stroke: #91a4bd;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.placeholderMessage {
+  display: block;
+  max-width: 210px;
+  color: #c4ccda;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
 .videoMainLink {
   position: absolute;
   inset: 0;

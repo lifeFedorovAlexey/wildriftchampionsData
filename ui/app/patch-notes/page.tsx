@@ -86,7 +86,18 @@ export default async function PatchNotesPage() {
                 </div>
               ) : (
                 <div className={`${styles.videoPreview} ${styles.videoPlaceholder}`} role="note" aria-label="Видеообзор не добавлен">
-                  <svg className={styles.missingVideoIcon} viewBox="0 0 24 24" aria-hidden="true">
+                  <svg
+                    className={styles.missingVideoIcon}
+                    width="34"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#91a4bd"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
                     <rect x="3" y="6" width="12" height="12" rx="2" />
                     <path d="m15 10 6-3v10l-6-3" />
                   </svg>
