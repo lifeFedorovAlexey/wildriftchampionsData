@@ -228,34 +228,32 @@
   background: #080d17;
 }
 
-.videoPlaceholder {
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  gap: 9px;
-  padding: 16px;
-  color: #c4ccda;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at center, rgba(52, 79, 112, .34), transparent 72%),
-    linear-gradient(145deg, #111b2b, #080d17 75%);
+.videoMainLink {
+  position: absolute;
+  inset: 0;
+  display: block;
 }
 
-.missingVideoIcon {
-  width: 34px;
-  height: 30px;
-  fill: none;
-  stroke: #91a4bd;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.6;
+.videoFallback {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  z-index: 2;
+  padding: 4px 7px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 5px;
+  background: rgba(8, 13, 23, .88);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background 140ms ease, border-color 140ms ease;
 }
 
-.placeholderMessage {
-  max-width: 210px;
-  font-size: 11px;
-  font-weight: 650;
-  line-height: 1.4;
+.videoFallback:hover {
+  border-color: rgba(255, 255, 255, .72);
+  background: #172235;
 }
 
 .videoPreview img {
@@ -305,7 +303,8 @@
   transform: scale(1.08);
 }
 
-.videoPreview:focus-visible {
+.videoMainLink:focus-visible,
+.videoFallback:focus-visible {
   outline: 2px solid var(--accent-primary-text);
   outline-offset: 3px;
 }
