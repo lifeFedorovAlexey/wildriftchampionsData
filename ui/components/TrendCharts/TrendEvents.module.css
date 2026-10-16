@@ -1,0 +1,28 @@
+.rail { position: relative; width: 100%; }
+.connectors { position: absolute; inset: 0; pointer-events: none; }
+.patch { position: absolute; display: grid; justify-items: center; gap: 4px; }
+.patchLabel { border: 0; background: transparent; color: #cbd5e1; display: flex; gap: 5px; padding: 0 1px; font: inherit; font-size: 10px; cursor: pointer; }
+.patchLabel span { color: #8190a6; }
+.icons { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.iconButton { display: block; border: 0; padding: 0; background: transparent; cursor: pointer; border-radius: 7px; }
+.icon { --event-color: #93c5fd; position: relative; display: block; width: 32px; height: 32px; flex: 0 0 32px; border: 1px solid var(--event-color); border-radius: 6px; background: #0f172a; }
+.icon img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block; }
+.champion { width: 36px; height: 36px; flex-basis: 36px; border-radius: 50%; }
+.badge { position: absolute; right: -3px; bottom: -3px; width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--event-color); background: #111827; color: var(--event-color); font-size: 12px; font-weight: 800; line-height: 1; }
+.fallback { display: grid; place-items: center; height: 100%; font-size: 10px; color: #cbd5e1; }
+.iconButton[aria-expanded="true"] { outline: 2px solid #e2e8f0; outline-offset: 3px; }
+.iconButton:focus-visible, .patchLabel:focus-visible, .more:focus-visible, .close:focus-visible { outline: 2px solid #e2e8f0; outline-offset: 4px; }
+.more { width: 30px; height: 32px; padding: 0; border: 1px solid #475569; background: #172033; color: #cbd5e1; border-radius: 6px; font: inherit; font-size: 11px; cursor: pointer; }
+.details { margin: 8px 4px 4px; padding: 10px 12px; border: 1px solid #334155; border-radius: 8px; background: #111b2b; font-size: 12px; }
+.detailHeading { display: flex; align-items: center; gap: 10px; color: #94a3b8; margin-bottom: 10px; }
+.detailHeading a, .source { color: #93c5fd; text-decoration: none; }
+.close { margin-left: auto; border: 0; background: transparent; color: #cbd5e1; cursor: pointer; font-size: 22px; line-height: 1; padding: 2px 5px; }
+.detailEntity { display: flex; align-items: flex-start; gap: 12px; margin-top: 10px; }
+.detailBody { min-width: 0; }
+.entityName { display: flex; flex-wrap: wrap; gap: 8px; color: #f1f5f9; font-weight: 600; }
+.entityName span { font-size: 11px; font-weight: 400; }
+.relation { color: #94a3b8; font-size: 11px; }
+.record { margin-top: 6px; color: #cbd5e1; line-height: 1.5; overflow-wrap: anywhere; }
+.record strong { font-weight: 500; color: #e2e8f0; }
+.record p, .relation { margin: 3px 0; }
+.source { display: inline-block; margin-top: 10px; font-size: 11px; }

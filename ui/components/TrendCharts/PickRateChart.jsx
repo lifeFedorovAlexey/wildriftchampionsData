@@ -9,16 +9,19 @@ import {
   Tooltip,
 } from "recharts";
 import {
-  COMMON_X_AXIS_PROPS,
+  trendXAxisProps,
   COMMON_Y_TICK,
   commonTooltipProps,
   formatPercent,
 } from "./TrendCharts.styles.js";
+import { trendReferenceLines } from "./TrendEvents.jsx";
 
 export const PickRateChart = React.memo(function PickRateChart({
   days,
   width,
   height,
+  patches = [],
+  seasons = [],
 }) {
   const hasTrend =
     Array.isArray(days) && days.some((d) => Number.isFinite(d?.pickTrend));
@@ -39,7 +42,7 @@ export const PickRateChart = React.memo(function PickRateChart({
 
       <CartesianGrid stroke="#1f2933" strokeDasharray="3 3" />
 
-      <XAxis {...COMMON_X_AXIS_PROPS} />
+      <XAxis {...trendXAxisProps(days)} />
 
       <YAxis
         tickFormatter={formatPercent}
@@ -80,6 +83,7 @@ export const PickRateChart = React.memo(function PickRateChart({
           dot={false}
         />
       )}
+      {trendReferenceLines({ patches, seasons, width, compact: true })}
     </AreaChart>
   );
 });

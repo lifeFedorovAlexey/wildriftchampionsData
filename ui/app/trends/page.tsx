@@ -33,6 +33,7 @@ import {
 } from "./trends-lib";
 import { LANE_OPTIONS, RANK_OPTIONS } from "@/components/screensConstants";
 import styles from "./page.module.css";
+import type { TrendEvents } from "@/components/TrendCharts/trend-events-types";
 
 const TrendChartBlock = dynamic(() => import("@/components/TrendCharts"), {
   loading: () => <ChartSkeleton />,
@@ -62,18 +63,6 @@ type TrendDay = {
 type ChampionOption = {
   slug: string;
   displayName: string;
-};
-
-type ChampionEvent = {
-  id: number;
-  date: string | null;
-  championSlug: string;
-  type: string;
-  scope: string;
-  abilityName: string | null;
-  skinName: string | null;
-  title: string | null;
-  summary: string | null;
 };
 
 type RawHistoryItem = {
@@ -155,29 +144,6 @@ function TrendTable({ days }: { days: TrendDay[] }) {
   );
 }
 
-function ChampionEventsPanel({ events }: { events: ChampionEvent[] }) {
-  if (!events.length) return null;
-
-  return (
-    <div className={styles.eventsCard}>
-      <div className={styles.eventsTitle}>События чемпиона</div>
-      <div className={styles.eventsList}>
-        {events.map((event) => (
-          <div key={event.id} className={styles.eventRow}>
-            <div className={styles.eventDate}>{event.date ?? "—"}</div>
-            <div className={styles.eventBody}>
-              <div className={styles.eventHeadline}>{event.title || "Обновление"}</div>
-              {event.summary ? (
-                <div className={styles.eventSummary}>{event.summary}</div>
-              ) : null}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function Page() {
   const [champions, setChampions] = useState<ChampionOption[]>([]);
   const [selectedChampion, setSelectedChampion] = useState<ChampionOption | null>(null);
@@ -191,20 +157,21 @@ export default function Page() {
   const [filterAvailability, setFilterAvailability] = useState<FilterAvailability[]>([]);
   const [availabilityLoaded, setAvailabilityLoaded] = useState(false);
   const availabilityChampionRef = useRef<string | null>(null);
-  const [championEvents, setChampionEvents] = useState<ChampionEvent[]>([]);
+  const [trendEvents, setTrendEvents] = useState<TrendEvents>({ patches: [], seasons: [] });
+  const [eventsError, setEventsError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [eventsLoading, setEventsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const resetHistoryState = () => {
     setLoading(true);
     setError(null);
     setRawHistory([]);
-    setChampionEvents([]);
-    setEventsLoading(false);
+    setTrendEvents({ patches: [], seasons: [] });
+    setEventsError(false);
   };
 
   const handleChampionSelect = (champion: ChampionOption | null) => {
+    if (champion?.slug === selectedChampion?.slug) return;
     setSelectedChampion(champion);
     setFilterAvailability([]);
     setAvailabilityLoaded(false);
@@ -214,8 +181,8 @@ export default function Page() {
       setLoading(false);
       setError(null);
       setRawHistory([]);
-      setChampionEvents([]);
-      setEventsLoading(false);
+      setTrendEvents({ patches: [], seasons: [] });
+      setEventsError(false);
       return;
     }
 
@@ -223,6 +190,7 @@ export default function Page() {
   };
 
   const handleRankChange = (key: string) => {
+    if (key === rankKey) return;
     if (availabilityLoaded && !getAvailableRankKeys(filterAvailability, laneKey).includes(key)) {
       return;
     }
@@ -233,6 +201,7 @@ export default function Page() {
   };
 
   const handleLaneChange = (key: string) => {
+    if (key === laneKey) return;
     if (availabilityLoaded && !getAvailableLaneKeys(filterAvailability, rankKey).includes(key)) {
       return;
     }
@@ -243,9 +212,10 @@ export default function Page() {
   };
 
   const handleRangeChange = (value: "week" | "month" | "all") => {
+    if (value === range) return;
     setRange(value);
-    setChampionEvents([]);
-    setEventsLoading(Boolean(selectedChampion));
+    setTrendEvents({ patches: [], seasons: [] });
+    setEventsError(false);
   };
 
   useEffect(() => {
@@ -272,6 +242,7 @@ export default function Page() {
     fetch(`${API_BASE}/api/champion-history?${params}`, { signal: controller.signal })
       .then((response) => response.json())
       .then((payload) => {
+        if (controller.signal.aborted) return;
         if (Array.isArray(payload.availability)) {
           const nextAvailability = payload.availability as FilterAvailability[];
           availabilityChampionRef.current = selectedChampion.slug;
@@ -290,13 +261,12 @@ export default function Page() {
         }
         const items = Array.isArray(payload.items) ? payload.items : [];
         setRawHistory(items);
-        setEventsLoading(items.length > 0);
       })
       .catch((fetchError) => {
         if (fetchError instanceof DOMException && fetchError.name === "AbortError") return;
         setError("Не удалось загрузить историю");
       })
-      .finally(() => setLoading(false));
+      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
 
     return () => controller.abort();
   }, [selectedChampion, rankKey, laneKey]);
@@ -326,39 +296,32 @@ export default function Page() {
   useEffect(() => {
     if (!selectedChampion || !dateWindow?.from || !dateWindow?.to) return;
 
+    const controller = new AbortController();
     const params = new URLSearchParams({
       slug: selectedChampion.slug,
+      lane: laneKey,
       from: dateWindow.from,
       to: dateWindow.to,
-      limit: "100",
     });
 
-    fetch(`${API_BASE}/api/champion-events?${params}`)
-      .then((response) => response.json())
-      .then((payload) => setChampionEvents(payload.items || []))
-      .catch(() => setChampionEvents([]))
-      .finally(() => setEventsLoading(false));
-  }, [selectedChampion, dateWindow]);
-
-  const enrichedDays = useMemo(() => {
-    const eventsByDate = new Map<string, ChampionEvent[]>();
-
-    for (const event of championEvents) {
-      if (!event?.date) continue;
-      const bucket = eventsByDate.get(event.date) || [];
-      bucket.push(event);
-      eventsByDate.set(event.date, bucket);
-    }
-
-    return days.map((day: TrendDay) => {
-      const events = eventsByDate.get(day.fullDate) || [];
-      return {
-        ...day,
-        events,
-        eventCount: events.length,
-      };
-    });
-  }, [days, championEvents]);
+    fetch(`${API_BASE}/api/trend-events?${params}`, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error("Event request failed");
+        return response.json();
+      })
+      .then((payload) => {
+        if (controller.signal.aborted) return;
+        setTrendEvents({
+          patches: Array.isArray(payload.patches) ? payload.patches : [],
+          seasons: Array.isArray(payload.seasons) ? payload.seasons : [],
+        });
+        setEventsError(false);
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setEventsError(true);
+      });
+    return () => controller.abort();
+  }, [selectedChampion, laneKey, dateWindow]);
 
   return (
     <PageWrapper
@@ -393,20 +356,19 @@ export default function Page() {
 
       {loading ? <LoadingRing label="Считаю тренды..." /> : null}
 
-      {!loading && selectedChampion && enrichedDays.length > 0 ? (
+      {!loading && selectedChampion && days.length > 0 ? (
         <div className={styles.stackCompact}>
-          <TrendChartBlock days={enrichedDays} />
-          <ChampionEventsPanel events={championEvents} />
-          <TrendTable days={enrichedDays} />
+          <TrendChartBlock key={`${selectedChampion.slug}:${laneKey}:${rankKey}:${range}`} days={days} patches={trendEvents.patches} seasons={trendEvents.seasons} />
+          <TrendTable days={days} />
         </div>
       ) : null}
 
-      {!loading && selectedChampion && !enrichedDays.length ? (
+      {!loading && selectedChampion && !days.length ? (
         <TextHint>Нет статистики в рамках линии, чемпиона или ранга.</TextHint>
       ) : null}
 
-      {!loading && !eventsLoading && selectedChampion && enrichedDays.length > 0 && !championEvents.length ? (
-        <TextHint>В выбранном диапазоне для этого чемпиона пока не найдено событий обновлений.</TextHint>
+      {!loading && selectedChampion && days.length > 0 && eventsError ? (
+        <TextHint>Не удалось загрузить отметки патчей. Статистика доступна.</TextHint>
       ) : null}
 
       {error ? <TextHint>{error}</TextHint> : null}
