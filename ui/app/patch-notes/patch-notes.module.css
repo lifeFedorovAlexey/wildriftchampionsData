@@ -310,7 +310,7 @@
   outline-offset: 3px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .changeLegend {
     margin-left: 0;
   }
@@ -327,6 +327,10 @@
   }
 
   .cardWithMedia .videoPreview {
+    grid-row: 1;
+  }
+
+  .cardWithMedia .cardLink {
     grid-row: 2;
   }
 }

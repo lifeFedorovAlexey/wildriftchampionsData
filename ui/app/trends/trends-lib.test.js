@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { eventTone, layoutPatchMarkers, trendTimeDomain } from "../../components/TrendCharts/trend-events-layout.js";
 
 import {
   getAvailableLaneKeys,
@@ -29,6 +30,28 @@ test("trend filter availability keeps only combinations with champion history", 
 test("toNum normalizes number-like values safely", () => {
   assert.equal(toNum("12.5"), 12.5);
   assert.equal(toNum(undefined, 7), 7);
+});
+
+test("patch markers use actual dates between missing daily observations", () => {
+  const days = [{ ts: Date.parse("2026-04-01") }, { ts: Date.parse("2026-04-11") }];
+  const { markers } = layoutPatchMarkers([{ version: "7.1", date: "2026-04-06", changes: [{}] }], days, 364);
+  assert.equal(markers[0].x, 206);
+  assert.ok(Number.isFinite(trendTimeDomain([days[0]])[0]));
+  assert.notEqual(...trendTimeDomain([days[0]]));
+});
+
+test("dense patch markers stay inside mobile width without overlapping", () => {
+  const days = [{ ts: Date.parse("2026-04-01") }, { ts: Date.parse("2026-05-01") }];
+  const patches = Array.from({ length: 20 }, (_, i) => ({ version: String(i), date: `2026-04-${String(i + 1).padStart(2, "0")}`, changes: [{}, {}, {}, {}] }));
+  const { markers } = layoutPatchMarkers(patches, days, 296);
+  for (let i = 0; i < markers.length; i++) {
+    assert.ok(markers[i].left >= 0 && markers[i].left + markers[i].width <= 296);
+    for (const other of markers.slice(i + 1).filter((item) => item.top === markers[i].top)) {
+      assert.ok(other.left >= markers[i].left + markers[i].width + 8);
+    }
+  }
+  assert.equal(eventTone("adjustment").symbol, "±");
+  assert.equal(eventTone("rework").symbol, "↻");
 });
 
 test("buildLinearTrend returns a stable average for flat x values", () => {
