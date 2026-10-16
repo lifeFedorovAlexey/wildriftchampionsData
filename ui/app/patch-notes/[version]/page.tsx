@@ -60,7 +60,9 @@ export default async function PatchNotePage({ params }: Props) {
   if (!patch) notFound();
 
   const entitiesChanged = patch.changes.length;
-  const statsChanged = patch.changes.reduce((total, change) => total + change.details.length, 0);
+  const statsChanged = patch.changes.reduce((total, change) => (
+    total + change.details.filter((detail) => !isRedundantPatchStatus(change, detail)).length
+  ), 0);
 
   return (
     <PageWrapper
@@ -99,45 +101,47 @@ export default async function PatchNotePage({ params }: Props) {
                 <PatchNoteSkinGallery changes={changes} />
               ) : (
                 <div className={styles.changeList}>
-                  {changes.map((change) => (
-                    <article key={`${change.entityKind}-${change.entitySlug || change.entityName}-${change.ordinal}`} className={styles.changeCard}>
-                      <PatchNoteEntityHeading change={change} />
-                      <ul className={styles.detailList}>
-                        {groupDetails(change.details).map((group, groupIndex) => (
-                          <li className={styles.detailGroup} key={`${group.component || "general"}-${groupIndex}`}>
-                            {group.component ? (
-                              <span className={styles.componentName}>
-                                {cleanComponentName(group.component)}
-                                {group.details.length === 1 && group.details[0].label ? (
-                                  <> <span className={styles.componentDivider}>—</span> {group.details[0].label}</>
+                  {changes.map((change) => {
+                    const details = change.details.filter((detail) => !isRedundantPatchStatus(change, detail));
+                    const compactSystemText = change.entityKind === "system" && details.length > 2
+                      && details.every((detail) => !detail.label && !detail.before && !detail.after);
+                    return (
+                      <article key={`${change.entityKind}-${change.entitySlug || change.entityName}-${change.ordinal}`} className={styles.changeCard}>
+                        <PatchNoteEntityHeading change={change} />
+                        {details.length ? <ul className={styles.detailList}>
+                          {groupDetails(details, compactSystemText).map((detailGroup, groupIndex) => {
+                            const collapseRemainder = compactSystemText && detailGroup.component === null && detailGroup.details.length > 1;
+                            const visibleDetails = collapseRemainder ? detailGroup.details.slice(0, 1) : detailGroup.details;
+                            return (
+                              <li className={styles.detailGroup} key={`${detailGroup.component || "general"}-${groupIndex}`}>
+                                {detailGroup.component ? (
+                                  <span className={styles.componentName}>
+                                    {cleanComponentName(detailGroup.component)}
+                                    {detailGroup.details.length === 1 && detailGroup.details[0].label ? (
+                                      <> <span className={styles.componentDivider}>—</span> {detailGroup.details[0].label}</>
+                                    ) : null}
+                                  </span>
                                 ) : null}
-                              </span>
-                            ) : null}
-                            <ul className={styles.componentDetails}>
-                              {group.details.map((detail, index) => (
-                                <li key={`${detail.label || detail.text}-${index}`}>
-                                  {detail.before && detail.after ? (
-                                    <span className={styles.changeValues}>
-                                      {detail.label && !(group.component && group.details.length === 1) ? (
-                                        <span className={styles.changeLabel}>{detail.label}</span>
-                                      ) : null}
-                                      <span className={styles.beforeValue}>{renderPercentValues(detail.before)}</span>
-                                      <span className={styles.afterValue}>
-                                        <span className={styles.arrow} aria-hidden="true">→</span>
-                                        {renderChangedNumbers(detail.after, detail.before)}
-                                      </span>
-                                    </span>
-                                  ) : detail.label ? (
-                                    <><span className={styles.changeLabel}>{detail.label}:</span> {detail.text}</>
-                                  ) : <span>{detail.text}</span>}
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                        ))}
-                      </ul>
-                    </article>
-                  ))}
+                                <ul className={styles.componentDetails}>
+                                  {visibleDetails.map((detail, index) => renderDetailLine(detail, index, detailGroup))}
+                                  {collapseRemainder ? (
+                                    <li>
+                                      <details className={styles.moreSystemDetails}>
+                                        <summary>Ещё {detailGroup.details.length - 1}</summary>
+                                        <ul className={styles.componentDetails}>
+                                          {detailGroup.details.slice(1).map((detail, index) => renderDetailLine(detail, index + 1, detailGroup))}
+                                        </ul>
+                                      </details>
+                                    </li>
+                                  ) : null}
+                                </ul>
+                              </li>
+                            );
+                          })}
+                        </ul> : null}
+                      </article>
+                    );
+                  })}
                 </div>
               )}
             </section>
@@ -155,14 +159,88 @@ export default async function PatchNotePage({ params }: Props) {
 }
 
 type ChangeDetail = PatchNote["changes"][number]["details"][number];
+type DetailGroup = { component: string | null; details: ChangeDetail[] };
 
-function groupDetails(details: ChangeDetail[]) {
-  const groups: Array<{ component: string | null; details: ChangeDetail[] }> = [];
+function isRedundantPatchStatus(change: PatchNote["changes"][number], detail: ChangeDetail) {
+  const text = detail.text.trim().replace(/[.!…]+$/u, "").toLowerCase();
+  if (change.changeType === "removed" && /^(?:удал[её]н[аоы]? из игры|removed from (?:the )?game)$/.test(text)) return true;
+  if (change.changeType === "new" && /^(?:новый (?:объект|предмет)|new (?:item|object))$/.test(text)) return true;
+  return change.entityKind === "skin" && /^(?:облик указан в списке обликов патча|облик доступен в патче|skin listed in the patch skins list|skin available in this patch)$/i.test(text);
+}
+
+function renderDetailLine(detail: ChangeDetail, index: number, group: DetailGroup) {
+  return (
+    <li key={`${detail.label || detail.text}-${index}`}>
+      {detail.before && detail.after ? (
+        <span className={styles.changeValues}>
+          {detail.label && !(group.component && group.details.length === 1) ? (
+            <span className={styles.changeLabel}>{detail.label}</span>
+          ) : null}
+          <span className={styles.beforeValue}>{renderPercentValues(detail.before)}</span>
+          <span className={styles.afterValue}>
+            <span className={styles.arrow} aria-hidden="true">→</span>
+            {renderChangedNumbers(detail.after, detail.before)}
+          </span>
+        </span>
+      ) : detail.label ? (
+        <><span className={styles.changeLabel}>{detail.label}:</span> {renderDetailText(detail.text)}</>
+      ) : <span>{renderDetailText(detail.text)}</span>}
+    </li>
+  );
+}
+
+function renderDetailText(value: string) {
+  const marker = value.match(/^\[(new|buff|nerf|rework|adjustment|removed|deleted|новое|новый|новая|бафф|усиление|нерф|ослабление|реворк|изменение|удалено|удалён|удалена|удалены)\]\s*/i);
+  const text = marker ? value.slice(marker[0].length) : value;
+  const key = marker?.[1]?.toLowerCase();
+  const tone = key ? /^(?:new|новое|новый|новая)$/.test(key) ? "new"
+    : /^(?:buff|бафф|усиление)$/.test(key) ? "buff"
+      : /^(?:nerf|нерф|ослабление)$/.test(key) ? "nerf"
+        : /^(?:rework|реворк)$/.test(key) ? "rework"
+          : /^(?:adjustment|изменение)$/.test(key) ? "adjustment" : "removed" : null;
+  const label = tone === "new" ? "Новое" : tone === "buff" ? "Усиление" : tone === "nerf" ? "Ослабление"
+    : tone === "rework" ? "Реворк" : tone === "adjustment" ? "Изменение" : "Удалено";
+  const icon = tone === "new" ? "+" : tone === "buff" ? "↑" : tone === "nerf" ? "↓"
+    : tone === "rework" ? "⟳" : tone === "adjustment" ? "⚙" : "×";
+  const sentenceEnd = text.search(/[.!?](?=\s|$)/u);
+  const hasShortSentence = sentenceEnd > 0 && sentenceEnd < 150;
+  const previewLength = hasShortSentence ? sentenceEnd + 1 : 130;
+
+  return (
+    <>
+      {tone ? (
+        <span className={`${styles.inlineChangeMarker} ${styles[`inlineMarker${tone[0].toUpperCase()}${tone.slice(1)}`]}`} role="img" aria-label={label} title={label}>
+          {icon}
+        </span>
+      ) : null}
+      {text.length > 150 ? (
+        <details className={styles.detailDisclosure}>
+          <summary title="Показать полный текст">
+            {text.slice(0, previewLength).trimEnd()}{hasShortSentence ? "" : "…"}
+          </summary>
+          <div>{text}</div>
+        </details>
+      ) : text}
+    </>
+  );
+}
+
+function groupDetails(details: ChangeDetail[], combineGeneral = false) {
+  const groups: DetailGroup[] = [];
   const byComponent = new Map<string, { component: string; details: ChangeDetail[] }>();
+  let generalGroup: DetailGroup | null = null;
 
   for (const detail of details) {
     const component = detail.component?.trim() || null;
     if (!component) {
+      if (combineGeneral) {
+        if (!generalGroup) {
+          generalGroup = { component: null, details: [] };
+          groups.push(generalGroup);
+        }
+        generalGroup.details.push(detail);
+        continue;
+      }
       groups.push({ component: null, details: [detail] });
       continue;
     }
