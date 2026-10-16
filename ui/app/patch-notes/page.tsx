@@ -5,7 +5,7 @@ import PageWrapper from "@/components/PageWrapper";
 import { fetchPatchNotes, formatPatchDate } from "./patch-notes-lib";
 import styles from "./patch-notes.module.css";
 
-const PREVIEW_TONES = ["new", "buff", "adjustment", "nerf", "removed"] as const;
+const PREVIEW_TONES = ["new", "buff", "adjustment", "rework", "nerf", "removed"] as const;
 const PATCH_REVIEW_VIDEO_IDS: Record<string, string> = {
   "7.3b": "dokqvJXyVxk",
   "7.3a": "D5aPsg1QRz8",
@@ -50,9 +50,9 @@ export default async function PatchNotesPage() {
           return (
             <article
               key={patch.version}
-              className={`${styles.card} ${review ? styles.cardWithVideo : ""}`}
+              className={`${styles.card} ${styles.cardWithMedia}`}
             >
-              {review && (
+              {review ? (
                 <a
                   className={styles.videoPreview}
                   href={review.url}
@@ -63,6 +63,14 @@ export default async function PatchNotesPage() {
                   <Image src={review.thumbnail} alt={review.title} width={240} height={135} unoptimized />
                   <span className={styles.videoPlay} aria-hidden="true" />
                 </a>
+              ) : (
+                <div className={`${styles.videoPreview} ${styles.videoPlaceholder}`} role="note" aria-label="Видеообзор не добавлен">
+                  <svg className={styles.missingVideoIcon} viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="6" width="12" height="12" rx="2" />
+                    <path d="m15 10 6-3v10l-6-3" />
+                  </svg>
+                  <span className={styles.placeholderMessage}>Тут мог бы быть ролик INQ,<br />но кто-то не занёс за проезд</span>
+                </div>
               )}
               <Link
                 className={styles.cardLink}
@@ -72,12 +80,18 @@ export default async function PatchNotesPage() {
                 <div className={styles.cardMeta}>
                   <span className={styles.version}>ПАТЧ {patch.version}</span>
                   <time dateTime={patch.publishedAt || undefined}>{formatPatchDate(patch.publishedAt)}</time>
+                  <span className={styles.changeLegend} aria-label="Обозначения изменений">
+                    <span><b className={styles.legendBuff} aria-hidden="true">↑</b> Бафф</span>
+                    <span><b className={styles.legendNerf} aria-hidden="true">↓</b> Нерф</span>
+                    <span><b className={styles.legendAdjustment} aria-hidden="true">⚙︎</b> Изменение</span>
+                    <span><b className={styles.legendRework} aria-hidden="true">⟳</b> Реворк</span>
+                  </span>
                 </div>
                 <div className={styles.previewGroups}>
                   {PREVIEW_TONES.map((tone) => {
                     const icons = patch.iconPreviews?.[tone] || [];
                     if (!icons.length) return null;
-                    const label = tone === "new" ? "Новый объект" : tone === "removed" ? "Удалённый объект" : tone === "buff" ? "Баф" : tone === "nerf" ? "Нерф" : "Изменение";
+                    const label = tone === "new" ? "Новый объект" : tone === "removed" ? "Удалённый объект" : tone === "buff" ? "Баф" : tone === "nerf" ? "Нерф" : tone === "rework" ? "Реворк" : "Изменение";
                     return (
                       <div key={tone} className={styles.previewGroup} role="group" aria-label={label}>
                         {(["champion", "item"] as const).map((entityKind) => {
