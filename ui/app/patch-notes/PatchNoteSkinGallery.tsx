@@ -9,9 +9,12 @@ type SkinCard = {
   title: string;
   imageUrl: string | null;
   changes: SkinChange[];
+  variants: string[];
+  hasColorVariants: boolean;
 };
 
 const PARENTHETICAL_VARIANT = /^(.+?)\s*\(([^()]+)\)$/;
+const ESPORTS_CHROMAS = new Set(["LPL", "LCK", "LEC", "LCS", "LCP", "CBLOL"]);
 
 export default function PatchNoteSkinGallery({ changes }: { changes: SkinChange[] }) {
   const cards = groupSkinChanges(changes);
@@ -20,11 +23,7 @@ export default function PatchNoteSkinGallery({ changes }: { changes: SkinChange[
     <div className={styles.skinGallery}>
       {cards.map((card) => {
         const isNew = card.changes.some((change) => change.changeType === "new");
-        const variantNames = card.changes.map((change) => getVariantName(change.entityName, card.title));
-        const visibleVariants = variantNames.slice(0, 3);
-        const notes = card.changes.flatMap((change) => change.details.map((detail) => ({
-          text: detail.label ? `${detail.label}: ${detail.text}` : detail.text,
-        })));
+        const availability = getSharedAvailability(card);
 
         return (
           <article className={styles.skinCard} key={card.key}>
@@ -32,7 +31,7 @@ export default function PatchNoteSkinGallery({ changes }: { changes: SkinChange[
               {card.imageUrl ? (
                 <Image
                   src={card.imageUrl}
-                  alt=""
+                  alt={`${card.title} — изображение облика`}
                   fill
                   sizes="(max-width: 760px) 100vw, 50vw"
                   unoptimized
@@ -40,46 +39,33 @@ export default function PatchNoteSkinGallery({ changes }: { changes: SkinChange[
               ) : (
                 <span className={styles.skinArtworkFallback} aria-hidden="true">✦</span>
               )}
+              <span className={styles.skinArtworkFrame} aria-hidden="true" />
               <span className={styles.skinArtworkShade} aria-hidden="true" />
-              <div className={styles.skinArtworkCaption}>
-                <span className={styles.skinKind}>ОБЛИК</span>
+              <div className={styles.skinArtworkEyebrow}>
+                <span className={styles.skinKind}>СКИН</span>
                 {isNew ? <span className={styles.skinNew}>НОВЫЙ</span> : null}
+                <span className={styles.skinSeries}>WILD RIFT · КОЛЛЕКЦИЯ</span>
+              </div>
+              <div className={styles.skinArtworkCaption}>
                 <h4>{card.title}</h4>
+                {card.hasColorVariants ? (
+                  <p>{card.variants.length} {pluralize(card.variants.length, "цветовая схема", "цветовые схемы", "цветовых схем")}</p>
+                ) : null}
               </div>
             </div>
 
             <div className={styles.skinCardBody}>
-              {card.changes.length === 1 ? (
-                <p className={styles.skinAvailability}>{notes[0]?.text}</p>
-              ) : (
-                <>
-                  <div className={styles.skinVariantPreview} aria-label={`Вариантов образа: ${card.changes.length}`}>
-                    {visibleVariants.map((name, index) => (
-                      <span className={styles.skinVariantChip} key={`${name}-${index}`} title={card.changes[index].entityName}>
-                        {name}
-                      </span>
+              {card.hasColorVariants ? (
+                <div className={styles.skinVariantBlock}>
+                  <span className={styles.skinVariantLabel}>ЦВЕТОВЫЕ СХЕМЫ</span>
+                  <div className={styles.skinVariantPreview} aria-label={`Цветовые схемы: ${card.variants.join(", ")}`}>
+                    {card.variants.map((variant) => (
+                      <span className={styles.skinVariantChip} key={variant}>{variant}</span>
                     ))}
-                    {variantNames.length > visibleVariants.length ? (
-                      <span className={styles.skinVariantMore}>+{variantNames.length - visibleVariants.length}</span>
-                    ) : null}
                   </div>
-                  <details className={styles.skinVariantDetails}>
-                    <summary>Все варианты · {card.changes.length}</summary>
-                    <ul>
-                      {card.changes.map((change, index) => (
-                        <li key={`${change.entitySlug || change.entityName}-${change.ordinal}`}>
-                          <strong>{variantNames[index]}</strong>
-                          {change.details.map((detail, detailIndex) => (
-                            <span key={`${detail.label || "detail"}-${detailIndex}`}>
-                              {detail.label ? `${detail.label}: ` : ""}{detail.text}
-                            </span>
-                          ))}
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                </>
-              )}
+                </div>
+              ) : null}
+              {availability ? <p className={styles.skinAvailability}>{availability}</p> : null}
             </div>
           </article>
         );
@@ -93,7 +79,7 @@ function groupSkinChanges(changes: SkinChange[]): SkinCard[] {
 
   for (const change of changes) {
     const { baseName } = splitVariantName(change.entityName);
-    const key = baseName.toLowerCase();
+    const key = normalizeName(baseName);
     const group = candidates.get(key) || [];
     group.push(change);
     candidates.set(key, group);
@@ -101,8 +87,8 @@ function groupSkinChanges(changes: SkinChange[]): SkinCard[] {
 
   const grouped = new Map<SkinChange, SkinChange[]>();
   for (const group of candidates.values()) {
-    const imageUrls = new Set(group.flatMap((change) => change.imageUrl ? [change.imageUrl] : []));
-    if (group.length < 2 || imageUrls.size > 1 || !group.some((change) => splitVariantName(change.entityName).variantName)) continue;
+    const colorVariants = group.filter(isColorVariant);
+    if (!colorVariants.length) continue;
     for (const change of group) grouped.set(change, group);
   }
 
@@ -114,18 +100,31 @@ function groupSkinChanges(changes: SkinChange[]): SkinCard[] {
     if (group && seenGroups.has(group)) continue;
     if (group) seenGroups.add(group);
 
-    const firstName = group?.find((entry) => !splitVariantName(entry.entityName).variantName)?.entityName;
-    const title = firstName || splitVariantName(change.entityName).baseName;
     const members = group || [change];
+    const baseEntry = members.find((entry) => !splitVariantName(entry.entityName).variantName);
+    const title = baseEntry?.entityName || splitVariantName(change.entityName).baseName;
+    const variantChanges = members.filter(isColorVariant);
+    const variants = [...new Set(variantChanges.map((entry) => splitVariantName(entry.entityName).variantName))];
+    const imageUrl = baseEntry?.imageUrl || members.find((entry) => entry.imageUrl)?.imageUrl || null;
+
     cards.push({
       key: members.map((entry) => entry.entitySlug || entry.entityName).join("|") || title,
       title,
-      imageUrl: members.find((entry) => entry.imageUrl)?.imageUrl || null,
+      imageUrl,
       changes: members,
+      variants,
+      hasColorVariants: variants.length > 0,
     });
   }
 
   return cards;
+}
+
+function isColorVariant(change: SkinChange) {
+  const { variantName } = splitVariantName(change.entityName);
+  if (!variantName) return false;
+  if (ESPORTS_CHROMAS.has(variantName.toUpperCase())) return true;
+  return change.details.some((detail) => /(?:цвет\w*\s+схем\w*|color\s+scheme|\bchroma\b)/i.test(detail.text));
 }
 
 function splitVariantName(value: string) {
@@ -135,7 +134,29 @@ function splitVariantName(value: string) {
     : { baseName: value.trim(), variantName: "" };
 }
 
-function getVariantName(entityName: string, baseName: string) {
-  const variantName = splitVariantName(entityName).variantName;
-  return variantName || (entityName === baseName ? "Основной" : entityName);
+function normalizeName(value: string) {
+  return value.trim().replace(/\s+/g, " ").toLocaleLowerCase();
+}
+
+function getSharedAvailability(card: SkinCard) {
+  const uniqueNotes = new Map<string, string>();
+
+  for (const change of card.changes) {
+    for (const detail of change.details) {
+      const note = (detail.label ? `${detail.label}: ` : "") + detail.text;
+      const normalizedNote = note.replaceAll(change.entityName, card.title).trim();
+      uniqueNotes.set(normalizeName(normalizedNote), normalizedNote);
+    }
+  }
+
+  return [...uniqueNotes.values()].join(" · ");
+}
+
+function pluralize(value: number, one: string, few: string, many: string) {
+  const lastTwo = value % 100;
+  if (lastTwo >= 11 && lastTwo <= 14) return many;
+  const last = value % 10;
+  if (last === 1) return one;
+  if (last >= 2 && last <= 4) return few;
+  return many;
 }

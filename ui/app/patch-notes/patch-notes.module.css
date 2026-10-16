@@ -530,33 +530,37 @@
 .skinGallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
+  gap: 18px;
 }
 
 .skinCard {
+  position: relative;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid rgba(151, 174, 205, .24);
-  border-radius: 12px;
-  background: linear-gradient(150deg, rgba(20, 31, 49, .96), rgba(7, 12, 22, .98));
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
-  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
-  transform-origin: center bottom;
+  border: 1px solid rgba(196, 164, 91, .58);
+  border-radius: 14px;
+  background: linear-gradient(145deg, #1a2030, #090d16 68%);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .24), inset 0 0 0 1px rgba(222, 232, 247, .045);
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+  transform-origin: center center;
+  transform-style: preserve-3d;
 }
 
 .skinArtwork {
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  isolation: isolate;
   background:
-    radial-gradient(ellipse at 70% 35%, rgba(74, 117, 163, .3), transparent 48%),
-    linear-gradient(135deg, #1a2840, #090e19 72%);
+    radial-gradient(ellipse at 72% 32%, rgba(88, 153, 193, .28), transparent 48%),
+    linear-gradient(135deg, #222c40, #090e19 72%);
 }
 
 .skinArtwork > img {
   object-fit: cover;
-  object-position: center 34%;
-  transition: transform 360ms ease, filter 360ms ease;
+  object-position: center 38%;
+  filter: saturate(1.06) contrast(1.02);
+  transition: transform 520ms cubic-bezier(.2, .75, .25, 1), filter 520ms ease;
 }
 
 .skinArtworkFallback {
@@ -568,59 +572,126 @@
   font-size: 40px;
 }
 
-.skinArtworkShade {
+.skinArtworkFrame {
   position: absolute;
-  inset: 25% 0 0;
-  background: linear-gradient(180deg, transparent, rgba(5, 9, 17, .9));
+  z-index: 1;
+  inset: 9px;
+  border: 1px solid rgba(226, 195, 125, .43);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(14, 20, 32, .24), 0 0 20px rgba(12, 18, 30, .18);
   pointer-events: none;
 }
 
-.skinArtworkCaption {
+.skinArtworkFrame::before,
+.skinArtworkFrame::after {
   position: absolute;
-  right: 15px;
-  bottom: 13px;
-  left: 15px;
+  width: 21px;
+  height: 21px;
+  border-color: rgba(237, 211, 153, .86);
+  border-style: solid;
+  content: "";
+}
+
+.skinArtworkFrame::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+  border-radius: 7px 0 0;
+}
+
+.skinArtworkFrame::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 7px;
+}
+
+.skinArtworkShade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 8, 15, .16), transparent 34%),
+    linear-gradient(0deg, rgba(5, 8, 15, .94), rgba(5, 8, 15, .56) 22%, transparent 62%);
+  pointer-events: none;
+}
+
+.skinArtworkEyebrow {
+  position: absolute;
+  z-index: 2;
+  top: 17px;
+  right: 20px;
+  left: 20px;
   display: flex;
   align-items: center;
-  gap: 7px;
-  flex-wrap: wrap;
+  gap: 8px;
   pointer-events: none;
 }
 
 .skinKind,
 .skinNew {
-  padding: 3px 6px;
-  border: 1px solid rgba(222, 232, 247, .24);
-  border-radius: 5px;
-  background: rgba(10, 17, 29, .78);
-  color: #dce7f6;
-  font-size: 9px;
+  padding: 5px 8px;
+  border: 1px solid rgba(229, 209, 161, .5);
+  border-radius: 4px;
+  background: rgba(12, 17, 27, .8);
+  color: #e8d3a0;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: .08em;
   line-height: 1.15;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, .22);
 }
 
 .skinNew {
-  border-color: rgba(99, 218, 235, .45);
-  color: #7ee4f1;
+  border-color: rgba(99, 218, 235, .55);
+  color: #8fe5f0;
+}
+
+.skinSeries {
+  margin-left: auto;
+  color: rgba(241, 229, 202, .9);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-shadow: 0 2px 7px rgba(0, 0, 0, .7);
+}
+
+.skinArtworkCaption {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 19px;
+  left: 22px;
+  pointer-events: none;
 }
 
 .skinArtworkCaption h4 {
-  flex: 1 0 100%;
-  margin: 1px 0 0;
+  margin: 0;
   color: #fff;
-  font-size: clamp(16px, 2vw, 20px);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 800;
-  line-height: 1.2;
-  text-shadow: 0 2px 9px rgba(0, 0, 0, .65);
+  line-height: 1.08;
+  letter-spacing: .015em;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, .8), 0 7px 20px rgba(0, 0, 0, .65);
+}
+
+.skinArtworkCaption p {
+  margin: 7px 0 0;
+  color: #e8d3a0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .8);
 }
 
 .skinCardBody {
   display: grid;
-  min-height: 52px;
-  gap: 9px;
-  align-content: center;
-  padding: 11px 14px 13px;
+  min-height: 64px;
+  gap: 11px;
+  align-content: start;
+  padding: 14px 17px 16px;
+  border-top: 1px solid rgba(215, 191, 137, .18);
 }
 
 .skinAvailability {
@@ -634,67 +705,34 @@
   display: flex;
   min-width: 0;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   flex-wrap: wrap;
 }
 
-.skinVariantChip,
-.skinVariantMore {
+.skinVariantBlock {
+  display: grid;
+  gap: 8px;
+}
+
+.skinVariantLabel {
+  color: #d2bd8c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.skinVariantChip {
   display: inline-flex;
-  min-height: 23px;
+  min-height: 27px;
   align-items: center;
-  padding: 3px 8px;
-  border: 1px solid rgba(145, 176, 211, .25);
-  border-radius: 999px;
-  background: rgba(126, 162, 203, .1);
-  color: #dbe8f8;
+  padding: 4px 10px;
+  border: 1px solid rgba(194, 168, 110, .34);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(188, 160, 100, .15), rgba(96, 79, 46, .1));
+  color: #eee0be;
   font-size: 11px;
   font-weight: 700;
   line-height: 1.2;
-}
-
-.skinVariantMore {
-  border-color: rgba(99, 218, 235, .3);
-  color: #81deed;
-}
-
-.skinVariantDetails {
-  color: #c7d3e4;
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.skinVariantDetails summary {
-  width: fit-content;
-  color: #8fd7e7;
-  cursor: pointer;
-  font-weight: 700;
-  text-underline-offset: 3px;
-}
-
-.skinVariantDetails summary:hover {
-  color: #c4f4fb;
-}
-
-.skinVariantDetails ul {
-  display: grid;
-  gap: 5px;
-  margin: 9px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.skinVariantDetails li {
-  display: grid;
-  gap: 2px;
-  padding: 7px 9px;
-  border-left: 2px solid rgba(99, 218, 235, .38);
-  border-radius: 0 5px 5px 0;
-  background: rgba(255, 255, 255, .035);
-}
-
-.skinVariantDetails li strong {
-  color: #eef5ff;
 }
 
 .entityHead {
@@ -908,16 +946,37 @@
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .skinCard:hover {
-    transform: perspective(1000px) translateY(-4px) rotateX(2.2deg) rotateY(-1.8deg);
-    border-color: rgba(130, 194, 223, .52);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, .28), 0 0 20px rgba(84, 170, 215, .09);
+  .skinCard:hover,
+  .skinCard:focus-within {
+    transform: perspective(1100px) translateY(-4px) rotateX(1.5deg) rotateY(-1.1deg);
+    border-color: rgba(231, 202, 137, .82);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, .34), 0 0 24px rgba(212, 179, 108, .13);
   }
 
   .skinCard:hover .skinArtwork > img {
-    transform: scale(1.025);
-    filter: saturate(1.04) brightness(1.04);
+    transform: scale(1.035);
+    filter: saturate(1.12) brightness(1.06);
   }
+}
+
+@media (max-width: 480px) {
+  .skinArtworkEyebrow {
+    top: 14px;
+    right: 17px;
+    left: 17px;
+    gap: 6px;
+  }
+
+  .skinSeries { display: none; }
+
+  .skinArtworkCaption {
+    right: 18px;
+    bottom: 17px;
+    left: 18px;
+  }
+
+  .skinArtworkCaption h4 { font-size: clamp(20px, 6vw, 27px); }
+  .skinCardBody { padding: 12px 14px 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
