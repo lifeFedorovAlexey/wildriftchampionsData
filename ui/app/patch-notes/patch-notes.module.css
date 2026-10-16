@@ -234,9 +234,9 @@
   display: block;
 }
 
+.videoSourceBadge,
 .videoFallback {
   position: absolute;
-  right: 7px;
   bottom: 7px;
   z-index: 2;
   padding: 4px 7px;
@@ -247,6 +247,15 @@
   font-size: 10px;
   font-weight: 800;
   line-height: 1.2;
+}
+
+.videoSourceBadge {
+  left: 7px;
+  pointer-events: none;
+}
+
+.videoFallback {
+  right: 7px;
   text-decoration: none;
   transition: background 140ms ease, border-color 140ms ease;
 }

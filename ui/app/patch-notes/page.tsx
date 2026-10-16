@@ -37,6 +37,13 @@ const PATCH_REVIEW_RUTUBE_URLS: Record<string, string> = {
   "7.2d": "https://rutube.ru/video/5b32427f86198738980695cf398002f6/",
   "7.2c": "https://rutube.ru/video/1e01d6504828e90732716d1d752f0e3c/",
 };
+const PATCH_REVIEW_RUTUBE_THUMBNAILS: Record<string, string> = {
+  "7.3b": "https://pic.rtbcdn.ru/video/2026-10-14/b3/c5/b3c5f1f565bee374ed5c03ec23ba8801.jpg",
+  "7.3a": "https://pic.rtbcdn.ru/video/2026-09-29/9c/50/9c50a2cbc048f2cb65871fe94f192eed.jpg",
+  "7.2e": "https://pic.rtbcdn.ru/video/2026-09-09/f3/7c/f37c59ac7514b104a9c859b3ed357009.jpg",
+  "7.2d": "https://pic.rtbcdn.ru/video/2026-08-26/6a/ba/6aba3155b646045455f3c99be360f969.jpg",
+  "7.2c": "https://pic.rtbcdn.ru/video/2026-08-12/7a/68/7a681f16b50e4e5db71316c95defca49.jpg",
+};
 
 export default async function PatchNotesPage() {
   const items = await fetchPatchNotes();
@@ -48,11 +55,19 @@ export default async function PatchNotesPage() {
     >
       <section className={styles.list} aria-label="Список патчей">
         {items.length ? items.map((patch) => {
-          const videoId = PATCH_REVIEW_VIDEO_IDS[patch.version.toLowerCase()];
-          const review = videoId ? {
-            url: `https://youtu.be/${videoId}`,
-            rutubeUrl: PATCH_REVIEW_RUTUBE_URLS[patch.version.toLowerCase()],
-            thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+          const patchVersion = patch.version.toLowerCase();
+          const videoId = PATCH_REVIEW_VIDEO_IDS[patchVersion];
+          const rutubeUrl = PATCH_REVIEW_RUTUBE_URLS[patchVersion];
+          const rutubeThumbnail = PATCH_REVIEW_RUTUBE_THUMBNAILS[patchVersion];
+          const hasRutubePreview = Boolean(rutubeUrl && rutubeThumbnail);
+          const review = videoId || hasRutubePreview ? {
+            provider: hasRutubePreview ? "Rutube" : "YouTube",
+            url: hasRutubePreview ? rutubeUrl! : `https://youtu.be/${videoId}`,
+            thumbnail: hasRutubePreview
+              ? rutubeThumbnail!
+              : `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+            alternateUrl: hasRutubePreview && videoId ? `https://youtu.be/${videoId}` : null,
+            alternateProvider: "YouTube",
             title: `Обзор обновления ${patch.version} от INQGames`,
           } : null;
           return (
@@ -67,20 +82,21 @@ export default async function PatchNotesPage() {
                     href={review.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${review.title} — открыть на YouTube`}
+                    aria-label={`${review.title} — открыть на ${review.provider}`}
                   >
                     <Image src={review.thumbnail} alt={review.title} width={240} height={135} unoptimized />
                     <span className={styles.videoPlay} aria-hidden="true" />
                   </a>
-                  {review.rutubeUrl ? (
+                  <span className={styles.videoSourceBadge} aria-hidden="true">{review.provider}</span>
+                  {review.alternateUrl ? (
                     <a
                       className={styles.videoFallback}
-                      href={review.rutubeUrl}
+                      href={review.alternateUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${review.title} — запасная ссылка на Rutube`}
+                      aria-label={`${review.title} — открыть на ${review.alternateProvider}`}
                     >
-                      Rutube
+                      {review.alternateProvider}
                     </a>
                   ) : null}
                 </div>
