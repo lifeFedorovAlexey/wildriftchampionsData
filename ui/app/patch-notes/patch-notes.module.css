@@ -327,6 +327,10 @@
   }
 
   .cardWithMedia .videoPreview {
+    grid-row: 1;
+  }
+
+  .cardWithMedia .cardLink {
     grid-row: 2;
   }
 }
