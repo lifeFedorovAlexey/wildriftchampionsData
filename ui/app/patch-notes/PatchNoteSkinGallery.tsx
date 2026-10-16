@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import type { PatchNote } from "./patch-notes-lib";
+import { patchChangeAnchor, type PatchNote } from "./patch-notes-lib";
 import styles from "./patch-notes.module.css";
 
 type SkinChange = PatchNote["changes"][number];
@@ -18,15 +18,25 @@ const ESPORTS_CHROMAS = new Set(["LPL", "LCK", "LEC", "LCS", "LCP", "CBLOL"]);
 
 export default function PatchNoteSkinGallery({ changes }: { changes: SkinChange[] }) {
   const cards = groupSkinChanges(changes);
+  const seenAnchors = new Set<string>();
 
   return (
     <div className={styles.skinGallery}>
       {cards.map((card) => {
         const isNew = card.changes.some((change) => change.changeType === "new");
         const availability = getSharedAvailability(card);
+        const anchors = card.changes.map((change) => patchChangeAnchor(change, change.changeType))
+          .filter((anchor) => {
+            if (seenAnchors.has(anchor)) return false;
+            seenAnchors.add(anchor);
+            return true;
+          });
 
         return (
-          <article className={styles.skinCard} key={card.key}>
+          <article className={styles.skinCard} key={card.key} id={anchors[0]} tabIndex={-1}>
+            {anchors.slice(1).map((anchor) => (
+              <span className={styles.skinChangeAnchor} id={anchor} tabIndex={-1} key={anchor}>{card.title}</span>
+            ))}
             <div className={styles.skinArtwork}>
               {card.imageUrl ? (
                 <Image

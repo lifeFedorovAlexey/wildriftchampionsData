@@ -67,9 +67,4 @@ export async function fetchPatchNote(version: string): Promise<PatchNote | null>
   });
 }
 
-export function formatPatchDate(value: string | null) {
-  if (!value) return "Дата не указана";
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return "Дата не указана";
-  return new Intl.DateTimeFormat("ru-RU", { day: "numeric", month: "long", year: "numeric" }).format(date);
-}
+export { formatPatchDate, patchChangeAnchor } from "./patch-notes-shared";
