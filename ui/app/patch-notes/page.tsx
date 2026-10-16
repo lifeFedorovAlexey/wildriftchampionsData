@@ -30,6 +30,13 @@ const PATCH_REVIEW_VIDEO_IDS: Record<string, string> = {
   "6.3d": "hghP-HWla1Q",
   "6.3c": "bESD8VP9Tfg",
 };
+const PATCH_REVIEW_RUTUBE_URLS: Record<string, string> = {
+  "7.3b": "https://rutube.ru/video/d1119ff5bb06302f153479916d8dcaef/",
+  "7.3a": "https://rutube.ru/video/b7a748e55797dddedc90712fbafcf225/",
+  "7.2e": "https://rutube.ru/video/06561ece00e79c7964074ca796028f1d/",
+  "7.2d": "https://rutube.ru/video/5b32427f86198738980695cf398002f6/",
+  "7.2c": "https://rutube.ru/video/1e01d6504828e90732716d1d752f0e3c/",
+};
 
 export default async function PatchNotesPage() {
   const items = await fetchPatchNotes();
@@ -44,6 +51,7 @@ export default async function PatchNotesPage() {
           const videoId = PATCH_REVIEW_VIDEO_IDS[patch.version.toLowerCase()];
           const review = videoId ? {
             url: `https://youtu.be/${videoId}`,
+            rutubeUrl: PATCH_REVIEW_RUTUBE_URLS[patch.version.toLowerCase()],
             thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
             title: `Обзор обновления ${patch.version} от INQGames`,
           } : null;
@@ -53,16 +61,29 @@ export default async function PatchNotesPage() {
               className={`${styles.card} ${styles.cardWithMedia}`}
             >
               {review ? (
-                <a
-                  className={styles.videoPreview}
-                  href={review.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${review.title} — открыть на YouTube`}
-                >
-                  <Image src={review.thumbnail} alt={review.title} width={240} height={135} unoptimized />
-                  <span className={styles.videoPlay} aria-hidden="true" />
-                </a>
+                <div className={styles.videoPreview}>
+                  <a
+                    className={styles.videoMainLink}
+                    href={review.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${review.title} — открыть на YouTube`}
+                  >
+                    <Image src={review.thumbnail} alt={review.title} width={240} height={135} unoptimized />
+                    <span className={styles.videoPlay} aria-hidden="true" />
+                  </a>
+                  {review.rutubeUrl ? (
+                    <a
+                      className={styles.videoFallback}
+                      href={review.rutubeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${review.title} — запасная ссылка на Rutube`}
+                    >
+                      Rutube
+                    </a>
+                  ) : null}
+                </div>
               ) : (
                 <div className={`${styles.videoPreview} ${styles.videoPlaceholder}`} role="note" aria-label="Видеообзор не добавлен">
                   <svg className={styles.missingVideoIcon} viewBox="0 0 24 24" aria-hidden="true">

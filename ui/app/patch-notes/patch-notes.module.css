@@ -228,6 +228,34 @@
   background: #080d17;
 }
 
+.videoMainLink {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.videoFallback {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  z-index: 2;
+  padding: 4px 7px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 5px;
+  background: rgba(8, 13, 23, .88);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.videoFallback:hover {
+  border-color: rgba(255, 255, 255, .72);
+  background: #172235;
+}
+
 .videoPlaceholder {
   display: grid;
   align-content: center;
@@ -305,7 +333,8 @@
   transform: scale(1.08);
 }
 
-.videoPreview:focus-visible {
+.videoMainLink:focus-visible,
+.videoFallback:focus-visible {
   outline: 2px solid var(--accent-primary-text);
   outline-offset: 3px;
 }
