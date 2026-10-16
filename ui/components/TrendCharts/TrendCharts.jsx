@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 
 import {
   getChartAutoWidthContainerStyle,
@@ -12,6 +12,7 @@ import {
 import { WinRateChart } from "./WinRateChart.jsx";
 import { PickRateChart } from "./PickRateChart.jsx";
 import { BanRateChart } from "./BanRateChart.jsx";
+import { PatchEventDetails, PatchEventRail } from "./TrendEvents.jsx";
 
 export function pluralizeDays(n) {
   const num = Math.abs(n) % 100;
@@ -66,7 +67,7 @@ function ChartAutoWidth({ children, height = 200, style, className }) {
   );
 }
 
-function TrendChartCard({ title, daysCount, subtitle, children }) {
+function TrendChartCard({ title, daysCount, subtitle, children, footer }) {
   return (
     <div style={trendChartCardStyle}>
       <div style={trendChartCardTitleStyle}>
@@ -74,31 +75,51 @@ function TrendChartCard({ title, daysCount, subtitle, children }) {
         {subtitle ?? ` за последние ${daysCount} ${pluralizeDays(daysCount)}`}
       </div>
 
-      <ChartAutoWidth height={200}>{children}</ChartAutoWidth>
+      <ChartAutoWidth height="auto">{(width) => children(width, 200)}</ChartAutoWidth>
+      {footer}
     </div>
   );
 }
 
-export function TrendChartBlock({ days }) {
+/** @param {{ days: Array<{ts: number}>, patches?: import("./trend-events-types").TrendPatch[], seasons?: import("./trend-events-types").TrendSeason[] }} props */
+export function TrendChartBlock({ days, patches = [], seasons = [] }) {
+  const [selected, setSelected] = useState(null);
+  const triggerRef = useRef(null);
+  const detailId = useId();
+  const selectedPatch = patches.find((patch) => patch.version === selected?.version);
+  const selectEvent = (next, event) => {
+    triggerRef.current = event.currentTarget;
+    setSelected((current) => current?.version === next.version && current?.entityId === next.entityId ? null : next);
+  };
+  const closeEvent = () => {
+    setSelected(null);
+    triggerRef.current?.focus();
+  };
   if (!days || !days.length) return null;
 
   return (
-    <div style={trendChartBlockContainerStyle}>
-      <TrendChartCard title="Динамика винрейта" daysCount={days.length}>
+    <div style={trendChartBlockContainerStyle} onKeyDown={(event) => {
+      if (event.key === "Escape" && selected) closeEvent();
+    }}>
+      <TrendChartCard title="Динамика винрейта" daysCount={days.length}
+        footer={<PatchEventDetails id={detailId} patch={selectedPatch} entityId={selected?.entityId} onClose={closeEvent} />}>
         {(width, height) => (
-          <WinRateChart days={days} width={width} height={height} />
+          <>
+            <PatchEventRail patches={patches} days={days} width={width} selected={selected} onSelect={selectEvent} detailId={detailId} />
+            <WinRateChart days={days} width={width} height={height} patches={patches} seasons={seasons} />
+          </>
         )}
       </TrendChartCard>
 
       <TrendChartCard title="Динамика пикрейта" daysCount={days.length}>
         {(width, height) => (
-          <PickRateChart days={days} width={width} height={height} />
+          <PickRateChart days={days} width={width} height={height} patches={patches} seasons={seasons} />
         )}
       </TrendChartCard>
 
       <TrendChartCard title="Динамика банрейта" daysCount={days.length}>
         {(width, height) => (
-          <BanRateChart days={days} width={width} height={height} />
+          <BanRateChart days={days} width={width} height={height} patches={patches} seasons={seasons} />
         )}
       </TrendChartCard>
     </div>

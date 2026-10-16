@@ -5,22 +5,24 @@ import {
   AreaChart,
   Area,
   CartesianGrid,
-  Dot,
   XAxis,
   YAxis,
   Tooltip,
 } from "recharts";
 import {
-  COMMON_X_AXIS_PROPS,
+  trendXAxisProps,
   COMMON_Y_TICK,
   commonTooltipProps,
   formatPercent,
 } from "./TrendCharts.styles.js";
+import { trendReferenceLines } from "./TrendEvents.jsx";
 
 export const WinRateChart = React.memo(function WinRateChart({
   days,
   width,
   height,
+  patches = [],
+  seasons = [],
 }) {
   const hasTrend =
     Array.isArray(days) && days.some((d) => Number.isFinite(d?.winTrend));
@@ -41,7 +43,7 @@ export const WinRateChart = React.memo(function WinRateChart({
 
       <CartesianGrid stroke="#1f2933" strokeDasharray="3 3" />
 
-      <XAxis {...COMMON_X_AXIS_PROPS} />
+      <XAxis {...trendXAxisProps(days)} />
 
       <YAxis
         tickFormatter={formatPercent}
@@ -65,27 +67,7 @@ export const WinRateChart = React.memo(function WinRateChart({
         stroke="#4ade80"
         strokeWidth={2}
         fill="url(#trendWin)"
-        dot={(props) => {
-          const { cx, cy, payload } = props || {};
-
-          if (!payload?.eventCount || !Number.isFinite(cx) || !Number.isFinite(cy)) {
-            return null;
-          }
-
-          return (
-            <g>
-              <Dot
-                cx={cx}
-                cy={cy}
-                r={7}
-                fill="rgba(15, 23, 42, 0.98)"
-                stroke="#facc15"
-                strokeWidth={2}
-              />
-              <Dot cx={cx} cy={cy} r={2.5} fill="#facc15" stroke="none" />
-            </g>
-          );
-        }}
+        dot={false}
         activeDot={{ r: 4 }}
       />
 
@@ -103,6 +85,7 @@ export const WinRateChart = React.memo(function WinRateChart({
           dot={false}
         />
       )}
+      {trendReferenceLines({ patches, seasons, width, compact: false })}
     </AreaChart>
   );
 });
