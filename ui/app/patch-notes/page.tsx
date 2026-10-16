@@ -50,7 +50,7 @@ export default async function PatchNotesPage() {
           return (
             <article
               key={patch.version}
-              className={`${styles.card} ${review ? styles.cardWithVideo : ""}`}
+              className={`${styles.card} ${review ? styles.cardWithMedia : ""}`}
             >
               {review && (
                 <a
