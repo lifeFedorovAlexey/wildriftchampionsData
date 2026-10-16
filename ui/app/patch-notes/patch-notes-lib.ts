@@ -7,6 +7,9 @@ export type PatchNoteSummary = {
   description: string | null;
   sourceUrl: string;
   publishedAt: string | null;
+  effectiveDate: string | null;
+  effectiveRegion: string | null;
+  effectiveDateSourceUrl: string | null;
   imageUrl: string | null;
   availableLocales?: string[];
   iconPreviews?: {
@@ -14,12 +17,13 @@ export type PatchNoteSummary = {
     buff: PatchNoteIconPreview[];
     nerf: PatchNoteIconPreview[];
     adjustment: PatchNoteIconPreview[];
+    rework: PatchNoteIconPreview[];
     removed: PatchNoteIconPreview[];
   };
 };
 
 export type PatchNoteIconPreview = {
-  entityKind: "champion" | "item";
+  entityKind: "champion" | "item" | "rune" | "spell" | "system" | "skin";
   entitySlug: string | null;
   entityName: string;
   imageUrl: string;
@@ -28,7 +32,7 @@ export type PatchNoteIconPreview = {
 export type PatchNote = PatchNoteSummary & {
   changes: Array<{
     ordinal: number;
-    entityKind: "champion" | "item" | "rune" | "system" | "skin";
+    entityKind: "champion" | "item" | "rune" | "spell" | "system" | "skin";
     entitySlug: string | null;
     entityName: string;
     imageUrl: string | null;
