@@ -1,10 +1,10 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 
 import PageWrapper from "@/components/PageWrapper";
+import PatchNoteEntityHeading from "../PatchNoteEntityHeading";
 import { fetchPatchNote, formatPatchDate, type PatchNote } from "../patch-notes-lib";
 import styles from "../patch-notes.module.css";
 
@@ -97,17 +97,7 @@ export default async function PatchNotePage({ params }: Props) {
               <div className={styles.changeList}>
                 {changes.map((change) => (
                   <article key={`${change.entityKind}-${change.entitySlug || change.entityName}-${change.ordinal}`} className={styles.changeCard}>
-                    <div className={`${styles.entityHead} ${change.entityKind === "champion" ? styles.entityHeadChampion : ""}`}>
-                      <div className={styles.entityIcon}>
-                        {change.imageUrl ? (
-                          <Image src={change.imageUrl} alt="" width={44} height={44} unoptimized />
-                        ) : <span aria-hidden="true">{change.entityName.slice(0, 1)}</span>}
-                      </div>
-                      <div className={`${styles.entityTitle} ${change.entityKind === "champion" ? styles.entityTitleChampion : ""}`}>
-                        <h4>{change.entityName}</h4>
-                        <span className={styles.entityKind}>{entityKindLabel(change.entityKind)}</span>
-                      </div>
-                    </div>
+                    <PatchNoteEntityHeading change={change} />
                     <ul className={styles.detailList}>
                       {groupDetails(change.details).map((group, groupIndex) => (
                         <li className={styles.detailGroup} key={`${group.component || "general"}-${groupIndex}`}>
@@ -157,15 +147,6 @@ export default async function PatchNotePage({ params }: Props) {
       </article>
     </PageWrapper>
   );
-}
-
-function entityKindLabel(kind: string) {
-  if (kind === "champion") return "ЧЕМПИОН";
-  if (kind === "item") return "ПРЕДМЕТ";
-  if (kind === "rune") return "РУНА";
-  if (kind === "spell") return "ЗАКЛИНАНИЕ";
-  if (kind === "skin") return "ОБЛИК";
-  return "ИГРА / КАРТА";
 }
 
 type ChangeDetail = PatchNote["changes"][number]["details"][number];
