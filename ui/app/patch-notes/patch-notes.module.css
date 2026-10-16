@@ -887,6 +887,65 @@
   font-weight: 750;
 }
 
+.inlineChangeMarker {
+  display: inline-grid;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  place-items: center;
+  vertical-align: -2px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.inlineMarkerNew,
+.inlineMarkerBuff { color: #64d9a5; }
+.inlineMarkerRemoved,
+.inlineMarkerNerf { color: #ff7889; }
+.inlineMarkerRework { color: #b99aff; }
+.inlineMarkerAdjustment { color: #9bc9ff; }
+
+.detailDisclosure {
+  display: inline;
+}
+
+.detailDisclosure summary {
+  display: inline;
+  cursor: pointer;
+  color: inherit;
+}
+
+.detailDisclosure summary::marker {
+  color: #91a4bd;
+  font-size: 10px;
+}
+
+.detailDisclosure > div {
+  margin-top: 5px;
+  color: #bac5d6;
+  font-size: 13px;
+}
+
+.moreSystemDetails {
+  margin-top: 5px;
+  color: #91a4bd;
+  font-size: 12px;
+}
+
+.moreSystemDetails summary {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.moreSystemDetails .componentDetails {
+  margin-top: 4px;
+  color: #bac5d6;
+  font-size: 13px;
+}
+
 .beforeValue {
   grid-column: 1;
   padding-left: 18px;
