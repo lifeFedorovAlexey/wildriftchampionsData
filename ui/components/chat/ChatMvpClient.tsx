@@ -71,7 +71,7 @@ async function fetchModerationState(groupId: number) {
   ) as ModerationState;
 }
 
-export default function ChatMvpClient({ storageOrigin }: { storageOrigin: string }) {
+export default function ChatMvpClient({ storageOrigin, allowLocalStorage = false }: { storageOrigin: string; allowLocalStorage?: boolean }) {
   const wsRef = useRef<WebSocket | null>(null);
   const typingTimerRef = useRef<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -538,6 +538,7 @@ export default function ChatMvpClient({ storageOrigin }: { storageOrigin: string
             <ChatMessageList
               messages={messages}
               storageOrigin={storageOrigin}
+              allowLocalStorage={allowLocalStorage}
               currentUserId={currentUserId}
               isAdmin={isAdmin}
               hasChannel={Boolean(selectedChannel)}

@@ -12,8 +12,10 @@ export default async function MeChatPage() {
   const cookieStore = await cookies();
   const sessionToken = getUserSessionTokenFromCookie(cookieStore);
   const session = await fetchSiteUserSession(sessionToken, process.env);
+  const allowLocalStorage = process.env.NODE_ENV === "development" && process.env.WR_LOCAL_DEV === "true";
   const chatStorageOrigin = normalizeChatStorageOrigin(
     process.env.S3_PUBLIC_BASE_URL,
+    { allowLocalStorage },
   );
 
   if (!session) {
@@ -32,7 +34,7 @@ export default async function MeChatPage() {
           </TopPillLink>
         </div>
 
-        <ChatMvpClient storageOrigin={chatStorageOrigin} />
+        <ChatMvpClient storageOrigin={chatStorageOrigin} allowLocalStorage={allowLocalStorage} />
       </section>
     </div>
   );

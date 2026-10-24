@@ -29,6 +29,14 @@ jobs:
       - name: Install UI dependencies
         run: npm ci
 
+      - name: Install local tooling dependencies
+        run: npm ci --ignore-scripts
+        working-directory: .
+
+      - name: Test local development isolation
+        run: npm run dev:test
+        working-directory: .
+
       - name: Run lint
         run: npm run lint
 

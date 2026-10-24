@@ -2,6 +2,13 @@
 
 Main frontend repository for `wildriftallstats.ru`.
 
+## Local development
+
+Run `npm run dev:up` from the repository root. UI: `http://127.0.0.1:3300`;
+service status, logs and test login: `http://127.0.0.1:3399`.
+Stop with `npm run dev:down`. First-time setup and isolated PostgreSQL/S3 settings:
+[Local development guide](./LOCAL_DEVELOPMENT.md).
+
 ## Release
 
 - Current UI release: `1.2.3`

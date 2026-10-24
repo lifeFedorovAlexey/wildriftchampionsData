@@ -1,0 +1,48 @@
+name: dev-s3
+services:
+  s3:
+    image: chrislusf/seaweedfs@sha256:4e61d15fd35994cb1e43e1e553dff106794841fd9a99ade2fc8c8bfce4d7872d
+    platform: linux/amd64
+    user: "10001:10001"
+    network_mode: host
+    command:
+      - mini
+      - -dir=/data
+      - -ip=127.0.0.1
+      - -ip.bind=127.0.0.1
+      - -s3.port=8333
+      - -s3.config=/etc/seaweedfs/s3.json
+      - -s3.iam=false
+      - -s3.autoCreateBucket=false
+      - -s3.allowDeleteBucketNotEmpty=false
+      - -s3.allowedOrigins=http://127.0.0.1:3300
+      - -s3.port.iceberg=0
+      - -s3.port.lance=0
+      - -s3.concurrentUploadLimitMB=64
+      - -s3.readerCacheSizeMB=64
+      - -webdav=false
+      - -admin.ui=false
+      - -master.telemetry=false
+      - -master.volumeSizeLimitMB=128
+      - -volume.max=64
+      - -volume.fileSizeLimitMB=64
+      - -filer.disableDirListing=true
+      - -filer.exposeDirectoryData=false
+    volumes:
+      - /srv/data/dev-s3/data:/data
+      - /srv/services/dev-s3/secrets/s3.json:/etc/seaweedfs/s3.json:ro
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=128m,uid=10001,gid=10001,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+    stop_grace_period: 30s
+    cpus: 1
+    mem_limit: 1g
+    pids_limit: 256
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "3"

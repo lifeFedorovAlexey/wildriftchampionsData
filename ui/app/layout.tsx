@@ -64,6 +64,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const nonce = (await headers()).get("x-nonce") || "";
+  const localDev = process.env.NODE_ENV === "development" && process.env.WR_LOCAL_DEV === "true";
 
   return (
     <html lang="ru" suppressHydrationWarning>
@@ -74,14 +75,14 @@ export default async function RootLayout({
 
       <body>
         <TelegramInit />
-        <YandexMetrikaInit />
+        {!localDev && <YandexMetrikaInit />}
         <StyledComponentsRegistry nonce={nonce}>
           <AppHeader />
           {children}
           <Footer />
         </StyledComponentsRegistry>
 
-        <noscript>
+        {!localDev && <noscript>
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -90,7 +91,7 @@ export default async function RootLayout({
               alt=""
             />
           </div>
-        </noscript>
+        </noscript>}
       </body>
     </html>
   );

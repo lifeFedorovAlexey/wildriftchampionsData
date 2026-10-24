@@ -11,9 +11,10 @@ const securityHeaders = [
   { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
 ];
 
-export function getContentSecurityPolicy(nonce) {
+export function getContentSecurityPolicy(nonce, env = process.env) {
+  const localDev = env.NODE_ENV === "development" && env.WR_LOCAL_DEV === "true";
   const nonceSource = `'nonce-${nonce}'`;
-  return [
+  const directives = [
     "default-src 'self'",
     "base-uri 'self'",
     "form-action 'self' https://accounts.google.com https://oauth.yandex.ru https://telegram.org",
@@ -30,9 +31,23 @@ export function getContentSecurityPolicy(nonce) {
     "manifest-src 'self'",
     "worker-src 'self' blob:",
     "upgrade-insecure-requests",
-  ].join("; ");
+  ];
+  if (!localDev) return directives.join("; ");
+  return directives
+    .filter((value) => value !== "upgrade-insecure-requests")
+    .map((value) => {
+      if (value.startsWith("script-src ")) return `${value} 'unsafe-eval'`;
+      // Next dev injects style blocks on hot updates without a nonce.
+      if (value.startsWith("style-src ")) return "style-src 'self' 'unsafe-inline'";
+      if (value.startsWith("connect-src ")) return `${value} http://127.0.0.1:3390 ws://127.0.0.1:3300 ws://127.0.0.1:3310`;
+      if (value.startsWith("img-src ") || value.startsWith("media-src ")) return `${value} http://127.0.0.1:3390`;
+      return value;
+    })
+    .join("; ");
 }
 
-export function getSecurityHeaders() {
-  return securityHeaders;
+export function getSecurityHeaders(env = process.env) {
+  return env.NODE_ENV === "development" && env.WR_LOCAL_DEV === "true"
+    ? securityHeaders.filter(({ key }) => key !== "Strict-Transport-Security")
+    : securityHeaders;
 }
