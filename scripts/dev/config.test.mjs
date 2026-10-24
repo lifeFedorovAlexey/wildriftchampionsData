@@ -32,6 +32,7 @@ test('child environments cannot inherit production credentials, origins or Node 
   assert.equal(env.S3_SECRET_ACCESS_KEY, config.storage.secretKey);
   assert.equal(env.S3_ACCESS_KEY_ID, 'wildrift-dev');
   assert.equal(env.S3_ENDPOINT, 'http://127.0.0.1:3390');
+  assert.equal(env.AWS_REQUEST_CHECKSUM_CALCULATION, 'WHEN_REQUIRED');
   assert.equal(env.NEXT_PUBLIC_SITE_URL, 'http://127.0.0.1:3300');
   assert.ok(!env.ADMIN_GOOGLE_CLIENT_SECRET);
   assert.equal(env.HTTPS_PROXY, undefined);

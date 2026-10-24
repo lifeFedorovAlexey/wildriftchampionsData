@@ -29,8 +29,9 @@ async function start() {
     if (stopping) return;
     stopping = true; state.ready = false;
     console.log('[dev] Stopping owned processes; database and storage data are retained.');
-    server.close(); server.closeAllConnections();
     await processes.stop();
+    // Keep the control port until all owned children and tunnels have exited.
+    server.close(); server.closeAllConnections();
     process.exit(code);
   }
   // Bind the control port before starting anything: a second launcher fails harmlessly.

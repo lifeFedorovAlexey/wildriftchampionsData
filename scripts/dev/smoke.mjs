@@ -55,9 +55,9 @@ const attachmentKey = decodeURIComponent(attachmentUrl.pathname.slice('/wildrift
 const attachmentStorage = storageClient(config);
 try {
   const put = await fetch(attachment.upload.url, { method: 'PUT', headers: { ...attachment.upload.headers, Origin: origin('ui') }, body: png, signal: AbortSignal.timeout(15_000) });
-  assert.ok(put.ok, `Chat S3 PUT ${put.status}`);
+  const putBody = await put.text();
+  assert.ok(put.ok, `Chat S3 PUT ${put.status}: ${putBody.match(/<Code>(.*?)<\/Code>/)?.[1] || "unknown error"} ${putBody.match(/<Message>(.*?)<\/Message>/)?.[1] || ""}`);
   assert.equal(put.headers.get('access-control-allow-origin'), origin('ui'));
-  await put.body?.cancel();
   const publicUrl = `${config.storage.publicBaseUrl}/${attachmentKey}`;
   const { sanitizeChatMediaUrl } = await import('../../ui/lib/chat-media-url.js');
   assert.equal(sanitizeChatMediaUrl(publicUrl, { storageOrigin: origin('storage'), allowLocalStorage: true }), publicUrl);

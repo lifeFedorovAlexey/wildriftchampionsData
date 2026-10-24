@@ -93,6 +93,8 @@ export function childEnv(config, parent = process.env) {
     NEXT_TELEMETRY_DISABLED: '1',
     ASSET_PUBLIC_MODE: 'local', S3_ENDPOINT: config.storage.endpoint, S3_BUCKET: config.storage.bucket,
     S3_REGION: config.storage.region, S3_FORCE_PATH_STYLE: 'true',
+    // Presigned PUT has no body yet: do not attach the checksum of an empty body.
+    AWS_REQUEST_CHECKSUM_CALCULATION: 'WHEN_REQUIRED',
     S3_ACCESS_KEY_ID: config.storage.accessKey, S3_SECRET_ACCESS_KEY: config.storage.secretKey,
     S3_PUBLIC_BASE_URL: config.storage.publicBaseUrl,
     QUIZ_MEDIA_ALLOWED_ORIGINS: origin('ui'), CHAT_MEDIA_ALLOWED_ORIGINS: origin('ui'),
