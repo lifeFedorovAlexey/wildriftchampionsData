@@ -47,3 +47,18 @@ test("chat storage origin normalization only exposes an HTTPS origin", () => {
   assert.equal(normalizeChatStorageOrigin("javascript:alert(1)"), "");
   assert.equal(normalizeChatStorageOrigin("http://s3.twcstorage.ru"), "");
 });
+
+test("local chat storage is opt-in and limited to the dev bucket on its exact loopback port", () => {
+  const storageOrigin = "http://127.0.0.1:3390";
+  const url = storageOrigin + "/wildrift-dev/chat/image.png";
+  const localOptions = { storageOrigin, allowLocalStorage: true };
+  assert.equal(normalizeChatStorageOrigin(storageOrigin), "");
+  assert.equal(sanitizeChatMediaUrl(url, { storageOrigin }), "");
+  assert.equal(normalizeChatStorageOrigin(url, localOptions), storageOrigin);
+  assert.equal(sanitizeChatMediaUrl(url, localOptions), url);
+  for (const invalid of [url.replace("3390", "8333"), url.replace("127.0.0.1", "localhost"),
+    url.replace("wildrift-dev", "other-bucket"), url.replace("http:", "javascript:"),
+    url.replace("127.0.0.1", "user:password@127.0.0.1"), "http://s3.twcstorage.ru/file.png"]) {
+    assert.equal(sanitizeChatMediaUrl(invalid, localOptions), "");
+  }
+});

@@ -6,6 +6,7 @@ import styles from "./ChatMvpClient.module.css";
 type Props = {
   messages: ChatMessage[];
   storageOrigin: string;
+  allowLocalStorage?: boolean;
   currentUserId: number;
   isAdmin: boolean;
   hasChannel: boolean;
@@ -36,6 +37,7 @@ function getDayKey(value: string) {
 export default function ChatMessageList({
   messages,
   storageOrigin,
+  allowLocalStorage = false,
   currentUserId,
   isAdmin,
   hasChannel,
@@ -49,7 +51,7 @@ export default function ChatMessageList({
         const previousDay = index > 0 ? getDayKey(messages[index - 1].createdAt) : "";
         const showDay = day !== previousDay;
         const canDelete = isAdmin || Number(message.authorUserId) === currentUserId;
-        const avatarUrl = sanitizeChatMediaUrl(message.author?.avatarUrl, { storageOrigin });
+        const avatarUrl = sanitizeChatMediaUrl(message.author?.avatarUrl, { storageOrigin, allowLocalStorage });
 
         return (
           <div key={`${message.id}-${message.createdAt}`}>
@@ -88,7 +90,7 @@ export default function ChatMessageList({
               {message.attachments?.length ? (
                 <div className={styles.attachmentGrid}>
                   {message.attachments.map((attachment) => {
-                    const mediaUrl = sanitizeChatMediaUrl(attachment.url, { storageOrigin });
+                    const mediaUrl = sanitizeChatMediaUrl(attachment.url, { storageOrigin, allowLocalStorage });
                     if (!mediaUrl) return null;
 
                     return attachment.mediaKind === "image" ? (

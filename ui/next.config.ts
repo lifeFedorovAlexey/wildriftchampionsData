@@ -6,6 +6,7 @@ import { getSecurityHeaders } from "./lib/security-headers.js";
 
 const apiProxyTarget = getStatsApiBaseUrl(process.env);
 const configDir = path.dirname(fileURLToPath(import.meta.url));
+const localDev = process.env.NODE_ENV === "development" && process.env.WR_LOCAL_DEV === "true";
 const storageBaseUrl = process.env.S3_PUBLIC_BASE_URL || "";
 const storageUrl = storageBaseUrl ? new URL(storageBaseUrl) : null;
 const storageRemotePatterns = [
@@ -17,6 +18,7 @@ const storageRemotePatterns = [
 ];
 
 const nextConfig: NextConfig = {
+  ...(localDev ? { distDir: ".next-local", typescript: { tsconfigPath: ".tsconfig.local.json" } } : {}),
   poweredByHeader: false,
   skipTrailingSlashRedirect: true,
 
@@ -43,6 +45,7 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    dangerouslyAllowLocalIP: localDev,
     formats: ["image/avif", "image/webp"],
     localPatterns: [
       {

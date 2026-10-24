@@ -10,21 +10,25 @@ function isHostWithin(hostname, suffix) {
   return hostname === suffix || hostname.endsWith(`.${suffix}`);
 }
 
-export function normalizeChatStorageOrigin(value) {
+const LOCAL_STORAGE_ORIGIN = "http://127.0.0.1:3390";
+
+export function normalizeChatStorageOrigin(value, { allowLocalStorage = false } = {}) {
   try {
     const url = new URL(String(value || "").trim());
-    return url.protocol === "https:" ? url.origin : "";
+    if (url.username || url.password) return "";
+    return url.protocol === "https:" || (allowLocalStorage && url.origin === LOCAL_STORAGE_ORIGIN) ? url.origin : "";
   } catch {
     return "";
   }
 }
 
-export function sanitizeChatMediaUrl(value, { storageOrigin = "" } = {}) {
+export function sanitizeChatMediaUrl(value, { storageOrigin = "", allowLocalStorage = false } = {}) {
   try {
     const url = new URL(String(value || "").trim());
-    if (url.protocol !== "https:" || url.username || url.password) return "";
+    const localObject = allowLocalStorage && url.origin === LOCAL_STORAGE_ORIGIN && url.pathname.startsWith("/wildrift-dev/");
+    if ((url.protocol !== "https:" && !localObject) || url.username || url.password) return "";
 
-    const normalizedStorageOrigin = normalizeChatStorageOrigin(storageOrigin);
+    const normalizedStorageOrigin = normalizeChatStorageOrigin(storageOrigin, { allowLocalStorage });
     const trustedStorage =
       normalizedStorageOrigin && url.origin === normalizedStorageOrigin;
     const trustedAvatar = TRUSTED_AVATAR_HOST_SUFFIXES.some((suffix) =>

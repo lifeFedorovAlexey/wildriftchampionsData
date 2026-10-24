@@ -34,3 +34,18 @@ test("nonce CSP keeps scripts and style blocks nonce-gated", () => {
   assert.match(policy, /connect-src[^;]*wss:\/\/mc\.yandex\.com/);
   assert.match(policy, /frame-src[^;]*https:\/\/mc\.yandex\.ru/);
 });
+
+test("local development permits HMR and local S3 only with both development flags", () => {
+  const env = { NODE_ENV: "development", WR_LOCAL_DEV: "true" };
+  const policy = getContentSecurityPolicy("local-nonce", env);
+  assert.match(policy, /script-src[^;]*'unsafe-eval'/);
+  assert.match(policy, /ws:\/\/127\.0\.0\.1:3310/);
+  assert.match(policy, /http:\/\/127\.0\.0\.1:3390/);
+  assert.doesNotMatch(policy, /upgrade-insecure-requests/);
+  assert.ok(!getSecurityHeaders(env).some(({ key }) => key === "Strict-Transport-Security"));
+  const baseline = getContentSecurityPolicy("test", {});
+  for (const env of [{ NODE_ENV: "production", WR_LOCAL_DEV: "true" }, { NODE_ENV: "development" }, {}]) {
+    assert.equal(getContentSecurityPolicy("test", env), baseline);
+    assert.ok(getSecurityHeaders(env).some(({ key }) => key === "Strict-Transport-Security"));
+  }
+});
