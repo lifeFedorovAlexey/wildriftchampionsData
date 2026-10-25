@@ -20,16 +20,16 @@
     "test:coverage": "c8 npm run test"
   },
   "dependencies": {
-    "@google/model-viewer": "^4.3.1",
+    "@google/model-viewer": "^4.4.0",
     "@react-three/drei": "^10.7.9",
-    "@react-three/fiber": "^9.8.1",
+    "@react-three/fiber": "^9.8.2",
     "cheerio": "^1.2.0",
     "next": "^16.4.0",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "react-icons": "^5.7.0",
     "recharts": "^3.10.1",
-    "styled-components": "^6.5.3",
+    "styled-components": "^6.6.0",
     "wildriftchampions": "file:.."
   },
   "overrides": {
@@ -42,15 +42,15 @@
   "devDependencies": {
     "@eslint/compat": "^2.1.1",
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^26.6.4",
+    "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/styled-components": "^5.1.36",
     "c8": "^12.0.0",
     "eslint": "^10.12.0",
-    "eslint-config-next": "16.4.0",
+    "eslint-config-next": "16.4.1",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "jscpd": "^5.4.0",
+    "jscpd": "^5.4.1",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3"
   }
