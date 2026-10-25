@@ -40,6 +40,7 @@ export type ChatMessage = {
   createdAt: string;
   author?: ChatUser;
   attachments?: ChatAttachment[];
+  luxSources?: Array<{ label:string; url:string; stats?: Array<{name:string;lane:string;winRate:number|null;pickRate:number|null;banRate:number|null}> }>;
 };
 
 export type PresenceMember = {

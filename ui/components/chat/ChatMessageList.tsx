@@ -87,6 +87,16 @@ export default function ChatMessageList({
                 </div>
               </div>
               {message.body ? <p className={styles.messageBody}>{message.body}</p> : null}
+              {message.luxSources?.map(source => {
+                let safe = /^\/(winrates|guides\/[a-z0-9-]+)$/.test(source.url);
+                try { const url = new URL(source.url); safe ||= url.protocol === 'https:' && (url.hostname === 'leagueoflegends.com' || url.hostname.endsWith('.leagueoflegends.com')); } catch {}
+                if (!safe) return null;
+                const metric = (value:number|null) => value == null ? '—' : `${value.toFixed(2).replace('.',',')}%`;
+                return <div key={source.url} className={styles.messageBody}>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>
+                  {source.stats?.map(stat => <p key={`${stat.name}-${stat.lane}`}>{stat.name} · {stat.lane}: победы {metric(stat.winRate)}, пики {metric(stat.pickRate)}, баны {metric(stat.banRate)}</p>)}
+                </div>;
+              })}
               {message.attachments?.length ? (
                 <div className={styles.attachmentGrid}>
                   {message.attachments.map((attachment) => {

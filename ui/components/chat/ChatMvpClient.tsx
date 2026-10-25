@@ -6,6 +6,7 @@ import { buildChatWsUrl } from "@/lib/chat-api";
 import ChatComposer from "./ChatComposer";
 import ChatMessageList from "./ChatMessageList";
 import ChatModerationDrawer from "./ChatModerationDrawer";
+import LuxMember from "./LuxMember";
 import type {
   ChatChannel,
   ChatGroup,
@@ -561,6 +562,11 @@ export default function ChatMvpClient({ storageOrigin, allowLocalStorage = false
           <aside className={styles.members}>
             <div className={styles.sidebarLabel}>Сейчас в чате</div>
             <div className={styles.memberList}>
+              {selectedGroup?.slug === "general" && selectedChannelId ? <LuxMember
+                key={selectedChannelId} channelId={selectedChannelId}
+                onMention={() => setMessageBody(current => current.includes("@Люкс") ? current : `@Люкс ${current}`)}
+                onReply={() => void refreshMessages(selectedChannelId).catch(() => {})}
+              /> : null}
               {activeMembers.map((member) => (
                 <div key={member.user?.id || member.clientId} className={styles.memberCard}>
                   <span className={styles.memberDot} />
