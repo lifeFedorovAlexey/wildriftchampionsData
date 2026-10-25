@@ -26,9 +26,9 @@
   },
   "dependencies": {
     "cheerio": "^1.2.0",
-    "dotenv": "^18.0.8",
+    "dotenv": "^18.0.9",
     "node-fetch": "^3.3.2",
-    "puppeteer": "^25.15.0",
+    "puppeteer": "^25.16.0",
     "three": "^0.186.1"
   },
   "keywords": [
