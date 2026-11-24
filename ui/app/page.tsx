@@ -1,5 +1,6 @@
 import WinratesClient from "./winrates/WinratesClient";
 import { loadWinratesPageData } from "./winrates/load-winrates-page.js";
+import YandexRtbBlock from "@/components/YandexRtbBlock";
 import styles from "./page.module.css";
 
 export const revalidate = 60;
@@ -25,6 +26,8 @@ export default async function HomePage() {
           быстро понять, что сейчас реально работает в игре.
         </p>
       </section>
+
+      <YandexRtbBlock />
 
       <WinratesClient
         rowsBySlice={rowsBySlice}

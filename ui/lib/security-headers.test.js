@@ -26,13 +26,16 @@ test("nonce CSP keeps scripts and style blocks nonce-gated", () => {
   assert.match(policy, /style-src 'self' 'nonce-test-nonce'/);
   assert.match(policy, /style-src-attr 'unsafe-inline'/);
   assert.doesNotMatch(policy, /script-src[^;]*'unsafe-inline'/);
+  assert.match(policy, /script-src[^;]*https:\/\/yandex\.ru/);
   assert.match(policy, /img-src[^;]*https:\/\/mc\.yandex\.com/);
   assert.match(policy, /img-src[^;]*https:\/\/t\.me/);
   assert.match(policy, /img-src[^;]*https:\/\/vkvideo\.ru/);
   assert.match(policy, /connect-src[^;]*https:\/\/mc\.yandex\.com/);
+  assert.match(policy, /connect-src[^;]*https:\/\/an\.yandex\.ru/);
   assert.match(policy, /connect-src[^;]*wss:\/\/mc\.yandex\.ru/);
   assert.match(policy, /connect-src[^;]*wss:\/\/mc\.yandex\.com/);
   assert.match(policy, /frame-src[^;]*https:\/\/mc\.yandex\.ru/);
+  assert.match(policy, /frame-src[^;]*https:\/\/an\.yandex\.ru/);
 });
 
 test("local development permits HMR and local S3 only with both development flags", () => {
