@@ -61,9 +61,7 @@ const PATCH_REVIEW_RUTUBE_THUMBNAILS: Record<string, string> = {
 export default function PatchNoteCard({ patch, patchIndex }: { patch: PatchNoteSummary; patchIndex: number }) {
   const patchHref = `/patch-notes/${encodeURIComponent(patch.version)}`;
   const videoId = PATCH_REVIEW_VIDEO_IDS[patch.version.toLowerCase()];
-  const artwork = PATCH_ARTWORK[patch.version.toLowerCase()] || (patch.imageUrl
-    ? `/wr-api/assets/patch-cover-${encodeURIComponent(patch.version)}?src=${encodeURIComponent(patch.imageUrl)}`
-    : null);
+  const artwork = PATCH_ARTWORK[patch.version.toLowerCase()] || patch.imageUrl || null;
   const groups = PREVIEW_GROUPS.map((group) => ({
     ...group,
     icons: patch.iconPreviews?.[group.tone] || [],
