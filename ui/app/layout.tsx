@@ -81,17 +81,6 @@ export default async function RootLayout({
       <head>
         <meta name="color-scheme" content="dark" />
         <meta property="csp-nonce" content={nonce} nonce={nonce} />
-        {!localDev && (
-          <>
-            <script
-              nonce={nonce}
-              dangerouslySetInnerHTML={{
-                __html: "window.yaContextCb=window.yaContextCb||[];",
-              }}
-            />
-            <script nonce={nonce} src="https://yandex.ru/ads/system/context.js" async />
-          </>
-        )}
       </head>
 
       <body>
