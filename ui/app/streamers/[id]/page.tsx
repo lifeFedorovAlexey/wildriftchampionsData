@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import TopPillLink from "@/components/TopPillLink";
 import NativeImage from "@/components/ui/NativeImage";
 import PageWrapper from "@/components/PageWrapper";
@@ -11,6 +12,32 @@ import { FaArrowLeft } from "react-icons/fa6";
 import styles from "../streamers.module.css";
 
 const OWNER_TELEGRAM_LINK = "https://t.me/fedorov_alexey_tg";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const payload = (await fetchPublicStreamerTierlist(id, process.env)) as StreamerTierlistDetailPayload | null;
+  const displayName = payload?.streamer?.displayName;
+
+  if (!displayName) {
+    return {
+      title: "Тирлист стримера не найден",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const title = `${displayName} — тирлист Wild Rift`;
+  const description = `Текущий публичный тирлист ${displayName} по Wild Rift: оценки чемпионов по линиям и актуальному срезу статистики.`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/streamers/${encodeURIComponent(id)}` },
+    openGraph: { title, description, url: `/streamers/${encodeURIComponent(id)}`, type: "article", locale: "ru_RU" },
+  };
+}
 
 function formatDateLabel(value: string | null | undefined) {
   if (!value) return "Еще не опубликовано";

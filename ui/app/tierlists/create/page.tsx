@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import TopPillLink from "@/components/TopPillLink";
 import { fetchPublicTierlistEditor } from "@/lib/streamer-tierlists-api";
 import { loadWinratesPageData } from "@/app/winrates/load-winrates-page.js";
 import StreamerTierlistEditor from "@/app/me/streamer/StreamerTierlistEditor";
 import styles from "@/app/me/streamer/streamer.module.css";
+
+export const metadata: Metadata = {
+  title: "Создать тирлист Wild Rift",
+  description: "Создай и опубликуй собственный тирлист чемпионов Wild Rift.",
+  robots: { index: false, follow: false },
+};
 
 export default async function CreateTierlistPage() {
   let initialData = null;

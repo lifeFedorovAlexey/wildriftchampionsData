@@ -1,9 +1,36 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageWrapper from "@/components/PageWrapper";
 import TopPillLink from "@/components/TopPillLink";
 import PublicStreamerTierlistBoard from "@/app/streamers/PublicStreamerTierlistBoard";
 import { fetchPublicTierlist } from "@/lib/streamer-tierlists-api";
 import styles from "@/app/streamers/streamers.module.css";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ publicId: string }>;
+}): Promise<Metadata> {
+  const { publicId } = await params;
+  const payload = await fetchPublicTierlist(publicId, process.env);
+  if (!payload?.currentPublication) {
+    return {
+      title: "Тирлист не найден",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const publication = payload.currentPublication;
+  const authorName = publication.authorName || payload.streamer.displayName || "Автор тирлиста";
+  const title = `${authorName} — публичный тирлист Wild Rift`;
+  const description = `Публичный тирлист ${authorName} по чемпионам Wild Rift, опубликованный по актуальному срезу статистики.`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/tierlists/${encodeURIComponent(publicId)}` },
+    openGraph: { title, description, url: `/tierlists/${encodeURIComponent(publicId)}`, type: "article", locale: "ru_RU" },
+  };
+}
 
 function formatDateLabel(value: string | null | undefined) {
   if (!value) return "Дата не указана";
