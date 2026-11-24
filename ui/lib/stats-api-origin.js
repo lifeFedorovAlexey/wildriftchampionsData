@@ -4,6 +4,12 @@ export function getStatsApiBaseUrl(
   env = process.env,
   { extraKeys = [] } = {},
 ) {
+  if (String(env?.PUBLIC_DATA_MODE || "").trim().toLowerCase() === "snapshot") {
+    return String(
+      env?.PUBLIC_DATA_ORIGIN || "http://127.0.0.1:3000/public-data",
+    ).replace(/\/+$/, "");
+  }
+
   const keys = [
     ...extraKeys,
     "API_PROXY_TARGET",

@@ -25,6 +25,9 @@ npm run sync:guides:all
 - `API_PROXY_TARGET` - server-side proxy target for `/wr-api/*`
 - `STATS_API_ORIGIN` - direct stats API origin for server fetches
 - `NEXT_PUBLIC_API_BASE` - public base path for browser requests, default `/wr-api`
+- `PUBLIC_DATA_MODE=snapshot` - serve the public read API from the atomically published local snapshot
+- `PUBLIC_DATA_DIR` - snapshot root containing the `current` release directory
+- `PUBLIC_DATA_ORIGIN` - internal absolute URL for server-rendered reads, normally `http://127.0.0.1:3000/public-data`
 - `GUIDES_SYNC_API_ORIGIN` - WR API origin used by the guide sync job
 - `GUIDES_SYNC_IMPORT_URL` - optional full import endpoint override
 - `GUIDES_SYNC_SECRET` - shared secret header for guide import requests
@@ -125,6 +128,12 @@ Expected WR API endpoints:
 ## Production
 
 Production deploys run to the Timeweb server via GitHub Actions.
+
+When `PUBLIC_DATA_MODE=snapshot`, browser requests use `NEXT_PUBLIC_API_BASE=/public-data`.
+The route handler serves only the public read surface (`champions`, statistics/history,
+tier lists, guides, patch notes, and trend events) from `PUBLIC_DATA_DIR/current`.
+If no valid snapshot is present it temporarily proxies to the configured API origin,
+which keeps rollout reversible. Private auth, chat, and quiz writes remain API-backed.
 
 - `.github/workflows/deploy-timeweb.yml` builds a fresh UI release
 - the workflow checks a canary instance on `127.0.0.1:3100`

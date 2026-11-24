@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { TierlistSkeleton } from "@/components/ui/LazySkeletons";
-import { getStatsApiBaseUrl } from "../../lib/stats-api-origin.js";
+import { fetchApiJson } from "@/lib/server-api.js";
 
 const TierlistClient = dynamic(() => import("./TierlistClient"), {
   loading: () => <TierlistSkeleton />,
@@ -37,17 +37,14 @@ export default async function Page() {
   let error: string | null = null;
 
   try {
-    const baseUrl = getStatsApiBaseUrl(process.env);
+    data = (await fetchApiJson("/api/tierlist-bulk?lang=ru_ru", {
+      fetchOptions: { next: { revalidate } },
+      fallback: null,
+    })) as BulkResponse | null;
 
-    const response = await fetch(`${baseUrl}/api/tierlist-bulk?lang=ru_ru`, {
-      next: { revalidate },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+    if (!data) {
+      throw new Error("tierlist-bulk returned no data");
     }
-
-    data = (await response.json()) as BulkResponse;
   } catch (err) {
     console.error("tierlist-bulk error", err);
     error = "Не удалось загрузить тир-лист.";
