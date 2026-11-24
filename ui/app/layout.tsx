@@ -55,7 +55,17 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: "/icon.svg",
+  },
+  other: {
+    "geo.region": "RU",
+    "geo.placename": "Россия",
+  },
 };
 
 export default async function RootLayout({

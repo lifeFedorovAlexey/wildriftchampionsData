@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">Wild Rift All Stats</title>
+  <rect width="120" height="120" rx="28" fill="#111827"/>
+  <path d="M60 14 96 28v26c0 24-15 40-36 52C39 94 24 78 24 54V28l36-14Z" fill="#facc15"/>
+  <path d="M60 25 86 35v19c0 17-10 29-26 39-16-10-26-22-26-39V35l26-10Z" fill="#172033"/>
+  <text x="60" y="68" fill="#facc15" font-family="Arial, sans-serif" font-size="28" font-weight="800" text-anchor="middle">WR</text>
+  <circle cx="60" cy="82" r="3" fill="#facc15"/>
+</svg>
