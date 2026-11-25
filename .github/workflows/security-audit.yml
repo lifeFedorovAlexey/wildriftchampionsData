@@ -37,7 +37,7 @@ jobs:
 
       - name: Audit all dependencies
         working-directory: ${{ matrix.project.directory }}
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=moderate
 
       - name: Install linked root production dependencies for UI SBOM
         if: matrix.project.name == 'ui'

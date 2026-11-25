@@ -3,9 +3,24 @@ import test from "node:test";
 import {
   normalizeChatStorageOrigin,
   sanitizeChatMediaUrl,
+  sanitizeChatSourceUrl,
 } from "./chat-media-url.js";
 
 const options = { storageOrigin: "https://s3.twcstorage.ru" };
+
+test("chat source links reject executable URLs, redirects and lookalike domains", () => {
+  for (const value of ["javascript:alert(1)", "\njavascript:alert(1)", "data:text/html,test", "//attacker.example", "/\\attacker.example", "/guides/../me", "/guides/ahri?redirect=https://attacker.example",
+    "https://leagueoflegends.com.attacker.example/news", "https://evil-leagueoflegends.com/news", "https://user:pass@wildrift.leagueoflegends.com/news", "http://wildrift.leagueoflegends.com/news", "https://wildrift.leagueoflegends.com:444/news", "https://attacker.example/https://leagueoflegends.com"]) {
+    assert.equal(sanitizeChatSourceUrl(value), "");
+  }
+});
+
+test("chat source links rebuild valid internal guides and official Riot links", () => {
+  for (const value of ["/winrates", "/guides/ahri", "/guides/aurelion-sol", "https://wildrift.leagueoflegends.com/en-us/news/game-updates/?patch=6.0#changes", "https://www.leagueoflegends.com/en-us/news/", "https://leagueoflegends.com/"]) {
+    assert.equal(sanitizeChatSourceUrl(value), value);
+  }
+  assert.equal(sanitizeChatSourceUrl("HTTPS://WILDRIFT.LEAGUEOFLEGENDS.COM:443/en-us/news"), "https://wildrift.leagueoflegends.com/en-us/news");
+});
 
 test("chat media URL sanitizer rejects executable and untrusted URLs", () => {
   for (const value of [
