@@ -1,24 +1,8 @@
 import { readPublicApi } from "@/lib/public-data-store.js";
-import { buildApiUrl } from "@/lib/server-api.js";
+import { proxyBackendApi } from "@/lib/backend-api-proxy.js";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-async function proxyToApi(request: Request, pathname: string) {
-  const target = `${buildApiUrl(pathname, { ...process.env, PUBLIC_DATA_MODE: "" })}${new URL(request.url).search}`;
-  const method = request.method.toUpperCase();
-  const response = await fetch(target, {
-    method,
-    headers: request.headers,
-    body: method === "GET" || method === "HEAD" ? undefined : await request.arrayBuffer(),
-    cache: "no-store",
-  });
-
-  return new Response(response.body, {
-    status: response.status,
-    headers: response.headers,
-  });
-}
 
 export async function GET(
   request: Request,
@@ -30,7 +14,7 @@ export async function GET(
     const result = await readPublicApi(pathname, new URL(request.url).searchParams);
 
     if (!result) {
-      return await proxyToApi(request, pathname);
+      return await proxyBackendApi(request, pathname);
     }
 
     return Response.json(result.payload, {
@@ -43,7 +27,7 @@ export async function GET(
     console.error("[public-data] snapshot read failed", error);
     try {
       const { path = [] } = await context.params;
-      return await proxyToApi(request, `/${path.join("/")}`);
+      return await proxyBackendApi(request, `/${path.join("/")}`);
     } catch {
       return Response.json({ error: "Public snapshot is unavailable" }, { status: 503 });
     }

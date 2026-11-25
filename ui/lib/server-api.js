@@ -1,7 +1,7 @@
-import { getStatsApiBaseUrl } from "./stats-api-origin.js";
+import { getBackendApiBaseUrl, getStatsApiBaseUrl, isPublicSnapshotPath } from "./stats-api-origin.js";
 
 export function buildApiUrl(pathname, env = process.env) {
-  const baseUrl = getStatsApiBaseUrl(env);
+  const baseUrl = isPublicSnapshotPath(pathname) ? getStatsApiBaseUrl(env) : getBackendApiBaseUrl(env);
   return `${baseUrl}${pathname}`;
 }
 

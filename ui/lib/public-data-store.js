@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { isPublicSnapshotPath } from "./stats-api-origin.js";
 
 export const PUBLIC_DATA_SCHEMA = "wildrift-public-snapshot";
 export const PUBLIC_DATA_VERSION = 1;
@@ -185,7 +186,7 @@ export function isPublicDataMode(env = process.env) {
 }
 
 export async function readPublicApi(pathname, query = new URLSearchParams(), env = process.env) {
-  if (!isPublicDataMode(env)) return null;
+  if (!isPublicDataMode(env) || !isPublicSnapshotPath(pathname)) return null;
 
   const release = await resolveCurrentRelease(publicDataRoot(env));
   const segments = String(pathname || "").split("/").filter(Boolean).map(decodeURIComponent);

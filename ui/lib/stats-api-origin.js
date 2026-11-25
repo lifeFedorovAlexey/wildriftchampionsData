@@ -1,5 +1,11 @@
 export const DEFAULT_STATS_API_ORIGIN = "http://127.0.0.1:3001";
 
+export function isPublicSnapshotPath(pathname) {
+  const path = String(pathname || "").split(/[?#]/, 1)[0];
+  return /^\/api\/(?:champions|updated-at|latest-stats-snapshot|winrates-snapshot|champion-history|tierlist-bulk|tierlist|trend-events)\/?$/.test(path) ||
+    /^\/api\/(?:guides|patch-notes)(?:\/[^/]+)?\/?$/.test(path);
+}
+
 export function getStatsApiBaseUrl(
   env = process.env,
   { extraKeys = [] } = {},
@@ -10,6 +16,10 @@ export function getStatsApiBaseUrl(
     ).replace(/\/+$/, "");
   }
 
+  return getBackendApiBaseUrl(env, { extraKeys });
+}
+
+export function getBackendApiBaseUrl(env = process.env, { extraKeys = [] } = {}) {
   const keys = [
     ...extraKeys,
     "API_PROXY_TARGET",

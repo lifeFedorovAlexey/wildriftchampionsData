@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { API_BASE } from "@/constants/apiBase";
+import { BACKEND_API_BASE } from "@/constants/apiBase";
 import {
   ASSISTANT_ANIMATIONS,
   ASSISTANT_STORAGE,
@@ -240,7 +240,7 @@ export default function VirtualAssistant() {
             lane: detail.laneKey,
             rank: detail.rankKey,
           });
-          const response = await fetch(`${API_BASE}/api/assistant/responses?${params}`, {
+      const response = await fetch(`${BACKEND_API_BASE}/api/assistant/responses?${params}`, {
             cache: "no-store",
           });
           if (response.ok) {

@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { getStatsApiBaseUrl } from "./lib/stats-api-origin.js";
+import { getBackendApiBaseUrl } from "./lib/stats-api-origin.js";
 import { getSecurityHeaders } from "./lib/security-headers.js";
 
 // Keep the legacy /wr-api rewrite pointed at the API even when public reads
 // use the local snapshot route. This preserves private/auth and asset fallback
 // behavior during the migration window.
-const apiProxyTarget = getStatsApiBaseUrl({ ...process.env, PUBLIC_DATA_MODE: "" });
+const apiProxyTarget = getBackendApiBaseUrl(process.env);
 const configDir = path.dirname(fileURLToPath(import.meta.url));
 const localDev = process.env.NODE_ENV === "development" && process.env.WR_LOCAL_DEV === "true";
 const storageBaseUrl = process.env.S3_PUBLIC_BASE_URL || "";

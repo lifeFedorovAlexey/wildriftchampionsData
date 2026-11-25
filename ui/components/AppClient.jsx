@@ -7,7 +7,7 @@ import {
   initTelegramWebAppAppearance,
   TELEGRAM_WEBAPP_READY_EVENT,
 } from "@/lib/telegram-webapp";
-import { API_BASE, INQ_TWITCH_URL } from "@/constants/apiBase";
+import { API_BASE, BACKEND_API_BASE, INQ_TWITCH_URL } from "@/constants/apiBase";
 
 const VIEWS = {
   MENU: "menu",
@@ -84,7 +84,7 @@ export default function AppClient() {
     const initData = typeof tg?.initData === "string" ? tg.initData : "";
     if (!initData) return;
 
-    fetch(`${API_BASE}/api/webapp-open`, {
+    fetch(`${BACKEND_API_BASE}/api/webapp-open`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
