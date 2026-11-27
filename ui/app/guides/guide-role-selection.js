@@ -52,3 +52,28 @@ export function latestOfficialGuidePatch(rows, now = Date.now()) {
   }
   return latest;
 }
+
+/** Structural release minimum. It does not attest to source accuracy. */
+export function hasGuideReleaseMinimum(guide) {
+  const nonempty = (text) => typeof text === "string" && text.trim().length > 0;
+  const canonical = (row) => row.map(({ name }) => name.trim().toLocaleLowerCase("ru-RU")).sort().join("|");
+  const exact = (row, count) => Array.isArray(row) && row.length === count &&
+    row.every((item) => nonempty(item?.name) && Number.isInteger(item.icon) && item.icon >= 0) &&
+    new Set(row.map((item) => item.name.trim().toLocaleLowerCase("ru-RU"))).size === count;
+  if (!Array.isArray(guide?.items) || guide.items.length !== 3 ||
+      !guide.items.every((items) => exact(items, 3)) || new Set(guide.items.map(canonical)).size !== 3 ||
+      !Array.isArray(guide.itemWhen) || guide.itemWhen.length !== 3 || !guide.itemWhen.every(nonempty)) return false;
+  const expected = guide.expectedRunePages ?? 3;
+  if (![1,2,3].includes(expected) || !Array.isArray(guide.runePages) || guide.runePages.length !== expected ||
+      !guide.runePages.every((page) => nonempty(page?.label) && nonempty(page?.note))) return false;
+  const pages = guide.runePages.map((page, i) => page.list ?? (i === 0 ? guide.runes : null));
+  if (!pages.every((page) => exact(page, 5)) || new Set(pages.map(canonical)).size !== expected ||
+      !exact(guide.spells, 2) || !Array.isArray(guide.levels) ||
+      !validGuideLevels(guide.levels.map((x, i) => ({ ...x, level: i + 1 })))) return false;
+  if (!Array.isArray(guide.groups) || guide.groups.length !== 2 ||
+      !guide.groups.every((g, i) => g?.title === ["Сложнее", "Удобнее"][i] && Array.isArray(g.cards) && g.cards.length === 5)) return false;
+  const all = guide.groups.flatMap((g) => g.cards);
+  return all.every(x => nonempty(x?.name) && nonempty(x.headline) &&
+    Array.isArray(x.tips) && x.tips.length === 3 && x.tips.every(nonempty)) &&
+    new Set(all.map((x) => x.name.trim().toLocaleLowerCase("ru-RU"))).size === 10;
+}

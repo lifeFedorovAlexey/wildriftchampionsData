@@ -139,7 +139,8 @@ test("Mordekaiser Baron renders an evidenced core, five runes, spells, a full gr
   assert.deepEqual(Object.keys(data.roles), ["top"]);
   const guide = data.roles.top;
   assert.equal(guide.reviewedPatch, "7.3g");
-  assert.equal(guide.items.flat().length, 3);
+  assert.deepEqual(guide.items.map(items => items.length), [3, 3, 3]);
+  assert.equal(guide.runePages.length, 3);
   assert.match(guide.itemNote, /показаны отдельно/);
   assert.equal(guide.runes.length, 5);
   assert.equal(guide.spells.length, 2);
@@ -149,4 +150,16 @@ test("Mordekaiser Baron renders an evidenced core, five runes, spells, a full gr
     assert.equal(x.win, null);
     assert.equal(x.tips.length, 3);
   }
+});
+
+
+test("a page missing a build, a distinct rune page or a matchup fails the release gate", async () => {
+  const { hasGuideReleaseMinimum } = await import("./guide-role-selection.js");
+  const data = JSON.parse(readFileSync(new URL("./[slug]/approved-guide-data.json", import.meta.url), "utf8"));
+  const guide = data.mordekaiser.roles.top;
+  assert.ok(hasGuideReleaseMinimum(guide));
+  assert.equal(hasGuideReleaseMinimum(data.ambessa.roles.top), false);
+  assert.equal(hasGuideReleaseMinimum({...guide, items: guide.items.slice(0, 2)}), false);
+  assert.equal(hasGuideReleaseMinimum({...guide, runePages: [guide.runePages[0], guide.runePages[1], guide.runePages[1]]}), false);
+  assert.equal(hasGuideReleaseMinimum({...guide, groups: [guide.groups[0], {...guide.groups[1], cards: guide.groups[1].cards.slice(1)}]}), false);
 });

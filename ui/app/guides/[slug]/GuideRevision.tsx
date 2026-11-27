@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { hasGuideReleaseMinimum } from "../guide-role-selection.js";
 import data from "./approved-guide-data.json";
 import base from "./page.module.css";
 import s from "./revision.module.css";
@@ -11,6 +12,10 @@ type Approved = {
   reviewedPatch: string;
   heroTip: string;
   itemLabels?: string[];
+  itemWhen?: string[];
+  runePages?: { label: string; note: string; list?: Icon[] }[];
+  buildDate?: string;
+  expectedRunePages?: number;
   itemNote?: string;
   matchupNote?: string;
   items: Icon[][]; itemTip: string;
@@ -33,7 +38,7 @@ const percent = new Intl.NumberFormat("ru-RU", { minimumFractionDigits: 1, maxim
 export function getApprovedGuide(slug: string, lane: string): ApprovedEntry | null {
   const set = collections[slug];
   const page = set?.roles[lane];
-  if (!set || !page) return null;
+  if (!set || !page || (page.buildDate && !hasGuideReleaseMinimum(page))) return null;
   return { page, sprite: set.sprite, evidenceDate: set.evidenceDate, sample: page.groups.some((g) => g.cards.some((c) => c.win !== null)) };
 }
 
@@ -82,17 +87,25 @@ export function ApprovedGuide({ guide: { page, sprite, evidenceDate, sample } }:
     <div className={s.content} data-guide-edition="role">
       <div className={s.duo}>
         <section className={base.panel}>
-          <h2 className={base.panelTitle}>Предметы</h2>
+          <h2 className={base.panelTitle}>{page.runePages ? "Топ-3 сборки" : "Предметы"}</h2>
           <p className={s.note}>{page.itemNote || "Рекомендации. Иконки не задают порядок покупки."}</p>
-          {page.items.map((list, i) => <div key={i}><h3 className={s.sub}>{(page.itemLabels || ["Старт и обувь", "Основа", "По ситуации"])[i]}</h3><Tiles sprite={sprite} list={list} /></div>)}
+          {page.items.map((list, i) => <div key={i} data-item-variant={page.runePages ? i + 1 : undefined}><h3 className={s.sub}>{(page.itemLabels || ["Старт и обувь", "Основа", "По ситуации"])[i]}</h3><Tiles sprite={sprite} list={list} />{page.itemWhen?.[i] ? <p className={s.tip}>{page.itemWhen[i]}</p> : null}</div>)}
           <p className={s.tip}>{page.itemTip}</p>
         </section>
         <section className={base.panel}>
-          <h2 className={base.panelTitle}>Руны и заклинания</h2>
+          <h2 className={base.panelTitle}>{page.runePages ? (page.runePages.length === 3 ? "Топ-3 страницы рун" : "Страницы рун") : "Руны и заклинания"}</h2>
           {page.runeStats.length ? <p className={s.note}>{page.runeStats.join(" · ")}</p> : null}
+          {page.runePages ? page.runePages.map((entry, i) => (
+            <div key={entry.label} data-rune-page={i + 1}>
+              <h3 className={s.sub}>{entry.label}</h3>
+              <Tiles sprite={sprite} list={entry.list ?? page.runes} />
+              <p className={s.tip}>{entry.note}</p>
+            </div>
+          )) : (
           <ul className={s.runes}>{page.runes.map((rune) => (
             <li key={rune.name}><Art sprite={sprite} icon={rune.icon} /><div><strong>{rune.name}</strong><small>{rune.tip}</small></div></li>
           ))}</ul>
+          )}
           <p className={s.tip}>{page.runeAlternative}</p>
           <h3 className={s.sub}>Заклинания</h3>
           <Tiles sprite={sprite} list={page.spells} />
