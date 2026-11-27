@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { GUIDE_LANES, selectGuideRole, validGuideLevels } from "./guide-role-selection.js";
+import { GUIDE_LANES, guideEditionStatus, latestOfficialGuidePatch, selectGuideRole, validGuideLevels } from "./guide-role-selection.js";
 
 test("all five roles are available; selecting a missing role shows no foreign build", () => {
   const cases = [{ lane: "top", default: true }, { lane: "jungle" }, { lane: null }];
@@ -25,4 +25,51 @@ test("approved builds have two isolated role cards, levels, and 5+5 matchups", (
   }
   assert.equal(pilot.roles.top.groups.flatMap(g => g.cards).filter(c => c.win !== null).length, 6);
   assert.ok(pilot.roles.jungle.groups.flatMap(g => g.cards).every(c => c.win === null));
+});
+
+test("the same rollout can contain independently reviewed roles", () => {
+  const { roles } = JSON.parse(readFileSync(new URL("./[slug]/approved-guide-data.json", import.meta.url), "utf8")).ambessa;
+  for (const role of Object.values(roles)) {
+    assert.equal(guideEditionStatus(role.reviewedPatch, "7.3G"), "current");
+    assert.equal(guideEditionStatus(role.reviewedPatch, "7.3h"), "archive");
+    assert.equal(guideEditionStatus(role.reviewedPatch, "7.3f"), "unverified");
+    assert.equal(guideEditionStatus(role.reviewedPatch, null), "unverified");
+  }
+  assert.equal(guideEditionStatus("7.3h", "7.3h"), "current");
+  assert.equal(guideEditionStatus("7.3g", "7.3h"), "archive");
+  assert.equal(guideEditionStatus(undefined, "7.3h"), "unverified");
+  assert.equal(guideEditionStatus("7.9z", "7.10"), "archive");
+});
+
+test("the latest patch ignores malformed versions and unreleased notes and is not tied to order", () => {
+  const now = Date.parse("2026-11-27T19:00:00Z");
+  const past = "2026-11-25T10:00:00Z";
+  assert.equal(latestOfficialGuidePatch([
+    { version: "7.4", publishedAt: "2027-01-01" },
+    { version: "9.9", publishedAt: null },
+    { version: "7.3h", publishedAt: past, effectiveDate: "2026-12-01", effectiveRegion: "global" },
+    { version: "7.3F", publishedAt: past },
+    { version: "7.3G", publishedAt: past, effectiveDate: "2026-12-01", effectiveRegion: "CN" },
+    { version: "Patch 99.1!", publishedAt: past },
+  ], now), "7.3g");
+  assert.equal(latestOfficialGuidePatch([], now), null);
+  assert.equal(latestOfficialGuidePatch(null, now), null);
+});
+
+test("only officially changed ranked champions receive exact-version guide notes", async () => {
+  const { rankedGuideNotes } = await import("./ranked-patch-guide.js");
+  for (const slug of ["vayne", "irelia", "garen", "aurora", "smolder", "sylas"]) {
+    assert.equal(rankedGuideNotes(slug, "7.3g").length, 2);
+    assert.equal(rankedGuideNotes(slug, "7.3h").length, 0);
+    assert.equal(rankedGuideNotes(slug, null).length, 0);
+  }
+  for (const slug of ["ambessa", "bard", "vi", "sett", "constructor"]) assert.deepEqual(rankedGuideNotes(slug, "7.3g"), []);
+});
+
+test("reject complete historical combinations that contain removed ranked equipment", async () => {
+  const { containsRemovedRankedEntity } = await import("./ranked-patch-guide.js");
+  for (const removed of ["magnetic-blaster", "Soul Transfer", "Legend: Tenacity", "ingenious-hunter"]) {
+    assert.ok(containsRemovedRankedEntity(["eclipse", removed]));
+  }
+  assert.ok(!containsRemovedRankedEntity(["eclipse", "legend-haste", "rapid-firecannon"]));
 });
