@@ -73,3 +73,22 @@ test("reject complete historical combinations that contain removed ranked equipm
   }
   assert.ok(!containsRemovedRankedEntity(["eclipse", "legend-haste", "rapid-firecannon"]));
 });
+
+test("equipment notes follow exact archive lane and current official patch, never another role", async () => {
+  const { rankedGearNotes, hasRankedGearNotes } = await import("./ranked-patch-gear.js");
+  const coverage = JSON.parse(readFileSync(new URL("./ranked-patch-gear-scope.json", import.meta.url), "utf8"));
+  assert.equal(Object.keys(coverage).length, 61);
+  assert.equal(Object.values(coverage).reduce((n, roles) => n + Object.keys(roles).length, 0), 82);
+  assert.ok(hasRankedGearNotes("vayne"));
+  assert.ok(rankedGearNotes("vayne", "adc", "7.3g").some(([label]) => label.includes("Гинсу")));
+  assert.deepEqual(rankedGearNotes("vayne", "jungle", "7.3g"), []);
+  assert.deepEqual(rankedGearNotes("ambessa", "top", "7.3g"), []);
+  assert.deepEqual(rankedGearNotes("ambessa", "jungle", "7.3h"), []);
+  assert.deepEqual(rankedGearNotes("constructor", "jungle", "7.3g"), []);
+  for (const [champion, roles] of Object.entries(coverage)) {
+    for (const [lane, ids] of Object.entries(roles)) {
+      assert.ok(GUIDE_LANES.includes(lane));
+      assert.equal(rankedGearNotes(champion, lane, "7.3g").length, ids.length);
+    }
+  }
+});

@@ -8,6 +8,7 @@ import guideShared from "@/shared/guides-shared.js";
 
 import styles from "./page.module.css";
 import { ApprovedGuide, getApprovedGuide, GuideLevels } from "./GuideRevision";
+import { rankedGearNotes } from "../ranked-patch-gear.js";
 import { containsRemovedRankedEntity, rankedGuideNotes } from "../ranked-patch-guide.js";
 import { GUIDE_LANES, guideEditionStatus, selectGuideRole, validGuideLevels } from "../guide-role-selection.js";
 
@@ -826,6 +827,7 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
     });
 
   const patchNotes = rankedGuideNotes(guide.champion.slug, latestPatch);
+  const gearNotes = rankedGearNotes(guide.champion.slug, selectedRiftLane, latestPatch);
   const guideVariantBundles = roleVariants.filter((item) =>
     !containsRemovedRankedEntity([
       ...Object.values(item.itemBuild).flat(),
@@ -971,6 +973,15 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
           <h2 id="ranked-patch-summary" className={styles.panelTitle}>Что изменилось в {latestPatch}</h2>
           <dl className={styles.rankedPatchGuide}>
             {patchNotes.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+          </dl>
+        </section>
+      ) : null}
+
+      {gearNotes.length ? (
+        <section className={styles.panel} aria-labelledby="ranked-gear-summary">
+          <h2 id="ranked-gear-summary" className={styles.panelTitle}>Предметы и руны в {latestPatch}</h2>
+          <dl className={styles.rankedPatchGuide}>
+            {gearNotes.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
           </dl>
         </section>
       ) : null}

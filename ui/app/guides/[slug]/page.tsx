@@ -6,6 +6,7 @@ import PageWrapper from "@/components/PageWrapper";
 import TopPillLink from "@/components/TopPillLink";
 import { fetchPatchNotes } from "@/app/patch-notes/patch-notes-lib";
 import { hasApprovedGuide } from "./GuideRevision";
+import { hasRankedGearNotes } from "../ranked-patch-gear.js";
 import { hasRankedPatchGuide } from "../ranked-patch-guide.js";
 import { latestOfficialGuidePatch } from "../guide-role-selection.js";
 import GuideClient, { type GuideData } from "./GuideClient";
@@ -188,7 +189,8 @@ export default async function GuidePage({
 
   const [bulk, patchNotes] = await Promise.all([
     fetchTierlistBulk(),
-    hasApprovedGuide(guide.champion.slug) || hasRankedPatchGuide(guide.champion.slug)
+    (hasApprovedGuide(guide.champion.slug) || hasRankedPatchGuide(guide.champion.slug) ||
+      hasRankedGearNotes(guide.champion.slug))
       ? fetchPatchNotes({ next: { revalidate: 300 }, signal: AbortSignal.timeout(5000) })
       : Promise.resolve([]),
   ]);
