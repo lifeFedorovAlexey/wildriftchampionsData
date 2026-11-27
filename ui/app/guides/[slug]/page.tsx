@@ -122,14 +122,12 @@ export async function generateMetadata({
   const championTitle = guide.champion.title || guide.official?.champion?.title || "";
   const roleText = buildGuideRoleText(guide);
   const tierText = guide.metadata.tier ? ` Тир: ${guide.metadata.tier}.` : "";
-  const patchText = guide.metadata.patch ? ` Патч: ${guide.metadata.patch}.` : "";
   const description = [
     `Гайд на ${championName} в Wild Rift.`,
     championTitle ? `${championTitle}.` : "",
     roleText ? `Роли: ${roleText}.` : "",
     "Сборки предметов, руны, прокачка умений, контрпики и синергии.",
     tierText.trim(),
-    patchText.trim(),
   ]
     .filter(Boolean)
     .join(" ")
@@ -187,7 +185,7 @@ export default async function GuidePage({
   const bulk = await fetchTierlistBulk();
   const guideWithOwnTiers = applyOwnTiers(guide, bulk);
   guideWithOwnTiers.availableGuideSlugs = await fetchGuideSlugsFromApi();
-  const guideLeadParagraph = `Актуальный гайд на ${guideWithOwnTiers.champion.name}: сборки, руны, матчапы, заклинания и порядок прокачки в одном месте.`;
+  const guideLeadParagraph = `Гайд на ${guideWithOwnTiers.champion.name}: сборки, руны, матчапы, заклинания и порядок прокачки в одном месте.`;
 
   return (
     <PageWrapper

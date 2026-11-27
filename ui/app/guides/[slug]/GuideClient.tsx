@@ -7,6 +7,8 @@ import { ensureLocalAssetSrc } from "@/lib/asset-safety";
 import guideShared from "@/shared/guides-shared.js";
 
 import styles from "./page.module.css";
+import { ApprovedGuide, getApprovedGuide, GuideLevels } from "./GuideRevision";
+import { GUIDE_LANES, selectGuideRole, validGuideLevels } from "../guide-role-selection.js";
 
 type EntityTooltip = {
   title?: string | null;
@@ -105,6 +107,7 @@ type RiftGgLaneBlock<TEntry> = {
 };
 
 const INITIAL_RIFT_MATCHUPS_PREVIEW_COUNT = 5;
+
 const { localizeGuideLane, repairGuideText, toGuideLaneKey } = guideShared;
 
 export type GuideData = {
@@ -486,25 +489,6 @@ function splitRiftMatchupPreview(items: RiftGgMatchupEntry[]) {
   };
 }
 
-function collectAvailableRiftLanesForRank(guide: GuideData["riftgg"], rank: string) {
-  const lanes = new Set<string>();
-
-  for (const blocks of [
-    guide?.matchups,
-    guide?.coreItems,
-    guide?.runes,
-    guide?.spells,
-  ]) {
-    for (const block of blocks || []) {
-      if (block?.rank === rank && block?.lane) {
-        lanes.add(block.lane);
-      }
-    }
-  }
-
-  return Array.from(lanes);
-}
-
 function RiftBuildPanel({
   title,
   blocks,
@@ -762,6 +746,8 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
 
   const itemDict = guide.dictionaries?.items;
   const abilityDict = guide.dictionaries?.abilities;
+  const runeDict = guide.dictionaries?.runes;
+  const spellDict = guide.dictionaries?.summonerSpells;
   const abilities = guide.abilitiesRu ?? [];
   const heroVideoSrc = guide.official?.heroMedia?.localVideoPath || null;
   const riftgg = guide.riftgg || null;
@@ -783,23 +769,31 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const pickRiftBlock = <TEntry,>(blocks?: RiftGgLaneBlock<TEntry>[]) =>
     blocks?.filter((block) => block.rank === selectedRiftRank && block.lane === selectedRiftLane) || [];
 
-  const availableRiftLanesForSelectedRank =
-    collectAvailableRiftLanesForRank(riftgg, selectedRiftRank);
-  const selectedRiftLane =
-    availableRiftLanesForSelectedRank.find((lane) => lane === preferredRiftLane) ||
-    availableRiftLanesForSelectedRank[0] ||
-    preferredRiftLane;
-  const riftLaneTabs = (riftgg?.availableLanes || availableRiftLanesForSelectedRank).map((lane) => ({
+  const selectedRiftLane = preferredRiftLane;
+  const approved = getApprovedGuide(guide.champion.slug, selectedRiftLane);
+  const riftLaneTabs = GUIDE_LANES.map((lane) => ({
     key: lane,
     label: localizeGuideLane(lane),
     lane,
-    disabled: !availableRiftLanesForSelectedRank.includes(lane),
   }));
-  const displayVariant =
-    variants.find((item) => toGuideLaneKey(item.lane || item.title || "") === selectedRiftLane) ||
-    defaultVariant;
+  const roleVariants = selectGuideRole(variants, selectedRiftLane, (item: GuideVariant) =>
+    toGuideLaneKey(item.lane || item.title || "")) as GuideVariant[];
+  const displayVariant = roleVariants.find((item) => item.isDefault) || roleVariants[0];
   const displayedRoleLabel = getDisplayedRoleLabel(guide, displayVariant, selectedRiftLane);
-  const heroSummary = buildOfficialSummary(guide, displayVariant, selectedRiftLane);
+  const heroSummary = approved?.page.heroTip || buildOfficialSummary(guide, displayVariant, selectedRiftLane);
+  const previousLevels = displayVariant?.skillOrder?.rows?.flatMap((row) => {
+    const bySlug = abilityDict?.[row.slug];
+    const byOrder = displayVariant?.skillOrder.quickOrder?.find((ability) => ability.slug === row.slug);
+    const i = displayVariant.skillOrder.rows.indexOf(row);
+    const hotkey = ["Q", "W", "E", "R"][i];
+    return hotkey ? row.levels.map((level) => ({
+      level,
+      key: hotkey,
+      title: row.name,
+      src: bySlug?.imageUrl || byOrder?.imageUrl || abilities.find((ability) => formatAbilityHotkey(ability.subtitle) === hotkey)?.iconUrl,
+    })) : [];
+  }).sort((a, b) => a.level - b.level) || [];
+  const showPreviousLevels = validGuideLevels(previousLevels);
 
   const selectedMatchups = pickRiftBlock(riftgg?.matchups);
   const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
@@ -823,7 +817,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
       return (right.pickRate ?? -Infinity) - (left.pickRate ?? -Infinity);
     });
 
-  const guideVariantBundles = variants.map((item, index) => {
+  const guideVariantBundles = roleVariants.map((item, index) => {
     const buildSections = [
       {
         label: "Стартовый предмет",
@@ -841,6 +835,8 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         label: "Финальный билд",
         items: withTooltip(item.itemBuild.finalBuild, itemDict),
       },
+      { label: "Руны", items: withTooltip(item.spellsAndRunes?.runes || [], runeDict) },
+      { label: "Заклинания", items: withTooltip(item.spellsAndRunes?.summonerSpells || [], spellDict) },
     ];
 
     return {
@@ -903,20 +899,9 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                   <button
                     key={item.key}
                     type="button"
-                    onClick={() => {
-                      if (!item.disabled) {
-                        setPreferredRiftLane(item.lane);
-                      }
-                    }}
-                    className={
-                      item.disabled
-                        ? styles.variantTabDisabled
-                        : active
-                          ? styles.variantTabActive
-                          : styles.variantTab
-                    }
-                    aria-disabled={item.disabled ? "true" : undefined}
-                    title={item.disabled ? "Для выбранного ранга данных по этой линии нет" : undefined}
+                    onClick={() => setPreferredRiftLane(item.lane)}
+                    className={active ? styles.variantTabActive : styles.variantTab}
+                    aria-pressed={active}
                   >
                     <span>{item.label}</span>
                   </button>
@@ -925,7 +910,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             </div>
           ) : null}
 
-          {riftgg ? (
+          {riftgg && !approved ? (
             <div className={styles.riftFilters}>
               {(riftgg.availableRanks || []).length ? (
                 <div className={styles.riftFilterGroup}>
@@ -950,10 +935,6 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
 
           <div className={styles.heroMeta}>
             <div className={styles.metaPill}>
-              <span className={styles.metaPillLabel}>Патч</span>
-              <span className={styles.metaPillValue}>{guide.metadata.patch ?? "-"}</span>
-            </div>
-            <div className={styles.metaPill}>
               <span className={styles.metaPillLabel}>Роль</span>
               <span className={styles.metaPillValue}>
                 {displayedRoleLabel || "-"}
@@ -965,20 +946,27 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                 <span className={styles.metaPillValue}>{guide.official.difficulty}</span>
               </div>
             ) : null}
-            <div className={styles.metaPill}>
-              <span className={styles.metaPillLabel}>Тир</span>
-              <span className={styles.metaPillValue}>
-                {displayVariant?.ownTier || guide.metadata.tier || "-"}
-              </span>
-            </div>
           </div>
 
           {heroSummary ? <p className={styles.heroBlurb}>{heroSummary}</p> : null}
         </div>
       </section>
 
-      {riftgg ? (
-        <>
+      {approved ? <ApprovedGuide guide={approved} /> : (
+        <section className={styles.panel}>
+          <h2 className={styles.panelTitle}>Сборка на текущий патч</h2>
+          <p className={styles.riftEmptyState}>Подтверждённой сборки для этой роли пока нет.</p>
+        </section>
+      )}
+      {!approved && showPreviousLevels ? (
+        <section className={styles.panel}>
+          <h2 className={styles.panelTitle}>Прокачка из прежнего гайда</h2>
+          <GuideLevels levels={previousLevels} />
+        </section>
+      ) : null}
+      {!approved && riftgg && (selectedMatchups.length || selectedCoreItems.length || selectedRunes.length || selectedSpells.length) ? (
+        <details className={styles.panel}>
+          <summary className={styles.panelTitle}>Прежняя статистика этой роли</summary>
           <div className={styles.topGrid}>
             <RiftMatchupsPanel
               bestItems={bestMatchups}
@@ -1011,12 +999,12 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             selectedRankLabel={selectedRiftRankLabel}
             selectedLaneLabel={selectedRiftLaneLabel}
           />
-        </>
+        </details>
       ) : null}
 
-      {guideVariantBundles.some((bundle) => bundle.hasBuilds) ? (
-        <section className={styles.panel}>
-          <h2 className={styles.panelTitle}>Сборки WildRiftFire</h2>
+      {!approved && guideVariantBundles.some((bundle) => bundle.hasBuilds) ? (
+        <details className={styles.panel}>
+          <summary className={styles.panelTitle}>Прежние сборки этой роли</summary>
           <div className={styles.variantBuildList}>
             {guideVariantBundles
               .filter((bundle) => bundle.hasBuilds)
@@ -1025,7 +1013,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                   <div className={styles.sectionEyebrow}>Вариант</div>
                   <h3 className={styles.variantBuildTitle}>{repairGuideText(bundle.label)}</h3>
                   <div className={styles.buildGrid}>
-                    {bundle.buildSections.map((section) => (
+                    {bundle.buildSections.filter((section) => section.items.length).map((section) => (
                       <div
                         key={`${bundle.key}-${section.label}`}
                         className={
@@ -1046,7 +1034,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
                 </div>
               ))}
           </div>
-        </section>
+        </details>
       ) : null}
 
       {abilities.length ? (

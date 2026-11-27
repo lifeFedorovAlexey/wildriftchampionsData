@@ -1,0 +1,36 @@
+.content { display:grid; gap:16px; }
+.duo { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:16px; }
+.duo > section, .card, .decisions > article { min-width:0; }
+.art { width:48px; height:48px; border-radius:9px; display:inline-block; flex:none; background-repeat:no-repeat; }
+.tiles, .runes, .levels { list-style:none; margin:0; padding:0; }
+.tiles { display:flex; flex-wrap:wrap; gap:10px 14px; }
+.tiles li { width:83px; display:grid; justify-items:center; align-content:start; gap:4px; text-align:center; font-size:.78rem; line-height:1.2; }
+.runes { display:grid; gap:6px; }
+.runes li { display:flex; gap:8px; align-items:center; }
+.runes .art { transform:scale(.66); margin:-8px; margin-right:0; }
+.runes small, .cardHead small { display:block; font-size:.8rem; }
+.note { margin:0 0 10px; color:var(--text-muted,#aabbd0); font-size:.78rem; }
+.tip { margin:10px 0 0; font-size:.88rem; }
+.sub { margin:12px 0 8px; font-size:.9rem; font-weight:650; }
+.matchups { scroll-margin-top:90px; }
+.group + .group { margin-top:14px; }
+.matchGrid, .decisions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.card, .decisions > article { border:1px solid var(--border-soft,#273449); border-radius:10px; padding:10px 12px; background:#0b132388; }
+.cardHead { display:flex; gap:8px; align-items:center; margin-bottom:8px; }
+.cardHead h4, .decisions h3 { margin:0; font-size:.91rem; font-weight:700; }
+.cardHead .art { transform:scale(.9); margin:-2px; }
+.badge { margin-left:auto; flex:none; color:#c8d5e8; font-size:.72rem; padding:4px 6px; border:1px solid var(--border-soft,#273449); border-radius:7px; }
+.card dl { display:grid; gap:5px; margin:0; font-size:.83rem; line-height:1.45; }
+.card dl > div { display:grid; grid-template-columns:85px minmax(0,1fr); gap:6px; }
+.card dt { color:#b1c3da; font-weight:650; }
+.card dd { margin:0; }
+.card dl > div:nth-child(2) dt { color:#a7d2bb; }
+.card dl > div:nth-child(3) dt { color:#e5bcaa; }
+.levels { display:grid; grid-template-columns:repeat(15,minmax(0,1fr)); gap:4px; margin:10px 0; }
+.levels li { display:grid; place-items:center; gap:4px; min-width:0; border:1px solid var(--border-soft,#273449); border-radius:7px; padding:5px 0; font-size:.76rem; }
+.levels .art { transform:scale(.66); margin:-8px; }
+.levels li.ultimate { border-color:#a17f45; background:#a17f4524; }
+.decisions { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.decisions p { margin:4px 0 0; font-size:.84rem; line-height:1.4; }
+@media(max-width:750px){ .duo,.matchGrid,.decisions{grid-template-columns:1fr}.levels{grid-template-columns:repeat(8,minmax(0,1fr))} }
+@media(max-width:390px){.levels{grid-template-columns:repeat(5,minmax(0,1fr))}.card dl > div{grid-template-columns:72px minmax(0,1fr)}.badge{font-size:.67rem}}
