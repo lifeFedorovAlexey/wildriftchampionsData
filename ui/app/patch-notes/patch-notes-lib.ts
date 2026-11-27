@@ -49,11 +49,11 @@ export type PatchNote = PatchNoteSummary & {
   }>;
 };
 
-export async function fetchPatchNotes(): Promise<PatchNoteSummary[]> {
+export async function fetchPatchNotes(fetchOptions: RequestInit = { cache: "no-store" }): Promise<PatchNoteSummary[]> {
   const payload = await fetchApiJson("/api/patch-notes", {
     // Patch notes are written by a separate daily workflow. A cached empty
     // response can otherwise hide newly imported notes for up to 30 minutes.
-    fetchOptions: { cache: "no-store" },
+    fetchOptions,
     fallback: { items: [] },
   });
   return Array.isArray(payload?.items) ? payload.items : [];

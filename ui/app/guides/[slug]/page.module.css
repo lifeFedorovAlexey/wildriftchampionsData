@@ -1358,3 +1358,19 @@
     transform: translateY(0);
   }
 }
+
+
+.rankedPatchGuide {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.rankedPatchGuide dt {
+  font-weight: 650;
+}
+
+.rankedPatchGuide dd {
+  margin: 3px 0 0;
+  line-height: 1.5;
+}

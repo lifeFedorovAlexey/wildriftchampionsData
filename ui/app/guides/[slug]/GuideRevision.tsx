@@ -8,6 +8,7 @@ type Tip = { label: string; text: string };
 type Match = { name: string; icon: number; headline: string; win: number | null; tips: string[] };
 type Level = { level: number; key: string; src?: string | null; title?: string; icon?: number };
 type Approved = {
+  reviewedPatch: string;
   heroTip: string;
   items: Icon[][]; itemTip: string;
   runes: (Icon & { tip: string })[]; runeStats: string[];
@@ -16,9 +17,13 @@ type Approved = {
   spikes: Tip[]; plan: Tip[];
   groups: { title: string; cards: Match[] }[];
 };
-type Collection = { sprite: string; basis: string; roles: Partial<Record<string, Approved>> };
-type ApprovedEntry = { page: Approved; sprite: string; basis: string; sample: boolean };
+type Collection = { sprite: string; evidenceDate: string; roles: Partial<Record<string, Approved>> };
+type ApprovedEntry = { page: Approved; sprite: string; evidenceDate: string; sample: boolean };
 const collections: Record<string, Collection> = data;
+export function hasApprovedGuide(slug: string) {
+  return Object.hasOwn(collections, slug);
+}
+
 const tips = ["Дистанция", "Когда бить", "Чего не делать"];
 const percent = new Intl.NumberFormat("ru-RU", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
@@ -26,7 +31,7 @@ export function getApprovedGuide(slug: string, lane: string): ApprovedEntry | nu
   const set = collections[slug];
   const page = set?.roles[lane];
   if (!set || !page) return null;
-  return { page, sprite: set.sprite, basis: set.basis, sample: page.groups.some((g) => g.cards.some((c) => c.win !== null)) };
+  return { page, sprite: set.sprite, evidenceDate: set.evidenceDate, sample: page.groups.some((g) => g.cards.some((c) => c.win !== null)) };
 }
 
 function Art({ sprite, icon }: { sprite: string; icon: number }) {
@@ -68,8 +73,8 @@ function Decisions({ rows }: { rows: Tip[] }) {
   );
 }
 
-export function ApprovedGuide({ guide: { page, sprite, basis, sample } }: { guide: ApprovedEntry }) {
-  const date = new Intl.DateTimeFormat("ru-RU", { day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(basis));
+export function ApprovedGuide({ guide: { page, sprite, evidenceDate, sample } }: { guide: ApprovedEntry }) {
+  const date = new Intl.DateTimeFormat("ru-RU", { day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(evidenceDate));
   return (
     <div className={s.content} data-guide-edition="role">
       <div className={s.duo}>

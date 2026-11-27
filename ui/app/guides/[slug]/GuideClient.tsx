@@ -8,7 +8,8 @@ import guideShared from "@/shared/guides-shared.js";
 
 import styles from "./page.module.css";
 import { ApprovedGuide, getApprovedGuide, GuideLevels } from "./GuideRevision";
-import { GUIDE_LANES, selectGuideRole, validGuideLevels } from "../guide-role-selection.js";
+import { containsRemovedRankedEntity, rankedGuideNotes } from "../ranked-patch-guide.js";
+import { GUIDE_LANES, guideEditionStatus, selectGuideRole, validGuideLevels } from "../guide-role-selection.js";
 
 type EntityTooltip = {
   title?: string | null;
@@ -736,7 +737,7 @@ function RiftMatchupsPanel({
   );
 }
 
-export default function GuideClient({ guide }: { guide: GuideData }) {
+export default function GuideClient({ guide, latestPatch }: { guide: GuideData; latestPatch: string | null }) {
   const variants = guide.variants?.length ? guide.variants : [];
   const defaultIndex = Math.max(
     0,
@@ -770,7 +771,9 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
     blocks?.filter((block) => block.rank === selectedRiftRank && block.lane === selectedRiftLane) || [];
 
   const selectedRiftLane = preferredRiftLane;
-  const approved = getApprovedGuide(guide.champion.slug, selectedRiftLane);
+  const edition = getApprovedGuide(guide.champion.slug, selectedRiftLane);
+  const editionStatus = guideEditionStatus(edition?.page.reviewedPatch, latestPatch);
+  const approved = editionStatus === "current" ? edition : null;
   const riftLaneTabs = GUIDE_LANES.map((lane) => ({
     key: lane,
     label: localizeGuideLane(lane),
@@ -796,8 +799,13 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
   const showPreviousLevels = validGuideLevels(previousLevels);
 
   const selectedMatchups = pickRiftBlock(riftgg?.matchups);
-  const selectedCoreItems = pickRiftBlock(riftgg?.coreItems);
-  const selectedRunes = pickRiftBlock(riftgg?.runes);
+  const hideRemovedStats = (blocks: RiftGgLaneBlock<RiftGgBuildEntry>[]) =>
+    blocks.map((block) => ({
+      ...block,
+      entries: block.entries?.filter((entry) => !containsRemovedRankedEntity(entry.entrySlugs)),
+    })).filter((block) => block.entries?.length);
+  const selectedCoreItems = hideRemovedStats(pickRiftBlock(riftgg?.coreItems));
+  const selectedRunes = hideRemovedStats(pickRiftBlock(riftgg?.runes));
   const selectedSpells = pickRiftBlock(riftgg?.spells);
   const selectedRiftRankLabel = localizeRiftRank(selectedRiftRank);
   const selectedRiftLaneLabel = localizeGuideLane(selectedRiftLane) || selectedRiftLane;
@@ -817,7 +825,13 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
       return (right.pickRate ?? -Infinity) - (left.pickRate ?? -Infinity);
     });
 
-  const guideVariantBundles = roleVariants.map((item, index) => {
+  const patchNotes = rankedGuideNotes(guide.champion.slug, latestPatch);
+  const guideVariantBundles = roleVariants.filter((item) =>
+    !containsRemovedRankedEntity([
+      ...Object.values(item.itemBuild).flat(),
+      ...(item.spellsAndRunes?.runes || []),
+    ].map((entry) => entry.slug)),
+  ).map((item, index) => {
     const buildSections = [
       {
         label: "Стартовый предмет",
@@ -910,7 +924,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
             </div>
           ) : null}
 
-          {riftgg && !approved ? (
+          {riftgg && !edition ? (
             <div className={styles.riftFilters}>
               {(riftgg.availableRanks || []).length ? (
                 <div className={styles.riftFilterGroup}>
@@ -952,19 +966,38 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         </div>
       </section>
 
+      {patchNotes.length ? (
+        <section className={styles.panel} aria-labelledby="ranked-patch-summary">
+          <h2 id="ranked-patch-summary" className={styles.panelTitle}>Что изменилось в {latestPatch}</h2>
+          <dl className={styles.rankedPatchGuide}>
+            {patchNotes.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+          </dl>
+        </section>
+      ) : null}
+
       {approved ? <ApprovedGuide guide={approved} /> : (
         <section className={styles.panel}>
           <h2 className={styles.panelTitle}>Сборка на текущий патч</h2>
-          <p className={styles.riftEmptyState}>Подтверждённой сборки для этой роли пока нет.</p>
+          <p className={styles.riftEmptyState}>
+            {edition && editionStatus === "unverified"
+              ? "Не удалось проверить актуальность сборки для этой роли."
+              : "Подтверждённой сборки для этой роли пока нет."}
+          </p>
         </section>
       )}
-      {!approved && showPreviousLevels ? (
+      {edition && !approved ? (
+        <details className={styles.panel}>
+          <summary className={styles.panelTitle}>Гайд для {edition.page.reviewedPatch}</summary>
+          <ApprovedGuide guide={edition} />
+        </details>
+      ) : null}
+      {!edition && showPreviousLevels ? (
         <section className={styles.panel}>
           <h2 className={styles.panelTitle}>Прокачка из прежнего гайда</h2>
           <GuideLevels levels={previousLevels} />
         </section>
       ) : null}
-      {!approved && riftgg && (selectedMatchups.length || selectedCoreItems.length || selectedRunes.length || selectedSpells.length) ? (
+      {!edition && riftgg && (selectedMatchups.length || selectedCoreItems.length || selectedRunes.length || selectedSpells.length) ? (
         <details className={styles.panel}>
           <summary className={styles.panelTitle}>Прежняя статистика этой роли</summary>
           <div className={styles.topGrid}>
@@ -1002,7 +1035,7 @@ export default function GuideClient({ guide }: { guide: GuideData }) {
         </details>
       ) : null}
 
-      {!approved && guideVariantBundles.some((bundle) => bundle.hasBuilds) ? (
+      {!edition && guideVariantBundles.some((bundle) => bundle.hasBuilds) ? (
         <details className={styles.panel}>
           <summary className={styles.panelTitle}>Прежние сборки этой роли</summary>
           <div className={styles.variantBuildList}>

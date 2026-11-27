@@ -4,6 +4,10 @@ import { FaArrowLeft } from "react-icons/fa6";
 
 import PageWrapper from "@/components/PageWrapper";
 import TopPillLink from "@/components/TopPillLink";
+import { fetchPatchNotes } from "@/app/patch-notes/patch-notes-lib";
+import { hasApprovedGuide } from "./GuideRevision";
+import { hasRankedPatchGuide } from "../ranked-patch-guide.js";
+import { latestOfficialGuidePatch } from "../guide-role-selection.js";
 import GuideClient, { type GuideData } from "./GuideClient";
 import {
   type BulkResponse,
@@ -182,7 +186,13 @@ export default async function GuidePage({
     notFound();
   }
 
-  const bulk = await fetchTierlistBulk();
+  const [bulk, patchNotes] = await Promise.all([
+    fetchTierlistBulk(),
+    hasApprovedGuide(guide.champion.slug) || hasRankedPatchGuide(guide.champion.slug)
+      ? fetchPatchNotes({ next: { revalidate: 300 }, signal: AbortSignal.timeout(5000) })
+      : Promise.resolve([]),
+  ]);
+  const latestPatch = latestOfficialGuidePatch(patchNotes);
   const guideWithOwnTiers = applyOwnTiers(guide, bulk);
   guideWithOwnTiers.availableGuideSlugs = await fetchGuideSlugsFromApi();
   const guideLeadParagraph = `Гайд на ${guideWithOwnTiers.champion.name}: сборки, руны, матчапы, заклинания и порядок прокачки в одном месте.`;
@@ -197,7 +207,7 @@ export default async function GuidePage({
         </TopPillLink>
       }
     >
-      <GuideClient guide={guideWithOwnTiers} />
+      <GuideClient guide={guideWithOwnTiers} latestPatch={latestPatch} />
     </PageWrapper>
   );
 }

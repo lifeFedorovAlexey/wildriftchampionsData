@@ -2,6 +2,7 @@
   "ambessa": {
     "roles": {
       "top": {
+        "reviewedPatch": "7.3g",
         "heroTip": "Размен: попади краем первого умения, вставь автоатаку и отойди.",
         "items": [
           [
@@ -287,6 +288,7 @@
         ]
       },
       "jungle": {
+        "reviewedPatch": "7.3g",
         "heroTip": "Ганк: зайди сбоку, замедли третьим умением и оставь рывок на выход.",
         "items": [
           [
@@ -583,6 +585,6 @@
       }
     },
     "sprite": "/patch-art/guide-ambessa.webp",
-    "basis": "2026-11-26"
+    "evidenceDate": "2026-11-26"
   }
 }
