@@ -8,6 +8,7 @@ import guideShared from "@/shared/guides-shared.js";
 
 import styles from "./page.module.css";
 import { ApprovedGuide, getApprovedGuide, GuideLevels } from "./GuideRevision";
+import { mordekaiserBaronPlan, selectUnassignedGuideArchive } from "../guide-available-content.js";
 import { resolveGuideAbilityTooltip } from "../guide-ability-tooltip.js";
 import { rankedGearNotes } from "../ranked-patch-gear.js";
 import { containsRemovedRankedEntity, rankedGuideNotes } from "../ranked-patch-guide.js";
@@ -739,7 +740,11 @@ function RiftMatchupsPanel({
   );
 }
 
-export default function GuideClient({ guide, latestPatch }: { guide: GuideData; latestPatch: string | null }) {
+export default function GuideClient({ guide, latestPatch, rankedContext }: {
+  guide: GuideData;
+  latestPatch: string | null;
+  rankedContext: Record<string, { date: string; winRate: number; pickRate: number }>;
+}) {
   const variants = guide.variants?.length ? guide.variants : [];
   const defaultIndex = Math.max(
     0,
@@ -781,8 +786,11 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
     label: localizeGuideLane(lane),
     lane,
   }));
-  const roleVariants = selectGuideRole(variants, selectedRiftLane, (item: GuideVariant) =>
-    toGuideLaneKey(item.lane || item.title || "")) as GuideVariant[];
+  const laneOf = (item: GuideVariant) => toGuideLaneKey(item.lane || item.title || "");
+  const roleVariants = selectGuideRole(variants, selectedRiftLane, laneOf) as GuideVariant[];
+  const unknownRoleVariants = selectUnassignedGuideArchive(variants, selectedRiftLane, defaultRiftLane, laneOf) as GuideVariant[];
+  const rankedSnapshot = rankedContext[selectedRiftLane];
+  const baronPlan = selectedRiftLane === "top" && guide.champion.slug === "mordekaiser" ? mordekaiserBaronPlan : [];
   const displayVariant = roleVariants.find((item) => item.isDefault) || roleVariants[0];
   const displayedRoleLabel = getDisplayedRoleLabel(guide, displayVariant, selectedRiftLane);
   const heroSummary = approved?.page.heroTip || buildOfficialSummary(guide, displayVariant, selectedRiftLane);
@@ -829,7 +837,7 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
 
   const patchNotes = rankedGuideNotes(guide.champion.slug, latestPatch);
   const gearNotes = rankedGearNotes(guide.champion.slug, selectedRiftLane, latestPatch);
-  const guideVariantBundles = roleVariants.filter((item) =>
+  const createBuildBundles = (entries: GuideVariant[]) => entries.filter((item) =>
     !containsRemovedRankedEntity([
       ...Object.values(item.itemBuild).flat(),
       ...(item.spellsAndRunes?.runes || []),
@@ -863,6 +871,11 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
       hasBuilds: hasItemsInSections(buildSections),
     };
   });
+
+  const guideVariantBundles = createBuildBundles(roleVariants);
+  const unassignedBundles = createBuildBundles(unknownRoleVariants);
+  const archive = !edition && guideVariantBundles.some((bundle) => bundle.hasBuilds);
+  const archiveUnknown = !edition && unassignedBundles.some((bundle) => bundle.hasBuilds);
 
   return (
     <div className={styles.page}>
@@ -987,6 +1000,25 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
         </section>
       ) : null}
 
+      {rankedSnapshot ? (
+        <section className={styles.panel} aria-labelledby="ranked-guide-snapshot">
+          <h2 id="ranked-guide-snapshot" className={styles.panelTitle}>На этой роли в рейтинге</h2>
+          <p className={styles.riftEmptyState}>
+            Китай · Алмаз+ · {rankedSnapshot.date.split("-").reverse().join(".")}
+          </p>
+          <p>Победы: {formatPercent(rankedSnapshot.winRate)} · Выбор: {formatPercent(rankedSnapshot.pickRate)}</p>
+        </section>
+      ) : null}
+
+      {!approved && baronPlan.length ? (
+        <section className={styles.panel} aria-labelledby="baron-guide-plan">
+          <h2 id="baron-guide-plan" className={styles.panelTitle}>Как играть на Бароне</h2>
+          <dl className={styles.rankedPatchGuide}>
+            {baronPlan.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+          </dl>
+        </section>
+      ) : null}
+
       {approved ? <ApprovedGuide guide={approved} /> : (
         <section className={styles.panel}>
           <h2 className={styles.panelTitle}>Сборка на текущий патч</h2>
@@ -1047,11 +1079,13 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
         </details>
       ) : null}
 
-      {!edition && guideVariantBundles.some((bundle) => bundle.hasBuilds) ? (
-        <details className={styles.panel}>
-          <summary className={styles.panelTitle}>Прежние сборки этой роли</summary>
+      {[...(archive ? [{title: "Архив: сборки этой роли", bundles: guideVariantBundles}] : []),
+        ...(archiveUnknown ? [{title: "Архив: роль сборки не указана", bundles: unassignedBundles}] : [])].map(({title, bundles}) => (
+        <details key={title} className={styles.panel}>
+          <summary className={styles.panelTitle}>{title}</summary>
+          <p className={styles.riftEmptyState}>Не подтверждено для текущего патча.</p>
           <div className={styles.variantBuildList}>
-            {guideVariantBundles
+            {bundles
               .filter((bundle) => bundle.hasBuilds)
               .map((bundle) => (
                 <div key={bundle.key} className={styles.variantBuildBlock}>
@@ -1080,7 +1114,7 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
               ))}
           </div>
         </details>
-      ) : null}
+      ))}
 
       {abilities.length ? (
         <section className={styles.panel}>

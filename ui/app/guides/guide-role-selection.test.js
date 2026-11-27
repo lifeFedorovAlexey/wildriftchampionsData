@@ -108,3 +108,58 @@ test("generic passive slug cannot make Vayne use Olaf's tooltip or icon", async 
   assert.deepEqual(resolveGuideAbilityTooltip(vayne, match, repair).tooltip, match.tooltip);
   assert.deepEqual(resolveGuideAbilityTooltip(vayne, { ...match, tooltip: olaf.tooltip }, repair).tooltip.lines, [vayne.description]);
 });
+
+test("unlabelled archive stays separate and never leaks into another selected role", async () => {
+  const { selectUnassignedGuideArchive } = await import("./guide-available-content.js");
+  const variants = [{ lane: "top" }, { lane: null }, { lane: "jungle" }];
+  assert.deepEqual(selectUnassignedGuideArchive(variants, "top", "top", x => x.lane), [variants[1]]);
+  assert.deepEqual(selectUnassignedGuideArchive(variants, "jungle", "top", x => x.lane), []);
+  assert.deepEqual(selectGuideRole(variants, "top", x => x.lane), [variants[0]]);
+});
+
+test("ranked context requires a dated matching champion, exact lane, and Diamond+", async () => {
+  const { findGuideRankedContext } = await import("./guide-available-content.js");
+  const base = { slug: "mordekaiser", lane: "top", rank: "diamondPlus", date: "2026-11-26", winRate: 51.51, pickRate: 10.31 };
+  const now = Date.parse("2026-11-27T22:20:00Z");
+  const bucket = (lane, rows) => ({ lane, rank: "diamondPlus", tiers: { S: rows } });
+  const bulk = { tiersByRankLane: {
+    "diamondPlus|top": bucket("top", [
+      { ...base, date: "2026-11-01" }, { ...base, date: "2026-11-28" },
+      { ...base, rank: "masterPlus" }, { ...base, slug: "garen" }, base,
+    ]),
+    "diamondPlus|jungle": bucket("jungle", [base, { ...base, lane: "jungle", date: "2026-11-31" }]),
+  } };
+  assert.deepEqual(findGuideRankedContext(bulk, "mordekaiser", x => x, now), {
+    top: { date: "2026-11-26", winRate: 51.51, pickRate: 10.31 },
+  });
+});
+
+test("Mordekaiser Baron renders an evidenced core, five runes, spells, a full grid and ten matchups", () => {
+  const data = JSON.parse(readFileSync(new URL("./[slug]/approved-guide-data.json", import.meta.url), "utf8")).mordekaiser;
+  assert.deepEqual(Object.keys(data.roles), ["top"]);
+  const guide = data.roles.top;
+  assert.equal(guide.reviewedPatch, "7.3g");
+  assert.deepEqual(guide.items.map(items => items.length), [3, 3, 3]);
+  assert.equal(guide.runePages.length, 3);
+  assert.match(guide.itemNote, /показаны отдельно/);
+  assert.equal(guide.runes.length, 5);
+  assert.equal(guide.spells.length, 2);
+  assert.ok(validGuideLevels(guide.levels.map((x, i) => ({...x, level: i + 1}))));
+  assert.deepEqual(guide.groups.map(x => x.cards.length), [5, 5]);
+  for (const x of guide.groups.flatMap(g => g.cards)) {
+    assert.equal(x.win, null);
+    assert.equal(x.tips.length, 3);
+  }
+});
+
+
+test("a page missing a build, a distinct rune page or a matchup fails the release gate", async () => {
+  const { hasGuideReleaseMinimum } = await import("./guide-role-selection.js");
+  const data = JSON.parse(readFileSync(new URL("./[slug]/approved-guide-data.json", import.meta.url), "utf8"));
+  const guide = data.mordekaiser.roles.top;
+  assert.ok(hasGuideReleaseMinimum(guide));
+  assert.equal(hasGuideReleaseMinimum(data.ambessa.roles.top), false);
+  assert.equal(hasGuideReleaseMinimum({...guide, items: guide.items.slice(0, 2)}), false);
+  assert.equal(hasGuideReleaseMinimum({...guide, runePages: [guide.runePages[0], guide.runePages[1], guide.runePages[1]]}), false);
+  assert.equal(hasGuideReleaseMinimum({...guide, groups: [guide.groups[0], {...guide.groups[1], cards: guide.groups[1].cards.slice(1)}]}), false);
+});
