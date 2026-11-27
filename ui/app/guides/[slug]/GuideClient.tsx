@@ -8,6 +8,7 @@ import guideShared from "@/shared/guides-shared.js";
 
 import styles from "./page.module.css";
 import { ApprovedGuide, getApprovedGuide, GuideLevels } from "./GuideRevision";
+import { resolveGuideAbilityTooltip } from "../guide-ability-tooltip.js";
 import { rankedGearNotes } from "../ranked-patch-gear.js";
 import { containsRemovedRankedEntity, rankedGuideNotes } from "../ranked-patch-guide.js";
 import { GUIDE_LANES, guideEditionStatus, selectGuideRole, validGuideLevels } from "../guide-role-selection.js";
@@ -1086,18 +1087,15 @@ export default function GuideClient({ guide, latestPatch }: { guide: GuideData; 
           <h2 className={styles.panelTitle}>Способности</h2>
           <div className={styles.abilityCards}>
             {abilities.map((ability) => {
-              const abilityWithTooltip: Partial<GuideEntity> & AbilityContent = {
-                ...(abilityDict?.[ability.slug] || {}),
-                ...ability,
-              };
+              const abilityDisplay = resolveGuideAbilityTooltip(ability, abilityDict?.[ability.slug], repairGuideText);
               const hotkey = formatAbilityHotkey(ability.subtitle);
-              const abilityImageSrc = ability.iconUrl || abilityWithTooltip.imageUrl || null;
+              const abilityImageSrc = abilityDisplay.imageUrl;
 
               return (
                 <article key={ability.slug} className={styles.abilityCard}>
                   <div className={styles.abilityHead}>
                     <TooltipTrigger
-                      tooltip={abilityWithTooltip.tooltip}
+                      tooltip={abilityDisplay.tooltip}
                       fallbackName={ability.name}
                     >
                       <div className={styles.quickOrbWrap}>

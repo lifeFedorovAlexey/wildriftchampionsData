@@ -92,3 +92,19 @@ test("equipment notes follow exact archive lane and current official patch, neve
     }
   }
 });
+
+test("generic passive slug cannot make Vayne use Olaf's tooltip or icon", async () => {
+  const { resolveGuideAbilityTooltip } = await import("./guide-ability-tooltip.js");
+  const repair = (text) => text ?? "";
+  const vayne = { slug: "passive", name: "НОЧНАЯ ОХОТНИЦА", description: "Вейн ускоряется по направлению к противнику.", iconUrl: "/vayne.png" };
+  const olaf = { slug: "passive", name: "Ярость берсерка", imageUrl: "/olaf.png", tooltip: { title: "Ярость берсерка", stats: ["Олаф"], lines: ["Скорость атаки"] } };
+  assert.deepEqual(resolveGuideAbilityTooltip(vayne, olaf, repair), {
+    imageUrl: "/vayne.png", tooltip: { title: "НОЧНАЯ ОХОТНИЦА", lines: [vayne.description] },
+  });
+  assert.deepEqual(resolveGuideAbilityTooltip({ ...vayne, description: null, iconUrl: null }, olaf, repair), {
+    imageUrl: null, tooltip: null,
+  });
+  const match = { slug: "passive", name: "Ночная охотница", tooltip: { title: "Ночная охотница", stats: ["Вейн"] } };
+  assert.deepEqual(resolveGuideAbilityTooltip(vayne, match, repair).tooltip, match.tooltip);
+  assert.deepEqual(resolveGuideAbilityTooltip(vayne, { ...match, tooltip: olaf.tooltip }, repair).tooltip.lines, [vayne.description]);
+});
