@@ -87,7 +87,7 @@ export function ApprovedGuide({ guide: { page, sprite, evidenceDate, sample } }:
     <div className={s.content} data-guide-edition="role">
       <div className={s.duo}>
         <section className={base.panel}>
-          <h2 className={base.panelTitle}>{page.runePages ? "Топ-3 сборки" : "Предметы"}</h2>
+          <h2 className={base.panelTitle}>{page.runePages ? "Топ-3 основы сборки" : "Предметы"}</h2>
           <p className={s.note}>{page.itemNote || "Рекомендации. Иконки не задают порядок покупки."}</p>
           {page.items.map((list, i) => <div key={i} data-item-variant={page.runePages ? i + 1 : undefined}><h3 className={s.sub}>{(page.itemLabels || ["Старт и обувь", "Основа", "По ситуации"])[i]}</h3><Tiles sprite={sprite} list={list} />{page.itemWhen?.[i] ? <p className={s.tip}>{page.itemWhen[i]}</p> : null}</div>)}
           <p className={s.tip}>{page.itemTip}</p>
