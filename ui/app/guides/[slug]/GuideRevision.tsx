@@ -10,6 +10,9 @@ type Level = { level: number; key: string; src?: string | null; title?: string; 
 type Approved = {
   reviewedPatch: string;
   heroTip: string;
+  itemLabels?: string[];
+  itemNote?: string;
+  matchupNote?: string;
   items: Icon[][]; itemTip: string;
   runes: (Icon & { tip: string })[]; runeStats: string[];
   runeAlternative: string; spells: Icon[];
@@ -80,13 +83,13 @@ export function ApprovedGuide({ guide: { page, sprite, evidenceDate, sample } }:
       <div className={s.duo}>
         <section className={base.panel}>
           <h2 className={base.panelTitle}>Предметы</h2>
-          <p className={s.note}>Рекомендации. Иконки не задают порядок покупки.</p>
-          {page.items.map((list, i) => <div key={i}><h3 className={s.sub}>{["Старт и обувь", "Основа", "По ситуации"][i]}</h3><Tiles sprite={sprite} list={list} /></div>)}
+          <p className={s.note}>{page.itemNote || "Рекомендации. Иконки не задают порядок покупки."}</p>
+          {page.items.map((list, i) => <div key={i}><h3 className={s.sub}>{(page.itemLabels || ["Старт и обувь", "Основа", "По ситуации"])[i]}</h3><Tiles sprite={sprite} list={list} /></div>)}
           <p className={s.tip}>{page.itemTip}</p>
         </section>
         <section className={base.panel}>
           <h2 className={base.panelTitle}>Руны и заклинания</h2>
-          <p className={s.note}>{page.runeStats.join(" · ")}</p>
+          {page.runeStats.length ? <p className={s.note}>{page.runeStats.join(" · ")}</p> : null}
           <ul className={s.runes}>{page.runes.map((rune) => (
             <li key={rune.name}><Art sprite={sprite} icon={rune.icon} /><div><strong>{rune.name}</strong><small>{rune.tip}</small></div></li>
           ))}</ul>
@@ -97,9 +100,9 @@ export function ApprovedGuide({ guide: { page, sprite, evidenceDate, sample } }:
       </div>
       <section id="matchups" className={`${base.panel} ${s.matchups}`}>
         <h2 className={base.panelTitle}>Матчапы</h2>
-        <p className={s.note}>{sample
+        <p className={s.note}>{page.matchupNote || (sample
           ? `Проценты — победы в этом матчапе, Китай · Алмаз+ · ${date}. Сложность сравнивается с обычным результатом, а не с порогом 50%.`
-          : "Подбор по механикам, не по винрейту."}</p>
+          : "Подбор по механикам, не по винрейту.")}</p>
         {page.groups.map((group) => <div key={group.title} className={s.group}>
           <h3 className={s.sub}>{group.title}</h3>
           <div className={s.matchGrid}>

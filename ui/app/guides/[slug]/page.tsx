@@ -1,3 +1,5 @@
+import sharedGuideNames from "@/shared/guides-shared.js";
+import { findGuideRankedContext } from "../guide-available-content.js";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -195,6 +197,7 @@ export default async function GuidePage({
       : Promise.resolve([]),
   ]);
   const latestPatch = latestOfficialGuidePatch(patchNotes);
+  const rankedContext = findGuideRankedContext(bulk, guide.champion.slug, sharedGuideNames.mapToRiotSlug);
   const guideWithOwnTiers = applyOwnTiers(guide, bulk);
   guideWithOwnTiers.availableGuideSlugs = await fetchGuideSlugsFromApi();
   const guideLeadParagraph = `Гайд на ${guideWithOwnTiers.champion.name}: сборки, руны, матчапы, заклинания и порядок прокачки в одном месте.`;
@@ -209,7 +212,7 @@ export default async function GuidePage({
         </TopPillLink>
       }
     >
-      <GuideClient guide={guideWithOwnTiers} latestPatch={latestPatch} />
+      <GuideClient guide={guideWithOwnTiers} latestPatch={latestPatch} rankedContext={rankedContext} />
     </PageWrapper>
   );
 }
