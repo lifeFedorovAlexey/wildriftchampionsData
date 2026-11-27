@@ -1,0 +1,402 @@
+{
+  "aatrox": {
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "ambessa": {
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "annie": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "ashe": {
+    "adc": [
+      "guinsoos-rageblade"
+    ]
+  },
+  "aurelion-sol": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "bard": {
+    "support": [
+      "ardent-censer",
+      "absolute-focus"
+    ]
+  },
+  "brand": {
+    "mid": [
+      "absolute-focus"
+    ],
+    "support": [
+      "absolute-focus"
+    ]
+  },
+  "camille": {
+    "top": [
+      "absolute-focus"
+    ],
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "darius": {
+    "jungle": [
+      "absolute-focus"
+    ],
+    "top": [
+      "absolute-focus"
+    ]
+  },
+  "diana": {
+    "jungle": [
+      "absolute-focus"
+    ],
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "dr-mundo": {
+    "top": [
+      "absolute-focus"
+    ]
+  },
+  "ekko": {
+    "jungle": [
+      "absolute-focus"
+    ],
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "evelynn": {
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "fiddlesticks": {
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "fizz": {
+    "mid": [
+      "absolute-focus"
+    ],
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "gwen": {
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "heimerdinger": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "janna": {
+    "support": [
+      "harmonic-echo",
+      "ardent-censer"
+    ]
+  },
+  "kaisa": {
+    "adc": [
+      "guinsoos-rageblade"
+    ]
+  },
+  "kalista": {
+    "top": [
+      "guinsoos-rageblade"
+    ],
+    "adc": [
+      "guinsoos-rageblade"
+    ]
+  },
+  "karma": {
+    "support": [
+      "ardent-censer",
+      "harmonic-echo"
+    ]
+  },
+  "kayle": {
+    "top": [
+      "guinsoos-rageblade",
+      "absolute-focus"
+    ],
+    "mid": [
+      "guinsoos-rageblade",
+      "absolute-focus"
+    ]
+  },
+  "kennen": {
+    "top": [
+      "guinsoos-rageblade"
+    ]
+  },
+  "kogmaw": {
+    "adc": [
+      "guinsoos-rageblade"
+    ]
+  },
+  "leona": {
+    "support": [
+      "absolute-focus"
+    ]
+  },
+  "lissandra": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "lulu": {
+    "support": [
+      "ardent-censer",
+      "harmonic-echo"
+    ]
+  },
+  "lux": {
+    "support": [
+      "ardent-censer",
+      "harmonic-echo",
+      "absolute-focus"
+    ],
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "master-yi": {
+    "jungle": [
+      "guinsoos-rageblade"
+    ]
+  },
+  "milio": {
+    "support": [
+      "ardent-censer",
+      "harmonic-echo",
+      "absolute-focus"
+    ]
+  },
+  "miss-fortune": {
+    "adc": [
+      "absolute-focus"
+    ]
+  },
+  "morgana": {
+    "support": [
+      "ardent-censer",
+      "absolute-focus"
+    ],
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "nami": {
+    "support": [
+      "harmonic-echo",
+      "ardent-censer"
+    ]
+  },
+  "nautilus": {
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "nocturne": {
+    "jungle": [
+      "absolute-focus"
+    ]
+  },
+  "norra": {
+    "mid": [
+      "absolute-focus"
+    ],
+    "support": [
+      "absolute-focus"
+    ]
+  },
+  "orianna": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "ornn": {
+    "top": [
+      "absolute-focus"
+    ],
+    "support": [
+      "absolute-focus"
+    ]
+  },
+  "ryze": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "senna": {
+    "adc": [
+      "berserkers-greaves"
+    ]
+  },
+  "seraphine": {
+    "support": [
+      "ardent-censer",
+      "harmonic-echo"
+    ]
+  },
+  "sona": {
+    "support": [
+      "ardent-censer",
+      "harmonic-echo",
+      "absolute-focus"
+    ]
+  },
+  "soraka": {
+    "support": [
+      "harmonic-echo",
+      "ardent-censer",
+      "absolute-focus"
+    ]
+  },
+  "swain": {
+    "mid": [
+      "absolute-focus"
+    ],
+    "support": [
+      "absolute-focus"
+    ],
+    "top": [
+      "absolute-focus"
+    ]
+  },
+  "syndra": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "tryndamere": {
+    "jungle": [
+      "berserkers-greaves"
+    ],
+    "top": [
+      "berserkers-greaves"
+    ]
+  },
+  "twisted-fate": {
+    "mid": [
+      "guinsoos-rageblade",
+      "absolute-focus"
+    ]
+  },
+  "varus": {
+    "adc": [
+      "guinsoos-rageblade",
+      "absolute-focus"
+    ]
+  },
+  "vayne": {
+    "top": [
+      "guinsoos-rageblade",
+      "berserkers-greaves"
+    ],
+    "adc": [
+      "guinsoos-rageblade",
+      "berserkers-greaves"
+    ]
+  },
+  "veigar": {
+    "mid": [
+      "absolute-focus"
+    ],
+    "support": [
+      "absolute-focus"
+    ]
+  },
+  "velkoz": {
+    "mid": [
+      "absolute-focus"
+    ],
+    "support": [
+      "absolute-focus"
+    ]
+  },
+  "vex": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "viktor": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "volibear": {
+    "jungle": [
+      "guinsoos-rageblade"
+    ]
+  },
+  "warwick": {
+    "jungle": [
+      "guinsoos-rageblade"
+    ]
+  },
+  "yasuo": {
+    "mid": [
+      "immortal-shieldbow",
+      "berserkers-greaves"
+    ],
+    "top": [
+      "immortal-shieldbow",
+      "berserkers-greaves"
+    ]
+  },
+  "yone": {
+    "top": [
+      "guinsoos-rageblade",
+      "berserkers-greaves"
+    ],
+    "jungle": [
+      "guinsoos-rageblade",
+      "immortal-shieldbow",
+      "berserkers-greaves",
+      "absolute-focus"
+    ],
+    "mid": [
+      "guinsoos-rageblade",
+      "immortal-shieldbow",
+      "berserkers-greaves"
+    ]
+  },
+  "yuumi": {
+    "support": [
+      "ardent-censer",
+      "harmonic-echo",
+      "absolute-focus"
+    ]
+  },
+  "zeri": {
+    "adc": [
+      "absolute-focus"
+    ]
+  },
+  "ziggs": {
+    "mid": [
+      "absolute-focus"
+    ]
+  },
+  "zilean": {
+    "support": [
+      "harmonic-echo",
+      "ardent-censer"
+    ]
+  }
+}
